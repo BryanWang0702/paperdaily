@@ -2,7 +2,7 @@
 
 PaperDaily is a lightweight personal research radar that collects newly indexed literature, removes duplicates, applies a transparent deterministic prefilter, ranks papers against a researcher-specific profile, generates compact summaries, and publishes a persistent daily archive with GitHub Pages.
 
-The default configuration is tuned for sleep neuroscience, but the filtering and AI profile are fully configurable so the project can be forked for other research fields.
+The default configuration is tuned for sleep neuroscience, but the retrieval, prefilter, and AI profile are configurable so the project can be forked for other research fields.
 
 ## Live workflow
 
@@ -17,9 +17,11 @@ PubMed + bioRxiv + medRxiv + arXiv
                 ↓
         up to 40 AI-ranked papers
                 ↓
-        25-30 compact summaries
+       all 40 compactly summarized
                 ↓
-  daily archive + weekly/monthly Top 10
+     Top 25 visible + 15 collapsed
+                ↓
+      daily archive + Monthly Top 5
                 ↓
            GitHub Pages
 ```
@@ -32,37 +34,24 @@ PubMed + bioRxiv + medRxiv + arXiv
 - Configurable deterministic prefilter before any paid AI call.
 - DeepSeek as the default AI provider.
 - OpenAI support and support for other OpenAI-compatible Chat Completions endpoints.
-- Separate ranking and summarization stages for more stable relevance scores.
+- Separate ranking and summarization stages for stable relevance scores.
 - AI caching so unchanged papers are not repeatedly paid for.
-- Compact public JSON with no full abstracts, for faster page loading.
+- Up to 40 ranked and summarized papers per day.
+- Top 25 papers shown immediately, with ranks 26-40 collapsed by default.
+- Source label on every public paper card.
+- Per-source retrieval totals on every daily page.
 - Persistent daily issues.
-- Top 5 titles shown directly on each daily archive card.
-- Rolling Past 7 Days Top 10 and Past 30 Days Top 10 rankings.
+- Top 5 paper titles shown directly on each homepage date card.
+- Monthly Top 5 sidebar based on AI relevance score.
 - Per-run and cumulative token/cost tracking.
 - Source retry and last-good cache behavior for transient failures.
 - GitHub Actions credential preflight.
 - GitHub Pages deployment.
-
-## Daily sources
-
-- PubMed
-- bioRxiv
-- medRxiv
-- arXiv
-
-Planned weekly sources include selected Science/Nature news, commentary, opinion, and career content.
-
-## Daily archive
-
-Every calendar day is stored as `data/YYYY-MM-DD.json`. The homepage loads a compact archive manifest, and each date opens a dedicated daily digest.
-
-The backend keeps the complete research record in `data/`, while the public website uses compact files under `site/data/` containing only the information needed for browsing: title, relevance score, short AI summary, and source link.
+- English user interface and explicit English date formatting.
 
 ## AI ranking
 
-The default configuration uses DeepSeek.
-
-For GitHub Actions, add this repository secret:
+The default configuration uses DeepSeek. Add this repository secret:
 
 ```text
 DEEPSEEK_API_KEY
@@ -71,8 +60,6 @@ DEEPSEEK_API_KEY
 Add it under:
 
 **Settings -> Secrets and variables -> Actions -> Repository secrets**
-
-The pipeline first ranks the filtered candidates, then summarizes only the daily digest. Ranking and summary caches are versioned independently so changing summary style does not force every paper to be re-ranked.
 
 Optional PubMed secrets:
 
@@ -99,11 +86,7 @@ Serve the static site locally:
 python -m http.server 8000 -d site
 ```
 
-Then open:
-
-```text
-http://localhost:8000
-```
+Then open `http://localhost:8000`.
 
 ## Configuration
 
@@ -116,10 +99,50 @@ Edit `config.yaml` to change:
 - maximum AI candidate count;
 - AI provider and model;
 - researcher interest profile;
-- digest size and score threshold;
+- daily visible paper count;
 - token pricing used by the cost dashboard.
 
-The prefilter contains no mandatory sleep-specific logic in Python. The sleep rules in the default installation live in `config.yaml` and can be replaced for another field.
+The default site configuration uses:
+
+```yaml
+prefilter:
+  max_candidates: 40
+
+ai:
+  digest_min: 40
+  digest_max: 40
+  digest_score_threshold: 0
+
+site:
+  featured_count: 25
+```
+
+This means 40 papers are ranked and summarized, the first 25 are shown immediately, and the remaining 15 are available in a collapsed section.
+
+## Homepage behavior
+
+Each date card shows:
+
+- the total number of unique papers discovered that day;
+- the configured Top 25 / additional-paper split;
+- the latest update time;
+- the Top 5 paper titles for that date.
+
+The sidebar contains only **Monthly Top 5**, calculated from the highest AI relevance scores over the past 30 days.
+
+## Daily page behavior
+
+A daily page shows:
+
+- total unique papers discovered;
+- PubMed, bioRxiv, medRxiv, and arXiv retrieval totals;
+- update time;
+- papers sorted from highest to lowest relevance;
+- Top 25 papers expanded;
+- ranks 26-40 collapsed by default;
+- source, relevance score, title, compact AI summary, and source link for each paper.
+
+Full abstracts remain backend-only and are not shipped to the public website.
 
 ## Automation
 
@@ -131,12 +154,12 @@ The prefilter contains no mandatory sleep-specific logic in Python. The sleep ru
 
 ## Forking PaperDaily for another field
 
-See the complete guide:
+See:
 
 **[Fork and Customize PaperDaily](docs/FORK_AND_CUSTOMIZE.md)**
 
-The guide covers GitHub Pages, secrets, AI providers, PubMed credentials, domain-specific retrieval terms, prefilter rules, interest profiles, schedule changes, local testing, and troubleshooting.
+A generic starting configuration is also included at `config.template.yaml`.
 
 ## Design principle
 
-PaperDaily is not intended to produce a universal ranking of scientific quality. It is a reproducible personal relevance system: broad enough to avoid missing useful work, cheap enough to run continuously, and transparent enough to tune when the recommendations are wrong.
+PaperDaily is not intended to produce a universal ranking of scientific quality. It is a reproducible personal relevance system: broad enough to avoid missing useful work, cheap enough to run continuously, and transparent enough to tune when recommendations are wrong.

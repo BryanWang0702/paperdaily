@@ -50,9 +50,11 @@ ai:
   rank_batch_size: 20
   summary_batch_size: 5
 
-  digest_min: 25
-  digest_max: 30
-  digest_score_threshold: 45
+  # Rank and summarize all 40 local-filter candidates. The website shows the
+  # highest-ranked 25 and keeps ranks 26-40 collapsed by default.
+  digest_min: 40
+  digest_max: 40
+  digest_score_threshold: 0
 
   pricing_cny_per_million:
     input_cache_hit: 0.02
@@ -68,6 +70,9 @@ ai:
     Ranking preference: explain which paper types should receive high scores and
     which broad or adjacent topics should receive lower scores.
 
+    Use English for all generated topic labels, relevance reasons, and scientific descriptions.
+
 site:
   title: PaperDaily
   subtitle: Daily research radar
+  featured_count: 25

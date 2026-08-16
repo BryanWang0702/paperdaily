@@ -125,11 +125,6 @@ def _top_titles(payload: dict, limit: int = 5) -> list[str]:
         p for p in papers
         if (((p.get("extra") or {}).get("ai") or {}).get("digest_pick"))
     ]
-    if not digest_papers:
-        digest_papers = [
-            p for p in papers
-            if (((p.get("extra") or {}).get("ai") or {}).get("top_pick"))
-        ]
     preview = digest_papers or papers
     return [str(p.get("title", "")).strip() for p in preview[:limit] if p.get("title")]
 
@@ -155,7 +150,7 @@ def _paper_identity(paper: dict) -> str:
     return f"title:{str(paper.get('title') or '').strip().lower()}"
 
 
-def _period_top(day_payloads: list[dict], period_days: int, limit: int = 10) -> list[dict]:
+def _period_top(day_payloads: list[dict], period_days: int, limit: int = 5) -> list[dict]:
     dated_payloads = [
         (parsed, payload)
         for payload in day_payloads
@@ -188,6 +183,7 @@ def _period_top(day_payloads: list[dict], period_days: int, limit: int = 10) -> 
                 "url": url,
                 "score": max(0, min(100, score)),
                 "date": day_value.isoformat(),
+                "source": str(paper.get("source") or ""),
             }
             key = _paper_identity(paper)
             previous = best.get(key)
@@ -218,24 +214,28 @@ def _build_archive_manifest() -> dict:
         day_cost = float(billing.get("daily_cost_cny", 0.0) or 0.0)
         if has_billing:
             tracked_costs.append(day_cost)
-        digest_count = int(ai.get("digest_count", 0) or 0)
-        if not digest_count:
-            digest_count = min(int(payload.get("count", 0) or 0), 30)
+
+        ranked_count = int(ai.get("ranked_count", payload.get("count", 0)) or 0)
+        featured_count = min(
+            int(payload.get("featured_count", 25) or 25),
+            ranked_count,
+        )
+        additional_count = max(0, ranked_count - featured_count)
         days.append({
             "date": payload.get("date") or path.stem,
             "generated_at": payload.get("generated_at", ""),
-            "count": digest_count,
-            "candidate_count": payload.get("count", 0),
-            "raw_count": payload.get("raw_count", payload.get("count", 0)),
+            "total_count": payload.get("raw_count", payload.get("count", 0)),
+            "ranked_count": ranked_count,
+            "featured_count": featured_count,
+            "additional_count": additional_count,
             "top_titles": _top_titles(payload),
+            "retrieved_source_counts": payload.get("retrieved_source_counts", payload.get("raw_source_counts", {})),
             "errors": payload.get("errors", {}),
             "window": payload.get("window", {}),
             "ai": {
                 "enabled": ai.get("enabled", False),
                 "provider": ai.get("provider", ""),
                 "model": ai.get("model", ""),
-                "digest_count": digest_count,
-                "ranked_count": ai.get("ranked_count", 0),
                 "status": ai.get("status", ""),
                 "daily_cost_cny": day_cost if has_billing else None,
                 "daily_usage": billing.get("daily_usage", {}) if has_billing else {},
@@ -249,13 +249,9 @@ def _build_archive_manifest() -> dict:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "days": days,
         "rankings": {
-            "weekly": {
-                "label": "Past 7 days",
-                "papers": _period_top(day_payloads, 7, 10),
-            },
             "monthly": {
                 "label": "Past 30 days",
-                "papers": _period_top(day_payloads, 30, 10),
+                "papers": _period_top(day_payloads, 30, 5),
             },
         },
         "billing": {
@@ -278,25 +274,33 @@ def _build_site_digest(payload: dict, papers: list[Paper]) -> dict:
         selected.append({
             "title": paper.title,
             "url": paper.url,
+            "source": paper.source,
             "score": int(ai.get("score", 0)) if ai else None,
             "summary": str(ai.get("summary", "")) if ai else "",
         })
 
     if not selected:
         selected = [
-            {"title": p.title, "url": p.url, "score": None, "summary": ""}
-            for p in papers[:30]
+            {
+                "title": p.title,
+                "url": p.url,
+                "source": p.source,
+                "score": None,
+                "summary": "",
+            }
+            for p in papers[:40]
         ]
 
     ai = payload.get("ai", {}) or {}
     billing = ai.get("billing", {}) or {}
+    featured_count = min(int(payload.get("featured_count", 25) or 25), len(selected))
     site_ai = {
         "enabled": ai.get("enabled", False),
         "provider": ai.get("provider", ""),
         "model": ai.get("model", ""),
         "status": ai.get("status", ""),
         "ranked_count": ai.get("ranked_count", 0),
-        "digest_count": len(selected),
+        "summarized_count": len(selected),
         "errors": ai.get("errors", []),
         "billing": billing,
     }
@@ -304,9 +308,11 @@ def _build_site_digest(payload: dict, papers: list[Paper]) -> dict:
         "date": payload.get("date"),
         "generated_at": payload.get("generated_at"),
         "window": payload.get("window", {}),
-        "raw_count": payload.get("raw_count", 0),
-        "candidate_count": payload.get("count", 0),
-        "count": len(selected),
+        "total_count": payload.get("raw_count", 0),
+        "retrieved_source_counts": payload.get("retrieved_source_counts", payload.get("raw_source_counts", {})),
+        "ranked_count": len(selected),
+        "featured_count": featured_count,
+        "additional_count": max(0, len(selected) - featured_count),
         "errors": payload.get("errors", {}),
         "ai": site_ai,
         "papers": selected,
@@ -320,9 +326,11 @@ def run(days: int | None = None) -> dict:
     lookback_days = days or int(config.get("lookback_days", 3))
     start_date, end_date = date_window(lookback_days, timezone_name)
     limit = int(config.get("max_per_source", 150))
+    featured_target = max(1, int((config.get("site", {}) or {}).get("featured_count", 25)))
 
     fetched: list[Paper] = []
     errors: dict[str, str] = {}
+    retrieved_source_counts = {"pubmed": 0, "biorxiv": 0, "medrxiv": 0, "arxiv": 0}
     sources = [
         ("pubmed", lambda: fetch_pubmed(config, start_date, end_date, limit)),
         ("biorxiv", lambda: fetch_biorxiv(config, start_date, end_date, limit)),
@@ -334,12 +342,14 @@ def run(days: int | None = None) -> dict:
         try:
             items = loader()
             fetched.extend(items)
+            retrieved_source_counts[name] = len(items)
             _save_source_cache(name, items, start_date, end_date)
             print(f"{name}: {len(items)} records")
         except Exception as exc:
             cached = _load_source_cache(name)
             if cached:
                 fetched.extend(cached)
+                retrieved_source_counts[name] = len(cached)
                 errors[name] = f"{type(exc).__name__}: {exc} · reused {len(cached)} cached records"
                 print(f"{name}: ERROR, reused {len(cached)} cached records")
             else:
@@ -370,8 +380,10 @@ def run(days: int | None = None) -> dict:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "window": {"start": start_date, "end": end_date},
         "raw_count": len(raw_unique),
+        "retrieved_source_counts": retrieved_source_counts,
         "raw_source_counts": dict(raw_counts),
         "count": len(unique),
+        "featured_count": min(featured_target, len(unique)),
         "source_counts": dict(counts),
         "errors": errors,
         "ai": ai_meta,
@@ -399,7 +411,7 @@ def main() -> None:
     result = run(args.days)
     print(f"raw unique: {result['raw_count']}")
     print(f"filtered candidates: {result['count']}")
-    print(f"digest papers: {result.get('ai', {}).get('digest_count', 0)}")
+    print(f"summarized papers: {result.get('ai', {}).get('digest_count', 0)}")
     print("AI:", result.get("ai", {}).get("status", "unknown"))
     billing = (result.get("ai", {}).get("billing") or {})
     if billing:
