@@ -203,7 +203,7 @@ prefilter:
 
 ai:
   # Maximum number of shortlisted papers sent to the AI.
-  # Every analyzed paper is ranked and summarized.
+  # Every analyzed paper is ranked, summarized, keyworded, and classified.
   max_analyzed: 40
 
 site:
@@ -216,7 +216,7 @@ The default `40 -> 40 -> 25` layout means:
 ```text
 40 papers survive the free local prefilter
                 ↓
-40 papers are ranked and summarized by the AI
+40 papers are ranked and enriched by the AI
                 ↓
 25 are visible immediately
 15 remain collapsed
@@ -240,7 +240,7 @@ produces:
 ```text
 80-paper local shortlist
         ↓
-50 AI-ranked and summarized papers
+50 AI-ranked and enriched papers
         ↓
 Top 20 visible
 30 collapsed
@@ -250,7 +250,42 @@ If `ai.max_analyzed` is larger than `prefilter.max_candidates`, the actual AI wo
 
 This is useful for controlling API cost. A broad field can keep a large free local shortlist while sending a smaller subset to the AI.
 
-## 8. What the homepage shows
+## 8. Paper metadata enrichment
+
+Each analyzed paper can expose the following compact public metadata without shipping its full abstract:
+
+- source;
+- normalized paper type;
+- relevance score;
+- title;
+- authors;
+- 3-5 scientific keywords;
+- compact AI summary;
+- original paper link.
+
+PaperDaily uses source metadata whenever possible. PubMed KeywordList and PublicationType metadata are preserved; preprint sources preserve their author/category metadata. The AI summary stage then normalizes a small keyword set and paper type across sources.
+
+The default normalized paper-type vocabulary includes:
+
+```text
+Research Article
+Review
+Systematic Review
+Meta-analysis
+Methods/Resource
+Clinical Study
+Clinical Trial
+Case Report
+Protocol
+Commentary/Perspective
+Editorial
+Preprint
+Other
+```
+
+The relevance-ranking prompt is separate from this metadata-enrichment step, so adding keywords or paper type does not redefine the ranking task.
+
+## 9. What the homepage shows
 
 Each daily archive card contains:
 
@@ -261,7 +296,7 @@ Each daily archive card contains:
 
 The sidebar contains only **Monthly Top 5**, based on the highest AI relevance scores over the past 30 days.
 
-## 9. What each daily page shows
+## 10. What each daily page shows
 
 The daily page includes:
 
@@ -269,13 +304,13 @@ The daily page includes:
 - per-source retrieval totals for PubMed, bioRxiv, medRxiv, and arXiv;
 - update time;
 - papers sorted from highest to lowest relevance;
-- source label, relevance score, title, compact AI summary, and source link;
+- source, paper type, relevance score, title, authors, keywords, compact AI summary, and source link;
 - `site.featured_count` papers visible by default;
 - remaining analyzed papers in a collapsed section.
 
 The public site does not ship full abstracts. Full paper metadata remains in `data/` for ranking, caching, debugging, and future reranking.
 
-## 10. Set the timezone and schedule
+## 11. Set the timezone and schedule
 
 Set your local timezone in `config.yaml`:
 
@@ -287,7 +322,7 @@ GitHub Actions cron expressions are written in UTC, so update `.github/workflows
 
 The default installation runs twice per day. AI results are cached, so unchanged papers are not repeatedly paid for.
 
-## 11. Run the pipeline manually once
+## 12. Run the pipeline manually once
 
 Before waiting for the schedule:
 
@@ -299,7 +334,7 @@ Before waiting for the schedule:
 
 The workflow includes a credential preflight. It reports only whether each required secret is present; it never prints secret values.
 
-## 12. Local development
+## 13. Local development
 
 ```bash
 python -m venv .venv
@@ -316,16 +351,16 @@ http://localhost:8000
 
 For local AI calls, set the relevant API key as an environment variable before running the pipeline.
 
-## 13. Data layout
+## 14. Data layout
 
 PaperDaily keeps two layers:
 
-- `data/`: complete backend records, abstracts, ranking metadata, AI cache, billing data, and source recovery data;
+- `data/`: complete backend records, abstracts, authors, source keywords/publication types, ranking metadata, AI cache, billing data, and source recovery data;
 - `site/data/`: compact public JSON for fast browsing.
 
 The backend daily record also stores the actual `prefiltered_count` and `analyzed_count`, which makes configuration and cost behavior easier to audit.
 
-## 14. Troubleshooting
+## 15. Troubleshooting
 
 ### The site is empty
 
@@ -355,7 +390,7 @@ Broaden `discovery_terms`, lower `min_score`, or increase `prefilter.max_candida
 
 Reduce `ai.max_analyzed`. This changes the paid AI workload without requiring you to narrow the free local prefilter.
 
-## 15. Recommended tuning workflow
+## 16. Recommended tuning workflow
 
 1. Run the fork for one week with broad retrieval.
 2. Inspect false positives and missed papers.
