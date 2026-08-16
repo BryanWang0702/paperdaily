@@ -27,3 +27,19 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Build local bundle
         run: python tools/build_local_bundle.py
+
+  local-windows-smoke:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Validate Beijing timezone
+        run: python -c "from zoneinfo import ZoneInfo; print(ZoneInfo('Asia/Shanghai'))"
+      - name: Compile local launcher
+        run: python -m py_compile local_app.py
+      - name: Build local bundle
+        run: python tools/build_local_bundle.py
