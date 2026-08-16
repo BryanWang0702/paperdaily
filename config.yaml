@@ -25,8 +25,8 @@ arxiv:
     - cs.LG
     - stat.ML
 
-# The deterministic prefilter is deliberately configurable so forks can adapt
-# PaperDaily to another field without editing Python source code.
+# Free deterministic shortlist built before any paid AI call.
+# Change max_candidates to control how many papers survive the daily local filter.
 prefilter:
   enabled: true
   max_candidates: 40
@@ -94,14 +94,13 @@ ai:
   model: deepseek-v4-flash
   base_url: https://api.deepseek.com
   api_key_env: DEEPSEEK_API_KEY
+
+  # Maximum number of papers from the local shortlist that are sent to the AI.
+  # Every analyzed paper is ranked and summarized. If this is larger than
+  # prefilter.max_candidates, the actual analyzed count is limited by the shortlist.
+  max_analyzed: 40
   rank_batch_size: 20
   summary_batch_size: 5
-
-  # All 40 prefiltered papers are ranked and summarized. The public page shows
-  # the highest-ranked 25 first and keeps ranks 26-40 in a collapsed section.
-  digest_min: 40
-  digest_max: 40
-  digest_score_threshold: 0
 
   # DeepSeek V4 Flash prices in CNY per 1M tokens.
   pricing_cny_per_million:
@@ -121,4 +120,7 @@ ai:
 site:
   title: PaperDaily
   subtitle: Daily research radar
+
+  # Number of AI-analyzed papers expanded by default on the daily page.
+  # Remaining analyzed papers are placed in the collapsed section.
   featured_count: 25
