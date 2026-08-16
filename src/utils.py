@@ -32,6 +32,11 @@ def compact_text(text: str | None) -> str:
     return " ".join((text or "").split())
 
 
+def matches_terms(text: str, terms: Iterable[str]) -> bool:
+    haystack = text.casefold()
+    return any(term.casefold() in haystack for term in terms if term)
+
+
 def chunks(values: Iterable[str], size: int) -> Iterable[list[str]]:
     batch: list[str] = []
     for value in values:

@@ -35,9 +35,9 @@ def run(days: int | None = None) -> dict:
 
     sources = [
         ("pubmed", lambda: fetch_pubmed(config, start_date, end_date, limit)),
-        ("biorxiv", lambda: fetch_biorxiv(start_date, end_date, limit)),
-        ("medrxiv", lambda: fetch_medrxiv(start_date, end_date, limit)),
-        ("arxiv", lambda: fetch_arxiv(config, limit)),
+        ("biorxiv", lambda: fetch_biorxiv(config, start_date, end_date, limit)),
+        ("medrxiv", lambda: fetch_medrxiv(config, start_date, end_date, limit)),
+        ("arxiv", lambda: fetch_arxiv(config, start_date, end_date, limit)),
     ]
 
     for name, loader in sources:

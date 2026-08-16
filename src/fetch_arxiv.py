@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from urllib.parse import quote
-
 import feedparser
 import requests
 
@@ -12,15 +10,28 @@ from .utils import compact_text, normalize_doi
 ARXIV_API = "https://export.arxiv.org/api/query"
 
 
-def fetch_arxiv(config: dict, limit: int = 150) -> list[Paper]:
+def fetch_arxiv(
+    config: dict,
+    start_date: str,
+    end_date: str,
+    limit: int = 150,
+) -> list[Paper]:
     terms = config.get("discovery_terms", [])
     categories = config.get("arxiv", {}).get("categories", [])
-    pieces = [f'all:"{term}"' for term in terms]
-    pieces.extend(f"cat:{category}" for category in categories)
-    if not pieces:
+    if not terms:
         return []
 
-    search_query = " OR ".join(pieces)
+    term_query = " OR ".join(f'all:"{term}"' for term in terms)
+    query_parts = [f"({term_query})"]
+    if categories:
+        category_query = " OR ".join(f"cat:{category}" for category in categories)
+        query_parts.append(f"({category_query})")
+
+    start_stamp = start_date.replace("-", "") + "0000"
+    end_stamp = end_date.replace("-", "") + "2359"
+    query_parts.append(f"submittedDate:[{start_stamp} TO {end_stamp}]")
+    search_query = " AND ".join(query_parts)
+
     response = requests.get(
         ARXIV_API,
         params={
