@@ -10,6 +10,12 @@ function prettyDate(value) {
   }).format(date);
 }
 
+function shortDate(value) {
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(date);
+}
+
 function money(value) {
   const number = Number(value || 0);
   if (number < 0.01) return `¥${number.toFixed(4)}`;
@@ -19,6 +25,23 @@ function money(value) {
 function topPreview(titles = []) {
   if (!titles.length) return '';
   return `<ol class="top-preview">${titles.slice(0, 5).map(title => `<li>${esc(title)}</li>`).join('')}</ol>`;
+}
+
+function renderRanking(targetId, ranking) {
+  const target = document.querySelector(targetId);
+  const papers = ranking?.papers || [];
+  if (!papers.length) {
+    target.innerHTML = '<li class="ranking-empty">More papers are needed to build this ranking.</li>';
+    return;
+  }
+  target.innerHTML = papers.map(paper => `
+    <li class="ranking-item">
+      <a href="${esc(paper.url || '#')}" target="_blank" rel="noopener">${esc(paper.title)}</a>
+      <div class="ranking-meta">
+        <span>${esc(shortDate(paper.date || ''))}</span>
+        <span class="ranking-score">${esc(paper.score)} / 100</span>
+      </div>
+    </li>`).join('');
 }
 
 async function boot() {
@@ -36,6 +59,9 @@ async function boot() {
     document.querySelector('#meta').textContent = days.length
       ? `${days.length} archived day${days.length === 1 ? '' : 's'}${billingText}`
       : 'No archived days yet';
+
+    renderRanking('#weeklyRanking', data.rankings?.weekly);
+    renderRanking('#monthlyRanking', data.rankings?.monthly);
 
     archive.innerHTML = days.map((day, index) => {
       const ai = day.ai || {};
