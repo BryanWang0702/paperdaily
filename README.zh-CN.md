@@ -49,10 +49,12 @@ PubMed + bioRxiv + medRxiv + arXiv
 - 每日页面显示 PubMed / bioRxiv / medRxiv / arXiv 的抓取数量。
 - 首页每个日期卡片直接显示当天 Top 5 标题。
 - 首页侧边栏提供 Monthly Top 5。
-- 自动统计 token 使用量和 API 费用。
+- API 费用只在首页右上角集中显示。
+- 后台继续记录每次运行和累计 token / API 费用。
 - 文献源临时失败时支持重试和 last-good cache。
 - GitHub Actions 会在正式运行前检查 API secret 是否已经配置。
 - 自动部署 GitHub Pages。
+- 网站中的更新时间统一按北京时间（`Asia/Shanghai`）显示。
 
 ## 文献元数据增强
 
@@ -193,8 +195,10 @@ config.template.yaml
 
 - 当天抓取并去重后的文献总数；
 - featured / additional 文献数量；
-- 最近一次更新时间；
+- 按北京时间显示的最近一次更新时间；
 - 当天相关性最高的 Top 5 标题。
+
+API 费用只在首页右上角显示；单个日期卡片和每日子页不再重复显示费用。
 
 侧边栏只保留 **Monthly Top 5**，根据过去 30 天的 AI relevance score 排序。
 
@@ -204,7 +208,7 @@ config.template.yaml
 
 - 当天 unique paper 总数；
 - PubMed、bioRxiv、medRxiv 和 arXiv 各自抓取数量；
-- 更新时间；
+- 按北京时间显示的更新时间；
 - 按 relevance score 从高到低排序的文献；
 - `site.featured_count` 指定数量的默认展开文献；
 - 其余 AI 分析文献默认折叠；
@@ -214,7 +218,7 @@ config.template.yaml
 
 ## 自动运行
 
-`.github/workflows/daily.yml` 当前每天在 UTC+8 的 07:15 和 20:15 运行，也支持手动触发。
+`.github/workflows/daily.yml` 当前每天在**北京时间 05:30 和 20:30**运行，也支持手动触发。主配置时区为 `Asia/Shanghai`。
 
 `.github/workflows/deploy-pages.yml` 会在文献刷新成功或者网页代码变化后自动部署 GitHub Pages。
 
