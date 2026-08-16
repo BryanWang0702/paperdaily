@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import re
-from datetime import date, timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Iterable
+from zoneinfo import ZoneInfo
 
 import yaml
 
@@ -22,8 +23,12 @@ def normalize_doi(value: str | None) -> str:
     return DOI_PREFIX_RE.sub("", value.strip()).lower()
 
 
-def date_window(days: int) -> tuple[str, str]:
-    end = date.today()
+def local_date(timezone_name: str = "UTC"):
+    return datetime.now(ZoneInfo(timezone_name)).date()
+
+
+def date_window(days: int, timezone_name: str = "UTC") -> tuple[str, str]:
+    end = local_date(timezone_name)
     start = end - timedelta(days=max(days - 1, 0))
     return start.isoformat(), end.isoformat()
 
