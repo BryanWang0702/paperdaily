@@ -4,7 +4,7 @@ import argparse
 import json
 import shutil
 from collections import Counter
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
 from .deduplicate import deduplicate
@@ -12,7 +12,7 @@ from .fetch_arxiv import fetch_arxiv
 from .fetch_biorxiv import fetch_biorxiv, fetch_medrxiv
 from .fetch_pubmed import fetch_pubmed
 from .models import Paper
-from .utils import date_window, load_config
+from .utils import date_window, load_config, local_date
 
 
 DATA_DIR = Path("data")
@@ -24,10 +24,33 @@ def _write_json(path: Path, payload: dict) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def _build_archive_manifest() -> dict:
+    days: list[dict] = []
+    for path in sorted(DATA_DIR.glob("20??-??-??.json"), reverse=True):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        days.append({
+            "date": payload.get("date") or path.stem,
+            "generated_at": payload.get("generated_at", ""),
+            "count": payload.get("count", 0),
+            "source_counts": payload.get("source_counts", {}),
+            "errors": payload.get("errors", {}),
+            "window": payload.get("window", {}),
+        })
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "days": days,
+    }
+
+
 def run(days: int | None = None) -> dict:
     config = load_config()
+    timezone_name = str(config.get("timezone", "UTC"))
+    current_day = local_date(timezone_name).isoformat()
     lookback_days = days or int(config.get("lookback_days", 3))
-    start_date, end_date = date_window(lookback_days)
+    start_date, end_date = date_window(lookback_days, timezone_name)
     limit = int(config.get("max_per_source", 150))
 
     fetched: list[Paper] = []
@@ -54,6 +77,7 @@ def run(days: int | None = None) -> dict:
     counts = Counter(p.source for p in unique)
 
     payload = {
+        "date": current_day,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "window": {"start": start_date, "end": end_date},
         "count": len(unique),
@@ -63,13 +87,14 @@ def run(days: int | None = None) -> dict:
     }
 
     DATA_DIR.mkdir(exist_ok=True)
-    archive_path = DATA_DIR / f"{date.today().isoformat()}.json"
+    archive_path = DATA_DIR / f"{current_day}.json"
     latest_path = DATA_DIR / "latest.json"
     _write_json(archive_path, payload)
     _write_json(latest_path, payload)
 
     SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copy2(latest_path, SITE_DATA_DIR / "latest.json")
+    _write_json(SITE_DATA_DIR / "archive.json", _build_archive_manifest())
     return payload
 
 

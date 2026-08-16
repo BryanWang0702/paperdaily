@@ -2,14 +2,14 @@ name: Deploy GitHub Pages
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ['Daily literature refresh']
+    types: [completed]
   push:
     branches: [master]
     paths:
       - 'site/**'
       - '.github/workflows/deploy-pages.yml'
-  workflow_run:
-    workflows: ['Daily literature refresh']
-    types: [completed]
 
 permissions:
   contents: read
@@ -32,6 +32,10 @@ jobs:
         with:
           ref: master
       - uses: actions/configure-pages@v5
+      - name: Prepare daily archive files
+        run: |
+          mkdir -p site/data/days
+          cp data/20??-??-??.json site/data/days/ 2>/dev/null || true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
