@@ -1,6 +1,7 @@
 const EN_LOCALE = 'en-US';
 const DISPLAY_TIME_ZONE = 'Asia/Shanghai';
 const SOURCE_ORDER = ['pubmed', 'biorxiv', 'medrxiv', 'arxiv'];
+const SOURCE_ONLY_JOURNAL_NAMES = new Set(['biorxiv', 'medrxiv', 'arxiv']);
 const state = { data: null, query: '', keyword: '' };
 
 function esc(value = '') {
@@ -32,8 +33,9 @@ function updatedTime(value) {
 function paperCard(p, rank) {
   const score = p.score === null || p.score === undefined ? '' : `<span class="score-badge">${esc(p.score)} / 100</span>`;
   const paperType = p.paper_type ? `<span class="type-badge">${esc(p.paper_type)}</span>` : '';
-  const journalHtml = p.journal
-    ? `<p class="paper-journal"><strong>Journal</strong> ${esc(p.journal)}</p>`
+  const journal = String(p.journal || '').trim();
+  const journalHtml = journal && !SOURCE_ONLY_JOURNAL_NAMES.has(journal.toLowerCase())
+    ? `<p class="paper-journal"><strong>Journal</strong> ${esc(journal)}</p>`
     : '';
   const authors = Array.isArray(p.authors) ? p.authors.filter(Boolean) : [];
   const authorHtml = authors.length
@@ -118,7 +120,9 @@ function renderPapers() {
   const matches = ranked.filter(({ paper }) => {
     const authors = Array.isArray(paper.authors) ? paper.authors.join(' ') : '';
     const keywords = Array.isArray(paper.keywords) ? paper.keywords.join(' ') : '';
-    const keywordKeys = Array.isArray(paper.keywords) ? paper.keywords.map(value => String(value).toLowerCase()) : [];
+    const keywordKeys = Array.isArray(paper.keywords)
+      ? paper.keywords.map(value => String(value).trim().toLowerCase())
+      : [];
     const text = `${paper.title} ${paper.journal || ''} ${paper.summary || ''} ${paper.source || ''} ${paper.paper_type || ''} ${authors} ${keywords}`.toLowerCase();
     const matchesText = !q || text.includes(q);
     const matchesKeyword = !state.keyword || keywordKeys.includes(state.keyword);
