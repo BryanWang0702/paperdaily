@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from .ai_rank import apply_ai_ranking
@@ -77,13 +77,84 @@ def _top_titles(payload: dict, limit: int = 5) -> list[str]:
     return [str(p.get("title", "")).strip() for p in preview[:limit] if p.get("title")]
 
 
+def _parse_date(value: object) -> date | None:
+    try:
+        return date.fromisoformat(str(value))
+    except (TypeError, ValueError):
+        return None
+
+
+def _paper_identity(paper: dict) -> str:
+    doi = str(paper.get("doi") or "").strip().lower()
+    if doi:
+        return f"doi:{doi}"
+    source = str(paper.get("source") or "").strip().lower()
+    source_id = str(paper.get("source_id") or "").strip().lower()
+    if source and source_id:
+        return f"{source}:{source_id}"
+    url = str(paper.get("url") or "").strip().lower()
+    if url:
+        return f"url:{url}"
+    return f"title:{str(paper.get('title') or '').strip().lower()}"
+
+
+def _period_top(day_payloads: list[dict], period_days: int, limit: int = 10) -> list[dict]:
+    dated_payloads = [
+        (parsed, payload)
+        for payload in day_payloads
+        if (parsed := _parse_date(payload.get("date"))) is not None
+    ]
+    if not dated_payloads:
+        return []
+
+    latest_day = max(parsed for parsed, _ in dated_payloads)
+    cutoff = latest_day - timedelta(days=period_days - 1)
+    best: dict[str, dict] = {}
+
+    for day_value, payload in dated_payloads:
+        if day_value < cutoff:
+            continue
+        for paper in payload.get("papers", []) or []:
+            ai = ((paper.get("extra") or {}).get("ai") or {})
+            if "score" not in ai:
+                continue
+            try:
+                score = int(ai.get("score", 0))
+            except (TypeError, ValueError):
+                continue
+            title = str(paper.get("title") or "").strip()
+            url = str(paper.get("url") or "").strip()
+            if not title or not url:
+                continue
+            candidate = {
+                "title": title,
+                "url": url,
+                "score": max(0, min(100, score)),
+                "date": day_value.isoformat(),
+            }
+            key = _paper_identity(paper)
+            previous = best.get(key)
+            if previous is None or (candidate["score"], candidate["date"]) > (previous["score"], previous["date"]):
+                best[key] = candidate
+
+    ranked = sorted(
+        best.values(),
+        key=lambda item: (item["score"], item["date"], item["title"].lower()),
+        reverse=True,
+    )
+    return ranked[:limit]
+
+
 def _build_archive_manifest() -> dict:
     days: list[dict] = []
     tracked_costs: list[float] = []
+    day_payloads: list[dict] = []
+
     for path in sorted(DATA_DIR.glob("20??-??-??.json"), reverse=True):
         payload = _read_json(path)
         if not payload:
             continue
+        day_payloads.append(payload)
         ai = payload.get("ai", {}) or {}
         billing = ai.get("billing", {}) or {}
         has_billing = bool(billing)
@@ -120,6 +191,16 @@ def _build_archive_manifest() -> dict:
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "days": days,
+        "rankings": {
+            "weekly": {
+                "label": "Past 7 days",
+                "papers": _period_top(day_payloads, 7, 10),
+            },
+            "monthly": {
+                "label": "Past 30 days",
+                "papers": _period_top(day_payloads, 30, 10),
+            },
+        },
         "billing": {
             "currency": "CNY",
             "tracked_days": tracked_days,
@@ -234,14 +315,12 @@ def run(days: int | None = None) -> dict:
         "papers": [p.to_dict() for p in unique],
     }
 
-    # Keep the complete research record in /data for debugging and future reranking.
     DATA_DIR.mkdir(exist_ok=True)
     archive_path = DATA_DIR / f"{current_day}.json"
     latest_path = DATA_DIR / "latest.json"
     _write_json(archive_path, payload)
     _write_json(latest_path, payload)
 
-    # Publish a much smaller web payload: title + AI summary + link only.
     site_payload = _build_site_digest(payload, unique)
     SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     _write_compact_json(SITE_DATA_DIR / "latest.json", site_payload)

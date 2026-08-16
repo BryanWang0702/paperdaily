@@ -8,6 +8,19 @@ header { display: flex; justify-content: space-between; gap: 32px; align-items: 
 h1 { font-size: clamp(40px, 8vw, 78px); line-height: .95; margin: 0; letter-spacing: -.045em; }
 .lede { margin: 18px 0 0; color: #59645f; }
 .meta { font-size: 13px; color: #59645f; white-space: nowrap; }
+.home-layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 28px; align-items: start; }
+.archive-column { min-width: 0; }
+.rankings-sidebar { margin-top: 40px; position: sticky; top: 24px; display: grid; gap: 14px; }
+.ranking-panel { background: #fff; border: 1px solid #dde1df; border-radius: 16px; padding: 18px; }
+.ranking-head { padding-bottom: 12px; border-bottom: 1px solid #e5e9e7; }
+.ranking-title { margin: 0; font-size: 20px; }
+.ranking-list { margin: 14px 0 0; padding-left: 24px; display: grid; gap: 13px; }
+.ranking-item { padding-left: 3px; }
+.ranking-item > a { font-size: 13px; line-height: 1.35; font-weight: 650; text-decoration: none; }
+.ranking-item > a:hover { text-decoration: underline; }
+.ranking-meta { margin-top: 5px; display: flex; justify-content: space-between; gap: 8px; color: #7b8580; font-size: 10px; }
+.ranking-score { font-weight: 800; }
+.ranking-empty { color: #7b8580; font-size: 12px; line-height: 1.4; }
 .section-head { display: flex; justify-content: space-between; align-items: end; margin: 40px 0 18px; }
 .section-title { margin: 0; font-size: 26px; }
 .archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
@@ -68,5 +81,6 @@ h2 a:hover { text-decoration: underline; }
 .muted-text { color: #7a8580; }
 .warning { background: #fff3cd; border: 1px solid #ead184; padding: 12px 14px; border-radius: 10px; margin-bottom: 14px; font-size: 13px; }
 .empty { color: #65706b; }
-@media (prefers-color-scheme: dark) { :root { color: #eef2ef; background: #111614; } header { border-color: #303936; } .lede,.meta,.authors,.journal,.paper-links,.day-label,.rank-reason,.digest-heading > span,.ai-banner span,.muted-text { color: #aab3af; } .paper,.day-card { background: #18201d; border-color: #2b3531; } .source,.score-badge { color: #eef2ef; } .abstract,.digest-summary { color: #d0d7d3; } .source-pill,.ai-pill,.today-badge,.score-badge,.topic-badge { border-color: #44504b; } .ai-banner,.ai-note { background: #16201c; border-color: #44504b; } button { border-color: #44504b; color: #eef2ef; } button.active { background: #eef2ef; color: #111614; border-color: #eef2ef; } input[type=search] { color: #eef2ef; border-color: #44504b; } .digest-heading.secondary { border-color: #303936; } }
-@media (max-width: 720px) { header, .toolbar,.ai-banner { align-items: flex-start; flex-direction: column; } .meta { white-space: normal; } input[type=search] { width: 100%; } .archive-grid { grid-template-columns: 1fr; } .compact-toolbar { align-items: stretch; } }
+@media (prefers-color-scheme: dark) { :root { color: #eef2ef; background: #111614; } header { border-color: #303936; } .lede,.meta,.authors,.journal,.paper-links,.day-label,.rank-reason,.digest-heading > span,.ai-banner span,.muted-text,.ranking-meta,.ranking-empty { color: #aab3af; } .paper,.day-card,.ranking-panel { background: #18201d; border-color: #2b3531; } .ranking-head { border-color: #303936; } .source,.score-badge { color: #eef2ef; } .abstract,.digest-summary { color: #d0d7d3; } .source-pill,.ai-pill,.today-badge,.score-badge,.topic-badge { border-color: #44504b; } .ai-banner,.ai-note { background: #16201c; border-color: #44504b; } button { border-color: #44504b; color: #eef2ef; } button.active { background: #eef2ef; color: #111614; border-color: #eef2ef; } input[type=search] { color: #eef2ef; border-color: #44504b; } .digest-heading.secondary { border-color: #303936; } }
+@media (max-width: 900px) { .home-layout { grid-template-columns: 1fr; } .rankings-sidebar { position: static; margin-top: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 720px) { header, .toolbar,.ai-banner { align-items: flex-start; flex-direction: column; } .meta { white-space: normal; } input[type=search] { width: 100%; } .archive-grid { grid-template-columns: 1fr; } .compact-toolbar { align-items: stretch; } .rankings-sidebar { grid-template-columns: 1fr; } }
