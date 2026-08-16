@@ -49,11 +49,12 @@ PubMed + bioRxiv + medRxiv + arXiv
 - Persistent daily issues.
 - Top 5 paper titles shown directly on each homepage date card.
 - Monthly Top 5 sidebar based on AI relevance score.
-- Per-run and cumulative token/cost tracking.
+- API cost summary shown only in the homepage top-right area.
+- Per-run and cumulative token/cost tracking in backend data.
 - Source retry and last-good cache behavior for transient failures.
 - GitHub Actions credential preflight.
 - GitHub Pages deployment.
-- English user interface and explicit English date formatting.
+- English user interface with displayed timestamps normalized to Beijing time (`Asia/Shanghai`).
 
 ## Paper metadata enrichment
 
@@ -163,8 +164,10 @@ Each date card shows:
 
 - the total number of unique papers discovered that day;
 - the configured featured/additional-paper split;
-- the latest update time;
+- the latest update time in Beijing time;
 - the Top 5 paper titles for that date.
+
+The homepage top-right area shows the tracked API cost summary. Individual date cards and daily pages do not repeat API cost information.
 
 The sidebar contains only **Monthly Top 5**, calculated from the highest AI relevance scores over the past 30 days.
 
@@ -174,7 +177,7 @@ A daily page shows:
 
 - total unique papers discovered;
 - PubMed, bioRxiv, medRxiv, and arXiv retrieval totals;
-- update time;
+- update time in Beijing time;
 - papers sorted from highest to lowest relevance;
 - the configured number of featured papers expanded;
 - remaining analyzed papers collapsed by default;
@@ -184,7 +187,7 @@ Full abstracts remain backend-only and are not shipped to the public website.
 
 ## Automation
 
-`.github/workflows/daily.yml` currently runs at 07:15 and 20:15 UTC+8 and also supports manual dispatch. It commits refreshed data back to the repository.
+`.github/workflows/daily.yml` runs every day at **05:30 and 20:30 Beijing time (UTC+8)** and also supports manual dispatch. The main configuration uses `timezone: Asia/Shanghai`.
 
 `.github/workflows/deploy-pages.yml` deploys the static site after successful refreshes and after direct website changes.
 
