@@ -32,9 +32,14 @@ def iter_files():
         if path.exists():
             yield path, path.relative_to(ROOT)
 
-    local_doc = ROOT / "docs" / "LOCAL_VERSION.md"
-    if local_doc.exists():
-        yield local_doc, Path("README_LOCAL.md")
+    docs = [
+        ("LOCAL_VERSION.md", "README_LOCAL.md"),
+        ("LOCAL_VERSION.zh-CN.md", "README_LOCAL.zh-CN.md"),
+    ]
+    for source_name, output_name in docs:
+        path = ROOT / "docs" / source_name
+        if path.exists():
+            yield path, Path(output_name)
 
 
 def build(output: Path) -> Path:
