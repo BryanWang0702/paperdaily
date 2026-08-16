@@ -2,7 +2,7 @@ const EN_LOCALE = 'en-US';
 const DISPLAY_TIME_ZONE = 'Asia/Shanghai';
 
 function esc(value = '') {
-  return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#039;'}[c]));
+  return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
 }
 
 function prettyDate(value) {
