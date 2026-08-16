@@ -13,34 +13,13 @@ The local edition is for researchers who want PaperDaily without GitHub Actions 
 
 ### 1. `config.yaml`
 
-Use this file to configure:
-
-- your research field and discovery terms;
-- deterministic prefilter rules;
-- `prefilter.max_candidates`;
-- `ai.max_analyzed`;
-- `site.featured_count`;
-- AI provider/model;
-- timezone;
-- optional local server settings.
+Use this file to configure your research field, discovery terms, prefilter rules, AI analysis size, display size, provider/model, timezone, and local refresh schedule.
 
 The included `config.yaml` is the sleep-neuroscience example. `config.template.yaml` is a generic starting point for another field.
 
 ### 2. `api_token.txt`
 
-Copy:
-
-```text
-api_token.example.txt
-```
-
-to:
-
-```text
-api_token.txt
-```
-
-Then replace the placeholder with your API token on the first line.
+Copy `api_token.example.txt` to `api_token.txt`, then replace the placeholder with your API token on the first line.
 
 `api_token.txt` is ignored by Git and should never be shared.
 
@@ -52,14 +31,7 @@ Double-click:
 START_PAPERDAILY_WINDOWS.bat
 ```
 
-On the first run it will:
-
-1. create a private Python virtual environment;
-2. install the required Python packages;
-3. create `api_token.txt` if it does not exist;
-4. ask you to paste the API token if needed.
-
-Run the file again after saving the token. PaperDaily will refresh the literature, start a local web server, and open the HTML dashboard in your default browser.
+On the first run it creates a private Python virtual environment, installs dependencies, and asks for an API token when a refresh is actually needed.
 
 ## macOS / Linux
 
@@ -69,38 +41,69 @@ From Terminal inside the PaperDaily folder:
 bash START_PAPERDAILY_MAC_LINUX.sh
 ```
 
-The script creates the virtual environment, installs dependencies, and starts PaperDaily.
+## Smart refresh behavior
 
-## What happens when PaperDaily starts
+The local edition does **not** fetch and call the AI every time it opens.
 
-By default the local launcher:
+By default, it uses the same two Beijing-time refresh slots as the hosted edition:
 
-1. reads `config.yaml`;
-2. loads `api_token.txt` into the API environment variable configured by `ai.api_key_env`;
-3. runs the literature pipeline;
-4. writes the archive under `data/` and compact web data under `site/data/`;
-5. serves `site/` on localhost;
-6. opens the browser automatically.
+```text
+05:30
+20:30
+```
 
-The default local address is:
+At startup PaperDaily determines the most recent scheduled slot that should already have happened, then checks `local_state.json`.
+
+Example behavior:
+
+- Open at 04:00: the latest due slot is the previous day's 20:30 slot.
+- Open at 06:00: the latest due slot is today's 05:30 slot.
+- Open at 19:00: the latest due slot is still today's 05:30 slot.
+- Open at 21:00: the latest due slot is today's 20:30 slot.
+
+If that slot has already completed successfully on this computer, PaperDaily opens the existing dashboard immediately with **no source requests and no AI API call**.
+
+If that slot has not completed, PaperDaily runs retrieval + filtering + AI analysis once. Only after a successful run does it record the slot in `local_state.json`.
+
+If the refresh fails, the slot is not marked complete, so the next launch can retry it. The previously generated dashboard still opens when available.
+
+On the very first launch, if `site/data/latest.json` does not exist yet, PaperDaily forces one refresh regardless of the current clock time.
+
+The token is only loaded when a refresh is actually required. Opening already-current local data therefore does not require an API call.
+
+## Local refresh configuration
+
+```yaml
+local:
+  port: 8765
+
+  # scheduled | always | never
+  refresh_mode: scheduled
+
+  refresh_times:
+    - "05:30"
+    - "20:30"
+```
+
+`refresh_times` are interpreted in the top-level `timezone` from `config.yaml`.
+
+Modes:
+
+- `scheduled`: recommended; refresh only when the latest slot has not completed locally.
+- `always`: refresh every time PaperDaily opens.
+- `never`: never fetch on startup; only browse existing data.
+
+`local_state.json` is machine-local, ignored by Git, and not included in the downloadable ZIP.
+
+## Local address
+
+The default address is:
 
 ```text
 http://127.0.0.1:8765/
 ```
 
 Keep the terminal/command window open while browsing. Press `Ctrl+C` to stop the local server.
-
-## Optional local settings
-
-Add this to `config.yaml` if you want to change local behavior:
-
-```yaml
-local:
-  port: 8765
-  refresh_on_start: true
-```
-
-Set `refresh_on_start: false` if you only want to browse previously generated local data without fetching new papers each time.
 
 ## Downloadable ZIP
 
@@ -110,21 +113,15 @@ The hosted PaperDaily site automatically builds a synchronized local ZIP during 
 https://bryanwang.cn/paperdaily/downloads/PaperDaily-local.zip
 ```
 
-The ZIP does not contain any API token, GitHub secret, historical backend data, or virtual environment.
+The ZIP does not contain any API token, local refresh state, GitHub secret, historical backend data, or virtual environment.
 
 ## Build the ZIP yourself
-
-From the repository root:
 
 ```bash
 python tools/build_local_bundle.py
 ```
 
-The default output is:
-
-```text
-dist/PaperDaily-local.zip
-```
+The default output is `dist/PaperDaily-local.zip`.
 
 ## Security
 
