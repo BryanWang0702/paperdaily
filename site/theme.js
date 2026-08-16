@@ -1,4 +1,5 @@
 const PAPERDAILY_THEME_PRESETS = new Set(['khaki', 'black', 'navy', 'forest', 'burgundy']);
+let PAPERDAILY_ARCHIVE_STAMP = null;
 
 window.PaperDailyTheme = {
   settings: { theme: { preset: 'khaki', custom: {} }, billing: { show: true } },
@@ -34,4 +35,23 @@ window.PaperDailyTheme = {
   }
 };
 
+async function paperDailyWatchArchive() {
+  try {
+    const response = await fetch(`data/archive.json?watch=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) return;
+    const data = await response.json();
+    const stamp = String(data.generated_at || '');
+    if (!stamp) return;
+    if (PAPERDAILY_ARCHIVE_STAMP && stamp !== PAPERDAILY_ARCHIVE_STAMP) {
+      window.location.reload();
+      return;
+    }
+    PAPERDAILY_ARCHIVE_STAMP = stamp;
+  } catch (_) {
+    // The dashboard remains usable if polling is temporarily unavailable.
+  }
+}
+
 window.PaperDailyTheme.apply();
+setTimeout(paperDailyWatchArchive, 1500);
+setInterval(paperDailyWatchArchive, 60000);
