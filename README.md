@@ -2,9 +2,9 @@
 
 **Language:** English | [中文](README.zh-CN.md)
 
-PaperDaily is a lightweight personal research radar that collects newly indexed literature, removes duplicates, applies a transparent deterministic prefilter, ranks papers against a researcher-specific profile, generates compact summaries, and publishes a persistent daily archive with GitHub Pages.
+PaperDaily is a lightweight personal research radar that collects newly indexed literature, removes duplicates, applies a transparent deterministic prefilter, ranks papers against a researcher-specific profile, generates compact summaries, and publishes a persistent daily archive.
 
-The default configuration is tuned for sleep neuroscience, but the retrieval, prefilter, AI analysis size, and interest profile are configurable so the project can be forked for other research fields.
+The default configuration is tuned for sleep neuroscience, but retrieval, filtering, AI analysis size, presentation, themes, and the research profile are configurable for other fields.
 
 ## Live workflow
 
@@ -27,62 +27,42 @@ PubMed + bioRxiv + medRxiv + arXiv
      remaining papers collapsed
                 ↓
       daily archive + Monthly Top 5
-                ↓
-           GitHub Pages
 ```
 
 ## Current features
 
 - Daily retrieval from PubMed, bioRxiv, medRxiv, and arXiv.
-- PubMed retrieval based on Create Date overlap rather than publication date alone.
+- PubMed Create Date overlap for newly indexed papers.
 - Cross-source deduplication.
-- Configurable deterministic prefilter before any paid AI call.
-- Independently configurable local-shortlist size and AI-analysis size.
-- DeepSeek as the default AI provider.
-- OpenAI support and support for other OpenAI-compatible Chat Completions endpoints.
-- Separate ranking and summarization stages for stable relevance scores.
+- Configurable deterministic prefilter before paid AI calls.
+- Independently configurable shortlist, AI-analysis, and expanded-display sizes.
+- DeepSeek as the default AI provider, with OpenAI and OpenAI-compatible endpoint support.
+- Separate relevance ranking and summarization/enrichment stages.
 - AI caching so unchanged papers are not repeatedly paid for.
-- Source metadata plus AI enrichment for authors, 3-5 scientific keywords, and normalized scientific paper type.
-- Journal names are preserved in the compact public payload when supplied by the source, including PubMed journal names.
-- Configurable number of papers expanded on the daily page, with the remainder collapsed.
-- Source label and relevance score on every public paper card.
-- Per-source retrieval totals on every daily page.
-- Daily quick-filter buttons generated from the most frequent AI/source keywords, plus full-text search.
-- Persistent daily issues.
-- Top 5 paper titles shown directly on each homepage date card.
+- Authors, journal metadata, 3-5 keywords, normalized paper type, relevance score, short summary, and source link on each paper card.
+- Per-source retrieval totals and keyword quick filters on daily pages.
+- Top 5 titles on each homepage date card.
 - Monthly Top 5 sidebar based on AI relevance score.
-- API cost summary shown only in the homepage top-right area.
-- Per-run and cumulative token/cost tracking in backend data.
-- Source retry and last-good cache behavior for transient failures.
-- GitHub Actions credential preflight.
-- GitHub Pages deployment.
-- English user interface with displayed timestamps normalized to Beijing time (`Asia/Shanghai`).
-- Downloadable local edition for users who do not want to configure GitHub Actions or GitHub Pages.
-
-## Paper metadata enrichment
-
-PaperDaily uses a metadata-first approach rather than asking the AI to guess everything from scratch:
-
-- **Authors:** preserved from the source record.
-- **Journal:** preserved when supplied by the source; PubMed journal names are shown directly on daily paper cards.
-- **Keywords:** official/source keywords are retained when available; the AI produces a compact normalized set of 3-5 scientific keywords for each analyzed paper.
-- **Paper type:** source publication types are used as strong evidence, then normalized into scientific-content labels such as `Research Article`, `Review`, `Systematic Review`, `Meta-analysis`, `Methods/Resource`, `Clinical Study`, `Clinical Trial`, `Case Report`, `Protocol`, `Commentary/Perspective`, `Editorial`, or `Other`.
-
-`Preprint` is treated as publication status rather than scientific paper type. A bioRxiv, medRxiv, or arXiv paper is therefore still classified by content, for example as `Research Article`, `Review`, or `Methods/Resource`; its source already indicates that it is a preprint.
-
-This enrichment runs with the summary stage, so it does not change the dedicated relevance-ranking prompt.
+- Per-run billing ledger: `Last run`, lifetime `Total`, and estimated yearly cost.
+- Configurable billing visibility with `site.show_billing`.
+- Built-in `khaki`, `black`, `navy`, `forest`, and `burgundy` themes plus a custom palette.
+- Source retry and last-good cache behavior.
+- GitHub Actions credential preflight and GitHub Pages deployment.
+- English web UI with timestamps normalized to Beijing time (`Asia/Shanghai`).
+- Python-based local edition.
+- Frozen Windows standalone release with no Python installation required.
+- Smart local scheduler that refreshes at configured slots while the app remains open.
+- Standalone version check before each real literature refresh.
 
 ## AI ranking
 
-The default configuration uses DeepSeek. Add this repository secret:
+The default configuration uses DeepSeek. Add this repository secret for the hosted version:
 
 ```text
 DEEPSEEK_API_KEY
 ```
 
-Add it under:
-
-**Settings -> Secrets and variables -> Actions -> Repository secrets**
+Add it under **Settings -> Secrets and variables -> Actions -> Repository secrets**.
 
 Optional PubMed secrets:
 
@@ -91,8 +71,6 @@ NCBI_API_KEY
 PUBMED_EMAIL
 ```
 
-These are not required at the current request volume.
-
 ## Hosted quick start
 
 ```bash
@@ -100,145 +78,126 @@ python -m venv .venv
 # Windows: .venv\Scripts\activate
 # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-python -m src.pipeline --days 3
+python -m src.runtime_pipeline --days 3
 ```
 
-Serve the static site locally:
+Serve the static site:
 
 ```bash
 python -m http.server 8000 -d site
 ```
 
-Then open `http://localhost:8000`.
+## Windows standalone
 
-## Local edition
-
-A synchronized local package is built automatically with the website and can be downloaded from:
-
-```text
-https://bryanwang.cn/paperdaily/downloads/PaperDaily-local.zip
-```
-
-The local edition is intended for researchers who do not want to use GitHub. In normal use they only need to customize:
+For non-GitHub users, the recommended Windows package is the frozen standalone release. A normal user only needs to edit:
 
 ```text
 config.yaml
 api_token.txt
 ```
 
-On Windows, unzip the package and double-click:
+and run:
 
 ```text
-START_PAPERDAILY_WINDOWS.bat
+PaperDaily.exe
 ```
 
-On macOS/Linux, run:
+The EXE contains the application code and static UI. It creates its own runtime `data/` and `site/` folders. The public standalone ZIP does not include the author's historical archive, API credentials, GitHub secrets, or an editable Python source tree.
 
-```bash
-bash START_PAPERDAILY_MAC_LINUX.sh
+The default local schedule is 05:30 and 20:30 in the configured timezone. If a slot has already completed on that computer, reopening the app uses the existing local dashboard without source or AI calls. If PaperDaily remains open, a background scheduler triggers future due slots automatically.
+
+Before each real refresh, the app checks the repository's `standalone_version.json`. A newer version produces an update notice in the dashboard. Version-check failure never blocks literature retrieval.
+
+See **[PaperDaily Local / Standalone Edition](docs/LOCAL_VERSION.md)**.
+
+## Python-based local edition
+
+A synchronized developer-friendly ZIP is also published at:
+
+```text
+https://bryanwang.cn/paperdaily/downloads/PaperDaily-local.zip
 ```
 
-The launcher creates a private Python environment, installs dependencies, refreshes the literature, starts a localhost server, and opens the same HTML dashboard in the default browser. The API token stays on the Python side and is never embedded in HTML or JavaScript.
-
-See **[PaperDaily Local Edition](docs/LOCAL_VERSION.md)** for the full guide.
+This version requires Python 3.11+ and exposes the source tree. It is intended for development, debugging, and macOS/Linux users until frozen builds for those platforms are added.
 
 ## Configuration
 
-The three most important paper-count controls are:
+The three core paper-count controls are:
 
 ```yaml
 prefilter:
-  # Free local shortlist size after deterministic relevance filtering.
   max_candidates: 40
 
 ai:
-  # Maximum number of shortlisted papers actually sent to the AI.
-  # Every analyzed paper is ranked, summarized, keyworded, and classified.
   max_analyzed: 40
 
 site:
-  # Number of analyzed papers expanded by default on the daily page.
-  # Remaining analyzed papers are placed in a collapsed section.
   featured_count: 25
 ```
 
-With the default `40 -> 40 -> 25` configuration, PaperDaily keeps up to 40 papers after the free local prefilter, sends up to 40 to the AI for ranking and enrichment, shows the highest-ranked 25 immediately, and keeps the remaining 15 collapsed.
+The default `40 -> 40 -> 25` flow keeps up to 40 papers after free local filtering, analyzes up to 40 with AI, shows the top 25 immediately, and collapses the remaining 15.
 
-You can change the stages independently. For example:
+Billing and themes are controlled in the same file:
 
 ```yaml
-prefilter:
-  max_candidates: 80
-
-ai:
-  max_analyzed: 50
-
 site:
-  featured_count: 20
+  show_billing: true
+  theme: khaki  # khaki | black | navy | forest | burgundy | custom
+
+  custom_theme:
+    background: "#f2efe5"
+    surface: "#fffdf8"
+    text: "#1f2723"
+    muted: "#6b7068"
+    border: "#d8d3c5"
+    accent: "#75684d"
+    accent_text: "#ffffff"
 ```
 
-This creates an 80-paper local shortlist, analyzes the top 50 of that shortlist, shows the best 20 immediately, and collapses the remaining 30 analyzed papers.
+Local scheduling:
 
-If `ai.max_analyzed` is larger than `prefilter.max_candidates`, the actual AI-analysis count is naturally limited by the available local shortlist.
+```yaml
+local:
+  refresh_mode: scheduled
+  refresh_times:
+    - "05:30"
+    - "20:30"
+  scheduler_enabled: true
+  scheduler_check_seconds: 30
+  version_check: true
+```
 
-Other configurable fields include:
+See `config.template.yaml` for a generic field template.
 
-- timezone;
-- broad discovery terms;
-- arXiv categories;
-- deterministic prefilter anchors, weights, penalties, and boosts;
-- AI provider and model;
-- researcher interest profile;
-- token pricing used by the cost dashboard;
-- local server port and refresh-on-start behavior.
+## Billing semantics
 
-See `config.template.yaml` for a generic starting configuration.
+The homepage billing line is intentionally based on individual runs rather than the accumulated cost of the current day:
 
-## Homepage behavior
+```text
+Last run ¥... · Total ¥... · ~¥.../year
+```
 
-Each date card shows:
+- `Last run`: cost of the most recent individual pipeline run.
+- `Total`: actual recorded lifetime spend.
+- `Estimated/year`: representative per-run cost × configured daily refresh slots × 365.
 
-- the total number of unique papers discovered that day as secondary metadata;
-- the configured featured/additional-paper split;
-- the latest update time in Beijing time;
-- the Top 5 paper titles for that date.
+Once scheduled production runs exist, development/debug-triggered runs are excluded from the reference per-run cost used for the yearly estimate. They still remain part of the truthful lifetime total.
 
-The homepage top-right area shows the tracked API cost summary. Individual date cards and daily pages do not repeat API cost information.
+## Daily page
 
-The sidebar contains only **Monthly Top 5**, calculated from the highest AI relevance scores over the past 30 days.
-
-## Daily page behavior
-
-A daily page shows:
-
-- total unique papers discovered;
-- PubMed, bioRxiv, medRxiv, and arXiv retrieval totals;
-- update time in Beijing time;
-- a compact quick-filter row based on frequent paper keywords;
-- a full-text search box covering title, journal, authors, keywords, source, type, and summary;
-- papers sorted from highest to lowest relevance;
-- the configured number of featured papers expanded;
-- remaining analyzed papers collapsed by default;
-- source, paper type, relevance score, title, journal when available, authors, 3-5 keywords, compact AI summary, and source link for each paper.
-
-Full abstracts remain backend-only and are not shipped to the public website.
+Each daily page shows total unique papers, source totals, update time, keyword shortcuts, full-text search, and papers sorted by relevance. Paper cards include source, paper type, score, title, journal when available, authors, keywords, short AI summary, and the paper link. Full abstracts remain backend-only.
 
 ## Automation
 
-`.github/workflows/daily.yml` runs every day at **05:30 and 20:30 Beijing time (UTC+8)** and also supports manual dispatch. The main configuration uses `timezone: Asia/Shanghai`.
-
-`.github/workflows/deploy-pages.yml` deploys the static site after successful refreshes and also builds the synchronized local-edition ZIP before publishing.
-
-`.github/workflows/ci.yml` compiles Python, validates the frontend JavaScript, runs unit tests, and verifies that the local ZIP can be built.
+- `.github/workflows/daily.yml`: hosted refresh at **05:30 and 20:30 Beijing time** plus manual/development runs.
+- `.github/workflows/deploy-pages.yml`: deploys the static site and Python local ZIP.
+- `.github/workflows/build-standalone.yml`: builds and publishes the versioned Windows `PaperDaily.exe` release when `VERSION` changes.
+- `.github/workflows/ci.yml`: Python/JavaScript tests plus a real PyInstaller Windows smoke build.
 
 ## Forking PaperDaily for another field
 
-See:
-
-**[Fork and Customize PaperDaily](docs/FORK_AND_CUSTOMIZE.md)**
-
-A generic starting configuration is also included at `config.template.yaml`.
+See **[Fork and Customize PaperDaily](docs/FORK_AND_CUSTOMIZE.md)**. A generic `config.template.yaml` is included.
 
 ## Design principle
 
-PaperDaily is not intended to produce a universal ranking of scientific quality. It is a reproducible personal relevance system: broad enough to avoid missing useful work, cheap enough to run continuously, and transparent enough to tune when recommendations are wrong.
+PaperDaily is not a universal ranking of scientific quality. It is a reproducible personal relevance system: broad enough to avoid missing useful work, cheap enough to run continuously, and transparent enough to tune when recommendations are wrong.
