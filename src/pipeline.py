@@ -215,7 +215,7 @@ def _build_archive_manifest() -> dict:
         if has_billing:
             tracked_costs.append(day_cost)
 
-        ranked_count = int(ai.get("ranked_count", payload.get("count", 0)) or 0)
+        ranked_count = int(ai.get("ranked_count", payload.get("analyzed_count", payload.get("count", 0))) or 0)
         featured_count = min(
             int(payload.get("featured_count", 25) or 25),
             ranked_count,
@@ -288,7 +288,7 @@ def _build_site_digest(payload: dict, papers: list[Paper]) -> dict:
                 "score": None,
                 "summary": "",
             }
-            for p in papers[:40]
+            for p in papers
         ]
 
     ai = payload.get("ai", {}) or {}
@@ -317,6 +317,29 @@ def _build_site_digest(payload: dict, papers: list[Paper]) -> dict:
         "ai": site_ai,
         "papers": selected,
     }
+
+
+def _select_ai_papers(prefiltered: list[Paper], config: dict) -> tuple[list[Paper], int]:
+    ai_config = config.get("ai", {}) or {}
+    configured_limit = max(1, int(ai_config.get("max_analyzed", 40)))
+    return prefiltered[:configured_limit], configured_limit
+
+
+def _runtime_ai_config(config: dict, analyzed_count: int) -> dict:
+    """Make the AI summarize every paper selected for analysis.
+
+    ai_rank.py keeps backward-compatible digest controls internally. The public
+    configuration exposes a simpler max_analyzed setting, so the pipeline maps
+    that setting to the legacy digest controls at runtime.
+    """
+    runtime = dict(config)
+    runtime_ai = dict(config.get("ai", {}) or {})
+    target = max(1, analyzed_count)
+    runtime_ai["digest_min"] = target
+    runtime_ai["digest_max"] = target
+    runtime_ai["digest_score_threshold"] = 0
+    runtime["ai"] = runtime_ai
+    return runtime
 
 
 def run(days: int | None = None) -> dict:
@@ -360,12 +383,18 @@ def run(days: int | None = None) -> dict:
     raw_unique.sort(key=lambda p: (p.indexed_date or p.published_date, p.title), reverse=True)
     raw_counts = Counter(p.source for p in raw_unique)
 
-    unique = prefilter_papers(raw_unique, config)
-    print(f"prefilter: {len(raw_unique)} -> {len(unique)} candidates")
+    prefiltered = prefilter_papers(raw_unique, config)
+    analyzed, configured_ai_limit = _select_ai_papers(prefiltered, config)
+    print(f"prefilter: {len(raw_unique)} -> {len(prefiltered)} candidates")
+    print(f"AI selection: {len(prefiltered)} -> {len(analyzed)} papers (configured max {configured_ai_limit})")
 
-    ai_meta = _attach_daily_billing(current_day, apply_ai_ranking(unique, config))
+    ai_runtime_config = _runtime_ai_config(config, len(analyzed))
+    ai_meta = _attach_daily_billing(current_day, apply_ai_ranking(analyzed, ai_runtime_config))
+    ai_meta["configured_max_analyzed"] = configured_ai_limit
+    ai_meta["analyzed_count"] = len(analyzed)
+
     if ai_meta.get("ranked_count"):
-        unique.sort(
+        analyzed.sort(
             key=lambda p: (
                 int((p.extra.get("ai") or {}).get("score", -1)),
                 p.indexed_date or p.published_date,
@@ -374,7 +403,7 @@ def run(days: int | None = None) -> dict:
             reverse=True,
         )
 
-    counts = Counter(p.source for p in unique)
+    counts = Counter(p.source for p in analyzed)
     payload = {
         "date": current_day,
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -382,12 +411,15 @@ def run(days: int | None = None) -> dict:
         "raw_count": len(raw_unique),
         "retrieved_source_counts": retrieved_source_counts,
         "raw_source_counts": dict(raw_counts),
-        "count": len(unique),
-        "featured_count": min(featured_target, len(unique)),
+        "prefiltered_count": len(prefiltered),
+        "analyzed_count": len(analyzed),
+        "configured_max_analyzed": configured_ai_limit,
+        "count": len(analyzed),
+        "featured_count": min(featured_target, len(analyzed)),
         "source_counts": dict(counts),
         "errors": errors,
         "ai": ai_meta,
-        "papers": [p.to_dict() for p in unique],
+        "papers": [p.to_dict() for p in analyzed],
     }
 
     DATA_DIR.mkdir(exist_ok=True)
@@ -396,7 +428,7 @@ def run(days: int | None = None) -> dict:
     _write_json(archive_path, payload)
     _write_json(latest_path, payload)
 
-    site_payload = _build_site_digest(payload, unique)
+    site_payload = _build_site_digest(payload, analyzed)
     SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     _write_compact_json(SITE_DATA_DIR / "latest.json", site_payload)
     _write_compact_json(SITE_DATA_DIR / "days" / f"{current_day}.json", site_payload)
@@ -410,7 +442,8 @@ def main() -> None:
     args = parser.parse_args()
     result = run(args.days)
     print(f"raw unique: {result['raw_count']}")
-    print(f"filtered candidates: {result['count']}")
+    print(f"prefiltered candidates: {result['prefiltered_count']}")
+    print(f"AI analyzed: {result['analyzed_count']}")
     print(f"summarized papers: {result.get('ai', {}).get('digest_count', 0)}")
     print("AI:", result.get("ai", {}).get("status", "unknown"))
     billing = (result.get("ai", {}).get("billing") or {})
