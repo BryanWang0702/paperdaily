@@ -21,11 +21,21 @@ jobs:
           cache: pip
       - name: Install build dependencies
         run: pip install -r requirements.txt pyinstaller
+      - name: Prepare public static assets
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path build_site | Out-Null
+          Copy-Item site\index.html build_site\index.html
+          Copy-Item site\day.html build_site\day.html
+          Copy-Item site\app.js build_site\app.js
+          Copy-Item site\day.js build_site\day.js
+          Copy-Item site\style.css build_site\style.css
+          Copy-Item site\theme.js build_site\theme.js
       - name: Build PaperDaily.exe
         shell: pwsh
         run: |
           pyinstaller --noconfirm --clean --onefile --name PaperDaily `
-            --add-data "site;site" `
+            --add-data "build_site;site" `
             --add-data "VERSION;." `
             local_app.py
       - name: Package standalone folder
