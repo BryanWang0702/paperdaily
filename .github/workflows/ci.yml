@@ -21,6 +21,7 @@ jobs:
         run: python -m compileall -q src tests local_app.py tools
       - name: Validate frontend JavaScript
         run: |
+          node --check site/theme.js
           node --check site/app.js
           node --check site/day.js
       - name: Run unit tests
@@ -36,10 +37,25 @@ jobs:
         with:
           python-version: '3.11'
           cache: pip
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt pyinstaller
       - name: Validate Beijing timezone
         run: python -c "from zoneinfo import ZoneInfo; print(ZoneInfo('Asia/Shanghai'))"
       - name: Compile local launcher
         run: python -m py_compile local_app.py
       - name: Build local bundle
         run: python tools/build_local_bundle.py
+      - name: Build frozen Windows executable
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path build_site | Out-Null
+          Copy-Item site\index.html build_site\index.html
+          Copy-Item site\day.html build_site\day.html
+          Copy-Item site\app.js build_site\app.js
+          Copy-Item site\day.js build_site\day.js
+          Copy-Item site\style.css build_site\style.css
+          Copy-Item site\theme.js build_site\theme.js
+          pyinstaller --noconfirm --clean --onefile --name PaperDaily `
+            --add-data "build_site;site" `
+            --add-data "VERSION;." `
+            local_app.py
+          if (-not (Test-Path dist\PaperDaily.exe)) { throw "PaperDaily.exe was not created" }
