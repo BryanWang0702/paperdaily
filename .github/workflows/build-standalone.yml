@@ -35,9 +35,14 @@ jobs:
         shell: pwsh
         run: |
           pyinstaller --noconfirm --clean --onefile --name PaperDaily `
+            --collect-all tzdata `
             --add-data "build_site;site" `
             --add-data "VERSION;." `
-            local_app.py
+            standalone_entry.py
+          $versionOutput = & dist\PaperDaily.exe --version
+          Write-Host $versionOutput
+          $version = (Get-Content VERSION -Raw).Trim()
+          if ($versionOutput -notmatch "PaperDaily $version") { throw "Frozen executable version smoke test failed" }
       - name: Package standalone folder
         shell: pwsh
         run: |
