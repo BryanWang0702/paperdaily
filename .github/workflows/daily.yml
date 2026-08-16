@@ -27,6 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -46,5 +48,8 @@ jobs:
             echo "No data changes"
           else
             git commit -m "Update daily literature"
-            git push
+            # A code/config commit can land while the refresh job is running.
+            # Rebase the generated data commit before pushing so the refresh is resilient.
+            git pull --rebase origin master
+            git push origin HEAD:master
           fi
