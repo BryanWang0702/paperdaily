@@ -2,6 +2,13 @@ name: Daily literature refresh
 
 on:
   workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'src/**'
+      - 'config.yaml'
+      - 'requirements.txt'
+      - '.github/workflows/daily.yml'
   schedule:
     # 08:15 and 20:15 Asia/Taipei (UTC+8)
     - cron: '15 0,12 * * *'
