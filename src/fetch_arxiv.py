@@ -45,7 +45,7 @@ def fetch_arxiv(
         timeout=45,
     )
     response.raise_for_status()
-    feed = feedparser.loads(response.text)
+    feed = feedparser.parse(response.text)
 
     papers: list[Paper] = []
     for entry in feed.entries:
