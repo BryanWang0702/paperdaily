@@ -43,9 +43,11 @@ PubMed + bioRxiv + medRxiv + arXiv
 - Separate ranking and summarization stages for stable relevance scores.
 - AI caching so unchanged papers are not repeatedly paid for.
 - Source metadata plus AI enrichment for authors, 3-5 scientific keywords, and normalized scientific paper type.
+- Journal names are preserved in the compact public payload when supplied by the source, including PubMed journal names.
 - Configurable number of papers expanded on the daily page, with the remainder collapsed.
 - Source label and relevance score on every public paper card.
 - Per-source retrieval totals on every daily page.
+- Daily quick-filter buttons generated from the most frequent AI/source keywords, plus full-text search.
 - Persistent daily issues.
 - Top 5 paper titles shown directly on each homepage date card.
 - Monthly Top 5 sidebar based on AI relevance score.
@@ -55,12 +57,14 @@ PubMed + bioRxiv + medRxiv + arXiv
 - GitHub Actions credential preflight.
 - GitHub Pages deployment.
 - English user interface with displayed timestamps normalized to Beijing time (`Asia/Shanghai`).
+- Downloadable local edition for users who do not want to configure GitHub Actions or GitHub Pages.
 
 ## Paper metadata enrichment
 
 PaperDaily uses a metadata-first approach rather than asking the AI to guess everything from scratch:
 
 - **Authors:** preserved from the source record.
+- **Journal:** preserved when supplied by the source; PubMed journal names are shown directly on daily paper cards.
 - **Keywords:** official/source keywords are retained when available; the AI produces a compact normalized set of 3-5 scientific keywords for each analyzed paper.
 - **Paper type:** source publication types are used as strong evidence, then normalized into scientific-content labels such as `Research Article`, `Review`, `Systematic Review`, `Meta-analysis`, `Methods/Resource`, `Clinical Study`, `Clinical Trial`, `Case Report`, `Protocol`, `Commentary/Perspective`, `Editorial`, or `Other`.
 
@@ -89,7 +93,7 @@ PUBMED_EMAIL
 
 These are not required at the current request volume.
 
-## Quick start
+## Hosted quick start
 
 ```bash
 python -m venv .venv
@@ -106,6 +110,37 @@ python -m http.server 8000 -d site
 ```
 
 Then open `http://localhost:8000`.
+
+## Local edition
+
+A synchronized local package is built automatically with the website and can be downloaded from:
+
+```text
+https://bryanwang.cn/paperdaily/downloads/PaperDaily-local.zip
+```
+
+The local edition is intended for researchers who do not want to use GitHub. In normal use they only need to customize:
+
+```text
+config.yaml
+api_token.txt
+```
+
+On Windows, unzip the package and double-click:
+
+```text
+START_PAPERDAILY_WINDOWS.bat
+```
+
+On macOS/Linux, run:
+
+```bash
+bash START_PAPERDAILY_MAC_LINUX.sh
+```
+
+The launcher creates a private Python environment, installs dependencies, refreshes the literature, starts a localhost server, and opens the same HTML dashboard in the default browser. The API token stays on the Python side and is never embedded in HTML or JavaScript.
+
+See **[PaperDaily Local Edition](docs/LOCAL_VERSION.md)** for the full guide.
 
 ## Configuration
 
@@ -154,7 +189,8 @@ Other configurable fields include:
 - deterministic prefilter anchors, weights, penalties, and boosts;
 - AI provider and model;
 - researcher interest profile;
-- token pricing used by the cost dashboard.
+- token pricing used by the cost dashboard;
+- local server port and refresh-on-start behavior.
 
 See `config.template.yaml` for a generic starting configuration.
 
@@ -162,7 +198,7 @@ See `config.template.yaml` for a generic starting configuration.
 
 Each date card shows:
 
-- the total number of unique papers discovered that day;
+- the total number of unique papers discovered that day as secondary metadata;
 - the configured featured/additional-paper split;
 - the latest update time in Beijing time;
 - the Top 5 paper titles for that date.
@@ -178,10 +214,12 @@ A daily page shows:
 - total unique papers discovered;
 - PubMed, bioRxiv, medRxiv, and arXiv retrieval totals;
 - update time in Beijing time;
+- a compact quick-filter row based on frequent paper keywords;
+- a full-text search box covering title, journal, authors, keywords, source, type, and summary;
 - papers sorted from highest to lowest relevance;
 - the configured number of featured papers expanded;
 - remaining analyzed papers collapsed by default;
-- source, paper type, relevance score, title, authors, 3-5 keywords, compact AI summary, and source link for each paper.
+- source, paper type, relevance score, title, journal when available, authors, 3-5 keywords, compact AI summary, and source link for each paper.
 
 Full abstracts remain backend-only and are not shipped to the public website.
 
@@ -189,9 +227,9 @@ Full abstracts remain backend-only and are not shipped to the public website.
 
 `.github/workflows/daily.yml` runs every day at **05:30 and 20:30 Beijing time (UTC+8)** and also supports manual dispatch. The main configuration uses `timezone: Asia/Shanghai`.
 
-`.github/workflows/deploy-pages.yml` deploys the static site after successful refreshes and after direct website changes.
+`.github/workflows/deploy-pages.yml` deploys the static site after successful refreshes and also builds the synchronized local-edition ZIP before publishing.
 
-`.github/workflows/ci.yml` compiles the Python source and runs the unit tests for pull requests.
+`.github/workflows/ci.yml` compiles Python, validates the frontend JavaScript, runs unit tests, and verifies that the local ZIP can be built.
 
 ## Forking PaperDaily for another field
 
