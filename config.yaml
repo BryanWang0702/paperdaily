@@ -125,7 +125,23 @@ site:
   # Remaining analyzed papers are placed in the collapsed section.
   featured_count: 25
 
-# Used only by local_app.py. The hosted GitHub Pages version ignores this section.
+  # Show Last run / Total / Estimated per year in the homepage header.
+  show_billing: true
+
+  # Built-in themes: khaki, black, navy, forest, burgundy, custom.
+  theme: khaki
+
+  # Used only when theme: custom.
+  custom_theme:
+    background: "#f2efe5"
+    surface: "#fffdf8"
+    text: "#1f2723"
+    muted: "#6b7068"
+    border: "#d8d3c5"
+    accent: "#75684d"
+    accent_text: "#ffffff"
+
+# Used only by the local / standalone edition.
 local:
   port: 8765
 
@@ -135,3 +151,12 @@ local:
   refresh_times:
     - "05:30"
     - "20:30"
+
+  # When enabled, keep PaperDaily running and automatically refresh at future slots.
+  scheduler_enabled: true
+  scheduler_check_seconds: 30
+
+  # Check this small repository manifest before each real literature refresh.
+  # A failed version check never blocks literature retrieval.
+  version_check: true
+  version_manifest_url: https://raw.githubusercontent.com/BryanWang0702/paperdaily/master/standalone_version.json
