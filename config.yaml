@@ -25,9 +25,17 @@ arxiv:
     - cs.LG
     - stat.ML
 
+prefilter:
+  enabled: true
+  max_candidates: 40
+  min_score: 8
+
 ai:
   enabled: true
-  model: gpt-5.6
+  provider: deepseek
+  model: deepseek-v4-flash
+  base_url: https://api.deepseek.com
+  api_key_env: DEEPSEEK_API_KEY
   top_n: 15
   rank_batch_size: 20
   summary_batch_size: 5

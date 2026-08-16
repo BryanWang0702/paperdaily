@@ -11,9 +11,9 @@ import requests
 from .models import Paper
 
 
-RESPONSES_API = "https://api.openai.com/v1/responses"
+OPENAI_RESPONSES_API = "https://api.openai.com/v1/responses"
 CACHE_PATH = Path("data/ai_cache.json")
-PROMPT_VERSION = "paperdaily-v0.2-2026-08"
+PROMPT_VERSION = "paperdaily-v0.2-provider-2026-08"
 
 
 def paper_key(paper: Paper) -> str:
@@ -25,10 +25,23 @@ def _chunks(values: list[Paper], size: int) -> Iterable[list[Paper]]:
         yield values[start:start + size]
 
 
+def _provider_name(ai_config: dict) -> str:
+    return str(ai_config.get("provider", "deepseek")).strip().lower()
+
+
+def _api_key_env(ai_config: dict) -> str:
+    explicit = str(ai_config.get("api_key_env", "")).strip()
+    if explicit:
+        return explicit
+    return "OPENAI_API_KEY" if _provider_name(ai_config) == "openai" else "DEEPSEEK_API_KEY"
+
+
 def _profile_hash(ai_config: dict) -> str:
     material = {
         "prompt_version": PROMPT_VERSION,
-        "model": ai_config.get("model", "gpt-5.6"),
+        "provider": _provider_name(ai_config),
+        "model": ai_config.get("model", "deepseek-v4-flash"),
+        "base_url": ai_config.get("base_url", ""),
         "interest_profile": ai_config.get("interest_profile", ""),
     }
     raw = json.dumps(material, ensure_ascii=False, sort_keys=True).encode("utf-8")
@@ -62,9 +75,9 @@ def _extract_output_text(response_json: dict) -> str:
     raise ValueError("OpenAI response did not contain output_text")
 
 
-def _responses_json(api_key: str, model: str, prompt: str, schema_name: str, schema: dict) -> dict:
+def _openai_responses_json(api_key: str, model: str, prompt: str, schema_name: str, schema: dict) -> dict:
     response = requests.post(
-        RESPONSES_API,
+        OPENAI_RESPONSES_API,
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
@@ -87,6 +100,74 @@ def _responses_json(api_key: str, model: str, prompt: str, schema_name: str, sch
         detail = response.text[:1200]
         raise RuntimeError(f"OpenAI API HTTP {response.status_code}: {detail}")
     return json.loads(_extract_output_text(response.json()))
+
+
+def _chat_completions_json(
+    api_key: str,
+    model: str,
+    prompt: str,
+    schema_name: str,
+    schema: dict,
+    base_url: str,
+    provider: str,
+) -> dict:
+    endpoint = base_url.rstrip("/") + "/chat/completions"
+    json_instruction = (
+        "Return JSON only. The output must be a valid JSON object matching this schema exactly. "
+        f"Schema name: {schema_name}. JSON schema: {json.dumps(schema, ensure_ascii=False)}"
+    )
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": json_instruction},
+            {"role": "user", "content": prompt + "\n\nReturn the requested result as JSON."},
+        ],
+        "response_format": {"type": "json_object"},
+        "max_tokens": 8192,
+    }
+
+    last_error: Exception | None = None
+    for _attempt in range(2):
+        try:
+            response = requests.post(
+                endpoint,
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                },
+                json=payload,
+                timeout=180,
+            )
+            if not response.ok:
+                detail = response.text[:1200]
+                raise RuntimeError(f"{provider} API HTTP {response.status_code}: {detail}")
+            body = response.json()
+            content = body.get("choices", [{}])[0].get("message", {}).get("content", "")
+            if not content or not str(content).strip():
+                raise ValueError(f"{provider} returned empty JSON content")
+            parsed = json.loads(content)
+            if not isinstance(parsed, dict):
+                raise ValueError(f"{provider} JSON output was not an object")
+            return parsed
+        except (RuntimeError, ValueError, json.JSONDecodeError, requests.RequestException) as exc:
+            last_error = exc
+    assert last_error is not None
+    raise last_error
+
+
+def _provider_json(api_key: str, ai_config: dict, prompt: str, schema_name: str, schema: dict) -> dict:
+    provider = _provider_name(ai_config)
+    model = str(ai_config.get("model", "deepseek-v4-flash"))
+    if provider == "openai":
+        return _openai_responses_json(api_key, model, prompt, schema_name, schema)
+
+    if provider == "deepseek":
+        base_url = str(ai_config.get("base_url", "https://api.deepseek.com"))
+    else:
+        base_url = str(ai_config.get("base_url", "")).strip()
+        if not base_url:
+            raise ValueError(f"Provider {provider!r} requires ai.base_url")
+    return _chat_completions_json(api_key, model, prompt, schema_name, schema, base_url, provider)
 
 
 def _ranking_schema() -> dict:
@@ -137,7 +218,7 @@ def _summary_schema() -> dict:
     }
 
 
-def _rank_batch(api_key: str, model: str, profile: str, papers: list[Paper]) -> dict[str, dict[str, Any]]:
+def _rank_batch(api_key: str, ai_config: dict, profile: str, papers: list[Paper]) -> dict[str, dict[str, Any]]:
     records = [
         {
             "id": paper_key(p),
@@ -164,7 +245,7 @@ Give a short topic label and one concise reason for the score. Score every suppl
 
 CANDIDATES:
 {json.dumps(records, ensure_ascii=False)}"""
-    result = _responses_json(api_key, model, prompt, "paper_ranking", _ranking_schema())
+    result = _provider_json(api_key, ai_config, prompt, "paper_ranking", _ranking_schema())
     output: dict[str, dict[str, Any]] = {}
     for item in result.get("items", []):
         item_id = str(item.get("id", ""))
@@ -179,7 +260,7 @@ CANDIDATES:
     return output
 
 
-def _summarize_batch(api_key: str, model: str, profile: str, papers: list[Paper]) -> dict[str, dict[str, str]]:
+def _summarize_batch(api_key: str, ai_config: dict, profile: str, papers: list[Paper]) -> dict[str, dict[str, str]]:
     records = [
         {
             "id": paper_key(p),
@@ -203,7 +284,7 @@ Return:
 
 PAPERS:
 {json.dumps(records, ensure_ascii=False)}"""
-    result = _responses_json(api_key, model, prompt, "paper_summaries", _summary_schema())
+    result = _provider_json(api_key, ai_config, prompt, "paper_summaries", _summary_schema())
     output: dict[str, dict[str, str]] = {}
     for item in result.get("items", []):
         item_id = str(item.get("id", ""))
@@ -220,17 +301,21 @@ PAPERS:
 def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
     ai_config = config.get("ai", {}) or {}
     requested = bool(ai_config.get("enabled", True))
-    model = str(ai_config.get("model", "gpt-5.6"))
+    provider = _provider_name(ai_config)
+    model = str(ai_config.get("model", "deepseek-v4-flash"))
     top_n = max(1, int(ai_config.get("top_n", 15)))
     rank_batch_size = max(1, int(ai_config.get("rank_batch_size", 20)))
     summary_batch_size = max(1, int(ai_config.get("summary_batch_size", 5)))
     profile = str(ai_config.get("interest_profile", "")).strip()
-    api_key = os.getenv("OPENAI_API_KEY", "").strip()
+    api_key_env = _api_key_env(ai_config)
+    api_key = os.getenv(api_key_env, "").strip()
 
     metadata: dict[str, Any] = {
         "requested": requested,
         "enabled": False,
+        "provider": provider,
         "model": model,
+        "api_key_env": api_key_env,
         "top_n": top_n,
         "ranked_count": 0,
         "newly_ranked": 0,
@@ -254,7 +339,7 @@ def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
     missing_rank = [p for p in papers if not cached_papers.get(paper_key(p), {}).get("rank")]
     for batch in _chunks(missing_rank, rank_batch_size):
         try:
-            ranked = _rank_batch(api_key, model, profile, batch)
+            ranked = _rank_batch(api_key, ai_config, profile, batch)
             for p in batch:
                 key = paper_key(p)
                 if key in ranked:
@@ -277,7 +362,7 @@ def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
     ]
     for batch in _chunks(needs_summary, summary_batch_size):
         try:
-            summaries = _summarize_batch(api_key, model, profile, batch)
+            summaries = _summarize_batch(api_key, ai_config, profile, batch)
             for p in batch:
                 key = paper_key(p)
                 if key in summaries:
