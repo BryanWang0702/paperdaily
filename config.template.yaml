@@ -74,11 +74,23 @@ ai:
 site:
   title: PaperDaily
   subtitle: Daily research radar
-
-  # Number of analyzed papers expanded by default on each daily page.
   featured_count: 25
 
-# Optional settings for the downloadable local edition.
+  # Set false to hide Last run / Total / Estimated per year from the homepage.
+  show_billing: true
+
+  # Built-in themes: khaki, black, navy, forest, burgundy, custom.
+  theme: khaki
+  custom_theme:
+    background: "#f2efe5"
+    surface: "#fffdf8"
+    text: "#1f2723"
+    muted: "#6b7068"
+    border: "#d8d3c5"
+    accent: "#75684d"
+    accent_text: "#ffffff"
+
+# Optional settings for the downloadable local / standalone edition.
 local:
   port: 8765
 
@@ -88,3 +100,10 @@ local:
   refresh_times:
     - "05:30"
     - "20:30"
+
+  scheduler_enabled: true
+  scheduler_check_seconds: 30
+
+  # Update reminder checked before each real literature refresh.
+  version_check: true
+  version_manifest_url: https://raw.githubusercontent.com/BryanWang0702/paperdaily/master/standalone_version.json

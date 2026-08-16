@@ -1,0 +1,75 @@
+name: Build Windows standalone
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'VERSION'
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install build dependencies
+        run: pip install -r requirements.txt pyinstaller
+      - name: Prepare public static assets
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path build_site | Out-Null
+          Copy-Item site\index.html build_site\index.html
+          Copy-Item site\day.html build_site\day.html
+          Copy-Item site\app.js build_site\app.js
+          Copy-Item site\day.js build_site\day.js
+          Copy-Item site\style.css build_site\style.css
+          Copy-Item site\theme.js build_site\theme.js
+      - name: Build PaperDaily.exe
+        shell: pwsh
+        run: |
+          pyinstaller --noconfirm --clean --onefile --name PaperDaily `
+            --collect-all tzdata `
+            --add-data "build_site;site" `
+            --add-data "VERSION;." `
+            standalone_entry.py
+          $versionOutput = & dist\PaperDaily.exe --version
+          Write-Host $versionOutput
+          $version = (Get-Content VERSION -Raw).Trim()
+          if ($versionOutput -notmatch "PaperDaily $version") { throw "Frozen executable version smoke test failed" }
+      - name: Package standalone folder
+        shell: pwsh
+        run: |
+          $package = "dist\PaperDaily-Windows"
+          New-Item -ItemType Directory -Force -Path $package | Out-Null
+          Copy-Item "dist\PaperDaily.exe" "$package\PaperDaily.exe"
+          Copy-Item "config.yaml" "$package\config.yaml"
+          Set-Content -Path "$package\api_token.txt" -Value "PASTE_YOUR_API_TOKEN_HERE" -Encoding utf8
+          Copy-Item "docs\LOCAL_VERSION.md" "$package\README.md"
+          Copy-Item "docs\LOCAL_VERSION.zh-CN.md" "$package\README.zh-CN.md"
+          Compress-Archive -Path "$package\*" -DestinationPath "dist\PaperDaily-Windows.zip" -Force
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PaperDaily-Windows
+          path: dist/PaperDaily-Windows.zip
+      - name: Publish GitHub release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $version = (Get-Content VERSION -Raw).Trim()
+          $tag = "v$version"
+          $asset = "dist\PaperDaily-Windows.zip"
+          gh release view $tag *> $null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $tag $asset --title "PaperDaily $tag" --notes "Windows standalone build. Edit config.yaml and api_token.txt, then run PaperDaily.exe."
+          } else {
+            gh release upload $tag $asset --clobber
+          }

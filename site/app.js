@@ -63,7 +63,29 @@ function renderRanking(targetId, ranking) {
     </li>`).join('');
 }
 
+async function renderLocalStatus() {
+  const target = document.querySelector('#localStatus');
+  try {
+    const response = await fetch('data/local_status.json', { cache: 'no-cache' });
+    if (!response.ok) return;
+    const status = await response.json();
+    if (!status.current_version) return;
+    if (status.update_available) {
+      const link = status.download_url
+        ? `<a href="${esc(status.download_url)}" target="_blank" rel="noopener">Download latest</a>`
+        : '';
+      target.innerHTML = `<div class="update-banner"><strong>Update available:</strong> PaperDaily ${esc(status.latest_version)} is available; this copy is ${esc(status.current_version)}. ${link}</div>`;
+    } else if (status.check_status === 'ok') {
+      target.innerHTML = `<div class="version-status">Local edition ${esc(status.current_version)} · Up to date</div>`;
+    }
+  } catch (_) {
+    // Hosted Pages has no local version file; keep the page silent.
+  }
+}
+
 async function boot() {
+  const settings = await window.PaperDailyTheme.apply();
+  renderLocalStatus();
   const archive = document.querySelector('#archive');
   const status = document.querySelector('#status');
   try {
@@ -72,9 +94,10 @@ async function boot() {
     const data = await response.json();
     const days = data.days || [];
     const billing = data.billing || {};
+    const showBilling = settings?.billing?.show !== false;
 
-    if (billing.tracked_days) {
-      document.querySelector('#meta').textContent = `API ${money(billing.total_cost_cny)} total · ~${money(billing.annual_estimate_cny)}/year`;
+    if (showBilling && billing.total_cost_cny !== undefined) {
+      document.querySelector('#meta').textContent = `Last run ${money(billing.last_run_cost_cny)} · Total ${money(billing.total_cost_cny)} · ~${money(billing.annual_estimate_cny)}/year`;
     } else {
       document.querySelector('#meta').textContent = days.length
         ? `${days.length} archived day${days.length === 1 ? '' : 's'}`
