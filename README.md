@@ -21,7 +21,7 @@ PubMed + bioRxiv + medRxiv + arXiv
      configurable AI analysis set
           ai.max_analyzed
                 ↓
-       rank + summarize all analyzed
+ rank + summarize + classify analyzed papers
                 ↓
    site.featured_count shown first
      remaining papers collapsed
@@ -42,8 +42,9 @@ PubMed + bioRxiv + medRxiv + arXiv
 - OpenAI support and support for other OpenAI-compatible Chat Completions endpoints.
 - Separate ranking and summarization stages for stable relevance scores.
 - AI caching so unchanged papers are not repeatedly paid for.
+- Source metadata plus AI enrichment for authors, 3-5 scientific keywords, and normalized paper type.
 - Configurable number of papers expanded on the daily page, with the remainder collapsed.
-- Source label on every public paper card.
+- Source label and relevance score on every public paper card.
 - Per-source retrieval totals on every daily page.
 - Persistent daily issues.
 - Top 5 paper titles shown directly on each homepage date card.
@@ -53,6 +54,16 @@ PubMed + bioRxiv + medRxiv + arXiv
 - GitHub Actions credential preflight.
 - GitHub Pages deployment.
 - English user interface and explicit English date formatting.
+
+## Paper metadata enrichment
+
+PaperDaily uses a metadata-first approach rather than asking the AI to guess everything from scratch:
+
+- **Authors:** preserved from the source record.
+- **Keywords:** official/source keywords are retained when available; the AI produces a compact normalized set of 3-5 scientific keywords for each analyzed paper.
+- **Paper type:** source publication types are used as strong evidence, then normalized into labels such as `Research Article`, `Review`, `Systematic Review`, `Meta-analysis`, `Methods/Resource`, `Clinical Study`, `Clinical Trial`, `Case Report`, `Protocol`, `Commentary/Perspective`, `Editorial`, `Preprint`, or `Other`.
+
+This enrichment runs with the summary stage, so it does not change the dedicated relevance-ranking prompt.
 
 ## AI ranking
 
@@ -104,7 +115,7 @@ prefilter:
 
 ai:
   # Maximum number of shortlisted papers actually sent to the AI.
-  # Every analyzed paper is ranked and summarized.
+  # Every analyzed paper is ranked, summarized, keyworded, and classified.
   max_analyzed: 40
 
 site:
@@ -113,7 +124,7 @@ site:
   featured_count: 25
 ```
 
-With the default `40 -> 40 -> 25` configuration, PaperDaily keeps up to 40 papers after the free local prefilter, sends up to 40 to the AI for ranking and summarization, shows the highest-ranked 25 immediately, and keeps the remaining 15 collapsed.
+With the default `40 -> 40 -> 25` configuration, PaperDaily keeps up to 40 papers after the free local prefilter, sends up to 40 to the AI for ranking and enrichment, shows the highest-ranked 25 immediately, and keeps the remaining 15 collapsed.
 
 You can change the stages independently. For example:
 
@@ -165,7 +176,7 @@ A daily page shows:
 - papers sorted from highest to lowest relevance;
 - the configured number of featured papers expanded;
 - remaining analyzed papers collapsed by default;
-- source, relevance score, title, compact AI summary, and source link for each paper.
+- source, paper type, relevance score, title, authors, 3-5 keywords, compact AI summary, and source link for each paper.
 
 Full abstracts remain backend-only and are not shipped to the public website.
 
