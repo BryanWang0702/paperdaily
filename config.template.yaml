@@ -81,4 +81,10 @@ site:
 # Optional settings for the downloadable local edition.
 local:
   port: 8765
-  refresh_on_start: true
+
+  # scheduled: refresh only if the latest scheduled slot has not already completed.
+  # always: refresh every time the app opens. never: only open cached local data.
+  refresh_mode: scheduled
+  refresh_times:
+    - "05:30"
+    - "20:30"
