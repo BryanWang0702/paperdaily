@@ -78,7 +78,8 @@ jobs:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
           PUBMED_EMAIL: ${{ secrets.PUBMED_EMAIL }}
-        run: python -m src.pipeline --days 3
+          PAPERDAILY_RUN_KIND: ${{ github.event_name == 'schedule' && 'scheduled' || github.event_name == 'workflow_dispatch' && 'manual' || 'development' }}
+        run: python -m src.runtime_pipeline --days 3
       - name: Commit changed data
         run: |
           git config user.name "paperdaily-bot"
