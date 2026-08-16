@@ -42,7 +42,7 @@ PubMed + bioRxiv + medRxiv + arXiv
 - OpenAI support and support for other OpenAI-compatible Chat Completions endpoints.
 - Separate ranking and summarization stages for stable relevance scores.
 - AI caching so unchanged papers are not repeatedly paid for.
-- Source metadata plus AI enrichment for authors, 3-5 scientific keywords, and normalized paper type.
+- Source metadata plus AI enrichment for authors, 3-5 scientific keywords, and normalized scientific paper type.
 - Configurable number of papers expanded on the daily page, with the remainder collapsed.
 - Source label and relevance score on every public paper card.
 - Per-source retrieval totals on every daily page.
@@ -61,7 +61,9 @@ PaperDaily uses a metadata-first approach rather than asking the AI to guess eve
 
 - **Authors:** preserved from the source record.
 - **Keywords:** official/source keywords are retained when available; the AI produces a compact normalized set of 3-5 scientific keywords for each analyzed paper.
-- **Paper type:** source publication types are used as strong evidence, then normalized into labels such as `Research Article`, `Review`, `Systematic Review`, `Meta-analysis`, `Methods/Resource`, `Clinical Study`, `Clinical Trial`, `Case Report`, `Protocol`, `Commentary/Perspective`, `Editorial`, `Preprint`, or `Other`.
+- **Paper type:** source publication types are used as strong evidence, then normalized into scientific-content labels such as `Research Article`, `Review`, `Systematic Review`, `Meta-analysis`, `Methods/Resource`, `Clinical Study`, `Clinical Trial`, `Case Report`, `Protocol`, `Commentary/Perspective`, `Editorial`, or `Other`.
+
+`Preprint` is treated as publication status rather than scientific paper type. A bioRxiv, medRxiv, or arXiv paper is therefore still classified by content, for example as `Research Article`, `Review`, or `Methods/Resource`; its source already indicates that it is a preprint.
 
 This enrichment runs with the summary stage, so it does not change the dedicated relevance-ranking prompt.
 
