@@ -4,6 +4,19 @@ function esc(value = '') {
   return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
 }
 
+function money(value) {
+  const number = Number(value || 0);
+  if (number < 0.01) return `¥${number.toFixed(4)}`;
+  return `¥${number.toFixed(2)}`;
+}
+
+function compactTokens(value) {
+  const number = Number(value || 0);
+  if (number >= 1000000) return `${(number / 1000000).toFixed(2)}M`;
+  if (number >= 1000) return `${(number / 1000).toFixed(1)}k`;
+  return String(number);
+}
+
 function aiInfo(paper) {
   return paper?.extra?.ai || null;
 }
@@ -93,19 +106,24 @@ async function boot() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     state.data = await response.json();
     const d = state.data;
-    document.querySelector('#meta').textContent = `${d.count ?? 0} candidates · ${d.window?.start ?? ''} → ${d.window?.end ?? ''}`;
+    document.querySelector('#meta').textContent = `${d.count ?? 0} candidates · ${d.raw_count ?? d.count ?? 0} discovered · ${d.window?.start ?? ''} → ${d.window?.end ?? ''}`;
 
     const ai = d.ai || {};
+    const billing = ai.billing || {};
+    const usage = billing.daily_usage || {};
+    const usageText = billing.currency
+      ? ` · ${compactTokens(usage.prompt_cache_hit_tokens)} cached in · ${compactTokens(usage.prompt_cache_miss_tokens)} uncached in · ${compactTokens(usage.completion_tokens)} out · ${money(billing.daily_cost_cny)} today`
+      : '';
     if (ai.enabled) {
-      document.querySelector('#aiStatus').innerHTML = `<div class="ai-banner"><strong>Personalized ranking active</strong><span>${ai.ranked_count ?? 0} candidates scored · top ${ai.top_n ?? 0} summarized · ${esc(ai.model || '')}</span></div>`;
+      document.querySelector('#aiStatus').innerHTML = `<div class="ai-banner"><strong>Personalized ranking active</strong><span>${ai.ranked_count ?? 0} candidates scored · top ${ai.top_n ?? 0} summarized · ${esc(ai.model || '')}${usageText}</span></div>`;
     } else if (ai.requested && ai.status === 'missing_api_key') {
-      document.querySelector('#aiStatus').innerHTML = '<div class="ai-banner muted"><strong>Raw feed</strong><span>Add the OPENAI_API_KEY GitHub secret to enable personalized ranking.</span></div>';
+      document.querySelector('#aiStatus').innerHTML = '<div class="ai-banner muted"><strong>Rule-filtered feed</strong><span>Add the DEEPSEEK_API_KEY repository Actions secret to enable personalized ranking.</span></div>';
     }
 
     const errors = Object.entries(d.errors || {});
     const aiErrors = (ai.errors || []).length;
     document.querySelector('#status').innerHTML = errors.length || aiErrors
-      ? `<div class="warning">${errors.length ? `Source issues: ${errors.map(([k,v]) => `${esc(k)} (${esc(v)})`).join(' · ')}` : ''}${errors.length && aiErrors ? '<br>' : ''}${aiErrors ? `AI ranking reported ${aiErrors} error(s); raw papers remain available.` : ''}</div>`
+      ? `<div class="warning">${errors.length ? `Source issues: ${errors.map(([k,v]) => `${esc(k)} (${esc(v)})`).join(' · ')}` : ''}${errors.length && aiErrors ? '<br>' : ''}${aiErrors ? `AI ranking reported ${aiErrors} error(s); filtered papers remain available.` : ''}</div>`
       : '';
     renderFilters(d);
     renderPapers();
