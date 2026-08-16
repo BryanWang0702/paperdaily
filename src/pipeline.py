@@ -55,6 +55,8 @@ def _paper_from_dict(item: dict) -> Paper:
         doi=str(item.get("doi", "")),
         url=str(item.get("url", "")),
         categories=[str(x) for x in (item.get("categories") or [])],
+        keywords=[str(x) for x in (item.get("keywords") or [])],
+        publication_types=[str(x) for x in (item.get("publication_types") or [])],
         extra=dict(item.get("extra") or {}),
     )
 
@@ -265,31 +267,56 @@ def _build_archive_manifest() -> dict:
     }
 
 
+def _fallback_paper_type(paper: Paper) -> str:
+    joined = " ".join(paper.publication_types).casefold()
+    if "meta-analysis" in joined:
+        return "Meta-analysis"
+    if "systematic review" in joined:
+        return "Systematic Review"
+    if "review" in joined:
+        return "Review"
+    if "clinical trial" in joined or "randomized controlled trial" in joined:
+        return "Clinical Trial"
+    if "case report" in joined:
+        return "Case Report"
+    if "protocol" in joined:
+        return "Protocol"
+    if "editorial" in joined:
+        return "Editorial"
+    if "comment" in joined:
+        return "Commentary/Perspective"
+    if "journal article" in joined:
+        return "Research Article"
+    if "preprint" in joined:
+        return "Preprint"
+    return "Other"
+
+
+def _public_paper(paper: Paper) -> dict:
+    ai = (paper.extra.get("ai") or {}) if paper.extra else {}
+    keywords = ai.get("keywords") or paper.keywords
+    return {
+        "title": paper.title,
+        "url": paper.url,
+        "source": paper.source,
+        "authors": paper.authors,
+        "paper_type": str(ai.get("paper_type") or _fallback_paper_type(paper)),
+        "keywords": [str(value) for value in (keywords or [])][:5],
+        "score": int(ai.get("score", 0)) if ai else None,
+        "summary": str(ai.get("summary", "")) if ai else "",
+    }
+
+
 def _build_site_digest(payload: dict, papers: list[Paper]) -> dict:
     selected: list[dict] = []
     for paper in papers:
         ai = (paper.extra.get("ai") or {}) if paper.extra else {}
         if payload.get("ai", {}).get("enabled") and not ai.get("digest_pick"):
             continue
-        selected.append({
-            "title": paper.title,
-            "url": paper.url,
-            "source": paper.source,
-            "score": int(ai.get("score", 0)) if ai else None,
-            "summary": str(ai.get("summary", "")) if ai else "",
-        })
+        selected.append(_public_paper(paper))
 
     if not selected:
-        selected = [
-            {
-                "title": p.title,
-                "url": p.url,
-                "source": p.source,
-                "score": None,
-                "summary": "",
-            }
-            for p in papers
-        ]
+        selected = [_public_paper(paper) for paper in papers]
 
     ai = payload.get("ai", {}) or {}
     billing = ai.get("billing", {}) or {}
@@ -326,12 +353,6 @@ def _select_ai_papers(prefiltered: list[Paper], config: dict) -> tuple[list[Pape
 
 
 def _runtime_ai_config(config: dict, analyzed_count: int) -> dict:
-    """Make the AI summarize every paper selected for analysis.
-
-    ai_rank.py keeps backward-compatible digest controls internally. The public
-    configuration exposes a simpler max_analyzed setting, so the pipeline maps
-    that setting to the legacy digest controls at runtime.
-    """
     runtime = dict(config)
     runtime_ai = dict(config.get("ai", {}) or {})
     target = max(1, analyzed_count)
