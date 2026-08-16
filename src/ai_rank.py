@@ -16,7 +16,7 @@ OPENAI_RESPONSES_API = "https://api.openai.com/v1/responses"
 CACHE_PATH = Path("data/ai_cache.json")
 CACHE_SCHEMA_VERSION = "paperdaily-ai-cache-v2"
 RANK_PROMPT_VERSION = "paperdaily-ranking-v1-2026-08"
-SUMMARY_PROMPT_VERSION = "paperdaily-summary-v2-2026-08"
+SUMMARY_PROMPT_VERSION = "paperdaily-summary-v3-2026-08"
 _RUN_USAGE: dict[str, int] = empty_usage()
 
 PAPER_TYPES = (
@@ -31,7 +31,6 @@ PAPER_TYPES = (
     "Protocol",
     "Commentary/Perspective",
     "Editorial",
-    "Preprint",
     "Other",
 )
 
@@ -305,8 +304,6 @@ def _normalize_paper_type(value: Any, publication_types: list[str] | None = None
         return "Commentary/Perspective"
     if "journal article" in source_text:
         return "Research Article"
-    if "preprint" in source_text:
-        return "Preprint"
     return "Other"
 
 
@@ -372,9 +369,9 @@ For every supplied paper, use only the supplied title, metadata, and abstract. D
 Return three things for every paper:
 1. summary: 1-2 compact sentences stating what the paper did and its most important reported result or contribution. Prefer concrete results over background.
 2. keywords: 3-5 specific English scientific keywords or short phrases that best describe the paper. Prefer mechanisms, methods, models, species, signals, or core concepts over generic words such as study or neuroscience. Source keywords may be reused when informative.
-3. paper_type: one normalized label from this exact set: {allowed_types}.
+3. paper_type: one normalized scientific-content label from this exact set: {allowed_types}.
 
-Use source publication_types as strong evidence when they are informative. For preprint servers, classify the scientific content when possible (for example Research Article or Review) rather than automatically using Preprint. Use English for all generated text.
+Use source publication_types as strong evidence when they describe scientific content. Preprint is a publication status, not a scientific paper type. For bioRxiv, medRxiv, arXiv, or any other preprint source, classify the underlying scientific content as Research Article, Review, Methods/Resource, Meta-analysis, Protocol, or another allowed content type. Never return Preprint as paper_type. Use English for all generated text.
 
 PAPERS:
 {json.dumps(records, ensure_ascii=False)}"""

@@ -44,7 +44,7 @@ PubMed + bioRxiv + medRxiv + arXiv
 - 同时支持 OpenAI 和其他兼容 OpenAI Chat Completions 的接口。
 - AI ranking 和 summary 分开执行，提高相关性评分稳定性。
 - 已处理文献会缓存，避免重复消耗 API token。
-- 保留来源中的作者信息，并为每篇 AI 分析文献生成 3–5 个关键词和标准化的 paper type。
+- 保留来源中的作者信息，并为每篇 AI 分析文献生成 3–5 个关键词和标准化的科学文章类型。
 - 每篇文献显示来源、类型、相关性评分、标题、作者、关键词、短摘要和原文链接。
 - 每日页面显示 PubMed / bioRxiv / medRxiv / arXiv 的抓取数量。
 - 首页每个日期卡片直接显示当天 Top 5 标题。
@@ -60,7 +60,9 @@ PaperDaily 使用“**来源元数据优先，AI 补充和标准化**”的方�
 
 - **Authors**：直接保留 PubMed、bioRxiv、medRxiv、arXiv 提供的作者信息。
 - **Keywords**：来源有官方关键词时保留；AI summary 阶段同时为每篇文献生成 3–5 个简洁、具体的英文科研关键词。
-- **Paper type**：来源提供的 publication type 作为重要依据，再标准化为 `Research Article`、`Review`、`Systematic Review`、`Meta-analysis`、`Methods/Resource`、`Clinical Study`、`Clinical Trial`、`Case Report`、`Protocol`、`Commentary/Perspective`、`Editorial`、`Preprint` 或 `Other` 等类型。
+- **Paper type**：来源提供的 publication type 作为重要依据，再标准化为 `Research Article`、`Review`、`Systematic Review`、`Meta-analysis`、`Methods/Resource`、`Clinical Study`、`Clinical Trial`、`Case Report`、`Protocol`、`Commentary/Perspective`、`Editorial` 或 `Other` 等科学内容类型。
+
+`Preprint` 现在被视为**发表状态**，而不是 paper type。例如一篇 bioRxiv 论文仍然会根据内容被识别为 `Research Article`、`Review` 或 `Methods/Resource`；它来自 bioRxiv 这一来源本身已经表明它是预印本。
 
 这些信息在 summary 阶段生成，因此不会改变独立的 relevance ranking prompt，也不会为了增加类型和关键词而重新定义相关性评分逻辑。
 

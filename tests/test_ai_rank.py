@@ -2,7 +2,7 @@ import os
 import unittest
 from unittest.mock import patch
 
-from src.ai_rank import _extract_output_text, apply_ai_ranking
+from src.ai_rank import PAPER_TYPES, _extract_output_text, _normalize_paper_type, apply_ai_ranking
 from src.models import Paper
 
 
@@ -23,6 +23,11 @@ class TestAIRanking(unittest.TestCase):
             ]
         }
         self.assertEqual(_extract_output_text(payload), '{"items": []}')
+
+    def test_preprint_is_not_a_scientific_paper_type(self):
+        self.assertNotIn("Preprint", PAPER_TYPES)
+        self.assertEqual(_normalize_paper_type("Preprint", ["Preprint"]), "Other")
+        self.assertEqual(_normalize_paper_type("Review", ["Preprint"]), "Review")
 
 
 if __name__ == "__main__":
