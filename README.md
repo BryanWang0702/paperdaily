@@ -1,2 +1,2 @@
 # paperdaily
-Daily paper updated by AI, chatGPT allowed
+Daily paper updated by AI, chatGPT allowed, github action
