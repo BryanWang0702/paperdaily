@@ -8,6 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 ROOT_FILES = [
+    "VERSION",
+    "standalone_version.json",
     "config.yaml",
     "config.template.yaml",
     "requirements.txt",
@@ -27,7 +29,7 @@ def iter_files():
     for path in sorted((ROOT / "src").rglob("*.py")):
         yield path, path.relative_to(ROOT)
 
-    for name in ("index.html", "day.html", "app.js", "day.js", "style.css"):
+    for name in ("index.html", "day.html", "app.js", "day.js", "style.css", "theme.js"):
         path = ROOT / "site" / name
         if path.exists():
             yield path, path.relative_to(ROOT)
@@ -52,7 +54,7 @@ def build(output: Path) -> Path:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build the standalone PaperDaily local-edition ZIP")
+    parser = argparse.ArgumentParser(description="Build the Python-based PaperDaily local-edition ZIP")
     parser.add_argument(
         "--output",
         default="dist/PaperDaily-local.zip",
