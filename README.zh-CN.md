@@ -23,7 +23,7 @@ PubMed + bioRxiv + medRxiv + arXiv
        选择送入 AI 的文献
           ai.max_analyzed
                 ↓
-      AI 排序 + 摘要全部分析文献
+ AI 排序 + 摘要 + keywords + 类型识别
                 ↓
  site.featured_count 默认展开
        其余文献折叠显示
@@ -44,7 +44,8 @@ PubMed + bioRxiv + medRxiv + arXiv
 - 同时支持 OpenAI 和其他兼容 OpenAI Chat Completions 的接口。
 - AI ranking 和 summary 分开执行，提高相关性评分稳定性。
 - 已处理文献会缓存，避免重复消耗 API token。
-- 每篇文献显示来源、相关性评分、标题、短摘要和原文链接。
+- 保留来源中的作者信息，并为每篇 AI 分析文献生成 3–5 个关键词和标准化的 paper type。
+- 每篇文献显示来源、类型、相关性评分、标题、作者、关键词、短摘要和原文链接。
 - 每日页面显示 PubMed / bioRxiv / medRxiv / arXiv 的抓取数量。
 - 首页每个日期卡片直接显示当天 Top 5 标题。
 - 首页侧边栏提供 Monthly Top 5。
@@ -52,6 +53,16 @@ PubMed + bioRxiv + medRxiv + arXiv
 - 文献源临时失败时支持重试和 last-good cache。
 - GitHub Actions 会在正式运行前检查 API secret 是否已经配置。
 - 自动部署 GitHub Pages。
+
+## 文献元数据增强
+
+PaperDaily 使用“**来源元数据优先，AI 补充和标准化**”的方式，而不是完全依赖 AI 猜测：
+
+- **Authors**：直接保留 PubMed、bioRxiv、medRxiv、arXiv 提供的作者信息。
+- **Keywords**：来源有官方关键词时保留；AI summary 阶段同时为每篇文献生成 3–5 个简洁、具体的英文科研关键词。
+- **Paper type**：来源提供的 publication type 作为重要依据，再标准化为 `Research Article`、`Review`、`Systematic Review`、`Meta-analysis`、`Methods/Resource`、`Clinical Study`、`Clinical Trial`、`Case Report`、`Protocol`、`Commentary/Perspective`、`Editorial`、`Preprint` 或 `Other` 等类型。
+
+这些信息在 summary 阶段生成，因此不会改变独立的 relevance ranking prompt，也不会为了增加类型和关键词而重新定义相关性评分逻辑。
 
 ## DeepSeek API 配置
 
@@ -107,7 +118,7 @@ prefilter:
 
 ai:
   # 最多把多少篇预筛选结果送给 AI
-  # 送入 AI 的文献都会进行相关性评分和摘要
+  # 送入 AI 的文献都会进行相关性评分、摘要、关键词和类型识别
   max_analyzed: 40
 
 site:
@@ -125,7 +136,7 @@ site:
 含义是：
 
 1. 本地规则从当天抓到的全部文献中最多保留 40 篇；
-2. 最多把这 40 篇全部送入 AI 进行排序和摘要；
+2. 最多把这 40 篇全部送入 AI 进行排序和元数据增强；
 3. 页面默认展开相关性最高的 25 篇；
 4. 剩余 15 篇放在折叠区域。
 
@@ -195,7 +206,7 @@ config.template.yaml
 - 按 relevance score 从高到低排序的文献；
 - `site.featured_count` 指定数量的默认展开文献；
 - 其余 AI 分析文献默认折叠；
-- 每篇文献的来源、relevance score、标题、AI 短摘要和原文链接。
+- 每篇文献的来源、paper type、relevance score、标题、作者、3–5 个关键词、AI 短摘要和原文链接。
 
 完整 abstract 只保存在后台 `data/`，不会发送到公开网页，因此页面加载更快。
 
