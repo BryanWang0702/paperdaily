@@ -10,8 +10,10 @@ on:
       - 'requirements.txt'
       - '.github/workflows/daily.yml'
   schedule:
-    # 08:15 and 20:15 Asia/Taipei (UTC+8)
-    - cron: '15 0,12 * * *'
+    # 07:15 and 20:15 Asia/Taipei / Beijing time (UTC+8).
+    # Both runs avoid DeepSeek peak windows (09:00-12:00 and 14:00-18:00),
+    # with extra margin before the morning peak in case GitHub Actions starts late.
+    - cron: '15 23,12 * * *'
 
 permissions:
   contents: write
