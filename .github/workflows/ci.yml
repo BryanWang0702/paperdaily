@@ -60,6 +60,7 @@ jobs:
             --add-data "VERSION;." `
             standalone_entry.py
           if (-not (Test-Path dist\PaperDaily.exe)) { throw "PaperDaily.exe was not created" }
+          $version = (Get-Content VERSION -Raw).Trim()
           $versionOutput = & dist\PaperDaily.exe --version
           Write-Host $versionOutput
-          if ($versionOutput -notmatch "PaperDaily 0.5.0") { throw "Frozen executable version smoke test failed" }
+          if ($versionOutput -notmatch "PaperDaily $version") { throw "Frozen executable version smoke test failed" }
