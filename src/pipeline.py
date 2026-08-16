@@ -299,6 +299,7 @@ def _public_paper(paper: Paper) -> dict:
         "title": paper.title,
         "url": paper.url,
         "source": paper.source,
+        "journal": paper.journal,
         "authors": paper.authors,
         "paper_type": str(ai.get("paper_type") or _fallback_paper_type(paper)),
         "keywords": [str(value) for value in (keywords or [])][:5],

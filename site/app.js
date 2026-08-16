@@ -94,8 +94,10 @@ async function boot() {
             <span class="day-date">${esc(prettyDate(day.date))}</span>
             ${index === 0 ? '<span class="today-badge">LATEST</span>' : ''}
           </div>
-          <div class="day-count">${day.total_count ?? 0}</div>
-          <div class="day-label">unique papers discovered</div>
+          <div class="day-count-row">
+            <span class="day-count">${day.total_count ?? 0}</span>
+            <span class="day-label">unique papers discovered</span>
+          </div>
           <div class="day-presets">
             <span><strong>${featured}</strong> highlighted</span>
             <span><strong>${additional}</strong> more</span>

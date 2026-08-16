@@ -18,6 +18,7 @@ class TestSiteDigest(unittest.TestCase):
                 source_id=str(index),
                 title=f"Paper {index}",
                 url=f"https://example.org/{index}",
+                journal="Journal of Example Science" if index < 30 else "",
                 authors=["Ada Author", "Ben Scientist"],
                 keywords=["source keyword"],
                 publication_types=["Journal Article"],
@@ -57,6 +58,7 @@ class TestSiteDigest(unittest.TestCase):
         self.assertEqual(len(digest["papers"]), 40)
         first = digest["papers"][0]
         self.assertEqual(first["source"], "pubmed")
+        self.assertEqual(first["journal"], "Journal of Example Science")
         self.assertEqual(first["authors"], ["Ada Author", "Ben Scientist"])
         self.assertEqual(first["keywords"], ["sleep homeostasis", "EEG"])
         self.assertEqual(first["paper_type"], "Research Article")
@@ -68,6 +70,7 @@ class TestSiteDigest(unittest.TestCase):
             source_id="1",
             title="A review",
             url="https://example.org/review",
+            journal="Review Journal",
             authors=["Review Author"],
             keywords=["sleep", "circadian"],
             publication_types=["Review"],
@@ -80,6 +83,7 @@ class TestSiteDigest(unittest.TestCase):
         digest = _build_site_digest(payload, [paper])
         self.assertEqual(digest["papers"][0]["paper_type"], "Review")
         self.assertEqual(digest["papers"][0]["keywords"], ["sleep", "circadian"])
+        self.assertEqual(digest["papers"][0]["journal"], "Review Journal")
 
     def test_monthly_top_is_limited_and_deduplicated(self):
         payloads = []
