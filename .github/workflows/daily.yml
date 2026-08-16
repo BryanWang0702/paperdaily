@@ -25,10 +25,10 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
           cache: pip
@@ -37,29 +37,46 @@ jobs:
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
           PUBMED_EMAIL: ${{ secrets.PUBMED_EMAIL }}
         run: |
           python - <<'PY'
           import os
-          required = ['DEEPSEEK_API_KEY']
-          optional = ['NCBI_API_KEY', 'PUBMED_EMAIL', 'OPENAI_API_KEY']
-          missing_required = []
-          for name in required:
-              present = bool(os.getenv(name, '').strip())
-              print(f'{name}: {"SET" if present else "MISSING"}')
+          from src.utils import load_config
+
+          config = load_config()
+          ai = config.get('ai', {}) or {}
+          enabled = bool(ai.get('enabled', True))
+          provider = str(ai.get('provider', 'deepseek')).strip().lower()
+          model = str(ai.get('model', '')).strip()
+          key_env = str(ai.get('api_key_env', '')).strip()
+          if not key_env:
+              key_env = 'OPENAI_API_KEY' if provider == 'openai' else 'DEEPSEEK_API_KEY'
+
+          print(f'AI provider: {provider}')
+          print(f'AI model: {model or "not set"}')
+          print(f'AI key environment variable: {key_env}')
+
+          if enabled:
+              present = bool(os.getenv(key_env, '').strip())
+              print(f'{key_env}: {"SET" if present else "MISSING"}')
               if not present:
-                  missing_required.append(name)
-          for name in optional:
+                  raise SystemExit(
+                      f'Missing required repository secret for the configured AI provider: {key_env}'
+                  )
+          else:
+              print('AI ranking: disabled in config.yaml')
+
+          for name in ['NCBI_API_KEY', 'PUBMED_EMAIL']:
               present = bool(os.getenv(name, '').strip())
               print(f'{name}: {"SET" if present else "not set (optional)"}')
-          if missing_required:
-              raise SystemExit('Missing required repository secret(s): ' + ', '.join(missing_required))
           PY
       - name: Fetch and rank literature
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
           PUBMED_EMAIL: ${{ secrets.PUBMED_EMAIL }}
         run: python -m src.pipeline --days 3

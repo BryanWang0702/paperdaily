@@ -1,57 +1,12 @@
 from __future__ import annotations
 
+from typing import Any
+
 from .models import Paper
 
 
-TITLE_MULTIPLIER = 3
-
-DEFAULT_WEIGHTS: dict[str, int] = {
-    "sleep homeostasis": 14,
-    "sleep deprivation": 14,
-    "nrem": 14,
-    "non-rapid eye movement": 14,
-    "sleep rebound": 13,
-    "recovery sleep": 13,
-    "sleep pressure": 12,
-    "process s": 12,
-    "slow wave activity": 12,
-    "slow-wave activity": 12,
-    "rem sleep": 10,
-    "delta power": 10,
-    "slow wave": 9,
-    "slow-wave": 9,
-    "sleep staging": 10,
-    "sleep scoring": 10,
-    "sleep state": 9,
-    "vigilance state": 9,
-    "circadian": 8,
-    "electroencephalography": 8,
-    "eeg": 7,
-    "theta": 6,
-    "sigma": 6,
-    "spindle": 6,
-    "fragmentation": 6,
-    "environmental enrichment": 9,
-    "mouse": 4,
-    "mice": 4,
-    "rat": 4,
-    "rodent": 4,
-    "animal": 2,
-    "computational": 3,
-    "modeling": 3,
-    "modelling": 3,
-}
-
-SLEEP_ANCHORS = (
-    "sleep",
-    "nrem",
-    "rem sleep",
-    "non-rapid eye movement",
-    "slow wave activity",
-    "slow-wave activity",
-    "sleep state",
-    "vigilance state",
-)
+DEFAULT_TITLE_MULTIPLIER = 3
+DEFAULT_MISSING_ANCHOR_PENALTY = 0
 
 
 def _term_score(text: str, weights: dict[str, int]) -> int:
@@ -59,23 +14,71 @@ def _term_score(text: str, weights: dict[str, int]) -> int:
     return sum(weight for term, weight in weights.items() if term.casefold() in haystack)
 
 
-def relevance_score(paper: Paper, weights: dict[str, int] | None = None) -> int:
-    weights = weights or DEFAULT_WEIGHTS
+def _normalize_weights(raw: Any) -> dict[str, int]:
+    if not isinstance(raw, dict):
+        return {}
+    weights: dict[str, int] = {}
+    for term, value in raw.items():
+        try:
+            weights[str(term)] = int(value)
+        except (TypeError, ValueError):
+            continue
+    return weights
+
+
+def _has_anchor(text: str, anchors: list[str]) -> bool:
+    if not anchors:
+        return True
+    haystack = text.casefold()
+    return any(str(anchor).casefold() in haystack for anchor in anchors if str(anchor).strip())
+
+
+def _boost_score(text: str, boosts: list[dict], has_anchor: bool) -> int:
+    haystack = text.casefold()
+    total = 0
+    for boost in boosts:
+        if not isinstance(boost, dict):
+            continue
+        if bool(boost.get("require_anchor", False)) and not has_anchor:
+            continue
+        terms = boost.get("any_terms", []) or []
+        if not isinstance(terms, list):
+            continue
+        if any(str(term).casefold() in haystack for term in terms if str(term).strip()):
+            try:
+                total += int(boost.get("bonus", 0))
+            except (TypeError, ValueError):
+                continue
+    return total
+
+
+def relevance_score(paper: Paper, prefilter_config: dict | None = None) -> int:
+    """Compute the deterministic prefilter score from configuration only.
+
+    This layer is intentionally cheap and transparent. Domain-specific terms,
+    anchors, penalties, and boosts live in config.yaml so forks can adapt the
+    project without editing Python source code.
+    """
+    cfg = prefilter_config or {}
+    weights = _normalize_weights(cfg.get("weights", {}))
+    title_multiplier = int(cfg.get("title_multiplier", DEFAULT_TITLE_MULTIPLIER))
+    missing_anchor_penalty = int(cfg.get("missing_anchor_penalty", DEFAULT_MISSING_ANCHOR_PENALTY))
+    anchors = [str(value) for value in (cfg.get("anchors", []) or [])]
+    boosts = cfg.get("boosts", []) or []
+    if not isinstance(boosts, list):
+        boosts = []
+
     title_score = _term_score(paper.title or "", weights)
     abstract_score = _term_score(paper.abstract or "", weights)
     category_score = _term_score(" ".join(paper.categories), weights)
-    score = TITLE_MULTIPLIER * title_score + abstract_score + category_score
+    score = title_multiplier * title_score + abstract_score + category_score
 
-    combined = f"{paper.title} {paper.abstract}".casefold()
-    has_sleep_anchor = any(anchor in combined for anchor in SLEEP_ANCHORS)
-    if not has_sleep_anchor:
-        score -= 18
+    combined = f"{paper.title} {paper.abstract} {' '.join(paper.categories)}"
+    has_anchor = _has_anchor(combined, anchors)
+    if anchors and not has_anchor:
+        score -= missing_anchor_penalty
 
-    # Prefer papers that connect EEG/neural signals to sleep rather than generic EEG studies.
-    if ("eeg" in combined or "electroencephal" in combined) and has_sleep_anchor:
-        score += 6
-    if any(x in combined for x in ("mouse", "mice", "rat", "rodent")) and has_sleep_anchor:
-        score += 4
+    score += _boost_score(combined, boosts, has_anchor)
     return score
 
 
@@ -86,11 +89,11 @@ def prefilter_papers(papers: list[Paper], config: dict) -> list[Paper]:
         return papers
 
     max_candidates = max(1, int(cfg.get("max_candidates", 40)))
-    min_score = int(cfg.get("min_score", 8))
+    min_score = int(cfg.get("min_score", 0))
 
     scored: list[tuple[Paper, int]] = []
     for paper in papers:
-        score = relevance_score(paper)
+        score = relevance_score(paper, cfg)
         paper.extra["prefilter_score"] = score
         if score >= min_score:
             scored.append((paper, score))
