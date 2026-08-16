@@ -7,6 +7,9 @@ on:
     paths:
       - 'site/**'
       - '.github/workflows/deploy-pages.yml'
+  workflow_run:
+    workflows: ['Daily literature refresh']
+    types: [completed]
 
 permissions:
   contents: read
@@ -19,12 +22,15 @@ concurrency:
 
 jobs:
   deploy:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: master
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
