@@ -31,7 +31,7 @@ LATEST_SITE_DATA = SITE_DIR / "data" / "latest.json"
 LOCAL_STATUS_FILE = SITE_DIR / "data" / "local_status.json"
 DEFAULT_REFRESH_TIMES = ["05:30", "20:30"]
 DEFAULT_VERSION_URL = "https://raw.githubusercontent.com/BryanWang0702/paperdaily/master/standalone_version.json"
-STATIC_SITE_FILES = ("index.html", "day.html", "app.js", "day.js", "style.css", "theme.js")
+STATIC_SITE_FILES = ("index.html", "day.html", "app.js", "day.js", "style.css", "layout.css", "theme.js")
 REFRESH_LOCK = threading.Lock()
 
 
@@ -125,7 +125,6 @@ def _check_version(config: dict) -> dict:
         latest = str(manifest.get("latest_version", current)).strip() or current
         payload = {
             "check_status": "ok",
-            "checked_at": datetime.utcnow().isoformat() + "Z",
             "current_version": current,
             "latest_version": latest,
             "update_available": _version_tuple(latest) > _version_tuple(current),
@@ -133,127 +132,117 @@ def _check_version(config: dict) -> dict:
             "release_page": str(manifest.get("release_page", "")),
             "message": str(manifest.get("message", "")),
         }
-        _write_local_status(payload)
-        return payload
     except Exception as exc:
         payload = {
             "check_status": "error",
-            "checked_at": datetime.utcnow().isoformat() + "Z",
             "current_version": current,
             "latest_version": current,
             "update_available": False,
             "error": f"{type(exc).__name__}: {exc}",
         }
-        _write_local_status(payload)
-        return payload
+    _write_local_status(payload)
+    return payload
 
 
 def _parse_refresh_times(values: object) -> list[tuple[int, int]]:
-    raw_values = values if isinstance(values, list) else DEFAULT_REFRESH_TIMES
-    parsed: set[tuple[int, int]] = set()
-    for value in raw_values:
-        text = str(value).strip()
+    parsed: list[tuple[int, int]] = []
+    if not isinstance(values, list):
+        values = DEFAULT_REFRESH_TIMES
+    for value in values:
         try:
-            hour_text, minute_text = text.split(":", 1)
+            hour_text, minute_text = str(value).strip().split(":", 1)
             hour, minute = int(hour_text), int(minute_text)
-        except (ValueError, TypeError):
+        except (TypeError, ValueError):
             continue
         if 0 <= hour <= 23 and 0 <= minute <= 59:
-            parsed.add((hour, minute))
-    return sorted(parsed) or [(5, 30), (20, 30)]
+            parsed.append((hour, minute))
+    return sorted(set(parsed)) or [(5, 30), (20, 30)]
 
 
 def _latest_due_slot(now: datetime, refresh_times: object) -> datetime:
     times = _parse_refresh_times(refresh_times)
-    candidates: list[datetime] = []
-    for day_offset in (0, -1):
-        day = (now + timedelta(days=day_offset)).date()
-        for hour, minute in times:
-            slot = datetime(day.year, day.month, day.day, hour, minute, tzinfo=now.tzinfo)
-            if slot <= now:
-                candidates.append(slot)
-    return max(candidates)
+    slots = [now.replace(hour=h, minute=m, second=0, microsecond=0) for h, m in times]
+    past = [slot for slot in slots if slot <= now]
+    if past:
+        return max(past)
+    previous = now - timedelta(days=1)
+    hour, minute = times[-1]
+    return previous.replace(hour=hour, minute=minute, second=0, microsecond=0)
 
 
-def _load_state() -> dict:
+def _read_state() -> dict:
     try:
         return json.loads(STATE_FILE.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return {}
 
 
-def _save_state(slot: datetime) -> None:
-    payload = _load_state()
-    payload.update({
-        "last_successful_slot": slot.isoformat(),
-        "last_successful_refresh_at": datetime.now(slot.tzinfo).isoformat(),
-    })
+def _write_state(payload: dict) -> None:
     STATE_FILE.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-
-
-def _slot_already_completed(slot: datetime) -> bool:
-    state = _load_state()
-    value = str(state.get("last_successful_slot", "")).strip()
-    if not value:
-        return False
-    try:
-        completed = datetime.fromisoformat(value)
-    except ValueError:
-        return False
-    if completed.tzinfo is None:
-        completed = completed.replace(tzinfo=slot.tzinfo)
-    return completed >= slot
 
 
 def _refresh_decision(config: dict, now: datetime | None = None) -> tuple[bool, datetime, str]:
     timezone_name = str(config.get("timezone", "Asia/Shanghai"))
-    current = now or datetime.now(ZoneInfo(timezone_name))
+    timezone = ZoneInfo(timezone_name)
+    now = now.astimezone(timezone) if now else datetime.now(timezone)
     local_config = config.get("local", {}) or {}
-    refresh_times = local_config.get("refresh_times", DEFAULT_REFRESH_TIMES)
-    slot = _latest_due_slot(current, refresh_times)
     mode = str(local_config.get("refresh_mode", "scheduled")).strip().lower()
+    due_slot = _latest_due_slot(now, local_config.get("refresh_times", DEFAULT_REFRESH_TIMES))
 
     if not LATEST_SITE_DATA.exists():
-        return True, slot, "no local dashboard data exists yet"
+        return True, due_slot, "no local dashboard data exists yet"
     if mode == "always":
-        return True, slot, "local.refresh_mode is always"
+        return True, due_slot, "refresh_mode is always"
     if mode == "never":
-        return False, slot, "local.refresh_mode is never"
-    if _slot_already_completed(slot):
-        return False, slot, f"scheduled slot {slot.strftime('%Y-%m-%d %H:%M')} already completed"
-    return True, slot, f"scheduled slot {slot.strftime('%Y-%m-%d %H:%M')} has not been completed"
+        return False, due_slot, "refresh_mode is never and local data already exists"
+
+    state = _read_state()
+    last_raw = str(state.get("last_successful_slot", ""))
+    try:
+        last_slot = datetime.fromisoformat(last_raw)
+        if last_slot.tzinfo is None:
+            last_slot = last_slot.replace(tzinfo=timezone)
+        else:
+            last_slot = last_slot.astimezone(timezone)
+    except ValueError:
+        last_slot = None
+
+    if last_slot is not None and last_slot >= due_slot:
+        return False, due_slot, f"latest scheduled slot {due_slot.isoformat()} already completed"
+    return True, due_slot, f"scheduled slot {due_slot.isoformat()} has not completed locally"
 
 
-def _perform_refresh(config: dict, due_slot: datetime, *, run_kind: str = "local_scheduled") -> bool:
+def _perform_refresh(config: dict, due_slot: datetime, run_kind: str = "local_scheduled") -> bool:
     if not REFRESH_LOCK.acquire(blocking=False):
+        print("Refresh already running; skipping duplicate scheduler request.")
         return False
     try:
         version = _check_version(config)
-        if version.get("check_status") == "ok":
-            if version.get("update_available"):
-                print(
-                    f"Update available: {version.get('current_version')} -> {version.get('latest_version')}. "
-                    f"{version.get('release_page') or version.get('download_url')}"
-                )
-            else:
-                print(f"Version check: {_app_version()} is up to date.")
-        else:
-            print("Version check unavailable; continuing with literature refresh.")
+        if version.get("update_available"):
+            print(
+                f"Update available: PaperDaily {version.get('latest_version')} "
+                f"(current {version.get('current_version')})."
+            )
+        elif version.get("check_status") == "error":
+            print(f"Version check warning: {version.get('error')}")
 
         key_env = _load_local_token(config)
+        print(f"Refreshing literature for slot {due_slot.isoformat()} using {key_env} from api_token.txt/environment.")
         os.environ["PAPERDAILY_RUN_KIND"] = run_kind
-        print(f"AI credential: {key_env} loaded from local environment/token file")
-        print(f"Refreshing literature for slot {due_slot.strftime('%Y-%m-%d %H:%M')}...")
-        result = run()
-        _save_state(due_slot)
-        print(
-            f"Refresh complete: {result.get('raw_count', 0)} discovered, "
-            f"{result.get('analyzed_count', 0)} AI-analyzed."
-        )
+        try:
+            run()
+        finally:
+            os.environ.pop("PAPERDAILY_RUN_KIND", None)
+        state = _read_state()
+        state.update({
+            "last_successful_slot": due_slot.isoformat(),
+            "last_successful_refresh_at": datetime.now(due_slot.tzinfo).isoformat(),
+        })
+        _write_state(state)
+        print("Refresh completed successfully.")
         return True
     except Exception as exc:
         print(f"Refresh failed: {type(exc).__name__}: {exc}", file=sys.stderr)
-        print("The local dashboard remains available with the most recently successful data.")
         return False
     finally:
         REFRESH_LOCK.release()
@@ -264,19 +253,10 @@ def _scheduler_loop(stop_event: threading.Event) -> None:
     while not stop_event.is_set():
         try:
             config = load_config(ROOT / "config.yaml")
-            write_site_settings(config, SITE_DIR / "data" / "settings.json")
             local_config = config.get("local", {}) or {}
             check_seconds = max(10, int(local_config.get("scheduler_check_seconds", 30) or 30))
-            if not bool(local_config.get("scheduler_enabled", True)):
-                stop_event.wait(check_seconds)
-                continue
-            if str(local_config.get("refresh_mode", "scheduled")).strip().lower() != "scheduled":
-                stop_event.wait(check_seconds)
-                continue
-
-            timezone_name = str(config.get("timezone", "Asia/Shanghai"))
-            now = datetime.now(ZoneInfo(timezone_name))
-            should_refresh, due_slot, reason = _refresh_decision(config, now)
+            should_refresh, due_slot, reason = _refresh_decision(config)
+            now = datetime.now(due_slot.tzinfo)
             if should_refresh and (next_retry_at is None or now >= next_retry_at):
                 print(f"Scheduler: {reason}")
                 success = _perform_refresh(config, due_slot, run_kind="local_scheduled")
