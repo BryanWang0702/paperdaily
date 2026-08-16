@@ -128,4 +128,10 @@ site:
 # Used only by local_app.py. The hosted GitHub Pages version ignores this section.
 local:
   port: 8765
-  refresh_on_start: true
+
+  # scheduled: refresh only when the latest configured slot has not completed locally.
+  # always: refresh on every launch. never: only open existing local data.
+  refresh_mode: scheduled
+  refresh_times:
+    - "05:30"
+    - "20:30"
