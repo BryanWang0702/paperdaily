@@ -13,7 +13,7 @@ from .models import Paper
 
 OPENAI_RESPONSES_API = "https://api.openai.com/v1/responses"
 CACHE_PATH = Path("data/ai_cache.json")
-PROMPT_VERSION = "paperdaily-v0.2-provider-2026-08"
+PROMPT_VERSION = "paperdaily-v0.2-provider-nonthinking-2026-08"
 
 
 def paper_key(paper: Paper) -> str:
@@ -125,6 +125,11 @@ def _chat_completions_json(
         "response_format": {"type": "json_object"},
         "max_tokens": 8192,
     }
+    if provider == "deepseek":
+        # V4 defaults to thinking mode. PaperDaily only needs classification and
+        # concise extraction, so explicitly disable reasoning tokens for lower
+        # latency and cost.
+        payload["thinking"] = {"type": "disabled"}
 
     last_error: Exception | None = None
     for _attempt in range(2):
