@@ -45,8 +45,10 @@ PubMed + bioRxiv + medRxiv + arXiv
 - AI ranking 和 summary 分开执行，提高相关性评分稳定性。
 - 已处理文献会缓存，避免重复消耗 API token。
 - 保留来源中的作者信息，并为每篇 AI 分析文献生成 3–5 个关键词和标准化的科学文章类型。
-- 每篇文献显示来源、类型、相关性评分、标题、作者、关键词、短摘要和原文链接。
+- 来源提供期刊名称时会保留；PubMed 文献会在每日卡片直接显示期刊名称。
+- 每篇文献显示来源、类型、相关性评分、标题、期刊、作者、关键词、短摘要和原文链接。
 - 每日页面显示 PubMed / bioRxiv / medRxiv / arXiv 的抓取数量。
+- 每日页面根据当天关键词自动生成快捷筛选按钮，同时保留全文搜索框。
 - 首页每个日期卡片直接显示当天 Top 5 标题。
 - 首页侧边栏提供 Monthly Top 5。
 - API 费用只在首页右上角集中显示。
@@ -55,12 +57,14 @@ PubMed + bioRxiv + medRxiv + arXiv
 - GitHub Actions 会在正式运行前检查 API secret 是否已经配置。
 - 自动部署 GitHub Pages。
 - 网站中的更新时间统一按北京时间（`Asia/Shanghai`）显示。
+- 提供不依赖 GitHub Actions / GitHub Pages 的可下载本地版。
 
 ## 文献元数据增强
 
 PaperDaily 使用“**来源元数据优先，AI 补充和标准化**”的方式，而不是完全依赖 AI 猜测：
 
 - **Authors**：直接保留 PubMed、bioRxiv、medRxiv、arXiv 提供的作者信息。
+- **Journal**：来源提供期刊名称时直接保留；PubMed 的期刊名称会显示在每日文献卡片中。
 - **Keywords**：来源有官方关键词时保留；AI summary 阶段同时为每篇文献生成 3–5 个简洁、具体的英文科研关键词。
 - **Paper type**：来源提供的 publication type 作为重要依据，再标准化为 `Research Article`、`Review`、`Systematic Review`、`Meta-analysis`、`Methods/Resource`、`Clinical Study`、`Clinical Trial`、`Case Report`、`Protocol`、`Commentary/Perspective`、`Editorial` 或 `Other` 等科学内容类型。
 
@@ -89,7 +93,7 @@ PUBMED_EMAIL
 
 当前抓取规模下，这两个不是必须的。
 
-## 本地快速运行
+## 本地开发运行
 
 ```bash
 python -m venv .venv
@@ -110,6 +114,43 @@ python -m http.server 8000 -d site
 ```text
 http://localhost:8000
 ```
+
+## 可下载本地版
+
+PaperDaily 每次发布网页时都会同步生成一个本地版 ZIP：
+
+```text
+https://bryanwang.cn/paperdaily/downloads/PaperDaily-local.zip
+```
+
+这个版本适合不熟悉 GitHub 的用户。正常情况下，只需要修改两个文件：
+
+```text
+config.yaml
+api_token.txt
+```
+
+### Windows
+
+解压后双击：
+
+```text
+START_PAPERDAILY_WINDOWS.bat
+```
+
+第一次运行会自动创建 Python 虚拟环境、安装依赖，并在缺少 token 时创建 `api_token.txt`。把 DeepSeek 或其他兼容 API token 粘贴到第一行并保存，再双击一次即可。
+
+### macOS / Linux
+
+在解压目录中运行：
+
+```bash
+bash START_PAPERDAILY_MAC_LINUX.sh
+```
+
+启动器会先根据 `config.yaml` 抓取和分析最新文献，然后启动本地网页服务器，并自动在浏览器打开同一套 HTML 界面。API token 只保留在 Python 侧，不会被写进 HTML 或 JavaScript。
+
+完整说明见：**[PaperDaily 本地版](docs/LOCAL_VERSION.zh-CN.md)**。
 
 ## 最重要的三个数量配置
 
@@ -181,7 +222,8 @@ Top 20 默认展开
 - 本地 prefilter 的 anchors、weights、penalties 和 boosts；
 - AI provider 和 model；
 - 研究者自己的 `interest_profile`；
-- API token 价格参数。
+- API token 价格参数；
+- 本地版使用的端口和是否启动时自动刷新。
 
 如果想从一个完全通用的配置开始，可以参考：
 
@@ -193,7 +235,7 @@ config.template.yaml
 
 每个日期卡片会显示：
 
-- 当天抓取并去重后的文献总数；
+- 当天抓取并去重后的文献总数，但作为次要信息显示；
 - featured / additional 文献数量；
 - 按北京时间显示的最近一次更新时间；
 - 当天相关性最高的 Top 5 标题。
@@ -209,10 +251,12 @@ API 费用只在首页右上角显示；单个日期卡片和每日子页不再�
 - 当天 unique paper 总数；
 - PubMed、bioRxiv、medRxiv 和 arXiv 各自抓取数量；
 - 按北京时间显示的更新时间；
+- 根据当天常见 keywords 自动生成的快捷筛选按钮；
+- 一个可以搜索标题、期刊、作者、关键词、摘要、来源和类型的搜索框；
 - 按 relevance score 从高到低排序的文献；
 - `site.featured_count` 指定数量的默认展开文献；
 - 其余 AI 分析文献默认折叠；
-- 每篇文献的来源、paper type、relevance score、标题、作者、3–5 个关键词、AI 短摘要和原文链接。
+- 每篇文献的来源、paper type、relevance score、标题、期刊（若有）、作者、3–5 个关键词、AI 短摘要和原文链接。
 
 完整 abstract 只保存在后台 `data/`，不会发送到公开网页，因此页面加载更快。
 
@@ -220,9 +264,9 @@ API 费用只在首页右上角显示；单个日期卡片和每日子页不再�
 
 `.github/workflows/daily.yml` 当前每天在**北京时间 05:30 和 20:30**运行，也支持手动触发。主配置时区为 `Asia/Shanghai`。
 
-`.github/workflows/deploy-pages.yml` 会在文献刷新成功或者网页代码变化后自动部署 GitHub Pages。
+`.github/workflows/deploy-pages.yml` 会在文献刷新成功或者网页代码变化后自动部署 GitHub Pages，同时构建同步的本地版 ZIP。
 
-`.github/workflows/ci.yml` 会在 Pull Request 中编译 Python 并运行单元测试。
+`.github/workflows/ci.yml` 会编译 Python、检查前端 JavaScript 语法、运行单元测试，并验证本地版 ZIP 可以成功生成。
 
 ## Fork 到自己的研究领域
 
