@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import shutil
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -25,6 +24,14 @@ SITE_DATA_DIR = Path("site/data")
 def _write_json(path: Path, payload: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def _write_compact_json(path: Path, payload: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(payload, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
 
 
 def _read_json(path: Path) -> dict:
@@ -54,6 +61,22 @@ def _attach_daily_billing(current_day: str, ai_meta: dict) -> dict:
     return ai_meta
 
 
+def _top_titles(payload: dict, limit: int = 5) -> list[str]:
+    papers = payload.get("papers", []) or []
+    digest_papers = [
+        p for p in papers
+        if (((p.get("extra") or {}).get("ai") or {}).get("digest_pick"))
+    ]
+    # Backward compatibility for archives produced by the earlier Top-15 schema.
+    if not digest_papers:
+        digest_papers = [
+            p for p in papers
+            if (((p.get("extra") or {}).get("ai") or {}).get("top_pick"))
+        ]
+    preview = digest_papers or papers
+    return [str(p.get("title", "")).strip() for p in preview[:limit] if p.get("title")]
+
+
 def _build_archive_manifest() -> dict:
     days: list[dict] = []
     tracked_costs: list[float] = []
@@ -67,19 +90,23 @@ def _build_archive_manifest() -> dict:
         day_cost = float(billing.get("daily_cost_cny", 0.0) or 0.0)
         if has_billing:
             tracked_costs.append(day_cost)
+        digest_count = int(ai.get("digest_count", 0) or 0)
+        if not digest_count:
+            digest_count = min(int(payload.get("count", 0) or 0), 30)
         days.append({
             "date": payload.get("date") or path.stem,
             "generated_at": payload.get("generated_at", ""),
-            "count": payload.get("count", 0),
+            "count": digest_count,
+            "candidate_count": payload.get("count", 0),
             "raw_count": payload.get("raw_count", payload.get("count", 0)),
-            "source_counts": payload.get("source_counts", {}),
+            "top_titles": _top_titles(payload),
             "errors": payload.get("errors", {}),
             "window": payload.get("window", {}),
             "ai": {
                 "enabled": ai.get("enabled", False),
                 "provider": ai.get("provider", ""),
                 "model": ai.get("model", ""),
-                "top_n": ai.get("top_n", 0),
+                "digest_count": digest_count,
                 "ranked_count": ai.get("ranked_count", 0),
                 "status": ai.get("status", ""),
                 "daily_cost_cny": day_cost if has_billing else None,
@@ -104,6 +131,51 @@ def _build_archive_manifest() -> dict:
     }
 
 
+def _build_site_digest(payload: dict, papers: list[Paper]) -> dict:
+    selected: list[dict] = []
+    for paper in papers:
+        ai = (paper.extra.get("ai") or {}) if paper.extra else {}
+        if payload.get("ai", {}).get("enabled") and not ai.get("digest_pick"):
+            continue
+        selected.append({
+            "title": paper.title,
+            "url": paper.url,
+            "score": int(ai.get("score", 0)) if ai else None,
+            "summary": str(ai.get("summary", "")) if ai else "",
+        })
+
+    # Raw-feed fallback if AI is temporarily unavailable. Keep the page small.
+    if not selected:
+        selected = [
+            {"title": p.title, "url": p.url, "score": None, "summary": ""}
+            for p in papers[:30]
+        ]
+
+    ai = payload.get("ai", {}) or {}
+    billing = ai.get("billing", {}) or {}
+    site_ai = {
+        "enabled": ai.get("enabled", False),
+        "provider": ai.get("provider", ""),
+        "model": ai.get("model", ""),
+        "status": ai.get("status", ""),
+        "ranked_count": ai.get("ranked_count", 0),
+        "digest_count": len(selected),
+        "errors": ai.get("errors", []),
+        "billing": billing,
+    }
+    return {
+        "date": payload.get("date"),
+        "generated_at": payload.get("generated_at"),
+        "window": payload.get("window", {}),
+        "raw_count": payload.get("raw_count", 0),
+        "candidate_count": payload.get("count", 0),
+        "count": len(selected),
+        "errors": payload.get("errors", {}),
+        "ai": site_ai,
+        "papers": selected,
+    }
+
+
 def run(days: int | None = None) -> dict:
     config = load_config()
     timezone_name = str(config.get("timezone", "UTC"))
@@ -114,7 +186,6 @@ def run(days: int | None = None) -> dict:
 
     fetched: list[Paper] = []
     errors: dict[str, str] = {}
-
     sources = [
         ("pubmed", lambda: fetch_pubmed(config, start_date, end_date, limit)),
         ("biorxiv", lambda: fetch_biorxiv(config, start_date, end_date, limit)),
@@ -127,7 +198,7 @@ def run(days: int | None = None) -> dict:
             items = loader()
             fetched.extend(items)
             print(f"{name}: {len(items)} records")
-        except Exception as exc:  # keep other sources alive if one provider is down
+        except Exception as exc:
             errors[name] = f"{type(exc).__name__}: {exc}"
             print(f"{name}: ERROR {errors[name]}")
 
@@ -163,15 +234,19 @@ def run(days: int | None = None) -> dict:
         "papers": [p.to_dict() for p in unique],
     }
 
+    # Keep the complete research record in /data for debugging and future reranking.
     DATA_DIR.mkdir(exist_ok=True)
     archive_path = DATA_DIR / f"{current_day}.json"
     latest_path = DATA_DIR / "latest.json"
     _write_json(archive_path, payload)
     _write_json(latest_path, payload)
 
+    # Publish a much smaller web payload: title + AI summary + link only.
+    site_payload = _build_site_digest(payload, unique)
     SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(latest_path, SITE_DATA_DIR / "latest.json")
-    _write_json(SITE_DATA_DIR / "archive.json", _build_archive_manifest())
+    _write_compact_json(SITE_DATA_DIR / "latest.json", site_payload)
+    _write_compact_json(SITE_DATA_DIR / "days" / f"{current_day}.json", site_payload)
+    _write_compact_json(SITE_DATA_DIR / "archive.json", _build_archive_manifest())
     return payload
 
 
@@ -182,6 +257,7 @@ def main() -> None:
     result = run(args.days)
     print(f"raw unique: {result['raw_count']}")
     print(f"filtered candidates: {result['count']}")
+    print(f"digest papers: {result.get('ai', {}).get('digest_count', 0)}")
     print("AI:", result.get("ai", {}).get("status", "unknown"))
     billing = (result.get("ai", {}).get("billing") or {})
     if billing:
