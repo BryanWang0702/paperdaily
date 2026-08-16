@@ -33,3 +33,5 @@ window.PaperDailyTheme = {
     return this.settings;
   }
 };
+
+window.PaperDailyTheme.apply();
