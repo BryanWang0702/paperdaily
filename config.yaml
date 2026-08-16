@@ -97,12 +97,11 @@ ai:
   rank_batch_size: 20
   summary_batch_size: 5
 
-  # Daily digest is dynamic: normally 25-30 papers.
-  # Papers above the score threshold are included up to digest_max;
-  # if fewer qualify, the highest-ranked papers are backfilled to digest_min.
-  digest_min: 25
-  digest_max: 30
-  digest_score_threshold: 45
+  # All 40 prefiltered papers are ranked and summarized. The public page shows
+  # the highest-ranked 25 first and keeps ranks 26-40 in a collapsed section.
+  digest_min: 40
+  digest_max: 40
+  digest_score_threshold: 0
 
   # DeepSeek V4 Flash prices in CNY per 1M tokens.
   pricing_cny_per_million:
@@ -117,6 +116,9 @@ ai:
 
     Give high scores to papers that directly address these questions, provide a method or dataset that could transfer to them, or challenge a basic assumption about sleep regulation. Animal neuroscience and mechanistic or computational work are generally more relevant than broad human clinical or epidemiological sleep studies unless the latter provide a particularly useful concept or method.
 
+    Use English for all generated topic labels, relevance reasons, and scientific descriptions.
+
 site:
   title: PaperDaily
   subtitle: Daily research radar
+  featured_count: 25
