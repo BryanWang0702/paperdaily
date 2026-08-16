@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .ai_rank import apply_ai_ranking
+from .billing import add_usage
 from .deduplicate import deduplicate
 from .fetch_arxiv import fetch_arxiv
 from .fetch_biorxiv import fetch_biorxiv, fetch_medrxiv
@@ -26,14 +27,46 @@ def _write_json(path: Path, payload: dict) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def _read_json(path: Path) -> dict:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _attach_daily_billing(current_day: str, ai_meta: dict) -> dict:
+    previous = _read_json(DATA_DIR / f"{current_day}.json")
+    previous_billing = ((previous.get("ai") or {}).get("billing") or {})
+
+    run_usage = ai_meta.get("usage", {}) or {}
+    run_cost = float(ai_meta.get("run_cost_cny", 0.0) or 0.0)
+    previous_usage = previous_billing.get("daily_usage", {}) or {}
+    previous_cost = float(previous_billing.get("daily_cost_cny", 0.0) or 0.0)
+
+    ai_meta["billing"] = {
+        "currency": "CNY",
+        "run_usage": run_usage,
+        "run_cost_cny": round(run_cost, 6),
+        "daily_usage": add_usage(previous_usage, run_usage),
+        "daily_cost_cny": round(previous_cost + run_cost, 6),
+        "pricing_cny_per_million": ai_meta.get("pricing_cny_per_million", {}),
+    }
+    return ai_meta
+
+
 def _build_archive_manifest() -> dict:
     days: list[dict] = []
+    tracked_costs: list[float] = []
     for path in sorted(DATA_DIR.glob("20??-??-??.json"), reverse=True):
-        try:
-            payload = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
+        payload = _read_json(path)
+        if not payload:
             continue
         ai = payload.get("ai", {}) or {}
+        billing = ai.get("billing", {}) or {}
+        has_billing = bool(billing)
+        day_cost = float(billing.get("daily_cost_cny", 0.0) or 0.0)
+        if has_billing:
+            tracked_costs.append(day_cost)
         days.append({
             "date": payload.get("date") or path.stem,
             "generated_at": payload.get("generated_at", ""),
@@ -49,11 +82,25 @@ def _build_archive_manifest() -> dict:
                 "top_n": ai.get("top_n", 0),
                 "ranked_count": ai.get("ranked_count", 0),
                 "status": ai.get("status", ""),
+                "daily_cost_cny": day_cost if has_billing else None,
+                "daily_usage": billing.get("daily_usage", {}) if has_billing else {},
             },
         })
+
+    tracked_days = len(tracked_costs)
+    total_cost = round(sum(tracked_costs), 6)
+    average_daily = total_cost / tracked_days if tracked_days else 0.0
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "days": days,
+        "billing": {
+            "currency": "CNY",
+            "tracked_days": tracked_days,
+            "total_cost_cny": total_cost,
+            "average_daily_cost_cny": round(average_daily, 6),
+            "monthly_estimate_cny": round(average_daily * 30, 2),
+            "annual_estimate_cny": round(average_daily * 365, 2),
+        },
     }
 
 
@@ -91,7 +138,7 @@ def run(days: int | None = None) -> dict:
     unique = prefilter_papers(raw_unique, config)
     print(f"prefilter: {len(raw_unique)} -> {len(unique)} candidates")
 
-    ai_meta = apply_ai_ranking(unique, config)
+    ai_meta = _attach_daily_billing(current_day, apply_ai_ranking(unique, config))
     if ai_meta.get("ranked_count"):
         unique.sort(
             key=lambda p: (
@@ -136,6 +183,14 @@ def main() -> None:
     print(f"raw unique: {result['raw_count']}")
     print(f"filtered candidates: {result['count']}")
     print("AI:", result.get("ai", {}).get("status", "unknown"))
+    billing = (result.get("ai", {}).get("billing") or {})
+    if billing:
+        print(
+            "AI billing:",
+            f"run ¥{billing.get('run_cost_cny', 0):.6f}",
+            f"today ¥{billing.get('daily_cost_cny', 0):.6f}",
+            billing.get("run_usage", {}),
+        )
     if result["errors"]:
         print("source errors:", result["errors"])
 

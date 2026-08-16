@@ -8,12 +8,14 @@ from typing import Any, Iterable
 
 import requests
 
+from .billing import add_usage, calculate_cost_cny, empty_usage, pricing_snapshot
 from .models import Paper
 
 
 OPENAI_RESPONSES_API = "https://api.openai.com/v1/responses"
 CACHE_PATH = Path("data/ai_cache.json")
 PROMPT_VERSION = "paperdaily-v0.2-provider-nonthinking-2026-08"
+_RUN_USAGE: dict[str, int] = empty_usage()
 
 
 def paper_key(paper: Paper) -> str:
@@ -34,6 +36,29 @@ def _api_key_env(ai_config: dict) -> str:
     if explicit:
         return explicit
     return "OPENAI_API_KEY" if _provider_name(ai_config) == "openai" else "DEEPSEEK_API_KEY"
+
+
+def _reset_run_usage() -> None:
+    global _RUN_USAGE
+    _RUN_USAGE = empty_usage()
+
+
+def _record_usage(raw_usage: dict[str, Any] | None) -> None:
+    global _RUN_USAGE
+    if not raw_usage:
+        return
+    request_usage = dict(raw_usage)
+    request_usage["requests"] = 1
+    _RUN_USAGE = add_usage(_RUN_USAGE, request_usage)
+
+
+def _finish_metadata(metadata: dict[str, Any], ai_config: dict) -> dict[str, Any]:
+    usage = dict(_RUN_USAGE)
+    pricing = pricing_snapshot(ai_config)
+    metadata["usage"] = usage
+    metadata["pricing_cny_per_million"] = pricing
+    metadata["run_cost_cny"] = calculate_cost_cny(usage, pricing)
+    return metadata
 
 
 def _profile_hash(ai_config: dict) -> str:
@@ -99,7 +124,8 @@ def _openai_responses_json(api_key: str, model: str, prompt: str, schema_name: s
     if not response.ok:
         detail = response.text[:1200]
         raise RuntimeError(f"OpenAI API HTTP {response.status_code}: {detail}")
-    return json.loads(_extract_output_text(response.json()))
+    body = response.json()
+    return json.loads(_extract_output_text(body))
 
 
 def _chat_completions_json(
@@ -147,6 +173,7 @@ def _chat_completions_json(
                 detail = response.text[:1200]
                 raise RuntimeError(f"{provider} API HTTP {response.status_code}: {detail}")
             body = response.json()
+            _record_usage(body.get("usage"))
             content = body.get("choices", [{}])[0].get("message", {}).get("content", "")
             if not content or not str(content).strip():
                 raise ValueError(f"{provider} returned empty JSON content")
@@ -304,6 +331,7 @@ PAPERS:
 
 
 def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
+    _reset_run_usage()
     ai_config = config.get("ai", {}) or {}
     requested = bool(ai_config.get("enabled", True))
     provider = _provider_name(ai_config)
@@ -329,13 +357,13 @@ def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
     }
     if not requested:
         metadata["status"] = "disabled_in_config"
-        return metadata
+        return _finish_metadata(metadata, ai_config)
     if not api_key:
         metadata["status"] = "missing_api_key"
-        return metadata
+        return _finish_metadata(metadata, ai_config)
     if not profile:
         metadata["status"] = "missing_interest_profile"
-        return metadata
+        return _finish_metadata(metadata, ai_config)
 
     profile_hash = _profile_hash(ai_config)
     cache = _load_cache(profile_hash)
@@ -397,4 +425,4 @@ def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
     metadata["enabled"] = bool(scored)
     metadata["status"] = "active" if scored else "ai_unavailable"
     metadata["profile_hash"] = profile_hash
-    return metadata
+    return _finish_metadata(metadata, ai_config)
