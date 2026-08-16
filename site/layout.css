@@ -1,0 +1,112 @@
+.shell { width: min(1280px, calc(100% - 32px)); }
+
+.header-tools {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  min-width: 210px;
+}
+
+.theme-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.theme-control label {
+  font-weight: 750;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.theme-control select {
+  min-width: 118px;
+  padding: 7px 28px 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.page-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.page-topbar .back-link { margin-bottom: 0; }
+
+.home-layout {
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 24px;
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.day-card {
+  display: grid;
+  grid-template-columns: minmax(190px, 230px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  padding: 20px 22px;
+}
+
+.day-card-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.day-card-preview {
+  min-width: 0;
+  padding-left: 22px;
+  border-left: 1px solid var(--border);
+}
+
+.day-card-preview-label {
+  margin-bottom: 9px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.day-count-row { margin-top: 14px; }
+.day-count { font-size: 21px; }
+.day-presets { margin-top: 8px; }
+.open-day { margin-top: auto; padding-top: 18px; }
+.top-preview { margin: 0; gap: 7px; }
+.top-preview li { font-size: 12.5px; line-height: 1.35; }
+
+.rankings-sidebar {
+  margin-top: 40px;
+  top: 20px;
+}
+
+.ranking-panel { padding: 16px; }
+.ranking-title { font-size: 18px; }
+.ranking-item > a { font-size: 12.5px; }
+
+@media (max-width: 960px) {
+  .home-layout { grid-template-columns: 1fr; }
+  .rankings-sidebar { position: static; margin-top: 0; }
+}
+
+@media (max-width: 720px) {
+  .header-tools { align-items: flex-start; min-width: 0; }
+  .page-topbar { align-items: flex-start; }
+  .day-card { grid-template-columns: 1fr; gap: 16px; }
+  .day-card-preview { border-left: 0; border-top: 1px solid var(--border); padding: 16px 0 0; }
+}

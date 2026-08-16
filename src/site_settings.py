@@ -24,7 +24,7 @@ def build_site_settings(config: dict[str, Any]) -> dict[str, Any]:
             "custom": custom,
         },
         "billing": {
-            "show": bool(site.get("show_billing", True)),
+            "show": bool(site.get("show_billing", False)),
         },
     }
 
