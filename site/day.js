@@ -1,4 +1,5 @@
 const EN_LOCALE = 'en-US';
+const DISPLAY_TIME_ZONE = 'Asia/Shanghai';
 const SOURCE_ORDER = ['pubmed', 'biorxiv', 'medrxiv', 'arxiv'];
 const state = { data: null, query: '' };
 
@@ -12,25 +13,20 @@ function sourceName(value = '') {
 }
 
 function prettyDate(value) {
-  const date = new Date(`${value}T00:00:00Z`);
+  const date = new Date(`${value}T00:00:00+08:00`);
   if (Number.isNaN(date.getTime())) return value;
   return new Intl.DateTimeFormat(EN_LOCALE, {
-    year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', timeZone: 'UTC'
+    year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', timeZone: DISPLAY_TIME_ZONE
   }).format(date);
 }
 
 function updatedTime(value) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return '';
-  return new Intl.DateTimeFormat(EN_LOCALE, {
-    year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+  const formatted = new Intl.DateTimeFormat(EN_LOCALE, {
+    year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: DISPLAY_TIME_ZONE
   }).format(date);
-}
-
-function money(value) {
-  const number = Number(value || 0);
-  if (number < 0.01) return `¥${number.toFixed(4)}`;
-  return `¥${number.toFixed(2)}`;
+  return `${formatted} Beijing time`;
 }
 
 function paperCard(p, rank) {
@@ -134,14 +130,6 @@ async function boot() {
     renderSourceSummary();
 
     const ai = d.ai || {};
-    const billing = ai.billing || {};
-    if (ai.enabled) {
-      const cost = billing.daily_cost_cny !== undefined ? ` · ${money(billing.daily_cost_cny)} today` : '';
-      document.querySelector('#aiStatus').innerHTML = `<div class="ai-banner"><strong>Personalized daily digest</strong><span>${d.featured_count ?? 0} highlighted · ${d.additional_count ?? 0} more · ${esc(ai.model || '')}${cost}</span></div>`;
-    } else if (ai.status) {
-      document.querySelector('#aiStatus').innerHTML = `<div class="ai-banner muted"><strong>Compact feed</strong><span>AI status: ${esc(ai.status)}</span></div>`;
-    }
-
     const errors = Object.entries(d.errors || {});
     const aiErrors = (ai.errors || []).length;
     document.querySelector('#status').innerHTML = errors.length || aiErrors
