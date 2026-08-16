@@ -1,6 +1,12 @@
 import unittest
 
-from src.runtime_pipeline import _planned_runs_per_day, _public_billing, _reference_run_cost
+from src.runtime_pipeline import (
+    _expected_requests_per_full_run,
+    _historical_reference_cost,
+    _planned_runs_per_day,
+    _public_billing,
+    _reference_run_cost,
+)
 
 
 class TestRuntimeBilling(unittest.TestCase):
@@ -12,13 +18,27 @@ class TestRuntimeBilling(unittest.TestCase):
         ]
         self.assertAlmostEqual(_reference_run_cost(runs), 0.04)
 
-    def test_reference_falls_back_to_api_active_runs(self):
+    def test_development_runs_do_not_drive_reference_cost(self):
         runs = [
-            {"kind": "development", "cost_cny": 0.02, "usage": {"requests": 2}},
-            {"kind": "development", "cost_cny": 0.04, "usage": {"requests": 4}},
-            {"kind": "development", "cost_cny": 0.0, "usage": {"requests": 0}},
+            {"kind": "development", "cost_cny": 2.0, "usage": {"requests": 10}},
+            {"kind": "development", "cost_cny": 3.0, "usage": {"requests": 10}},
         ]
-        self.assertAlmostEqual(_reference_run_cost(runs), 0.03)
+        self.assertAlmostEqual(_reference_run_cost(runs, fallback=0.04), 0.04)
+
+    def test_historical_bootstrap_uses_request_volume_and_batch_sizes(self):
+        config = {
+            "ai": {
+                "max_analyzed": 40,
+                "rank_batch_size": 20,
+                "summary_batch_size": 5,
+            }
+        }
+        self.assertEqual(_expected_requests_per_full_run(config), 10)
+        ledger = {
+            "total_cost_cny": 0.220957,
+            "total_usage": {"requests": 50},
+        }
+        self.assertAlmostEqual(_historical_reference_cost(ledger, config), 0.220957 / 5)
 
     def test_planned_runs_follow_refresh_slots(self):
         config = {"local": {"refresh_times": ["05:30", "20:30"]}}
