@@ -1,6 +1,6 @@
 {
   "date": "2026-08-16",
-  "generated_at": "2026-08-16T13:54:48.246849+00:00",
+  "generated_at": "2026-08-16T14:12:04.781737+00:00",
   "window": {
     "start": "2026-08-14",
     "end": "2026-08-16"
@@ -17,6 +17,9 @@
     "biorxiv": 56,
     "medrxiv": 1
   },
+  "prefiltered_count": 40,
+  "analyzed_count": 40,
+  "configured_max_analyzed": 40,
   "count": 40,
   "featured_count": 25,
   "source_counts": {
@@ -31,24 +34,24 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 40,
+    "newly_ranked": 0,
     "newly_summarized": 40,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
     "digest_score_threshold": 0,
     "rank_prompt_version": "paperdaily-ranking-v1-2026-08",
-    "summary_prompt_version": "paperdaily-summary-v1-2026-08",
+    "summary_prompt_version": "paperdaily-summary-v2-2026-08",
     "errors": [],
     "status": "active",
     "profile_hash": "e9f055174df5ed5ac679",
     "usage": {
-      "requests": 10,
-      "prompt_tokens": 32845,
-      "prompt_cache_hit_tokens": 1152,
-      "prompt_cache_miss_tokens": 31693,
-      "completion_tokens": 5164,
-      "total_tokens": 38009
+      "requests": 8,
+      "prompt_tokens": 23673,
+      "prompt_cache_hit_tokens": 2304,
+      "prompt_cache_miss_tokens": 21369,
+      "completion_tokens": 4955,
+      "total_tokens": 28628
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -57,27 +60,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.042044,
+    "run_cost_cny": 0.031325,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 10,
-        "prompt_tokens": 32845,
-        "prompt_cache_hit_tokens": 1152,
-        "prompt_cache_miss_tokens": 31693,
-        "completion_tokens": 5164,
-        "total_tokens": 38009
+        "requests": 8,
+        "prompt_tokens": 23673,
+        "prompt_cache_hit_tokens": 2304,
+        "prompt_cache_miss_tokens": 21369,
+        "completion_tokens": 4955,
+        "total_tokens": 28628
       },
-      "run_cost_cny": 0.042044,
+      "run_cost_cny": 0.031325,
       "daily_usage": {
-        "requests": 32,
-        "prompt_tokens": 122335,
-        "prompt_cache_hit_tokens": 14720,
-        "prompt_cache_miss_tokens": 107615,
-        "completion_tokens": 24355,
-        "total_tokens": 146690
+        "requests": 40,
+        "prompt_tokens": 146008,
+        "prompt_cache_hit_tokens": 17024,
+        "prompt_cache_miss_tokens": 128984,
+        "completion_tokens": 29310,
+        "total_tokens": 175318
       },
-      "daily_cost_cny": 0.156619,
+      "daily_cost_cny": 0.187944,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -85,7 +88,9 @@
         "input_cache_miss": 1.0,
         "output": 2.0
       }
-    }
+    },
+    "configured_max_analyzed": 40,
+    "analyzed_count": 40
   },
   "papers": [
     {
@@ -111,13 +116,31 @@
       "doi": "10.1093/sleepadvances/zpag068",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42602346/",
       "categories": [],
+      "keywords": [
+        "EEG",
+        "hypnodensity",
+        "intermediate state",
+        "machine learning",
+        "transition"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 81,
         "ai": {
           "score": 95,
           "topic": "Transition states in mouse vigilance",
           "reason": "Directly addresses sleep staging in mice and intermediate states, providing a method and insights into transitions, highly relevant to animal EEG sleep staging.",
-          "summary": "This study characterized the temporal dynamics of sleep-wake transitions in mice using EEG/EMG recordings and expert annotations, finding that NREMS-to-REMS transitions are longest and REMS-to-NREMS transitions are most abrupt, and developed SVM classifiers that predict transition midpoints with moderate inter-rater reliability, providing a reproducible framework for quantifying transitions.",
+          "summary": "This study characterized vigilance-state transitions in mice using EEG/EMG and validated SVM classifiers trained on stable-state features to predict transition midpoints, revealing distinct transition dynamics such as longer NREMS-to-REMS transitions and abrupt REMS-to-NREMS transitions.",
+          "keywords": [
+            "vigilance states",
+            "sleep-wake transition",
+            "EEG/EMG",
+            "support vector machine",
+            "mouse"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -155,6 +178,10 @@
       "categories": [
         "neuroscience"
       ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
       "extra": {
         "version": "1",
         "published": "NA",
@@ -163,7 +190,15 @@
           "score": 85,
           "topic": "CSF oscillations and sleep pressure",
           "reason": "Directly examines interactions of time awake and diurnal time on brain physiology, relevant to circadian-homeostatic interactions and sleep pressure, though in humans.",
-          "summary": "Using a 34-hour sleep deprivation study with fMRI/EEG/NIRS, this work shows that CSF low-frequency oscillations at vasomotor frequencies increase with time awake and show diurnal fluctuations peaking in early morning, and are associated with vigilance and reticular activating system activity but not plasma norepinephrine or EEG slow waves, indicating independent modulation by sleep pressure and diurnal time.",
+          "summary": "In a 34-hour sleep deprivation study with fMRI/EEG and NIRS, CSF low-frequency oscillations increased with time awake and exhibited diurnal fluctuations, peaking in early morning, and were associated with vigilance and reticular activating system activity but not plasma norepinephrine.",
+          "keywords": [
+            "CSF oscillations",
+            "vasomotion",
+            "sleep deprivation",
+            "diurnal rhythm",
+            "reticular activating system"
+          ],
+          "paper_type": "Preprint",
           "digest_pick": true
         }
       }
@@ -195,6 +230,10 @@
       "categories": [
         "neuroscience"
       ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
       "extra": {
         "version": "1",
         "published": "NA",
@@ -203,7 +242,15 @@
           "score": 70,
           "topic": "REM sleep and motor control in parkinsonism",
           "reason": "Relevant to REM sleep mechanisms and state-dependent dynamics; animal model with EEG, but focus on Parkinson's disease rather than core sleep regulation.",
-          "summary": "In non-human primates, MPTP-induced parkinsonism enhanced beta oscillations and impaired movement-related neural dynamics during wake and NREM sleep, but these were attenuated during REM sleep with beta suppression preceding REM onset, demonstrating that parkinsonian network dysfunction is dynamically gated by brain state and revealing a latent capacity for rapid movement during REM.",
+          "summary": "In non-human primates, MPTP-induced parkinsonism enhanced beta oscillations and impaired movement-related neural dynamics during wake and NREM sleep, but these were attenuated during REM sleep, with beta suppression preceding REM onset, suggesting brain-state gating of parkinsonian dysfunction.",
+          "keywords": [
+            "REM sleep",
+            "beta oscillations",
+            "Parkinson's disease",
+            "basal ganglia",
+            "non-human primate"
+          ],
+          "paper_type": "Preprint",
           "digest_pick": true
         }
       }
@@ -223,13 +270,33 @@
       "doi": "10.1007/s12021-026-09810-4",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42603228/",
       "categories": [],
+      "keywords": [
+        "Automatic detection",
+        "Dogs",
+        "EEG",
+        "Method validation",
+        "Polysomnography",
+        "Sleep spindles",
+        "Visual inspection"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 45,
         "ai": {
           "score": 70,
           "topic": "Validation of sleep spindle detection",
           "reason": "Directly relevant to sleep spindle detection methods and validation, applicable to animal EEG; good methodological relevance.",
-          "summary": "This meta-analysis validated a dog sleep spindle detection algorithm by checking automatically detected spindles against three face validity criteria from human EEG, finding that most data sets met criteria for event shortness, midline distribution, and amplitude-negative chirp association, supporting the dog as a model for sleep spindle research and the quality of the detection method.",
+          "summary": "This meta-analysis evaluated automatic sleep spindle detection in dogs against three face validity criteria from human EEG, finding that most datasets met the criteria, supporting the dog as a model for sleep spindle research.",
+          "keywords": [
+            "sleep spindles",
+            "dog",
+            "EEG",
+            "automatic detection",
+            "face validity"
+          ],
+          "paper_type": "Meta-analysis",
           "digest_pick": true
         }
       }
@@ -249,13 +316,32 @@
       "doi": "10.1016/j.neuroscience.2026.08.024",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42603613/",
       "categories": [],
+      "keywords": [
+        "Autism spectrum disorder",
+        "Electroencephalography",
+        "Ensemble learning",
+        "Horizontal visibility graph",
+        "Network topology",
+        "Time-frequency analysis"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 20,
         "ai": {
           "score": 65,
           "topic": "EEG classification with visibility graphs",
           "reason": "Method for automated EEG classification using time-frequency and graph features; transferable to sleep staging, though for ASD.",
-          "summary": "This study proposed a dual-domain framework for automated ASD detection using EEG, combining time-frequency decompositions (STFT, DWT, WVD, SLT) with Horizontal Visibility Graph features and machine learning classifiers, with the DWT-HVG and Soft Voting Ensemble achieving 93.54% accuracy and 98.17% AUC, outperforming other methods and providing an efficient objective screening tool.",
+          "summary": "This study proposed an EEG-based ASD detection framework combining time-frequency analysis and Horizontal Visibility Graphs, achieving 93.54% accuracy with DWT-HVG and Soft Voting Ensemble, outperforming other methods.",
+          "keywords": [
+            "autism spectrum disorder",
+            "EEG",
+            "horizontal visibility graph",
+            "time-frequency analysis",
+            "ensemble learning"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -287,13 +373,25 @@
       "doi": "10.1038/s41746-026-02946-2",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42601395/",
       "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 88,
         "ai": {
           "score": 65,
           "topic": "Automated sleep staging in PD",
           "reason": "Provides a method for automated sleep staging that could transfer to animal EEG, but focused on human disease and not core questions.",
-          "summary": "This study adapted a deep neural network (U-Sleep) for automated sleep staging in Parkinson's disease and isolated REM sleep behavior disorder, achieving human-level agreement after finetuning on multicenter datasets and improving REM detection precision with confidence thresholds.",
+          "summary": "This study adapted and finetuned the U-Sleep deep neural network for automated sleep staging in Parkinson's disease and isolated REM sleep behavior disorder, achieving human-level agreement (κ=0.64) on a clinical hold-out. Confidence-based thresholds improved REM detection precision from 85% to 95.6%, enabling scalable and standardized PSG analysis.",
+          "keywords": [
+            "sleep staging",
+            "deep neural network",
+            "Parkinson's disease",
+            "REM sleep behavior disorder",
+            "polysomnography"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -318,13 +416,31 @@
       "doi": "10.1186/s13634-026-01330-2",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42598465/",
       "categories": [],
+      "keywords": [
+        "Automated EEG analysis",
+        "Computational neurology",
+        "Computer-aided diagnosis",
+        "Convolutional neural networks",
+        "Deep learning"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 26,
         "ai": {
           "score": 60,
           "topic": "Lightweight EEG event detection",
           "reason": "Provides a fast, lightweight method for EEG event classification that could transfer to animal EEG sleep staging; useful as a methodological tool.",
-          "summary": "The authors propose LEEDNet, a lightweight convolutional network for EEG event detection, which outperformed state-of-the-art baselines on the NMT-Events dataset with only 0.25M parameters, showing that raw EEG input is sufficient and more efficient than handcrafted features.",
+          "summary": "The paper presents LEEDNet, a lightweight convolutional network for EEG event detection, achieving 81.2% accuracy and 77.5% macro-F1 on the NMT-Events dataset with only 0.25M parameters. Raw EEG input performed best compared to FFT and wavelet features, and a 2-second decision window was optimal.",
+          "keywords": [
+            "EEG",
+            "event detection",
+            "lightweight network",
+            "convolutional neural network",
+            "computational efficiency"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -349,13 +465,31 @@
       "doi": "10.1016/j.psj.2026.107549",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42603402/",
       "categories": [],
+      "keywords": [
+        "Bile acids",
+        "Chicken",
+        "Circadian rhythm",
+        "Glucocorticoids",
+        "Liver"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 21,
         "ai": {
           "score": 55,
           "topic": "Chronic stress and circadian liver clock",
           "reason": "Investigates circadian disruption and clock genes in chickens; relevant to circadian-homeostatic interactions though not EEG-based.",
-          "summary": "In chickens, chronic corticosterone exposure disrupted hepatic circadian clock genes and bile acid homeostasis, altering rhythms, reducing total bile acids at ZT18, and increasing gallbladder bile acids at ZT22, with in vitro evidence that glucocorticoids enhance MRP2-mediated bile acid efflux.",
+          "summary": "This study in chickens found that chronic corticosterone exposure disrupted hepatic circadian clock genes and bile acid metabolism, altering diurnal rhythms and phase relationships. Glucocorticoids also enhanced MRP2-mediated bile acid efflux in vitro, linking stress to enterohepatic bile acid remodeling.",
+          "keywords": [
+            "corticosterone",
+            "bile acids",
+            "circadian rhythm",
+            "chicken",
+            "liver"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -378,13 +512,31 @@
       "doi": "10.3389/fnsys.2026.1905962",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42602053/",
       "categories": [],
+      "keywords": [
+        "brain heart interactions",
+        "controlled breathing",
+        "non-linear dynamics",
+        "recurrence quantification analysis",
+        "respiratory modulation"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 26,
         "ai": {
           "score": 50,
           "topic": "Respiratory-phase modulation of EEG dynamics",
           "reason": "Explores brain-heart coupling and EEG spectral dynamics during breathing; adjacent to spectral dynamics but not directly sleep-related.",
-          "summary": "In healthy subjects, respiratory phase modulated brain-heart dynamics: inhale-hold increased gamma power, recurrence rate, and heart rate, while exhale-hold showed opposite effects, suggesting phase-dependent shifts between more stable and more variable neural activity states.",
+          "summary": "This study in 15 healthy subjects showed that inhale-hold periods during controlled breathing increased gamma band power, heart rate, and recurrence rate, while exhale-hold decreased these measures. The findings suggest respiratory phase modulates brain-heart dynamics, potentially reflecting distinct autonomic states.",
+          "keywords": [
+            "respiratory phase",
+            "brain-heart interaction",
+            "recurrence quantification analysis",
+            "EEG",
+            "heart rate"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -404,13 +556,25 @@
       "doi": "10.1016/j.ynirp.2026.100394",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42602456/",
       "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 20,
         "ai": {
           "score": 50,
           "topic": "DTI-ALPS glymphatic marker review",
           "reason": "Reviews a marker of glymphatic function relevant to sleep-wake and clearance; methodology could inform sleep studies.",
-          "summary": "This review of 393 DTI-ALPS studies summarizes its methodology, interpretation, and applications, concluding that DTI-ALPS is a sensitive but non-specific marker of white matter damage and neuroinflammation, with high reproducibility and translational potential for large-scale screening.",
+          "summary": "This review summarizes the DTI-ALPS technique as a non-invasive MRI marker of glymphatic function, finding 393 articles with applications in neurodegenerative and other disorders. Despite methodological variations, DTI-ALPS is a sensitive but non-specific marker of white matter microstructural damage and neuroinflammation.",
+          "keywords": [
+            "DTI-ALPS",
+            "glymphatic system",
+            "MRI",
+            "perivascular space",
+            "white matter"
+          ],
+          "paper_type": "Review",
           "digest_pick": true
         }
       }
@@ -432,13 +596,31 @@
       "doi": "10.1016/j.cmpb.2026.109582",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42600438/",
       "categories": [],
+      "keywords": [
+        "EEG",
+        "Prediction-oriented seizure state classification",
+        "SEEG",
+        "State space model",
+        "Time–frequency analysis"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 22,
         "ai": {
           "score": 45,
           "topic": "State space model for seizure classification",
           "reason": "Advanced deep learning for EEG time-frequency classification; method may be transferable to sleep staging but focused on epilepsy.",
-          "summary": "The paper introduces Epi-Spec2State, a convolutional state space model using spectrogram image sequences for seizure state classification from EEG, achieving 96.40-96.60% accuracy and 98.20-98.30% specificity on a private SEEG dataset and outperforming nine state-of-the-art methods on public datasets.",
+          "summary": "This paper presents Epi-Spec2State, a convolutional state space model that processes EEG spectrogram image sequences for prediction-oriented seizure state classification. It achieved 96.40%-96.60% accuracy and 98.20%-98.30% specificity on a private SEEG dataset, outperforming nine state-of-the-art methods on public datasets.",
+          "keywords": [
+            "EEG",
+            "seizure classification",
+            "state space model",
+            "stereo-electroencephalography",
+            "time-frequency analysis"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -463,13 +645,32 @@
       "doi": "10.3389/fnins.2026.1903252",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42602010/",
       "categories": [],
+      "keywords": [
+        "attention mechanism",
+        "channel selection",
+        "electroencephalogram (EEG)",
+        "fatigue detection",
+        "interpretable feature selection",
+        "lightweight model"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 49,
         "ai": {
           "score": 45,
           "topic": "EEG fatigue detection framework",
           "reason": "Relevant to EEG signal processing and features, but focused on fatigue detection in humans, not sleep staging or regulation.",
-          "summary": "The study proposes the AXELLSTM framework for EEG-based cross-subject fatigue detection, integrating interpretable feature selection and an EfficientLSTM model, achieving a Macro-F1 of 0.7143 with a small model footprint, and identifying stable fatigue-related features and channels.",
+          "summary": "This paper introduces AXELLSTM, a cross-subject EEG-based fatigue detection framework with interpretable feature selection and efficient temporal modeling. It achieved 0.7454 accuracy and 0.7143 Macro-F1 under leave-one-subject-out validation, identifying 18 stable EEG channels and 8 key features.",
+          "keywords": [
+            "EEG",
+            "fatigue detection",
+            "feature selection",
+            "attention mechanism",
+            "lightweight model"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -492,13 +693,25 @@
       "doi": "10.1109/tcyb.2026.3721131",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42599862/",
       "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 50,
         "ai": {
           "score": 40,
           "topic": "Adversarial EEG dataset refinement",
           "reason": "Methodological for EEG analysis, but general EEG and not specific to sleep; could be transferable but not central.",
-          "summary": "The paper presents a novel adversarial training framework using a proximity-to-boundary score to reduce the influence of noisy EEG samples, improving generalization by 1.43-6.66% on motor imagery datasets and 0.72-2.85% on a sleep stage dataset.",
+          "summary": "This paper proposes a novel adversarial training framework that uses a proximity-to-boundary score to reduce the influence of noisy samples in EEG datasets, improving generalization. It achieved performance improvements up to 6.66% on motor imagery and 2.85% on sleep stage classification datasets.",
+          "keywords": [
+            "EEG",
+            "noisy samples",
+            "generalization",
+            "adversarial attack",
+            "decision boundary"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -522,13 +735,31 @@
       "doi": "10.1093/sleepadvances/zpag075",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42602364/",
       "categories": [],
+      "keywords": [
+        "acceptability",
+        "home sleep apnea testing",
+        "obstructive sleep apnea",
+        "polysomnography",
+        "preference"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 21,
         "ai": {
           "score": 40,
           "topic": "Pediatric home sleep apnea testing",
           "reason": "Compares home and lab PSG; relevance limited to sleep staging methodology, but human pediatric focus.",
-          "summary": "This pilot study compared parent and child acceptability of home sleep apnea testing (HSAT) with EEG versus in-lab polysomnography in children, finding HSAT feasible and preferred by 60% of parents but only 33% of children, with sensor adjustments commonly needed.",
+          "summary": "This pilot study assessed parent and child acceptability and preference for pediatric home sleep apnea testing (HSAT) versus in-lab polysomnography (PSG) in 15 children. HSAT was feasible and preferred by 60% of parents but only 33% of children, with sensor adjustments frequently required.",
+          "keywords": [
+            "home sleep apnea testing",
+            "polysomnography",
+            "pediatric",
+            "acceptability",
+            "preference"
+          ],
+          "paper_type": "Clinical Study",
           "digest_pick": true
         }
       }
@@ -551,13 +782,32 @@
       "doi": "10.1016/j.neuroscience.2026.08.010",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42603611/",
       "categories": [],
+      "keywords": [
+        "Arousal",
+        "Chronic intermittent hypoxia",
+        "Jaw muscle activity",
+        "Obstructive sleep apnea",
+        "Sleep",
+        "Sleep bruxism"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 43,
         "ai": {
           "score": 35,
           "topic": "Intermittent hypoxia and jaw muscle EMG",
           "reason": "Animal model but focused on sleep apnea and EMG, not core sleep homeostasis or EEG.",
-          "summary": "The study investigated the aftereffects of 1-week chronic intermittent hypoxia on jaw muscle activity during sleep in young adult rats, finding increased FosB expression in trigeminal premotor regions and enhanced noradrenergic fiber density, selectively increasing digastric muscle activity during arousal without altering sleep architecture.",
+          "summary": "This study investigated the aftereffects of 1-week chronic intermittent hypoxia (CIH) on jaw muscle activity during sleep in young adult rats. CIH increased FosB expression in trigeminal premotor regions and noradrenergic innervation but selectively enhanced digastric muscle activity during arousal, without altering sleep architecture.",
+          "keywords": [
+            "chronic intermittent hypoxia",
+            "jaw muscle activity",
+            "sleep",
+            "trigeminal motor system",
+            "obstructive sleep apnea"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -583,13 +833,34 @@
       "doi": "10.1016/j.resuscitation.2026.111265",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42600767/",
       "categories": [],
+      "keywords": [
+        "Bispectral Index",
+        "Cardiac Arrest",
+        "Electroencephalography",
+        "Machine Learning",
+        "Neurological Outcome",
+        "Precision Medicine",
+        "Risk Stratification",
+        "Suppression Ratio"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 26,
         "ai": {
           "score": 35,
           "topic": "EEG biomarkers for cardiac arrest prognosis",
           "reason": "Uses processed EEG metrics in human clinical outcome prediction; relevance is limited to general EEG signal processing, not sleep regulation.",
-          "summary": "This study evaluated machine learning models for early neurological risk stratification after cardiac arrest using clinical data alone, processed EEG metrics (suppression ratio and bispectral index) alone, and their combination in 913 patients. The combined model significantly improved discrimination for poor outcome (AUC 0.88 for long-term), outperforming either data source alone.",
+          "summary": "This study evaluated machine learning models using clinical data and processed EEG metrics (suppression ratio, bispectral index) to predict poor neurological outcome after cardiac arrest. Combining early EEG and clinical data significantly improved AUC to 0.88 for poor long-term outcome, outperforming either data source alone.",
+          "keywords": [
+            "processed EEG",
+            "bispectral index",
+            "suppression ratio",
+            "cardiac arrest",
+            "machine learning"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -622,13 +893,31 @@
       "doi": "10.1016/j.bbr.2026.116410",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42600896/",
       "categories": [],
+      "keywords": [
+        "Acute sleep deprivation",
+        "Chemogenetic inhibition",
+        "Offensive aggression",
+        "Paraventricular nucleus",
+        "Social hierarchy"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 80,
         "ai": {
           "score": 30,
           "topic": "Sleep deprivation and aggression",
           "reason": "Sleep deprivation effects on aggression, but focused on behavior and PVN, not core sleep homeostasis or EEG dynamics.",
-          "summary": "In male mice, acute sleep deprivation selectively increased offensive aggression in dominant but not subordinate individuals, without affecting defensive aggression or social rank. This effect was associated with reduced mPFC and increased PVN neuronal activation, and chemogenetic inhibition of PVN neurons reversed the enhancement, indicating a PVN-dependent mechanism.",
+          "summary": "This study found that acute sleep deprivation selectively enhances offensive aggression in dominant male mice but not subordinates, involving increased neuronal activation in the paraventricular nucleus (PVN). Chemogenetic inhibition of PVN neurons reversed this effect, linking sleep loss and social hierarchy to aggression via PVN.",
+          "keywords": [
+            "acute sleep deprivation",
+            "offensive aggression",
+            "social hierarchy",
+            "paraventricular nucleus",
+            "chemogenetic inhibition"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -652,13 +941,25 @@
       "doi": "10.1109/tnsre.2026.3723771",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42599861/",
       "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 28,
         "ai": {
           "score": 30,
           "topic": "Mental workload EEG estimation",
           "reason": "EEG feature selection method, but for workload, not sleep.",
-          "summary": "The authors developed a Multi-scale Adaptive Feature selection and Augmented Weighting (MAFA) framework for mental workload estimation from EEG in rapid serial visual presentation tasks. Using their own dataset, MAFA achieved higher classification accuracy than comparison methods and interpretable feature weights, with attention to posterior theta and alpha band activity.",
+          "summary": "The authors proposed a Multi-scale Adaptive Feature selection and Augmented Weighting (MAFA) framework for mental workload estimation in rapid serial visual presentation tasks. This method improved classification accuracy and revealed attention to posterior theta/alpha features, demonstrating feasibility and interpretability for RSVP-BCI systems.",
+          "keywords": [
+            "mental workload",
+            "EEG",
+            "feature selection",
+            "rapid serial visual presentation",
+            "brain-computer interface"
+          ],
+          "paper_type": "Methods/Resource",
           "digest_pick": true
         }
       }
@@ -680,13 +981,32 @@
       "doi": "10.1016/j.sleep.2026.109212",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42600422/",
       "categories": [],
+      "keywords": [
+        "Health-related quality of life",
+        "Insomnia symptoms",
+        "Obstructive sleep apnea",
+        "Sex differences",
+        "Sleep architecture",
+        "Sleep-disordered breathing"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 22,
         "ai": {
           "score": 30,
           "topic": "Sex differences in sleep-disordered breathing",
           "reason": "Clinical sleep apnea study; focuses on arousal and sleep architecture but in human SDB, tangential to basic sleep regulation research.",
-          "summary": "In a community cohort of 826 adults matched for severity, men and women with comparable sleep-disordered breathing severity exhibited different physiologic and symptomatic burdens: men with higher severity had more sleep disruption and daytime sleepiness, while women had more insomnia symptoms and lower quality of life. Significant sex-by-severity interactions were observed for sleep efficiency, wake after sleep onset, and daytime sleepiness.",
+          "summary": "This study compared men and women matched on apnea-hypopnea index and other variables across sleep-disordered breathing severity. It found significant sex-by-severity interactions, with men showing more sleep fragmentation and sleepiness at moderate-to-severe severity, while women reported more insomnia symptoms and lower quality of life.",
+          "keywords": [
+            "sleep-disordered breathing",
+            "sex differences",
+            "apnea-hypopnea index",
+            "sleep architecture",
+            "insomnia symptoms"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -708,13 +1028,25 @@
       "doi": "",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42603311/",
       "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 20,
         "ai": {
           "score": 30,
           "topic": "Polysomnographic changes after cardiac surgery",
           "reason": "Assesses sleep architecture and cognition post-surgery; clinical and not mechanistic.",
-          "summary": "In 104 patients undergoing cardiac surgery with cardiopulmonary bypass, postoperative polysomnographic alterations (increased sleep latency and arousal index) correlated with cognitive impairment. Citicoline treatment (Group I) significantly improved MoCA scores and stabilized sleep parameters by day 30 compared to control, suggesting PSG parameters may serve as early markers of neurocognitive dysfunction.",
+          "summary": "This prospective study evaluated polysomnographic changes and neurocognitive outcomes after cardiac surgery with cardiopulmonary bypass in 104 patients. Postoperative sleep alterations correlated with cognitive impairment, and Citicoline improved MoCA scores and sleep stabilization by day 30.",
+          "keywords": [
+            "cardiac surgery",
+            "cardiopulmonary bypass",
+            "polysomnography",
+            "cognitive impairment",
+            "citicoline"
+          ],
+          "paper_type": "Clinical Study",
           "digest_pick": true
         }
       }
@@ -735,13 +1067,25 @@
       "doi": "10.1371/journal.pone.0355857",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42599964/",
       "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 30,
         "ai": {
           "score": 30,
           "topic": "Environmental enrichment and stress",
           "reason": "Relevant to environmental enrichment effects on brain, but not directly sleep regulation.",
-          "summary": "In a chronic unpredictable mild stress mouse model, environmental enrichment reduced depressive-like behavior and reversed stress-induced gut microbiota changes, intestinal barrier disruption (restoring claudin-1 and reducing IL-6/NF-κB), and brain molecular alterations, suggesting it stabilizes the microbiota-gut-brain axis.",
+          "summary": "This study investigated the effects of environmental enrichment (EE) on depressive-like behavior, gut microbiota, and intestinal barrier function in a chronic unpredictable mild stress (CUMS) mouse model. EE attenuated stress-induced behavioral changes and partially reversed CUMS-induced alterations in microbial diversity and intestinal inflammation, suggesting EE as a non-pharmacological intervention for stabilizing the microbiota-gut-brain axis.",
+          "keywords": [
+            "environmental enrichment",
+            "chronic unpredictable mild stress",
+            "gut microbiota",
+            "intestinal barrier",
+            "microbiota-gut-brain axis"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -761,13 +1105,34 @@
       "doi": "10.1016/j.pnpbp.2026.111895",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42600834/",
       "categories": [],
+      "keywords": [
+        "Dreaming",
+        "Lucid dreaming",
+        "Schizophrenia",
+        "Sleep disturbances",
+        "Sleep inertia",
+        "Sleep paralysis",
+        "Sleep-related hallucination"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
       "extra": {
         "prefilter_score": 20,
         "ai": {
           "score": 25,
           "topic": "Sleep and psychosis review",
           "reason": "Reviews conceptual and neural links; broad, not directly relevant to sleep regulation mechanisms.",
-          "summary": "This integrative review summarizes conceptual and neurophysiological links between sleep processes (including dreaming and hypnagogic experiences) and psychosis, noting overlap in anterior cingulate and frontal regions but concluding direct neurobiological evidence is limited and identifying research gaps.",
+          "summary": "This review summarizes conceptual and neurophysiological associations between sleep processes (e.g., dreaming, insomnia) and psychosis. It highlights overlaps in anterior cingulate and frontal regions but notes that neurobiological evidence directly linking sleep to psychosis remains limited, identifying gaps for future research.",
+          "keywords": [
+            "psychosis",
+            "sleep disturbances",
+            "dreaming",
+            "neurophysiology",
+            "schizophrenia"
+          ],
+          "paper_type": "Review",
           "digest_pick": true
         }
       }
@@ -791,13 +1156,33 @@
       "doi": "10.1002/cdt3.70062",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42602465/",
       "categories": [],
+      "keywords": [
+        "Mini‐Mental State Examination",
+        "aging",
+        "intermittent hypoxia",
+        "obstructive sleep apnea",
+        "sleep fragmentation",
+        "sleep pattern",
+        "total tau protein"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 28,
         "ai": {
           "score": 25,
           "topic": "OSA and tau levels",
           "reason": "Clinical OSA, weak relevance to basic sleep mechanisms.",
-          "summary": "In middle-aged men with severe obstructive sleep apnea, plasma total tau levels positively correlated with apnea-hypopnea index, oxygen desaturation index, and arousal index, and negatively with N3 duration and mean oxygen saturation; MMSE scores showed opposite correlations, linking intermittent hypoxia and sleep fragmentation to neurodegeneration and cognitive impairment.",
+          "summary": "In middle-aged men with severe obstructive sleep apnea (OSA), plasma total tau levels were negatively correlated with deep sleep duration and mean oxygen saturation, and positively correlated with apnea-hypopnea index, oxygen desaturation index, and arousal index. MMSE scores were negatively correlated with these OSA severity metrics, linking sleep fragmentation and hypoxia to cognitive impairment and neurodegeneration.",
+          "keywords": [
+            "obstructive sleep apnea",
+            "total tau protein",
+            "polysomnography",
+            "intermittent hypoxia",
+            "cognitive impairment"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -825,13 +1210,31 @@
       "doi": "10.2147/ndt.s607557",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42604219/",
       "categories": [],
+      "keywords": [
+        "alpha band",
+        "atrial fibrillation",
+        "cognitive impairment",
+        "functional connectivity",
+        "resting-state electroencephalography"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 22,
         "ai": {
           "score": 25,
           "topic": "EEG functional connectivity in atrial fibrillation",
           "reason": "Resting-state EEG in human cognitive impairment; peripheral to sleep neuroscience, mostly clinical.",
-          "summary": "In patients with atrial fibrillation and cognitive impairment, resting-state EEG showed reduced alpha-band functional connectivity (wPLI), which was independently associated with cognitive impairment (OR=0.44, AUC=0.814), supporting its potential as a biomarker for AF-related cognitive decline.",
+          "summary": "In patients with atrial fibrillation (AF) and cognitive impairment, resting-state EEG showed reduced alpha-band functional connectivity compared to controls. Alpha-band wPLI was independently associated with cognitive impairment, suggesting its potential as an objective marker for AF-related cognitive decline.",
+          "keywords": [
+            "atrial fibrillation",
+            "cognitive impairment",
+            "resting-state EEG",
+            "functional connectivity",
+            "alpha band"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -856,13 +1259,33 @@
       "doi": "10.1016/j.prdoa.2026.100483",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42602230/",
       "categories": [],
+      "keywords": [
+        "Autonomic dysfunction",
+        "Cognition",
+        "Heart rate variability",
+        "Mood",
+        "Parkinson's disease",
+        "Polysomnography",
+        "Sleep"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 44,
         "ai": {
           "score": 25,
           "topic": "Heart rate variability in PD",
           "reason": "Autonomic measures during sleep, but clinical and not core to sleep regulation or animal EEG.",
-          "summary": "Compared to healthy controls, Parkinson's disease patients showed lower nocturnal LF and LF/HF ratio and higher HF during sleep; in PD, better executive function and processing speed correlated with higher HF and lower LF/LF/HF, while autonomic symptoms were associated with worse cognition and mood.",
+          "summary": "Nocturnal heart rate variability in Parkinson's disease (PD) revealed reduced sympathetic influence (lower LF, LF/HF) and higher parasympathetic activity (higher HF) compared to controls. In PD, stronger parasympathetic influence correlated with better cognitive performance, while subjective autonomic symptoms correlated with poorer cognition and mood.",
+          "keywords": [
+            "Parkinson's disease",
+            "heart rate variability",
+            "autonomic dysfunction",
+            "cognition",
+            "sleep"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -885,13 +1308,31 @@
       "doi": "10.7759/cureus.112754",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42604056/",
       "categories": [],
+      "keywords": [
+        "apnea-hypopnea index",
+        "nocturnal hypoxemia",
+        "nocturnal oxygen desaturation",
+        "obstructive sleep apnea (osa)",
+        "oxygen desaturation index"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 20,
         "ai": {
           "score": 20,
           "topic": "OSA severity and oxygen desaturation",
           "reason": "Clinical OSA retrospective study; not aligned with basic or computational sleep questions.",
-          "summary": "This retrospective study of 220 OSA patients found that AHI was positively associated with ODI and T90, and inversely with minimum and mean nocturnal SpO2, with all correlations significant after adjustment, suggesting related physiological patterns but not establishing causality or clinical utility beyond AHI.",
+          "summary": "This retrospective single-center study investigated associations between apnea-hypopnea index (AHI) and nocturnal oxygenation parameters in obstructive sleep apnea patients. AHI was positively correlated with oxygen desaturation index and T90, and inversely with minimum and mean nocturnal SpO2, with all Holm-adjusted p-values <0.001.",
+          "keywords": [
+            "obstructive sleep apnea",
+            "apnea-hypopnea index",
+            "nocturnal oxygen desaturation",
+            "oxygen desaturation index",
+            "nocturnal hypoxemia"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -920,13 +1361,31 @@
       "doi": "10.1016/j.ynirp.2026.100393",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42602927/",
       "categories": [],
+      "keywords": [
+        "EEG",
+        "Epilepsy",
+        "Functional MRI",
+        "Intracranial EEG",
+        "Negative BOLD"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 22,
         "ai": {
           "score": 20,
           "topic": "EEG-fMRI BOLD responses in epilepsy",
           "reason": "Intracranial EEG-fMRI in epilepsy; not related to sleep or relevant methodology for animal work.",
-          "summary": "In 57 epilepsy patients with intracranial EEG-fMRI, positive BOLD responses to interictal discharges were significantly closer to seizure onset and IED-generating contacts than negative responses, while negative clusters overlapped more with the default mode network, indicating positive responses are preferable for presurgical localization.",
+          "summary": "This study used intracranial EEG-fMRI to examine spatial relationships between positive and negative BOLD responses to interictal epileptiform discharges in drug-resistant focal epilepsy. Positive BOLD clusters were significantly closer to epileptogenic tissue than negative clusters, whereas negative clusters showed greater overlap with the default mode network, supporting prioritization of positive BOLD for presurgical evaluation.",
+          "keywords": [
+            "epilepsy",
+            "EEG-fMRI",
+            "negative BOLD response",
+            "interictal discharges",
+            "default mode network"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -952,13 +1411,31 @@
       "doi": "10.3389/fnhum.2026.1857669",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42602088/",
       "categories": [],
+      "keywords": [
+        "chronic sleep deprivation",
+        "cognitive impairment",
+        "electroacupuncture",
+        "hippocampal neurogenesis",
+        "synaptic plasticity"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 64,
         "ai": {
           "score": 20,
           "topic": "Electroacupuncture for sleep deprivation",
           "reason": "Clinical/acupuncture intervention, weak relevance to basic sleep neuroscience or computational methods.",
-          "summary": "In a rat model, electro-nape-acupuncture at GB20 and Extra for 14 days ameliorated chronic sleep deprivation-induced cognitive deficits, enhanced hippocampal neurogenesis and synaptic plasticity in the dentate gyrus, and reversed CSD-induced reductions in DCX, Ki-67, spine density, and synaptic parameters.",
+          "summary": "This experimental study in male Wistar rats examined whether electroacupuncture at cervical acupoints improves cognitive impairment induced by chronic sleep deprivation. It found that electroacupuncture enhanced learning and memory and reversed abnormalities in hippocampal neurogenesis and synaptic plasticity.",
+          "keywords": [
+            "electroacupuncture",
+            "chronic sleep deprivation",
+            "cognitive impairment",
+            "hippocampal neurogenesis",
+            "synaptic plasticity"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -983,13 +1460,31 @@
       "doi": "10.1097/md.0000000000050086",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42601701/",
       "categories": [],
+      "keywords": [
+        "All-cause mortality",
+        "Alzheimer’s disease",
+        "National Health and Nutrition Examination Survey",
+        "Public Health",
+        "Sleep time"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 20,
         "ai": {
           "score": 20,
           "topic": "Sleep duration and Alzheimer's disease",
           "reason": "Population-based association; broad clinical focus, limited relevance to sleep regulation mechanisms.",
-          "summary": "Cross-sectional analysis of NHANES 2007-2018 (N=29,692) found a significant positive association between longer sleep duration and Alzheimer's disease prevalence, persisting after adjustment, and advocates for including sleep duration in AD risk assessment; no mortality results are detailed.",
+          "summary": "This cross-sectional study using NHANES 2007-2018 data found a significant positive association between longer habitual sleep duration and Alzheimer's disease prevalence in US adults. The association persisted after adjustment and across subgroups, suggesting sleep duration as a potential predictive tool for AD.",
+          "keywords": [
+            "sleep duration",
+            "Alzheimer's disease",
+            "NHANES",
+            "cross-sectional study",
+            "all-cause mortality"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1018,13 +1513,31 @@
       "doi": "10.3389/fpsyt.2026.1908969",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42601901/",
       "categories": [],
+      "keywords": [
+        "adolescent depression",
+        "brain functional network",
+        "graph convolutional network",
+        "multi-view learning",
+        "resting-state electroencephalography"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 34,
         "ai": {
           "score": 20,
           "topic": "Depression EEG classification",
           "reason": "Applied EEG classification for depression, not sleep-specific.",
-          "summary": "This exploratory study compared a multi-view adaptive graph convolutional network (MVA-GCN) using resting-state EEG to questionnaire-based models for adolescent depression, achieving 99.84% accuracy versus 86.43%, with occipital and fronto-central contributions and gamma connectivity increases and alpha power decreases as correlates, but brain-resilience correlations were not significant after correction.",
+          "summary": "This exploratory study compared a Multi-view Adaptive Graph Convolutional Network (MVA-GCN) based on resting-state EEG with traditional questionnaires for diagnosing adolescent depression. The MVA-GCN achieved 99.84% accuracy in classification, with occipital and fronto-central regions contributing most, but findings on brain-resilience associations were not significant after correction.",
+          "keywords": [
+            "adolescent depression",
+            "resting-state EEG",
+            "graph convolutional network",
+            "multi-view learning",
+            "brain functional network"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1052,13 +1565,34 @@
       "doi": "10.1016/j.neuroscience.2026.08.012",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42603612/",
       "categories": [],
+      "keywords": [
+        "Acupuncture",
+        "Cognitive function",
+        "Delirium",
+        "Intervention",
+        "Mechanism",
+        "POCD",
+        "POD"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
       "extra": {
         "prefilter_score": 20,
         "ai": {
           "score": 15,
           "topic": "Acupuncture for perioperative neurocognitive disorders",
           "reason": "Review of acupuncture; not relevant to basic sleep regulation or EEG methods.",
-          "summary": "This review examines acupuncture's potential in managing perioperative neurocognitive disorders (PND), synthesizing evidence that electroacupuncture and transcutaneous acupoint stimulation counteract PND risk factors through multi-target regulation centered on the gut-brain axis, reducing PND incidence and accelerating cognitive recovery.",
+          "summary": "This review synthesizes evidence on acupuncture's mechanisms and clinical value for perioperative neurocognitive disorders (PND), proposing that electroacupuncture and transcutaneous acupoint stimulation counteract multiple risk pathways via gut-brain axis modulation and multi-target neuroprotection, reducing PND incidence and accelerating cognitive recovery. The review highlights the interaction of perioperative risk factors and acupuncture's coordinated neuroprotective network.",
+          "keywords": [
+            "acupuncture",
+            "perioperative neurocognitive disorders",
+            "gut-brain axis",
+            "electroacupuncture",
+            "neuroprotection"
+          ],
+          "paper_type": "Review",
           "digest_pick": true
         }
       }
@@ -1087,13 +1621,31 @@
       "doi": "10.1016/j.phymed.2026.158687",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42603527/",
       "categories": [],
+      "keywords": [
+        "Armillariella tabescens polysaccharide",
+        "Glycolysis",
+        "Microglial polarization",
+        "Neuroinflammation",
+        "mTOR"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 54,
         "ai": {
           "score": 15,
           "topic": "Polysaccharide and neuroinflammation",
           "reason": "Pharmacological intervention in sleep deprivation model, far from core research interests.",
-          "summary": "This study isolated and characterized a polysaccharide from Armillariella tabescens (ATEP), showing it alleviates sleep deprivation-induced neuroinflammation by inhibiting mTOR signaling, which drives glycolytic metabolic reprogramming and microglial M1-to-M2 polarization, thereby improving cognitive function and reducing neurotoxic proteins in mice.",
+          "summary": "This study isolated a polysaccharide (ATEP) from Armillariella tabescens and showed in mouse and cell models that it alleviates sleep deprivation-induced neuroinflammation by inhibiting mTOR signaling, correcting glycolytic reprogramming, and promoting microglial M2 polarization. ATEP improved cognitive function, reduced neurotoxic proteins, and preserved synaptic integrity.",
+          "keywords": [
+            "Armillariella tabescens polysaccharide",
+            "microglial polarization",
+            "glycolysis",
+            "mTOR signaling",
+            "neuroinflammation"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1118,13 +1670,32 @@
       "doi": "10.2147/ndt.s617984",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42604203/",
       "categories": [],
+      "keywords": [
+        "depressive symptoms",
+        "insomnia",
+        "rural China",
+        "schizophrenia",
+        "social functioning",
+        "suicidality"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 20,
         "ai": {
           "score": 15,
           "topic": "Insomnia and schizophrenia",
           "reason": "Clinical psychiatric study; insomnia as symptom, not detailed mechanistic or EEG-based.",
-          "summary": "This cross-sectional study of 931 rural adults with schizophrenia found that insomnia, social dysfunction, and suicidality were each associated with depressive symptoms, with indirect associations via social dysfunction and suicidality; women reported higher symptom scores, but sex did not moderate these associations.",
+          "summary": "This cross-sectional study of 931 rural adults with schizophrenia found that insomnia, social dysfunction, suicidality, and depressive symptoms were positively associated, with women reporting higher scores. Exploratory analyses suggested indirect associations of insomnia with depressive symptoms via social dysfunction and suicidality, but not serially, and sex did not moderate these associations.",
+          "keywords": [
+            "schizophrenia",
+            "insomnia",
+            "depressive symptoms",
+            "suicidality",
+            "social dysfunction"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1147,13 +1718,31 @@
       "doi": "10.7759/cureus.112765",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42604403/",
       "categories": [],
+      "keywords": [
+        "cardiac autonomic function",
+        "electroencephalography",
+        "heart rate variability",
+        "interictal epileptiform discharges",
+        "seizure"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 34,
         "ai": {
           "score": 15,
           "topic": "HRV in seizure disorders",
           "reason": "Clinical epilepsy, weak relevance to sleep neuroscience.",
-          "summary": "This retrospective study compared heart rate variability (HRV) among seizure patients with and without interictal epileptiform discharges (IEDs) and a non-seizure control group, finding that seizure patients had lower vagally mediated HRV than controls, but IED presence was not associated with additional resting cardiac autonomic alterations.",
+          "summary": "This retrospective study analyzed heart rate variability (HRV) from archived EEG recordings in 45 adults and found that patients with seizure disorders had lower vagally mediated HRV than a non-seizure neurological comparison group, but the presence of interictal epileptiform discharges did not add measurable alterations. No significant differences in HRV were found between the two seizure groups.",
+          "keywords": [
+            "heart rate variability",
+            "seizure disorders",
+            "interictal epileptiform discharges",
+            "cardiac autonomic modulation",
+            "EEG"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1179,13 +1768,32 @@
       "doi": "10.1007/s11064-026-04859-8",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42599345/",
       "categories": [],
+      "keywords": [
+        "BDNF/TrkB",
+        "Cenobamate",
+        "EEG",
+        "Nissl staining",
+        "PTZ-kindling",
+        "Trazodone"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 42,
         "ai": {
           "score": 15,
           "topic": "Antiepileptic drug combination",
           "reason": "Pharmacology in epilepsy, not related to sleep regulation.",
-          "summary": "This study in PTZ-kindled mice showed that combining cenobamate and trazodone suppressed seizures, normalized EEG alterations, preserved neuronal architecture, and restored BDNF/TrkB expression, outperforming monotherapies, suggesting a synergistically beneficial effect in epilepsy treatment.",
+          "summary": "This study in PTZ-kindled mice found that combination therapy with cenobamate and trazodone suppressed seizures, normalized EEG alterations, preserved hippocampal neuronal architecture, and restored BDNF/TrkB expression, whereas monotherapies did not. The combination showed additive effects on reducing hyperexcitability and neuropathology.",
+          "keywords": [
+            "cenobamate",
+            "trazodone",
+            "PTZ-kindling",
+            "BDNF/TrkB",
+            "epilepsy"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1211,13 +1819,31 @@
       "doi": "10.1016/j.cct.2026.108437",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42600923/",
       "categories": [],
+      "keywords": [
+        "Buprenorphine",
+        "GLP-1",
+        "Opioid",
+        "Retention",
+        "Tirzepatide"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 20,
         "ai": {
           "score": 10,
           "topic": "Tirzepatide for opioid use disorder",
           "reason": "Clinical trial on substance use and sleep outcomes; unrelated to basic sleep neuroscience.",
-          "summary": "This paper describes the design and rationale of the TAB trial, a randomized controlled trial testing tirzepatide as an adjunct to buprenorphine for opioid use disorder. The primary outcome is 6-month buprenorphine treatment retention.",
+          "summary": "This paper describes the design and rationale of the TAB trial, a randomized controlled trial testing tirzepatide as an adjunct to buprenorphine for opioid use disorder, with primary outcome of 6-month buprenorphine retention.",
+          "keywords": [
+            "Tirzepatide",
+            "Buprenorphine",
+            "Opioid use disorder",
+            "GLP-1 receptor agonist",
+            "Clinical trial protocol"
+          ],
+          "paper_type": "Protocol",
           "digest_pick": true
         }
       }
@@ -1237,13 +1863,34 @@
       "doi": "10.1016/j.archger.2026.106373",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42600483/",
       "categories": [],
+      "keywords": [
+        "Disease-free survival",
+        "Frailty",
+        "Gastrointestinal cancer surgery",
+        "Multidomain assessment",
+        "Perioperative recovery",
+        "Physiological vulnerability",
+        "Prognostic modeling",
+        "surgical outcomes"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 31,
         "ai": {
           "score": 10,
           "topic": "Perioperative vulnerability in elderly",
           "reason": "Clinical recovery after surgery, barely related to sleep.",
-          "summary": "This prospective cohort study of older adults undergoing gastrointestinal cancer surgery developed a Perioperative Aging Burden Index (PABI) from multidomain assessments. Higher PABI was associated with worse postoperative outcomes, and longitudinal recovery trajectories were identified.",
+          "summary": "This prospective cohort study of older adults undergoing gastrointestinal cancer surgery developed a Perioperative Aging Burden Index (PABI) integrating multidomain physiological assessments. Higher PABI was associated with increased postoperative delirium, complications, delayed discharge, and poorer disease-free and overall survival.",
+          "keywords": [
+            "Physiological vulnerability",
+            "Perioperative risk",
+            "Gastrointestinal cancer surgery",
+            "Frailty",
+            "Prognostic modeling"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1265,13 +1912,31 @@
       "doi": "10.1097/md.0000000000050280",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42601780/",
       "categories": [],
+      "keywords": [
+        "Depression",
+        "changes in sleep duration",
+        "cohort study",
+        "gastrointestinal diseases",
+        "mental health"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 20,
         "ai": {
           "score": 10,
           "topic": "Sleep variability, depression, GI disease",
           "reason": "Epidemiological study on sleep duration variability; not relevant to EEG or animal sleep.",
-          "summary": "This cohort study using CHARLS and HRS data found that greater sleep duration variability was associated with increased risk of gastrointestinal disease, with depression partially mediating this association.",
+          "summary": "This cohort study using CHARLS and HRS data found that greater variability in sleep duration was associated with increased risk of gastrointestinal disease, with depressive symptoms partially mediating this association.",
+          "keywords": [
+            "Sleep duration variability",
+            "Depressive symptoms",
+            "Gastrointestinal disease",
+            "Cohort study",
+            "Mediation analysis"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1294,13 +1959,31 @@
       "doi": "10.1016/j.ibneur.2026.07.021",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42598132/",
       "categories": [],
+      "keywords": [
+        "Brain metastases",
+        "Cognitive rehabilitation",
+        "Quantitative electroencephalography",
+        "Radiotherapy",
+        "Transcranial direct current stimulation"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
       "extra": {
         "prefilter_score": 46,
         "ai": {
           "score": 10,
           "topic": "tDCS in radiotherapy patients",
           "reason": "Clinical intervention, not related to sleep neuroscience or animal models.",
-          "summary": "This randomized sham-controlled trial found that transcranial direct current stimulation (tDCS) during whole-brain radiotherapy improved cognitive performance and reduced beta/theta power in QEEG, along with altered biomarker expression.",
+          "summary": "This randomized sham-controlled trial found that transcranial direct current stimulation (tDCS) improved cognitive performance and reduced QEEG beta and theta power in patients undergoing whole-brain radiotherapy, suggesting a potential neuroprotective effect.",
+          "keywords": [
+            "Transcranial direct current stimulation",
+            "Whole-brain radiotherapy",
+            "Cognitive impairment",
+            "Quantitative EEG",
+            "Neuroprotection"
+          ],
+          "paper_type": "Clinical Trial",
           "digest_pick": true
         }
       }
@@ -1321,13 +2004,31 @@
       "doi": "10.1136/bcr-2025-271548",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42601081/",
       "categories": [],
+      "keywords": [
+        "Interventional cardiology",
+        "Mechanical ventilation",
+        "Pneumonia (respiratory medicine)",
+        "Sleep disorders (respiratory medicine)"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Case Reports"
+      ],
       "extra": {
         "prefilter_score": 22,
         "ai": {
           "score": 0,
           "topic": "PFO and platypnoea-orthodeoxia syndrome",
           "reason": "Cardiology case report unrelated to sleep neuroscience.",
-          "summary": "This case report describes a nonagenarian with platypnoea-orthodeoxia syndrome caused by a patent foramen ovale and atrial septum aneurysm, which was successfully treated with percutaneous PFO closure.",
+          "summary": "This case report describes a nonagenarian with patent foramen ovale and atrial septal aneurysm presenting with platypnoea-orthodeoxia syndrome, successfully treated with percutaneous PFO closure.",
+          "keywords": [
+            "Patent foramen ovale",
+            "Atrial septal aneurysm",
+            "Platypnoea-orthodeoxia syndrome",
+            "Hypoxia",
+            "PFO closure"
+          ],
+          "paper_type": "Case Report",
           "digest_pick": true
         }
       }
