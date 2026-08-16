@@ -1,0 +1,1 @@
+"""PaperDaily ingestion package."""
