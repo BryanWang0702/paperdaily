@@ -32,6 +32,7 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Fetch and rank literature
         env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python -m src.pipeline --days 3
       - name: Commit changed data
