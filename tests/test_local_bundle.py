@@ -23,6 +23,7 @@ class TestLocalBundle(unittest.TestCase):
             self.assertIn("PaperDaily-local/START_PAPERDAILY_WINDOWS.bat", names)
             self.assertIn("PaperDaily-local/site/index.html", names)
             self.assertIn("PaperDaily-local/site/theme.js", names)
+            self.assertIn("PaperDaily-local/site/layout.css", names)
             self.assertIn("PaperDaily-local/README_LOCAL.md", names)
             self.assertIn("PaperDaily-local/README_LOCAL.zh-CN.md", names)
             self.assertFalse(any(name.endswith("api_token.txt") for name in names))
