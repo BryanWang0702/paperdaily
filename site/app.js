@@ -28,19 +28,24 @@ async function boot() {
       ? `${days.length} archived day${days.length === 1 ? '' : 's'}`
       : 'No archived days yet';
 
-    archive.innerHTML = days.map((day, index) => `
-      <a class="day-card" href="day.html?date=${encodeURIComponent(day.date)}">
-        <div class="day-card-top">
-          <span class="day-date">${esc(prettyDate(day.date))}</span>
-          ${index === 0 ? '<span class="today-badge">LATEST</span>' : ''}
-        </div>
-        <div class="day-count">${day.count ?? 0}</div>
-        <div class="day-label">candidate papers</div>
-        <div class="source-pills">${sourceSummary(day.source_counts)}</div>
-        ${Object.keys(day.errors || {}).length ? '<div class="day-warning">Some sources reported errors</div>' : ''}
-        <div class="open-day">Open daily digest →</div>
-      </a>
-    `).join('') || '<p class="empty">The first daily archive will appear after the pipeline runs.</p>';
+    archive.innerHTML = days.map((day, index) => {
+      const ai = day.ai || {};
+      const aiBadge = ai.enabled
+        ? `<span class="ai-pill">AI top ${ai.top_n || 0}</span>`
+        : '';
+      return `
+        <a class="day-card" href="day.html?date=${encodeURIComponent(day.date)}">
+          <div class="day-card-top">
+            <span class="day-date">${esc(prettyDate(day.date))}</span>
+            ${index === 0 ? '<span class="today-badge">LATEST</span>' : ''}
+          </div>
+          <div class="day-count">${day.count ?? 0}</div>
+          <div class="day-label">candidate papers</div>
+          <div class="source-pills">${sourceSummary(day.source_counts)}${aiBadge}</div>
+          ${Object.keys(day.errors || {}).length ? '<div class="day-warning">Some sources reported errors</div>' : ''}
+          <div class="open-day">Open daily digest →</div>
+        </a>`;
+    }).join('') || '<p class="empty">The first daily archive will appear after the pipeline runs.</p>';
   } catch (error) {
     status.innerHTML = `<div class="warning">Could not load archive: ${esc(String(error))}</div>`;
   }
