@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import os
 from datetime import datetime, timezone
 from pathlib import Path
@@ -66,7 +67,25 @@ def _planned_runs_per_day(config: dict[str, Any]) -> int:
     return max(1, len(valid))
 
 
-def _reference_run_cost(recent_runs: list[dict[str, Any]]) -> float:
+def _expected_requests_per_full_run(config: dict[str, Any]) -> int:
+    ai = config.get("ai", {}) or {}
+    analyzed = max(1, int(ai.get("max_analyzed", 40) or 40))
+    rank_batch = max(1, int(ai.get("rank_batch_size", 20) or 20))
+    summary_batch = max(1, int(ai.get("summary_batch_size", 5) or 5))
+    return max(1, math.ceil(analyzed / rank_batch) + math.ceil(analyzed / summary_batch))
+
+
+def _historical_reference_cost(ledger: dict[str, Any], config: dict[str, Any]) -> float:
+    total_cost = float(ledger.get("total_cost_cny", 0.0) or 0.0)
+    total_requests = int(((ledger.get("total_usage") or {}).get("requests", 0)) or 0)
+    if total_cost <= 0 or total_requests <= 0:
+        return 0.0
+    expected_requests = _expected_requests_per_full_run(config)
+    equivalent_runs = max(1.0, total_requests / expected_requests)
+    return total_cost / equivalent_runs
+
+
+def _reference_run_cost(recent_runs: list[dict[str, Any]], fallback: float = 0.0) -> float:
     scheduled = [
         float(item.get("cost_cny", 0.0) or 0.0)
         for item in recent_runs
@@ -78,11 +97,12 @@ def _reference_run_cost(recent_runs: list[dict[str, Any]]) -> float:
         active = [
             float(item.get("cost_cny", 0.0) or 0.0)
             for item in recent_runs
-            if int(((item.get("usage") or {}).get("requests", 0)) or 0) > 0
+            if str(item.get("kind", "")) != "development"
+            and int(((item.get("usage") or {}).get("requests", 0)) or 0) > 0
         ]
         values = active[-20:]
     if not values:
-        return 0.0
+        return max(0.0, float(fallback or 0.0))
     return sum(values) / len(values)
 
 
@@ -106,7 +126,12 @@ def _update_billing_ledger(
     total_cost = float(ledger.get("total_cost_cny", 0.0) or 0.0) + run_cost
     total_usage = add_usage(ledger.get("total_usage", {}) or {}, usage)
     run_count = int(ledger.get("run_count", 0) or 0) + 1
-    average_run_cost = _reference_run_cost(recent_runs)
+    provisional = {
+        "total_cost_cny": total_cost,
+        "total_usage": total_usage,
+    }
+    bootstrap_reference = _historical_reference_cost(provisional, config)
+    average_run_cost = _reference_run_cost(recent_runs, bootstrap_reference)
     runs_per_day = _planned_runs_per_day(config)
 
     updated = {
