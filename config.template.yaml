@@ -1,0 +1,73 @@
+# Generic PaperDaily configuration template.
+# Copy the relevant sections into config.yaml and replace the example domain.
+
+timezone: UTC
+lookback_days: 3
+max_per_source: 150
+
+discovery_terms:
+  - core topic
+  - important method
+  - important mechanism
+  - field keyword
+
+pubmed:
+  email: ""
+  tool: paperdaily
+
+arxiv:
+  categories:
+    - q-bio.NC
+
+prefilter:
+  enabled: true
+  max_candidates: 40
+  min_score: 8
+  title_multiplier: 3
+  missing_anchor_penalty: 18
+
+  anchors:
+    - core topic
+    - core mechanism
+
+  weights:
+    core topic: 15
+    core mechanism: 12
+    important method: 10
+    important model: 8
+
+  boosts:
+    - any_terms: [important model, important dataset]
+      bonus: 4
+      require_anchor: true
+
+ai:
+  enabled: true
+  provider: deepseek
+  model: deepseek-v4-flash
+  base_url: https://api.deepseek.com
+  api_key_env: DEEPSEEK_API_KEY
+  rank_batch_size: 20
+  summary_batch_size: 5
+
+  digest_min: 25
+  digest_max: 30
+  digest_score_threshold: 45
+
+  pricing_cny_per_million:
+    input_cache_hit: 0.02
+    input_cache_miss: 1.0
+    output: 2.0
+
+  interest_profile: |
+    Primary focus: describe your scientific field and current research questions here.
+
+    Highest-priority topics: list the questions, mechanisms, methods, datasets,
+    species, populations, or experimental paradigms that are most useful to you.
+
+    Ranking preference: explain which paper types should receive high scores and
+    which broad or adjacent topics should receive lower scores.
+
+site:
+  title: PaperDaily
+  subtitle: Daily research radar
