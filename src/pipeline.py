@@ -61,6 +61,22 @@ def _attach_daily_billing(current_day: str, ai_meta: dict) -> dict:
     return ai_meta
 
 
+def _top_titles(payload: dict, limit: int = 5) -> list[str]:
+    papers = payload.get("papers", []) or []
+    digest_papers = [
+        p for p in papers
+        if (((p.get("extra") or {}).get("ai") or {}).get("digest_pick"))
+    ]
+    # Backward compatibility for archives produced by the earlier Top-15 schema.
+    if not digest_papers:
+        digest_papers = [
+            p for p in papers
+            if (((p.get("extra") or {}).get("ai") or {}).get("top_pick"))
+        ]
+    preview = digest_papers or papers
+    return [str(p.get("title", "")).strip() for p in preview[:limit] if p.get("title")]
+
+
 def _build_archive_manifest() -> dict:
     days: list[dict] = []
     tracked_costs: list[float] = []
@@ -83,6 +99,7 @@ def _build_archive_manifest() -> dict:
             "count": digest_count,
             "candidate_count": payload.get("count", 0),
             "raw_count": payload.get("raw_count", payload.get("count", 0)),
+            "top_titles": _top_titles(payload),
             "errors": payload.get("errors", {}),
             "window": payload.get("window", {}),
             "ai": {
@@ -127,7 +144,7 @@ def _build_site_digest(payload: dict, papers: list[Paper]) -> dict:
             "summary": str(ai.get("summary", "")) if ai else "",
         })
 
-    # Raw feed fallback if AI is temporarily unavailable. Keep the page small.
+    # Raw-feed fallback if AI is temporarily unavailable. Keep the page small.
     if not selected:
         selected = [
             {"title": p.title, "url": p.url, "score": None, "summary": ""}
