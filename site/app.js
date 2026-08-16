@@ -1,19 +1,36 @@
+const EN_LOCALE = 'en-US';
+
 function esc(value = '') {
   return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
 }
 
 function prettyDate(value) {
-  const date = new Date(`${value}T00:00:00`);
+  const date = new Date(`${value}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return value;
-  return new Intl.DateTimeFormat(undefined, {
-    year: 'numeric', month: 'long', day: 'numeric', weekday: 'short'
+  return new Intl.DateTimeFormat(EN_LOCALE, {
+    year: 'numeric', month: 'long', day: 'numeric', weekday: 'short', timeZone: 'UTC'
   }).format(date);
 }
 
 function shortDate(value) {
-  const date = new Date(`${value}T00:00:00`);
+  const date = new Date(`${value}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return value;
-  return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(date);
+  return new Intl.DateTimeFormat(EN_LOCALE, {
+    month: 'short', day: 'numeric', timeZone: 'UTC'
+  }).format(date);
+}
+
+function updatedTime(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+  return new Intl.DateTimeFormat(EN_LOCALE, {
+    month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+  }).format(date);
+}
+
+function sourceName(value = '') {
+  const names = { pubmed: 'PubMed', biorxiv: 'bioRxiv', medrxiv: 'medRxiv', arxiv: 'arXiv' };
+  return names[String(value).toLowerCase()] || value;
 }
 
 function money(value) {
@@ -38,7 +55,7 @@ function renderRanking(targetId, ranking) {
     <li class="ranking-item">
       <a href="${esc(paper.url || '#')}" target="_blank" rel="noopener">${esc(paper.title)}</a>
       <div class="ranking-meta">
-        <span>${esc(shortDate(paper.date || ''))}</span>
+        <span>${esc(sourceName(paper.source))} · ${esc(shortDate(paper.date || ''))}</span>
         <span class="ranking-score">${esc(paper.score)} / 100</span>
       </div>
     </li>`).join('');
@@ -60,16 +77,15 @@ async function boot() {
       ? `${days.length} archived day${days.length === 1 ? '' : 's'}${billingText}`
       : 'No archived days yet';
 
-    renderRanking('#weeklyRanking', data.rankings?.weekly);
     renderRanking('#monthlyRanking', data.rankings?.monthly);
 
     archive.innerHTML = days.map((day, index) => {
       const ai = day.ai || {};
+      const featured = Number(day.featured_count || 0);
+      const additional = Number(day.additional_count || 0);
+      const updated = updatedTime(day.generated_at || '');
       const costBadge = ai.daily_cost_cny !== null && ai.daily_cost_cny !== undefined
         ? `<span class="source-pill">API ${money(ai.daily_cost_cny)}</span>`
-        : '';
-      const rankedBadge = ai.enabled
-        ? `<span class="ai-pill">${ai.ranked_count || 0} screened by AI</span>`
         : '';
       const version = day.generated_at ? `&v=${encodeURIComponent(day.generated_at)}` : '';
       return `
@@ -78,10 +94,15 @@ async function boot() {
             <span class="day-date">${esc(prettyDate(day.date))}</span>
             ${index === 0 ? '<span class="today-badge">LATEST</span>' : ''}
           </div>
-          <div class="day-count">${day.count ?? 0}</div>
-          <div class="day-label">recommended papers${day.candidate_count ? ` · ${day.candidate_count} candidates` : ''}${day.raw_count ? ` · ${day.raw_count} discovered` : ''}</div>
+          <div class="day-count">${day.total_count ?? 0}</div>
+          <div class="day-label">unique papers discovered</div>
+          <div class="day-presets">
+            <span><strong>${featured}</strong> highlighted</span>
+            <span><strong>${additional}</strong> more</span>
+            ${updated ? `<span>Updated ${esc(updated)}</span>` : ''}
+          </div>
           ${topPreview(day.top_titles || [])}
-          <div class="source-pills">${rankedBadge}${costBadge}</div>
+          <div class="source-pills">${costBadge}</div>
           ${Object.keys(day.errors || {}).length ? '<div class="day-warning">Some sources reported errors</div>' : ''}
           <div class="open-day">Open daily digest →</div>
         </a>`;
