@@ -65,6 +65,7 @@ def _fetch_server(
                 doi=doi,
                 url=f"https://doi.org/{doi}" if doi else "",
                 categories=[category] if category else [],
+                publication_types=["Preprint"],
                 extra={"version": item.get("version", ""), "published": item.get("published", "")},
             ))
             if len(papers) >= limit:

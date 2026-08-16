@@ -19,6 +19,7 @@ arxiv:
   categories:
     - q-bio.NC
 
+# Free deterministic daily shortlist.
 prefilter:
   enabled: true
   max_candidates: 40
@@ -47,14 +48,12 @@ ai:
   model: deepseek-v4-flash
   base_url: https://api.deepseek.com
   api_key_env: DEEPSEEK_API_KEY
+
+  # Number of papers from the local shortlist that are ranked and summarized.
+  # The actual number cannot exceed prefilter.max_candidates.
+  max_analyzed: 40
   rank_batch_size: 20
   summary_batch_size: 5
-
-  # Rank and summarize all 40 local-filter candidates. The website shows the
-  # highest-ranked 25 and keeps ranks 26-40 collapsed by default.
-  digest_min: 40
-  digest_max: 40
-  digest_score_threshold: 0
 
   pricing_cny_per_million:
     input_cache_hit: 0.02
@@ -75,4 +74,6 @@ ai:
 site:
   title: PaperDaily
   subtitle: Daily research radar
+
+  # Number of analyzed papers expanded by default on each daily page.
   featured_count: 25

@@ -17,6 +17,8 @@ class Paper:
     doi: str = ""
     url: str = ""
     categories: list[str] = field(default_factory=list)
+    keywords: list[str] = field(default_factory=list)
+    publication_types: list[str] = field(default_factory=list)
     extra: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

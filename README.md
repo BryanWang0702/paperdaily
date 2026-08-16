@@ -1,8 +1,10 @@
 # PaperDaily
 
+**Language:** English | [中文](README.zh-CN.md)
+
 PaperDaily is a lightweight personal research radar that collects newly indexed literature, removes duplicates, applies a transparent deterministic prefilter, ranks papers against a researcher-specific profile, generates compact summaries, and publishes a persistent daily archive with GitHub Pages.
 
-The default configuration is tuned for sleep neuroscience, but the retrieval, prefilter, and AI profile are configurable so the project can be forked for other research fields.
+The default configuration is tuned for sleep neuroscience, but the retrieval, prefilter, AI analysis size, and interest profile are configurable so the project can be forked for other research fields.
 
 ## Live workflow
 
@@ -14,12 +16,15 @@ PubMed + bioRxiv + medRxiv + arXiv
           DOI / source deduplication
                 ↓
       configurable local prefilter
+      prefilter.max_candidates
                 ↓
-        up to 40 AI-ranked papers
+     configurable AI analysis set
+          ai.max_analyzed
                 ↓
-       all 40 compactly summarized
+       rank + summarize all analyzed
                 ↓
-     Top 25 visible + 15 collapsed
+   site.featured_count shown first
+     remaining papers collapsed
                 ↓
       daily archive + Monthly Top 5
                 ↓
@@ -32,12 +37,12 @@ PubMed + bioRxiv + medRxiv + arXiv
 - PubMed retrieval based on Create Date overlap rather than publication date alone.
 - Cross-source deduplication.
 - Configurable deterministic prefilter before any paid AI call.
+- Independently configurable local-shortlist size and AI-analysis size.
 - DeepSeek as the default AI provider.
 - OpenAI support and support for other OpenAI-compatible Chat Completions endpoints.
 - Separate ranking and summarization stages for stable relevance scores.
 - AI caching so unchanged papers are not repeatedly paid for.
-- Up to 40 ranked and summarized papers per day.
-- Top 25 papers shown immediately, with ranks 26-40 collapsed by default.
+- Configurable number of papers expanded on the daily page, with the remainder collapsed.
 - Source label on every public paper card.
 - Per-source retrieval totals on every daily page.
 - Persistent daily issues.
@@ -90,41 +95,61 @@ Then open `http://localhost:8000`.
 
 ## Configuration
 
-Edit `config.yaml` to change:
+The three most important paper-count controls are:
+
+```yaml
+prefilter:
+  # Free local shortlist size after deterministic relevance filtering.
+  max_candidates: 40
+
+ai:
+  # Maximum number of shortlisted papers actually sent to the AI.
+  # Every analyzed paper is ranked and summarized.
+  max_analyzed: 40
+
+site:
+  # Number of analyzed papers expanded by default on the daily page.
+  # Remaining analyzed papers are placed in a collapsed section.
+  featured_count: 25
+```
+
+With the default `40 -> 40 -> 25` configuration, PaperDaily keeps up to 40 papers after the free local prefilter, sends up to 40 to the AI for ranking and summarization, shows the highest-ranked 25 immediately, and keeps the remaining 15 collapsed.
+
+You can change the stages independently. For example:
+
+```yaml
+prefilter:
+  max_candidates: 80
+
+ai:
+  max_analyzed: 50
+
+site:
+  featured_count: 20
+```
+
+This creates an 80-paper local shortlist, analyzes the top 50 of that shortlist, shows the best 20 immediately, and collapses the remaining 30 analyzed papers.
+
+If `ai.max_analyzed` is larger than `prefilter.max_candidates`, the actual AI-analysis count is naturally limited by the available local shortlist.
+
+Other configurable fields include:
 
 - timezone;
 - broad discovery terms;
 - arXiv categories;
 - deterministic prefilter anchors, weights, penalties, and boosts;
-- maximum AI candidate count;
 - AI provider and model;
 - researcher interest profile;
-- daily visible paper count;
 - token pricing used by the cost dashboard.
 
-The default site configuration uses:
-
-```yaml
-prefilter:
-  max_candidates: 40
-
-ai:
-  digest_min: 40
-  digest_max: 40
-  digest_score_threshold: 0
-
-site:
-  featured_count: 25
-```
-
-This means 40 papers are ranked and summarized, the first 25 are shown immediately, and the remaining 15 are available in a collapsed section.
+See `config.template.yaml` for a generic starting configuration.
 
 ## Homepage behavior
 
 Each date card shows:
 
 - the total number of unique papers discovered that day;
-- the configured Top 25 / additional-paper split;
+- the configured featured/additional-paper split;
 - the latest update time;
 - the Top 5 paper titles for that date.
 
@@ -138,8 +163,8 @@ A daily page shows:
 - PubMed, bioRxiv, medRxiv, and arXiv retrieval totals;
 - update time;
 - papers sorted from highest to lowest relevance;
-- Top 25 papers expanded;
-- ranks 26-40 collapsed by default;
+- the configured number of featured papers expanded;
+- remaining analyzed papers collapsed by default;
 - source, relevance score, title, compact AI summary, and source link for each paper.
 
 Full abstracts remain backend-only and are not shipped to the public website.

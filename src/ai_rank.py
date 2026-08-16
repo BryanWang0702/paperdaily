@@ -16,8 +16,24 @@ OPENAI_RESPONSES_API = "https://api.openai.com/v1/responses"
 CACHE_PATH = Path("data/ai_cache.json")
 CACHE_SCHEMA_VERSION = "paperdaily-ai-cache-v2"
 RANK_PROMPT_VERSION = "paperdaily-ranking-v1-2026-08"
-SUMMARY_PROMPT_VERSION = "paperdaily-summary-v1-2026-08"
+SUMMARY_PROMPT_VERSION = "paperdaily-summary-v2-2026-08"
 _RUN_USAGE: dict[str, int] = empty_usage()
+
+PAPER_TYPES = (
+    "Research Article",
+    "Review",
+    "Systematic Review",
+    "Meta-analysis",
+    "Methods/Resource",
+    "Clinical Study",
+    "Clinical Trial",
+    "Case Report",
+    "Protocol",
+    "Commentary/Perspective",
+    "Editorial",
+    "Preprint",
+    "Other",
+)
 
 
 def paper_key(paper: Paper) -> str:
@@ -64,9 +80,6 @@ def _finish_metadata(metadata: dict[str, Any], ai_config: dict) -> dict[str, Any
 
 
 def _profile_hash(ai_config: dict) -> str:
-    # Prompt versions are deliberately NOT part of the profile hash. Ranking and
-    # summary cache entries carry their own versions, so changing one prompt no
-    # longer invalidates the other task.
     material = {
         "cache_schema": CACHE_SCHEMA_VERSION,
         "provider": _provider_name(ai_config),
@@ -155,8 +168,6 @@ def _chat_completions_json(
         "max_tokens": 8192,
     }
     if provider == "deepseek":
-        # PaperDaily needs reliable classification/extraction, not a long chain
-        # of reasoning. Non-thinking mode keeps latency and token use modest.
         payload["thinking"] = {"type": "disabled"}
 
     last_error: Exception | None = None
@@ -235,8 +246,13 @@ def _summary_schema() -> dict:
                     "properties": {
                         "id": {"type": "string"},
                         "summary": {"type": "string"},
+                        "keywords": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                        },
+                        "paper_type": {"type": "string"},
                     },
-                    "required": ["id", "summary"],
+                    "required": ["id", "summary", "keywords", "paper_type"],
                     "additionalProperties": False,
                 },
             }
@@ -246,9 +262,55 @@ def _summary_schema() -> dict:
     }
 
 
+def _normalize_keywords(values: Any, fallback: list[str] | None = None) -> list[str]:
+    candidates = values if isinstance(values, list) else []
+    if not candidates and fallback:
+        candidates = fallback
+    result: list[str] = []
+    seen: set[str] = set()
+    for value in candidates:
+        keyword = str(value).strip()
+        marker = keyword.casefold()
+        if not keyword or marker in seen:
+            continue
+        seen.add(marker)
+        result.append(keyword[:100])
+        if len(result) >= 5:
+            break
+    return result
+
+
+def _normalize_paper_type(value: Any, publication_types: list[str] | None = None) -> str:
+    raw = str(value or "").strip()
+    for allowed in PAPER_TYPES:
+        if raw.casefold() == allowed.casefold():
+            return allowed
+
+    source_text = " ".join(publication_types or []).casefold()
+    if "meta-analysis" in source_text:
+        return "Meta-analysis"
+    if "systematic review" in source_text:
+        return "Systematic Review"
+    if "review" in source_text:
+        return "Review"
+    if "clinical trial" in source_text or "randomized controlled trial" in source_text:
+        return "Clinical Trial"
+    if "case reports" in source_text or "case report" in source_text:
+        return "Case Report"
+    if "protocol" in source_text:
+        return "Protocol"
+    if "editorial" in source_text:
+        return "Editorial"
+    if "comment" in source_text:
+        return "Commentary/Perspective"
+    if "journal article" in source_text:
+        return "Research Article"
+    if "preprint" in source_text:
+        return "Preprint"
+    return "Other"
+
+
 def _rank_batch(api_key: str, ai_config: dict, profile: str, papers: list[Paper]) -> dict[str, dict[str, Any]]:
-    # Keep ranking as a focused task. This prompt intentionally mirrors the
-    # earlier ranking-only version that produced more stable relevance scores.
     records = [
         {
             "id": paper_key(p),
@@ -289,31 +351,46 @@ CANDIDATES:
     return output
 
 
-def _summarize_batch(api_key: str, ai_config: dict, papers: list[Paper]) -> dict[str, str]:
+def _summarize_batch(api_key: str, ai_config: dict, papers: list[Paper]) -> dict[str, dict[str, Any]]:
     records = [
         {
             "id": paper_key(p),
             "title": p.title,
             "journal": p.journal,
-            "authors": p.authors[:8],
+            "source": p.source,
+            "authors": p.authors,
+            "source_keywords": p.keywords,
+            "publication_types": p.publication_types,
             "abstract": (p.abstract or "")[:5000],
         }
         for p in papers
     ]
-    prompt = f"""You prepare a compact scientific reading list for a neuroscience researcher.
+    allowed_types = ", ".join(PAPER_TYPES)
+    prompt = f"""You prepare a compact scientific reading list for a researcher.
 
-For every supplied paper, use only the title, metadata, and abstract. Do not invent findings.
-Write one compact summary of 1-2 sentences that states what the paper did and its most important reported result or contribution. Prefer concrete results over background. Do not add a separate relevance explanation because the paper has already been ranked.
+For every supplied paper, use only the supplied title, metadata, and abstract. Do not invent findings.
+Return three things for every paper:
+1. summary: 1-2 compact sentences stating what the paper did and its most important reported result or contribution. Prefer concrete results over background.
+2. keywords: 3-5 specific English scientific keywords or short phrases that best describe the paper. Prefer mechanisms, methods, models, species, signals, or core concepts over generic words such as study or neuroscience. Source keywords may be reused when informative.
+3. paper_type: one normalized label from this exact set: {allowed_types}.
+
+Use source publication_types as strong evidence when they are informative. For preprint servers, classify the scientific content when possible (for example Research Article or Review) rather than automatically using Preprint. Use English for all generated text.
 
 PAPERS:
 {json.dumps(records, ensure_ascii=False)}"""
     result = _provider_json(api_key, ai_config, prompt, "paper_summaries", _summary_schema())
-    output: dict[str, str] = {}
+    by_key = {paper_key(p): p for p in papers}
+    output: dict[str, dict[str, Any]] = {}
     for item in result.get("items", []):
         item_id = str(item.get("id", ""))
-        if not item_id:
+        paper = by_key.get(item_id)
+        if not item_id or paper is None:
             continue
-        output[item_id] = str(item.get("summary", ""))[:800]
+        output[item_id] = {
+            "summary": str(item.get("summary", ""))[:800],
+            "keywords": _normalize_keywords(item.get("keywords"), paper.keywords),
+            "paper_type": _normalize_paper_type(item.get("paper_type"), paper.publication_types),
+        }
     return output
 
 
@@ -414,7 +491,9 @@ def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
                 key = paper_key(p)
                 if key in summaries:
                     entry = cached_papers.setdefault(key, {})
-                    entry["summary"] = summaries[key]
+                    entry["summary"] = summaries[key]["summary"]
+                    entry["keywords"] = summaries[key]["keywords"]
+                    entry["paper_type"] = summaries[key]["paper_type"]
                     entry["summary_version"] = SUMMARY_PROMPT_VERSION
                     metadata["newly_summarized"] += 1
         except Exception as exc:
@@ -426,12 +505,14 @@ def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
         rank = entry.get("rank") if entry.get("rank_version") == RANK_PROMPT_VERSION else None
         if not rank:
             continue
-        summary = entry.get("summary", "") if entry.get("summary_version") == SUMMARY_PROMPT_VERSION else ""
+        summary_ok = entry.get("summary_version") == SUMMARY_PROMPT_VERSION
         p.extra["ai"] = {
             "score": int(rank.get("score", 0)),
             "topic": rank.get("topic", ""),
             "reason": rank.get("reason", ""),
-            "summary": summary,
+            "summary": entry.get("summary", "") if summary_ok else "",
+            "keywords": _normalize_keywords(entry.get("keywords"), p.keywords) if summary_ok else p.keywords[:5],
+            "paper_type": _normalize_paper_type(entry.get("paper_type"), p.publication_types) if summary_ok else _normalize_paper_type("", p.publication_types),
             "digest_pick": key in digest_keys,
         }
 

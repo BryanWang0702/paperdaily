@@ -82,6 +82,18 @@ def fetch_pubmed(config: dict, start_date: str, end_date: str, limit: int = 150)
                 if collective or full:
                     authors.append(collective or full)
 
+            keywords = []
+            for keyword in citation.findall("KeywordList/Keyword"):
+                value = _text(keyword)
+                if value and value not in keywords:
+                    keywords.append(value)
+
+            publication_types = []
+            for publication_type in article.findall("PublicationTypeList/PublicationType"):
+                value = _text(publication_type)
+                if value and value not in publication_types:
+                    publication_types.append(value)
+
             doi = ""
             for aid in record.findall("./PubmedData/ArticleIdList/ArticleId"):
                 if aid.attrib.get("IdType") == "doi":
@@ -110,6 +122,8 @@ def fetch_pubmed(config: dict, start_date: str, end_date: str, limit: int = 150)
                 journal=journal,
                 doi=doi,
                 url=f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/" if pmid else "",
+                keywords=keywords,
+                publication_types=publication_types,
             ))
 
     return papers

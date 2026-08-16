@@ -35,14 +35,27 @@ function money(value) {
 
 function paperCard(p, rank) {
   const score = p.score === null || p.score === undefined ? '' : `<span class="score-badge">${esc(p.score)} / 100</span>`;
+  const paperType = p.paper_type ? `<span class="type-badge">${esc(p.paper_type)}</span>` : '';
+  const authors = Array.isArray(p.authors) ? p.authors.filter(Boolean) : [];
+  const authorHtml = authors.length
+    ? `<p class="paper-authors"><strong>Authors</strong> ${authors.map(esc).join(', ')}</p>`
+    : '<p class="paper-authors muted-text"><strong>Authors</strong> Not available</p>';
+  const keywords = Array.isArray(p.keywords) ? p.keywords.filter(Boolean) : [];
+  const keywordHtml = keywords.length
+    ? `<div class="keyword-list">${keywords.map(keyword => `<span class="keyword-pill">${esc(keyword)}</span>`).join('')}</div>`
+    : '';
+
   return `
     <article class="paper digest-paper">
       <div class="paper-top">
         <span class="rank-number">#${rank}</span>
         <span class="source">${esc(sourceName(p.source))}</span>
+        ${paperType}
         ${score}
       </div>
       <h2><a href="${esc(p.url || '#')}" target="_blank" rel="noopener">${esc(p.title)}</a></h2>
+      ${authorHtml}
+      ${keywordHtml}
       ${p.summary ? `<p class="digest-summary">${esc(p.summary)}</p>` : '<p class="digest-summary muted-text">Summary unavailable.</p>'}
       <a class="read-link" href="${esc(p.url || '#')}" target="_blank" rel="noopener">Read paper →</a>
     </article>`;
@@ -61,7 +74,12 @@ function renderPapers() {
   const featuredCount = Math.min(Number(state.data?.featured_count || 25), papers.length);
   const q = state.query.trim().toLowerCase();
   const ranked = papers.map((paper, index) => ({ paper, rank: index + 1 }));
-  const matches = ranked.filter(({ paper }) => !q || `${paper.title} ${paper.summary || ''} ${paper.source || ''}`.toLowerCase().includes(q));
+  const matches = ranked.filter(({ paper }) => {
+    const authors = Array.isArray(paper.authors) ? paper.authors.join(' ') : '';
+    const keywords = Array.isArray(paper.keywords) ? paper.keywords.join(' ') : '';
+    const text = `${paper.title} ${paper.summary || ''} ${paper.source || ''} ${paper.paper_type || ''} ${authors} ${keywords}`.toLowerCase();
+    return !q || text.includes(q);
+  });
   const featured = matches.filter(({ rank }) => rank <= featuredCount);
   const additional = matches.filter(({ rank }) => rank > featuredCount);
 
