@@ -1,130 +1,129 @@
-# PaperDaily Local Edition
+# PaperDaily Local / Standalone Edition
 
-The local edition is for researchers who want PaperDaily without GitHub Actions or GitHub Pages. It uses the same retrieval, filtering, AI ranking, summaries, archive, and HTML interface as the hosted version.
+PaperDaily can run without GitHub Actions or GitHub Pages. The recommended option for Windows users is the frozen standalone release: no Python installation, Git, or source-code editing is required.
 
-## What you need
+## Windows standalone: simplest setup
 
-- Windows, macOS, or Linux.
-- Python 3.11 or newer.
-- Internet access for PubMed, bioRxiv, medRxiv, arXiv, and your AI provider.
-- One API token, such as a DeepSeek API key.
-
-## The two files you normally edit
-
-### 1. `config.yaml`
-
-Use this file to configure your research field, discovery terms, prefilter rules, AI analysis size, display size, provider/model, timezone, and local refresh schedule.
-
-The included `config.yaml` is the sleep-neuroscience example. `config.template.yaml` is a generic starting point for another field.
-
-### 2. `api_token.txt`
-
-Copy `api_token.example.txt` to `api_token.txt`, then replace the placeholder with your API token on the first line.
-
-`api_token.txt` is ignored by Git and should never be shared.
-
-## Windows: easiest start
-
-Double-click:
+Download `PaperDaily-Windows.zip` from the latest GitHub release, extract it, and keep these files together:
 
 ```text
-START_PAPERDAILY_WINDOWS.bat
+PaperDaily-Windows/
+├── PaperDaily.exe
+├── config.yaml
+├── api_token.txt
+├── README.md
+└── README.zh-CN.md
 ```
 
-On the first run it creates a private Python virtual environment, installs dependencies, and asks for an API token when a refresh is actually needed.
+The only two files a normal user needs to edit are:
 
-## macOS / Linux
+- `config.yaml` — research field, retrieval/filter limits, AI settings, schedule, theme, and display options.
+- `api_token.txt` — the AI API token on the first line.
 
-From Terminal inside the PaperDaily folder:
+Run `PaperDaily.exe`. It creates its own `data/` and `site/` runtime folders automatically and opens the dashboard in the default browser.
 
-```bash
-bash START_PAPERDAILY_MAC_LINUX.sh
-```
+## Smart refresh schedule
 
-## Smart refresh behavior
-
-The local edition does **not** fetch and call the AI every time it opens.
-
-By default, it uses the same two Beijing-time refresh slots as the hosted edition:
-
-```text
-05:30
-20:30
-```
-
-At startup PaperDaily determines the most recent scheduled slot that should already have happened, then checks `local_state.json`.
-
-Example behavior:
-
-- Open at 04:00: the latest due slot is the previous day's 20:30 slot.
-- Open at 06:00: the latest due slot is today's 05:30 slot.
-- Open at 19:00: the latest due slot is still today's 05:30 slot.
-- Open at 21:00: the latest due slot is today's 20:30 slot.
-
-If that slot has already completed successfully on this computer, PaperDaily opens the existing dashboard immediately with **no source requests and no AI API call**.
-
-If that slot has not completed, PaperDaily runs retrieval + filtering + AI analysis once. Only after a successful run does it record the slot in `local_state.json`.
-
-If the refresh fails, the slot is not marked complete, so the next launch can retry it. The previously generated dashboard still opens when available.
-
-On the very first launch, if `site/data/latest.json` does not exist yet, PaperDaily forces one refresh regardless of the current clock time.
-
-The token is only loaded when a refresh is actually required. Opening already-current local data therefore does not require an API call.
-
-## Local refresh configuration
+The default local configuration is:
 
 ```yaml
 local:
-  port: 8765
-
-  # scheduled | always | never
   refresh_mode: scheduled
-
   refresh_times:
     - "05:30"
     - "20:30"
+  scheduler_enabled: true
+  scheduler_check_seconds: 30
 ```
 
-`refresh_times` are interpreted in the top-level `timezone` from `config.yaml`.
+Times use the top-level `timezone` setting. The sleep-neuroscience example uses `Asia/Shanghai`.
 
-Modes:
+At startup, PaperDaily checks the latest refresh slot that should already have completed. If that slot is recorded in `local_state.json`, it opens existing HTML immediately and makes no literature or AI calls. If the slot has not completed, it refreshes first.
 
-- `scheduled`: recommended; refresh only when the latest slot has not completed locally.
-- `always`: refresh every time PaperDaily opens.
-- `never`: never fetch on startup; only browse existing data.
+When PaperDaily stays open, the background scheduler keeps checking the configured slots. A successful refresh is recorded only after retrieval and analysis complete. Failed refreshes remain pending and are retried later instead of being marked complete.
 
-`local_state.json` is machine-local, ignored by Git, and not included in the downloadable ZIP.
+The browser checks the archive timestamp once per minute and reloads automatically after a successful background refresh.
 
-## Local address
+Refresh modes:
 
-The default address is:
+```yaml
+refresh_mode: scheduled  # recommended
+refresh_mode: always     # refresh on every launch
+refresh_mode: never      # browse existing data only
+```
+
+## Version update check
+
+Before every real literature refresh, the standalone app reads the small `standalone_version.json` manifest maintained in this repository. It compares the installed `VERSION` with the current release.
+
+If a newer version is available, the dashboard shows an update notice and download link. If the version lookup fails, PaperDaily continues retrieving literature normally; version checking never blocks the research pipeline.
+
+## Themes
+
+Built-in themes are:
+
+```yaml
+site:
+  theme: khaki      # warm paper / current default
+  # theme: black    # minimal black
+  # theme: navy     # classic academic blue
+  # theme: forest   # muted green
+  # theme: burgundy # warm wine red
+  # theme: custom
+```
+
+For a custom palette:
+
+```yaml
+site:
+  theme: custom
+  custom_theme:
+    background: "#f2efe5"
+    surface: "#fffdf8"
+    text: "#1f2723"
+    muted: "#6b7068"
+    border: "#d8d3c5"
+    accent: "#75684d"
+    accent_text: "#ffffff"
+```
+
+## Billing display
+
+The homepage can show:
 
 ```text
-http://127.0.0.1:8765/
+Last run ¥... · Total ¥... · ~¥.../year
 ```
 
-Keep the terminal/command window open while browsing. Press `Ctrl+C` to stop the local server.
+`Last run` is the most recent individual AI run, not the accumulated cost for the current day. `Total` is the recorded lifetime API spend. The yearly estimate is based on a representative per-run cost multiplied by the configured number of daily refresh slots. Once scheduled production runs exist, development/debug runs are excluded from that reference cost.
 
-## Downloadable ZIP
+Turn the display off with:
 
-The hosted PaperDaily site automatically builds a synchronized local ZIP during GitHub Pages deployment:
-
-```text
-https://bryanwang.cn/paperdaily/downloads/PaperDaily-local.zip
+```yaml
+site:
+  show_billing: false
 ```
 
-The ZIP does not contain any API token, local refresh state, GitHub secret, historical backend data, or virtual environment.
+## Research-field configuration
 
-## Build the ZIP yourself
+Important settings in `config.yaml` include:
 
-```bash
-python tools/build_local_bundle.py
-```
+- `discovery_terms`
+- `prefilter.max_candidates`
+- `prefilter.anchors`, `weights`, and `boosts`
+- `ai.max_analyzed`
+- `ai.interest_profile`
+- `site.featured_count`
+- `local.refresh_times`
 
-The default output is `dist/PaperDaily-local.zip`.
+The included `config.yaml` is the sleep-neuroscience example. `config.template.yaml` in the repository is a generic template for another field.
 
 ## Security
 
-Do not put the API token into HTML or JavaScript. The local launcher keeps it on the Python side, so it is not exposed to the browser page.
+The API token remains on the Python/EXE side. It is never written into HTML or JavaScript. Do not share `api_token.txt`.
 
-Do not upload `api_token.txt` when sharing the local folder.
+The standalone release does not contain the author's historical paper archive, API token, GitHub secrets, or editable Python source tree.
+
+## Python-based local edition
+
+A Python-based ZIP is also produced for developers and advanced users. It requires Python 3.11+ and exposes the source tree. For normal Windows users, prefer the frozen `PaperDaily.exe` release.
