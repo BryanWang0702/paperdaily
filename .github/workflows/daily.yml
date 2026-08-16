@@ -30,7 +30,9 @@ jobs:
           python-version: '3.11'
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Fetch literature
+      - name: Fetch and rank literature
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: python -m src.pipeline --days 3
       - name: Commit changed data
         run: |

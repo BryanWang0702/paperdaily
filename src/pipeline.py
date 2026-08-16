@@ -7,6 +7,7 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+from .ai_rank import apply_ai_ranking
 from .deduplicate import deduplicate
 from .fetch_arxiv import fetch_arxiv
 from .fetch_biorxiv import fetch_biorxiv, fetch_medrxiv
@@ -31,6 +32,7 @@ def _build_archive_manifest() -> dict:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):
             continue
+        ai = payload.get("ai", {}) or {}
         days.append({
             "date": payload.get("date") or path.stem,
             "generated_at": payload.get("generated_at", ""),
@@ -38,6 +40,12 @@ def _build_archive_manifest() -> dict:
             "source_counts": payload.get("source_counts", {}),
             "errors": payload.get("errors", {}),
             "window": payload.get("window", {}),
+            "ai": {
+                "enabled": ai.get("enabled", False),
+                "top_n": ai.get("top_n", 0),
+                "ranked_count": ai.get("ranked_count", 0),
+                "status": ai.get("status", ""),
+            },
         })
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -74,8 +82,19 @@ def run(days: int | None = None) -> dict:
 
     unique = deduplicate(fetched)
     unique.sort(key=lambda p: (p.indexed_date or p.published_date, p.title), reverse=True)
-    counts = Counter(p.source for p in unique)
 
+    ai_meta = apply_ai_ranking(unique, config)
+    if ai_meta.get("ranked_count"):
+        unique.sort(
+            key=lambda p: (
+                int((p.extra.get("ai") or {}).get("score", -1)),
+                p.indexed_date or p.published_date,
+                p.title,
+            ),
+            reverse=True,
+        )
+
+    counts = Counter(p.source for p in unique)
     payload = {
         "date": current_day,
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -83,6 +102,7 @@ def run(days: int | None = None) -> dict:
         "count": len(unique),
         "source_counts": dict(counts),
         "errors": errors,
+        "ai": ai_meta,
         "papers": [p.to_dict() for p in unique],
     }
 
@@ -99,11 +119,12 @@ def run(days: int | None = None) -> dict:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Fetch and normalize PaperDaily sources")
+    parser = argparse.ArgumentParser(description="Fetch, rank, and archive PaperDaily sources")
     parser.add_argument("--days", type=int, default=None, help="Override lookback window")
     args = parser.parse_args()
     result = run(args.days)
     print(f"total unique: {result['count']}")
+    print("AI:", result.get("ai", {}).get("status", "unknown"))
     if result["errors"]:
         print("source errors:", result["errors"])
 
