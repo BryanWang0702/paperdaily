@@ -26,6 +26,20 @@ def _get_json_with_retry(url: str, attempts: int = 3) -> dict:
     raise last_error
 
 
+def _parse_authors(value: object) -> list[str]:
+    """Parse bioRxiv/medRxiv author strings without splitting surname initials.
+
+    The API commonly separates authors with semicolons while individual names
+    may themselves contain commas, for example ``Smith, J.; Jones, A. B.``.
+    """
+    raw = str(value or "").strip()
+    if not raw:
+        return []
+    if ";" in raw:
+        return [part.strip() for part in raw.split(";") if part.strip()]
+    return [raw]
+
+
 def _fetch_server(
     server: str,
     start_date: str,
@@ -51,8 +65,7 @@ def _fetch_server(
                 continue
 
             doi = normalize_doi(item.get("doi", ""))
-            authors_raw = item.get("authors", "") or ""
-            authors = [x.strip() for x in authors_raw.replace(";", ",").split(",") if x.strip()]
+            authors = _parse_authors(item.get("authors", ""))
             papers.append(Paper(
                 source=server,
                 source_id=doi or f"{server}:{item.get('date', '')}:{title}",
