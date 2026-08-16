@@ -2,7 +2,7 @@
 
 PaperDaily is designed to be forked and adapted to another research field without changing the core Python pipeline.
 
-This guide shows how to create your own literature radar, connect an AI provider, customize the scientific domain, and publish the result with GitHub Pages.
+This guide shows how to create your own literature radar, connect an AI provider, customize the scientific domain, control the daily shortlist and AI workload, and publish the result with GitHub Pages.
 
 ## 1. Fork the repository
 
@@ -145,7 +145,7 @@ Example:
 ```yaml
 prefilter:
   enabled: true
-  max_candidates: 40
+  max_candidates: 80
   min_score: 8
   title_multiplier: 3
   missing_anchor_penalty: 18
@@ -168,7 +168,7 @@ prefilter:
       require_anchor: true
 ```
 
-No Python edit is required for these domain rules.
+`prefilter.max_candidates` is the size of the free local daily shortlist. No Python edit is required for these domain rules.
 
 ### AI interest profile
 
@@ -192,32 +192,63 @@ ai:
 
 The AI score measures relevance to this profile, not general scientific quality.
 
-## 7. Configure the daily reading size
+## 7. Configure the three paper-count stages
 
-The current default is:
+PaperDaily separates the paper counts into three explicit stages:
 
 ```yaml
 prefilter:
+  # Free local shortlist after deterministic filtering.
   max_candidates: 40
 
 ai:
-  digest_min: 40
-  digest_max: 40
-  digest_score_threshold: 0
+  # Maximum number of shortlisted papers sent to the AI.
+  # Every analyzed paper is ranked and summarized.
+  max_analyzed: 40
 
 site:
+  # Number of analyzed papers expanded on the daily page.
   featured_count: 25
 ```
 
-This gives the following public layout:
+The default `40 -> 40 -> 25` layout means:
 
 ```text
-40 ranked and summarized papers
-├── ranks 1-25: visible immediately
-└── ranks 26-40: collapsed by default
+40 papers survive the free local prefilter
+                ↓
+40 papers are ranked and summarized by the AI
+                ↓
+25 are visible immediately
+15 remain collapsed
 ```
 
-If you want a smaller installation, reduce both `max_candidates` and the AI digest size.
+The stages can be changed independently. For example:
+
+```yaml
+prefilter:
+  max_candidates: 80
+
+ai:
+  max_analyzed: 50
+
+site:
+  featured_count: 20
+```
+
+produces:
+
+```text
+80-paper local shortlist
+        ↓
+50 AI-ranked and summarized papers
+        ↓
+Top 20 visible
+30 collapsed
+```
+
+If `ai.max_analyzed` is larger than `prefilter.max_candidates`, the actual AI workload is limited by the number of available shortlisted papers.
+
+This is useful for controlling API cost. A broad field can keep a large free local shortlist while sending a smaller subset to the AI.
 
 ## 8. What the homepage shows
 
@@ -239,8 +270,8 @@ The daily page includes:
 - update time;
 - papers sorted from highest to lowest relevance;
 - source label, relevance score, title, compact AI summary, and source link;
-- Top 25 visible by default;
-- the remaining 15 papers in a collapsed section.
+- `site.featured_count` papers visible by default;
+- remaining analyzed papers in a collapsed section.
 
 The public site does not ship full abstracts. Full paper metadata remains in `data/` for ranking, caching, debugging, and future reranking.
 
@@ -292,7 +323,7 @@ PaperDaily keeps two layers:
 - `data/`: complete backend records, abstracts, ranking metadata, AI cache, billing data, and source recovery data;
 - `site/data/`: compact public JSON for fast browsing.
 
-This separation keeps the website fast while preserving enough backend information for debugging and future reranking.
+The backend daily record also stores the actual `prefiltered_count` and `analyzed_count`, which makes configuration and cost behavior easier to audit.
 
 ## 14. Troubleshooting
 
@@ -318,7 +349,11 @@ Increase field-specific weights, add stronger anchors, increase `missing_anchor_
 
 ### Important papers are being missed
 
-Broaden `discovery_terms`, lower `min_score`, or increase `max_candidates`. Improve recall before making AI ranking stricter.
+Broaden `discovery_terms`, lower `min_score`, or increase `prefilter.max_candidates`. Improve recall before making AI ranking stricter.
+
+### API cost is higher than expected
+
+Reduce `ai.max_analyzed`. This changes the paid AI workload without requiring you to narrow the free local prefilter.
 
 ## 15. Recommended tuning workflow
 
@@ -326,6 +361,6 @@ Broaden `discovery_terms`, lower `min_score`, or increase `max_candidates`. Impr
 2. Inspect false positives and missed papers.
 3. Adjust deterministic weights and anchors.
 4. Refine the AI interest profile.
-5. Adjust the daily paper count only after retrieval quality is satisfactory.
+5. Tune `prefilter.max_candidates`, `ai.max_analyzed`, and `site.featured_count` for the desired recall, cost, and reading load.
 
 The goal is a reproducible literature radar that is useful for one researcher or one research group.
