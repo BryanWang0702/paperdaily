@@ -37,11 +37,11 @@ ai:
   base_url: https://api.deepseek.com
   api_key_env: DEEPSEEK_API_KEY
   rank_batch_size: 20
+  summary_batch_size: 5
 
-  # Daily digest is dynamic: normally 20-30 papers.
-  # Papers above the score threshold are included up to digest_max;
-  # if fewer qualify, the highest-ranked papers are backfilled to digest_min.
-  digest_min: 20
+  # First rank all rule-filtered candidates with a ranking-only prompt, then
+  # summarize a broader 25-30 paper digest using full abstracts.
+  digest_min: 25
   digest_max: 30
   digest_score_threshold: 45
 

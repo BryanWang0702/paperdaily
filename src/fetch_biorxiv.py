@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import time
+
 import requests
 
 from .models import Paper
@@ -7,6 +9,21 @@ from .utils import compact_text, matches_terms, normalize_doi
 
 
 API_ROOT = "https://api.biorxiv.org/details"
+
+
+def _get_json_with_retry(url: str, attempts: int = 3) -> dict:
+    last_error: Exception | None = None
+    for attempt in range(attempts):
+        try:
+            response = requests.get(url, timeout=(10, 45))
+            response.raise_for_status()
+            return response.json()
+        except (requests.RequestException, ValueError) as exc:
+            last_error = exc
+            if attempt + 1 < attempts:
+                time.sleep(2 ** attempt)
+    assert last_error is not None
+    raise last_error
 
 
 def _fetch_server(
@@ -21,9 +38,7 @@ def _fetch_server(
 
     while len(papers) < limit:
         url = f"{API_ROOT}/{server}/{start_date}/{end_date}/{cursor}"
-        response = requests.get(url, timeout=30)
-        response.raise_for_status()
-        payload = response.json()
+        payload = _get_json_with_retry(url)
         collection = payload.get("collection", [])
         if not collection:
             break

@@ -19,6 +19,7 @@ from .utils import date_window, load_config, local_date
 
 DATA_DIR = Path("data")
 SITE_DATA_DIR = Path("site/data")
+SOURCE_CACHE_DIR = DATA_DIR / "source_cache"
 
 
 def _write_json(path: Path, payload: dict) -> None:
@@ -39,6 +40,63 @@ def _read_json(path: Path) -> dict:
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return {}
+
+
+def _paper_from_dict(item: dict) -> Paper:
+    return Paper(
+        source=str(item.get("source", "")),
+        source_id=str(item.get("source_id", "")),
+        title=str(item.get("title", "")),
+        abstract=str(item.get("abstract", "")),
+        authors=[str(x) for x in (item.get("authors") or [])],
+        published_date=str(item.get("published_date", "")),
+        indexed_date=str(item.get("indexed_date", "")),
+        journal=str(item.get("journal", "")),
+        doi=str(item.get("doi", "")),
+        url=str(item.get("url", "")),
+        categories=[str(x) for x in (item.get("categories") or [])],
+        extra=dict(item.get("extra") or {}),
+    )
+
+
+def _save_source_cache(name: str, papers: list[Paper], start_date: str, end_date: str) -> None:
+    _write_json(
+        SOURCE_CACHE_DIR / f"{name}.json",
+        {
+            "source": name,
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
+            "window": {"start": start_date, "end": end_date},
+            "count": len(papers),
+            "papers": [paper.to_dict() for paper in papers],
+        },
+    )
+
+
+def _load_source_cache(name: str, max_age_days: int = 7) -> list[Paper]:
+    payload = _read_json(SOURCE_CACHE_DIR / f"{name}.json")
+    if not payload:
+        return []
+    fetched_at = str(payload.get("fetched_at", ""))
+    try:
+        stamp = datetime.fromisoformat(fetched_at.replace("Z", "+00:00"))
+        if stamp.tzinfo is None:
+            stamp = stamp.replace(tzinfo=timezone.utc)
+        if datetime.now(timezone.utc) - stamp > timedelta(days=max_age_days):
+            return []
+    except ValueError:
+        return []
+
+    papers: list[Paper] = []
+    for item in payload.get("papers", []) or []:
+        if not isinstance(item, dict):
+            continue
+        try:
+            paper = _paper_from_dict(item)
+        except (TypeError, ValueError):
+            continue
+        if paper.title:
+            papers.append(paper)
+    return papers
 
 
 def _attach_daily_billing(current_day: str, ai_meta: dict) -> dict:
@@ -67,7 +125,6 @@ def _top_titles(payload: dict, limit: int = 5) -> list[str]:
         p for p in papers
         if (((p.get("extra") or {}).get("ai") or {}).get("digest_pick"))
     ]
-    # Backward compatibility for archives produced by the earlier Top-15 schema.
     if not digest_papers:
         digest_papers = [
             p for p in papers
@@ -225,7 +282,6 @@ def _build_site_digest(payload: dict, papers: list[Paper]) -> dict:
             "summary": str(ai.get("summary", "")) if ai else "",
         })
 
-    # Raw-feed fallback if AI is temporarily unavailable. Keep the page small.
     if not selected:
         selected = [
             {"title": p.title, "url": p.url, "score": None, "summary": ""}
@@ -278,10 +334,17 @@ def run(days: int | None = None) -> dict:
         try:
             items = loader()
             fetched.extend(items)
+            _save_source_cache(name, items, start_date, end_date)
             print(f"{name}: {len(items)} records")
         except Exception as exc:
-            errors[name] = f"{type(exc).__name__}: {exc}"
-            print(f"{name}: ERROR {errors[name]}")
+            cached = _load_source_cache(name)
+            if cached:
+                fetched.extend(cached)
+                errors[name] = f"{type(exc).__name__}: {exc} · reused {len(cached)} cached records"
+                print(f"{name}: ERROR, reused {len(cached)} cached records")
+            else:
+                errors[name] = f"{type(exc).__name__}: {exc}"
+                print(f"{name}: ERROR {errors[name]}")
 
     raw_unique = deduplicate(fetched)
     raw_unique.sort(key=lambda p: (p.indexed_date or p.published_date, p.title), reverse=True)

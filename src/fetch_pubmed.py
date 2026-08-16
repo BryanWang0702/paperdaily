@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+import os
 import xml.etree.ElementTree as ET
-from datetime import datetime
 
 import requests
 
@@ -38,10 +38,13 @@ def fetch_pubmed(config: dict, start_date: str, end_date: str, limit: int = 150)
     term_query = " OR ".join(f'"{term}"[Title/Abstract]' for term in terms)
     query = f"({term_query}) AND ({start_date}[crdt] : {end_date}[crdt])"
     pubmed_cfg = config.get("pubmed", {})
-    common = {
-        "tool": pubmed_cfg.get("tool", "paperdaily"),
-        "email": pubmed_cfg.get("email", ""),
-    }
+    email = os.getenv("PUBMED_EMAIL", "").strip() or str(pubmed_cfg.get("email", "")).strip()
+    api_key = os.getenv("NCBI_API_KEY", "").strip()
+    common = {"tool": pubmed_cfg.get("tool", "paperdaily")}
+    if email:
+        common["email"] = email
+    if api_key:
+        common["api_key"] = api_key
 
     response = requests.get(
         f"{EUTILS}/esearch.fcgi",

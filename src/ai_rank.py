@@ -14,7 +14,9 @@ from .models import Paper
 
 OPENAI_RESPONSES_API = "https://api.openai.com/v1/responses"
 CACHE_PATH = Path("data/ai_cache.json")
-PROMPT_VERSION = "paperdaily-v0.3-inline-digest-2026-08"
+CACHE_SCHEMA_VERSION = "paperdaily-ai-cache-v2"
+RANK_PROMPT_VERSION = "paperdaily-ranking-v1-2026-08"
+SUMMARY_PROMPT_VERSION = "paperdaily-summary-v1-2026-08"
 _RUN_USAGE: dict[str, int] = empty_usage()
 
 
@@ -62,8 +64,11 @@ def _finish_metadata(metadata: dict[str, Any], ai_config: dict) -> dict[str, Any
 
 
 def _profile_hash(ai_config: dict) -> str:
+    # Prompt versions are deliberately NOT part of the profile hash. Ranking and
+    # summary cache entries carry their own versions, so changing one prompt no
+    # longer invalidates the other task.
     material = {
-        "prompt_version": PROMPT_VERSION,
+        "cache_schema": CACHE_SCHEMA_VERSION,
         "provider": _provider_name(ai_config),
         "model": ai_config.get("model", "deepseek-v4-flash"),
         "base_url": ai_config.get("base_url", ""),
@@ -150,6 +155,8 @@ def _chat_completions_json(
         "max_tokens": 8192,
     }
     if provider == "deepseek":
+        # PaperDaily needs reliable classification/extraction, not a long chain
+        # of reasoning. Non-thinking mode keeps latency and token use modest.
         payload["thinking"] = {"type": "disabled"}
 
     last_error: Exception | None = None
@@ -206,9 +213,30 @@ def _ranking_schema() -> dict:
                         "score": {"type": "integer"},
                         "topic": {"type": "string"},
                         "reason": {"type": "string"},
+                    },
+                    "required": ["id", "score", "topic", "reason"],
+                    "additionalProperties": False,
+                },
+            }
+        },
+        "required": ["items"],
+        "additionalProperties": False,
+    }
+
+
+def _summary_schema() -> dict:
+    return {
+        "type": "object",
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {"type": "string"},
                         "summary": {"type": "string"},
                     },
-                    "required": ["id", "score", "topic", "reason", "summary"],
+                    "required": ["id", "summary"],
                     "additionalProperties": False,
                 },
             }
@@ -219,36 +247,35 @@ def _ranking_schema() -> dict:
 
 
 def _rank_batch(api_key: str, ai_config: dict, profile: str, papers: list[Paper]) -> dict[str, dict[str, Any]]:
+    # Keep ranking as a focused task. This prompt intentionally mirrors the
+    # earlier ranking-only version that produced more stable relevance scores.
     records = [
         {
             "id": paper_key(p),
             "title": p.title,
             "journal": p.journal,
             "source": p.source,
-            "abstract": (p.abstract or "")[:3000],
+            "abstract": (p.abstract or "")[:1200],
         }
         for p in papers
     ]
-    prompt = f"""You are the ranking and digest layer of a personal scientific literature radar.
+    prompt = f"""You are the ranking layer of a personal scientific literature radar.
 
 RESEARCHER INTEREST PROFILE:
 {profile}
 
-For EVERY candidate, do two things in the same pass:
-1. Score relevance to this specific researcher from 0-100.
-2. Write a compact 1-2 sentence scientific summary based only on the supplied title/abstract. State what was done and the most important result or contribution. Do not invent details.
-
-Relevance scale:
-- 90-100: directly addresses a current core question/project or a highly transferable method.
+Score each candidate for relevance to this specific researcher, not for general scientific quality.
+Use a 0-100 scale:
+- 90-100: directly addresses a current core question/project or provides a highly transferable method.
 - 70-89: strongly relevant background, mechanism, dataset, or method.
 - 40-69: adjacent and occasionally useful.
-- 0-39: weakly related, keyword collision, broad clinical/general content, or outside likely needs.
+- 0-39: weakly related, keyword collision, broad clinical/general content, or outside the researcher's likely needs.
 
-Also return a short topic label and one concise reason for the score. Keep the summary compact because it will be shown directly in a daily reading list. Process every supplied id exactly once.
+Give a short topic label and one concise reason for the score. Score every supplied id exactly once.
 
 CANDIDATES:
 {json.dumps(records, ensure_ascii=False)}"""
-    result = _provider_json(api_key, ai_config, prompt, "paper_ranking_digest", _ranking_schema())
+    result = _provider_json(api_key, ai_config, prompt, "paper_ranking", _ranking_schema())
     output: dict[str, dict[str, Any]] = {}
     for item in result.get("items", []):
         item_id = str(item.get("id", ""))
@@ -257,9 +284,36 @@ CANDIDATES:
         output[item_id] = {
             "score": max(0, min(100, int(item.get("score", 0)))),
             "topic": str(item.get("topic", ""))[:120],
-            "reason": str(item.get("reason", ""))[:500],
-            "summary": str(item.get("summary", ""))[:700],
+            "reason": str(item.get("reason", ""))[:600],
         }
+    return output
+
+
+def _summarize_batch(api_key: str, ai_config: dict, papers: list[Paper]) -> dict[str, str]:
+    records = [
+        {
+            "id": paper_key(p),
+            "title": p.title,
+            "journal": p.journal,
+            "authors": p.authors[:8],
+            "abstract": (p.abstract or "")[:5000],
+        }
+        for p in papers
+    ]
+    prompt = f"""You prepare a compact scientific reading list for a neuroscience researcher.
+
+For every supplied paper, use only the title, metadata, and abstract. Do not invent findings.
+Write one compact summary of 1-2 sentences that states what the paper did and its most important reported result or contribution. Prefer concrete results over background. Do not add a separate relevance explanation because the paper has already been ranked.
+
+PAPERS:
+{json.dumps(records, ensure_ascii=False)}"""
+    result = _provider_json(api_key, ai_config, prompt, "paper_summaries", _summary_schema())
+    output: dict[str, str] = {}
+    for item in result.get("items", []):
+        item_id = str(item.get("id", ""))
+        if not item_id:
+            continue
+        output[item_id] = str(item.get("summary", ""))[:800]
     return output
 
 
@@ -270,7 +324,8 @@ def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
     provider = _provider_name(ai_config)
     model = str(ai_config.get("model", "deepseek-v4-flash"))
     rank_batch_size = max(1, int(ai_config.get("rank_batch_size", 20)))
-    digest_min = max(1, int(ai_config.get("digest_min", 20)))
+    summary_batch_size = max(1, int(ai_config.get("summary_batch_size", 5)))
+    digest_min = max(1, int(ai_config.get("digest_min", 25)))
     digest_max = max(digest_min, int(ai_config.get("digest_max", 30)))
     digest_score_threshold = max(0, min(100, int(ai_config.get("digest_score_threshold", 45))))
     profile = str(ai_config.get("interest_profile", "")).strip()
@@ -290,6 +345,8 @@ def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
         "digest_min": digest_min,
         "digest_max": digest_max,
         "digest_score_threshold": digest_score_threshold,
+        "rank_prompt_version": RANK_PROMPT_VERSION,
+        "summary_prompt_version": SUMMARY_PROMPT_VERSION,
         "errors": [],
     }
     if not requested:
@@ -306,23 +363,30 @@ def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
     cache = _load_cache(profile_hash)
     cached_papers: dict[str, dict] = cache["papers"]
 
-    missing_rank = [p for p in papers if not cached_papers.get(paper_key(p), {}).get("rank")]
+    missing_rank = [
+        p for p in papers
+        if (
+            not cached_papers.get(paper_key(p), {}).get("rank")
+            or cached_papers.get(paper_key(p), {}).get("rank_version") != RANK_PROMPT_VERSION
+        )
+    ]
     for batch in _chunks(missing_rank, rank_batch_size):
         try:
             ranked = _rank_batch(api_key, ai_config, profile, batch)
             for p in batch:
                 key = paper_key(p)
                 if key in ranked:
-                    cached_papers.setdefault(key, {})["rank"] = ranked[key]
+                    entry = cached_papers.setdefault(key, {})
+                    entry["rank"] = ranked[key]
+                    entry["rank_version"] = RANK_PROMPT_VERSION
                     metadata["newly_ranked"] += 1
-                    if ranked[key].get("summary"):
-                        metadata["newly_summarized"] += 1
         except Exception as exc:
             metadata["errors"].append(f"ranking batch: {type(exc).__name__}: {exc}")
 
     scored: list[tuple[Paper, int]] = []
     for p in papers:
-        rank = cached_papers.get(paper_key(p), {}).get("rank")
+        entry = cached_papers.get(paper_key(p), {})
+        rank = entry.get("rank") if entry.get("rank_version") == RANK_PROMPT_VERSION else None
         if rank:
             scored.append((p, int(rank.get("score", 0))))
     scored.sort(key=lambda pair: (pair[1], pair[0].indexed_date or pair[0].published_date), reverse=True)
@@ -336,16 +400,38 @@ def apply_ai_ranking(papers: list[Paper], config: dict) -> dict[str, Any]:
     digest_pairs = digest_pairs[:digest_max]
     digest_keys = {paper_key(p) for p, _ in digest_pairs}
 
+    needs_summary = [
+        p for p, _ in digest_pairs
+        if (
+            not cached_papers.get(paper_key(p), {}).get("summary")
+            or cached_papers.get(paper_key(p), {}).get("summary_version") != SUMMARY_PROMPT_VERSION
+        )
+    ]
+    for batch in _chunks(needs_summary, summary_batch_size):
+        try:
+            summaries = _summarize_batch(api_key, ai_config, batch)
+            for p in batch:
+                key = paper_key(p)
+                if key in summaries:
+                    entry = cached_papers.setdefault(key, {})
+                    entry["summary"] = summaries[key]
+                    entry["summary_version"] = SUMMARY_PROMPT_VERSION
+                    metadata["newly_summarized"] += 1
+        except Exception as exc:
+            metadata["errors"].append(f"summary batch: {type(exc).__name__}: {exc}")
+
     for p in papers:
         key = paper_key(p)
-        rank = cached_papers.get(key, {}).get("rank")
+        entry = cached_papers.get(key, {})
+        rank = entry.get("rank") if entry.get("rank_version") == RANK_PROMPT_VERSION else None
         if not rank:
             continue
+        summary = entry.get("summary", "") if entry.get("summary_version") == SUMMARY_PROMPT_VERSION else ""
         p.extra["ai"] = {
             "score": int(rank.get("score", 0)),
             "topic": rank.get("topic", ""),
             "reason": rank.get("reason", ""),
-            "summary": rank.get("summary", ""),
+            "summary": summary,
             "digest_pick": key in digest_keys,
         }
 
