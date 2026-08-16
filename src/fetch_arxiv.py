@@ -65,6 +65,7 @@ def fetch_arxiv(
             doi=doi,
             url=getattr(entry, "link", ""),
             categories=categories_entry,
+            publication_types=["Preprint"],
         ))
 
     return papers
