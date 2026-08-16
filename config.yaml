@@ -36,15 +36,21 @@ ai:
   model: deepseek-v4-flash
   base_url: https://api.deepseek.com
   api_key_env: DEEPSEEK_API_KEY
-  top_n: 15
   rank_batch_size: 20
-  summary_batch_size: 5
-  # DeepSeek V4 Flash official CNY prices per 1M tokens (2026-08-16).
-  # Keeping these in config makes future price changes easy to update.
+
+  # Daily digest is dynamic: normally 20-30 papers.
+  # Papers above the score threshold are included up to digest_max;
+  # if fewer qualify, the highest-ranked papers are backfilled to digest_min.
+  digest_min: 20
+  digest_max: 30
+  digest_score_threshold: 45
+
+  # DeepSeek V4 Flash CNY prices per 1M tokens.
   pricing_cny_per_million:
     input_cache_hit: 0.02
     input_cache_miss: 1.0
     output: 2.0
+
   interest_profile: |
     Primary focus: basic and computational questions in sleep neuroscience using animal EEG/EMG and longitudinal recordings.
 
