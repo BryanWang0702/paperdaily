@@ -16,17 +16,16 @@ function money(value) {
   return `¥${number.toFixed(2)}`;
 }
 
-function sourceSummary(counts = {}) {
-  return Object.entries(counts)
-    .map(([source, count]) => `<span class="source-pill">${esc(source)} <strong>${count}</strong></span>`)
-    .join('');
+function topPreview(titles = []) {
+  if (!titles.length) return '';
+  return `<ol class="top-preview">${titles.slice(0, 5).map(title => `<li>${esc(title)}</li>`).join('')}</ol>`;
 }
 
 async function boot() {
   const archive = document.querySelector('#archive');
   const status = document.querySelector('#status');
   try {
-    const response = await fetch(`data/archive.json?v=${Date.now()}`);
+    const response = await fetch('data/archive.json', { cache: 'no-cache' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     const days = data.days || [];
@@ -40,21 +39,23 @@ async function boot() {
 
     archive.innerHTML = days.map((day, index) => {
       const ai = day.ai || {};
-      const aiBadge = ai.enabled
-        ? `<span class="ai-pill">AI top ${ai.top_n || 0}</span>`
-        : '';
       const costBadge = ai.daily_cost_cny !== null && ai.daily_cost_cny !== undefined
         ? `<span class="source-pill">API ${money(ai.daily_cost_cny)}</span>`
         : '';
+      const rankedBadge = ai.enabled
+        ? `<span class="ai-pill">${ai.ranked_count || 0} screened by AI</span>`
+        : '';
+      const version = day.generated_at ? `&v=${encodeURIComponent(day.generated_at)}` : '';
       return `
-        <a class="day-card" href="day.html?date=${encodeURIComponent(day.date)}">
+        <a class="day-card" href="day.html?date=${encodeURIComponent(day.date)}${version}">
           <div class="day-card-top">
             <span class="day-date">${esc(prettyDate(day.date))}</span>
             ${index === 0 ? '<span class="today-badge">LATEST</span>' : ''}
           </div>
           <div class="day-count">${day.count ?? 0}</div>
-          <div class="day-label">candidate papers${day.raw_count && day.raw_count !== day.count ? ` · ${day.raw_count} discovered` : ''}</div>
-          <div class="source-pills">${sourceSummary(day.source_counts)}${aiBadge}${costBadge}</div>
+          <div class="day-label">recommended papers${day.candidate_count ? ` · ${day.candidate_count} candidates` : ''}${day.raw_count ? ` · ${day.raw_count} discovered` : ''}</div>
+          ${topPreview(day.top_titles || [])}
+          <div class="source-pills">${rankedBadge}${costBadge}</div>
           ${Object.keys(day.errors || {}).length ? '<div class="day-warning">Some sources reported errors</div>' : ''}
           <div class="open-day">Open daily digest →</div>
         </a>`;
