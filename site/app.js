@@ -42,7 +42,7 @@ function money(value) {
 }
 
 function topPreview(titles = []) {
-  if (!titles.length) return '';
+  if (!titles.length) return '<p class="ranking-empty">No ranked preview yet.</p>';
   return `<ol class="top-preview">${titles.slice(0, 5).map(title => `<li>${esc(title)}</li>`).join('')}</ol>`;
 }
 
@@ -94,7 +94,7 @@ async function boot() {
     const data = await response.json();
     const days = data.days || [];
     const billing = data.billing || {};
-    const showBilling = settings?.billing?.show !== false;
+    const showBilling = settings?.billing?.show === true;
 
     if (showBilling && billing.total_cost_cny !== undefined) {
       document.querySelector('#meta').textContent = `Last run ${money(billing.last_run_cost_cny)} · Total ${money(billing.total_cost_cny)} · ~${money(billing.annual_estimate_cny)}/year`;
@@ -113,22 +113,27 @@ async function boot() {
       const version = day.generated_at ? `&v=${encodeURIComponent(day.generated_at)}` : '';
       return `
         <a class="day-card" href="day.html?date=${encodeURIComponent(day.date)}${version}">
-          <div class="day-card-top">
-            <span class="day-date">${esc(prettyDate(day.date))}</span>
-            ${index === 0 ? '<span class="today-badge">LATEST</span>' : ''}
+          <div class="day-card-main">
+            <div class="day-card-top">
+              <span class="day-date">${esc(prettyDate(day.date))}</span>
+              ${index === 0 ? '<span class="today-badge">LATEST</span>' : ''}
+            </div>
+            <div class="day-count-row">
+              <span class="day-count">${day.total_count ?? 0}</span>
+              <span class="day-label">unique papers discovered</span>
+            </div>
+            <div class="day-presets">
+              <span><strong>${featured}</strong> highlighted</span>
+              <span><strong>${additional}</strong> more</span>
+              ${updated ? `<span>Updated ${esc(updated)}</span>` : ''}
+            </div>
+            ${Object.keys(day.errors || {}).length ? '<div class="day-warning">Some sources reported errors</div>' : ''}
+            <div class="open-day">Open daily papers →</div>
           </div>
-          <div class="day-count-row">
-            <span class="day-count">${day.total_count ?? 0}</span>
-            <span class="day-label">unique papers discovered</span>
+          <div class="day-card-preview">
+            <div class="day-card-preview-label">Top papers</div>
+            ${topPreview(day.top_titles || [])}
           </div>
-          <div class="day-presets">
-            <span><strong>${featured}</strong> highlighted</span>
-            <span><strong>${additional}</strong> more</span>
-            ${updated ? `<span>Updated ${esc(updated)}</span>` : ''}
-          </div>
-          ${topPreview(day.top_titles || [])}
-          ${Object.keys(day.errors || {}).length ? '<div class="day-warning">Some sources reported errors</div>' : ''}
-          <div class="open-day">Open daily papers →</div>
         </a>`;
     }).join('') || '<p class="empty">The first daily archive will appear after the pipeline runs.</p>';
   } catch (error) {
