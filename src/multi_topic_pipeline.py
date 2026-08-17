@@ -232,6 +232,7 @@ def _process_topic(
     _write_json(topic_dir / "latest.json", payload)
     site_payload = _build_site_digest(payload, analyzed)
     site_payload["topic"] = payload["topic"]
+    site_payload["topic_source_counts"] = payload["raw_source_counts"]
     _write_compact_json(site_topic_dir / "latest.json", site_payload)
     _write_compact_json(site_topic_dir / "days" / f"{current_day}.json", site_payload)
     _write_compact_json(site_topic_dir / "archive.json", _topic_archive_manifest(topic_dir))
@@ -239,13 +240,11 @@ def _process_topic(
 
 
 def _mirror_default_topic(payload: dict[str, Any], default_id: str) -> None:
-    topic_dir = TOPIC_DATA_DIR / default_id
     site_topic_dir = SITE_TOPIC_DATA_DIR / default_id
     current_day = str(payload.get("date"))
     _write_json(DATA_DIR / f"{current_day}.json", payload)
     _write_json(DATA_DIR / "latest.json", payload)
 
-    import json
     for source, target in [
         (site_topic_dir / "latest.json", SITE_DATA_DIR / "latest.json"),
         (site_topic_dir / "days" / f"{current_day}.json", SITE_DATA_DIR / "days" / f"{current_day}.json"),
@@ -299,7 +298,6 @@ def run(days: int | None = None) -> dict[str, Any]:
     default_payload = results[default_id]
     _mirror_default_topic(default_payload, default_id)
 
-    # Runtime billing remains one ledger for the whole PaperDaily installation.
     aggregate = deepcopy(default_payload)
     aggregate["topic_results"] = {
         topic_id: {
