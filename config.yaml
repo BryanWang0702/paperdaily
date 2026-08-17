@@ -2,6 +2,19 @@ timezone: Asia/Shanghai
 lookback_days: 3
 max_per_source: 150
 
+# Multi-topic mode. Each YAML file in topics/ inherits the shared settings below
+# and overrides only its own discovery, prefilter, and AI-interest profile.
+topics:
+  enabled: true
+  directory: topics
+  default: sleep-homeostasis
+
+  # One shared source query is used for all topics. Scale the retrieval ceiling
+  # with the number of enabled topics so a broad topic does not crowd out another.
+  scale_source_limit: true
+  max_shared_source_results: 500
+
+# Legacy/single-topic fallback values. Enabled topic files override these fields.
 discovery_terms:
   - sleep
   - NREM
@@ -38,8 +51,8 @@ arxiv:
   # Optional contact address included in PaperDaily's arXiv User-Agent.
   contact_email: ""
 
-# Free deterministic shortlist built before any paid AI call.
-# Change max_candidates to control how many papers survive the daily local filter.
+# Shared defaults for deterministic topic shortlists. Topic files can replace
+# anchors, weights, boosts, and can override max_candidates independently.
 prefilter:
   enabled: true
   max_candidates: 40
@@ -108,9 +121,7 @@ ai:
   base_url: https://api.deepseek.com
   api_key_env: DEEPSEEK_API_KEY
 
-  # Maximum number of papers from the local shortlist that are sent to the AI.
-  # Every analyzed paper is ranked and summarized. If this is larger than
-  # prefilter.max_candidates, the actual analyzed count is limited by the shortlist.
+  # Shared defaults. A topic may override max_analyzed or its interest_profile.
   max_analyzed: 40
   rank_batch_size: 20
   summary_batch_size: 5
@@ -121,6 +132,7 @@ ai:
     input_cache_miss: 1.0
     output: 2.0
 
+  # Used only when multi-topic profiles are disabled or unavailable.
   interest_profile: |
     Primary focus: basic and computational questions in sleep neuroscience using animal EEG/EMG and longitudinal recordings.
 
@@ -134,8 +146,7 @@ site:
   title: PaperDaily
   subtitle: Daily research radar
 
-  # Number of AI-analyzed papers expanded by default on the daily page.
-  # Remaining analyzed papers are placed in the collapsed section.
+  # Number of AI-analyzed papers expanded by default on each topic's daily page.
   featured_count: 25
 
   # Optional homepage billing summary. Disabled by default.
@@ -171,8 +182,8 @@ local:
   scheduler_enabled: true
   scheduler_check_seconds: 30
 
-  # In scheduled mode, saving config.yaml triggers the full retrieval + AI pipeline
-  # immediately rather than waiting for the next 05:30/20:30 slot.
+  # In scheduled mode, saving config.yaml or any topics/*.yaml profile triggers
+  # the full shared retrieval + per-topic AI pipeline immediately.
   refresh_on_config_change: true
 
   # Check this small repository manifest before each real literature refresh.

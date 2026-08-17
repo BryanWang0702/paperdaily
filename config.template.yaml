@@ -5,6 +5,16 @@ timezone: UTC
 lookback_days: 3
 max_per_source: 150
 
+# Optional multi-topic mode. Leave disabled for a single research interest.
+# When enabled, each topics/*.yaml file inherits the shared settings below and
+# can override discovery_terms, prefilter rules, AI interest_profile, and limits.
+topics:
+  enabled: false
+  directory: topics
+  default: my-first-topic
+  scale_source_limit: true
+  max_shared_source_results: 500
+
 discovery_terms:
   - core topic
   - important method
@@ -19,10 +29,11 @@ arxiv:
   categories:
     - q-bio.NC
 
-  # Recommended for the legacy arXiv API: cache an identical retrieval window
-  # instead of repeating the same query during multiple daily refreshes.
+  # Recommended for the legacy arXiv API in single-topic mode: cache an identical
+  # retrieval window instead of repeating the same query during multiple refreshes.
+  # Multi-topic mode revalidates the union query by default to avoid stale results
+  # after a topic profile changes.
   reuse_same_window: true
-  # HTTP 429, transient 5xx responses, connection errors, and timeouts are retried.
   retry_delays_seconds: [10, 30]
   timeout_seconds: 45
   contact_email: ""
@@ -58,7 +69,7 @@ ai:
   api_key_env: DEEPSEEK_API_KEY
 
   # Number of papers from the local shortlist that are ranked and summarized.
-  # The actual number cannot exceed prefilter.max_candidates.
+  # A topic profile may override this independently.
   max_analyzed: 40
   rank_batch_size: 20
   summary_batch_size: 5
@@ -115,8 +126,8 @@ local:
   scheduler_enabled: true
   scheduler_check_seconds: 30
 
-  # In scheduled mode, a saved config.yaml change immediately runs the full
-  # retrieval + AI pipeline. Set false if you only want slot-based updates.
+  # In scheduled mode, a saved config.yaml or topics/*.yaml change immediately
+  # runs the full shared retrieval + per-topic AI pipeline.
   refresh_on_config_change: true
 
   # Update reminder checked before each real literature refresh.

@@ -29,7 +29,10 @@ def iter_files():
     for path in sorted((ROOT / "src").rglob("*.py")):
         yield path, path.relative_to(ROOT)
 
-    for name in ("index.html", "day.html", "app.js", "day.js", "style.css", "layout.css", "theme.js"):
+    for path in sorted((ROOT / "topics").glob("*.yaml")):
+        yield path, path.relative_to(ROOT)
+
+    for name in ("index.html", "day.html", "app.js", "day.js", "style.css", "layout.css", "theme.js", "topics.js"):
         path = ROOT / "site" / name
         if path.exists():
             yield path, path.relative_to(ROOT)

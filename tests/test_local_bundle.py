@@ -7,7 +7,7 @@ from tools.build_local_bundle import build
 
 
 class TestLocalBundle(unittest.TestCase):
-    def test_bundle_contains_launchers_but_never_private_state(self):
+    def test_bundle_contains_launchers_topics_but_never_private_state(self):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "PaperDaily-local.zip"
             build(output)
@@ -23,7 +23,10 @@ class TestLocalBundle(unittest.TestCase):
             self.assertIn("PaperDaily-local/START_PAPERDAILY_WINDOWS.bat", names)
             self.assertIn("PaperDaily-local/site/index.html", names)
             self.assertIn("PaperDaily-local/site/theme.js", names)
+            self.assertIn("PaperDaily-local/site/topics.js", names)
             self.assertIn("PaperDaily-local/site/layout.css", names)
+            self.assertIn("PaperDaily-local/topics/sleep-homeostasis.yaml", names)
+            self.assertIn("PaperDaily-local/topics/eeg-methods.yaml", names)
             self.assertIn("PaperDaily-local/README_LOCAL.md", names)
             self.assertIn("PaperDaily-local/README_LOCAL.zh-CN.md", names)
             self.assertFalse(any(name.endswith("api_token.txt") for name in names))

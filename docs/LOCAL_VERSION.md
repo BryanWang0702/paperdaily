@@ -4,23 +4,42 @@ PaperDaily can run without GitHub Actions or GitHub Pages. The recommended optio
 
 ## Windows standalone: simplest setup
 
-Download `PaperDaily-Windows.zip` from the latest GitHub release, extract it, and keep these files together:
+Download `PaperDaily-Windows.zip` from the latest GitHub release and extract it:
 
 ```text
 PaperDaily-Windows/
 ├── PaperDaily.exe
 ├── config.yaml
 ├── api_token.txt
+├── topics/
+│   ├── sleep-homeostasis.yaml
+│   └── eeg-methods.yaml
 ├── README.md
 └── README.zh-CN.md
 ```
 
-The only two files a normal user needs to edit are:
+Normal users edit only configuration files, never source code:
 
-- `config.yaml` — research field, retrieval/filter limits, AI settings, schedule, theme, and display options.
+- `config.yaml` — shared API, retrieval limits, schedule, theme, and display settings.
+- `topics/*.yaml` — one small profile per research project, including discovery terms, prefilter rules, optional per-topic limits, and AI interest profile.
 - `api_token.txt` — the AI API token on the first line.
 
 Run `PaperDaily.exe`. It creates its own `data/` and `site/` runtime folders automatically and opens the dashboard in the default browser.
+
+## Multiple research topics
+
+PaperDaily 0.6 supports several independent projects in one installation. Enable them in `config.yaml`:
+
+```yaml
+topics:
+  enabled: true
+  directory: topics
+  default: sleep-homeostasis
+```
+
+The dashboard provides a Topic selector. A single refresh retrieves the union of enabled topics from the external sources once, then applies an independent shortlist and AI relevance ranking to every topic. Each topic gets its own daily archive, Monthly Top 5, and daily 25 + additional-paper view.
+
+Copy an existing topic YAML to add another project. Saving either `config.yaml` or `topics/*.yaml` is detected by the local watcher and triggers a refresh in scheduled mode.
 
 ## Smart refresh schedule
 
@@ -34,15 +53,16 @@ local:
     - "20:30"
   scheduler_enabled: true
   scheduler_check_seconds: 30
+  refresh_on_config_change: true
 ```
 
-Times use the top-level `timezone` setting. The sleep-neuroscience example uses `Asia/Shanghai`.
+Times use the top-level `timezone` setting. The included example uses `Asia/Shanghai`.
 
 At startup, PaperDaily checks the latest refresh slot that should already have completed. If that slot is recorded in `local_state.json`, it opens existing HTML immediately and makes no literature or AI calls. If the slot has not completed, it refreshes first.
 
-When PaperDaily stays open, the background scheduler keeps checking the configured slots. A successful refresh is recorded only after retrieval and analysis complete. Failed refreshes remain pending and are retried later instead of being marked complete.
+When PaperDaily stays open, the background scheduler checks future slots. A successful refresh is recorded only after retrieval and analysis complete. Failed refreshes remain pending and are retried later instead of being marked complete.
 
-The browser checks the archive timestamp once per minute and reloads automatically after a successful background refresh.
+The browser checks the archive timestamp periodically and reloads after a successful background refresh.
 
 Refresh modes:
 
@@ -60,63 +80,24 @@ If a newer version is available, the dashboard shows an update notice and downlo
 
 ## Themes
 
-Built-in themes are:
-
-```yaml
-site:
-  theme: khaki      # warm paper / current default
-  # theme: black    # minimal black
-  # theme: navy     # classic academic blue
-  # theme: forest   # muted green
-  # theme: burgundy # warm wine red
-  # theme: custom
-```
-
-For a custom palette:
-
-```yaml
-site:
-  theme: custom
-  custom_theme:
-    background: "#f2efe5"
-    surface: "#fffdf8"
-    text: "#1f2723"
-    muted: "#6b7068"
-    border: "#d8d3c5"
-    accent: "#75684d"
-    accent_text: "#ffffff"
-```
+Themes are selectable directly in the webpage. Built-in presets are Khaki, Black, Navy, Forest, and Burgundy. `config.yaml` defines the initial default and may also contain a custom palette.
 
 ## Billing display
 
-The homepage can show:
+The homepage can optionally show:
 
 ```text
 Last run ¥... · Total ¥... · ~¥.../year
 ```
 
-`Last run` is the most recent individual AI run, not the accumulated cost for the current day. `Total` is the recorded lifetime API spend. The yearly estimate is based on a representative per-run cost multiplied by the configured number of daily refresh slots. Once scheduled production runs exist, development/debug runs are excluded from that reference cost.
+`Last run` is the most recent individual AI run, `Total` is recorded lifetime API spend, and the yearly estimate uses a representative per-run cost multiplied by the configured daily refresh slots. Development/debug runs are excluded from the scheduled reference cost once production history exists.
 
-Turn the display off with:
+Billing remains tracked even when hidden. It is hidden by default:
 
 ```yaml
 site:
   show_billing: false
 ```
-
-## Research-field configuration
-
-Important settings in `config.yaml` include:
-
-- `discovery_terms`
-- `prefilter.max_candidates`
-- `prefilter.anchors`, `weights`, and `boosts`
-- `ai.max_analyzed`
-- `ai.interest_profile`
-- `site.featured_count`
-- `local.refresh_times`
-
-The included `config.yaml` is the sleep-neuroscience example. `config.template.yaml` in the repository is a generic template for another field.
 
 ## Security
 

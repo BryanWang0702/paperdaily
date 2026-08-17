@@ -1,0 +1,93 @@
+id: eeg-methods
+label: EEG & Signal Methods
+description: EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods.
+
+discovery_terms:
+  - EEG
+  - electroencephalography
+  - electroencephalogram
+  - sleep staging
+  - sleep scoring
+  - neural signal processing
+  - electrophysiology
+  - time-frequency analysis
+  - spectral analysis
+  - state classification
+  - neural time series
+  - sleep EEG
+
+arxiv:
+  categories:
+    - q-bio.NC
+    - q-bio.N
+    - eess.SP
+    - cs.LG
+    - stat.ML
+
+prefilter:
+  anchors:
+    - EEG
+    - electroencephalography
+    - electroencephalogram
+    - sleep staging
+    - sleep scoring
+    - neural signal
+    - electrophysiology
+    - time-frequency
+    - spectral analysis
+    - neural time series
+
+  weights:
+    sleep staging: 15
+    sleep scoring: 15
+    electroencephalography: 14
+    electroencephalogram: 14
+    eeg: 13
+    neural signal processing: 13
+    signal processing: 11
+    time-frequency: 11
+    spectral analysis: 10
+    power spectral density: 10
+    state classification: 10
+    vigilance state: 9
+    neural time series: 9
+    electrophysiology: 9
+    artifact removal: 9
+    independent component analysis: 8
+    wavelet: 8
+    state-space: 8
+    hidden markov: 8
+    manifold: 7
+    dimensionality reduction: 7
+    feature extraction: 7
+    normalization: 7
+    transfer learning: 6
+    domain adaptation: 6
+    machine learning: 6
+    open source: 6
+    real-time: 5
+    mouse: 4
+    mice: 4
+    rat: 4
+    rodent: 4
+
+  boosts:
+    - any_terms: [sleep staging, sleep scoring, vigilance state]
+      bonus: 8
+      require_anchor: true
+    - any_terms: [mouse, mice, rat, rodent, animal]
+      bonus: 4
+      require_anchor: true
+    - any_terms: [open source, software, toolbox, pipeline, algorithm]
+      bonus: 5
+      require_anchor: true
+
+ai:
+  interest_profile: |
+    Primary focus: practical and computational methods for EEG and related neural time-series analysis, especially methods that can transfer to animal sleep experiments.
+
+    Highest-priority topics include fast and generalizable sleep staging or vigilance-state classification; CPU-friendly and lightweight algorithms; signal normalization across recording systems and animals; user calibration from small amounts of labeled data; spectral and time-frequency analysis; artifact removal; state-space, manifold, dynamical-system, and longitudinal modeling; interpretable feature extraction; open-source analysis software; and methods that can be integrated into an easy-to-use research GUI.
+
+    Give high scores to methods that are computationally efficient, reproducible, adaptable across datasets, or directly useful for EEG/EMG/ACC analysis. Animal and sleep applications are especially relevant, but strong general neural-signal methods should also score highly when they are transferable. Very large GPU-dependent deep-learning systems should score lower unless they introduce a broadly useful methodological idea.
+
+    Use English for all generated topic labels, relevance reasons, and scientific descriptions.

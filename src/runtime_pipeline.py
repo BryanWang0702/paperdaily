@@ -9,8 +9,9 @@ from pathlib import Path
 from typing import Any
 
 from .billing import add_usage, empty_usage
-from .pipeline import run as core_run
+from .multi_topic_pipeline import run as core_run
 from .site_settings import write_site_settings
+from .topics import load_topic_profiles
 from .utils import load_config
 
 
@@ -68,11 +69,15 @@ def _planned_runs_per_day(config: dict[str, Any]) -> int:
 
 
 def _expected_requests_per_full_run(config: dict[str, Any]) -> int:
-    ai = config.get("ai", {}) or {}
-    analyzed = max(1, int(ai.get("max_analyzed", 40) or 40))
-    rank_batch = max(1, int(ai.get("rank_batch_size", 20) or 20))
-    summary_batch = max(1, int(ai.get("summary_batch_size", 5) or 5))
-    return max(1, math.ceil(analyzed / rank_batch) + math.ceil(analyzed / summary_batch))
+    profiles, _ = load_topic_profiles(config)
+    total = 0
+    for profile in profiles:
+        ai = (profile.get("config") or {}).get("ai", {}) or {}
+        analyzed = max(1, int(ai.get("max_analyzed", 40) or 40))
+        rank_batch = max(1, int(ai.get("rank_batch_size", 20) or 20))
+        summary_batch = max(1, int(ai.get("summary_batch_size", 5) or 5))
+        total += math.ceil(analyzed / rank_batch) + math.ceil(analyzed / summary_batch)
+    return max(1, total)
 
 
 def _historical_reference_cost(ledger: dict[str, Any], config: dict[str, Any]) -> float:
@@ -163,12 +168,15 @@ def _public_billing(ledger: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _patch_public_archive(ledger: dict[str, Any]) -> None:
-    archive = _read_json(SITE_ARCHIVE_PATH)
-    if not archive:
-        return
-    archive["billing"] = _public_billing(ledger)
-    _write_json(SITE_ARCHIVE_PATH, archive, compact=True)
+def _patch_public_archives(ledger: dict[str, Any]) -> None:
+    billing = _public_billing(ledger)
+    paths = [SITE_ARCHIVE_PATH, *Path("site/data/topics").glob("*/archive.json")]
+    for path in paths:
+        archive = _read_json(path)
+        if not archive:
+            continue
+        archive["billing"] = billing
+        _write_json(path, archive, compact=True)
 
 
 def run(days: int | None = None) -> dict[str, Any]:
@@ -177,7 +185,7 @@ def run(days: int | None = None) -> dict[str, Any]:
     result = core_run(days)
     updated = _update_billing_ledger(ledger, result, config)
     write_site_settings(config)
-    _patch_public_archive(updated)
+    _patch_public_archives(updated)
     result["billing_ledger"] = _public_billing(updated)
     return result
 
@@ -187,9 +195,15 @@ def main() -> None:
     parser.add_argument("--days", type=int, default=None, help="Override lookback window")
     args = parser.parse_args()
     result = run(args.days)
-    print(f"raw unique: {result.get('raw_count', 0)}")
-    print(f"prefiltered candidates: {result.get('prefiltered_count', 0)}")
-    print(f"AI analyzed: {result.get('analyzed_count', 0)}")
+    print(f"shared raw unique: {result.get('raw_count', 0)}")
+    topic_results = result.get("topic_results", {}) or {}
+    for topic_id, topic in topic_results.items():
+        print(
+            f"topic {topic_id}:",
+            f"matching {topic.get('raw_count', 0)}",
+            f"prefiltered {topic.get('prefiltered_count', 0)}",
+            f"AI analyzed {topic.get('analyzed_count', 0)}",
+        )
     print("AI:", (result.get("ai") or {}).get("status", "unknown"))
     billing = result.get("billing_ledger", {}) or {}
     if billing:
