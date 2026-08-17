@@ -10,13 +10,20 @@ from src.runtime_pipeline import (
 
 
 class TestRuntimeBilling(unittest.TestCase):
-    def test_annual_reference_prefers_scheduled_runs(self):
+    def test_annual_reference_prefers_active_scheduled_runs(self):
         runs = [
             {"kind": "development", "cost_cny": 1.0, "usage": {"requests": 10}},
             {"kind": "scheduled", "cost_cny": 0.03, "usage": {"requests": 5}},
             {"kind": "scheduled", "cost_cny": 0.05, "usage": {"requests": 5}},
         ]
         self.assertAlmostEqual(_reference_run_cost(runs), 0.04)
+
+    def test_zero_request_scheduled_run_does_not_force_reference_to_zero(self):
+        runs = [
+            {"kind": "development", "cost_cny": 0.09, "usage": {"requests": 19}},
+            {"kind": "scheduled", "cost_cny": 0.0, "usage": {"requests": 0}},
+        ]
+        self.assertAlmostEqual(_reference_run_cost(runs, fallback=0.08), 0.08)
 
     def test_development_runs_do_not_drive_reference_cost(self):
         runs = [
