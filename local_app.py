@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
@@ -24,6 +25,7 @@ from src.utils import load_config
 FROZEN = bool(getattr(sys, "frozen", False))
 BUNDLE_ROOT = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
 ROOT = Path(sys.executable).resolve().parent if FROZEN else Path(__file__).resolve().parent
+CONFIG_FILE = ROOT / "config.yaml"
 TOKEN_FILE = ROOT / "api_token.txt"
 STATE_FILE = ROOT / "local_state.json"
 SITE_DIR = ROOT / "site"
@@ -33,6 +35,13 @@ DEFAULT_REFRESH_TIMES = ["05:30", "20:30"]
 DEFAULT_VERSION_URL = "https://raw.githubusercontent.com/BryanWang0702/paperdaily/master/standalone_version.json"
 STATIC_SITE_FILES = ("index.html", "day.html", "app.js", "day.js", "style.css", "layout.css", "theme.js")
 REFRESH_LOCK = threading.Lock()
+
+
+def _config_hash(path: Path = CONFIG_FILE) -> str:
+    try:
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    except OSError:
+        return ""
 
 
 def _api_key_env(config: dict) -> str:
@@ -181,7 +190,11 @@ def _write_state(payload: dict) -> None:
     STATE_FILE.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
-def _refresh_decision(config: dict, now: datetime | None = None) -> tuple[bool, datetime, str]:
+def _refresh_decision(
+    config: dict,
+    now: datetime | None = None,
+    config_hash: str | None = None,
+) -> tuple[bool, datetime, str]:
     timezone_name = str(config.get("timezone", "Asia/Shanghai"))
     timezone = ZoneInfo(timezone_name)
     now = now.astimezone(timezone) if now else datetime.now(timezone)
@@ -197,6 +210,14 @@ def _refresh_decision(config: dict, now: datetime | None = None) -> tuple[bool, 
         return False, due_slot, "refresh_mode is never and local data already exists"
 
     state = _read_state()
+    if bool(local_config.get("refresh_on_config_change", True)):
+        current_hash = config_hash if config_hash is not None else _config_hash()
+        previous_hash = str(state.get("last_successful_config_hash", ""))
+        if current_hash and current_hash != previous_hash:
+            if previous_hash:
+                return True, due_slot, "config.yaml changed since the last successful refresh"
+            return True, due_slot, "config.yaml has not yet been recorded by this local installation"
+
     last_raw = str(state.get("last_successful_slot", ""))
     try:
         last_slot = datetime.fromisoformat(last_raw)
@@ -212,7 +233,12 @@ def _refresh_decision(config: dict, now: datetime | None = None) -> tuple[bool, 
     return True, due_slot, f"scheduled slot {due_slot.isoformat()} has not completed locally"
 
 
-def _perform_refresh(config: dict, due_slot: datetime, run_kind: str = "local_scheduled") -> bool:
+def _perform_refresh(
+    config: dict,
+    due_slot: datetime,
+    run_kind: str = "local_scheduled",
+    config_hash: str | None = None,
+) -> bool:
     if not REFRESH_LOCK.acquire(blocking=False):
         print("Refresh already running; skipping duplicate scheduler request.")
         return False
@@ -237,6 +263,7 @@ def _perform_refresh(config: dict, due_slot: datetime, run_kind: str = "local_sc
         state.update({
             "last_successful_slot": due_slot.isoformat(),
             "last_successful_refresh_at": datetime.now(due_slot.tzinfo).isoformat(),
+            "last_successful_config_hash": config_hash if config_hash is not None else _config_hash(),
         })
         _write_state(state)
         print("Refresh completed successfully.")
@@ -252,14 +279,16 @@ def _scheduler_loop(stop_event: threading.Event) -> None:
     next_retry_at: datetime | None = None
     while not stop_event.is_set():
         try:
-            config = load_config(ROOT / "config.yaml")
+            config = load_config(CONFIG_FILE)
+            config_hash = _config_hash(CONFIG_FILE)
             local_config = config.get("local", {}) or {}
             check_seconds = max(10, int(local_config.get("scheduler_check_seconds", 30) or 30))
-            should_refresh, due_slot, reason = _refresh_decision(config)
+            should_refresh, due_slot, reason = _refresh_decision(config, config_hash=config_hash)
             now = datetime.now(due_slot.tzinfo)
             if should_refresh and (next_retry_at is None or now >= next_retry_at):
                 print(f"Scheduler: {reason}")
-                success = _perform_refresh(config, due_slot, run_kind="local_scheduled")
+                run_kind = "local_config_change" if reason.startswith("config.yaml") else "local_scheduled"
+                success = _perform_refresh(config, due_slot, run_kind=run_kind, config_hash=config_hash)
                 if success:
                     next_retry_at = None
                 else:
@@ -274,17 +303,19 @@ def _scheduler_loop(stop_event: threading.Event) -> None:
 def main() -> None:
     os.chdir(ROOT)
     _ensure_site_assets()
-    config = load_config(ROOT / "config.yaml")
+    config = load_config(CONFIG_FILE)
+    config_hash = _config_hash(CONFIG_FILE)
     write_site_settings(config, SITE_DIR / "data" / "settings.json")
     local_config = config.get("local", {}) or {}
     port = int(local_config.get("port", 8765))
-    should_refresh, due_slot, reason = _refresh_decision(config)
+    should_refresh, due_slot, reason = _refresh_decision(config, config_hash=config_hash)
 
     print(f"PaperDaily standalone/local edition v{_app_version()}")
     print(f"Refresh check: {reason}")
 
     if should_refresh:
-        _perform_refresh(config, due_slot, run_kind="local_scheduled")
+        run_kind = "local_config_change" if reason.startswith("config.yaml") else "local_scheduled"
+        _perform_refresh(config, due_slot, run_kind=run_kind, config_hash=config_hash)
     else:
         print("No refresh needed. Opening the existing local dashboard without API calls.")
 
@@ -301,6 +332,8 @@ def main() -> None:
         threading.Thread(target=_scheduler_loop, args=(stop_event,), daemon=True).start()
         times = ", ".join(str(value) for value in local_config.get("refresh_times", DEFAULT_REFRESH_TIMES))
         print(f"Background scheduler enabled for: {times}")
+        if bool(local_config.get("refresh_on_config_change", True)):
+            print("Config watcher enabled: saving config.yaml triggers an immediate refresh.")
 
     url = f"http://127.0.0.1:{port}/"
     print(f"Opening {url}")
