@@ -7,6 +7,7 @@ on:
     paths:
       - 'src/**'
       - 'config.yaml'
+      - 'topics/**'
       - 'requirements.txt'
       - '.github/workflows/daily.yml'
   schedule:
@@ -18,8 +19,7 @@ permissions:
 
 concurrency:
   group: paperdaily-refresh
-  # A new config/code push makes an older in-flight refresh stale. Cancel it so
-  # the newest configuration is applied immediately instead of waiting in queue.
+  # A new config/topic/code push makes an older in-flight refresh stale.
   cancel-in-progress: true
 
 jobs:
@@ -44,9 +44,11 @@ jobs:
         run: |
           python - <<'PY'
           import os
+          from src.topics import load_topic_profiles
           from src.utils import load_config
 
           config = load_config()
+          profiles, default_id = load_topic_profiles(config)
           ai = config.get('ai', {}) or {}
           enabled = bool(ai.get('enabled', True))
           provider = str(ai.get('provider', 'deepseek')).strip().lower()
@@ -58,6 +60,8 @@ jobs:
           print(f'AI provider: {provider}')
           print(f'AI model: {model or "not set"}')
           print(f'AI key environment variable: {key_env}')
+          print(f'Topics: {", ".join(profile["id"] for profile in profiles)}')
+          print(f'Default topic: {default_id}')
 
           if enabled:
               present = bool(os.getenv(key_env, '').strip())
@@ -91,7 +95,6 @@ jobs:
             echo "No data changes"
           else
             git commit -m "Update daily literature"
-            # A code/config commit can land while the refresh job is running.
             git pull --rebase origin master
             git push origin HEAD:master
           fi
