@@ -18,7 +18,9 @@ permissions:
 
 concurrency:
   group: paperdaily-refresh
-  cancel-in-progress: false
+  # A new config/code push makes an older in-flight refresh stale. Cancel it so
+  # the newest configuration is applied immediately instead of waiting in queue.
+  cancel-in-progress: true
 
 jobs:
   refresh:
