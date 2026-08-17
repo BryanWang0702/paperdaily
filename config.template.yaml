@@ -22,6 +22,7 @@ arxiv:
   # Recommended for the legacy arXiv API: cache an identical retrieval window
   # instead of repeating the same query during multiple daily refreshes.
   reuse_same_window: true
+  # HTTP 429, transient 5xx responses, connection errors, and timeouts are retried.
   retry_delays_seconds: [10, 30]
   timeout_seconds: 45
   contact_email: ""
@@ -113,6 +114,10 @@ local:
 
   scheduler_enabled: true
   scheduler_check_seconds: 30
+
+  # In scheduled mode, a saved config.yaml change immediately runs the full
+  # retrieval + AI pipeline. Set false if you only want slot-based updates.
+  refresh_on_config_change: true
 
   # Update reminder checked before each real literature refresh.
   version_check: true
