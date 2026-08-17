@@ -33,19 +33,77 @@ class TestLocalSchedule(unittest.TestCase):
             latest.parent.mkdir(parents=True)
             latest.write_text("{}", encoding="utf-8")
             state.write_text(
-                json.dumps({"last_successful_slot": "2026-08-16T05:30:00+08:00"}),
+                json.dumps({
+                    "last_successful_slot": "2026-08-16T05:30:00+08:00",
+                    "last_successful_config_hash": "same",
+                }),
                 encoding="utf-8",
             )
             config = {
                 "timezone": "Asia/Shanghai",
-                "local": {"refresh_mode": "scheduled", "refresh_times": ["05:30", "20:30"]},
+                "local": {
+                    "refresh_mode": "scheduled",
+                    "refresh_times": ["05:30", "20:30"],
+                    "refresh_on_config_change": True,
+                },
             }
             now = datetime(2026, 8, 16, 19, 0, tzinfo=self.tz)
             with patch.object(local_app, "STATE_FILE", state), patch.object(local_app, "LATEST_SITE_DATA", latest):
-                should_refresh, slot, _ = local_app._refresh_decision(config, now)
+                should_refresh, slot, _ = local_app._refresh_decision(config, now, config_hash="same")
             self.assertFalse(should_refresh)
             self.assertEqual(slot.hour, 5)
             self.assertEqual(slot.minute, 30)
+
+    def test_config_change_triggers_refresh_even_when_slot_completed(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            state = root / "local_state.json"
+            latest = root / "site" / "data" / "latest.json"
+            latest.parent.mkdir(parents=True)
+            latest.write_text("{}", encoding="utf-8")
+            state.write_text(
+                json.dumps({
+                    "last_successful_slot": "2026-08-16T05:30:00+08:00",
+                    "last_successful_config_hash": "old-hash",
+                }),
+                encoding="utf-8",
+            )
+            config = {
+                "timezone": "Asia/Shanghai",
+                "local": {
+                    "refresh_mode": "scheduled",
+                    "refresh_times": ["05:30", "20:30"],
+                    "refresh_on_config_change": True,
+                },
+            }
+            now = datetime(2026, 8, 16, 19, 0, tzinfo=self.tz)
+            with patch.object(local_app, "STATE_FILE", state), patch.object(local_app, "LATEST_SITE_DATA", latest):
+                should_refresh, slot, reason = local_app._refresh_decision(config, now, config_hash="new-hash")
+            self.assertTrue(should_refresh)
+            self.assertEqual(slot.hour, 5)
+            self.assertIn("config.yaml changed", reason)
+
+    def test_config_change_does_not_override_never_mode(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            state = root / "local_state.json"
+            latest = root / "site" / "data" / "latest.json"
+            latest.parent.mkdir(parents=True)
+            latest.write_text("{}", encoding="utf-8")
+            state.write_text(json.dumps({"last_successful_config_hash": "old"}), encoding="utf-8")
+            config = {
+                "timezone": "Asia/Shanghai",
+                "local": {
+                    "refresh_mode": "never",
+                    "refresh_times": ["05:30", "20:30"],
+                    "refresh_on_config_change": True,
+                },
+            }
+            now = datetime(2026, 8, 16, 19, 0, tzinfo=self.tz)
+            with patch.object(local_app, "STATE_FILE", state), patch.object(local_app, "LATEST_SITE_DATA", latest):
+                should_refresh, _, reason = local_app._refresh_decision(config, now, config_hash="new")
+            self.assertFalse(should_refresh)
+            self.assertIn("refresh_mode is never", reason)
 
     def test_new_slot_triggers_refresh(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -55,7 +113,10 @@ class TestLocalSchedule(unittest.TestCase):
             latest.parent.mkdir(parents=True)
             latest.write_text("{}", encoding="utf-8")
             state.write_text(
-                json.dumps({"last_successful_slot": "2026-08-16T05:30:00+08:00"}),
+                json.dumps({
+                    "last_successful_slot": "2026-08-16T05:30:00+08:00",
+                    "last_successful_config_hash": "same",
+                }),
                 encoding="utf-8",
             )
             config = {
@@ -64,7 +125,7 @@ class TestLocalSchedule(unittest.TestCase):
             }
             now = datetime(2026, 8, 16, 21, 0, tzinfo=self.tz)
             with patch.object(local_app, "STATE_FILE", state), patch.object(local_app, "LATEST_SITE_DATA", latest):
-                should_refresh, slot, _ = local_app._refresh_decision(config, now)
+                should_refresh, slot, _ = local_app._refresh_decision(config, now, config_hash="same")
             self.assertTrue(should_refresh)
             self.assertEqual(slot.hour, 20)
             self.assertEqual(slot.minute, 30)
@@ -80,7 +141,7 @@ class TestLocalSchedule(unittest.TestCase):
             }
             now = datetime(2026, 8, 16, 19, 0, tzinfo=self.tz)
             with patch.object(local_app, "STATE_FILE", state), patch.object(local_app, "LATEST_SITE_DATA", latest):
-                should_refresh, _, reason = local_app._refresh_decision(config, now)
+                should_refresh, _, reason = local_app._refresh_decision(config, now, config_hash="hash")
             self.assertTrue(should_refresh)
             self.assertIn("no local dashboard data", reason)
 

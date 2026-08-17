@@ -4,6 +4,8 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock, patch
 
+import requests
+
 from src import fetch_arxiv as arxiv_module
 
 
@@ -59,6 +61,21 @@ class TestArxivFetch(unittest.TestCase):
         self.assertIs(response, success)
         self.assertEqual(get.call_count, 2)
         sleep.assert_called_once_with(7)
+
+    def test_timeout_retries_before_success(self):
+        success = Mock()
+        success.status_code = 200
+        success.headers = {}
+        success.text = "<?xml version='1.0'?><feed xmlns='http://www.w3.org/2005/Atom'></feed>"
+        success.raise_for_status.return_value = None
+
+        timeout = requests.ReadTimeout("arXiv timed out")
+        with patch.object(arxiv_module.requests, "get", side_effect=[timeout, success]) as get, patch.object(arxiv_module.time, "sleep") as sleep:
+            response = arxiv_module._request_arxiv({}, {"User-Agent": "test"}, 10, [10])
+
+        self.assertIs(response, success)
+        self.assertEqual(get.call_count, 2)
+        sleep.assert_called_once_with(10)
 
     def test_retry_delay_never_goes_below_three_seconds(self):
         response = Mock()
