@@ -1,6 +1,6 @@
 {
   "date": "2026-08-17",
-  "generated_at": "2026-08-17T02:58:28.425927+00:00",
+  "generated_at": "2026-08-17T13:23:12.304783+00:00",
   "window": {
     "start": "2026-08-15",
     "end": "2026-08-17"
@@ -10,16 +10,16 @@
     "label": "Sleep Homeostasis",
     "description": "Sleep pressure, recovery, circadian interactions, and longitudinal regulation of NREM/REM sleep."
   },
-  "raw_count": 73,
+  "raw_count": 96,
   "retrieved_source_counts": {
-    "pubmed": 74,
-    "biorxiv": 12,
+    "pubmed": 98,
+    "biorxiv": 5,
     "medrxiv": 1,
     "arxiv": 0
   },
   "raw_source_counts": {
-    "pubmed": 69,
-    "biorxiv": 3,
+    "pubmed": 91,
+    "biorxiv": 4,
     "medrxiv": 1
   },
   "prefiltered_count": 40,
@@ -28,13 +28,10 @@
   "count": 40,
   "featured_count": 25,
   "source_counts": {
-    "pubmed": 37,
-    "biorxiv": 3
+    "pubmed": 36,
+    "biorxiv": 4
   },
-  "errors": {
-    "biorxiv": "RuntimeError: empty response body from bioRxiv API (HTTP 200; https://api.biorxiv.org/details/biorxiv/2026-08-15/2026-08-17/0) · reused 12 cached records",
-    "medrxiv": "RuntimeError: empty response body from bioRxiv API (HTTP 200; https://api.biorxiv.org/details/medrxiv/2026-08-15/2026-08-17/0) · reused 1 cached records"
-  },
+  "errors": {},
   "ai": {
     "requested": true,
     "enabled": true,
@@ -42,8 +39,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 0,
-    "newly_summarized": 4,
+    "newly_ranked": 10,
+    "newly_summarized": 10,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -54,12 +51,12 @@
     "status": "active",
     "profile_hash": "f39a738f6024ce84c617",
     "usage": {
-      "requests": 1,
-      "prompt_tokens": 2111,
-      "prompt_cache_hit_tokens": 384,
-      "prompt_cache_miss_tokens": 1727,
-      "completion_tokens": 476,
-      "total_tokens": 2587
+      "requests": 3,
+      "prompt_tokens": 8083,
+      "prompt_cache_hit_tokens": 1152,
+      "prompt_cache_miss_tokens": 6931,
+      "completion_tokens": 1713,
+      "total_tokens": 9796
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -68,27 +65,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.002687,
+    "run_cost_cny": 0.01038,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 1,
-        "prompt_tokens": 2111,
-        "prompt_cache_hit_tokens": 384,
-        "prompt_cache_miss_tokens": 1727,
-        "completion_tokens": 476,
-        "total_tokens": 2587
+        "requests": 3,
+        "prompt_tokens": 8083,
+        "prompt_cache_hit_tokens": 1152,
+        "prompt_cache_miss_tokens": 6931,
+        "completion_tokens": 1713,
+        "total_tokens": 9796
       },
-      "run_cost_cny": 0.002687,
+      "run_cost_cny": 0.01038,
       "daily_usage": {
-        "requests": 11,
-        "prompt_tokens": 38186,
-        "prompt_cache_hit_tokens": 8192,
-        "prompt_cache_miss_tokens": 29994,
-        "completion_tokens": 9614,
-        "total_tokens": 47800
+        "requests": 14,
+        "prompt_tokens": 46269,
+        "prompt_cache_hit_tokens": 9344,
+        "prompt_cache_miss_tokens": 36925,
+        "completion_tokens": 11327,
+        "total_tokens": 57596
       },
-      "daily_cost_cny": 0.049386,
+      "daily_cost_cny": 0.059766,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -200,56 +197,6 @@
       }
     },
     {
-      "source": "pubmed",
-      "source_id": "42602229",
-      "title": "ICA-S3M: switching state-space model guided automatic EEG artifact removal from independent components.",
-      "abstract": "Electromyographic (EMG) artifact is among the most challenging contaminants in scalp EEG: its broadband spectrum overlaps directly with neural activity, and sustained muscle contractions distribute across many independent components (ICs) rather than segregating cleanly-an effect we term EMG smearing. We propose ICA-S3M, a two-stage pipeline that first decomposes the recording via independent component analysis (ICA), then applies a switching state-space model to each retained IC. This model separates neural oscillations, modeled as damped oscillators fitted to the recording's own spectral content, from broadband artifact, modeled as an autoregressive (AR(2)) process. The method produces an explicit artifact probability at every time point and requires no training data. We evaluated ICA-S3M against a CNN from EEGdenoiseNet in three settings: simulated EEG with known ground truth; a semi-synthetic real-EEG dataset constructed from 29 participants through 11,025 expert IC-trial classifications, in which a trained rater classified every IC on a per-trial basis across interleaved rest and facial-movement segments; and a naturalistic recording of musical improvisation. In simulation, ICA-S3M reduced RRMSE from 0.83 to 0.23 and improved SNR by 12.4 dB, versus 1.2 dB for the CNN. On the semi-synthetic dataset, ICA-S3M significantly outperformed the CNN in 38 of 42 tested scenarios spanning seven metrics, two time periods, and three scalp regions, while leaving clean segments essentially untouched. Critically, the CNN exhibited an \"alpha hallucination\" failure mode, injecting spurious alpha-band peaks where none exist in the ground truth; we reproduced this with an alpha-free control simulation and observed it again on real scalp recordings. ICA-S3M avoids this failure by adapting to each recording's own oscillatory structure rather than imposing learned spectral templates. The method offers a principled, interpretable, and training-free alternative for EMG artifact removal in challenging EEG recordings.",
-      "authors": [
-        "Si Long Jenny Tou",
-        "Mingjian He",
-        "Scott Yeiichi Oshiro",
-        "Proloy Das",
-        "Patrick L Purdon"
-      ],
-      "published_date": "2026",
-      "indexed_date": "2026-08-15",
-      "journal": "Frontiers in neuroscience",
-      "doi": "10.3389/fnins.2026.1865301",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42602229/",
-      "categories": [],
-      "keywords": [
-        "Bayesian switching model",
-        "EEG artifact removal",
-        "EMG artifact",
-        "artifact correction",
-        "electromyographic contamination",
-        "independent component analysis",
-        "muscle artifact",
-        "oscillator model"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 10,
-        "ai": {
-          "score": 75,
-          "topic": "EEG artifact removal with state-space model",
-          "reason": "Provides a robust method for EEG artifact removal, highly transferable to animal EEG/EMG sleep recordings, directly useful for data quality.",
-          "summary": "ICA-S3M is a two-stage pipeline for EEG artifact removal that combines ICA with a switching state-space model to separate neural oscillations from broadband EMG artifact. In simulations, it reduced RRMSE from 0.83 to 0.23 and improved SNR by 12.4 dB, outperforming a CNN and avoiding the CNN's 'alpha hallucination' failure.",
-          "keywords": [
-            "EEG artifact removal",
-            "independent component analysis",
-            "switching state-space model",
-            "EMG artifact",
-            "Bayesian model"
-          ],
-          "paper_type": "Methods/Resource",
-          "digest_pick": true
-        }
-      }
-    },
-    {
       "source": "biorxiv",
       "source_id": "10.64898/2026.08.10.743907",
       "title": "Diurnal time and sleep pressure modulate cerebrospinal fluid low-frequency oscillations in synchrony with wake-promoting nuclei",
@@ -292,55 +239,6 @@
             "vasomotion",
             "sleep deprivation",
             "reticular activating system"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42602569",
-      "title": "PVT inhibition mitigates neuropathology and cognitive deficits in chronic cerebral hypoperfusion.",
-      "abstract": "Chronic cerebral hypoperfusion (CCH) is a key pathophysiological substrate of vascular cognitive impairment, and the reorganization of neuronal activity across disease progression underlies network dysfunction and intervention strategy. Using immediate-early gene imaging with whole-brain mapping, we characterized spatiotemporal activation patterns in a bilateral common carotid artery stenosis mouse model at early (day 7) and chronic (day 40) stages across 225 brain regions. Weighted gene co-expression network analysis identified the paraventricular thalamus (PVT) as a persistently hyperactive and central region, with early thalamic-hypothalamic hyperactivation giving way to delayed cortical deactivation at chronic stages. Chemogenetic inhibition of PVT during the early post-ischemic phase attenuated neuronal damage in medial prefrontal cortex, hippocampus, and white matter, and improved cognitive performance and sleep continuity. These findings implicate PVT hyperactivation as a disease-associated node contributing to network-wide pathology in CCH, and suggest that early suppression of a central hub may help limit distributed injury.",
-      "authors": [
-        "Yuying Guan",
-        "Jinghao Ma",
-        "Rui Li",
-        "Jialu Xu",
-        "Taoyue Xu",
-        "Gaifen Li",
-        "Le Sun"
-      ],
-      "published_date": "2026-Aug-21",
-      "indexed_date": "2026-08-15",
-      "journal": "iScience",
-      "doi": "10.1016/j.isci.2026.117108",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42602569/",
-      "categories": [],
-      "keywords": [
-        "brain-wide activity",
-        "chronic cerebral hypoperfusion",
-        "cognitive function",
-        "paraventricular thalamus",
-        "vascular cognitive impairment"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 12,
-        "ai": {
-          "score": 70,
-          "topic": "PVT inhibition in cerebral hypoperfusion",
-          "reason": "Animal study on chronic hypoperfusion with sleep continuity outcomes, involves a key brain region (PVT) and could inform sleep-wake regulation in pathology.",
-          "summary": "In a mouse model of chronic cerebral hypoperfusion, whole-brain mapping identified the paraventricular thalamus (PVT) as a persistently hyperactive hub. Chemogenetic inhibition of PVT early after ischemia reduced neuronal damage, improved cognitive performance, and enhanced sleep continuity, suggesting PVT as a therapeutic target.",
-          "keywords": [
-            "paraventricular thalamus",
-            "chronic cerebral hypoperfusion",
-            "cognitive impairment",
-            "chemogenetics",
-            "whole-brain mapping"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -542,54 +440,49 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42602058",
-      "title": "White matter hyperintensity drives EEG microstate abnormalities in arteriosclerotic cerebral small vessel disease.",
-      "abstract": "Although MRI is the optimal imaging method for assessing white matter hyperintensity (WMH), it lacks sensitivity to the underlying pathophysiological changes of WMH. This study aims to investigate EEG changes associated with WMH and identify potential EEG biomarkers for WMH-related dementia. This cross-sectional study enrolled 90 subjects: 30 patients with WMH with dementia (WMHD), 30 patients with WMH without dementia (WMH-ND), and 30 age-and sex-matched healthy controls. Brain MRI was used to segment and quantify deep, periventricular, and total WMH volumes (DWMH, PVWMH, TWMH). Resting-state EEG data were recorded for microstate analysis. Four microstate classes (A, B, C, D) were extracted, and their occurrence, mean duration, time coverage, and transition probabilities were calculated. Partial correlation analysis was used to evaluate the associations between microstate features and WMH volume as well as MMSE scores. Based on microstate features, classification prediction models were constructed using machine learning algorithm. In the WMHD group, the temporal parameters (occurrence, mean duration, time coverage) of microstate C were decreased (P < 0.05-0.001), while the mean duration of microstates A and B was prolonged (P < 0.05-0.001). The WMH-ND group also showed reduced microstate C temporal parameters (P < 0.001), but exhibited compensatory increases in mean duration and time coverage of microstate D (P < 0.001). Transition probabilities toward microstate C were reduced in both patient groups (P < 0.001), and all transition probabilities toward microstate D were lower in WMHD than in WMH-ND (P < 0.05-0.001). Temporal parameters of microstates A and B and transition probabilities toward them were positively correlated with WMH volume and negatively correlated with MMSE score. Conversely, those of microstate D showed the opposite correlations. For distinguishing WMHD from WMH-ND, support vector machine (SVM) and logistic regression (LR) performed best (accuracy: 76.67%, AUC: 0.84). Classification performance was highest for WMH-ND vs. HC (LR: 79.17%, AUC 0.86), and lowest for WMHD vs. HC (SVM: 68.33%, AUC 0.77). Patients with WMH exhibit alterations in EEG microstate features that are significantly correlated with WMH burden and cognitive function. Classification models based on these microstate features show promise for practical application in WMH-related dementia.",
+      "source_id": "42605248",
+      "title": "Exercise and Circadian Rhythm Regulation: Mechanisms, Resilience, and Therapeutic Potential for Neurological Diseases.",
+      "abstract": "Circadian rhythms regulate sleep-wake cycles, hormonal secretion, metabolism, and immune responses. Disruption of these rhythms is linked to the onset and progression of various neurological diseases. Emerging evidence suggests that exercise, a non-photic zeitgeber, can modulate circadian function at both central and peripheral levels by regulating core clock gene expression, synchronizing hormonal and metabolic rhythms, and reducing neuroinflammation. Through these mechanisms, exercise enhances the amplitude, stability, and phase alignment of circadian rhythms and may promote physiological resilience. This review summarizes the molecular and systemic mechanisms through which exercise supports circadian homeostasis and discusses their relevance to stroke and Alzheimer's disease. In both conditions, circadian misalignment contributes to pathological processes including oxidative stress, neuroinflammation, and impaired neurovascular repair. By restoring circadian alignment, appropriately timed exercise may improve neurological outcomes through effects on neuroplasticity, immune regulation, and metabolic synchronization. Taken together, current evidence may suggest that exercise can be a promising non-pharmacological strategy to enhance circadian resilience, reduce disease vulnerability, and support neurological recovery.",
       "authors": [
-        "Kaiyan Feng",
-        "Jiaxin Cai",
-        "Jianming Lei",
-        "Guofang Zeng",
-        "Hai Chen",
-        "Jiaxin Chen",
-        "Qishan He",
-        "Lijuan Liang",
-        "Yizhong Li",
-        "Xiong Zhang",
-        "Hao Li",
-        "Shisheng Ye"
+        "Munehiro Demura",
+        "Penelope Gregory",
+        "Norito Fukuda",
+        "Eng H Lo",
+        "Ken Arai"
       ],
-      "published_date": "2026",
-      "indexed_date": "2026-08-15",
-      "journal": "Frontiers in neuroscience",
-      "doi": "10.3389/fnins.2026.1865573",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42602058/",
+      "published_date": "2026-Aug",
+      "indexed_date": "2026-08-17",
+      "journal": "CNS neuroscience & therapeutics",
+      "doi": "10.1002/cns.71035",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42605248/",
       "categories": [],
       "keywords": [
-        "arteriosclerotic cerebral small vessel disease",
-        "dementia",
-        "electroencephalogram",
-        "microstate analysis",
-        "white matter hyperintensity"
+        "Alzheimer's disease",
+        "circadian rhythms",
+        "exercise",
+        "neurological diseases",
+        "non‐photic zeitgeber",
+        "stroke"
       ],
       "publication_types": [
-        "Journal Article"
+        "Journal Article",
+        "Review"
       ],
       "extra": {
-        "prefilter_score": 10,
+        "prefilter_score": 40,
         "ai": {
           "score": 40,
-          "topic": "EEG microstates in small vessel disease",
-          "reason": "EEG microstate analysis in a clinical population, may offer methodological insights for studying EEG dynamics in sleep and pathology.",
-          "summary": "This study analyzed EEG microstates in patients with white matter hyperintensity (WMH) with and without dementia and healthy controls. WMH patients showed reduced temporal parameters of microstate C and altered transitions, correlated with WMH volume and cognitive scores; SVM and logistic regression models distinguished groups with up to 79% accuracy.",
+          "topic": "Exercise and circadian rhythms",
+          "reason": "Discusses exercise effects on circadian rhythms, relevant to circadian-homeostatic interactions but broad review.",
+          "summary": "This review summarizes mechanisms by which exercise modulates circadian rhythms, including clock gene regulation, hormonal/metabolic synchronization, and reduced neuroinflammation, and discusses therapeutic potential for stroke and Alzheimer's disease. Evidence suggests appropriately timed exercise may restore circadian alignment and improve neurological outcomes.",
           "keywords": [
-            "cerebral small vessel disease",
-            "white matter hyperintensity",
-            "EEG microstates",
-            "dementia",
-            "machine learning"
+            "circadian rhythms",
+            "exercise",
+            "non-photic zeitgeber",
+            "neuroinflammation",
+            "Alzheimer's disease"
           ],
-          "paper_type": "Research Article",
+          "paper_type": "Review",
           "digest_pick": true
         }
       }
@@ -638,49 +531,6 @@
             "feature selection",
             "LSTM",
             "attention mechanism"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42603935",
-      "title": "Single-channel gamma burst dynamics and adaptive deep learning for robust EEG motor state decoding.",
-      "abstract": "Reliable motor decoding from single-channel EEG remains challenging due to low signal quality and strong inter-session variability. Traditional ERD/ERS features overlook transient high-frequency events that reflect key motor processes. This paper introduces a compact decoding framework that models gamma burst dynamics-including burst onset, duration, amplitude, and recurrence-as informative biomarkers of motor preparation and execution. Bursts are extracted using an analytic wavelet transform with adaptive thresholding, and combined with classical spectral features through a multi-stream adaptive deep learning model equipped with instance normalization and few-shot recalibration for session robustness. Experiments on the WAY-EEG-GAL dataset show that the proposed approach achieves competitive performance under a strict single-channel constraint and significantly improves cross-session accuracy by more than 10% over non-adaptive baselines. These findings highlight the functional relevance of gamma bursts and demonstrate the feasibility of practical, lightweight EEG-based motor BCIs.",
-      "authors": [
-        "Ravi Suppiah",
-        "Noori Kim"
-      ],
-      "published_date": "2026-Jul",
-      "indexed_date": "2026-08-16",
-      "journal": "Biomedical engineering letters",
-      "doi": "10.1007/s13534-026-00577-w",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42603935/",
-      "categories": [],
-      "keywords": [
-        "EMG",
-        "Neural networks",
-        "Remote robotics",
-        "Wavelet entropy"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 10,
-        "ai": {
-          "score": 30,
-          "topic": "Single-channel EEG gamma bursts",
-          "reason": "EEG signal processing method for motor decoding, but not sleep-specific; could have transfer potential for spectral event detection.",
-          "summary": "The paper introduces a compact decoding framework that models gamma burst dynamics via analytic wavelet transform and combines them with spectral features using a multi-stream adaptive deep learning model. It achieves competitive performance in single-channel EEG motor decoding and improves cross-session accuracy by more than 10% over non-adaptive baselines on the WAY-EEG-GAL dataset.",
-          "keywords": [
-            "EEG",
-            "motor decoding",
-            "gamma bursts",
-            "deep learning",
-            "brain-computer interface"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -774,58 +624,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42603651",
-      "title": "Environmental context outweighs early methamphetamine exposure in shaping behavioral and glutamatergic outcomes in rats.",
-      "abstract": "Early-life exposure to methamphetamine (MA) induces long-lasting neuroadaptive changes, particularly within glutamatergic pathways, which may contribute to behavioral and cognitive impairments. The present study investigated the interaction between early postnatal MA exposure and environmental conditions on behavioral outcomes and glutamate levels in adolescent rats. Rat pups were administered MA (5 mg/kg) or saline during postnatal days (PD) 1-12, either directly or indirectly via lactating dams. Animals were subsequently reared under different pre-weaning (standard vs. enriched environment) and post-weaning (single vs. group housing) conditions. Behavioral performance was assessed using habituation, object recognition/location, and Morris water maze tasks, while glutamate levels in the striatum and hippocampus were quantified using ELISA. Direct MA exposure induced moderate alterations in locomotor activity and spatial learning, whereas indirect exposure produced only minimal effects. In contrast, environmental conditions exerted pronounced influences on both behavior and glutamate levels. Environmental enrichment and post-weaning housing affected exploratory behavior and performance in cognitive tasks, although the direction and magnitude of these effects varied across behavioral paradigms and experimental conditions. Environmental conditions were also associated with region-specific alterations in glutamate levels, including increased striatal and decreased hippocampal glutamate under enriched pre-weaning conditions. As only male offspring were included, these findings cannot be generalized to females, and comparable effects in females cannot be assumed without direct experimental evidence. Overall, environmental factors exerted a stronger influence on behavioral and glutamatergic outcomes than early MA exposure, but their behavioral effects were task- and context-dependent rather than uniformly beneficial. These findings highlight the importance of environmental conditions in shaping neurobehavioral and glutamatergic outcomes following early-life psychostimulant exposure.",
-      "authors": [
-        "Romana Šlamberová",
-        "Barbora Čechová",
-        "Jana Jurčovičová",
-        "Lýdia Mihalčíková",
-        "Anna Bednaříková",
-        "Šimon Vaculín",
-        "Štěpán Šandera",
-        "Kateryna Nohejlová",
-        "Anna Mikulecká"
-      ],
-      "published_date": "2026-Aug-15",
-      "indexed_date": "",
-      "journal": "Neurochemistry international",
-      "doi": "10.1016/j.neuint.2026.106247",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42603651/",
-      "categories": [],
-      "keywords": [
-        "Behavior",
-        "Cognition",
-        "Enriched Environment",
-        "Glutamate",
-        "Methamphetamine",
-        "Social Isolation"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 9,
-        "ai": {
-          "score": 20,
-          "topic": "Environment and methamphetamine effects",
-          "reason": "Animal study on environmental enrichment and early drug exposure, but focuses on behavior and glutamate, not sleep regulation.",
-          "summary": "The study examined interactions between early methamphetamine exposure and environmental conditions on behavior and glutamate levels in adolescent rats. It found that environmental factors (enrichment and housing) had stronger effects on behavior and region-specific glutamate levels than early MA exposure, with task-dependent outcomes.",
-          "keywords": [
-            "methamphetamine",
-            "enriched environment",
-            "social isolation",
-            "glutamate",
-            "adolescent rats"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "42604219",
       "title": "Resting-State EEG Functional Connectivity and Independent Correlates of Cognitive Impairment in Patients with Atrial Fibrillation.",
       "abstract": "To investigate alterations in resting-state electroencephalography (rsEEG) functional connectivity (FC) in patients with atrial fibrillation (AF) and cognitive impairment, examine its independent association with cognitive dysfunction, and evaluate the potential neurophysiological biomarker value of rsEEG FC in AF-related cognitive impairment. A total of 141 participants were divided into three groups: controls without AF or cognitive impairment (HC, n = 41), patients with AF without cognitive impairment (PT-WoCI, n = 37), and patients with AF and cognitive impairment (PT-CI, n = 63). All participants underwent rsEEG and cognitive assessment using the Montreal Cognitive Assessment. EEG metrics, including power spectral density (PSD), FC, phase-amplitude coupling (PAC), and sample entropy (EnSA), were derived from rsEEG data. Candidate EEG features were further screened using LASSO regression. Multivariable logistic regression models were constructed to assess independent associations between rsEEG metrics and cognitive impairment. Receiver operating characteristic (ROC) curves were used to evaluate model discriminatory performance. Compared with HC and PT-WoCI groups, the PT-CI group showed significantly reduced alpha-band FC. In multivariable logistic regression analysis, alpha-band wPLI remained independently associated with cognitive impairment in patients with AF (OR = 0.44, 95% CI: 0.24-0.72, P = 0.002). The model incorporating clinical variables and alpha-band wPLI showed good discriminatory ability (area under the ROC curve: 0.814 [95% CI: 0.729-0.900]). Impaired alpha-band FC is associated with cognitive impairment in patients with AF. Alpha-band wPLI showed an independent association with cognitive status, supporting the potential clinical utility of rsEEG FC as an objective marker of AF-related cognitive impairment.",
@@ -877,6 +675,56 @@
       }
     },
     {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.08.10.742446",
+      "title": "Maturation of Sleep EEG Complexity in Preterm Newborns: Insights from Lempel-Ziv and Joint Lempel-Ziv Analyses",
+      "abstract": "The development of the sleep-wake cycle reflects the progressive structural and functional maturation of the brain. However, the organization of neural dynamics during prematurity remains incompletely understood. In this study, we analyzed the EEG from 54 polysomnographic recordings obtained from 39 preterm infants, grouped according to postmenstrual age (PMA) into three categories: 30-31, 32-33 and 34-35 weeks. Lempel-Ziv Complexity (LZC) and Joint Lempel-Ziv Complexity (JLZC) of the electroencephalogram (EEG) were analyzed during active sleep (AS), quiet sleep (QS), and indeterminate sleep (IS). LZC computed from the raw, unfiltered recordings were significantly higher during QS than during AS and increased with PMA during AS. To further refine the analysis, LZC was also evaluated separately in the low-frequency (1-15.5 Hz) and high-frequency (16-30 Hz) EEG bands. In the low-frequency band, LZC was consistently higher during QS than during AS, an effect that was most pronounced in more immature groups. Furthermore, LZC increased with maturation particularly during AS. Sleep-state comparisons of LZC in the high-frequency EEG band also revealed higher values during QS than during AS across all PMA groups. Moreover, in contrast to the low-frequency band, LZC progressively decreased with advancing PMA both in AS and QS, suggesting that the neural mechanisms underlying low- and high-frequency EEG activity follow distinct maturational trajectories. Interestingly, larger LZC in the temporal cortex and interhemispheric differences were detected in the 32-33 PMA group. On the other hand, JLZC analysis revealed greater joint spatiotemporal dynamics across EEG channels during QS than during AS, with consistently higher JLZC values in temporal regions and lower in occipital regions. Together, these findings show that these complexity metrics distinguishes sleep states and captures maturational changes in EEG activity in preterm infants. These results provide novel insights into early brain development and suggest potential quantitative biomarkers of neonatal brain maturation.",
+      "authors": [
+        "Devera, A.",
+        "Catanzariti, M.",
+        "Legnani, M.",
+        "Mezquita, C.",
+        "Gonzalez, J.",
+        "Urban, L.",
+        "Hackembruch, H.",
+        "Blasina, F.",
+        "Torterolo, P.",
+        "Mateos, D. M."
+      ],
+      "published_date": "2026-08-16",
+      "indexed_date": "2026-08-16",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.08.10.742446",
+      "url": "https://doi.org/10.64898/2026.08.10.742446",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 59,
+        "ai": {
+          "score": 20,
+          "topic": "Preterm sleep EEG complexity",
+          "reason": "Analyzes sleep EEG complexity in infants, but lacks focus on NREM duration, SWA, or sleep homeostasis; content not directly relevant.",
+          "summary": "This study analyzed EEG from preterm infants using Lempel-Ziv and Joint Lempel-Ziv complexity, finding that complexity differs between sleep states and changes with postmenstrual age, suggesting distinct maturational trajectories for low- and high-frequency EEG activity. These metrics may serve as quantitative biomarkers of neonatal brain maturation.",
+          "keywords": [
+            "Lempel-Ziv complexity",
+            "EEG",
+            "preterm infants",
+            "sleep states",
+            "brain maturation"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
       "source": "pubmed",
       "source_id": "42602088",
       "title": "Electroacupuncture improves neurocognitive impairment induced by chronic sleep deprivation: an experimental study based on hippocampal neurogenesis and synaptic plasticity.",
@@ -920,6 +768,105 @@
             "hippocampal neurogenesis",
             "synaptic plasticity",
             "cognitive impairment"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42604955",
+      "title": "Large Pre-trained EEG Model for Electrical Status Epilepticus during Sleep Detection.",
+      "abstract": "Electrical status epilepticus during sleep (ESES) is a severe but often underdiagnosed epileptic encephalopathy that can significantly impair cognitive development in children. Current diagnostic practices rely heavily on expert visual inspection of spike-and-slow-wave complexes in electroencephalogram (EEG) recordings. This process is time-consuming, labor-intensive, and subjective, often resulting in poor inter-rater agreement. To address these limitations, this paper introduces a novel ESES automatic detection framework based on a large pre-trained EEG model. The framework employs a pre-trained NeuroEncoder to extract temporal and frequency features from spike-and-slow-wave complexes, and uniquely incorporates a temporal and spatial embedding module to enhance the model's ability to recognize spatiotemporal patterns. By leveraging the multi-head attention mechanism of stacked Transformers, the framework further captures complex relationships and deep features. A symmetric label smoothing cross-entropy is introduced, which applies both forward and backward constraints to reduce overfitting to noisy labels and improve robustness to label noise and individual variability. The proposed framework can automatically quantify spike-and-slow-wave complexes and calculate the spike-wave index (SWI) for ESES diagnosis. Evaluation was conducted on EEG recordings from 35 patients using a leave-one-subject-out cross-subject strategy. The results demonstrate excellent performance, with an accuracy of 91.91%, sensitivity of 91.52%, and specificity of 92.37%. The high agreement between the model and expert annotation is confirmed by a Kappa coefficient of 0.8368 and Gwet's AC1 of 0.8394. The proposed method demonstrates superior generalization across subjects and outperforms existing approaches. The proposed framework provides an efficient and reliable tool for automatic ESES detection, supporting early intervention and improved clinical management for patients with ESES.",
+      "authors": [
+        "Yuxuan Li",
+        "Zhipeng He",
+        "Shishi Tang",
+        "Rui Yang",
+        "Jianping Man",
+        "Yi Zhou",
+        "Jiahao Zhu",
+        "Xinxin Peng",
+        "Yicong Liu",
+        "Ziyi Chen"
+      ],
+      "published_date": "2026-Aug-17",
+      "indexed_date": "",
+      "journal": "International journal of neural systems",
+      "doi": "10.1142/s0129065727500109",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42604955/",
+      "categories": [],
+      "keywords": [
+        "Electroencephalogram (EEG)",
+        "electrical status epilepticus during sleep (ESES)",
+        "large pre-trained EEG model"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 47,
+        "ai": {
+          "score": 15,
+          "topic": "ESES detection with pre-trained model",
+          "reason": "Uses EEG ML for seizure detection, not sleep regulation; methodological overlap weak.",
+          "summary": "This paper presents a deep learning framework using a large pre-trained EEG model for automatic detection of electrical status epilepticus during sleep (ESES), incorporating temporal-spatial embeddings and symmetric label smoothing. The method achieved high accuracy (91.91%), sensitivity (91.52%), and specificity (92.37%) on leave-one-subject-out evaluation, outperforming existing approaches.",
+          "keywords": [
+            "ESES",
+            "EEG",
+            "deep learning",
+            "pre-trained model",
+            "spike-wave index"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42604611",
+      "title": "Elevated delta power in a maternal UBE3A-deletion pig model of Angelman syndrome.",
+      "abstract": "Angelman syndrome is a neurodevelopmental disorder caused by loss of the maternally inherited UBE3A allele and characterized by severe cognitive, motor, and communication impairments. Increased delta (1-4 Hz) activity on electroencephalogram (EEG) is a well-established biomarker of Angelman syndrome in humans and rodent models and is increasingly used as a quantitative outcome measure in therapeutic studies. Whether this electrophysiological phenotype is present in the recently developed pig model has not been evaluated. Scalp EEG recordings were obtained from freely moving Yorkshire-Landrace pigs carrying a maternal UBE3A deletion (UBE3A-/+) and wild-type littermates across three developmental age groups. Artifact-free EEG epochs were identified, behavioral states were classified using synchronized video, and relative delta power was quantified using spectral analysis. UBE3A-/+ pigs showed higher relative delta power than wild-type pigs during both awake and asleep vigilance states, with the largest genotype differences observed during wakefulness. Across development, UBE3A-/+ pigs also showed a smaller increase in delta power during the transition from the awake to the asleep state compared with wild-type pigs. These findings demonstrate that the maternal UBE3A-deletion pig model reproduces the elevated delta power EEG phenotype characteristic of Angelman syndrome. Noninvasive scalp EEG therefore represents a translationally relevant approach for assessing neural dysfunction and therapeutic responses in this large-animal model.",
+      "authors": [
+        "Luke S Myers",
+        "Tanner G Monk",
+        "Luis A Martinez",
+        "Alasdair J Taylor",
+        "Sarah G Christian",
+        "Anne E Anderson",
+        "Scott V Dindot"
+      ],
+      "published_date": "2026-Aug-16",
+      "indexed_date": "",
+      "journal": "Brain & development",
+      "doi": "10.1016/j.braindev.2026.104582",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42604611/",
+      "categories": [],
+      "keywords": [
+        "Angelman syndrome",
+        "EEG",
+        "Pig",
+        "UBE3A",
+        "delta power"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 84,
+        "ai": {
+          "score": 15,
+          "topic": "Angelman syndrome delta power",
+          "reason": "Uses EEG delta power but in a neurodevelopmental model, not directly about sleep homeostasis or recovery; tangential.",
+          "summary": "This study found elevated relative delta power in maternal UBE3A-deletion pigs compared to wild-type across vigilance states, particularly during wakefulness, and reduced delta power increase during wake-to-sleep transition. This confirms the pig model reproduces the Angelman syndrome EEG phenotype and supports use of scalp EEG as a translational biomarker.",
+          "keywords": [
+            "Angelman syndrome",
+            "UBE3A",
+            "delta power",
+            "EEG",
+            "pig model"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1084,92 +1031,48 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42603114",
-      "title": "Longitudinal associations between sleepiness and sleep disturbances across pregnancy.",
-      "abstract": "Although sleep disturbances increase during pregnancy, sleepiness does not appear to follow a similar trajectory. Given that the relationship between sleep disturbances and sleepiness during pregnancy is understudied, we examined their associations to determine whether these relationships strengthen with advancing gestation. For this prospective longitudinal survey, we enrolled 3808 women, of whom 3286 responded. Sleep disturbances were assessed in early pregnancy, midpregnancy, and late pregnancy and at delivery. Mixed-effects models were constructed with adjustments for age, body mass index, parity, maternal smoking, and depressive symptoms. Sleepiness decreased from early to midpregnancy and increased thereafter, being highest at delivery. In contrast, the proportion of women with insomnia increased from 19.1% in early pregnancy to 59.1% at delivery. The proportion of habitual snorers (three or more times per week) and short sleepers (<7 h per night) increased as pregnancy progressed, whereas the proportion of long sleepers (>9 h per night) remained stable. Significant sleep loss (>2 h) increased particularly at delivery. Greater sleepiness was consistently associated with insomnia symptoms (all P < 0.001), with stronger effect size estimates in late pregnancy. Sleepiness was also associated with habitual snoring from midpregnancy onwards. Short sleep duration and sleep loss were related to greater sleepiness throughout pregnancy (all P < 0.001), but long sleep duration was associated with greater sleepiness only in early pregnancy. Sleepiness during pregnancy followed a U-shaped trajectory but was consistently associated with insomnia, short sleep duration, sleep loss, and snoring from midpregnancy onwards. Screening for underlying sleep disturbances among pregnant women reporting sleepiness may provide an opportunity for timely identification and management, potentially improving maternal well-being.",
+      "source_id": "42604986",
+      "title": "The Relationship Between Resting State Quantitative EEG and Daytime Sleepiness Complaints in Parkinson's Disease.",
+      "abstract": "Although many studies have reported the presence of daytime sleepiness in Parkinson's disease (PD), either a weak or no association has been found between self-reported and current objective measures of daytime sleepiness in this population. Changes in resting state quantitative electroencephalography (qEEG) have been associated with increased subjective sleepiness induced by sleep deprivation in young and older adults. The aim of this study was to investigate the relationship between resting state qEEG and self-reported daytime sleepiness in adults with PD. Sixty-two participants with PD underwent polysomnographic recording and clinical assessment. Daytime sleepiness severity was measured with the Epworth Sleepiness Scale (ESS). Resting state EEG was recorded 30 min after awakening. Spectral power and functional connectivity analyses (weighted-phase lag index, amplitude-amplitude coupling) were performed on artefact-free resting state EEG in 2 Hz mini bands from 0.5 to 12 Hz. Partial correlations and a hierarchical regression were used to evaluate the relationship between the qEEG metrics and ESS scores. Lower phase synchronisation in the low alpha band (8-10 Hz) within the occipital cortex was the best EEG predictor of higher daytime sleepiness severity in PD. Our results are in line with some findings of previous studies conducted in healthy young participants that reported lower alpha connectivity after sleep deprivation, suggesting disrupted arousal networks may contribute to daytime sleepiness in PD. Lower alpha phase synchronisation within the occipital cortex could serve as a proxy for daytime sleepiness in PD.",
       "authors": [
-        "Linda Aukia",
-        "Laura Perasto",
-        "Linnea Karlsson",
-        "Hasse Karlsson",
-        "E Juulia Paavonen",
-        "Päivi Polo-Kantola"
+        "Thaïna Rosinvil",
+        "Ronald B Postuma",
+        "Jean-Marc Lina",
+        "Jacques Montplaisir",
+        "Jean-François Gagnon",
+        "Julie Carrier"
       ],
-      "published_date": "2026-Aug-15",
+      "published_date": "2026-Aug-16",
       "indexed_date": "",
-      "journal": "International journal of gynaecology and obstetrics: the official organ of the International Federation of Gynaecology and Obstetrics",
-      "doi": "10.1002/ijgo.71283",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42603114/",
+      "journal": "Journal of sleep research",
+      "doi": "10.1111/jsr.70408",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42604986/",
       "categories": [],
       "keywords": [
-        "insomnia",
-        "mother",
-        "pregnancy",
-        "sleep disturbance",
-        "sleep duration",
-        "sleepiness",
-        "snoring"
+        "Parkinson's disease (PD)",
+        "amplitude‐amplitude coupling (AAC)",
+        "daytime sleepiness",
+        "electroencephalography (EEG)",
+        "functional connectivity",
+        "spectral analyses",
+        "weighted phase‐lag‐index (wPLI)"
       ],
       "publication_types": [
         "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 8,
+        "prefilter_score": 51,
         "ai": {
           "score": 10,
-          "topic": "Sleepiness in pregnancy",
-          "reason": "Longitudinal human study on pregnancy sleep, clinical and not focused on sleep homeostasis mechanisms.",
-          "summary": "This prospective longitudinal study of 3808 pregnant women found that sleepiness followed a U-shaped trajectory across pregnancy, while insomnia increased from 19.1% to 59.1%. Sleepiness was consistently associated with insomnia, short sleep duration, sleep loss, and snoring from midpregnancy onwards, suggesting screening for underlying sleep disturbances in pregnant women reporting sleepiness.",
+          "topic": "PD qEEG and sleepiness",
+          "reason": "Clinical Parkinson's study, not animal sleep regulation; limited transferability to core questions.",
+          "summary": "In Parkinson's disease patients, lower resting-state alpha band (8-10 Hz) phase synchronization within the occipital cortex was the best EEG predictor of higher daytime sleepiness scores (ESS). This suggests disrupted arousal networks may contribute to daytime sleepiness in PD and could serve as a proxy measure.",
           "keywords": [
-            "pregnancy",
-            "sleepiness",
-            "insomnia",
-            "snoring",
-            "sleep duration"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42603132",
-      "title": "Chronotype, temporal eating patterns, and sleep behaviors among physically active university students: A cross-sectional study.",
-      "abstract": "Chronotype and meal timing are associated with sleep, yet their joint relationships remain understudied in physically active university students. This study investigated associations among chronotype, caloric intake timing, and sleep characteristics and hypothesized that later first and last caloric intake would independently predict lower Morningness-Eveningness Questionnaire (MEQ) scores. This single-university cross-sectional study included 200 students aged 18-25 years who had exercised ≥3 days/week and ≥150 min/week for the preceding six months. Chronotype, sleep behavior, sleep characteristics, and dietary intake timing were assessed using the MEQ, Athlete Sleep Behavior Questionnaire, three-day sleep diary, and three-day food record, respectively. Multiple linear regression evaluated continuous MEQ score as the primary outcome; group comparisons and correlations were secondary or exploratory. A dummy-coded model tested the robustness of the meal-timing results. Later first and last caloric intake were independently associated with lower MEQ scores (β = -0.435 and -0.422, respectively; both p < 0.001), and the model explained 51.1% of the variance. The sensitivity analysis showed the same graded pattern. Evening-type participants had poorer sleep behaviors, longer sleep latency, lower sleep efficiency, more nocturnal awakenings, poorer subjective sleep quality, and later caloric intake than morning-type participants (all p < 0.001). Total energy and macronutrient intake were unrelated to the evaluated sleep outcomes. Later caloric intake timing was independently associated with greater eveningness, while evening chronotype co-occurred with less favorable sleep characteristics. Given the cross-sectional design, causality and temporal direction cannot be inferred.",
-      "authors": [
-        "Fatma Özsel Özcan",
-        "Behra Alpaslan"
-      ],
-      "published_date": "2026-Aug-15",
-      "indexed_date": "",
-      "journal": "Chronobiology international",
-      "doi": "10.1080/07420528.2026.2718346",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42603132/",
-      "categories": [],
-      "keywords": [
-        "Chronotype",
-        "chrononutrition",
-        "circadian rhythm",
-        "meal timing",
-        "sleep quality"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 8,
-        "ai": {
-          "score": 10,
-          "topic": "Chronotype and meal timing in students",
-          "reason": "Cross-sectional study on chronotype and sleep in students, but no deep mechanistic or computational content relevant to animal research.",
-          "summary": "This cross-sectional study of 200 physically active university students found that later first and last caloric intake were independently associated with lower Morningness-Eveningness Questionnaire scores (β = -0.435 and -0.422, respectively), explaining 51.1% of the variance. Evening-type participants had poorer sleep behaviors and later caloric intake compared to morning-types.",
-          "keywords": [
-            "chronotype",
-            "meal timing",
-            "sleep quality",
-            "circadian rhythm",
-            "chrononutrition"
+            "Parkinson's disease",
+            "alpha band",
+            "functional connectivity",
+            "daytime sleepiness",
+            "EEG"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1418,6 +1321,188 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42605551",
+      "title": "Antidepressant-Induced Rapid Eye Movement Behavioral Sleep Disorder (RBD): A Scoping Review.",
+      "abstract": "ObjectiveRapid Eye Movement sleep behavior disorder (RBD) is a parasomnia characterised by the loss of normal skeletal muscle atonia during REM sleep, leading to the enactment of dreams through complex motor behaviors such as talking, shouting, or violent movements that may result in injury. Emerging evidence suggests that antidepressants may be associated with RBD. This study reviewed the existing literature on the demographic and clinical features of patients with REM sleep behavior disorder (RBD) taking antidepressants, as well as the reported associations between antidepressant use and RBD.MethodsA comprehensive search strategy was implemented using the PRISMA for Scoping Reviews framework. Eligible study designs included cohort, cross-sectional, observational, randomised controlled trials, and case reports. Searches were conducted on Science Direct and PubMed for studies published between 1957 and 2025. Search terms included \"REM sleep behavior disorder,\" \"dream enactment behavior,\" \"antidepressants,\" \"SSRIs,\" \"SNRIs,\" and \"TCAs.\" The scoping review protocol was pre-registered on the Open Science Framework.ResultsTitle and abstract screening yielded 650 studies, with 16 studies meeting the inclusion criteria after full-text review. Data from 500 patients indicated a male predominance (70.2%), with a mean age of 53.9 years. Depression was the most common comorbidity (8 studies). SSRIs were most frequently associated with RBD (in 8 studies), followed by SNRIs (6 studies) and TCAs (6 studies).ConclusionAntidepressant-associated RBD is an emerging clinical concern requiring greater recognition and monitoring to enhance treatment outcomes. A clearer understanding of these relationships will ultimately improve risk stratification, patient counseling, and individualized treatment strategies in clinical settings.",
+      "authors": [
+        "Sarah Kanj",
+        "Lana Kanj",
+        "Jessie Joseph",
+        "Mehnaz Zafar Ali",
+        "Faisal A Nawaz"
+      ],
+      "published_date": "2026-Aug-17",
+      "indexed_date": "",
+      "journal": "International journal of psychiatry in medicine",
+      "doi": "10.1177/00912174261474772",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42605551/",
+      "categories": [],
+      "keywords": [
+        "REM sleep behavior disorder",
+        "antidepressants",
+        "parasomnias; dream enactment behavior. “(int’l. j. psychiatry in medicine 2012; 30:000-000)”",
+        "selective serotonin reuptake inhibitors (SSRIs)",
+        "serotonin norepinephrine reuptake inhibitors (SNRIs)"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
+      "extra": {
+        "prefilter_score": 18,
+        "ai": {
+          "score": 5,
+          "topic": "Antidepressant-induced RBD",
+          "reason": "Clinical review of RBD, unrelated to sleep homeostasis and recovery.",
+          "summary": "This scoping review examined the literature on antidepressant-associated REM sleep behavior disorder (RBD), finding that SSRIs, SNRIs, and TCAs are associated with RBD, with a male predominance and depression as common comorbidity. The review included 16 studies and 500 patients, highlighting the need for clinical recognition and monitoring.",
+          "keywords": [
+            "REM sleep behavior disorder",
+            "antidepressants",
+            "SSRIs",
+            "SNRIs",
+            "parasomnias"
+          ],
+          "paper_type": "Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42605007",
+      "title": "Sleep duration and sleep problems in non-Hispanic Black adults: a cross-sectional study of the 2015-2020 National Health and Nutritional Examination Survey.",
+      "abstract": "Previous research indicates that non-Hispanic Black adults are more likely to report extremes in sleep duration and worse levels of sleep quality compared to their White counterparts. However, studies examining predictors of sleep among Black adults are limited. This study addressed this gap by examining sociodemographic and health-related factors associated with sleep duration and sleep problems among non-Hispanic Black adults. Data from 3,367 non-Hispanic Black adults in the United States, aged ≥20 years, were obtained by combining the 2015-2016 and 2017- March 2020 cycles of the National Health and Nutrition Examination Survey. Logistic regression models were fit to examine factors associated with sleep duration and sleep problems (history of trouble sleeping or excessive daytime sleepiness). The prevalence of recommended (7-9 h), short (<7 h), and long sleep duration (>9 h) was 53.9%, 33.0%, and 13.1%, respectively. The prevalence of sleep problems was 40.5%. Short sleep duration was positively associated with male gender, some college education, working ≥45 h per week, and history of sleep problems, and negatively associated with unemployment. Long sleep duration was positively associated with less than a college education, a family monthly poverty level index ≤1.30, being unemployed or retired, and fair or poor self-rated health, and negatively associated with female gender, age ≥45 years, and working ≥45 h per week. Sleep problems were positively associated with unemployment, mild to severe depressive symptoms, chronic medical conditions, fair or poor self-rated health, heavy alcohol consumption, and negatively associated with male gender, age ≥45 years, being foreign-born, and having a high school education or less. This study identified several sociodemographic and health-related factors associated with sleep, which can inform future research and policy and support the development of tailored clinical and public health interventions aimed at improving sleep health among non-Hispanic Black adults.",
+      "authors": [
+        "Everlyne G Ogugu",
+        "Aron A King",
+        "Janice F Bell"
+      ],
+      "published_date": "2026-Aug-16",
+      "indexed_date": "",
+      "journal": "Ethnicity & health",
+      "doi": "10.1080/13557858.2026.2718703",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42605007/",
+      "categories": [],
+      "keywords": [
+        "Black adults",
+        "SDG 10: Reduced inequalities",
+        "SDG 3: Good health and well-being",
+        "Sleep duration",
+        "race/ethnicity",
+        "sleep disturbances"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 20,
+        "ai": {
+          "score": 5,
+          "topic": "Sleep duration in Black adults",
+          "reason": "Epidemiological survey on sleep duration, tangential to animal sleep regulation.",
+          "summary": "This cross-sectional study of 3,367 non-Hispanic Black adults from the NHANES 2015-2020 found a 53.9% prevalence of recommended sleep duration (7-9h) and 40.5% prevalence of sleep problems. Short sleep was associated with male sex, some college education, working ≥45 hours/week, and history of sleep problems; long sleep with lower education, poverty, unemployment/retirement, and poor health.",
+          "keywords": [
+            "sleep duration",
+            "sleep problems",
+            "non-Hispanic Black adults",
+            "NHANES",
+            "health disparities"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42605002",
+      "title": "Reply to \"Compared with What? A Missing Comparator for Continuous EEG after Ischemic Stroke\".",
+      "abstract": "",
+      "authors": [
+        "Kai Michael Schubert",
+        "Sándor Beniczky",
+        "Carla Bentes",
+        "Nicolas Gaspard",
+        "Vineet Punia",
+        "Marian Galovic"
+      ],
+      "published_date": "2026-Aug-16",
+      "indexed_date": "",
+      "journal": "Annals of neurology",
+      "doi": "10.1002/ana.78326",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42605002/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Letter"
+      ],
+      "extra": {
+        "prefilter_score": 12,
+        "ai": {
+          "score": 5,
+          "topic": "Continuous EEG after stroke",
+          "reason": "Peri-stroke EEG monitoring, not sleep regulation; minimal relevance.",
+          "summary": "This letter is a reply to a commentary regarding the use of continuous EEG after ischemic stroke, but the abstract is not provided. The content likely discusses methodological points about comparator groups in EEG studies.",
+          "keywords": [
+            "continuous EEG",
+            "ischemic stroke",
+            "comparator",
+            "methodology"
+          ],
+          "paper_type": "Commentary/Perspective",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42604674",
+      "title": "Impact of renal impairment, hepatic function, and circadian rhythm on pre-treatment plasma uracil levels.",
+      "abstract": "To determine the five-year incidence of hyperuracilemia (plasma uracil (P-uracil) ≥ 16 ng/mL) and its association with renal and hepatic function. Furthermore, to characterize circadian variation in P-uracil. All adult patients (≥18 years) in the Central Denmark Region with a P-uracil measurement performed at the Department of Clinical Biochemistry, Aarhus University Hospital, between September 2021 and December 2025 were included. Measurements of estimated glomerular filtration rate (eGFR), alanine aminotransferase (ALAT), alkaline phosphatase (ALP), gamma-glutamyl transferase (GGT), and bilirubin were also extracted. Circadian variation was assessed from sampling time using hourly medians and interquartile ranges (IQRs). The median P-uracil of 3728 patients was 8.0 ng/mL (IQR 7.24 to 11.40 ng/mL). A subcohort of 3361 patients with concurrent measurements of eGFR and liver function tests was included in multivariate analyses, where male sex (+6.72%, p < 0.001) and ALP (+3.16% per times the upper normal limit of the reference interval, p < 0.001) were positively, and eGFR (--0.61% per eGFR point, p < 0.001) inversely, associated with P-uracil; logistic regression confirmed these associations (odds ratio of 1.71, 1.25, and 0.96, respectively). No circadian variation in P-uracil was visually apparent. This study demonstrated a consistent and independent association between impaired renal function and elevated P-uracil. Associations with liver function tests were less consistent, with only ALP showing an independent relationship in multivariable analyses. No evidence of clinically relevant circadian rhythm in P-uracil was observed.",
+      "authors": [
+        "Malene H Kirkeby",
+        "Eva Greibe",
+        "Elke Hoffmann-Lücke"
+      ],
+      "published_date": "2026-Aug-16",
+      "indexed_date": "",
+      "journal": "Clinica chimica acta; international journal of clinical chemistry",
+      "doi": "10.1016/j.cca.2026.121276",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42604674/",
+      "categories": [],
+      "keywords": [
+        "Circadian rhythm",
+        "DPD deficiency",
+        "Fluorouracil",
+        "Hepatic impairment",
+        "Plasma",
+        "Renal impairment",
+        "Uracil"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 18,
+        "ai": {
+          "score": 5,
+          "topic": "Plasma uracil and circadian rhythm",
+          "reason": "Focus on metabolic biomarker, not sleep EEG; only slight circadian link.",
+          "summary": "This study of 3,728 patients found that impaired renal function (lower eGFR) is independently associated with elevated plasma uracil levels, with male sex and alkaline phosphatase also positively associated. No circadian variation in plasma uracil was observed.",
+          "keywords": [
+            "plasma uracil",
+            "renal impairment",
+            "DPD deficiency",
+            "fluorouracil",
+            "circadian rhythm"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42603612",
       "title": "From bench to bedside: current evidence and prospects for acupuncture in managing perioperative neurocognitive disorders.",
       "abstract": "Perioperative neurocognitive disorders (PND), comprising postoperative delirium and postoperative cognitive dysfunction, represent prevalent complications during the perioperative period, particularly among elderly patients. PND not only impedes patient recovery but also imposes a substantial socioeconomic burden. Consequently, effective prevention and management of PND across the preoperative, intraoperative, and postoperative phases hold significant clinical and public health importance. However, existing clinical interventions remain limited in efficacy, posing ongoing challenges in PND care. Through a comprehensive literature review, this study examines the potential of acupuncture, as a clinical intervention for PND. We synthesize current evidence on acupuncture's diversified protocols, mechanistic framework, and clinical value in PND prevention. We propose that these perioperative risk factors, including anxiety, pain, sleep disruption, inflammation, and thermoregulatory disturbance, do not act in isolation; rather, they may interact through shared pathways to collectively contribute to PND risk. Acupuncture, particularly electroacupuncture and transcutaneous acupoint stimulation, counteracts this network through multi-target regulation centered on the gut-brain axis: it modulates gut microbiota and metabolites, balances key neural circuits, maintains neurochemical and synaptic homeostasis, and simultaneously intercepts multiple risk pathways. By integrating these actions across peripheral and central systems, acupuncture constructs a coordinated neuroprotective network that reduces PND incidence and accelerates cognitive recovery. This review provides a theoretical basis for optimizing perioperative management strategies and guiding mechanistic research on acupuncture-based neuroprotection.",
@@ -1466,59 +1551,6 @@
             "electroacupuncture"
           ],
           "paper_type": "Review",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42603389",
-      "title": "Adverse experiences in childhood and adolescence in relation to sleep health in adulthood: An overview of systematic reviews and a global evidence map.",
-      "abstract": "Adversities in childhood and adolescence (ACA) can disrupt biological, developmental, and behavioral processes, potentially contributing to poorer sleep in adulthood. However, the certainty of the evidence of this association remains unclear. To synthesize and evaluate evidence of associations between ACA and adult sleep health (≥18 years) across World Health Organization regions while considering benevolent and risk factors, we conducted an overview of systematic reviews/meta-analyses. Using a predefined protocol, we systematically reviewed records published from database (n = 5) inception to February 2026, synthesized results, and performed quality and bias appraisal using validated tools, which allowed for assessment of the overall certainty of evidence. Twelve systematic reviews, including one relevant meta-analysis, were identified. ACA exposure was consistently associated with poorer sleep (e.g., insomnia symptoms, nightmares, higher arousals) in adulthood. Confidence in findings was generally critically low, and risk of bias was high, resulting in low certainty, overall. Evidence was concentrated in Regions of the Americas and Europe, with no representation from low-income countries. Reviews broadly summarized ACA-sleep associations, limiting synthesis of potential moderation by benevolent and risk factors. ACAs appear associated with poorer sleep health in adulthood; however, certainty remains low. More research across global populations is needed.",
-      "authors": [
-        "Symielle A Gaston",
-        "Wensu Zhou",
-        "Rupsha Singh",
-        "Tracy C Shields",
-        "Alicia A Livinski",
-        "Susan Redline",
-        "Jean-Philippe Chaput",
-        "Karen Spruyt",
-        "Fang Han",
-        "Judith Owens",
-        "Chandra L Jackson",
-        "World Sleep Society Global Adolescent Sleep Project Taskforce"
-      ],
-      "published_date": "2026-Aug-08",
-      "indexed_date": "",
-      "journal": "Sleep medicine reviews",
-      "doi": "10.1016/j.smrv.2026.102350",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42603389/",
-      "categories": [],
-      "keywords": [
-        "Adults",
-        "Adverse childhood experiences",
-        "Childhood trauma",
-        "Sleep"
-      ],
-      "publication_types": [
-        "Journal Article",
-        "Review"
-      ],
-      "extra": {
-        "prefilter_score": 8,
-        "ai": {
-          "score": 5,
-          "topic": "Childhood adversity and adult sleep",
-          "reason": "Overview of reviews on childhood adversity and sleep health, broad epidemiological evidence with low mechanistic relevance.",
-          "summary": "Overview of 12 systematic reviews found consistent associations between childhood/adolescent adversity and poorer adult sleep health, but evidence certainty was low; research is concentrated in the Americas and Europe with no low-income country representation.",
-          "keywords": [
-            "adverse childhood experiences",
-            "sleep health",
-            "systematic review",
-            "evidence map"
-          ],
-          "paper_type": "Systematic Review",
           "digest_pick": true
         }
       }
@@ -1864,91 +1896,48 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42601758",
-      "title": "Association between the C-reactive protein-triglyceride-glucose index and obstructive sleep apnea risk: Mediating role of body mass index in U.S. adults.",
-      "abstract": "Obstructive sleep apnea (OSA) is characterized by intermittent hypoxia, fragmented sleep, and heightened sympathetic activity, drivers of oxidative stress, systemic inflammation, and metabolic dysregulation. The C-reactive protein-triglyceride-glucose index (CTI) has recently emerged as a composite marker of inflammatory and metabolic states. This study aimed to investigate the association between the CTI index and OSA risk in a nationally representative United States adult population. We analyzed data from 4564 participants in the 2015 to 2018 National Health and Nutrition Examination Survey. Logistic regression, restricted cubic spline modeling, and subgroup analyses were performed to examine the association between CTI and OSA risk. Predictive performance of CTI was compared with triglyceride-glucose and C-reactive protein using receiver operating characteristic curves. Mediation analysis assessed the role of body mass index (BMI). Higher CTI was positively associated with increased OSA risk, and no significant evidence of nonlinearity was observed (P for nonlinear = .424). Each unit increase in CTI corresponded to a 43% higher odds of OSA, and those in the highest quartile had over twice the odds compared with the lowest. CTI showed slightly higher discriminatory ability than the TyG index and CRP, although its overall discriminative performance remained modest. BMI statistically mediated 56.3% of the observed association. Findings were consistent across subgroups. CTI was independently associated with OSA among United States adults, with BMI accounting for a substantial proportion of this association. As a readily available biomarker integrating inflammatory and metabolic information, CTI may provide additional value for OSA risk assessment.",
+      "source_id": "42604794",
+      "title": "Comment on \"Self-Reported Sleep Duration, Death-Censored Graft Failure and Health-Related Quality of Life Among Kidney Transplant Recipients: Results From the KNOW-KT Study\".",
+      "abstract": "",
       "authors": [
-        "Wanglin Wen",
-        "Ran He",
-        "Zihan Fang",
-        "Sijia Fang",
-        "Lanzhi Zheng"
+        "Sachin Kumar",
+        "Nirupma Gupta",
+        "Sujeet Kumar Singh",
+        "Hariharan Srinivasan",
+        "Varshini Vadhithala",
+        "Sushma Narsing Katkuri",
+        "Brajgopal Kushwaha"
       ],
-      "published_date": "2026-Aug-14",
-      "indexed_date": "2026-08-15",
-      "journal": "Medicine",
-      "doi": "10.1097/md.0000000000050204",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42601758/",
-      "categories": [],
-      "keywords": [
-        "C-reactive protein–triglyceride-glucose index",
-        "National Health and Nutrition Examination Survey",
-        "insulin resistance",
-        "intermittent hypoxia",
-        "obstructive sleep apnea"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 11,
-        "ai": {
-          "score": 5,
-          "topic": "Obesity and OSA risk",
-          "reason": "Epidemiological study on inflammation marker and OSA risk, only indirect relevance to sleep homeostasis.",
-          "summary": "This cross-sectional analysis of 4,564 U.S. adults found that each unit increase in the C-reactive protein-triglyceride-glucose index (CTI) was associated with 43% higher odds of obstructive sleep apnea, with BMI mediating 56.3% of the association. CTI showed slightly better discrimination than traditional markers but modest overall performance.",
-          "keywords": [
-            "C-reactive protein–triglyceride-glucose index",
-            "obstructive sleep apnea",
-            "body mass index",
-            "insulin resistance",
-            "NHANES"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42603416",
-      "title": "Teaching-research conflict and self-reported strain in early academic careers: Selective role investment among postdoctoral teacher-researchers.",
-      "abstract": "Teaching-research tensions among early-career academics are well documented, but less is known about how postdoctoral academics allocate limited time when teaching and research carry unequal career consequences. This qualitative study examined how 30 postdoctoral researchers with recurrent teaching responsibilities in Chinese higher education responded to publication-linked evaluation. Semi-structured interviews were supplemented by non-participant observations of eight participants and analyzed through reflexive thematic analysis and cross-case comparison. Participants described a mismatch between the time required for teaching and research and the greater perceived importance of publication for contract renewal and career progression. They responded through selective role investment, including protecting writing time, compressing teaching preparation, pursuing strategically visible research activities, seeking mentoring and peer support, and reconsidering academic careers. Participants perceived these responses as necessary for short-term career viability, although they were sometimes accompanied by fatigue, sleep disruption, ethical and intellectual discomfort, and concerns about teaching quality. Their form and perceived cost varied according to teaching load, institutional resources, disciplinary publishing conditions, mentorship, and workload autonomy. The findings conceptualize career adaptation as a patterned redistribution of time and attention under unequal career consequences rather than as an individual capacity to balance equally demanding roles.",
-      "authors": [
-        "Bieyu Lin"
-      ],
-      "published_date": "2026-Aug-15",
+      "published_date": "2026-Aug",
       "indexed_date": "",
-      "journal": "Acta psychologica",
-      "doi": "10.1016/j.actpsy.2026.107635",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42603416/",
+      "journal": "Nephrology (Carlton, Vic.)",
+      "doi": "10.1111/nep.70266",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42604794/",
       "categories": [],
       "keywords": [
-        "Academic evaluation",
-        "Career adaptation",
-        "Early-career academics",
-        "Role conflict",
-        "Selective role investment",
-        "Self-reported strain"
+        "death‐censored graft failure",
+        "graft survival",
+        "health‐related quality of life",
+        "kidney transplantation",
+        "sleep duration"
       ],
       "publication_types": [
-        "Journal Article"
+        "Letter"
       ],
       "extra": {
-        "prefilter_score": 8,
+        "prefilter_score": 16,
         "ai": {
           "score": 0,
-          "topic": "Academic career strain and sleep",
-          "reason": "Qualitative study on teaching-research conflict, only mentions sleep disruption as a side effect, completely outside scope.",
-          "summary": "This qualitative study of 30 postdoctoral researchers in Chinese higher education found that participants responded to teaching-research conflict through selective role investment, such as protecting writing time and compressing teaching preparation, which was perceived as necessary for career viability but sometimes caused strain. Findings conceptualize career adaptation as a patterned redistribution of time under unequal career consequences.",
+          "topic": "Comment on kidney transplant sleep",
+          "reason": "Clinical commentary on graft failure, no relevance.",
+          "summary": "This letter comments on a study about self-reported sleep duration and outcomes in kidney transplant recipients, but the abstract is not provided. It likely discusses methodological or interpretive issues related to the study.",
           "keywords": [
-            "role conflict",
-            "academic careers",
-            "qualitative research",
-            "career adaptation",
-            "postdoctoral researchers"
+            "kidney transplantation",
+            "sleep duration",
+            "graft failure",
+            "quality of life"
           ],
-          "paper_type": "Research Article",
+          "paper_type": "Commentary/Perspective",
           "digest_pick": true
         }
       }
