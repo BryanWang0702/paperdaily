@@ -15,7 +15,7 @@ ARXIV_API = "https://export.arxiv.org/api/query"
 ARXIV_SOURCE_CACHE = Path("data/source_cache/arxiv.json")
 DEFAULT_RETRY_DELAYS = [10, 30]
 RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
-PAPERDAILY_VERSION = "0.5.3"
+PAPERDAILY_VERSION = "0.5.4"
 
 
 def _paper_from_cache(item: dict) -> Paper:
@@ -59,39 +59,54 @@ def _read_same_window_cache(start_date: str, end_date: str) -> list[Paper] | Non
     return papers
 
 
-def _retry_delay(response: requests.Response, fallback: int) -> int:
-    retry_after = str(response.headers.get("Retry-After", "")).strip()
-    if retry_after.isdigit():
-        return max(3, int(retry_after))
+def _retry_delay(response: requests.Response | None, fallback: int) -> int:
+    if response is not None:
+        retry_after = str(response.headers.get("Retry-After", "")).strip()
+        if retry_after.isdigit():
+            return max(3, int(retry_after))
     return max(3, fallback)
 
 
 def _request_arxiv(params: dict, headers: dict, timeout: int, retry_delays: list[int]) -> requests.Response:
     attempts = len(retry_delays) + 1
-    last_response: requests.Response | None = None
+    last_error: Exception | None = None
+
     for attempt in range(attempts):
-        response = requests.get(
-            ARXIV_API,
-            params=params,
-            headers=headers,
-            timeout=timeout,
-        )
-        last_response = response
-        if response.status_code not in RETRYABLE_STATUS_CODES:
-            response.raise_for_status()
-            return response
+        response: requests.Response | None = None
+        try:
+            response = requests.get(
+                ARXIV_API,
+                params=params,
+                headers=headers,
+                timeout=timeout,
+            )
+            if response.status_code not in RETRYABLE_STATUS_CODES:
+                response.raise_for_status()
+                return response
+            last_error = requests.HTTPError(
+                f"HTTP {response.status_code} from arXiv",
+                response=response,
+            )
+        except requests.RequestException as exc:
+            last_error = exc
+
         if attempt >= len(retry_delays):
-            response.raise_for_status()
+            assert last_error is not None
+            raise last_error
+
         delay = _retry_delay(response, retry_delays[attempt])
+        if response is not None:
+            reason = f"HTTP {response.status_code}"
+        else:
+            reason = type(last_error).__name__ if last_error is not None else "request error"
         print(
-            f"arxiv: HTTP {response.status_code}; retrying in {delay}s "
+            f"arxiv: {reason}; retrying in {delay}s "
             f"({attempt + 1}/{len(retry_delays)})"
         )
         time.sleep(delay)
 
-    assert last_response is not None
-    last_response.raise_for_status()
-    return last_response
+    assert last_error is not None
+    raise last_error
 
 
 def _parse_feed(text: str) -> list[Paper]:
