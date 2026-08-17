@@ -15,7 +15,7 @@ ARXIV_API = "https://export.arxiv.org/api/query"
 ARXIV_SOURCE_CACHE = Path("data/source_cache/arxiv.json")
 DEFAULT_RETRY_DELAYS = [10, 30]
 RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
-PAPERDAILY_VERSION = "0.5.2"
+PAPERDAILY_VERSION = "0.5.3"
 
 
 def _paper_from_cache(item: dict) -> Paper:
