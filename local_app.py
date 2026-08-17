@@ -26,6 +26,7 @@ FROZEN = bool(getattr(sys, "frozen", False))
 BUNDLE_ROOT = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
 ROOT = Path(sys.executable).resolve().parent if FROZEN else Path(__file__).resolve().parent
 CONFIG_FILE = ROOT / "config.yaml"
+TOPICS_DIR = ROOT / "topics"
 TOKEN_FILE = ROOT / "api_token.txt"
 STATE_FILE = ROOT / "local_state.json"
 SITE_DIR = ROOT / "site"
@@ -33,15 +34,26 @@ LATEST_SITE_DATA = SITE_DIR / "data" / "latest.json"
 LOCAL_STATUS_FILE = SITE_DIR / "data" / "local_status.json"
 DEFAULT_REFRESH_TIMES = ["05:30", "20:30"]
 DEFAULT_VERSION_URL = "https://raw.githubusercontent.com/BryanWang0702/paperdaily/master/standalone_version.json"
-STATIC_SITE_FILES = ("index.html", "day.html", "app.js", "day.js", "style.css", "layout.css", "theme.js")
+STATIC_SITE_FILES = ("index.html", "day.html", "app.js", "day.js", "style.css", "layout.css", "theme.js", "topics.js")
 REFRESH_LOCK = threading.Lock()
 
 
 def _config_hash(path: Path = CONFIG_FILE) -> str:
+    """Fingerprint the global config plus every editable topic profile."""
+    digest = hashlib.sha256()
     try:
-        return hashlib.sha256(path.read_bytes()).hexdigest()
+        digest.update(path.name.encode("utf-8"))
+        digest.update(path.read_bytes())
     except OSError:
         return ""
+    if TOPICS_DIR.exists():
+        for topic_path in sorted(TOPICS_DIR.glob("*.yaml")):
+            try:
+                digest.update(topic_path.name.encode("utf-8"))
+                digest.update(topic_path.read_bytes())
+            except OSError:
+                continue
+    return digest.hexdigest()
 
 
 def _api_key_env(config: dict) -> str:
@@ -215,8 +227,8 @@ def _refresh_decision(
         previous_hash = str(state.get("last_successful_config_hash", ""))
         if current_hash and current_hash != previous_hash:
             if previous_hash:
-                return True, due_slot, "config.yaml changed since the last successful refresh"
-            return True, due_slot, "config.yaml has not yet been recorded by this local installation"
+                return True, due_slot, "configuration or topic profile changed since the last successful refresh"
+            return True, due_slot, "configuration has not yet been recorded by this local installation"
 
     last_raw = str(state.get("last_successful_slot", ""))
     try:
@@ -287,7 +299,7 @@ def _scheduler_loop(stop_event: threading.Event) -> None:
             now = datetime.now(due_slot.tzinfo)
             if should_refresh and (next_retry_at is None or now >= next_retry_at):
                 print(f"Scheduler: {reason}")
-                run_kind = "local_config_change" if reason.startswith("config.yaml") else "local_scheduled"
+                run_kind = "local_config_change" if reason.startswith("configuration") else "local_scheduled"
                 success = _perform_refresh(config, due_slot, run_kind=run_kind, config_hash=config_hash)
                 if success:
                     next_retry_at = None
@@ -314,7 +326,7 @@ def main() -> None:
     print(f"Refresh check: {reason}")
 
     if should_refresh:
-        run_kind = "local_config_change" if reason.startswith("config.yaml") else "local_scheduled"
+        run_kind = "local_config_change" if reason.startswith("configuration") else "local_scheduled"
         _perform_refresh(config, due_slot, run_kind=run_kind, config_hash=config_hash)
     else:
         print("No refresh needed. Opening the existing local dashboard without API calls.")
@@ -333,7 +345,7 @@ def main() -> None:
         times = ", ".join(str(value) for value in local_config.get("refresh_times", DEFAULT_REFRESH_TIMES))
         print(f"Background scheduler enabled for: {times}")
         if bool(local_config.get("refresh_on_config_change", True)):
-            print("Config watcher enabled: saving config.yaml triggers an immediate refresh.")
+            print("Config watcher enabled: saving config.yaml or topics/*.yaml triggers an immediate refresh.")
 
     url = f"http://127.0.0.1:{port}/"
     print(f"Opening {url}")
