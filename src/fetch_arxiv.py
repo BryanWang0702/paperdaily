@@ -15,6 +15,7 @@ ARXIV_API = "https://export.arxiv.org/api/query"
 ARXIV_SOURCE_CACHE = Path("data/source_cache/arxiv.json")
 DEFAULT_RETRY_DELAYS = [10, 30]
 RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
+PAPERDAILY_VERSION = "0.5.2"
 
 
 def _paper_from_cache(item: dict) -> Paper:
@@ -151,9 +152,9 @@ def fetch_arxiv(
     search_query = " AND ".join(query_parts)
 
     contact = str(arxiv_config.get("contact_email") or config.get("pubmed", {}).get("email") or "").strip()
-    user_agent = "PaperDaily/0.5.1 (+https://github.com/BryanWang0702/paperdaily)"
+    user_agent = f"PaperDaily/{PAPERDAILY_VERSION} (+https://github.com/BryanWang0702/paperdaily)"
     if contact:
-        user_agent = f"PaperDaily/0.5.1 ({contact}; +https://github.com/BryanWang0702/paperdaily)"
+        user_agent = f"PaperDaily/{PAPERDAILY_VERSION} ({contact}; +https://github.com/BryanWang0702/paperdaily)"
 
     configured_delays = arxiv_config.get("retry_delays_seconds", DEFAULT_RETRY_DELAYS)
     retry_delays: list[int] = []
