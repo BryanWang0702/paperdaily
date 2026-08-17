@@ -2,7 +2,7 @@ const EN_LOCALE = 'en-US';
 const DISPLAY_TIME_ZONE = 'Asia/Shanghai';
 const SOURCE_ORDER = ['pubmed', 'biorxiv', 'medrxiv', 'arxiv'];
 const SOURCE_ONLY_JOURNAL_NAMES = new Set(['biorxiv', 'medrxiv', 'arxiv']);
-const state = { data: null, query: '', keyword: '' };
+const state = { data: null, query: '', keyword: '', topicId: 'default', topicIndex: null };
 
 function esc(value = '') {
   return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
@@ -64,7 +64,7 @@ function paperCard(p, rank) {
 }
 
 function renderSourceSummary() {
-  const counts = state.data?.retrieved_source_counts || {};
+  const counts = state.data?.topic_source_counts || state.data?.retrieved_source_counts || {};
   const pills = SOURCE_ORDER.map(source => `
     <span class="source-total-pill"><strong>${esc(sourceName(source))}</strong> ${Number(counts[source] || 0)}</span>
   `).join('');
@@ -124,15 +124,10 @@ function renderPapers() {
       ? paper.keywords.map(value => String(value).trim().toLowerCase())
       : [];
     const text = `${paper.title} ${paper.journal || ''} ${paper.summary || ''} ${paper.source || ''} ${paper.paper_type || ''} ${authors} ${keywords}`.toLowerCase();
-    const matchesText = !q || text.includes(q);
-    const matchesKeyword = !state.keyword || keywordKeys.includes(state.keyword);
-    return matchesText && matchesKeyword;
+    return (!q || text.includes(q)) && (!state.keyword || keywordKeys.includes(state.keyword));
   });
   const featured = matches.filter(({ rank }) => rank <= featuredCount);
   const additional = matches.filter(({ rank }) => rank > featuredCount);
-
-  const featuredHtml = featured.map(({ paper, rank }) => paperCard(paper, rank)).join('');
-  const additionalHtml = additional.map(({ paper, rank }) => paperCard(paper, rank)).join('');
   const section = document.querySelector('#papers');
 
   if (!matches.length) {
@@ -144,7 +139,7 @@ function renderPapers() {
   const extraBlock = additional.length ? `
     <details class="more-papers" ${filtered ? 'open' : ''}>
       <summary>Show ${additional.length} more paper${additional.length === 1 ? '' : 's'}${filtered ? ' matching these filters' : ` · ranks ${featuredCount + 1}–${papers.length}`}</summary>
-      <div class="more-papers-list">${additionalHtml}</div>
+      <div class="more-papers-list">${additional.map(({ paper, rank }) => paperCard(paper, rank)).join('')}</div>
     </details>` : '';
 
   section.innerHTML = `
@@ -155,8 +150,22 @@ function renderPapers() {
       </div>
       <span>${matches.length} paper${matches.length === 1 ? '' : 's'} shown · sorted by relevance</span>
     </div>
-    <div class="featured-papers">${featuredHtml}</div>
+    <div class="featured-papers">${featured.map(({ paper, rank }) => paperCard(paper, rank)).join('')}</div>
     ${extraBlock}`;
+}
+
+async function fetchTopicDay(topicId, date, suffix) {
+  const response = await fetch(`data/topics/${encodeURIComponent(topicId)}/days/${encodeURIComponent(date)}.json${suffix}`, {
+    cache: suffix ? 'force-cache' : 'no-cache'
+  });
+  if (response.ok) return response.json();
+  if (topicId === 'default') {
+    const fallback = await fetch(`data/days/${encodeURIComponent(date)}.json${suffix}`, {
+      cache: suffix ? 'force-cache' : 'no-cache'
+    });
+    if (fallback.ok) return fallback.json();
+  }
+  throw new Error(`HTTP ${response.status}`);
 }
 
 async function boot() {
@@ -168,18 +177,26 @@ async function boot() {
     return;
   }
 
+  state.topicIndex = await window.PaperDailyTopics.load();
+  state.topicId = window.PaperDailyTopics.choose(state.topicIndex, params.get('topic') || '');
+  const topic = window.PaperDailyTopics.get(state.topicIndex, state.topicId);
+  window.PaperDailyTopics.render('#topicControl', state.topicIndex, state.topicId, value => {
+    const next = new URL(window.location.href);
+    next.searchParams.set('topic', value);
+    next.searchParams.delete('v');
+    window.location.href = next.toString();
+  });
+  document.querySelector('#backLink').href = `./?topic=${encodeURIComponent(state.topicId)}`;
+  document.querySelector('#topicLabel').textContent = topic?.label ? `DAILY PAPERS · ${topic.label}` : 'DAILY PAPERS';
   document.querySelector('#dayTitle').textContent = prettyDate(date);
-  document.title = `PaperDaily · ${prettyDate(date)}`;
+  document.title = `PaperDaily · ${topic?.label || 'Daily Papers'} · ${prettyDate(date)}`;
+
   try {
     const suffix = version ? `?v=${encodeURIComponent(version)}` : '';
-    const response = await fetch(`data/days/${encodeURIComponent(date)}.json${suffix}`, {
-      cache: version ? 'force-cache' : 'no-cache'
-    });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    state.data = await response.json();
+    state.data = await fetchTopicDay(state.topicId, date, suffix);
     const d = state.data;
     const updated = updatedTime(d.generated_at || '');
-    document.querySelector('#meta').textContent = `${d.total_count ?? 0} unique papers${updated ? ` · Updated ${updated}` : ''}`;
+    document.querySelector('#meta').textContent = `${d.total_count ?? 0} topic-matching papers${updated ? ` · Updated ${updated}` : ''}`;
     renderSourceSummary();
     renderKeywordFilters();
 
@@ -191,7 +208,7 @@ async function boot() {
       : '';
     renderPapers();
   } catch (error) {
-    document.querySelector('#status').innerHTML = `<div class="warning">Could not load this day's data: ${esc(String(error))}</div>`;
+    document.querySelector('#status').innerHTML = `<div class="warning">Could not load this topic's daily data: ${esc(String(error))}</div>`;
   }
 }
 
