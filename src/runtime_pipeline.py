@@ -90,11 +90,20 @@ def _historical_reference_cost(ledger: dict[str, Any], config: dict[str, Any]) -
     return total_cost / equivalent_runs
 
 
+def _has_ai_requests(item: dict[str, Any]) -> bool:
+    return int(((item.get("usage") or {}).get("requests", 0)) or 0) > 0
+
+
 def _reference_run_cost(recent_runs: list[dict[str, Any]], fallback: float = 0.0) -> float:
+    # Fully cached scheduled refreshes are valid production runs, but a ¥0 run with
+    # zero AI requests should not define the representative cost of a future full
+    # refresh. Use scheduled runs that actually called the AI; otherwise fall back
+    # to other non-development active runs, then to the historical bootstrap.
     scheduled = [
         float(item.get("cost_cny", 0.0) or 0.0)
         for item in recent_runs
         if str(item.get("kind", "")) in {"scheduled", "local_scheduled"}
+        and _has_ai_requests(item)
     ]
     if scheduled:
         values = scheduled[-20:]
@@ -103,7 +112,7 @@ def _reference_run_cost(recent_runs: list[dict[str, Any]], fallback: float = 0.0
             float(item.get("cost_cny", 0.0) or 0.0)
             for item in recent_runs
             if str(item.get("kind", "")) != "development"
-            and int(((item.get("usage") or {}).get("requests", 0)) or 0) > 0
+            and _has_ai_requests(item)
         ]
         values = active[-20:]
     if not values:
