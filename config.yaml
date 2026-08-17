@@ -30,7 +30,8 @@ arxiv:
   # response when both runs use the same retrieval window.
   reuse_same_window: true
 
-  # HTTP 429 / transient server errors are retried with respectful backoff.
+  # HTTP 429 / transient server errors / connection timeouts are retried with
+  # respectful backoff before PaperDaily falls back to the last-good source cache.
   retry_delays_seconds: [10, 30]
   timeout_seconds: 45
 
@@ -169,6 +170,10 @@ local:
   # When enabled, keep PaperDaily running and automatically refresh at future slots.
   scheduler_enabled: true
   scheduler_check_seconds: 30
+
+  # In scheduled mode, saving config.yaml triggers the full retrieval + AI pipeline
+  # immediately rather than waiting for the next 05:30/20:30 slot.
+  refresh_on_config_change: true
 
   # Check this small repository manifest before each real literature refresh.
   # A failed version check never blocks literature retrieval.
