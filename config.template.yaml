@@ -19,6 +19,13 @@ arxiv:
   categories:
     - q-bio.NC
 
+  # Recommended for the legacy arXiv API: cache an identical retrieval window
+  # instead of repeating the same query during multiple daily refreshes.
+  reuse_same_window: true
+  retry_delays_seconds: [10, 30]
+  timeout_seconds: 45
+  contact_email: ""
+
 # Free deterministic daily shortlist.
 prefilter:
   enabled: true
