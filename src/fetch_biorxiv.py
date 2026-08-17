@@ -11,17 +11,44 @@ from .utils import compact_text, matches_terms, normalize_doi
 API_ROOT = "https://api.biorxiv.org/details"
 
 
+def _decode_json_response(response: requests.Response, url: str) -> dict:
+    text = response.text.strip()
+    if not text:
+        raise RuntimeError(
+            f"empty response body from bioRxiv API (HTTP {response.status_code}; {url})"
+        )
+    try:
+        payload = response.json()
+    except ValueError as exc:
+        content_type = str(response.headers.get("Content-Type", "unknown"))
+        preview = compact_text(text[:120])
+        raise RuntimeError(
+            "invalid JSON response from bioRxiv API "
+            f"(HTTP {response.status_code}; content-type {content_type}; body starts {preview!r})"
+        ) from exc
+    if not isinstance(payload, dict):
+        raise RuntimeError(
+            f"unexpected JSON payload from bioRxiv API: {type(payload).__name__}"
+        )
+    return payload
+
+
 def _get_json_with_retry(url: str, attempts: int = 3) -> dict:
     last_error: Exception | None = None
     for attempt in range(attempts):
         try:
             response = requests.get(url, timeout=(10, 45))
             response.raise_for_status()
-            return response.json()
-        except (requests.RequestException, ValueError) as exc:
+            return _decode_json_response(response, url)
+        except (requests.RequestException, RuntimeError) as exc:
             last_error = exc
             if attempt + 1 < attempts:
-                time.sleep(2 ** attempt)
+                delay = 2 ** attempt
+                print(
+                    f"bioRxiv API: {type(exc).__name__}; retrying in {delay}s "
+                    f"({attempt + 1}/{attempts - 1})"
+                )
+                time.sleep(delay)
     assert last_error is not None
     raise last_error
 
@@ -55,6 +82,8 @@ def _fetch_server(
         payload = _get_json_with_retry(url)
         collection = payload.get("collection", [])
         if not collection:
+            # A valid JSON response with an empty collection is the normal
+            # representation of "no records", not a source error.
             break
 
         for item in collection:
