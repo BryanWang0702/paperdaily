@@ -5,10 +5,11 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
-  min-width: 210px;
+  min-width: 230px;
 }
 
-.theme-control {
+.theme-control,
+.topic-control {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -16,13 +17,15 @@
   font-size: 11px;
 }
 
-.theme-control label {
+.theme-control label,
+.topic-control label {
   font-weight: 750;
   letter-spacing: .06em;
   text-transform: uppercase;
 }
 
-.theme-control select {
+.theme-control select,
+.topic-control select {
   min-width: 118px;
   padding: 7px 28px 7px 10px;
   border: 1px solid var(--border);
@@ -33,6 +36,9 @@
   cursor: pointer;
 }
 
+.topic-control select { min-width: 180px; }
+.topic-static { font-weight: 700; color: var(--text); }
+
 .page-topbar {
   display: flex;
   align-items: center;
@@ -42,6 +48,14 @@
 }
 
 .page-topbar .back-link { margin-bottom: 0; }
+
+.topbar-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
 .home-layout {
   grid-template-columns: minmax(0, 1fr) 270px;
@@ -107,6 +121,7 @@
 @media (max-width: 720px) {
   .header-tools { align-items: flex-start; min-width: 0; }
   .page-topbar { align-items: flex-start; }
+  .topbar-controls { justify-content: flex-start; }
   .day-card { grid-template-columns: 1fr; gap: 16px; }
   .day-card-preview { border-left: 0; border-top: 1px solid var(--border); padding: 16px 0 0; }
 }
