@@ -122,6 +122,9 @@ def build_shared_fetch_config(base_config: dict[str, Any], profiles: list[dict[s
     result["discovery_terms"] = terms
     arxiv = dict(result.get("arxiv", {}) or {})
     arxiv["categories"] = categories
+    if len(profiles) > 1:
+        topic_settings = base_config.get("topics", {}) or {}
+        arxiv["reuse_same_window"] = bool(topic_settings.get("reuse_arxiv_same_window", False))
     result["arxiv"] = arxiv
     return result
 
