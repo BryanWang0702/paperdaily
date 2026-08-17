@@ -22,6 +22,26 @@ def _deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any
     return result
 
 
+def _topic_config(base_config: dict[str, Any], payload: dict[str, Any]) -> dict[str, Any]:
+    merged = _deep_merge(base_config, payload)
+
+    # These collections describe one topic rather than incremental global rules.
+    # Replacing them keeps an EEG profile from inheriting sleep-homeostasis terms.
+    prefilter_override = payload.get("prefilter", {}) or {}
+    merged_prefilter = merged.get("prefilter", {}) or {}
+    for key in ("anchors", "weights", "boosts"):
+        if key in prefilter_override:
+            merged_prefilter[key] = deepcopy(prefilter_override[key])
+    merged["prefilter"] = merged_prefilter
+
+    arxiv_override = payload.get("arxiv", {}) or {}
+    if "categories" in arxiv_override:
+        merged_arxiv = merged.get("arxiv", {}) or {}
+        merged_arxiv["categories"] = deepcopy(arxiv_override["categories"])
+        merged["arxiv"] = merged_arxiv
+    return merged
+
+
 def _safe_topic_id(value: object, fallback: str) -> str:
     raw = str(value or fallback).strip().lower()
     cleaned = "".join(ch if ch.isalnum() or ch in {"-", "_"} else "-" for ch in raw)
@@ -56,7 +76,7 @@ def load_topic_profiles(base_config: dict[str, Any], root: Path | None = None) -
                 "label": label,
                 "description": description,
                 "path": str(path),
-                "config": _deep_merge(base_config, payload),
+                "config": _topic_config(base_config, payload),
             })
 
     if not profiles:
