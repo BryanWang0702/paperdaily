@@ -25,6 +25,18 @@ arxiv:
     - cs.LG
     - stat.ML
 
+  # arXiv recommends caching identical legacy-API queries because its result set
+  # updates on a daily cycle. With this enabled, the 20:30 run reuses the 05:30
+  # response when both runs use the same retrieval window.
+  reuse_same_window: true
+
+  # HTTP 429 / transient server errors are retried with respectful backoff.
+  retry_delays_seconds: [10, 30]
+  timeout_seconds: 45
+
+  # Optional contact address included in PaperDaily's arXiv User-Agent.
+  contact_email: ""
+
 # Free deterministic shortlist built before any paid AI call.
 # Change max_candidates to control how many papers survive the daily local filter.
 prefilter:
