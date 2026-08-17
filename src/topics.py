@@ -24,9 +24,6 @@ def _deep_merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any
 
 def _topic_config(base_config: dict[str, Any], payload: dict[str, Any]) -> dict[str, Any]:
     merged = _deep_merge(base_config, payload)
-
-    # These collections describe one topic rather than incremental global rules.
-    # Replacing them keeps an EEG profile from inheriting sleep-homeostasis terms.
     prefilter_override = payload.get("prefilter", {}) or {}
     merged_prefilter = merged.get("prefilter", {}) or {}
     for key in ("anchors", "weights", "boosts"):
@@ -52,8 +49,9 @@ def _safe_topic_id(value: object, fallback: str) -> str:
 
 def load_topic_profiles(base_config: dict[str, Any], root: Path | None = None) -> tuple[list[dict[str, Any]], str]:
     topic_settings = base_config.get("topics", {}) or {}
-    if topic_settings.get("enabled", True) is False:
-        return [_fallback_profile(base_config)], "default"
+    if not topic_settings or topic_settings.get("enabled", False) is not True:
+        fallback = _fallback_profile(base_config)
+        return [fallback], fallback["id"]
 
     directory = Path(str(topic_settings.get("directory", "topics")))
     if root is not None and not directory.is_absolute():
@@ -101,7 +99,6 @@ def _fallback_profile(base_config: dict[str, Any]) -> dict[str, Any]:
 
 
 def build_shared_fetch_config(base_config: dict[str, Any], profiles: list[dict[str, Any]]) -> dict[str, Any]:
-    """Build one source-query config from the union of all enabled topics."""
     result = deepcopy(base_config)
     terms: list[str] = []
     categories: list[str] = []
