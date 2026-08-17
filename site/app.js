@@ -2,7 +2,7 @@ const EN_LOCALE = 'en-US';
 const DISPLAY_TIME_ZONE = 'Asia/Shanghai';
 
 function esc(value = '') {
-  return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#039;'}[c]));
 }
 
 function prettyDate(value) {
@@ -83,15 +83,35 @@ async function renderLocalStatus() {
   }
 }
 
+async function fetchTopicArchive(topicId) {
+  const topicUrl = `data/topics/${encodeURIComponent(topicId)}/archive.json`;
+  const response = await fetch(topicUrl, { cache: 'no-cache' });
+  if (response.ok) return response.json();
+  if (topicId === 'default') {
+    const fallback = await fetch('data/archive.json', { cache: 'no-cache' });
+    if (fallback.ok) return fallback.json();
+  }
+  throw new Error(`HTTP ${response.status}`);
+}
+
 async function boot() {
   const settings = await window.PaperDailyTheme.apply();
   renderLocalStatus();
   const archive = document.querySelector('#archive');
   const status = document.querySelector('#status');
   try {
-    const response = await fetch('data/archive.json', { cache: 'no-cache' });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    const topicIndex = await window.PaperDailyTopics.load();
+    const params = new URLSearchParams(window.location.search);
+    const selectedTopic = window.PaperDailyTopics.choose(topicIndex, params.get('topic') || '');
+    const topic = window.PaperDailyTopics.get(topicIndex, selectedTopic);
+    window.PaperDailyTopics.render('#topicControl', topicIndex, selectedTopic, value => {
+      const next = new URL(window.location.href);
+      next.searchParams.set('topic', value);
+      window.location.href = next.toString();
+    });
+    document.querySelector('#topicDescription').textContent = topic?.description || 'A new research digest every day. Open a date to read that day\'s papers.';
+
+    const data = await fetchTopicArchive(selectedTopic);
     const days = data.days || [];
     const billing = data.billing || {};
     const showBilling = settings?.billing?.show === true;
@@ -112,7 +132,7 @@ async function boot() {
       const updated = updatedTime(day.generated_at || '');
       const version = day.generated_at ? `&v=${encodeURIComponent(day.generated_at)}` : '';
       return `
-        <a class="day-card" href="day.html?date=${encodeURIComponent(day.date)}${version}">
+        <a class="day-card" href="day.html?topic=${encodeURIComponent(selectedTopic)}&date=${encodeURIComponent(day.date)}${version}">
           <div class="day-card-main">
             <div class="day-card-top">
               <span class="day-date">${esc(prettyDate(day.date))}</span>
@@ -120,7 +140,7 @@ async function boot() {
             </div>
             <div class="day-count-row">
               <span class="day-count">${day.total_count ?? 0}</span>
-              <span class="day-label">unique papers discovered</span>
+              <span class="day-label">topic-matching papers</span>
             </div>
             <div class="day-presets">
               <span><strong>${featured}</strong> highlighted</span>
@@ -135,7 +155,7 @@ async function boot() {
             ${topPreview(day.top_titles || [])}
           </div>
         </a>`;
-    }).join('') || '<p class="empty">The first daily archive will appear after the pipeline runs.</p>';
+    }).join('') || '<p class="empty">The first daily archive for this topic will appear after the pipeline runs.</p>';
   } catch (error) {
     status.innerHTML = `<div class="warning">Could not load archive: ${esc(String(error))}</div>`;
   }
