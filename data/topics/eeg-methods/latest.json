@@ -1,6 +1,6 @@
 {
   "date": "2026-08-18",
-  "generated_at": "2026-08-17T21:52:24.730917+00:00",
+  "generated_at": "2026-08-18T13:25:28.389583+00:00",
   "window": {
     "start": "2026-08-16",
     "end": "2026-08-18"
@@ -10,27 +10,29 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 36,
+  "raw_count": 66,
   "retrieved_source_counts": {
-    "pubmed": 66,
-    "biorxiv": 10,
+    "pubmed": 123,
+    "biorxiv": 16,
     "medrxiv": 7,
-    "arxiv": 0
+    "arxiv": 4
   },
   "raw_source_counts": {
-    "pubmed": 23,
-    "biorxiv": 9,
-    "medrxiv": 4
+    "pubmed": 45,
+    "biorxiv": 14,
+    "medrxiv": 4,
+    "arxiv": 3
   },
-  "prefiltered_count": 35,
-  "analyzed_count": 35,
+  "prefiltered_count": 40,
+  "analyzed_count": 40,
   "configured_max_analyzed": 40,
-  "count": 35,
+  "count": 40,
   "featured_count": 25,
   "source_counts": {
-    "biorxiv": 9,
-    "medrxiv": 4,
-    "pubmed": 22
+    "biorxiv": 7,
+    "medrxiv": 3,
+    "pubmed": 28,
+    "arxiv": 2
   },
   "errors": {},
   "ai": {
@@ -39,12 +41,12 @@
     "provider": "deepseek",
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
-    "ranked_count": 35,
-    "newly_ranked": 19,
-    "newly_summarized": 19,
-    "digest_count": 35,
-    "digest_min": 35,
-    "digest_max": 35,
+    "ranked_count": 40,
+    "newly_ranked": 18,
+    "newly_summarized": 18,
+    "digest_count": 40,
+    "digest_min": 40,
+    "digest_max": 40,
     "digest_score_threshold": 0,
     "rank_prompt_version": "paperdaily-ranking-v1-2026-08",
     "summary_prompt_version": "paperdaily-summary-v3-2026-08",
@@ -53,11 +55,11 @@
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
       "requests": 5,
-      "prompt_tokens": 16763,
+      "prompt_tokens": 15100,
       "prompt_cache_hit_tokens": 1920,
-      "prompt_cache_miss_tokens": 14843,
-      "completion_tokens": 3782,
-      "total_tokens": 20545
+      "prompt_cache_miss_tokens": 13180,
+      "completion_tokens": 3384,
+      "total_tokens": 18484
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -66,27 +68,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.022445,
+    "run_cost_cny": 0.019986,
     "billing": {
       "currency": "CNY",
       "run_usage": {
         "requests": 5,
-        "prompt_tokens": 16763,
+        "prompt_tokens": 15100,
         "prompt_cache_hit_tokens": 1920,
-        "prompt_cache_miss_tokens": 14843,
-        "completion_tokens": 3782,
-        "total_tokens": 20545
+        "prompt_cache_miss_tokens": 13180,
+        "completion_tokens": 3384,
+        "total_tokens": 18484
       },
-      "run_cost_cny": 0.022445,
+      "run_cost_cny": 0.019986,
       "daily_usage": {
-        "requests": 5,
-        "prompt_tokens": 16763,
-        "prompt_cache_hit_tokens": 1920,
-        "prompt_cache_miss_tokens": 14843,
-        "completion_tokens": 3782,
-        "total_tokens": 20545
+        "requests": 10,
+        "prompt_tokens": 31863,
+        "prompt_cache_hit_tokens": 3840,
+        "prompt_cache_miss_tokens": 28023,
+        "completion_tokens": 7166,
+        "total_tokens": 39029
       },
-      "daily_cost_cny": 0.022445,
+      "daily_cost_cny": 0.042431,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -96,7 +98,7 @@
       }
     },
     "configured_max_analyzed": 40,
-    "analyzed_count": 35
+    "analyzed_count": 40
   },
   "papers": [
     {
@@ -208,6 +210,96 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42608428",
+      "title": "Seizure detection using hierarchical temporal trend integration and self-supervised learning.",
+      "abstract": "Early, reliable detection of epileptic seizures from electroencephalography (EEG) remains challenging due to label scarcity, inter patient variability, and the non stationary nature of clinical recordings. This work introduces Federated Temporal Learning (FTL), an annotation efficient framework that couples a supervised seizure classifier with a self supervised pretext task, Temporal Sequence Consistency Learning (TSCLM), over a shared backbone. The backbone is built from Hierarchical Temporal Trend Integration Modules (HTTIMs) that extract and top down mix multi scale long and short term trends; a Temporal Self Supervision Head (TSSH) learns order relations between subsequences to inject temporal positional awareness without manual labels. Training optimizes a joint objective with a mixing coefficient δ and split ratio τ; at inference the self supervised head is discarded, yielding a purely supervised predictor. We theoretically analyze the algorithmic stability of our algorithm, and indeed, provide a bound on the gap between the empirical and the expected risk under the semi supervised objective, thereby clarifying the interplay between more labeled data and well conditioned optimization. From an empirical perspective, it also performs seamlessly at state of the art (SoA) on two datasets: TUSZ v2.0.1 (accuracy 99.16%, precision 99.19%, recall 99.65% and F1 macro 97.17%), Zenodo NICU EEG (accuracy 95.61%, precision 96.78%, recall 94.67% and F1 macro 96.87%). The results suggest that order aware self supervision in conjunction with hierarchal trend integration can be a viable solution to the label efficient and clinically reliable, EEG seizure detection task. The proposed approach has the advantage of explicitly modelling multi-scale temporal patterns by adopting a top-down strategy, using Hierarchical Temporal Trend Integration Modules (HTTIM), which is not used in existing approaches. In addition, Temporal Sequence Consistency Learning (TSCLM) is designed as an order-aware self-supervised task to capture temporal relationships without labels. The integration of these components within the Federated Temporal Learning (FTL) framework enables improved performance under limited annotated data.",
+      "authors": [
+        "Namitha A R",
+        "Siddartha B K"
+      ],
+      "published_date": "2026-Aug-17",
+      "indexed_date": "2026-08-18",
+      "journal": "Scientific reports",
+      "doi": "10.1038/s41598-026-63727-1",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42608428/",
+      "categories": [],
+      "keywords": [
+        "Epileptic seizures",
+        "Federated temporal learning (FTL)",
+        "Hierarchical temporal trend integration modules (HTTIMs)",
+        "Temporal self supervision head (TSSH)",
+        "Temporal sequence consistency learning (TSCLM)"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 52,
+        "ai": {
+          "score": 85,
+          "topic": "Seizure detection with self-supervised learning",
+          "reason": "Self-supervised, annotation-efficient method with multi-scale trend modules; directly applicable to sleep staging with limited labels.",
+          "summary": "The paper proposes Federated Temporal Learning (FTL), a framework combining a supervised seizure classifier with a self-supervised temporal sequence consistency task, using Hierarchical Temporal Trend Integration Modules (HTTIMs) for multi-scale EEG feature extraction. It reports state-of-the-art performance on TUSZ and Zenodo NICU EEG datasets, with high accuracy and F1 scores, and provides a theoretical stability bound.",
+          "keywords": [
+            "seizure detection",
+            "EEG",
+            "self-supervised learning",
+            "temporal trend integration",
+            "federated learning"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.1101/2025.11.02.686141",
+      "title": "Investigating the Influence of Anti-Seizure Medications on Aperiodic EEG Activity",
+      "abstract": "Objective: Electroencephalography (EEG) signals comprise both oscillatory (periodic) and non-oscillatory (aperiodic) components. Aperiodic activity forms the 1/f-like background of the EEG power spectrum and can be characterised by parameters describing the offset and slope (1/f exponent). This study examined the effects of two antiseizure medications (ASMs), which reduce cortical excitability through different mechanisms of action, on aperiodic and periodic EEG activity. Methods: Resting EEG was recorded with eyes open and closed from 13 healthy male volunteers at baseline and two hours after administration of lamotrigine (300 mg), levetiracetam (3000 mg), or placebo. Power spectra were computed using Welch's method. Aperiodic parameters were estimated using the specparam algorithm, and periodic activity was quantified after subtraction of the aperiodic component. Results: In the eyes-open condition, lamotrigine significantly reduced both aperiodic offset and exponent relative to placebo, consistent with a flattening of the aperiodic spectrum, whereas levetiracetam reduced the exponent without significantly altering the offset. Neither drug significantly altered aperiodic exponent or offset during eyes-closed. Lamotrigine reduced corrected theta power in both conditions and alpha power during eyes-open, whereas levetiracetam increased beta power in both conditions and reduced gamma power during eyes-closed. Conclusions: Both lamotrigine and levetiracetam altered aperiodic and periodic EEG activity, with aperiodic effects observed only during eyes-open. Significance: Aperiodic EEG measures may provide a non-invasive approach for characterising ASM-related neurophysiological effects and may help elucidate how distinct pharmacological mechanisms influence large-scale cortical activity.",
+      "authors": [
+        "Holden, M. M.",
+        "Premoli, I.",
+        "Clark, S. R.",
+        "Richardson, M. P.",
+        "Goldsworthy, M. R.",
+        "Rogasch, N. C."
+      ],
+      "published_date": "2026-08-17",
+      "indexed_date": "2026-08-17",
+      "journal": "biorxiv",
+      "doi": "10.1101/2025.11.02.686141",
+      "url": "https://doi.org/10.1101/2025.11.02.686141",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "3",
+        "published": "NA",
+        "prefilter_score": 79,
+        "ai": {
+          "score": 85,
+          "topic": "Aperiodic EEG and anti-seizure medications",
+          "reason": "Directly relevant to spectral analysis (aperiodic) and pharmacological effects on EEG; methods transferable to sleep studies.",
+          "summary": "This study investigated the effects of lamotrigine and levetiracetam on aperiodic and periodic EEG activity in healthy volunteers. Results show that lamotrigine reduced aperiodic offset and exponent during eyes-open, while levetiracetam reduced exponent only, and both drugs altered periodic power in specific bands, suggesting aperiodic measures may reflect ASM neurophysiological effects.",
+          "keywords": [
+            "anti-seizure medications",
+            "aperiodic EEG",
+            "EEG spectrum",
+            "lamotrigine",
+            "levetiracetam"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42604611",
       "title": "Elevated delta power in a maternal UBE3A-deletion pig model of Angelman syndrome.",
       "abstract": "Angelman syndrome is a neurodevelopmental disorder caused by loss of the maternally inherited UBE3A allele and characterized by severe cognitive, motor, and communication impairments. Increased delta (1-4 Hz) activity on electroencephalogram (EEG) is a well-established biomarker of Angelman syndrome in humans and rodent models and is increasingly used as a quantitative outcome measure in therapeutic studies. Whether this electrophysiological phenotype is present in the recently developed pig model has not been evaluated. Scalp EEG recordings were obtained from freely moving Yorkshire-Landrace pigs carrying a maternal UBE3A deletion (UBE3A-/+) and wild-type littermates across three developmental age groups. Artifact-free EEG epochs were identified, behavioral states were classified using synchronized video, and relative delta power was quantified using spectral analysis. UBE3A-/+ pigs showed higher relative delta power than wild-type pigs during both awake and asleep vigilance states, with the largest genotype differences observed during wakefulness. Across development, UBE3A-/+ pigs also showed a smaller increase in delta power during the transition from the awake to the asleep state compared with wild-type pigs. These findings demonstrate that the maternal UBE3A-deletion pig model reproduces the elevated delta power EEG phenotype characteristic of Angelman syndrome. Noninvasive scalp EEG therefore represents a translationally relevant approach for assessing neural dysfunction and therapeutic responses in this large-animal model.",
@@ -249,6 +341,98 @@
             "delta power",
             "EEG",
             "pig model"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42609404",
+      "title": "Exploring the differences in neural oscillation mechanisms before and after sleep deprivation.",
+      "abstract": "Sleep deprivation is widespread in modern society and can impair cognitive function and behavioral performance. However, the neural changes associated with individual differences in vulnerability to sleep loss remain unclear, particularly whether temporal fluctuations in neural oscillations provide information beyond conventional mean spectral measures. We analyzed a publicly available resting-state electroencephalogram (EEG) dataset comprising 64 participants assessed under normal sleep and sleep deprivation conditions, including 28 participants with psychomotor vigilance task (PVT) data. Two oscillatory feature families, mean relative power and the across-epoch variability of relative power, were quantified in the theta, alpha, and beta bands, primarily at the regional level, with channel-level analyses used to further characterize their spatial distribution. Theta-band features showed the most pronounced changes after sleep deprivation. In particular, theta power variability increased across widespread scalp regions, whereas changes in mean theta relative power were more spatially restricted. Greater increases in theta power variability in the frontal and centro-temporal regions were associated with greater slowing in PVT median reaction time, and the principal association pattern remained evident in sensitivity analyses. Exploratory sex-related analyses identified a significant sex-by-EEG interaction in the centro-temporal region, indicating different linear EEG-PVT slopes between males and females, although the corresponding difference in Spearman correlation strength was not significant. Overall, theta power variability may provide complementary information beyond conventional mean spectral measures and may help characterize individual differences in vigilance decline after sleep deprivation.",
+      "authors": [
+        "Zitong Cui",
+        "Tiantian Xie",
+        "Yueying Zhou",
+        "Peiliang Gong",
+        "Xiaorui Zhang",
+        "Pengpai Wang"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-08-18",
+      "journal": "Frontiers in neuroscience",
+      "doi": "10.3389/fnins.2026.1910878",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42609404/",
+      "categories": [],
+      "keywords": [
+        "electroencephalography",
+        "individual differences",
+        "neural oscillations",
+        "psychomotor vigilance task",
+        "relative power variability",
+        "sleep deprivation",
+        "theta oscillations"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 35,
+        "ai": {
+          "score": 80,
+          "topic": "EEG variability after sleep deprivation",
+          "reason": "Directly relevant to sleep research, uses variability of spectral power; methods transferable.",
+          "summary": "This study analyzed resting-state EEG from 64 participants before and after sleep deprivation, focusing on mean relative power and across-epoch variability in theta, alpha, and beta bands. Theta power variability increased across widespread regions after sleep deprivation and was associated with slower PVT reaction times, suggesting it provides complementary information about vigilance decline.",
+          "keywords": [
+            "sleep deprivation",
+            "EEG",
+            "theta oscillations",
+            "vigilance",
+            "power variability"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.08.12.743255",
+      "title": "A Comprehensive Benchmark of EEG-Based BCI Deep Learning Models for MCI and Dementia Classification",
+      "abstract": "Electroencephalography (EEG) is a promising tool for automated detection of mild cognitive impairment (MCI) and dementia, but comparisons across studies are limited by inconsistent datasets and evaluation protocols. This study benchmarks ten deep learning models across four resting-state EEG datasets and eight binary classification tasks using a unified preprocessing pipeline and five-fold subject-wise cross-validation. Each experiment was repeated ten times. SCCNet obtained the highest mean subject-level accuracy, sensitivity, and F1 score, while ShallowConvNet achieved the highest mean segment-level accuracy, specificity, and precision. Subject-level aggregation improved mean accuracy for all evaluated models, and performance varied substantially across datasets and diagnostic tasks. Higher computational cost did not consistently correspond to better classification performance, with several compact architectures remaining competitive with substantially larger models. The results provide a reproducible reference for comparing EEG-based dementia classification models under consistent subject-independent evaluation conditions.",
+      "authors": [
+        "Zaitsev, V.",
+        "Wei, C.-S."
+      ],
+      "published_date": "2026-08-17",
+      "indexed_date": "2026-08-17",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.08.12.743255",
+      "url": "https://doi.org/10.64898/2026.08.12.743255",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 71,
+        "ai": {
+          "score": 75,
+          "topic": "Benchmark of DL models for MCI/dementia",
+          "reason": "Systematic benchmark of compact models with subject-wise cross-validation; transferable evaluation protocols for sleep staging.",
+          "summary": "This study benchmarks ten deep learning models for EEG-based MCI and dementia classification across four datasets and eight tasks using a unified pipeline. SCCNet achieved the highest subject-level accuracy, while ShallowConvNet led in segment-level metrics, and performance varied across datasets, with compact models remaining competitive.",
+          "keywords": [
+            "EEG",
+            "deep learning",
+            "MCI",
+            "dementia",
+            "benchmark"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -349,51 +533,45 @@
       }
     },
     {
-      "source": "biorxiv",
-      "source_id": "10.64898/2026.08.10.743829",
-      "title": "Handwritten Digit classification with neural cultures is influenced by neural architecture, network dynamics, and decoding methods",
-      "abstract": "As silicon-based computing approaches fundamental physical limits, neurocomputing offers an energy-efficient alternative by leveraging the intrinsic non-linear dynamics of biological systems. To harness these dynamics, it is vital to understand the structure-function relationship governing how neural cultures process complex spatio-temporal information and how to appropriately decode the resulting neural electrophysiological activity. We investigated this utilizing a closed-loop electrophysiology platform, the CL1, to implement reservoir computing in human iPSC-derived neuronal networks. To systematically evaluate the variables driving neurocomputational capacity, we explored how cellular composition (cortical vs. hippocampal lineages), and the physical architecture (unstructured monolayers, 3D neural organoids, and modular networks confined by microfluidic devices) influenced electrophysiological properties and interacted with different decoding methodologies. Using a spatio-temporal version of a handwritten digit pattern recognition task (MNIST), we analyzed how these biological and analytical factors influenced classification accuracy. To ensure robust interpretation this required us to first demonstrated that reservoir computing decoding methods require strict artifact control and trial-based cross-validation to distinguish network computation from artifactual signal separability or temporal data leakage. Applying this validated frequency-domain pipeline, we suggest a clear functional hierarchy where structural modularity acts as a vital functional regularizer. Modular cortical cultures significantly outperformed unconstrained monolayers and organoids on MNIST. Furthermore, decoding frequency information from raw signals proved superior to typical time-bin decoding implementations. These findings establish that maximizing the computational potential of Synthetic Biological Intelligence, while avoiding false positives, requires a synergistic optimization of cellular identity, structural governance, and rigorous decoding logic. In doing so, this work provides a critical base establishing the criteria under which to evaluate neurocomputing implementations.",
+      "source": "pubmed",
+      "source_id": "42607378",
+      "title": "Innovative wearable technology for autonomic and sleep monitoring: Examining metric-level signal performance of the Astroskin biometric shirt.",
+      "abstract": "Ambulatory autonomic and sleep monitoring in real-world settings remains challenging. The Astroskin biometric system may offer a practical solution. Here, we evaluate the utility of Astroskin as a wearable research device compared to common industry standard approaches. We assessed the Astroskin under static and dynamic conditions, measuring peripheral blood oxygen saturation (SpO2) during hypobaric hypoxia; skin temperature and estimated core temperature under insulated thermal stress; heart rate (HR), systolic blood pressure (SBP), and respiratory rate and depth during Valsalva maneuvers and positional changes, and sleep staging during at-home sleep. Data were compared using Pearson's correlations, Bland-Altman plots for accuracy and precision, and two one-sided t-tests for equivalency. SpO2 (r = 0.93, p < 0.01; bias -2.95 ± 2.7%), skin temperature (r = 1.0, p < 0.01; bias -0.30 ± 0.43 °C), and HR (r = 0.71, p < 0.01; bias -1.77 ± 7.22 bpm) are strongly correlated, highly accurate, and equivalent to within 5% of the industry comparators. Estimated core temperatures also achieved high agreement with rectal temperature (r = 0.81, p < 0.01; bias +0.34 ± 0.2 °C; 1% equivalency). Respiratory parameters are optimized when derived directly from band stretch. SBP measurements approach industry standards with high accuracy and equivalency, but low precision (r = 0.56, p < 0.01; bias -2.13 ± 11.57 mmHg; 3% equivalency). Despite appropriate sleep detection (100% success), Astroskin's sleep staging algorithm was unpredictable (41% success). When staging was available, Astroskin differentiated sleep from wake with equivalency within 10%, including sensitive detection of arousals. The Astroskin is suitable for ambulatory monitoring, with accuracy optimized when systematic biases are corrected. Use for sleep assessment requires improved sleep staging success. Astroskin's practical, continuous, wearable approach underscores its potential for diverse applications.",
       "authors": [
-        "Loeffler, A.",
-        "Habibollahi, F.",
-        "Abu-Bonsrah, K. D.",
-        "Azadi, A.",
-        "Desouza, C.",
-        "Chan, H. W.",
-        "Nishi, Y.",
-        "Zhou, J.",
-        "Doensen, F.",
-        "Yamamoto, H.",
-        "Watmuff, B.",
-        "Kagan, B. J."
+        "R H Y Lee",
+        "S Vukovic",
+        "V E M Lucci",
+        "J T Lando",
+        "V E Claydon"
       ],
-      "published_date": "2026-08-16",
-      "indexed_date": "2026-08-16",
-      "journal": "biorxiv",
-      "doi": "10.64898/2026.08.10.743829",
-      "url": "https://doi.org/10.64898/2026.08.10.743829",
-      "categories": [
-        "neuroscience"
+      "published_date": "2026-Jul-29",
+      "indexed_date": "",
+      "journal": "Autonomic neuroscience : basic & clinical",
+      "doi": "10.1016/j.autneu.2026.103464",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42607378/",
+      "categories": [],
+      "keywords": [
+        "Autonomic nervous system",
+        "Cardiorespiratory",
+        "Sleep",
+        "Wearable technology"
       ],
-      "keywords": [],
       "publication_types": [
-        "Preprint"
+        "Journal Article"
       ],
       "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 22,
+        "prefilter_score": 36,
         "ai": {
           "score": 60,
-          "topic": "Neural cultures and reservoir computing",
-          "reason": "Involves electrophysiological dynamics and decoding methods that could inform neural signal analysis, but not directly sleep or EEG.",
-          "summary": "Using the CL1 closed-loop platform and human iPSC-derived neurons, the authors implemented reservoir computing for MNIST classification, comparing cortical vs. hippocampal lineages, unstructured vs. modular networks, and decoding methods. Modular cortical cultures significantly outperformed others, and frequency-domain decoding was superior, establishing criteria for evaluating neurocomputing implementations.",
+          "topic": "Wearable for autonomic and sleep monitoring",
+          "reason": "Relevant to sleep monitoring, but focus on wearables rather than EEG analysis methods.",
+          "summary": "This study evaluated the Astroskin biometric shirt for ambulatory autonomic and sleep monitoring against industry standards. It found high accuracy for SpO2, skin temperature, and heart rate, but lower precision for blood pressure, and sleep staging success was unpredictable (41%), though sleep/wake differentiation was equivalent within 10%.",
           "keywords": [
-            "reservoir computing",
-            "neural cultures",
-            "iPSC-derived neurons",
-            "MNIST",
-            "neurocomputing"
+            "wearable technology",
+            "autonomic monitoring",
+            "sleep staging",
+            "Astroskin",
+            "biometric shirt"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -451,42 +629,83 @@
       }
     },
     {
-      "source": "pubmed",
-      "source_id": "42606960",
-      "title": "A LOSO-NTD-Based Analytical Framework with Less Setting-Dependence Reveals Attentional Modulation of Gamma-Band Auditory Steady-State Response.",
-      "abstract": "Although attentional modulation of gammaband auditory steady-state response (gamma ASSR) has been widely investigated, variability in feature-level analytical parameter settings undermines cross-study comparability and may partly account for inconsistent findings. This work proposed a leave-one-subject-out nonnegative tensor decomposition (LOSO-NTD) framework to quantify gamma ASSRs across attentional states with less setting-dependence. Within this framework, gamma ASSRs were quantified using task factor coefficients obtained by projecting individual data onto gamma ASSR core components derived from nonnegative tensor decomposition. These coefficients index pattern-level gamma ASSR activation strength, rather than local differences sensitive to specific analytical settings. Twenty healthy participants completed three tasks designed to systematically manipulate auditory attention, while EEG was recorded and subjective attention was assessed using a visual analog scale (VAS). Task factor coefficients for each condition were derived from phase- and power-based tensors using LOSO-NTD. Task 3 (visual distraction with auditory ignoring) exhibited significantly lower VAS scores and phase-based task factor coefficients than Task 1 (auditory counting) and Task 2 (passive listening) (all p < 0.001). Power-based task factor coefficients in Task 3 were likewise significantly lower than those in Task 1 (p < 0.001) and Task 2 (p < 0.05). Both phase- and power-based coefficients showed significant positive correlations with VAS scores (all p <0.001). These results demonstrate that gamma ASSR activation strength increases with higher levels of auditory attention, providing compelling evidence for attentional modulation. Collectively, these findings establish LOSO-NTD as a less setting-dependent analytical framework that enables more objective and comparable findings across studies in neural computation.",
+      "source": "arxiv",
+      "source_id": "2608.16360v1",
+      "title": "Contrastive Learning with Variational Regularization for Multi-Session EEG-to-Speech Decoding",
+      "abstract": "Reconstructing heard speech from non-invasive electroencephalography (EEG) is challenging due to a low signal-to-noise ratio (SNR) and inter-session variability. While trial averaging improves the SNR, it is difficult to apply to continuous speech. We instead use repeated EEG responses to the same stimulus across different sessions as positive pairs for contrastive learning, and introduce variational regularization that, combined with this contrastive objective, keeps the encoder representation space broad. Experiments on a Japanese EEG dataset show that combining the session-invariant strategy with variational regularization improves the character error rate (CER) while maintaining mel-spectrogram reconstruction fidelity. Session probing confirms that the encoder representations achieve session-invariance.",
       "authors": [
-        "Xianyun Kang",
-        "Bo Zhang",
-        "Junling Wang",
-        "Yiwei Sun",
-        "Xiaoya Liu",
-        "Shuang Liu",
-        "Dong Ming"
+        "Tomoaki Mizuno",
+        "Toru Nakashika"
       ],
-      "published_date": "2026-Aug-17",
-      "indexed_date": "",
-      "journal": "IEEE transactions on neural systems and rehabilitation engineering : a publication of the IEEE Engineering in Medicine and Biology Society",
-      "doi": "10.1109/tnsre.2026.3724370",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42606960/",
-      "categories": [],
+      "published_date": "2026-08-17",
+      "indexed_date": "2026-08-17",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2608.16360v1",
+      "categories": [
+        "eess.AS",
+        "cs.SD",
+        "eess.SP"
+      ],
       "keywords": [],
       "publication_types": [
-        "Journal Article"
+        "Preprint"
       ],
       "extra": {
-        "prefilter_score": 21,
+        "prefilter_score": 74,
+        "ai": {
+          "score": 55,
+          "topic": "Contrastive learning for EEG-to-speech",
+          "reason": "Introduces session-invariant representation via contrastive learning; could transfer to cross-dataset sleep staging but domain differs.",
+          "summary": "This paper presents a contrastive learning method with variational regularization for EEG-to-speech decoding that leverages repeated EEG responses across sessions as positive pairs. Combining session-invariant contrastive learning with variational regularization improved character error rate while maintaining mel-spectrogram fidelity and achieved session-invariance in encoder representations.",
+          "keywords": [
+            "contrastive learning",
+            "variational regularization",
+            "EEG-to-speech decoding",
+            "session-invariance",
+            "character error rate"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.08.11.744270",
+      "title": "Multiscale entropy is related to iron status in resting state EEG data",
+      "abstract": "Dietary iron deficiency in the absence of anemia (IDNA) affects numerous people worldwide, with a wide range of negative effects on brain functioning and cognition. Although studies employing electroencephalography (EEG) have revealed a number of negative effects of IDNA in both the time- and frequency domains, to date there have been no attempts to characterize the effects of IDNA on the temporal dynamics of whole brain interactions. To address this issue, we applied multiscale entropy (MSE) analysis to resting-state EEG data collected from IDNA (n = 21) and iron sufficient (IS, n = 21) women. The MSE analysis on this data revealed that entropy was higher overall for the IS than the IDNA group, with significant differences appearing primarily at longer time scales and under right frontal and left and right parietal electrodes. These results suggest that IDNA may negatively affect long-distance interactions among brain regions and that this could conceivably be a source of diminished cognitive function and neural resilience in IDNA.",
+      "authors": [
+        "Newbolds, S. F.",
+        "Wenger, M. J."
+      ],
+      "published_date": "2026-08-17",
+      "indexed_date": "2026-08-17",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.08.11.744270",
+      "url": "https://doi.org/10.64898/2026.08.11.744270",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 66,
         "ai": {
           "score": 50,
-          "topic": "Tensor decomposition ASSR",
-          "reason": "Nonnegative tensor decomposition for EEG gamma responses, less parameter-dependent; methodological transferability, but not sleep-specific.",
-          "summary": "Proposed a leave-one-subject-out nonnegative tensor decomposition (LOSO-NTD) framework to quantify gamma-band auditory steady-state responses (ASSR) across attentional states with less setting-dependence. Found that task factor coefficients increased with higher auditory attention, correlating with subjective attention scores, demonstrating attentional modulation.",
+          "topic": "Multiscale entropy and iron status",
+          "reason": "Uses multiscale entropy on EEG, a potentially transferable method, but application to iron deficiency not core.",
+          "summary": "This study applied multiscale entropy (MSE) analysis to resting-state EEG data from women with iron deficiency without anemia (IDNA) and iron-sufficient (IS) controls. The IS group showed higher overall entropy, particularly at longer time scales and frontal/parietal electrodes, suggesting IDNA may impair long-distance brain interactions.",
           "keywords": [
-            "gamma ASSR",
-            "nonnegative tensor decomposition",
-            "attention",
-            "EEG",
-            "auditory steady-state response"
+            "multiscale entropy",
+            "iron deficiency",
+            "resting-state EEG",
+            "brain dynamics",
+            "women"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -645,6 +864,97 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42608413",
+      "title": "EEG-based brain-computer interface (BCI) dataset for directional word recognition.",
+      "abstract": "We present an EEG dataset recorded from 22 neurologically healthy volunteers (12 native Russian speakers and 10 native Spanish speakers) during overt and covert articulation of six spatial-direction words. Monopolar EEG signals were acquired from 38 electrodes positioned according to the international 10-10 system using a Neurovisor-BMM-52 (NVX) amplifier at 500 Hz. In a subset of participants, electromyography (EMG) was simultaneously recorded from the masseter muscle and laryngeal region to exploratorily characterize articulatory muscle activation. Exploratory spectral and coherence analyses, together with classification using standard machine learning methods (Random Forest, SVM, LDA), confirm the presence of condition-specific neural activity distinguishable by standard classifiers (best accuracy 78 ± 4%). The dataset is intended to support the development and benchmarking of algorithms for inner speech recognition in brain-computer interface applications.",
+      "authors": [
+        "D V Kostulin",
+        "P D Shaposhnikov",
+        "A Kh Ekizyan",
+        "I G Shevchenko",
+        "D G Shaposhnikov",
+        "I V Shcherban",
+        "V N Kiroy"
+      ],
+      "published_date": "2026-Aug-17",
+      "indexed_date": "2026-08-17",
+      "journal": "Scientific data",
+      "doi": "10.1038/s41597-026-07809-9",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42608413/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article",
+        "Dataset"
+      ],
+      "extra": {
+        "prefilter_score": 71,
+        "ai": {
+          "score": 45,
+          "topic": "EEG dataset for word recognition BCI",
+          "reason": "Provides a dataset with standard ML baseline; may be useful for benchmarking but not directly sleep-related.",
+          "summary": "This dataset paper describes an EEG dataset recorded from 22 healthy volunteers during overt and covert articulation of six spatial-direction words, including 38 EEG electrodes and simultaneous EMG in a subset. Standard classifiers achieved up to 78% accuracy in distinguishing conditions, supporting development of inner speech recognition for brain-computer interfaces.",
+          "keywords": [
+            "EEG dataset",
+            "brain-computer interface",
+            "inner speech recognition",
+            "articulation",
+            "machine learning"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42609475",
+      "title": "Quantitative electroencephalography as a next-generation tool in neurodiagnostics: significance, clinical applications, and practical interpretative frameworks.",
+      "abstract": "This article provides a comprehensive review of the methodology of Quantitative Electroencephalography (QEEG) as an advanced tool in modern neurodiagnostics. The objective of this study is to systematize knowledge regarding the technical aspects of signal acquisition, its specific clinical applications, and the interpretative frameworks that determine the efficacy of personalized therapeutic interventions in psychiatry and neurology. This paper constitutes a critical review of the relevant literature. The study analyzed a total of 321 bibliographic sources, peer-reviewed empirical studies, systematic reviews, and supplementary scientific book chapters, published between 1932 and the first half of 2026. The analysis of the gathered evidence demonstrates that QEEG has the potential to objectify the neurophysiological phenomena underlying clinical presentations. In neurodevelopmental disorders such as ADHD and ASD, this method may support the identification of electrophysiological subtypes and connectivity dysfunctions (e.g., the coexistence of hypo- and hypercoherence in autism). The technique has shown potential utility in differential diagnosis and the decomposition of overlapping symptoms. This includes unmasking hidden compensatory mechanisms in high-functioning patients with ADHD, which often manifest as hyperactivity in the Beta band. QEEG provides promising adjunctive biomarkers in affective disorders (such as Frontal Alpha Asymmetry - FAA) and anxiety disorders (characterized by an excess of fast waves). It is also being investigated as a potential adjunctive tool in detecting the early stages of neurodegeneration through a decrease in peak Alpha frequency and in exploring post-COVID syndromes. Furthermore, identifying individualized network profiles allows for the objective personalization of neuromodulatory therapies including Neurofeedback, rTMS, and tDCS. It also facilitates predicting and monitoring responses to pharmacotherapy, such as the innovative treatment of epilepsy with cannabidiol (CBD). QEEG is a promising translational tool that may help elevate neurodiagnostics from the level of subjective behavioral assessment to objective and measurable neurobiological indicators. Implementing this method in clinical practice serves as a valuable adjunctive tool to support diagnostic sensitivity and the development of personalized treatment strategies. It is hypothesized that this approach may potentially shorten the time required to achieve remission and minimize the risk of polypharmacy, though these clinical benefits require further validation through prospective controlled studies.",
+      "authors": [
+        "Marta Kopańska",
+        "Julia Trojniak",
+        "Maria Pachalska"
+      ],
+      "published_date": "2026",
+      "indexed_date": "",
+      "journal": "Frontiers in neuroscience",
+      "doi": "10.3389/fnins.2026.1834391",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42609475/",
+      "categories": [],
+      "keywords": [
+        "Neurofeedback",
+        "QEEG",
+        "differential diagnosis",
+        "neurophysiological biomarkers",
+        "precision psychiatry",
+        "quantitative electroencephalography"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
+      "extra": {
+        "prefilter_score": 89,
+        "ai": {
+          "score": 45,
+          "topic": "QEEG methodology review",
+          "reason": "Comprehensive review of QEEG methods; useful background but not specific to sleep/animal or practical implementation.",
+          "summary": "This review synthesizes the methodology, clinical applications, and interpretative frameworks of quantitative electroencephalography (QEEG) in neurodiagnostics. It reports QEEG's potential in identifying electrophysiological subtypes in ADHD and ASD, providing biomarkers in affective and anxiety disorders, and aiding personalization of neuromodulatory therapies.",
+          "keywords": [
+            "quantitative electroencephalography",
+            "neurodiagnostics",
+            "biomarkers",
+            "precision psychiatry",
+            "clinical applications"
+          ],
+          "paper_type": "Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42606963",
       "title": "Patient-Specific Non-Invasive Epileptogenic Zone Localization via High-Resolution Time-Frequency Representations and CNN Deep Learning.",
       "abstract": "Stereoelectroencephalography (SEEG)-guided radiofrequency thermocoagulation is the mainstream treatment for drug-resistant epilepsy (DRE), yet non-invasive patient-specific localization of potential epileptogenic zone (EZ) prior to SEEG electrode implantation remains a critical unmet clinical need, hindered by limited automation, suboptimal accuracy, and poor cross-patient generalizability. To address these gaps, we developed an automated non-invasive EZ localization framework that integrates scalp EEG source imaging, high-resolution time-frequency analysis, and deep learning. This multicenter retrospective study included 97 seizure episodes from 37 surgically confirmed DRE patients with Engel Class I post-operative seizure freedom. Three time-frequency spectrograms were generated based on the source-reconstructed signal, and fed into four deep learning architectures (ResNet, VGG, DenseNet, Swin Transformer) for channel-level EZ binary classification with patient-level leave one-out cross-validation to validate personalized localization for unseen patients. The ResNet18-Superlet combination achieved optimal performance (accuracy = 81.15% ± 4.83%, AUC = 84.82% ± 5.27%) in the adult cohort, with robust generalization to pediatric and mixed cohorts, significantly outperforming conventional high-frequency oscillation (HFO)-based methods. This framework enables accurate personalized pre-surgical EZ map ping to optimize SEEG implantation planning, with open-source code available at https://github.com/wyl1994/Source-code-for Patient-Specific-Non-Invasive-Epileptogenic-Zone-Localization to ensure reproducibility and clinical translation.",
@@ -682,6 +992,150 @@
             "time-frequency analysis",
             "convolutional neural network",
             "drug-resistant epilepsy"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42607705",
+      "title": "Distinct tDCS montages act via dissociable lateralization mechanisms to enhance motor function in chronic stroke.",
+      "abstract": "The imbalance in interhemispheric functional connectivity following stroke fundamentally impedes motor recovery. Although transcranial direct current stimulation (tDCS) effectively modulates neuroplasticity, the acute effects of distinct stimulation montages on lateralized brain networks and how these network shifts drive behavioral improvements warrant further investigation. &#xD;Approach. We employed a single-blind, randomized crossover design involving 28 patients with chronic subcortical stroke. Participants received anodal, cathodal, bilateral, or sham tDCS targeting the primary motor cortex. Resting-state electroencephalography (EEG) data were acquired immediately before and after each intervention. To quantify network lateralization, we computed dynamic functional connectivity using mutual information and constructed an asymmetry index matrix. Key connectivity features were isolated via robust feature selection algorithms, classifying stimulation states and evaluating correlations with acute motor gains on the Jebsen-Taylor Hand Function Test (JTT).&#xD;Main results. Network dynamics features successfully discriminated pre- versus post-intervention states with high accuracy (AUC: 0.87-0.98). All three active tDCS protocols exhibited montage-specific directional modulation. Crucially, anodal tDCS uniquely reversed contralesional network dominance, facilitating ipsilesional connectivity and shifting the interhemispheric balance toward the affected hemisphere. Conversely, cathodal and bilateral tDCS predominantly induced contralesional network inhibition, whereas sham stimulation exhibited no directional bias. Furthermore, the functional inhibition of the contralesional network (specifically at the P2-P6 connection) induced by bilateral tDCS significantly correlated with acute JTT improvements (r = 0.55, p = 0.04).&#xD;Significance. This study demonstrates that distinct tDCS montages modulate stroke-induced network imbalances through dissociable lateralization mechanisms. While anodal tDCS drives ipsilesional facilitation to reverse contralesional dominance, bilateral and cathodal montages operate primarily via contralesional inhibition. These findings provide critical mechanistic insights into interhemispheric network dynamics.",
+      "authors": [
+        "Yaqian Li",
+        "Ying Zhang",
+        "Shupei Jiao",
+        "Jiewei Lu",
+        "Chunfang Wang",
+        "Ningbo Yu"
+      ],
+      "published_date": "2026-Aug-17",
+      "indexed_date": "",
+      "journal": "Journal of neural engineering",
+      "doi": "10.1088/1741-2552/ae9aca",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42607705/",
+      "categories": [],
+      "keywords": [
+        "brain asymmetry",
+        "electroencephalography (EEG)",
+        "machine learning",
+        "stroke",
+        "transcranial direct current stimulation (tDCS)"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 40,
+        "ai": {
+          "score": 40,
+          "topic": "tDCS effects on motor function via EEG",
+          "reason": "Uses functional connectivity and feature selection but focused on stroke/tDCS; transferable methods but not core.",
+          "summary": "This study in chronic stroke patients used resting-state EEG and machine learning to show that distinct tDCS montages modulate interhemispheric network balance through dissociable mechanisms: anodal tDCS reversed contralesional dominance via ipsilesional facilitation, while cathodal and bilateral tDCS inhibited contralesional network activity. Bilateral tDCS-induced inhibition of a specific connection correlated with acute motor gains.",
+          "keywords": [
+            "tDCS",
+            "stroke",
+            "interhemispheric asymmetry",
+            "EEG functional connectivity",
+            "motor recovery"
+          ],
+          "paper_type": "Clinical Study",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42609411",
+      "title": "Resting-state EEG microstate dynamics indicate altered brain network temporal organization in age-related hearing loss.",
+      "abstract": "Age-related hearing loss (ARHL) is increasingly recognized as a condition that involves changes in the central nervous system beyond the auditory pathway, with growing evidence showing altered large-scale brain network connectivity. However, how ARHL reshapes the temporal organization of large-scale brain networks remains poorly understood. This study aimed to investigate whether ARHL is associated with alterations in resting-state electroencephalogram (EEG) microstate dynamics and to examine the relationship between microstate features and auditory function. Resting-state EEGs were recorded in 45 older adults with ARHL and 50 age-matched normal-hearing (NH) controls. Microstate analysis was performed using a seven-class model. Group differences in microstate parameters were assessed. Correlation analyses were conducted to examine associations between microstate metrics and audiological measures, including pure-tone audiometry (PTA) thresholds and speech-in-noise (SIN) perception. Compared with NH controls, participants with ARHL exhibited reduced microstate G time coverage at the nominal significance level (uncorrected p < 0.05, FDR-adjusted q ≥ 0.05). In addition, the ARHL group showed significantly (FDR-adjusted q < 0.05) increased transition probabilities (TPs) from C to F and from F to C. Conversely, the TP from D to G was significantly reduced, whereas the TP from G to D showed a reduction at the nominal significance level. Across all participants, after controlling for age and sex, microstate G time coverage and TP from D to G were negatively correlated with PTA thresholds, whereas the TPs from C to F and from F to C were positively correlated with PTA thresholds. Furthermore, microstate G time coverage showed a nominal negative correlation with the SIN threshold. ARHL is associated with altered resting-state EEG microstate dynamics, mainly reflected by changes in TPs among sensorimotor and higher-order cognitive networks. Resting-state EEG microstate analysis provides a comprehensive and systematic framework for studying brain network temporal reorganization induced by auditory decline.",
+      "authors": [
+        "Yurun Chen",
+        "Qiaoyu Liu",
+        "Yaohan Chen",
+        "Min Zhu",
+        "Yufei Qiao",
+        "Jiaran Chen",
+        "Wen Sun",
+        "Hua Yang",
+        "Yingying Shang"
+      ],
+      "published_date": "2026",
+      "indexed_date": "",
+      "journal": "Frontiers in aging neuroscience",
+      "doi": "10.3389/fnagi.2026.1850657",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42609411/",
+      "categories": [],
+      "keywords": [
+        "age-related hearing loss",
+        "brain network",
+        "electroencephalogram",
+        "microstate",
+        "resting-state"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 74,
+        "ai": {
+          "score": 40,
+          "topic": "EEG microstates in hearing loss",
+          "reason": "Microstate analysis relevant to brain network dynamics, but focused on hearing loss, not sleep/animal.",
+          "summary": "Resting-state EEG microstate dynamics were compared between older adults with age-related hearing loss and normal-hearing controls, revealing altered transition probabilities among sensorimotor and higher-order cognitive networks that correlated with hearing thresholds.",
+          "keywords": [
+            "resting-state EEG",
+            "microstates",
+            "age-related hearing loss",
+            "brain network dynamics",
+            "speech-in-noise perception"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42607447",
+      "title": "Insula Injury and State Change Predict Outcome in Cooled Neonatal Hypoxic Ischemic Encephalopathy Patients: A Pilot Study.",
+      "abstract": "To determine early electroencephalography (EEG) and magnetic resonance imaging (MRI) features significantly associated with functional outcome in infants with hypoxic ischemic encephalopathy (HIE). To identify specific brain injury patterns associated with poor outcome and compare their prognostic efficacy to specific brain injury patterns. EEG characteristics, MRI injury patterns, and outcomes were evaluated in 23 term neonates (mean gestational age: 38 weeks) who underwent cooling and were confirmed to develop HIE. EEG features were extracted from recordings between 24 and 26 hours of life during therapeutic hypothermia. MRIs were scored for injury within the first 1.5 weeks of life. Functional outcomes were graded from 0 (best) to 5 (worst). The relationships between EEG or MRI features and outcomes were evaluated using ordinal logistic regression analysis. Of the features assessed, lack of EEG state change at 24 hours of life and insula injury on MRI were most associated with poor functional outcome. When combined in a multivariate model, regression analysis suggested both features were independently associated with poor outcomes. Injury to the insula, rather than injury to the basal ganglia as previously suggested, was the strongest predictor of poor outcomes. MRI evidence of insular injury within the first 1.5 weeks of life and lack of EEG state change at 24 hours predict poorer outcomes in HIE. These findings suggest that insular injury may be a more sensitive indicator of overall injury burden associated with poor outcomes than deep gray matter or other cortical involvement.",
+      "authors": [
+        "Sylvia Edoigiawerie",
+        "Henry David",
+        "Julia Henry",
+        "Naoum P Issa"
+      ],
+      "published_date": "2026-Jul-29",
+      "indexed_date": "",
+      "journal": "Pediatric neurology",
+      "doi": "10.1016/j.pediatrneurol.2026.07.030",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42607447/",
+      "categories": [],
+      "keywords": [
+        "Biomarkers",
+        "Insula",
+        "Neonatal HIE",
+        "Outcomes"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 35,
+        "ai": {
+          "score": 35,
+          "topic": "EEG predictors in neonatal HIE",
+          "reason": "Neonatal EEG, but specific to HIE outcomes; limited transfer to animal sleep.",
+          "summary": "In cooled neonates with hypoxic ischemic encephalopathy, insula injury on MRI and lack of EEG state change at 24 hours independently predicted poorer functional outcomes, with insular injury being a stronger predictor than basal ganglia injury.",
+          "keywords": [
+            "neonatal HIE",
+            "therapeutic hypothermia",
+            "insula injury",
+            "EEG state change",
+            "functional outcome prediction"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -776,6 +1230,48 @@
             "SHAP analysis"
           ],
           "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2608.16541v1",
+      "title": "Automating Learner Assessment: Benchmarking Machine Learning and Deep Learning Models for EEG-Based Familiarity Prediction",
+      "abstract": "Objective assessment of learning remains a fundamental challenge in education. Electroencephalography (EEG) provides a direct, non-invasive window into the neural correlates of knowledge acquisition, including cognitive familiarity. This study benchmarks fifteen machine learning (ML) and deep learning (DL) models for EEG-based familiarity prediction across two cognitive domains: faces (factual knowledge) and mathematical equations (conceptual knowledge). Using continuous EEG data from 23 participants, we extract spectral features (Power Spectral Density) across six frequency bands. We show that while standard stratified cross-validation yields artificially high classification performance (up to 0.9853 F1-score using CNN) due to temporal leakage across neighboring epochs, a rigorous trial-independent validation (Group K-Fold) drops the peak performance to 0.6038 F1-score (using CNN), which is still statistically significant above the 25% chance level. This highlights the critical necessity of trial-independent evaluation to avoid overestimating model generalizability. Furthermore, feature importance and SHAP analysis reveal that temporal and frontal Gamma and Beta oscillations are the most critical biomarkers for familiarity. This work establishes a realistic benchmark for EEG-based cognitive monitoring in educational technologies.",
+      "authors": [
+        "Isuru Nanayakkara",
+        "Thilina Halloluwa"
+      ],
+      "published_date": "2026-08-17",
+      "indexed_date": "2026-08-17",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2608.16541v1",
+      "categories": [
+        "eess.SP",
+        "cs.HC",
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "prefilter_score": 108,
+        "ai": {
+          "score": 35,
+          "topic": "EEG familiarity prediction benchmarking",
+          "reason": "Related to ML/DL on EEG but focuses on cognitive familiarity, not sleep/animal; relevance is limited.",
+          "summary": "This study benchmarks 15 machine learning and deep learning models for EEG-based familiarity prediction, demonstrating that trial-independent validation reduces performance from near perfect to 0.6038 F1-score, and identifies gamma and beta oscillations as key biomarkers.",
+          "keywords": [
+            "EEG",
+            "familiarity prediction",
+            "machine learning",
+            "deep learning",
+            "trial-independent validation"
+          ],
+          "paper_type": "Methods/Resource",
           "digest_pick": true
         }
       }
@@ -881,43 +1377,52 @@
       }
     },
     {
-      "source": "biorxiv",
-      "source_id": "10.64898/2026.08.11.744232",
-      "title": "Slower cardiac-coupled cortical dynamics link depressive symptoms to inflexible affective updating",
-      "abstract": "Depression is marked by blunted affective responses to context, which interoceptive accounts trace to altered neural representations of bodily states. Yet this evidence mainly concerns response magnitude, not how quickly affect is updated when contexts change. Here we tested whether depressive symptom severity is related to delayed affective updating, and whether cortical dynamics tracking cardiac states account for this delay. To this end, we applied a movie-watching paradigm with independently defined contextual shifts, continuous affect ratings, electroencephalography, and electrocardiography in individuals spanning a continuum of depressive symptoms. Combining deep representation learning and a dynamical systems framework, we quantified how quickly (speed) and how sharply (angle) cardiac-coupled cortical representations reorganized at each shift. Greater symptom severity predicted longer latency to enter the context-congruent affective state across contextual shifts, regardless of valence. In a cross-sectional mediation analysis, slower speed, but not angle, accounted for this association. This mediation was specific to depressive symptoms, contextual shifts, and cardiac-coupled neural dynamics. These findings extend the embodied account of depression from blunted affective intensity toward its inflexible updating at moments of contextual shift, and offer a broadly applicable framework for quantifying brain-body dynamics across affective dysfunctions.",
+      "source": "pubmed",
+      "source_id": "42607680",
+      "title": "Attention modulates hippocampal ripples in humans.",
+      "abstract": "Hippocampal ripples are high-frequency events critical for memory consolidation, typically studied during sleep and quiet wakefulness. Emerging evidence suggests that ripples also occur during active behavior, yet their role in awake cognition remains unclear. Here, we demonstrate that changes in sustained attention modulate the occurrence of ripples, their temporal alignment to ongoing hippocampal oscillations, and hippocampal-entorhinal synchronization. Using intracranial electroencephalogram (EEG) recordings from epilepsy patients performing a sustained attention-to-response task (SART), we first identified attentional states based on behavioral variability and subjective reports. Next, we observed that ripples were more frequent during high-attention periods, despite the absence of memory demands. Importantly, ripples occurring during periods of reduced attentional engagement exhibited stronger local phase locking to low-frequency oscillations (theta to lower beta) and enhanced hippocampal-entorhinal synchronization, suggesting increased endogenous coordination of hippocampal activity. These findings demonstrate that ripple dynamics are shaped by attentional state, supporting a broader role for hippocampal ripples in active cognitive processing.",
       "authors": [
-        "Lee, J.",
-        "Oh, K.",
-        "Kim, J.",
-        "Cha, J."
+        "Michał Domagała",
+        "Leila Chaieb",
+        "Charles E Schroeder",
+        "Rainer Surges",
+        "Florian Mormann",
+        "Juergen Fell",
+        "Marcin Leszczynski"
       ],
-      "published_date": "2026-08-17",
-      "indexed_date": "2026-08-17",
-      "journal": "biorxiv",
-      "doi": "10.64898/2026.08.11.744232",
-      "url": "https://doi.org/10.64898/2026.08.11.744232",
-      "categories": [
-        "neuroscience"
+      "published_date": "2026-Aug-17",
+      "indexed_date": "",
+      "journal": "Current biology : CB",
+      "doi": "10.1016/j.cub.2026.07.046",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42607680/",
+      "categories": [],
+      "keywords": [
+        "attention",
+        "hippocampus",
+        "memory",
+        "memory consolidation",
+        "mind wandering",
+        "offline states",
+        "oscillations",
+        "ripple",
+        "sharp-wave ripple"
       ],
-      "keywords": [],
       "publication_types": [
-        "Preprint"
+        "Journal Article"
       ],
       "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 22,
+        "prefilter_score": 35,
         "ai": {
           "score": 30,
-          "topic": "Cardiac-coupled cortical dynamics",
-          "reason": "EEG and ECG with dynamical systems, but focused on depression and affect updating; some methodological relevance to longitudinal modeling, but not sleep.",
-          "summary": "This study examined whether depressive symptoms are related to delayed affective updating during context shifts, and whether cardiac-coupled cortical dynamics account for this delay. Using movie-watching, EEG, and ECG, they found that greater symptom severity predicted longer latency to enter context-congruent affective states, and slower cardiac-coupled cortical dynamics mediated this association.",
+          "topic": "Hippocampal ripples and attention",
+          "reason": "Intracranial EEG and ripples; not directly applicable to scalp EEG sleep staging.",
+          "summary": "Using intracranial EEG from epilepsy patients, this study shows that hippocampal ripples are more frequent during high attention, while ripples during reduced attention exhibit stronger phase locking to low-frequency oscillations and enhanced hippocampal-entorhinal synchronization.",
           "keywords": [
-            "depression",
-            "affective updating",
-            "cardiac-coupled dynamics",
-            "EEG",
-            "mediation analysis"
+            "hippocampal ripples",
+            "attention",
+            "intracranial EEG",
+            "oscillations",
+            "memory consolidation"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -925,47 +1430,50 @@
       }
     },
     {
-      "source": "medrxiv",
-      "source_id": "10.64898/2026.08.13.26360392",
-      "title": "Altered Speech Processing in Childhood Listening Difficulties as Revealed by Chirped Speech Event-Related Potentials",
-      "abstract": "Objective: Impaired understanding of noisy or degraded speech is a central feature of listening difficulties (LiD), but the possible causes of these symptoms are wide-ranging. Accordingly, recent research underscores the need to study these deficits using a test battery approach. Event-related potentials are useful objective metrics for studying LiD, but probing function across the speech processing hierarchy using traditional protocols is sequential and unrealistic in clinical settings. The novel chirped speech (Cheech) method combines natural speech with acoustic chirps to overcome these limitations. This study examines its utility for profiling childhood LiD. Methods: Twenty-eight children (15 typically developing, 13 with LiD), aged 8-17 years old, listened to a 17-minute Cheech story and detected a target word within the story via button press while EEG data were collected from 53 scalp sites. Results: Cheech successfully evoked responses from the auditory brainstem response through to the brain's language centers, as reflected by the N400 effect. Unlike TD children, those with LiD demonstrated N400 effects with atypical distributions that favored frontal rather than the typical parietal sites. A trend towards a delayed and reduced amplitude Wave V was also observed. Conclusions: Hierarchical examination of speech processing using Cheech primarily implicates altered language processing as a contributing factor to LiD, with the frontal topography of the N400 effect for those with LiD potentially suggesting a greater reliance on deliberate memory retrieval during the speech perception task. Significance: LiD could arise due to auditory and/or cognitive factors. The present results demonstrate the feasibility of objective, parallel measurement across this hierarchy and point to impaired language processing as a possible mechanism.",
+      "source": "pubmed",
+      "source_id": "42608606",
+      "title": "Predicting big five personality traits from resting-state EEG connectivity: a connectome predictive modeling study.",
+      "abstract": "Personality traits are stable individual differences linked to important life outcomes including mental health, occupational functioning, and interpersonal relationships, yet their neural bases remain poorly characterized. Prior electroencephalography (EEG) studies have mainly examined isolated features such as spectral power or frontal asymmetry and have yielded mixed results. Building on recent work in connectome based predictive modeling, this study tested whether resting state EEG connectivity can predict Big Five personality traits in a nonclinical student sample. Resting state EEG (eyes open and eyes closed; about five minutes) was recorded from 115 healthy Chinese university students aged 18 to 28 years, who completed a psychometrically validated Chinese version of the Big Five Inventory 2. The exploratory CPM analyses reported here were conducted using eyes-open connectivity matrices derived from amplitude envelope correlation (AEC) and debiased weighted phase lag index (dwPLI) across canonical frequency bands. At the model-specific level, three CPM models yielded modest cross-validated correlations between observed and predicted trait scores: alpha-band AEC for Conscientiousness (r = 0.30, 95% CI [0.12, 0.45]), beta-band AEC for Extraversion (r = 0.25, 95% CI [0.08, 0.42]), and theta-band dwPLI for Neuroticism (r = 0.25, 95% CI [0.05, 0.41]). No association was observed for Agreeableness and only the Neuroticism model met the criterion under the trait-wise FDR framework applied within each trait. These exploratory findings suggest that eyes-open resting-state EEG connectivity may contain modest trait-related information, but the effects require replication in larger, independent samples before mechanistic, applied or translation implications can be considered.",
       "authors": [
-        "Petley, L.",
-        "Wicks, T.",
-        "Miller, L. M.",
-        "Blankenship, C.",
-        "Chatwin, J.",
-        "Bormann, B. M.",
-        "Whittle, R. S.",
-        "Moore, D. R."
+        "Chu Zhang",
+        "Yao Liu",
+        "Yiting Long",
+        "Siyuan Hu",
+        "Ming Li",
+        "Wenkai Bai",
+        "Yiting Li",
+        "Can Cui",
+        "Can Gao"
       ],
-      "published_date": "2026-08-17",
-      "indexed_date": "2026-08-17",
-      "journal": "medrxiv",
-      "doi": "10.64898/2026.08.13.26360392",
-      "url": "https://doi.org/10.64898/2026.08.13.26360392",
-      "categories": [
-        "otolaryngology"
+      "published_date": "2026-Aug-17",
+      "indexed_date": "2026-08-18",
+      "journal": "Brain structure & function",
+      "doi": "10.1007/s00429-026-03182-w",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42608606/",
+      "categories": [],
+      "keywords": [
+        "Big five personality",
+        "Connectome predictive modeling",
+        "EEG",
+        "Machine learning",
+        "Neuroticism"
       ],
-      "keywords": [],
       "publication_types": [
-        "Preprint"
+        "Journal Article"
       ],
       "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 21,
+        "prefilter_score": 74,
         "ai": {
           "score": 30,
-          "topic": "Chirped speech ERPs",
-          "reason": "EEG with novel speech stimulus, auditory processing in children; some signal processing but not sleep or animal.",
-          "summary": "This study used chirped speech event-related potentials to profile childhood listening difficulties (LiD). Children with LiD showed atypical frontal N400 distributions and a trend toward delayed/reduced Wave V, suggesting impaired language processing as a contributing factor to LiD.",
+          "topic": "Personality prediction from EEG connectivity",
+          "reason": "Focus on personality traits, not sleep or animal; methodological transfer limited.",
+          "summary": "Resting-state EEG connectivity using connectome predictive modeling modestly predicted Big Five traits (conscientiousness, extraversion, neuroticism) in a student sample, but only neuroticism survived multiple comparison correction, emphasizing the need for replication.",
           "keywords": [
-            "listening difficulties",
-            "chirped speech",
-            "event-related potentials",
-            "N400",
-            "children"
+            "resting-state EEG",
+            "connectome predictive modeling",
+            "Big Five personality",
+            "amplitude envelope correlation",
+            "weighted phase lag index"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1026,47 +1534,45 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42605240",
-      "title": "Limonene Modulates Event-Related Potentials in a 2-Back Working Memory Task.",
-      "abstract": "Olfactory inputs can influence visual cognition. However, it remains unclear whether such effects are driven by the chemical properties of odorants or by mood-related associations, especially under conditions of high cognitive demand. This study examined whether limonene, a key citrus odorous compound, modulates cognitive processing during a visual 2-back task under different levels of perceptual load. We developed a 2-back working memory task using color lightness discrimination. The task included both low-load (orange) and high-load (gray) conditions. Participants wore a non-woven mask impregnated with the odor solution and performed the task under two odor conditions: limonene exposure and no odor. An electroencephalogram was recorded to evaluate P300 amplitude at central (Cz) and parietal (Pz) electrodes. Behavioral results, analyzed using signal detection theory, showed that the correct response rate and sensitivity index (d') were higher for orange than for gray stimuli, regardless of the odor condition. Event-related potential (ERP) analysis revealed a significant interaction; under the limonene exposure condition, P300 amplitudes were reduced for gray stimuli, but remained stable for orange stimuli. Our findings indicate that limonene modulates neural markers associated with attentional and decision-related processing, particularly under high cognitive demand, without clear effects on behavioral performance. The observed P300 suppression suggests that this component may be sensitive to decreases in attentional allocation that behavioral measures failed to detect. Moreover, these results replicate and extend previous findings of limonene-induced P300 suppression, supporting the reproducibility of limonene's modulatory effect on neural markers of cross-modal attentional processing.",
+      "source_id": "42607453",
+      "title": "Temporal dynamics of central and peripheral processes in novel word acquisition: Evidence from co-registration of EEG and kinematics in natural handwriting.",
+      "abstract": "Current models of handwriting production posit a hierarchy of cognitive subprocesses through which linguistic information cascades from central lexical encoding to peripheral motor execution. Yet it remains unclear how such cascaded coordination supports the formation of new memory traces for novel words. Here, we combined simultaneous electroencephalography and handwriting kinematics in native Spanish speakers (n = 63) to track word learning dynamics across repeated handwritten production. Event-related potentials (ERPs) time-locked to stimulus onset and kinematics-related potentials (KRPs) evoked by the motor execution of the critical letter revealed temporal coordination between central and peripheral learning effects as a function of repeated exposure, with exposure-driven modulation in the 173-309 msec after stimulus onset within a centro-frontal cluster and a comparable effect in the 133-286 msec post pen-down window over posterior sites. While orthographic encoding approached an asymptote after four exposures, motor refinement followed a more protracted trajectory across all encounters, indicating that the central and peripheral processes do not cascade to the same extent. The ongoing neural-kinematic coupling further revealed a parallel unfolding of motor planning and orthographic processing. Critically, the magnitude of exposure-induced neural modulation during learning predicted the strength of subsequent lexical competition in a masked priming lexical decision task after overnight consolidation. These findings substantiate the automatic nature of neural memory-trace formation coupled with cognitive and motor dynamics. The motor system continuously operates on partially specified linguistic information, establishing word-level orthographic representations before refining the letter-level graphomotor details on which lexical competition depends.",
       "authors": [
-        "Kaori Tamura",
-        "Keitaro Yamashita",
-        "Taiki Nishimura",
-        "Toko Tatsumoto",
-        "Takumi Yano",
-        "Yuko Ohno",
-        "Shin'ichi Yoshimura",
-        "Mitsuo Tonoike"
+        "Yang Fu",
+        "Damian Enrique Jan Cordón",
+        "Beatriz Bermúdez-Margaretto",
+        "Huili Wang",
+        "Alberto Domínguez"
       ],
-      "published_date": "2026-Aug",
-      "indexed_date": "2026-08-17",
-      "journal": "Brain and behavior",
-      "doi": "10.1002/brb3.71679",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42605240/",
+      "published_date": "2026-Aug-06",
+      "indexed_date": "",
+      "journal": "Cortex; a journal devoted to the study of the nervous system and behavior",
+      "doi": "10.1016/j.cortex.2026.07.006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42607453/",
       "categories": [],
       "keywords": [
-        "P300 amplitudes",
-        "limonene",
-        "multimodal process",
-        "working memory"
+        "Cascaded coordination",
+        "Central-peripheral processes",
+        "Handwriting production",
+        "Neural-kinematic coupling",
+        "Novel word acquisition"
       ],
       "publication_types": [
         "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 22,
+        "prefilter_score": 73,
         "ai": {
           "score": 25,
-          "topic": "Limonene and ERP in working memory",
-          "reason": "Uses ERPs but focuses on olfactory modulation of cognition, not sleep or general signal analysis; low relevance.",
-          "summary": "This study examined whether limonene modulates cognitive processing during a visual 2-back working memory task using EEG. Limonene exposure reduced P300 amplitudes for high-load gray stimuli but not for low-load orange stimuli, suggesting attentional modulation under high cognitive demand without affecting behavioral performance.",
+          "topic": "EEG and kinematics in word learning",
+          "reason": "Cognitive/learning focus, not relevant to sleep or animal EEG.",
+          "summary": "This study combined EEG and handwriting kinematics in 63 native Spanish speakers to track novel word learning across repeated handwritten production, finding that central orthographic encoding reaches an asymptote after four exposures while motor refinement follows a protracted trajectory, and that neural modulation during learning predicts subsequent lexical competition after consolidation. The results indicate cascaded coordination between central and peripheral processes, with the motor system operating on partially specified linguistic information to establish word-level orthographic representations.",
           "keywords": [
-            "limonene",
-            "event-related potentials",
-            "P300",
-            "working memory",
-            "olfactory modulation"
+            "cascaded coordination",
+            "central-peripheral processes",
+            "handwriting production",
+            "neural-kinematic coupling",
+            "novel word acquisition"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1117,45 +1623,92 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42605556",
-      "title": "Unraveling the Inflammatory Enigma: Is Neuroinflammation a Culprit or Consequence in Pharmacoresistant Epilepsy?",
-      "abstract": "Approximately 30% of epilepsy patients develop pharmacoresistant epilepsy (PRE), characterized by persistent seizures refractory to antiseizure medications (ASMs). While neuroinflammation is implicated in both epileptogenesis and treatment failure, its precise temporal contribution remains unclear. This study aimed to delineate the distinct roles of acute versus chronic neuroinflammation in seizure susceptibility and the maintenance of drug resistance. Male Sprague-Dawley rats received acute inflammatory priming via systemic (intraperitoneal) or intracranial (hippocampal) lipopolysaccharide (LPS) administration prior to lithium-pilocarpine-induced status epilepticus (SE). Rats were subsequently classified as PRE or pharmacosensitive epilepsy (PSE) based on their response to two sequentially administered ASMs. Outcomes were assessed using video-EEG monitoring, hippocampal cytokine profiling (IL-6 and TNF-α), histopathological analysis of neuronal damage, and peripheral inflammatory markers. Acute inflammatory priming significantly lowered the threshold for SE induction (P < 0.05); however, it did not increase the proportion of PRE (P > 0.05). In contrast, established PRE was characterized by sustained hippocampal neuroinflammation, with markedly elevated IL-6 and TNF-α levels compared to PSE and control groups, alongside severe neuronal loss. These findings reveal a temporal dissociation in the roles of neuroinflammation: acute inflammation acts as a potent initiator of epileptogenesis, whereas chronic, sustained inflammation coincides with the drug-resistant phenotype. This study refines the prevailing view of neuroinflammation from a static pathogenic factor to a dynamic, phase-dependent modulator, supporting the rationale for stage-targeted strategies in PRE. Notably, putative mechanisms linking inflammation to resistance, such as impaired efferocytosis, warrant future experimental validation.",
+      "source_id": "42607558",
+      "title": "Early infantile developmental and epileptic encephalopathy: clinical spectrum, diagnosis, outcomes, and evolving treatment strategies.",
+      "abstract": "Early infantile developmental and epileptic encephalopathy (EIDEE) is among the most severe epilepsy syndromes, with onset before three months of age and an estimated incidence of approximately 10 per 100,000 live births. The 2022 International League Against Epilepsy classification unified the historically distinct Ohtahara syndrome and early myoclonic encephalopathy under a single diagnostic framework defined by frequent drug-resistant tonic and/or myoclonic seizures, an abnormal neurological examination, and an abnormal interictal electroencephalogram-most characteristically a burst-suppression pattern. This narrative review synthesizes the clinical, electrophysiological, neuroimaging, genetic, and therapeutic literature within the EIDEE framework. The clinical phenotype is characterized by central hypotonia, postnatal microcephaly, cortical visual impairment, and age-dependent syndromic evolution toward infantile epileptic spasms syndrome or Lennox-Gastaut syndrome in the majority of patients. Electroencephalography remains essential for syndromic classification, while systematic metabolic screening and early trio whole-exome or whole-genome sequencing are central to the etiologic workup, achieving diagnostic yields of 60-65%. The most commonly identified genetic causes include STXBP1, KCNQ2, and SCN2A variants. Outcomes are poor overall and strongly etiology-dependent: vitamin-responsive disorders carry a substantially more favorable prognosis, whereas mortality reaches 25% in genetic cohorts. Genotype-guided pharmacotherapy is now applicable to a clinically meaningful subset of patients, with sodium channel blockers, potassium channel openers, and emerging antisense oligonucleotide therapies representing important therapeutic advances. Gene therapy trials are underway but have encountered early safety signals, underscoring the vulnerability of this population. Critical unmet needs include earlier molecular diagnosis, precision therapies targeting developmental outcomes beyond seizure control, and prospective international registries to characterize the long-term natural history of EIDEE.",
       "authors": [
-        "Xianmei Wang",
-        "Jie Deng",
-        "Dai Shi",
-        "Zhiyan Liu",
-        "Likun Wang",
-        "Guofeng Wu"
+        "Debopam Samanta"
       ],
-      "published_date": "2026-Aug",
-      "indexed_date": "2026-08-17",
-      "journal": "Brain and behavior",
-      "doi": "10.1002/brb3.71657",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42605556/",
+      "published_date": "2026-Aug-17",
+      "indexed_date": "",
+      "journal": "Brain & development",
+      "doi": "10.1016/j.braindev.2026.104581",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42607558/",
       "categories": [],
       "keywords": [
-        "Epilepsy",
-        "Keywords: cell death",
-        "neuroinflammation",
-        "seizures"
+        "Burst-suppression",
+        "Early infantile developmental and epileptic encephalopathy",
+        "Neurodevelopmental outcome",
+        "Ohtahara syndrome",
+        "Precision therapy"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
+      "extra": {
+        "prefilter_score": 48,
+        "ai": {
+          "score": 20,
+          "topic": "Early infantile epileptic encephalopathy review",
+          "reason": "Clinical review, not methodological; limited relevance to computational EEG.",
+          "summary": "This narrative review synthesizes the clinical spectrum, diagnosis, outcomes, and evolving treatment strategies for early infantile developmental and epileptic encephalopathy (EIDEE), noting that genetic diagnosis yields 60-65% with common causes including STXBP1, KCNQ2, and SCN2A variants. Outcomes are generally poor and etiology-dependent, with mortality reaching 25% in genetic cohorts, while genotype-guided therapies such as sodium channel blockers and emerging antisense oligonucleotides represent advances.",
+          "keywords": [
+            "burst-suppression",
+            "early infantile developmental and epileptic encephalopathy",
+            "neurodevelopmental outcome",
+            "Ohtahara syndrome",
+            "precision therapy"
+          ],
+          "paper_type": "Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42608724",
+      "title": "Clinical and neurophysiology study of 17 children with epileptic negative myoclonus.",
+      "abstract": "Epileptic negative myoclonus (ENM) is a clinically underrecognized seizure type, and systematic data on its clinical manifestations and optimal management strategies in pediatric populations remain scarce. This case series aimed to describe the clinical manifestations, neurophysiological patterns, and therapeutic outcomes in pediatric ENM. A retrospective descriptive analysis was conducted on 17 ENM patients diagnosed at Wuxi Children's Hospital between October 2017 and June 2024. Clinical data, electroencephalogram (EEG) findings, and treatment responses were systematically evaluated. The cohort showed a marked female predominance (female-to-male ratio of 12:5). All cases exhibited upper-limb ENM, with contralateral central-parietal epileptiform discharges observed in ictal EEG. Two patients presented additional lower-limb ENM accompanied by midline discharges. Clinically, ENM manifested as the initial symptom in five cases (29.4%), including two with isolated ENM. Therapeutic outcomes varied: among four non-electrical status epilepticus during sleep (ESES) patients, antiseizure medications (ASMs) achieved symptom control, including one case of oxcarbazepine (OXC)-associated ENM that resolved after transition to valproate (VPA). Of 13 ESES-positive patients, three responded to ASMs alone, while nine received methylprednisolone pulse therapy (MPT), and one surgical candidate with focal cortical dysplasia (FCD) type IIa achieved post-resection remission. Among the nine children treated with MPT: four showed a good response; four relapsed upon steroid withdrawal; and one responded well to ketogenic diet (KD) therapy. ENM can manifest as the initial or sole epilepsy symptom in children. The marked female predominance in this cohort suggests that sex-related factors may play an important role in the expression or underlying mechanisms of ENM. Additionally, a correlation was found between the EEG discharge patterns and the specific limb regions involved. Regarding treatment, OXC may exacerbate ENM, necessitating cautious use. Steroid therapy should be considered for ESES cases unresponsive to ASMs. Refractory ENM with ESES warrants evaluation for structural abnormalities, particularly cortical dysplasia. Early EEG and neuroimaging improve diagnostic accuracy, while combined therapies-ASMs, immunomodulation, KD, or surgery-optimize outcomes. These findings highlight ENM's diagnostic intricacy and the need for individualized management. Not applicable.",
+      "authors": [
+        "Lin Zhang",
+        "Tao Xu",
+        "Miao Jing",
+        "Jingbo Ma",
+        "Mingxia Sun",
+        "Ying Hua",
+        "Hongwei Tang",
+        "Yanping Wang"
+      ],
+      "published_date": "2026-Aug-18",
+      "indexed_date": "2026-08-18",
+      "journal": "Acta epileptologica",
+      "doi": "10.1186/s42494-026-00273-3",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42608724/",
+      "categories": [],
+      "keywords": [
+        "Clinical characteristics",
+        "ENM",
+        "ESES",
+        "FCD",
+        "MPT"
       ],
       "publication_types": [
         "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 21,
+        "prefilter_score": 35,
         "ai": {
           "score": 20,
-          "topic": "Neuroinflammation in epilepsy",
-          "reason": "General epilepsy research with some EEG monitoring, but not methodologically focused; low relevance.",
-          "summary": "This study in a rat model of epilepsy found that acute inflammatory priming lowers seizure threshold but does not increase pharmacoresistance prevalence, while chronic neuroinflammation is associated with the drug-resistant phenotype. This suggests a temporal dissociation in the role of neuroinflammation in pharmacoresistant epilepsy.",
+          "topic": "Pediatric epileptic negative myoclonus",
+          "reason": "Clinical case series; no methodological innovation.",
+          "summary": "This retrospective case series of 17 pediatric patients with epileptic negative myoclonus (ENM) found a marked female predominance, all exhibiting upper-limb ENM with contralateral central-parietal discharges, and variable treatment responses including ASMs, methylprednisolone pulse therapy, and surgery for focal cortical dysplasia. The results indicate ENM can be the initial or sole seizure symptom, with OXC potentially exacerbating it and steroid therapy beneficial for ESES cases.",
           "keywords": [
-            "neuroinflammation",
-            "pharmacoresistant epilepsy",
-            "lipopolysaccharide",
-            "seizure susceptibility",
-            "rat model"
+            "clinical characteristics",
+            "ENM",
+            "ESES",
+            "FCD",
+            "MPT"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1203,64 +1756,6 @@
             "intracranial EEG"
           ],
           "paper_type": "Methods/Resource",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42607199",
-      "title": "Electromechanical activation and recovery wave imaging for pediatric mitral valve disease characterization.",
-      "abstract": "Mitral valve (MV) disease, particularly MV prolapse (MVP) and mitral regurgitation (MR), affects 2 to 5% of the population and poses a substantial arrhythmogenic risk, with 43% of MVP patients developing arrhythmias. Although less common in children, the absence of comorbidities can uniquely isolate early electromechanical alterations that may elucidate mechanisms later contributing to arrhythmic risk and devastating effects such as sudden cardiac death. Conventional echocardiography lacks sensitivity for MV electromechanics, motivating advanced approaches. We introduce Electromechanical Wave Imaging (EWI), a high-frame-rate echocardiography modality, to map MV-complex activation and diastolic recovery in N = 21 MVP, MR, and control pediatric subjects (13.10 ± 4.51 y old, 43% male). A preclinical canine study (n = 3) established EWI's ability to observe temporally coupled electromechanical wave propagation across the atrioventricular junction through the closed MV-following atrial and preceding ventricular activation (73.0 ms, 60 BPM). MVP patients exhibited significantly delayed left ventricular (LV) activation (76.04 ± 12.51 ms vs. 47.64 ± 2.57 ms in controls, P = 0.0013), primarily in papillary muscles. Both MVP and MR-only subjects exhibited prolonged LV recovery, with MR-only patients showing significantly longer recovery intervals (MR-only: 277.0 ± 27.61 ms, Control: 248.7 ± 10.43 ms, MVP vs. Control: MR-only vs. Control: P = 0.0395). In two arrhythmogenic MVP cases, EWI localized arrhythmic exit sites adjacent to LV papillary muscles, coinciding with regional delayed sinus activation, aligning with invasive electrophysiology. This study demonstrates that atrioventricular valve function dictates cardiac electromechanical function and establishes full-cycle EWI as a transformative tool for diagnosing MV disease electromechanical effects, assessing arrhythmic risk, guiding interventions, and advancing noninvasive cardiac imaging.",
-      "authors": [
-        "Melina Tourni",
-        "Christina Proestaki",
-        "Seungyeon Julia Han",
-        "Johanna B Tonko",
-        "Mary Kucinski",
-        "Rachel Weber",
-        "Rosalia Minyety",
-        "Yaffa Wolicki",
-        "Youssef A Elnabawi",
-        "Aikaterini Afentouli",
-        "Jad El Harake",
-        "Cagla Ozsoy",
-        "Hannah Schleifer",
-        "Leonardo Liberman",
-        "Alexandra Channing",
-        "Elisa E Konofagou"
-      ],
-      "published_date": "2026-Aug-25",
-      "indexed_date": "2026-08-17",
-      "journal": "Proceedings of the National Academy of Sciences of the United States of America",
-      "doi": "10.1073/pnas.2503559123",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42607199/",
-      "categories": [],
-      "keywords": [
-        "Electromechanical Wave Imaging",
-        "cardiac activation and recovery",
-        "clinical echocardiography",
-        "mitral valve disease",
-        "noninvasive"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 17,
-        "ai": {
-          "score": 20,
-          "topic": "Cardiac electromechanics",
-          "reason": "High-frame-rate ultrasound, not EEG; unrelated to neural time-series analysis.",
-          "summary": "The study introduces Electromechanical Wave Imaging (EWI) to map mitral valve complex activation and diastolic recovery in pediatric subjects with mitral valve prolapse (MVP) and regurgitation. It found delayed left ventricular activation in MVP patients and prolonged recovery in MVP and MR-only patients, and localized arrhythmic exit sites in arrhythmogenic cases.",
-          "keywords": [
-            "Electromechanical Wave Imaging",
-            "mitral valve prolapse",
-            "pediatric cardiology",
-            "cardiac electromechanics",
-            "arrhythmia risk"
-          ],
-          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1336,50 +1831,6 @@
             "comparator"
           ],
           "paper_type": "Commentary/Perspective",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "biorxiv",
-      "source_id": "10.64898/2026.08.11.744141",
-      "title": "Virtual reality headset geometry constrains dorsolateral prefrontal cortex targeting with transcranial magnetic stimulation",
-      "abstract": "Background: The integration of virtual reality (VR) and non-invasive brain stimulation (NIBS), particularly transcranial magnetic stimulation (TMS), represents a promising approach for closed-loop neuromodulation. Yet the concurrent application remains limited, partly due to insufficient characterization of hardware compatibility of head-mounted displays with standard TMS coil placement protocols. Objective: To systematically quantify the coil-to-scalp distance constraints imposed by VR headsets across cortical targets and coil orientations and to determine feasible intensity compensation ranges based on stimulator output parameters. Methods: Neuronavigated coil positioning was performed on five anatomically realistic 3D-printed head models across 26 scalp positions in eight coil orientations based on the 10-10 EEG system and dorsolateral prefrontal cortex (DLPFC) using two VR headsets of notably different form factors (Meta Quest 2 and Bigscreen Beyond). The deviations of coil positions from intended targets were registered and quantified as coil-to-scalp distance displacement. Individual electric field (E-field) simulations were conducted in SimNIBS at the F3 position across 4-40 mm coil-to-scalp distance to characterize field decay and assess the limits of intensity compensation. Results: Both in the directed DLPFC targeting and in systematic scalp positions evaluation, the Meta Quest 2 headset substantially increased coil-to-scalp distance over prefrontal regions, exceeding the compensable range across all metrics. The Bigscreen Beyond headset produced significantly smaller coil-to-scalp distance displacement in prefrontal regions, remaining within feasible E-field intensity compensation limits. Single-pulse and iTBS protocols did not induce functional interference with the hardware under realistic targeting conditions. Conclusion: VR headset geometry is the primary determinant of concurrent VR-TMS feasibility. The findings define practical quantitative hardware design requirements and boundaries for future integrated VR-TMS systems and provide a practical framework for optimizing existing VR-TMS protocols.",
-      "authors": [
-        "Arden, F.",
-        "Henneken, P.",
-        "Turi, Z.",
-        "Vlachos, A."
-      ],
-      "published_date": "2026-08-17",
-      "indexed_date": "2026-08-17",
-      "journal": "biorxiv",
-      "doi": "10.64898/2026.08.11.744141",
-      "url": "https://doi.org/10.64898/2026.08.11.744141",
-      "categories": [
-        "neuroscience"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 21,
-        "ai": {
-          "score": 15,
-          "topic": "VR and TMS targeting",
-          "reason": "Hardware compatibility for TMS, not EEG signal processing or sleep; minimally relevant.",
-          "summary": "The study quantified coil-to-scalp distance constraints imposed by VR headsets (Meta Quest 2 and Bigscreen Beyond) on TMS targeting of the DLPFC using realistic head models. The Meta Quest 2 exceeded compensable distances, while the Bigscreen Beyond remained within feasible limits, and no functional interference was observed.",
-          "keywords": [
-            "transcranial magnetic stimulation",
-            "virtual reality",
-            "DLPFC targeting",
-            "coil-to-scalp distance",
-            "hardware compatibility"
-          ],
-          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1469,247 +1920,6 @@
             "reply"
           ],
           "paper_type": "Commentary/Perspective",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "biorxiv",
-      "source_id": "10.64898/2026.08.11.744129",
-      "title": "Nucleus reuniens is organised as parallel circuits rather than a prefrontal-hippocampal relay",
-      "abstract": "Interactions between the prefrontal cortex (PFC) and hippocampus (HPC) are crucial for flexible and memory guided behaviour. Because there are no direct projections from PFC to HPC, it is widely presumed that information is shared through a disynaptic projection via the nucleus reuniens (nRE), a ventral midline thalamic nucleus. Yet this model relies on the implicit assumption that has not been directly tested: that prefrontal afferents monosynaptically recruit hippocampal-projecting nRE neurons. Here we combine whole-brain anatomical mapping, projection-specific circuit tracing and electrophysiology to test this model. We find that nRE contains largely distinct populations of prefrontal- and hippocampal-projecting neurons, with minimal overlap between them. Unexpectedly, prefrontal afferent input to nRE provides little anatomical or functional input to hippocampal-projecting neurons, instead preferentially targeting neurons projecting back to PFC. These findings challenge the prevailing view that nRE acts as a simple relay between PFC and HPC and instead reveal parallel projection-defined circuits likely to make distinct contributions to hippocampal-prefrontal communication.",
-      "authors": [
-        "Passlack, J.",
-        "Valentinova, K.",
-        "MacAskill, A. F."
-      ],
-      "published_date": "2026-08-17",
-      "indexed_date": "2026-08-17",
-      "journal": "biorxiv",
-      "doi": "10.64898/2026.08.11.744129",
-      "url": "https://doi.org/10.64898/2026.08.11.744129",
-      "categories": [
-        "neuroscience"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 25,
-        "ai": {
-          "score": 10,
-          "topic": "Nucleus reuniens circuits",
-          "reason": "Neural circuits anatomy, no signal processing or methods; irrelevant to EEG/sleep analysis.",
-          "summary": "The study combined whole-brain anatomical mapping, projection-specific tracing, and electrophysiology to test the hypothesis that nucleus reuniens relays prefrontal input to hippocampus. They found that prefrontal afferents preferentially target prefrontal-projecting neurons rather than hippocampal-projecting neurons, revealing parallel circuits instead of a simple disynaptic relay.",
-          "keywords": [
-            "nucleus reuniens",
-            "prefrontal cortex",
-            "hippocampus",
-            "circuit tracing",
-            "electrophysiology"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42606335",
-      "title": "Whole Genome HPV Liquid Biopsy for HPV-Associated Cancer Detection and Viral Physical State Classification.",
-      "abstract": "HPV-associated carcinomas(HPV+cancers) account for 5% of all cancers. Circulating tumor HPV DNA(ctHPVDNA) assays for HPV+ cancer surveillance have limited prognostic utility at the time of cancer diagnosis. While HPV integration into the host genome is a proven tissue-based biomarker predicting poor clinical outcomes, existing clinically utilized ctHPVDNA assays cannot classify the viral physical state. We previously developed HPV-DeepSeek, a multi-feature HPV whole-genome sequencing liquid biopsy with 99% diagnostic accuracy at the time of HPV+ oropharynx cancer diagnosis. We test the diagnostic accuracy of HPV-DeepSeek in a cohort of 235 HPV+ cancers across nine anatomic sites and employ a novel blood-based computational classifier to infer HPV genome physical state from plasma, termed HPV-SIGNAL, to assess its prognostic potential. HPV-DeepSeek demonstrated a sensitivity and specificity of 99%. In 189 eligible samples, HPV-SIGNAL identified four viral physical states: episomal-only(N=71), episomal-rearranged(N=52), integrated-mixed(N=57), and integrated-clonal(N=9), which were confirmed and further elucidated via three orthogonal tissue and blood approaches. Patients harboring integrated viral states in the blood exhibited significantly worse age- and AJCC stage-adjusted progression-free survival(HR 2.78, 95% CI1.30-5.99, p=0.009) and overall survival(HR2.95, 95% CI 1.01-8.61, p=0.048) compared to patients with episomal states. HPV whole-genome sequencing liquid biopsy has high diagnostic accuracy across HPV+ cancer types and can be used to identify and classify HPV physical state from blood. Patients with integrated viral states detected in the blood demonstrated worse progression-free and overall survival, suggesting blood-based HPV physical state classification could be used as a prognostic tool at the time of cancer diagnosis.",
-      "authors": [
-        "Adam S Fisch",
-        "Annie R Abruzzo",
-        "Samuli Eldfors",
-        "Dipon Das",
-        "Qin Wang",
-        "Gjystina Lumaj",
-        "Shriya Shukla",
-        "Allison A Gockley",
-        "Jennifer Y Wo",
-        "Theodore S Hong",
-        "Andrea L Russo",
-        "Jeremy D Richmon",
-        "Bayan A Alzumaili",
-        "William C Faquin",
-        "Peter M Sadow",
-        "Daniel L Faden"
-      ],
-      "published_date": "2026-Aug-17",
-      "indexed_date": "",
-      "journal": "Clinical cancer research : an official journal of the American Association for Cancer Research",
-      "doi": "10.1158/1078-0432.ccr-26-1467",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42606335/",
-      "categories": [],
-      "keywords": [],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 26,
-        "ai": {
-          "score": 5,
-          "topic": "HPV liquid biopsy",
-          "reason": "Cancer detection, no neural signal processing; completely unrelated.",
-          "summary": "The study tested the diagnostic accuracy of HPV-DeepSeek, a whole-genome HPV liquid biopsy, in 235 HPV-associated cancers across nine sites, achieving 99% sensitivity and specificity. A novel blood-based classifier, HPV-SIGNAL, identified viral physical states, with integrated viral states predicting worse progression-free and overall survival, suggesting prognostic utility.",
-          "keywords": [
-            "HPV liquid biopsy",
-            "circulating tumor HPV DNA",
-            "viral physical state",
-            "whole-genome sequencing",
-            "prognostic biomarker"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42606396",
-      "title": "Direct Visualization of Acute Left Atrial Pressure Elevation During Atrioventricular Nodal Reentrant Tachycardia.",
-      "abstract": "Supraventricular tachycardia (SVT) can acutely elevate left atrial pressure (LAP), yet real-time hemodynamic data during spontaneous episodes are rarely captured. We present a case of real-time capture of LAP during SVT episodes using the implantable V-LAP system (Vectorious Medical Technologies), a new LAP monitoring sensor implanted in the interatrial septum of patients with heart failure. A 55-year-old female patients with heart failure and an implanted implantable left atrial pressure (V-LAP) sensor presented with symptomatic SVT, which terminated with intravenous adenosine. The V-LAP sensor revealed that LAP rose acutely from 4.4 mm Hg to 16.4 mm Hg during SVT, returning to 3.2 mm Hg after its termination. An electrophysiology study confirmed typical atrioventricular nodal reentrant tachycardia, and successful ablation was performed. This case provides the first direct visualization of elevated LAP during an atrioventricular nodal reentrant tachycardia episode and suggests that typical atrioventricular nodal reentrant tachycardia ablation was feasible, without device interference, in this patient with a V-LAP sensor. This case highlights the value of integrated electrical and hemodynamic monitoring in managing patients with cardiomyopathy and arrhythmia. The V-LAP sensor supports the hemodynamic contribution to symptom generation by correlating real-time LAP elevation with arrhythmia. Additionally, standard atrioventricular nodal reentrant tachycardia ablation was feasible in this patient with an interatrial septal sensor, without device interference.",
-      "authors": [
-        "Tae Kyung Yoo",
-        "Caroline Kaufman",
-        "David R Pimentel",
-        "Tiffany Y Hu",
-        "Sebastian Rodriguez",
-        "Paul Franco",
-        "Eric H Awtry",
-        "Ashvin N Pande",
-        "Deepa M Gopal",
-        "Nir Ayalon"
-      ],
-      "published_date": "2026-Aug-17",
-      "indexed_date": "",
-      "journal": "JACC. Case reports",
-      "doi": "10.1016/j.jaccas.2026.109879",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42606396/",
-      "categories": [],
-      "keywords": [
-        "acute heart failure",
-        "hemodynamics",
-        "remote monitoring",
-        "supraventricular arrhythmias"
-      ],
-      "publication_types": [
-        "Case Reports",
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 22,
-        "ai": {
-          "score": 5,
-          "topic": "Atrial pressure monitoring",
-          "reason": "Cardiology case, no EEG; unrelated.",
-          "summary": "This case report presents real-time capture of left atrial pressure elevation from 4.4 to 16.4 mm Hg during atrioventricular nodal reentrant tachycardia using an implantable V-LAP sensor, returning to normal after termination and successful ablation. It demonstrates the feasibility of ablation with the sensor and highlights the value of hemodynamic monitoring.",
-          "keywords": [
-            "left atrial pressure",
-            "atrioventricular nodal reentrant tachycardia",
-            "V-LAP sensor",
-            "hemodynamic monitoring",
-            "ablation"
-          ],
-          "paper_type": "Case Report",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42605384",
-      "title": "New-Onset Psychotic Episode as the Primary Manifestation One Week After Liver Transplantation: A Case Report and Comprehensive Review About the Risk Factors.",
-      "abstract": "Postoperative neurological and neuropsychiatric complications (NNC) after liver transplantation (LT) have become an important research concern, but the difficulties arise with the diagnosis of the majority subclinical form of NNC. We report a middle-aged man who developed fluctuating psychotic symptoms, marked personality change, and behavioral disturbance approximately one week after LT. No overt focal neurological deficits, such as hemiparesis, aphasia, or seizures, were observed. Brain MRI showed small periventricular/subcortical white-matter lesions with hyperintensity on T2WI and FLAIR images and punctate hyperintensity on DWI. The findings were interpreted as suggestive of suspected silent ischemic brain injury. Tacrolimus-related neurotoxicity, PRES, metabolic/hepatic encephalopathy, infection, seizure-related states, and alcohol-related encephalopathy were considered in the differential diagnosis. Contemporaneous tacrolimus trough levels and EEG data were unavailable, so tacrolimus neurotoxicity and non-convulsive seizure-related psychiatric symptoms could not be completely excluded. The patient received symptomatic psychiatric treatment and rehabilitation, and his neuropsychiatric symptoms gradually resolved, with stable liver function at the last follow-up. This case illustrates that suspected silent ischemic brain injury after LT may present primarily as fluctuating psychotic symptoms and personality or behavioral changes, and may be easily mistaken for postoperative delirium, calcineurin-inhibitor neurotoxicity, infection, or metabolic/hepatic encephalopathy. In atypical or high-risk patients, early brain MRI may help identify potential brain involvement and guide timely neurological and neuropsychiatric evaluation. New-onset psychotic symptoms after LT should not be automatically attributed to postoperative delirium. Even when MRI findings do not definitively confirm acute infarction, timely neuropsychiatric assessment and early brain MRI may help identify potential structural brain involvement in high-risk or atypical patients.",
-      "authors": [
-        "Yanqun Zheng",
-        "Zhuyao Lin",
-        "Mo Zhu",
-        "Qianwei Wang",
-        "Shenxun Shi",
-        "Chunhong Shao"
-      ],
-      "published_date": "2026",
-      "indexed_date": "2026-08-17",
-      "journal": "International medical case reports journal",
-      "doi": "10.2147/imcrj.s556097",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42605384/",
-      "categories": [],
-      "keywords": [
-        "ischemic brain injury",
-        "liver transplantation",
-        "postoperative neurological and neuropsychiatric complication",
-        "risk assessment"
-      ],
-      "publication_types": [
-        "Case Reports",
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 21,
-        "ai": {
-          "score": 5,
-          "topic": "Psychosis after liver transplant",
-          "reason": "Clinical case report with no EEG methodology; minimal relevance.",
-          "summary": "This case report describes a patient who developed new-onset psychotic symptoms one week after liver transplantation, with MRI suggesting silent ischemic brain injury. The report reviews risk factors for postoperative neuropsychiatric complications and emphasizes the need for early MRI in atypical cases.",
-          "keywords": [
-            "liver transplantation",
-            "psychotic episode",
-            "ischemic brain injury",
-            "postoperative complication",
-            "neuropsychiatric"
-          ],
-          "paper_type": "Case Report",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "biorxiv",
-      "source_id": "10.64898/2026.08.12.744377",
-      "title": "Ecological dynamics and stability in the Taï and Comoe national parks in Cote d'Ivoire",
-      "abstract": "The accelerated loss of biodiversity in sub-Saharan Africa threatens the functioning of tropical ecosystems. In Cote dIvoire, the Comoe National Park (PNCOMOE), a Sudano-Guinean savannah, and the Tai National Park (PNTAI), a dense rainforest, both UNESCO World Heritage Sites, are home to fauna assemblages of global importance, whose long-term resilience remains insufficiently quantified. This study assesses and compares, over a decade (2014-2025), the functional stability of vertebrate communities in these two contrasting ecosystems, using nine metrics covering resistance, invariance, persistence, interspecific synchrony, Tilmans stability, Jacobian resilience and a Composite Stability Index (CSI). Abundance data for 107 vertebrate species were collected via foot transects at PNTAI and aerial surveys at PNCOMOE. The stability metrics were calculated using the R package estar, integrated with an alpha diversity analysis (Shannon H', species richness S, Pielous evenness J') and a Jacobian spectral analysis within a multidimensional ecological assessment. PNTAI (0.708) exhibits significantly higher alpha diversity (H' = 2.82; S = 55.7 taxa) and community resilience 4.6 times higher than in the PNCOMOE (0.153). Its interspecific asynchrony index (0.504) reveals a strong portfolio effect, absent in the PNCOMOE (0.232). In contrast, PNCOMOE exhibits higher temporal invariance (0.382 versus 0.116) and Tilman stability (0.276 versus 0.152), reflecting more predictable dynamics. The overall ICS favours the PNTAI (0.484) and (0.370). The Jacobian analysis detects local instability in both parks (Re({lambda}max) = 5.58 at the PNTAI; 3.73 at the PNCOMOE). The two parks exhibit distinct yet complementary stability architectures: PNTAI relies on dynamic stability based on resilience and interspecific compensation, whilst PNCOMOE demonstrates conservative stability through temporal regularity. The absence of calculable resilience at PNCOMOE suggests a potential crossing of a functional degradation threshold, arguing for urgent restoration interventions and differentiated conservation strategies, tailored to the resilience mechanisms specific to each ecosystem.",
-      "authors": [
-        "Jean Louis, K.",
-        "Atta, A. C.-J.",
-        "Yao, K. A.",
-        "Amara, O.",
-        "Abdoulaye, D.",
-        "Sery, G. B."
-      ],
-      "published_date": "2026-08-17",
-      "indexed_date": "2026-08-17",
-      "journal": "biorxiv",
-      "doi": "10.64898/2026.08.12.744377",
-      "url": "https://doi.org/10.64898/2026.08.12.744377",
-      "categories": [
-        "ecology"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 18,
-        "ai": {
-          "score": 5,
-          "topic": "Ecosystem stability",
-          "reason": "Ecology, no neural signals; completely unrelated.",
-          "summary": "The study assessed and compared the functional stability of vertebrate communities in Tai and Comoe National Parks over a decade (2014-2025) using nine stability metrics. Tai exhibited higher alpha diversity and resilience, while Comoe showed higher temporal invariance but lacked calculable resilience, suggesting a potential functional degradation threshold.",
-          "keywords": [
-            "ecological stability",
-            "vertebrate communities",
-            "biodiversity",
-            "savannah",
-            "rainforest"
-          ],
-          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
