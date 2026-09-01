@@ -1,6 +1,6 @@
 {
   "date": "2026-09-01",
-  "generated_at": "2026-08-31T19:11:59.326433+00:00",
+  "generated_at": "2026-09-01T00:46:55.994565+00:00",
   "window": {
     "start": "2026-08-30",
     "end": "2026-09-01"
@@ -10,27 +10,27 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 15,
+  "raw_count": 39,
   "retrieved_source_counts": {
-    "pubmed": 27,
-    "biorxiv": 8,
-    "medrxiv": 5,
+    "pubmed": 100,
+    "biorxiv": 10,
+    "medrxiv": 10,
     "arxiv": 0
   },
   "raw_source_counts": {
-    "pubmed": 9,
-    "biorxiv": 5,
-    "medrxiv": 1
+    "pubmed": 30,
+    "biorxiv": 6,
+    "medrxiv": 3
   },
-  "prefiltered_count": 14,
-  "analyzed_count": 14,
+  "prefiltered_count": 35,
+  "analyzed_count": 35,
   "configured_max_analyzed": 40,
-  "count": 14,
-  "featured_count": 14,
+  "count": 35,
+  "featured_count": 25,
   "source_counts": {
-    "pubmed": 8,
-    "medrxiv": 1,
-    "biorxiv": 5
+    "pubmed": 26,
+    "medrxiv": 3,
+    "biorxiv": 6
   },
   "errors": {},
   "ai": {
@@ -43,12 +43,13 @@
     "newly_ranked": 0,
     "newly_summarized": 0,
     "digest_count": 0,
-    "digest_min": 14,
-    "digest_max": 14,
+    "digest_min": 35,
+    "digest_max": 35,
     "digest_score_threshold": 0,
     "rank_prompt_version": "paperdaily-ranking-v1-2026-08",
     "summary_prompt_version": "paperdaily-summary-v3-2026-08",
     "errors": [
+      "ranking batch: RuntimeError: deepseek API HTTP 402: {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}",
       "ranking batch: RuntimeError: deepseek API HTTP 402: {\"error\":{\"message\":\"Insufficient Balance\",\"type\":\"unknown_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
     ],
     "status": "ai_unavailable",
@@ -98,7 +99,7 @@
       }
     },
     "configured_max_analyzed": 40,
-    "analyzed_count": 14
+    "analyzed_count": 35
   },
   "papers": [
     {
@@ -135,6 +136,101 @@
     },
     {
       "source": "medrxiv",
+      "source_id": "10.64898/2026.06.30.26356905",
+      "title": "Multi-modal sleep staging in the clinic for REM sleep behaviour disorder",
+      "abstract": "Background: Accurate REM identification is critical for diagnosing REM sleep behaviour disorder (RBD), yet many automated sleep staging systems, especially single-channel EEG models trained on healthy cohorts, do not generalise well to real-life polysomnography (PSG) performed in patients. Objective: To compare a feature-based Random Forest (RF) model tuned for RBD with a state-of-the-art single-EEG deep architecture (AttnSleep), and to assess the impact of cohort adaptation and multimodal inputs (EEG, EOG, EMG, ECG). Methods: Experiments used 89 multi-site in-clinic PSGs (SleepWearables Phase-1) plus 53 MASS healthy controls (mean age 63, std 5 years), with 10-fold cross-validation and out-of-fold evaluation. Model performance was assessed using Cohen's kappa, and attention-based modality analysis was performed to quantify signal contributions. Results: When applied out-of-the-box after training on open-source healthy datasets, both models achieved moderate agreement overall (Cohen's kappa = 0.46), but performance declined in RBD, particularly for REM sleep (AttnSleep Cohen's kappa = 0.19 vs RF Cohen's kappa = 0.44), highlighting limited cross-cohort generalisation. The multimodal model improved overall agreement (Cohen's kappa 0.59 - 0.60) and performance in RBD (Cohen's kappa 0.45 - 0.46), with gains most pronounced in REM (Cohen's kappa 0.45 - 0.49). Attention-based modality analysis identified EEG as the dominant signal, increased EOG contribution during REM, and elevated ECG importance during N3. In RBD subjects, EOG weighting increased relative to non-RBD controls (Delta = +0.081). Guided by these weights, a reduced four-channel EEG model matched full multimodal performance in non-RBD subjects, and adding EOG achieved the best overall configuration (Cohen's kappa = 0.61 overall; Cohen's kappa = 0.48 in RBD) with improved REM classification (53% vs 45% recall). Inclusion of EOG also reduced inter-dataset variability in REM staging. Nonetheless, staging performance in RBD remained lower than in controls, particularly for REM. Conclusions: These results highlight the limited generalisability of minimal-sensor models trained on healthy cohorts, the value of mixed cohort-specific training, and the benefit of multimodal integration and attention-guided channel selection, rather than minimal-sensor approaches alone, for robust clinical sleep staging in pathological populations such as RBD.",
+      "authors": [
+        "Gunter, K. M.",
+        "Bijlani, N.",
+        "Dennis, G.",
+        "Lo, C.",
+        "Quinnell, T.",
+        "Symmonds, M.",
+        "Welch, J.",
+        "Ratti, P.-L.",
+        "Hu, M. T.",
+        "Villarroel, M."
+      ],
+      "published_date": "2026-08-31",
+      "indexed_date": "2026-08-31",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.06.30.26356905",
+      "url": "https://doi.org/10.64898/2026.06.30.26356905",
+      "categories": [
+        "health informatics"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "2",
+        "published": "NA",
+        "prefilter_score": 89
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42670213",
+      "title": "EEG Microstates and Related Brain Networks During Light Sleep.",
+      "abstract": "Light sleep, including Stages N1 and N2, constitutes more than half of total human sleep duration. It serves essential functions in transitioning from wakefulness to deep sleep and in memory processing. Previous studies have identified four consistent electroencephalogram (EEG) microstates during wakefulness and sleep. Simultaneous EEG and functional magnetic resonance imaging (fMRI) studies have shown that EEG microstates are associated with specific brain functional networks during wakefulness and slow wave sleep. However, the relationship between microstates and brain networks during light sleep remains unexplored. To address this gap, simultaneous EEG-fMRI data acquired during light sleep were used to examine the correspondence between microstates and brain networks. The EEG microstate informed fMRI analysis revealed that Microstate C was associated with the cerebellum, and Microstate D was associated with the thalamus and motor areas during both N1 and N2 sleep. No significant results were found in Microstate A or B during N1. Additionally, linear mixed-effect analysis verified that Microstate D's association with the motor network and thalamus persisted during both N1 and N2, though their activity showed opposing trends between stages: Microstate D-related thalamic activity was lower in N1 than in N2, whereas the motor cortex exhibited the opposite pattern. These findings highlight distinct relationships between EEG microstates and brain networks during N1 and N2 sleep and implicate the thalamus and motor cortex as key neural substrates during light sleep.",
+      "authors": [
+        "Yujie Long",
+        "Shuqin Zhou",
+        "Guangyuan Zou",
+        "Jiayi Liu",
+        "Jing Xu",
+        "Qihong Zou",
+        "Jia-Hong Gao"
+      ],
+      "published_date": "2026-Aug-30",
+      "indexed_date": "",
+      "journal": "Journal of sleep research",
+      "doi": "10.1111/jsr.70437",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42670213/",
+      "categories": [],
+      "keywords": [
+        "BOLD fMRI",
+        "EEG microstates",
+        "brain networks",
+        "light sleep"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 74
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42671565",
+      "title": "Subjective Visibility Enhances Early Posterior EEG Decoding of Stimulus Location across Report and No-report Tasks.",
+      "abstract": "A central question in consciousness research is whether perceptual awareness is primarily reflected in early posterior sensory activity or in later frontal processes associated with access and report. Empirical tests of these alternatives are challenging because most paradigms rely on explicit perceptual reports, introducing motor and decisional confounds. Here, we used an electroencephalography design combining two independent tasks to decode stimulus location across report and no-report conditions and to examine how these task-general stimulus-location signals vary with subjective visibility. Participants viewed lateralized gratings in a backward-masking task and rated their subjective visibility, whereas in a separate no-report task, they viewed unmasked gratings without reporting. Classifiers were trained on stimulus location in the no-report task and tested on masked trials sorted by subjective visibility in the masking task. This cross-decoding approach identifies stimulus-location signals that generalize across tasks and vary with subjective visibility, making them less likely to reflect reporting or decision-related processes. Decoding revealed stronger stimulus-location signals for subjectively visible than invisible stimuli in an early time window from 130 to 170 msec, most prominently over posterior occipital, temporal, and parietal electrode groups. These results indicate that subjective visibility enhances early posterior EEG decoding of stimulus location across report contexts.",
+      "authors": [
+        "Sabine Gnodde",
+        "Vlada Aslanov",
+        "Abigail Hogan",
+        "Jolien C Francken",
+        "Umberto Olcese",
+        "Timo Stein"
+      ],
+      "published_date": "2026-Aug-27",
+      "indexed_date": "",
+      "journal": "Journal of cognitive neuroscience",
+      "doi": "10.1162/jocn.a.2691",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42671565/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 74
+      }
+    },
+    {
+      "source": "medrxiv",
       "source_id": "10.64898/2026.04.09.26350266",
       "title": "Wearable sleep staging performance declines with sleep apnea severity and is sensitive to training-set composition in very severe sleep apnea",
       "abstract": "We aimed to evaluate wearable sleep staging across sleep apnea severity, including very severe sleep apnea defined as an apnea-hypopnea index (AHI) [&ge;] 50 events/h, and to assess how training-set composition affects performance in this subgroup. We analyzed 552 overnight recordings: 318 from the Sleep Lab Dataset and 234 from the Hospital Dataset, of which 26.5% (N=62) had very severe sleep apnea. A deep learning model performed sleep staging from photoplethysmography-derived RR intervals and accelerometry recorded by a wrist-worn device. Baseline performance was assessed by 4-fold cross-validation using randomly partitioned folds from the combined datasets. We examined night-level associations with AHI severity. We also compared the baseline model with an ablation model trained on the same number of recordings but with all Sleep Lab Dataset recordings and lower-AHI Hospital Dataset recordings, evaluating both in the very severe subgroup. For 5-stage classification, Cohen's kappa was 0.586 in the Sleep Lab Dataset and 0.446 in the Hospital Dataset. Under 4-stage staging, the gap narrowed, with kappa values of 0.632 and 0.525, respectively. In the Hospital Dataset, kappa declined with AHI severity, with median kappa differing by about 0.2 between mild and very severe groups. In the very severe subgroup, kappa decreased from 0.365 (baseline) to 0.303 (ablation). Wearable sleep staging performance tended to decline across greater sleep apnea severity. Clinical utility may benefit from training data spanning the target severity spectrum and staging granularity matched to the intended use.",
@@ -164,6 +260,39 @@
         "version": "3",
         "published": "NA",
         "prefilter_score": 68
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42671585",
+      "title": "Immediate effects of binaural beat stimulation on prefrontal cortical activation after cycling exercise: an electroencephalography-based study.",
+      "abstract": "Binaural beat stimulation (BBS) has been shown to activate the cerebral cortex and promote physical and mental relaxation. This study investigated the immediate effects of theta-frequency BBS following cycling exercise on prefrontal cortical activation in healthy adults. Sixty healthy adults were recruited from the community using convenient sampling. Each participant completed a 20-min cycling exercise on two consecutive days. In a randomized order, one day was followed by a 20-min wide-band theta-frequency (5.5-8.5 Hz) BBS combined with pink noise and the other day by a sham BBS intervention. An eight-channel dry-electrode electroencephalography system was used to record the changes of prefrontal cortical activation at six time points before and after the cycling exercise. A total of 52 participants completed the study. Compared to the sham stimulus, the theta-frequency BBS combined with pink noise significantly enhanced the theta and alpha wave powers. Power changes in the left and right prefrontal cortices and the frontal midline regions (r=0.28-0.51, p<0.05) across multiple time points indicated an immediate enhancement of prefrontal cortical activation. This preliminary study suggests that receiving wide-band theta-frequency BBS after20 minutes of cycling exercise may modulate prefrontal cortex activity. Given its non-invasive and simple nature, BBS warrants further exploratory research to determine its potential role as a supplementary tool in post-exercise recovery strategies.",
+      "authors": [
+        "Shih-Fen Hsiao",
+        "Tzu-Ling Liu",
+        "Yu-Chen Lin",
+        "Chen-Wen Yen",
+        "Ka-Chun Siu",
+        "Jau-Hong Lin"
+      ],
+      "published_date": "2026-Aug-31",
+      "indexed_date": "2026-08-31",
+      "journal": "Experimental brain research",
+      "doi": "10.1007/s00221-026-07387-7",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42671585/",
+      "categories": [],
+      "keywords": [
+        "Binaural beat stimulation",
+        "Cortical activation",
+        "Electroencephalography",
+        "Relaxation"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Randomized Controlled Trial"
+      ],
+      "extra": {
+        "prefilter_score": 64
       }
     },
     {
@@ -234,6 +363,51 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42669813",
+      "title": "Proceedings of the 7th International Conference on Basic and Clinical Multimodal Imaging (BaCI) meeting, a joint meeting of EEG and Clinical Neuroscience Society (ECNS), the International Society for Brain Electromagnetic Topography (ISBET), the International Society for Functional Source Imaging (ISFSI), and the International Society for Neuroimaging in Psychiatry (ISNIP).",
+      "abstract": "",
+      "authors": [],
+      "published_date": "2026-Aug-30",
+      "indexed_date": "",
+      "journal": "Clinical EEG and neuroscience",
+      "doi": "10.1177/15500594261448097",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42669813/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 39
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42673561",
+      "title": "Influence of Surgical-Level Propofol Anesthesia on Non-Rapid Eye Movement and Rapid Eye Movement Sleep in Aged Mice.",
+      "abstract": "Clinical studies indicate that sedation with propofol is associated with loss of rapid eye movement (REM) sleep, whereas animal experiments suggest that propofol anesthesia may be functionally equivalent to naturally occurring sleep. However, most preclinical studies of propofol's effects on sleep have used sedative doses in young animals, despite the frequent use of high doses in the operating room and the increased susceptibility of older individuals to sleep disturbances. Here, we investigated how surgical levels of propofol anesthesia affect sleep in aged mice. We hypothesized that anesthetic-dose propofol would significantly alter both the quantity and architecture of sleep in geriatric mice compared to baseline and vehicle-treated controls. Eighteen- to twenty-month-old mice (N = 20) were implanted with frontal and parietal epidural electroencephalographic (EEG) electrodes and allowed a minimum recovery of 10 days. EEG recordings were obtained in three animal groups. After baseline EEG recordings (control group), mice were randomized to receive either intubation via a 22-gauge intravenous cannula and a propofol infusion titrated to EEG delta waves through a central catheter (propofol group) or an equivalent infused volume of intralipid (intralipid group). Non-rapid eye movement (NREM), REM sleep, wakefulness, and NREM stage III quantity; number and duration of sleep-wake bouts; burst suppression ratio and delta power were measured during continuous 24-hour EEG recordings and analyzed using one- and two-way repeated-measures analysis of variance. Propofol mice exhibited increased wakefulness (820 ± 93.3 vs 658 ± 71.1 min; P < .001) and decreased NREM sleep (539 ± 93.3 vs 699 ± 64.2 min; P < .001) compared to controls. Early after propofol emergence, NREM stage III (15.7 ± 10.9 vs 52.0 ± 19.0 min; P = .0050), REM sleep (4.31 ± 2.81 vs 23.1 ± 8.26 min; P < .001), the number of REM bouts (13.9 ± 8.28 vs 32.0 ± 11.4; P = .0491), and their mean duration (14.9 ± 8.59 vs 41.9 ± 7.52 min; P < .001) were markedly decreased relative to controls. Surgical-level propofol anesthesia differentially influenced NREM and REM sleep. Although propofol anesthesia satisfied NREM sleep homeostasis, delayed REM rebound during recovery was compatible with altered REM regulation.",
+      "authors": [
+        "Michal Jedrusiak",
+        "Eric M Davis",
+        "Elzbieta Dulko",
+        "Nadia Lunardi"
+      ],
+      "published_date": "2026-Aug-27",
+      "indexed_date": "",
+      "journal": "Anesthesia and analgesia",
+      "doi": "10.1213/ane.0000000000008274",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42673561/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 37
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42669383",
       "title": "Retinal electrophysiology in mood disorders: Toward clinically relevant biomarkers. A systematic review and meta-analysis.",
       "abstract": "Mood disorders, including major depressive disorder (MDD) and bipolar disorder (BD), are associated with substantial disability and frequent misdiagnosis, particularly in early stages and in the differential diagnosis between unipolar and bipolar depression. Current diagnosis remains largely based on clinical assessment, highlighting the need for objective biomarkers to improve early detection and diagnostic accuracy. The retina, sharing structural and neurochemical properties with the brain, is a promising candidate. To assess its function, Electroretinography (ERG) is widely used. This study aimed to systematically review and quantitatively synthesise ERG findings in mood disorders and genetically high-risk populations. PubMed, Web of Science, Embase and APA PsycINFO were searched up to 25 November 2025 (PROSPERO: 1234381). Methodological quality was assessed using a modified Newcastle-Ottawa Scale. Random-effects meta-analyses were conducted for full-field ERG parameters in MDD without reported specifiers. Thirty-two studies (n = 1334) were included, with five in the meta-analysis. Mood disorders were generally associated with reduced ERG amplitudes and prolonged implicit times. In MDD, a significant prolongation of b-wave implicit time under mixed scotopic conditions was observed (g = 0.23, 95% CI 0.00-0.46), while other parameters were non-significant. BD and seasonal affective disorder studies suggested mood-state-dependent retinal alterations, and high-risk offspring showed ERG abnormalities associated with subclinical and cognitive features. Overall, ERG shows consistent but heterogeneous alterations in mood disorders and may have potential value for early detection, differential diagnosis and stratification but further longitudinal and methodologically harmonized studies are required to clarify its clinical utility.",
@@ -261,6 +435,76 @@
       "publication_types": [
         "Journal Article",
         "Review"
+      ],
+      "extra": {
+        "prefilter_score": 35
+      }
+    },
+    {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.08.27.26360607",
+      "title": "Paradoxical relief after seizures: a diagnostic signal distinguishing functional/dissociative from epileptic seizures",
+      "abstract": "Objective: To determine whether paradoxical relief, feeling unusually better after a seizure compared to before it, is more common after functional/dissociative seizures (FDS) than epileptic seizures (ES), quantify its diagnostic accuracy, and explore its relationship with preictal symptoms. Methods: Consecutive patients admitted to a tertiary epilepsy unit for prolonged inpatient EEG monitoring underwent a structured clinical interview on admission, before final multidisciplinary diagnostic classification. Preictal dissociative and autonomic/somatic symptom burden was assessed using items adapted from established questionnaires. Diagnostic classification incorporated clinical history, seizure semiology, video electroencephalography findings, and collateral information. Patients with dual or indeterminate diagnoses were excluded. Associations with paradoxical relief were examined using logistic regression, followed by an exploratory mediation analysis. Results: Of 176 patients assessed, 66 with FDS and 65 with ES were included. Paradoxical relief was reported by 46/66 patients with FDS (69.7%) and 10/65 with ES (15.4%; unadjusted odds ratio [OR] 12.65, 95% confidence interval [CI] 5.57 to 31.09). As a diagnostic signal for FDS, paradoxical relief had 69.7% sensitivity (95% CI 57.1 to 80.4), 84.6% specificity (95% CI 73.5 to 92.4), a positive likelihood ratio of 4.53 (2.51 to 8.19), and a negative likelihood ratio of 0.36 (0.24 to 0.52). FDS diagnosis remained independently associated with paradoxical relief after adjustment (OR 10.59, 95% CI 3.42 to 38.06). In a parallel mediation analysis, dissociative symptom burden showed a significant indirect effect, accounting for 19.5% of the association between diagnostic group and relief, whereas the indirect effect through somatic/autonomic symptom burden was not significant. Significance: Paradoxical relief is substantially more common after FDS than ES and may provide a simple, clinically useful diagnostic signal. Its absence does not exclude FDS, and the finding requires external validation. The association with dissociative symptoms is exploratory and supports prospective investigation of whether relief reflects transient resolution of a disturbed, disembodied preictal state.",
+      "authors": [
+        "Masharani, A.",
+        "Koreki, A.",
+        "Marcelo, M.",
+        "Shalfrooshan, K.",
+        "Diamos, M.-A.",
+        "Santucci, C.",
+        "Pillai, K.",
+        "Bindman, D.",
+        "O'Sullivan, S.",
+        "Rugg-Gunn, F.",
+        "Sidhu, M.",
+        "Yogarajah, M."
+      ],
+      "published_date": "2026-08-31",
+      "indexed_date": "2026-08-31",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.08.27.26360607",
+      "url": "https://doi.org/10.64898/2026.08.27.26360607",
+      "categories": [
+        "neurology"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 35
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42669846",
+      "title": "Dynamic Global and Local Enhancement of Theta-Band Functional Networks as Neural Markers of Spinal Cord Stimulation Efficacy in Disorders of Consciousness.",
+      "abstract": "Spinal cord stimulation (SCS) has emerged as a promising intervention for patients with disorders of consciousness (DoC). However, clinical optimization is hindered by a lack of interpretable prognostic biomarkers, and the neural mechanisms associated with recovery after SCS remain largely elusive. Nineteen DoC patients undergoing 70 Hz SCS were enrolled and categorized into effective (n = 9) and ineffective (n = 10) groups based on longitudinal clinical improvements. Resting-state electroencephalography (EEG) was recorded across baseline, intra-stimulation, and poststimulation phases. To investigate neural dynamics, theta-band dynamic functional connectivity (dFC) was analyzed using the weighted phase lag index (wPLI) combined with a sliding window approach. Global and local dFC metrics, alongside region-specific connectivity strengths, were quantified to characterize the global-local collaborative mechanisms induced by SCS. Compared with the ineffective group, the effective group demonstrated enhanced global integration and decoupled regional segregation under SCS, evidenced by synchronized reduction in global average path length and suppression in local clustering (pTPL = 0.0090; pTLE = 0.0090; pTCC = 0.0378). Regionally, increased functional connectivity was primarily observed in the right temporal cortex (p = 0.0054), whereas decreased connectivity was identified in the left occipital region (p = 0.0218). Furthermore, dynamic EEG features were significantly correlated with 3-month CRS-R improvement scores (p < 0.05). This dynamic global and local enhancement in the theta-band dFC serves as an interpretable neural marker for predicting SCS efficacy. These findings offer novel insights into the system-level collaborative mechanisms essential for consciousness restoration. Chinese Clinical Trial Registry: ChiCTR2200061278.",
+      "authors": [
+        "Yinuo Liu",
+        "Qianqian Ge",
+        "Jiewei Lu",
+        "Yaqian Li",
+        "Jianda Han",
+        "Jianghong He",
+        "Ningbo Yu"
+      ],
+      "published_date": "2026-Sep",
+      "indexed_date": "2026-08-31",
+      "journal": "CNS neuroscience & therapeutics",
+      "doi": "10.1002/cns.71128",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42669846/",
+      "categories": [],
+      "keywords": [
+        "disorders of consciousness",
+        "dynamic functional connectivity",
+        "electroencephalography (EEG)",
+        "spinal cord stimulation"
+      ],
+      "publication_types": [
+        "Journal Article"
       ],
       "extra": {
         "prefilter_score": 35
@@ -299,6 +543,36 @@
       ],
       "extra": {
         "prefilter_score": 35
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42671055",
+      "title": "The role of ventral tegmental area dopamine neurons in emergence from dexmedetomidine, fentanyl, and ketamine anesthesia in rats.",
+      "abstract": "Dopamine neurons in the ventral tegmental area (VTA), a midbrain structure, have been widely implicated in promoting emergence from general anesthesia. However, most studies have focused on anesthetics that primarily target GABAA receptors. Whether these neurons also facilitate emergence from mechanistically diverse drug-induced unconscious states is not known. Here we examine the specific contribution of VTA dopamine neurons in restoring arousal following sevoflurane-, dexmedetomidine-, fentanyl-, and ketamine-induced unconsciousness. Adult Sprague Dawley rats received viral constructs driving selective expression in tyrosine hydroxylase-positive VTA neurons of either channelrhodopsin or the control protein, YFP. Accurate targeting in VTA TH:ChR was confirmed by assessing righting in response to photostimulation during continuous sevoflurane inhalation (1.4-2.0%). In a randomized block design, rats were exposed to dexmedetomidine (15 µg/kg IV bolus), fentanyl (50 µg/kg IV bolus), or ketamine (50 mg/kg IV infusion). Following loss of the righting reflex, behavioral arousal and frontal EEG activity were recorded with or without photostimulation. The proportion of animals righting during the light-on and light-off conditions was assessed in a mixed-effects Cox regression model, and spectral power differences were quantified with effect size estimates. Optogenetic stimulation of VTA dopamine neurons during continuous sevoflurane inhalation restored righting in VTA TH:ChR rats, with a median latency of 4.7 minutes (95%CI[2.6, 6.4]) following the onset of photostimulation. VTA TH:ChR rats were significantly more likely to right during photostimulation following dexmedetomidine (HR = 27.7, 95%CI[2.7, 287.1], p=0.0053), and responders showed attenuated spectral power in low frequencies (<12Hz) in VTA TH:ChR. Optogenetic stimulation did not affect behavioral nor neurophysiological measures of arousal following fentanyl. Finally, optogenetic stimulation in VTA TH:ChR rats modestly delayed emergence from ketamine sedation without altering EEG spectral power. These data suggest the role of dopamine VTA neurons in anesthetic emergence is agent-specific and likely shaped by distinct, and sometimes opposing, neural pathways.",
+      "authors": [
+        "David P Obert",
+        "Kathleen F Vincent",
+        "Gwi H Park",
+        "Jinyoung Choi",
+        "Edlyn R Zhang",
+        "Negar Nikbakht",
+        "Ethan J Coulter",
+        "Jessica Jin",
+        "Ken Solt"
+      ],
+      "published_date": "2026-Aug-31",
+      "indexed_date": "",
+      "journal": "Anesthesiology",
+      "doi": "10.1097/aln.0000000000006349",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42671055/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 33
       }
     },
     {
@@ -401,6 +675,143 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42671874",
+      "title": "Reusable Modular Wearable Bioelectronics for Low-Carbon Task-Adaptive Health Monitoring.",
+      "abstract": "Wearable bioelectronics are increasingly expected to support personalized, multiparametric, and closed-loop health monitoring, yet most systems rely on monolithic integration that limits task adaptability and increases hardware redundancy and environmental burden. Here, we present a reusable modular wearable platform that decouples a common digital back end from interchangeable analog front-end and sensing modules. This architecture enables on-demand reconfiguration across electrophysiological, mechanical, thermal, and electrochemical monitoring tasks without redesigning the complete system. Manufacturing-stage carbon-footprint analysis shows that selective reuse of carbon-intensive back-end electronics reduces emissions compared with monolithic integration, with greater benefits as task complexity increases. The platform captures muscle activity, heart-rate dynamics, electroencephalogram α-band features, body temperature, tactile, and glucose levels and wirelessly links physiological sensing to a stretchable chip-on-array LED display for real-time on-skin visualization and threshold-triggered alerts. This work provides a reusable, task-adaptive, and low-carbon hardware framework for scalable personalized wearable bioelectronics.",
+      "authors": [
+        "Xianyu Wang",
+        "Xuyang Feng",
+        "Haoyang Wang",
+        "Yujie Cui",
+        "Limei Liu",
+        "Binghao Wang"
+      ],
+      "published_date": "2026-Aug-24",
+      "indexed_date": "",
+      "journal": "ACS sensors",
+      "doi": "10.1021/acssensors.6c03131",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42671874/",
+      "categories": [],
+      "keywords": [
+        "flexible circuit",
+        "human–machine interface",
+        "lego-like",
+        "multimodal sensors",
+        "wearable electronics"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 27
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42671797",
+      "title": "Impaired auditory sensory gating as a neurophysiological correlate of cognitive fatigue in long COVID.",
+      "abstract": "Fatigue is among the most disabling symptoms across neurological and postinfectious conditions and is a defining feature of long COVID, yet objective neurophysiological markers remain scarce. Auditory sensory gating, indexed by P50 suppression, has been proposed as a correlate of cognitive fatigue in multiple sclerosis, but its relevance in long COVID is unclear. Additionally, we compared the utility of the Beck Depression Inventory-II and Beck Depression Inventory-Fast Screen (BDI-FS) in this fatigued population. Seventy-one individuals with long COVID-related fatigue completed questionnaires assessing fatigue (Modified Fatigue Impact Scale) and depressive symptoms (BDI-FS). Auditory sensory gating was assessed using a paired-click electroencephalography paradigm. Auditory sensory gating was assessed using a paired-click electroencephalography paradigm. Associations between cognitive fatigue, sensory gating, and depressive symptoms were examined using correlational analyses and two hierarchical regression models. Reduced P50 suppression was associated with higher Modified Fatigue Impact Scale cognitive scores (τ = -.173, p = .037). Cognitive fatigue correlated with depressive symptoms measured by the Beck Depression Inventory-II (τ = .239, p = .005), but not by the BDI-FS (τ = .131, p = .135). Neither depression measure correlated with sensory gating. P50 suppression accounted for unique variance in cognitive fatigue beyond demographics and depressive symptoms. Auditory sensory gating shows a small but meaningful association with cognitive fatigue in long COVID and contributes uniquely beyond depressive symptoms. The BDI-FS demonstrated less symptom overlap, supporting its suitability for depression screening in fatigued populations. These findings underscore the importance of distinguishing fatigue related from affective symptoms and suggest sensory gating as a promising transdiagnostic target in fatigue research. (PsycInfo Database Record (c) 2026 APA, all rights reserved).",
+      "authors": [
+        "Magdalena Mischke",
+        "Tino Zaehle"
+      ],
+      "published_date": "2026-Aug-31",
+      "indexed_date": "",
+      "journal": "Neuropsychology",
+      "doi": "10.1037/neu0001120",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42671797/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 22
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42671816",
+      "title": "Associations between resting brain activity and socioemotional skills across the first 2 years of life.",
+      "abstract": "Identifying and quantifying early markers of socioemotional skills, particularly within the first few years of life, remains a challenge in developmental research. This study examines whether infant resting electroencephalography (theta, alpha, beta, gamma, as well as the theta-beta ratio) at 1 month of age prospectively predicts socioemotional behavioral problems at 12 and 24 months. Data from 185 sociodemographically diverse mother-infant dyads (53.51% female; 38.92% White; 44.32% Hispanic) were included in the analysis. Results indicated that whole-brain resting brain function at 1 month of age did not significantly predict socioemotional behavioral problems at 12 months of age; however, higher whole-brain relative theta and lower whole-brain relative alpha at 1 month significantly predicted more socioemotional behavioral problems by 24 months of age. Exploratory analyses examining regional brain activity are also presented. Together, these findings suggest that resting brain activity at 1 month of age may be an early indicator of later socioemotional behavioral problems in a diverse, nonclinical sample. (PsycInfo Database Record (c) 2026 APA, all rights reserved).",
+      "authors": [
+        "Ji Young Song",
+        "Aislinn Sandre",
+        "Kimberly G Noble",
+        "Sonya V Troller-Renfree"
+      ],
+      "published_date": "2026-Aug-31",
+      "indexed_date": "",
+      "journal": "Developmental psychology",
+      "doi": "10.1037/dev0002253",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42671816/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 22
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42669817",
+      "title": "Neuroelectrophysiological Characteristics of the Attention Network in Children with Obstructive Sleep Apnea Accompanied by ADHD-Like Symptoms.",
+      "abstract": "ObjectiveTo investigate the neuroelectrophysiological characteristics of children with obstructive sleep apnea (OSA) accompanied by attention deficit hyperactivity disorder (ADHD)-like symptoms using attention network test (ANT) task-state electroencephalography analysis.MethodsAll participants completed the Attention Deficit Hyperactivity Disorder rating scale. Electroencephalography data were collected using 32 leads while the participants performed the ANT, followed by polysomnography.ResultsOf the 87 children, 21 were in the control group, 56 were in the OSA group, and 10 were in the OSA accompanied by ADHD-like symptoms group (OSA-co-ADHD). Each group had similar response time and accuracy for the different ANT conditions. At the O2 electrode, compared with the controls, the latency of the P1 component in the OSA group was shorter (P < 0.05). During the alerting network stage, in the PZ electrode, the beta band energy of the OSA-co-ADHD group was greater than that of the control group (Z -3.067, P = 0.006). During the executive control network stage, at the CZ electrode, the OSA-co-ADHD group exhibited higher alpha band energy than the OSA group (P < 0.05). During the alerting and orienting network phases, the connections of multiple brain regions changed (all P < 0.05), while the executive control network remained unchanged.ConclusionExcessive activation of the alerting network, reorganization of the orienting network in the brain, and compensation for inhibitory control during the process of the executive control network may be important characteristics of children with OSA accompanied by ADHD-like symptoms.",
+      "authors": [
+        "Yunxiao Wu",
+        "Changming Wang",
+        "Dandi Ma",
+        "Zhifei Xu",
+        "Xiao-Lin Ning"
+      ],
+      "published_date": "2026-Aug-30",
+      "indexed_date": "",
+      "journal": "Clinical EEG and neuroscience",
+      "doi": "10.1177/15500594261477456",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42669817/",
+      "categories": [],
+      "keywords": [
+        "OSA",
+        "attention",
+        "brain networks",
+        "child",
+        "time-frequency analysis"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 22
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42671544",
+      "title": "Task Relevance Modulates Early Threat and Prediction Signals in Face Processing: An Event-Related Potential Study.",
+      "abstract": "Threat and prediction signals are proposed to influence perceptual processing automatically. Here, we examine how the pre-allocation of spatial attention and the task relevance of the stimulus modulate early neural responses to likely and unlikely facial expressions. Thirty participants viewed pairs of bilaterally presented stimuli consisting of either faces (one emotional, one neutral) or Gabor patches (one tilted, one vertical). Electroencephalography was recorded, and early ERPs associated with visual processing (P1 and N170) were analyzed. Participants were explicitly informed of the probabilities with which each facial expression would appear, and then engaged in one of three tasks: judging the emotion of facial expressions, the orientation of Gabor patches, or the location of missing pixels at a central fixation cross. We observed that event probabilities modulated P1 amplitudes and that facial threat modulated N170 amplitudes. Critically, these modulations were reliable only when facial expressions were task relevant. They were absent when faces were task irrelevant, including when spatial attention remained pre-allocated to the face locations. Together, these findings suggest that early neural responses to threat and prediction signals depend on task-relevant engagement with the stimulus rather than on the pre-allocation of spatial attention alone, constraining accounts that characterize these effects as automatic.",
+      "authors": [
+        "Philip T Chalk",
+        "Derek H Arnold",
+        "Alan J Pegna"
+      ],
+      "published_date": "2026-Aug-27",
+      "indexed_date": "",
+      "journal": "Journal of cognitive neuroscience",
+      "doi": "10.1162/jocn.a.2692",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42671544/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 22
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42669399",
       "title": "Behavioral and spectral electroencephalographic biomarkers of epileptogenesis, disease progression, and drug resistance in a longitudinal lithium-pilocarpine model of temporal lobe epilepsy.",
       "abstract": "Temporal lobe epilepsy (TLE) is linked to progressive alterations in brain network dynamics, leading to behavioral comorbidities and emergence of drug resistance; yet the underlying mechanistic and synaptic substrates remain incompletely understood. Here, we performed longitudinal phase-specific characterization of network dysfunction in TLE employing a lithium-pilocarpine-induced model in 7-week male Wistar rats. We integrated behavioral and electroencephalographic (EEG) analyses at five timepoints: baseline, acute, latent, chronic phases, and after assessment of drug-resistant epilepsy (DRE). After the chronic phase, responsiveness to phenobarbital (PB), a standardized approach for DRE characterization, was assessed via video monitoring to identify drug-resistant (DRUG-R) and drug-sensitive (DRUG-S) subpopulations. Our data show that epileptic rats exhibited progressive and phase-dependent behavioral and EEG alterations. Behavioral profiling revealed a hypermotor phenotype, impairment in burrowing natural behavior, altered phase-specific response to anxiety and depressive-associated behavioral paradigms, and progressive memory impairment. Following PB treatment, the identified DRUG-R subpopulation displayed specific hyperactive behavioral traits compared with DRUG-S, especially in anxiety-associated and burrowing behaviors. Spectral EEG analysis revealed modulation of frequency bands across disease stages, particularly in Theta and Delta power, and descriptive analyses attempted to stratify animals based on different responsiveness to PB. Lastly, correlation analyses supported associations between EEG, frequency of seizures and behavioral measures, especially in the anxiety domain and declarative memory. This study, moving beyond a seizure-centric perspective, evidences that TLE induces progressive and phase-specific reorganization of cortical activity that relapse on distinct electrophysiological and behavioral features, offering a novel framework to identify translational stage-related signatures of epileptogenesis and DRE.",
@@ -475,6 +886,96 @@
       "publication_types": [
         "Journal Article",
         "Review"
+      ],
+      "extra": {
+        "prefilter_score": 21
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42669756",
+      "title": "Transient Acute-onset Holmes-like Tremor After Cortical Stroke.",
+      "abstract": "Holmes tremor is a low-frequency movement disorder combining rest, postural and intention tremor, developing weeks to months after lesions involving the brainstem, thalamus, or cerebellothalamic pathways. We report an acute-onset Holmes-like tremor following an isolated precentral cortical ischemic stroke. A 68-year-old man presented with acute right-sided facial and upper limb weakness and aphasia, with rapid clinical improvement. Within 24 hours, he developed rhythmic low-frequency pronation-supination movements of the right hand and forearm, present at rest and enhanced during posture and voluntary movement. EEG showed no epileptiform discharges or cortical correlates, and lacosamide produced no clinical benefit. Multichannel surface polygraphy and accelerometry demonstrated relatively regular oscillations at approximately 3 Hz at rest and 3.5-4 Hz during action, supporting a Holmes-like tremor phenotype. Brain MRI revealed acute ischemic lesions confined to the left precentral cortex, without involvement of the thalamus, brainstem, basal ganglia, or cerebellum. The tremor resolved within days and did not recur at 1-month follow-up. This case is unusual because of the acute onset, isolated precentral cortical lesions, distal predominance of tremor, and spontaneous remission. The absence of prior tremor, the close temporal relationship with the new infarct, and complete recovery suggest that the acute cortical lesion was the most likely trigger. The cortical localization is consistent with network-based models suggesting that Holmes tremor may arise from disruption of a distributed motor circuit rather than a single anatomical structure. The rapid resolution supports the hypothesis of a transient functional network disturbance rather than a stable oscillatory circuit dysfunction.",
+      "authors": [
+        "Arianna Scartezzini",
+        "Giovanna M Squintani",
+        "Cecilia Zivelonghi",
+        "Bruno Bonetti",
+        "Michele Tinazzi",
+        "Fabio Paio"
+      ],
+      "published_date": "2026-Aug-31",
+      "indexed_date": "2026-08-31",
+      "journal": "Neurological sciences : official journal of the Italian Neurological Society and of the Italian Society of Clinical Neurophysiology",
+      "doi": "10.1007/s10072-026-09356-y",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42669756/",
+      "categories": [],
+      "keywords": [
+        "Acute-onset tremor",
+        "Holmes tremor",
+        "Ischemic stroke",
+        "Tremor network"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Case Reports"
+      ],
+      "extra": {
+        "prefilter_score": 21
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42671131",
+      "title": "Subspace reverse-correlation estimation of receptive fields during free viewing.",
+      "abstract": "Accurately mapping receptive fields under naturalistic viewing requires correcting for distortions introduced by eye movements. Current approaches often rely on parameterized \"shifter networks\" optimized with Poisson generalized linear models, but these methods are computationally intensive and limited to small regions of interest. We present a new framework that exploits the translation properties of Hartley basis functions to model eye position effects directly as phase shifts, eliminating the need for explicit retinal image reconstruction. This formulation admits closed-form gradients, enabling efficient parameter optimization and rapid convergence. Validation on simulated data shows that the method accurately recovers both ground-truth receptive fields and the underlying image transformation. Applied to high-density mouse V1 recordings, the approach substantially improves receptive field sharpness compared to naive estimates. While the method is specific to Hartley basis stimuli, once calibrated, it provides a reusable mapping between eye position and retinal translation. This efficiency and scalability make the technique a practical tool for receptive field mapping in free-viewing experiments and for integration with optical imaging and large-scale electrophysiology. We discuss the relative advantages, limitations, and applicability of the method in comparison with existing convolutional neural network/shifter-network approaches.",
+      "authors": [
+        "S Amin Moosavi",
+        "Elaine Tring",
+        "Dario L Ringach"
+      ],
+      "published_date": "2026-Aug-03",
+      "indexed_date": "2026-08-31",
+      "journal": "Journal of vision",
+      "doi": "10.1167/jov.26.8.9",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42671131/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 21
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42673553",
+      "title": "Association Between Alzheimer Pathology, Sleep, and Cognition in Patients With Late-Onset Unexplained Epilepsy.",
+      "abstract": "Late-onset unexplained epilepsy (LOUE) has been linked to accelerated cognitive decline. However, the role of neurodegenerative proteins and whether they exert their effects through sleep-related mechanisms remain unexplored in this population. The goal of this study was to investigate the association of plasma p-tau217, a measure of Alzheimer disease (AD) pathology, with cognition in LOUE and its association with sleep. Participants with LOUE, with new-onset unprovoked seizures, age at onset 55 years or older, and absence of cortical lesions on MRI, were prospectively recruited. They underwent cognitive testing which included the extended Preclinical Alzheimer Cognitive Composite (PACC5). A 24-hour EEG was obtained, and sleep manually scored. Measures of sleep macroarchitecture and N2/N3 microarchitecture were extracted including slow oscillation (SO), fast spindle (FS), slow spindle (SS), and spindle-SO coupling measures. Eighty-five participants enrolled (mean age 71.3 ± 7.1 years; 49% female). The average PACC5 Z score (±SD) was -0.63 ± 1.0. Higher plasma levels of log-transformed p-tau217 (per 1 unit increase) were associated with poorer cognition, PACC5 (β = -0.66; 95% CI -1.19 to -0.13; p = 0.0017), after adjusting for age, sex, and education. The severity of epilepsy modulated this relationship: individuals with both elevated p-tau217 and medication-refractory epilepsy exhibited worse cognitive performance (refractory epilepsy * p-tau217 interaction term β = -1.49; 95% CI -2.94 to -0.05; p = 0.04). Higher plasma p-tau217 levels were associated with reduced spindle-SO coupling. Mediation analysis indicated that approximately 24% of the association between p-tau217 and cognition was accounted for by spindle-SO coupling (95% CI 3%-85%, p = 0.032). In individuals with LOUE, elevated plasma p-tau217 was associated with both cognitive impairment and disrupted sleep microarchitecture, with the most pronounced cognitive deficits observed in individuals with medication refractory epilepsy. These findings support the utility of plasma p-tau217 as a biomarker in this population and underscore the role of sleep processes in the relationship between neurodegenerative pathology and cognition in older adults with epilepsy.",
+      "authors": [
+        "Rani A Sarkis",
+        "Hyun-Sik Yang",
+        "Lei Liu",
+        "Alice D Lam",
+        "Milena Pavlova",
+        "Hernan Nicolas Lemus",
+        "Nataliia Kozhemiako",
+        "Alexis Hankerson",
+        "Rebecca Amariglio",
+        "Page B Pennell",
+        "Gad A Marshall",
+        "Shaun Purcell"
+      ],
+      "published_date": "2026-Sep-22",
+      "indexed_date": "2026-08-31",
+      "journal": "Neurology",
+      "doi": "10.1212/wnl.0000000000218476",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42673553/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
       ],
       "extra": {
         "prefilter_score": 21
@@ -575,6 +1076,118 @@
       ],
       "extra": {
         "prefilter_score": 17
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42670716",
+      "title": "Sleep Deprivation, Cytokine Dysregulation, and the Risk of Cardiac Arrhythmia in Dogs.",
+      "abstract": "Sleep deprivation is increasingly recognised as a potent physiological stressor capable of altering immune function and promoting systemic inflammation. Emerging evidence suggests that these inflammatory changes may contribute to cardiac electrical instability and arrhythmia risk. However, the specific cytokines involved and their mechanistic pathways in canine models remain poorly characterised. This study aimed to (1) identify key cytokines consistently associated with sleep deprivation through a systematic review of the literature, and (2) perform a canine-specific network and Gene Ontology enrichment analysis to characterise their interactions and potential mechanistic links to arrhythmogenesis. A structured search of PubMed and Google Scholar identified 25 articles, of which 24 unique records were screened and seven met all inclusion criteria. From these studies, seven cytokines (IL-6, IL-17A, TNF, IL-1, IL-21, IFN-γ, and CRP) were consistently associated with sleep deprivation and were subjected to canine-specific protein-protein interaction analysis using the STRING database. Network topology and enriched biological processes were evaluated to identify mechanistic pathways connected to cardiac electrophysiology. Network analysis revealed several highly interconnected signalling nodes, including IL-10, IL-1β, JAK1, JAK2, IL-6, STAT3, TNF, IFN-γ, IL-2, and IL-4. Enrichment analysis indicated activation of processes such as chemokine production, positive regulation of osteoclast differentiation, JAK-STAT signalling, membrane protein ectodomain proteolysis, and regulation of vitamin D metabolism. Integration of primary and secondary networks revealed three major clusters cantered on interleukin signalling, TNF-driven pathways, and CRP-associated acute-phase responses. Collectively, these pathways converge on cytokine-mediated mechanisms known to influence myocardial conduction and increase arrhythmia susceptibility. These findings indicate that sleep deprivation activates coordinated inflammatory networks that may predispose dogs to arrhythmias through multiple interconnected biological pathways. Therapeutic strategies addressing both inflammation and electrical instability may be required to fully manage arrhythmia risk in sleep-deprived canine patients.",
+      "authors": [
+        "Adithya Sethumadhavan",
+        "Arun Hs Kumar"
+      ],
+      "published_date": "2026-Sep",
+      "indexed_date": "2026-08-31",
+      "journal": "Veterinary medicine and science",
+      "doi": "10.1002/vms3.71212",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42670716/",
+      "categories": [],
+      "keywords": [
+        "arrhythmia",
+        "canine myocardium",
+        "cytokines",
+        "inflammation",
+        "sleep deprivation"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Systematic Review"
+      ],
+      "extra": {
+        "prefilter_score": 17
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.07.15.738748",
+      "title": "Conditional Deletion of All Neurexins Defines Diversity of Essential Synaptic Organizer Functions for Neurexins",
+      "abstract": "Presynaptic neurexins are key regulators of synapse properties that arguably represent the best-studied synaptic adhesion molecules. Despite thousands of papers, however, no direct comparison of overall neurexin functions in different types of synapses is available. A decade ago, we provided such an analysis but we recently retracted this paper because four images contained microduplications that, although without discernible impact on the paper's conclusions, could not be corrected. As a result, the scientific community lost access to primary data that established the fundamental principle that neurexins perform profoundly different functions in different types of synapses. In the present study, we have therefore reanalyzed the original raw data and expanded their conclusions with new experiments to document, in a single study, the basic contributions of neurexins to different synapses. We used triple conditional knockout mice targeting all neurexins except for Neurexin-1r and applied neuron-specific manipulations combined with slice electrophysiology, two-photon Ca2+-imaging, and immunohistochemistry. With this approach, we focused on excitatory climbing-fiber synapses in the cerebellum and on inhibitory synapses formed by parvalbumin- or somatostatin-positive neurons in the cerebellum, hippocampus, and medial prefrontal cortex. Our results show that pan-neurexin deletions produce dramatically different phenotypes in synapses, ranging from modest to massive impairments in synapse assembly (climbing-fiber and parvalbumin-positive synapses) to severe but selective decreases in action potential-induced presynaptic Ca2+-transients (somatostatin-positive synapses). Thus, neurexins perform powerful but distinct context-dependent roles in different synapses that shape the brain's circuits.",
+      "authors": [
+        "Jiang, M.",
+        "Li, Y.",
+        "Artyukhova, M.",
+        "Zhang, L.",
+        "Luo, S.",
+        "Zhan, W.",
+        "Zhang, B.",
+        "Gokce, O.",
+        "Sudhof, T. C."
+      ],
+      "published_date": "2026-08-31",
+      "indexed_date": "2026-08-31",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.07.15.738748",
+      "url": "https://doi.org/10.64898/2026.07.15.738748",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "2",
+        "published": "NA",
+        "prefilter_score": 17
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42670848",
+      "title": "Evaluating BioEmu-Generated Kinase Ensembles Reveals Structure Selection as the Virtual Screening Bottleneck.",
+      "abstract": "Virtual screening (VS) is an essential tool in drug discovery to prioritize potential drug candidates from vast chemical space. One key challenge limiting its performance is accounting for protein conformational flexibility. While ensemble docking methods have been developed to address this challenge by incorporating multiple protein conformations, these methods often rely on computationally intensive physics-based simulations to sample the relevant conformational space. Generative machine learning models offer a highly promising, scalable, and high-throughput alternative to overcome the limitations of these traditional approaches. We therefore investigate whether conformational ensembles generated by BioEmu, a recently developed generative model, can improve VS performance for kinase targets. Using the DUD-E benchmark data set and a validated AutoDock-GPU protocol, we generated and analyzed nearly 1300 structures across 26 kinases (approximately 50 structures each). BioEmu produces structurally diverse ensembles with substantial performance variation among individual structures. However, ensemble methods employing consensus or best-score selection fail to improve upon, and often degrade, VS performance compared to crystal structure baselines. To investigate the source of this limitation, we quantified the relationship between KinCoRe-based conformational state classification and screening performance. By calculating the coefficient of determination (R2) across the kinase subset, we found that the structural features governing VS performance differ substantially from those defining standard conformational states, with KinCoRe classifications leaving over 84% of performance variance unexplained. This critical gap demonstrates that structural diversity alone is insufficient to guarantee screening success. We show that prospective structure selection, rather than structure generation, represents the primary bottleneck in ensemble-based VS, highlighting an urgent need for novel structural descriptors to identify high-performing conformations.",
+      "authors": [
+        "Jaeoh Shin",
+        "Keehyoung Joo",
+        "Jejoong Yoo"
+      ],
+      "published_date": "2026-Aug-24",
+      "indexed_date": "2026-08-31",
+      "journal": "Journal of chemical information and modeling",
+      "doi": "10.1021/acs.jcim.6c01677",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42670848/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 14
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42671566",
+      "title": "How the Percept of Face Familiarity Unfolds Over Time.",
+      "abstract": "A single glance at a face can evoke a sense of familiarity, yet how this percept unfolds over time remains unclear. We adopted a frequency-tagging EEG paradigm to investigate neural responses to face familiarity across different SOAs. Streams of unfamiliar faces were presented at base frequencies of 8, 12, 16, and 20 Hz (SOAs: 125, 83, 62.5, and 50 msec), with personally familiar faces inserted periodically at 2 Hz. Significant oddball responses were observed at all four SOAs over occipito-temporal regions, indicating reliable discrimination between familiar and unfamiliar faces even at the shortest SOA of 50 msec. Time domain analysis revealed a significant N170 component in all four conditions, with amplitudes increasing progressively as SOA lengthened. In contrast, a reliable P300 component emerged only at SOAs of 83 msec and longer. These findings suggest two temporally distinct stages of familiar face processing: an early stage indexed by the N170 that scales with available processing time and likely reflects familiarity-sensitive perceptual processing and a later stage indexed by P300 that requires a longer processing window and likely reflects higher-order evaluative processing.",
+      "authors": [
+        "Mengdan Sun",
+        "Menglei Yao",
+        "Xiaoqing Gao"
+      ],
+      "published_date": "2026-Aug-27",
+      "indexed_date": "",
+      "journal": "Journal of cognitive neuroscience",
+      "doi": "10.1162/jocn.a.2690",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42671566/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 13
       }
     }
   ]
