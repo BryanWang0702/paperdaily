@@ -1,10 +1,88 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-09-08T23:33:07.437989+00:00",
+  "fetched_at": "2026-09-09T16:49:56.721462+00:00",
   "window": {
-    "start": "2026-09-07",
-    "end": "2026-09-09"
+    "start": "2026-09-08",
+    "end": "2026-09-10"
   },
-  "count": 0,
-  "papers": []
+  "count": 3,
+  "papers": [
+    {
+      "source": "arxiv",
+      "source_id": "2609.08788v1",
+      "title": "Adaptive Anisotropic Attention for Axis-Structured Signals",
+      "abstract": "Dense self-attention treats all token pairs as equally plausible before learning, an interaction-isotropic prior that can be mismatched to structured signals. For structured, low signal-to-noise ratio (SNR) signals such as EEG, dependencies are organized along the electrode and time axes, and this uniform prior exposes each token to many irrelevant interactions. We introduce Adaptive Anisotropic Attention (AAA), which splits attention into two paths: a temporal path, where each token attends to the tokens of its own electrode across time, and a spatial path, where it attends to the tokens of the other electrodes at the same time step. A small gate predicts, for every token, a convex combination of the two path outputs: two non-negative weights that sum to one. On six EEG downstream tasks, the resulting model, AXON (AXis-factorized Operator Network), improves mean balanced accuracy over a dense baseline under both linear probing and full fine-tuning. We show that both paths (temporal and spatial) are necessary and that the weighted sum beats a hard choice of one path; most of the benefit comes from the gate learning a different temporal/spatial balance at each layer of the network. Controlled audio spectrogram experiments show that axis factorization transfers beyond EEG. These results suggest that aligning attention with the natural axes of structured signals provides a useful inductive bias.",
+      "authors": [
+        "Mahir Jain",
+        "Parshva Runwal",
+        "Aditya Ray Mishra",
+        "Arvasu Kulkarni",
+        "Sandeep Singh",
+        "Siddharth Panwar"
+      ],
+      "published_date": "2026-09-08",
+      "indexed_date": "2026-09-08",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2609.08788v1",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2609.08500v1",
+      "title": "An Evidence-Aware Framework for EEG Microstate Analysis: Improved Sensitivity to Alzheimer's Disease and Ageing",
+      "abstract": "Electroencephalography (EEG) microstate analysis commonly converts each scalp topography into a winner-take-all hard label and summarises the resulting sequence using duration, occurrence, coverage, transitions, and symbolic complexity. Although interpretable, this readout discards evidence strength, assignment ambiguity, and low-confidence periods. We introduce a template evidence trajectory framework that retains, at each sampled Global Field Power (GFP) peak, the evidence for all templates or subject-specific topographic communities. Conventional hard labels are treated as a compressed readout of this multivariate trajectory. We derive two evidence-aware extensions of classical descriptors: high-evidence episode duration and episode rate, which quantify temporal clustering and fragmentation of strong state evidence, and null-state Lempel-Ziv complexity (LZC), which explicitly encodes insufficient-evidence periods. We evaluated the framework across four resting-state EEG datasets spanning Alzheimer's disease and age-related variation. Fixed-state models included K-means, AAHC, and HMMs at K = 4 and K = 7, together with adaptive subject-specific Leiden and Infomap communities. Across 32 dataset-model cases, trajectory-derived duration effects exceeded matched hard-label effects in all cases at the representative setting and in 30-32 cases across a broader parameter grid. Null-state LZC improved over traditional LZC in most cases, while classification showed modest but consistent gains for trajectory or combined features. Retaining template evidence therefore provides a more sensitive readout of EEG topographic state dynamics while remaining compatible with conventional microstate analysis.",
+      "authors": [
+        "Kaidong Wu",
+        "Haili Ye",
+        "Ptolemaios G Sarrigiannis",
+        "Daniel J Blackburn",
+        "Fei He"
+      ],
+      "published_date": "2026-09-08",
+      "indexed_date": "2026-09-08",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2609.08500v1",
+      "categories": [
+        "q-bio.NC"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2609.08106v1",
+      "title": "Nyström Attention Matches Full Attention for Cross-Sectional Stock Prediction",
+      "abstract": "MASTER's inter-stock multi-head attention -- the module responsible for modeling cross-sectional stock relationships -- accounts for 42.5% of model parameters and 25% of predictive value. We systematically decompose this module and uncover a surprising structure: the learned attention is near-uniform (perplexity 278/300), yet forcing exact uniformity eliminates all cross-sectional discrimination. Spectral analysis resolves this paradox: the deviation from uniformity is low-rank (effective rank ~65, top-10 modes capture 96.5% of energy), explaining why sparse approximations consistently fail while Nystrom low-rank attention (m=32 landmarks) matches full O(N^2) attention at O(mN) cost -- certified equivalent via TOST at both N=300 (5 seeds, Rank IC p=0.003) and N=800 (10 seeds, Rank IC p=0.034). Additional findings include: (i) attention anti-correlates with return similarity (Spearman rho = -0.614; on the industry-labeled subset, -0.645 unconditionally and -0.627 after controlling for industry, beta, and volatility), suggesting complementarity-seeking rather than correlation mining; (ii) all graph-based alternatives degrade performance, with hard masking worse than complete module removal; and (iii) at N ~ 3,500 with adapted architectures, no cross-stock module (GCN, Nystrom, or MASTER-style pipeline) significantly outperforms a per-stock LSTM baseline (n=4 seeds), indicating that the benefits observed at smaller scales do not trivially transfer. These results establish that the inter-stock attention's value resides in a compressible, dynamic, near-global redistribution that rewards low-rank approximation but resists sparsification.",
+      "authors": [
+        "Kunhan Guo"
+      ],
+      "published_date": "2026-09-08",
+      "indexed_date": "2026-09-08",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2609.08106v1",
+      "categories": [
+        "cs.LG",
+        "q-fin.ST"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    }
+  ]
 }
