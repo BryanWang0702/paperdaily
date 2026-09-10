@@ -1,33 +1,29 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-09-09T23:26:18.904089+00:00",
+  "fetched_at": "2026-09-10T16:36:16.877056+00:00",
   "window": {
-    "start": "2026-09-08",
-    "end": "2026-09-10"
+    "start": "2026-09-09",
+    "end": "2026-09-11"
   },
-  "count": 3,
+  "count": 2,
   "papers": [
     {
       "source": "arxiv",
-      "source_id": "2609.08788v1",
-      "title": "Adaptive Anisotropic Attention for Axis-Structured Signals",
-      "abstract": "Dense self-attention treats all token pairs as equally plausible before learning, an interaction-isotropic prior that can be mismatched to structured signals. For structured, low signal-to-noise ratio (SNR) signals such as EEG, dependencies are organized along the electrode and time axes, and this uniform prior exposes each token to many irrelevant interactions. We introduce Adaptive Anisotropic Attention (AAA), which splits attention into two paths: a temporal path, where each token attends to the tokens of its own electrode across time, and a spatial path, where it attends to the tokens of the other electrodes at the same time step. A small gate predicts, for every token, a convex combination of the two path outputs: two non-negative weights that sum to one. On six EEG downstream tasks, the resulting model, AXON (AXis-factorized Operator Network), improves mean balanced accuracy over a dense baseline under both linear probing and full fine-tuning. We show that both paths (temporal and spatial) are necessary and that the weighted sum beats a hard choice of one path; most of the benefit comes from the gate learning a different temporal/spatial balance at each layer of the network. Controlled audio spectrogram experiments show that axis factorization transfers beyond EEG. These results suggest that aligning attention with the natural axes of structured signals provides a useful inductive bias.",
+      "source_id": "2609.09786v1",
+      "title": "NEXUS-MI: Communication-Aware Federated Personalization for Gateway-Coordinated Motor-Imagery Brain-Computer Interfaces",
+      "abstract": "Electroencephalography (EEG)-based motor-imagery brain-computer interfaces (MI-BCIs) vary across subjects and sessions, complicating personalization from limited calibration data. Federated learning can exploit shared representations without centralizing raw EEG, but existing federated MI studies largely assume regular synchronization. We introduce NEXUS-MI, a gateway-coordinated federated personalization framework that treats synchronization as a coupled learning-and-communication control problem. Raw EEG and classifier heads remain local, while an edge coordinator maintains the shared backbone. We evaluate NEXUS-MI through offline replay using BCI Competition IV Dataset 2a (BCICIV-2a; 9 subjects, 4 classes) and OpenBMI (54 subjects, 2 classes). Session 1 supports backbone learning, and Session 2 provides limited-calibration personalization and held-out testing. An ideal-link reference and six heterogeneous-link policies characterize gateway participation, buffering, stale-update admission, and backbone-download control. The principal comparison holds delayed-update handling fixed while contrasting non-adaptive and communication-aware synchronization. Paired subject-level comparisons use Holm adjustment, and robustness across five matched realizations is assessed by hierarchical bootstrap. Communication-aware coordination reduced server-to-client backbone traffic by approximately 42% on both datasets, while cohort-level accuracy differences were small and realization-dependent. Cohort averages also concealed subject-level vulnerability, with losses reaching approximately 12 percentage points on BCICIV-2a relative to the ideal-link reference. These findings establish gateway synchronization as an explicit design variable in federated MI personalization and motivate joint evaluation of personalized accuracy, communication cost, update freshness, and subject-level reliability.",
       "authors": [
-        "Mahir Jain",
-        "Parshva Runwal",
-        "Aditya Ray Mishra",
-        "Arvasu Kulkarni",
-        "Sandeep Singh",
-        "Siddharth Panwar"
+        "Daniel Adu Worae",
+        "Aarthy Nagarajan"
       ],
-      "published_date": "2026-09-08",
-      "indexed_date": "2026-09-08",
+      "published_date": "2026-09-09",
+      "indexed_date": "2026-09-09",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2609.08788v1",
+      "url": "https://arxiv.org/abs/2609.09786v1",
       "categories": [
         "cs.LG",
-        "cs.AI"
+        "cs.NI"
       ],
       "keywords": [],
       "publication_types": [
@@ -37,46 +33,25 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2609.08500v1",
-      "title": "An Evidence-Aware Framework for EEG Microstate Analysis: Improved Sensitivity to Alzheimer's Disease and Ageing",
-      "abstract": "Electroencephalography (EEG) microstate analysis commonly converts each scalp topography into a winner-take-all hard label and summarises the resulting sequence using duration, occurrence, coverage, transitions, and symbolic complexity. Although interpretable, this readout discards evidence strength, assignment ambiguity, and low-confidence periods. We introduce a template evidence trajectory framework that retains, at each sampled Global Field Power (GFP) peak, the evidence for all templates or subject-specific topographic communities. Conventional hard labels are treated as a compressed readout of this multivariate trajectory. We derive two evidence-aware extensions of classical descriptors: high-evidence episode duration and episode rate, which quantify temporal clustering and fragmentation of strong state evidence, and null-state Lempel-Ziv complexity (LZC), which explicitly encodes insufficient-evidence periods. We evaluated the framework across four resting-state EEG datasets spanning Alzheimer's disease and age-related variation. Fixed-state models included K-means, AAHC, and HMMs at K = 4 and K = 7, together with adaptive subject-specific Leiden and Infomap communities. Across 32 dataset-model cases, trajectory-derived duration effects exceeded matched hard-label effects in all cases at the representative setting and in 30-32 cases across a broader parameter grid. Null-state LZC improved over traditional LZC in most cases, while classification showed modest but consistent gains for trajectory or combined features. Retaining template evidence therefore provides a more sensitive readout of EEG topographic state dynamics while remaining compatible with conventional microstate analysis.",
+      "source_id": "2609.09728v1",
+      "title": "EEGBind: Detecting Source-Level Interictal Epileptiform Discharges via EEG-Centric Multimodal Binding",
+      "abstract": "Source-level analysis of interictal epileptiform discharges (IEDs) is relevant to presurgical evaluation and treatment planning because it helps characterize where epileptiform activity is likely to arise. Beyond detecting whether an IED is present, this setting requires assigning IED-positive activity to clinically meaningful brain-region categories. This setting is challenging because source-region evidence in short electroencephalography (EEG) windows can be subtle, partial, and affected by subject variability, class imbalance, and imperfect multimodal context. We present EEGBind, an EEG-centric multimodal binding framework for five-class source-level IED classification. EEGBind treats EEG as the primary modality and binds synchronized video-context features around an EEG-centric representation. Instead of relying on early or overly strong multimodal fusion, which may perturb the source-sensitive EEG representation, EEGBind uses video context as auxiliary evidence for robust classification. A view-consistent repair stage is further used to improve hidden-set robustness while preserving the learned source-class boundary. On the NeuroMM 2026 Grand Challenge Track 3 NMM-Source-IED benchmark, EEGBind achieves 0.8395 on weighted-F1 and outperforms strong competitors. These results support EEG-centric multimodal binding as a practical strategy for source-level IED classification. The open-source code is available at https://github.com/HKUSTGZ-ML4Health-Lab/NeuroMM2026_IED_Detection.",
       "authors": [
-        "Kaidong Wu",
-        "Haili Ye",
-        "Ptolemaios G Sarrigiannis",
-        "Daniel J Blackburn",
-        "Fei He"
+        "Muchen Li",
+        "Anglin Liu",
+        "Xuetian Gao",
+        "Ruijian Xu",
+        "Jintai Chen"
       ],
-      "published_date": "2026-09-08",
-      "indexed_date": "2026-09-08",
+      "published_date": "2026-09-09",
+      "indexed_date": "2026-09-09",
       "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2609.08500v1",
+      "doi": "10.1145/3767308.3837697",
+      "url": "https://arxiv.org/abs/2609.09728v1",
       "categories": [
+        "cs.LG",
+        "cs.MM",
         "q-bio.NC"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2609.08106v1",
-      "title": "Nyström Attention Matches Full Attention for Cross-Sectional Stock Prediction",
-      "abstract": "MASTER's inter-stock multi-head attention -- the module responsible for modeling cross-sectional stock relationships -- accounts for 42.5% of model parameters and 25% of predictive value. We systematically decompose this module and uncover a surprising structure: the learned attention is near-uniform (perplexity 278/300), yet forcing exact uniformity eliminates all cross-sectional discrimination. Spectral analysis resolves this paradox: the deviation from uniformity is low-rank (effective rank ~65, top-10 modes capture 96.5% of energy), explaining why sparse approximations consistently fail while Nystrom low-rank attention (m=32 landmarks) matches full O(N^2) attention at O(mN) cost -- certified equivalent via TOST at both N=300 (5 seeds, Rank IC p=0.003) and N=800 (10 seeds, Rank IC p=0.034). Additional findings include: (i) attention anti-correlates with return similarity (Spearman rho = -0.614; on the industry-labeled subset, -0.645 unconditionally and -0.627 after controlling for industry, beta, and volatility), suggesting complementarity-seeking rather than correlation mining; (ii) all graph-based alternatives degrade performance, with hard masking worse than complete module removal; and (iii) at N ~ 3,500 with adapted architectures, no cross-stock module (GCN, Nystrom, or MASTER-style pipeline) significantly outperforms a per-stock LSTM baseline (n=4 seeds), indicating that the benefits observed at smaller scales do not trivially transfer. These results establish that the inter-stock attention's value resides in a compressible, dynamic, near-global redistribution that rewards low-rank approximation but resists sparsification.",
-      "authors": [
-        "Kunhan Guo"
-      ],
-      "published_date": "2026-09-08",
-      "indexed_date": "2026-09-08",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2609.08106v1",
-      "categories": [
-        "cs.LG",
-        "q-fin.ST"
       ],
       "keywords": [],
       "publication_types": [
