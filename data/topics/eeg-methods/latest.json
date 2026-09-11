@@ -1,6 +1,6 @@
 {
   "date": "2026-09-12",
-  "generated_at": "2026-09-11T16:42:04.761972+00:00",
+  "generated_at": "2026-09-11T23:31:37.514815+00:00",
   "window": {
     "start": "2026-09-10",
     "end": "2026-09-12"
@@ -10,16 +10,16 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 84,
+  "raw_count": 95,
   "retrieved_source_counts": {
-    "pubmed": 172,
-    "biorxiv": 15,
+    "pubmed": 216,
+    "biorxiv": 18,
     "medrxiv": 4,
     "arxiv": 4
   },
   "raw_source_counts": {
-    "pubmed": 71,
-    "biorxiv": 9,
+    "pubmed": 79,
+    "biorxiv": 12,
     "arxiv": 4
   },
   "prefiltered_count": 40,
@@ -29,10 +29,12 @@
   "featured_count": 25,
   "source_counts": {
     "pubmed": 35,
-    "arxiv": 3,
-    "biorxiv": 2
+    "arxiv": 2,
+    "biorxiv": 3
   },
-  "errors": {},
+  "errors": {
+    "arxiv": "HTTPError: HTTP 429 from arXiv · reused 4 cached records"
+  },
   "ai": {
     "requested": true,
     "enabled": true,
@@ -40,8 +42,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 24,
-    "newly_summarized": 24,
+    "newly_ranked": 4,
+    "newly_summarized": 4,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -52,12 +54,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 7,
-      "prompt_tokens": 19893,
-      "prompt_cache_hit_tokens": 1792,
-      "prompt_cache_miss_tokens": 18101,
-      "completion_tokens": 4786,
-      "total_tokens": 24679
+      "requests": 2,
+      "prompt_tokens": 4083,
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 3571,
+      "completion_tokens": 933,
+      "total_tokens": 5016
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -66,27 +68,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.027709,
+    "run_cost_cny": 0.005447,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 7,
-        "prompt_tokens": 19893,
-        "prompt_cache_hit_tokens": 1792,
-        "prompt_cache_miss_tokens": 18101,
-        "completion_tokens": 4786,
-        "total_tokens": 24679
+        "requests": 2,
+        "prompt_tokens": 4083,
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 3571,
+        "completion_tokens": 933,
+        "total_tokens": 5016
       },
-      "run_cost_cny": 0.027709,
+      "run_cost_cny": 0.005447,
       "daily_usage": {
-        "requests": 7,
-        "prompt_tokens": 19893,
-        "prompt_cache_hit_tokens": 1792,
-        "prompt_cache_miss_tokens": 18101,
-        "completion_tokens": 4786,
-        "total_tokens": 24679
+        "requests": 9,
+        "prompt_tokens": 23976,
+        "prompt_cache_hit_tokens": 2304,
+        "prompt_cache_miss_tokens": 21672,
+        "completion_tokens": 5719,
+        "total_tokens": 29695
       },
-      "daily_cost_cny": 0.027709,
+      "daily_cost_cny": 0.033156,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -250,40 +252,49 @@
       }
     },
     {
-      "source": "arxiv",
-      "source_id": "2609.10961v1",
-      "title": "When More Is Not Better: Component Anti-Synergy in a P300 Speller",
-      "abstract": "P300 brain-computer interface (BCI) spellers can provide hands-free communication for people with severe motor impairments. Modern pipelines combine multiple individually promising components, often assuming that 'more-is-better'. We tested this assumption using a four-component full-factorial experiment varying the inclusion of Euclidean Alignment (EA), xDAWN spatial filtering, subject calibration, and language model priors on a public P300 dataset. Performance was evaluated using accuracy, repetitions, and information transfer rate (ITR) with mixed-effects models. Results show that the value of components is conditional rather than additive. Calibration was the strongest singular contributor, while EA compensated for its absence in zero-calibration settings. Adding independently useful components could also reduce performance, revealing component anti-synergy. Contrary to conventional wisdom, LM support was not universally beneficial: its effect depends strongly on the strength of the underlying EEG pipeline, while results from a larger LM showed a similar pattern. Together, these findings challenge maximal 'all-on' pipeline design and highlight the value of selecting spatial and language-support components according to the quality of available EEG evidence.",
+      "source": "pubmed",
+      "source_id": "42725030",
+      "title": "Interpretable self-supervised transformers for resting-state EEG analysis in Alzheimer's disease.",
+      "abstract": "Existing EEG-based methods have been constrained by limited availability of labeled data, hand-crafted features, poor spatio-temporal modeling, sub-optimal cross-hardware performance, and lack of interpretability due to being expensive and intrusive. To address these limitations, this study introduces innovative neural signal decoding techniques for cognitive state modeling in order to enhance the potential of AI-integrated models for early detection of Alzheimer's disease. This research introduces a self-supervised spatio-temporal transformer (STT-EEG) for early detection of Alzheimer's disease from resting-state EEG. This framework includes four key components: first, self-supervised pretraining on 111 healthy controls using masked auto-encoding and temporal order prediction to learn robust generalisable representations. Second, a novel spatial attention module (SAM) that explicitly captures both long-range temporal dependencies and channel interactions, reflecting the distributed network pathology of AD; third, cross-dataset transfer learning from 64-channel BioSemi to 19-channel Nihon Kohden systems, which showed strong hardware generalization; and finally, analyses of attention rollout and channel perturbation for clinically interpretable insights. The model was trained in a subject-wise 5-fold cross-validation fashion on the SRM dataset and fine-tuned on the OpenNeuro dataset (ds004504) consisting of 36 AD and 29 CN. On the same dataset, the accuracy of STT-EEG was 96.42% for AD vs. CN classification. The most significant improvement +7.08% was made with the help of self-supervised pretraining, followed by data augmentation +6.30% and the SAM +4.86%, as was confirmed in the ablation studies. For continuous prediction of MMSE scores, the Pearson correlation of the model was 0.872 and the mean absolute error (MAE) was 2.34 points. Regions of T3-T6, P3-Pz-P4 and O1-O2 were identified as areas of attention-based interpretability, which were consistent with the known neuropathology of AD that involved the temporoparietal lobe. STT-EEG strengths include the high interpretability of the framework, its spatio-temporal attention, and the fact that STT-EEG is a self-supervised learning method and can be used in an efficient and generalizable way.",
       "authors": [
-        "Lucas Yang",
-        "Rui Liu",
-        "Fusheng Wang"
+        "Syeda Shamaila Zareen",
+        "Nada Alzaben",
+        "Usman Ahmad",
+        "Talha Mahboob Alam",
+        "Asaad Algarni",
+        "Junsong Wang"
       ],
-      "published_date": "2026-09-10",
-      "indexed_date": "2026-09-10",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2609.10961v1",
-      "categories": [
-        "cs.LG"
+      "published_date": "2026",
+      "indexed_date": "2026-09-11",
+      "journal": "Frontiers in neuroinformatics",
+      "doi": "10.3389/fninf.2026.1899573",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42725030/",
+      "categories": [],
+      "keywords": [
+        "Alzheimer's disease",
+        "deep learning",
+        "interpretable attention",
+        "resting-state EEG",
+        "self-supervised learning",
+        "spatio-temporal transformer",
+        "transfer learning"
       ],
-      "keywords": [],
       "publication_types": [
-        "Preprint"
+        "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 26,
+        "prefilter_score": 66,
         "ai": {
-          "score": 88,
-          "topic": "Component anti-synergy in P300 BCI pipelines",
-          "reason": "Highly relevant empirical benchmarking of EEG pipeline components including calibration, Euclidean alignment, and xDAWN; directly informs small-label calibration and reproducible, non-GPU EEG analysis design.",
-          "summary": "The paper tested whether combining individually promising components in a P300 speller is additive using a four-component full-factorial experiment varying Euclidean Alignment, xDAWN spatial filtering, subject calibration, and language model priors on a public dataset. Results showed that component value is conditional rather than additive, with calibration the strongest singular contributor, anti-synergy between components, and language model support not universally beneficial.",
+          "score": 85,
+          "topic": "Self-supervised EEG transformers with cross-hardware transfer",
+          "reason": "Introduces interpretable self-supervised spatio-temporal transformers for resting-state EEG with cross-dataset transfer, directly relevant to lightweight, generalizable EEG methods and user calibration from small labeled data, though the Alzheimer's focus is less directly transferable to animal sleep.",
+          "summary": "The paper introduces STT-EEG, a self-supervised spatio-temporal transformer for early Alzheimer's disease detection from resting-state EEG. It achieved 96.42% accuracy for AD vs. CN classification and a Pearson correlation of 0.872 for MMSE prediction, with self-supervised pretraining contributing the largest ablation improvement (+7.08%).",
           "keywords": [
-            "P300 speller",
-            "brain-computer interface",
-            "component anti-synergy",
-            "Euclidean alignment",
-            "xDAWN"
+            "self-supervised learning",
+            "spatio-temporal transformer",
+            "resting-state EEG",
+            "Alzheimer's disease",
+            "interpretable attention"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -490,50 +501,42 @@
       }
     },
     {
-      "source": "pubmed",
-      "source_id": "42721971",
-      "title": "Distinct oscillatory neural rhythms support representational precision and confidence in working memory.",
-      "abstract": "Working memory enables the maintenance of information to guide behavior, yet its representations are inherently noisy and variable. To act effectively, observers must track the uncertainty of their own memory. However, the neural mechanisms supporting uncertainty representations in working memory remain poorly understood, particularly at the level of neural dynamics. Here, we combined electroencephalography (EEG) with a spatial visual working memory task that elicited trial-by-trial uncertainty reports to investigate how oscillatory activity encodes memory uncertainty. We identified two forms of uncertainty supported by distinct oscillatory neural activity. Using a probabilistic encoding-decoding model, we found that memory content can be reconstructed from alpha-band activity and that the precision of these representations predicts subsequent uncertainty reports, consistent with probabilistic mnemonic representations. In parallel, beta-band activity contained a scalar, magnitude-based representation of uncertainty. This signal exhibited slow, persistent dynamics across task epochs and tracked uncertainty reports for both the current and previous trials. Together, these findings show that the human brain multiplexes two forms of memory uncertainty, representational precision and a scalar confidence signal, across distinct oscillatory rhythms, providing a neural dynamical account of metacognitive access to working memory.",
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.09.04.749491",
+      "title": "Age-related hyperexcitability in the mouse inferior colliculus: evidence from sound-evoked local field potentials",
+      "abstract": "The inferior colliculus (IC) is a major midbrain convergence site critical for processing complex sounds and undergoes fundamental changes with age-related hearing loss (ARHL). Local field potentials (LFPs) represent pre-synaptic integration of excitatory and inhibitory signals in local neural populations. Here, we assessed age-related changes in sound-evoked IC LFPs in the CBA/CaJ mouse model of ARHL across the tonotopic axis. We recorded from 495 sites across four age groups (young: 4-6 months; middle: 8-14 months; old: 24-25 months; oldest old: 27-31 months), examining LFP responses from dorsal (low-frequency), medial (mid-frequency), and ventral (high-frequency) IC regions. Analysis of the onset depolarization (N1 component) in response to broadband noise bursts revealed significant age-related hyperexcitability in medial and dorsal regions, with oldest old animals showing enhanced responses while ventral regions were unaffected. Amplitude-intensity functions demonstrated significant age x level interactions across all regions, with oldest old animals exhibiting level-dependent hyperexcitability most pronounced at suprathreshold intensities. Time-frequency analysis of LFP spectral content (30-100 Hz) revealed a crossover pattern across medial and dorsal regions, with oldest old animals showing reduced power at low-to-moderate stimulus levels but enhanced power at high stimulus levels. Ventral regions showed a low-level reduction without suprathreshold enhancement. These findings reveal paradoxical enhancement of neural activity in the aging IC, with the most pronounced changes in dorsal and medial regions rather than ventral regions most affected by peripheral hearing loss, suggesting that central hyperexcitability depends on residual afferent drive and implicating region-specific alterations in excitatory-inhibitory balance underlying central presbycusis.",
       "authors": [
-        "Yang Di",
-        "Xingwei An",
-        "Hsin-Hung Li"
+        "Brunelle, D. L.",
+        "Fawcett, T. J.",
+        "Walton, J. P."
       ],
-      "published_date": "2026-Sep-10",
-      "indexed_date": "",
-      "journal": "Current biology : CB",
-      "doi": "10.1016/j.cub.2026.08.041",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42721971/",
-      "categories": [],
-      "keywords": [
-        "EEG",
-        "alpha band",
-        "beta band",
-        "brain-computer interface",
-        "electroencephalography",
-        "machine learning",
-        "metacognition",
-        "neural decoding",
-        "oscillation",
-        "serial dependence",
-        "uncertainty"
+      "published_date": "2026-09-11",
+      "indexed_date": "2026-09-11",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.04.749491",
+      "url": "https://doi.org/10.64898/2026.09.04.749491",
+      "categories": [
+        "neuroscience"
       ],
+      "keywords": [],
       "publication_types": [
-        "Journal Article"
+        "Preprint"
       ],
       "extra": {
-        "prefilter_score": 27,
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 35,
         "ai": {
-          "score": 74,
-          "topic": "Oscillatory dynamics of working-memory uncertainty",
-          "reason": "Demonstrates decoder-based reconstruction from alpha/beta EEG dynamics and probabilistic modeling, which is methodologically transferable to neural time-series analysis, though not directly a sleep or lightweight pipeline.",
-          "summary": "Using EEG combined with a spatial working memory task requiring trial-by-trial uncertainty reports, the study found that alpha-band activity encodes memory content with precision predicting uncertainty reports, while beta-band activity carries a scalar confidence signal with slow dynamics. These results demonstrate that representational precision and scalar confidence are multiplexed across distinct oscillatory rhythms.",
+          "score": 75,
+          "topic": "Sound-evoked LFP hyperexcitability in aging mouse inferior colliculus",
+          "reason": "Animal LFP and time-frequency analysis in mice, relevant to transferable neural time-series methods and animal experiments, but focus is auditory aging rather than sleep or vigilance-state classification.",
+          "summary": "The study assessed age-related changes in sound-evoked local field potentials (LFPs) across the tonotopic axis of the mouse inferior colliculus. It found significant age-related hyperexcitability in medial and dorsal regions, with oldest old animals showing enhanced N1 amplitudes and level-dependent spectral power changes, while ventral regions were unaffected.",
           "keywords": [
-            "working memory",
-            "uncertainty",
-            "alpha oscillations",
-            "beta oscillations",
-            "EEG decoding"
+            "inferior colliculus",
+            "local field potentials",
+            "age-related hearing loss",
+            "hyperexcitability",
+            "excitatory-inhibitory balance"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -731,56 +734,6 @@
             "hemispheric asymmetry"
           ],
           "paper_type": "Methods/Resource",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42719006",
-      "title": "Large-scale neuromorphic modeling of cortical networks on FPGA for investigating anesthetic-induced neural dynamics.",
-      "abstract": "Understanding the neural mechanisms underlying general anesthesia remains a significant challenge in neuroscience and clinical practice. Traditional software-based simulations of large-scale brain networks are often constrained by high computational costs and fail to achieve real-time performance. In this paper, we propose a high-performance hardware implementation of large-scale neuromorphic system to investigate anesthetic-induced neural dynamics. The system successfully models a cortical network comprising 10,000 spiking neurons (8,000 excitatory and 2,000 inhibitory) utilizing the biologically plausible Izhikevich neuron model. Deployed on a field-programmable gate array (FPGA), the proposed architecture exploits high parallelism to achieve real-time simulation speeds. By adjusting synaptic weights and network parameters to mimic the pharmacological eects of anesthetic agents, our system can continuously monitor and evaluate state transitions in neural synchronization and firing patterns. The results demonstrate that the hardware-accelerated neuromorphic approach provides an efficient, scalable, and real-time platform for investigating large-scale neural dynamics. Pending future validation against empirical clinical EEG data, this foundational framework paves the way for advanced brain-machine interfaces and closed-loop anesthetic delivery systems.",
-      "authors": [
-        "Chuanguang Wang",
-        "Xiaotian Pan",
-        "Si Chen",
-        "Hao Cheng",
-        "YuJie Yao",
-        "Guodao Zhang",
-        "Fang Zheng"
-      ],
-      "published_date": "2026",
-      "indexed_date": "2026-09-10",
-      "journal": "Frontiers in systems neuroscience",
-      "doi": "10.3389/fnsys.2026.1866947",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42719006/",
-      "categories": [],
-      "keywords": [
-        "Izhikevich model",
-        "field-programmable gate array (FPGA)",
-        "general anesthesia",
-        "neuromorphic engineering",
-        "real-time simulation",
-        "spiking neural networks (SNN)"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 31,
-        "ai": {
-          "score": 64,
-          "topic": "FPGA neuromorphic cortical modeling of anesthesia",
-          "reason": "Real-time hardware simulation of large-scale spiking networks for anesthetic state transitions; efficient dynamical modeling but not EEG or sleep-specific.",
-          "summary": "This paper presents a high-performance FPGA-based neuromorphic hardware implementation of a cortical network comprising 10,000 spiking neurons using the Izhikevich model to investigate anesthetic-induced neural dynamics. The system achieves real-time simulation and demonstrates that adjusting synaptic weights and network parameters can continuously monitor state transitions in neural synchronization and firing patterns relevant to general anesthesia.",
-          "keywords": [
-            "FPGA",
-            "Izhikevich neuron model",
-            "spiking neural networks",
-            "general anesthesia",
-            "neuromorphic engineering"
-          ],
-          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1874,47 +1827,47 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42717359",
-      "title": "Network integration of neocortical Cajal-Retzius neurons shapes early cortical dynamics and contributes to their transient nature.",
-      "abstract": "Cajal-Retzius neurons (CRN) represent an early-born transient neuronal population in the mammalian neocortex. They are best known for secreting reelin, which is essential for neuronal migration and layer formation in the developing cortex. However, their functional integration into developing cortical circuits and their contribution to early network dynamics have been poorly understood. In this study, we investigated the structural and functional integration of CRN into developing neocortical networks with immunohistochemistry, three-dimensional reconstruction of GABAergic inputs, extracellular electrophysiology and calcium imaging. In addition, multiplexed FISH was used to determine the expression levels of the chloride transporters NKCC1 and KCC2 in CRN at different postnatal stages. Finally, we employed optogenetic stimulation to assess the functional and developmental consequences of CRN activation. We found that CRN receive dense dendritic GABAergic synaptic inputs at early postnatal stages. Functional analyses revealed that a substantial fraction of CRN is spontaneously active, and that their activity is synchronized with both CRN and non-CRN neurons. At the molecular level, they display a persistent NKCC1-dominant expression profile. This profile can contribute to the excitatory GABA responses, but also affect their cell death, as chronic blockade of NKCC1 was associated with reduced CRN loss in vitro. Acute optogenetic activation of CRN at early stages increased network excitability in organotypic neocortical cultures and induced stimulus-evoked field responses, while chronic activation at later time points accelerated CRN loss. Overall, these findings demonstrate that, during development, dense GABAergic input connectivity, coupled with the putative excitatory action of GABA, can engage CRN in early network activity. Furthermore, not only do CRN actively participate in early immature circuits, but their activity also amplifies spontaneous network dynamics and contributes to their own transience, highlighting a potential novel functional role of CRN during neocortical development.",
+      "source_id": "42726659",
+      "title": "Facial palsy reveals the sensorimotor contribution to facial-emotion recognition.",
+      "abstract": "Although recognizing emotions from facial expressions appears effortless, the field is divided between vision-based accounts, which posit matching to learned visual templates, and embodied accounts, which posit recruitment of facial motor circuits. We propose an ambiguity-gated, developmentally calibrated architecture in which the recognition system draws on sensorimotor information primarily when visual evidence is insufficient, with early motor experience proposed to shape the threshold and gain of this contribution. We tested this model across three studies (N = 185) integrating dynamic prototypical and nonprototypical expressions, congenital (Moebius syndrome) and acquired facial palsy, and standardized severity grading (Sunnybrook Facial Grading System; SFGS). Neurotypical adults (N = 117) confirmed a robust prototypicality-dependent cost on recognition. Both congenital (N = 15) and acquired (N = 19) cohorts showed severity-performance coupling for nonprototypical expressions, consistent with shared reliance on sensorimotor information when visual evidence is insufficient; only the Moebius cohort showed this coupling also for prototypical expressions, consistent with undercalibrated visual templates following lifelong atypical facial motor experience. Exploratory electroencephalography (EEG) revealed reduced sensorimotor-face-network functional connectivity in Moebius, consistent with altered cross-route integration. Reanalysis of an independent dataset of ultra-ambiguous static morphs replicated severity-performance coupling and revealed Moebius-control mean differences only under high perceptual demand. Together, the findings provide strong behavioral support for an ambiguity-gated, developmentally calibrated architecture and motivate direct tests of how developmental motor experience shapes when-and how strongly-the recognition system draws on sensorimotor information.",
       "authors": [
-        "Federico De Rosa",
-        "Werner Kilb",
-        "Heiko J Luhmann",
-        "Anne Sinning"
+        "Paola Sessa",
+        "Arianna Schiano Lomoriello",
+        "Thomas Quettier",
+        "Antonio Maffei",
+        "Sara Costa",
+        "Marta Nichele",
+        "Pier Francesco Ferrari"
       ],
-      "published_date": "2026-Sep-09",
-      "indexed_date": "2026-09-10",
-      "journal": "Cell communication and signaling : CCS",
-      "doi": "10.1186/s12964-026-03210-6",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42717359/",
+      "published_date": "2026-Sep-15",
+      "indexed_date": "2026-09-11",
+      "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+      "doi": "10.1073/pnas.2608511123",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42726659/",
       "categories": [],
       "keywords": [
-        "Activity",
-        "Cajal-Retzius neurons",
-        "Cell death",
-        "Development",
-        "GABA",
-        "Mouse",
-        "NKCC1",
-        "Neocortex"
+        "Moebius syndrome",
+        "embodied cognition",
+        "emotion recognition",
+        "facial paralysis",
+        "sensorimotor calibration"
       ],
       "publication_types": [
         "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 29,
+        "prefilter_score": 35,
         "ai": {
           "score": 25,
-          "topic": "Developmental Cortical Neuroscience",
-          "reason": "Focus on Cajal-Retzius neuron network integration during development; not directly relevant to EEG/EMG/ACC analysis, sleep staging, or computational methods for neural time-series, though it involves electrophysiology in a developmental context.",
-          "summary": "Using immunohistochemistry, three-dimensional reconstruction, electrophysiology, calcium imaging, multiplexed FISH, and optogenetics, this study shows that neocortical Cajal-Retzius neurons receive dense GABAergic inputs, are spontaneously active and synchronized with network activity, and maintain an NKCC1-dominant chloride transporter profile. Chronic optogenetic activation accelerated Cajal-Retzius neuron loss, and NKCC1 blockade reduced their loss in vitro, indicating their activity contributes to their transient nature.",
+          "topic": "Sensorimotor contribution to facial emotion recognition",
+          "reason": "Behavioral and clinical study on facial palsy and emotion recognition; adjacent cognitive neuroscience but no neural time-series methods, signal processing, or animal sleep relevance.",
+          "summary": "The paper tests an ambiguity-gated, developmentally calibrated architecture for facial-emotion recognition by studying neurotypical adults and individuals with congenital (Moebius syndrome) or acquired facial palsy. It found severity-performance coupling for nonprototypical expressions in both palsy cohorts, and for prototypical expressions only in the Moebius cohort, with reduced sensorimotor-face-network connectivity in Moebius.",
           "keywords": [
-            "Cajal-Retzius neurons",
-            "neocortex",
-            "GABA",
-            "NKCC1",
-            "optogenetics"
+            "facial-emotion recognition",
+            "sensorimotor calibration",
+            "Moebius syndrome",
+            "facial palsy",
+            "embodied cognition"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -2024,6 +1977,53 @@
             "CYP3A4 interaction"
           ],
           "paper_type": "Case Report",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42726057",
+      "title": "Ambulatory Surgery Centers in Cardiac Electrophysiology: Current Status and Future Directions.",
+      "abstract": "Ambulatory surgical centers (ASCs) are rapidly expanding their role in cardiac electrophysiology (EP). Several studies have demonstrated that they provide comparable safety, effectiveness, and efficiency to hospital settings for elective, nonacute EP procedures. ASC's provide superior patient-centered care with increased convenience, improved access, operational efficiency, and cost savings, which might potentially mitigate delays in EP procedures and improve patient outcomes. Use of appropriate patient selection criteria, standardized workflows, protocols for same-day discharge, and transfer agreements are key for the success of ASC's. However, there are several challenges. The need for Certificate of Need and other regulatory barriers in several states, as well as variability in private insurance coverage, may impede widespread adoption of ASC's. The shift of low-risk, high-margin procedures to ASC's may disrupt the revenue cycle of the health care systems, impacting other service lines. Although physician ownership in ASC's can be a source of increasing technical revenue, the upfront costs and operational challenges may motivate them to partner with private equity firms, thereby decreasing their autonomy and available resources. It is important to track the patient selection and outcomes with a standardized EP-ASC registry overseen by medical professional societies. The current ACC EP leadership perspective article discusses the pros and cons of EP ASC's from the viewpoint of patients, physicians, health care systems, and insurance payors. In addition, it also provides best practices, patient/case selection criteria, and an insight into the future directions of EP ASC's.",
+      "authors": [
+        "Rajesh Kabra",
+        "Kamala P Tamirisia",
+        "Sotirios Nedios",
+        "Rachita Navara",
+        "Dhanunjaya Lakkireddy",
+        "Pamela K Mason"
+      ],
+      "published_date": "2026-Sep-08",
+      "indexed_date": "",
+      "journal": "JACC. Clinical electrophysiology",
+      "doi": "10.1016/j.jacep.2026.07.015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42726057/",
+      "categories": [],
+      "keywords": [
+        "ablation",
+        "ambulatory surgical center",
+        "cardiac electrophysiology"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
+      "extra": {
+        "prefilter_score": 44,
+        "ai": {
+          "score": 10,
+          "topic": "Ambulatory cardiac electrophysiology care settings",
+          "reason": "Clinical operations and health policy content on cardiac EP procedures; keyword collision with electrophysiology but outside neural time-series analysis or animal sleep methods.",
+          "summary": "This review discusses the current status and future directions of ambulatory surgery centers (ASCs) in cardiac electrophysiology. It reports that ASCs provide comparable safety, effectiveness, and efficiency to hospital settings for elective EP procedures, but highlights regulatory barriers, insurance variability, and the need for standardized registries.",
+          "keywords": [
+            "ambulatory surgical center",
+            "cardiac electrophysiology",
+            "ablation",
+            "same-day discharge",
+            "healthcare delivery"
+          ],
+          "paper_type": "Review",
           "digest_pick": true
         }
       }
