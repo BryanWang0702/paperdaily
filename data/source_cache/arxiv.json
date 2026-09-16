@@ -1,30 +1,57 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-09-15T23:41:42.344975+00:00",
+  "fetched_at": "2026-09-16T17:13:14.194940+00:00",
   "window": {
-    "start": "2026-09-14",
-    "end": "2026-09-16"
+    "start": "2026-09-15",
+    "end": "2026-09-17"
   },
-  "count": 1,
+  "count": 2,
   "papers": [
     {
       "source": "arxiv",
-      "source_id": "2609.15490v1",
-      "title": "Multiscale Gaussian-Mixture Modeling for HMM Post-Processing in Selective Auditory Attention Decoding",
-      "abstract": "Selective auditory attention decoding (sAAD) infers from electroencephalography (EEG) which speaker a listener attends to in multi-speaker scenarios. A widely used approach reconstructs the attended speech envelope from EEG, correlates it with candidate envelopes, and selects the speaker with the highest Pearson correlation. However, correlations in each decision window have high intrinsic variance, making per-window decisions unreliable, especially for short windows. Recent work introduced a hidden Markov model (HMM) that integrates correlation evidence over time and requires state-dependent emission distributions. Since labeled attention states are typically unavailable in practice, these distributions can be inferred from unlabeled observations by fitting a Gaussian mixture model (GMM). However, when the underlying Gaussians are close, unsupervised fitting becomes less reliable with limited samples. We therefore propose a multiscale GMM whose parameters are jointly estimated across multiple window lengths. The model exploits the window-length dependence of Fisher-transformed correlation estimates, whose means are approximately stable while their variances decrease with the number of samples per window. Experiments show that the multiscale GMM estimates emission parameters more accurately than single-scale fitting, particularly at short windows. Its HMM-post-processed accuracy advantage is largest for short recordings and narrows as more data become available, motivating multiscale fitting in data-constrained settings.",
+      "source_id": "2609.17175v1",
+      "title": "IRENE: A Convolutional GRU Ensemble Model for Radar Precipitation Nowcasting over Italy",
+      "abstract": "We present IRENE (Italian Radar Ensemble Nowcasting Experiment), a deep learning model for probabilistic short-range precipitation nowcasting over the Italian domain at \\SI{1}{km} spatial and 5 min temporal resolution. IRENE adopts an encoder--forecaster architecture built on multi-scale Convolutional Gated Recurrent Units (ConvGRUs), trained on the national radar composite produced by the Italian Civil Protection Department (DPC). An importance-sampling scheme focuses training on precipitation-relevant events, while the almost-fair Continuous Ranked Probability Score (afCRPS) is adopted as the primary probabilistic loss function. Two additional training configurations are proposed: an adversarial (GAN) variant, IRENE-GAN, designed to improve the spatial sharpness of the generated forecasts, and a spectrally constrained variant, IRENE-GAN-RAPSD, in which the adversarial objective is complemented by an explicit penalty on the radially averaged power spectral density. The three configurations are evaluated against the stochastic extrapolation method STEPS and the pre-trained deep learning model DGMR. All IRENE configurations attain a lower Continuous Ranked Probability Score than both benchmarks at every lead time and rank histograms closer to uniformity, indicating better probabilistic skill and ensemble calibration. In terms of ensemble-mean mean absolute error the advantage is confined to the first 90 min, beyond which the strongly damped DGMR fields and, to a lesser extent, STEPS become competitive. Spectral analysis shows that the adversarial training removes the progressive loss of small-scale variance exhibited by IRENE, at the cost of an excess of fine-scale power at long lead times that the spectral penalty only partially controls.",
       "authors": [
-        "Tianyi Li",
-        "Simon Geirnaert",
-        "Bert De Smedt",
-        "Alexander Bertrand"
+        "Alessandro Camilletti",
+        "Gabriele Franch",
+        "Elena Tomasi",
+        "Marco Cristoforetti"
       ],
-      "published_date": "2026-09-14",
-      "indexed_date": "2026-09-14",
+      "published_date": "2026-09-15",
+      "indexed_date": "2026-09-15",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2609.15490v1",
+      "url": "https://arxiv.org/abs/2609.17175v1",
       "categories": [
-        "eess.SP"
+        "cs.LG",
+        "physics.ao-ph"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2609.17067v1",
+      "title": "Bio-Inspired Palette Evolution in Indirectly Encoded Substrates: Timescale Compatibility Shapes Activation Function Discovery",
+      "abstract": "Indirectly encoded neural networks can assign different activation functions to individual nodes, but the right functions are rarely known in advance. When the available set contains only standard monotonic functions, problems like parity become unsolvable, yet an all-inclusive palette underperforms a curated one. How should evolution discover which functions to use? We address this as a meta-learning problem, designing 13 strategies (11 inspired by biological adaptation mechanisms, plus baseline and oracle controls) that modify the set of available activation functions during evolution. Each strategy translates a biological principle into an evolutionary operator: for example, circadian-inspired oscillatory gating cycles functions in and out of the palette on a fixed schedule, while immune-inspired Clonal Selection permanently protects functions that consistently correlate with fitness. We evaluate all strategies across more than 3,000 runs on parity and non-parity problems, first evolving the activation palette alone, then co-evolving a per-node aggregation palette on harder problems; an independent replication with new seeds confirms a stable high-reliability tier, with Circadian holding its top rank. Bio-inspired strategies match the solve rate of a tuned baseline but converge up to twice as fast, with Circadian halving total compute. Strategy rankings reverse across problem types, with no strategy dominating all domains. Strategy success is largely shaped by timescale compatibility: strategies whose characteristic timescale matches the evolutionary evaluation window consistently outperform those that operate too slowly. The practical guideline: match the mechanism's timescale to the evaluation budget. Rescaling the slowest strategy bypasses the oscillatory barrier entirely: all nine solutions solve parity with non-oscillatory activations paired with min or max aggregation.",
+      "authors": [
+        "Romain Claret",
+        "Michael O'Neill",
+        "Paul Cotofrei",
+        "Kilian Stoffel"
+      ],
+      "published_date": "2026-09-15",
+      "indexed_date": "2026-09-15",
+      "journal": "arXiv",
+      "doi": "10.1007/978-3-032-36217-9_23",
+      "url": "https://arxiv.org/abs/2609.17067v1",
+      "categories": [
+        "cs.NE",
+        "cs.LG"
       ],
       "keywords": [],
       "publication_types": [
