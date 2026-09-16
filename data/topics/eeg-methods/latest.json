@@ -1,6 +1,6 @@
 {
   "date": "2026-09-17",
-  "generated_at": "2026-09-16T17:13:27.754524+00:00",
+  "generated_at": "2026-09-16T23:46:06.977505+00:00",
   "window": {
     "start": "2026-09-15",
     "end": "2026-09-17"
@@ -10,16 +10,16 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 82,
+  "raw_count": 97,
   "retrieved_source_counts": {
-    "pubmed": 238,
-    "biorxiv": 15,
-    "medrxiv": 5,
+    "pubmed": 273,
+    "biorxiv": 17,
+    "medrxiv": 6,
     "arxiv": 2
   },
   "raw_source_counts": {
-    "pubmed": 68,
-    "biorxiv": 12,
+    "pubmed": 81,
+    "biorxiv": 14,
     "medrxiv": 1,
     "arxiv": 1
   },
@@ -29,8 +29,8 @@
   "count": 40,
   "featured_count": 25,
   "source_counts": {
-    "pubmed": 35,
-    "biorxiv": 4,
+    "pubmed": 34,
+    "biorxiv": 5,
     "medrxiv": 1
   },
   "errors": {},
@@ -41,8 +41,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 13,
-    "newly_summarized": 13,
+    "newly_ranked": 4,
+    "newly_summarized": 4,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -53,12 +53,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 4,
-      "prompt_tokens": 11684,
-      "prompt_cache_hit_tokens": 1024,
-      "prompt_cache_miss_tokens": 10660,
-      "completion_tokens": 2712,
-      "total_tokens": 14396
+      "requests": 2,
+      "prompt_tokens": 4227,
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 3715,
+      "completion_tokens": 897,
+      "total_tokens": 5124
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -67,27 +67,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.016104,
+    "run_cost_cny": 0.005519,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 4,
-        "prompt_tokens": 11684,
-        "prompt_cache_hit_tokens": 1024,
-        "prompt_cache_miss_tokens": 10660,
-        "completion_tokens": 2712,
-        "total_tokens": 14396
+        "requests": 2,
+        "prompt_tokens": 4227,
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 3715,
+        "completion_tokens": 897,
+        "total_tokens": 5124
       },
-      "run_cost_cny": 0.016104,
+      "run_cost_cny": 0.005519,
       "daily_usage": {
-        "requests": 4,
-        "prompt_tokens": 11684,
-        "prompt_cache_hit_tokens": 1024,
-        "prompt_cache_miss_tokens": 10660,
-        "completion_tokens": 2712,
-        "total_tokens": 14396
+        "requests": 6,
+        "prompt_tokens": 15911,
+        "prompt_cache_hit_tokens": 1536,
+        "prompt_cache_miss_tokens": 14375,
+        "completion_tokens": 3609,
+        "total_tokens": 19520
       },
-      "daily_cost_cny": 0.016104,
+      "daily_cost_cny": 0.021623,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -100,6 +100,46 @@
     "analyzed_count": 40
   },
   "papers": [
+    {
+      "source": "pubmed",
+      "source_id": "42747931",
+      "title": "SPAR-EEG: Selective Pass-Wise Artifact Reduction for Wearable Single-Channel EEG Denoising.",
+      "abstract": "Single-channel electroencephalography (EEG) is attractive for wearable neurotechnology and brain-computer interface (BCI) applications, including assistive interfaces and clinical monitoring, but artifact suppression is difficult when auxiliary channels, artifact labels, or user-selected clean baseline segments are unavailable. We introduce SPAR-EEG, a self-contained framework for Selective Pass-wise Artifact Reduction in single-channel EEG. The framework applies three artifactspecific attenuation passes to each EEG epoch: a variational mode decomposition (VMD)-based pass for high-frequency electromyo-graphic (EMG) bursts, a singular spectrum analysis (SSA)-based pass for blink-like electrooculographic (EOG) transients, and an SSA-based pass for slow motion-related drift. Rather than rejecting components globally, each pass estimates artifact-dominant regions and attenuation strength directly from the input channel. SPAR-EEG was evaluated using controlled EEGdenoiseNet and PhysioBank benchmarks, pass ablations, task-locked event-related potential (ERP) preservation, runtime diagnostics, dry-electrode exercise EEG, and a downstream rapid serial visual presentation (RSVP)/P300 speller task using only FP1 and FP2. Across 26 EEGdenoiseNet input signal-to-noise ratio (SNR) levels, it obtained the largest average artifact-region SNR improvement among the tested wavelet, empirical mode decomposition (EMD), and artifact-label-guided wavelet quantile normalization (WQN) baselines for EMG, EOG, and combined EOG+EMG contamination (9.05, 8.28, and 8.00 dB, respectively). In exercise EEG, denoising reduced high-amplitude artifact burden and increased alpha and steady-state visual evoked potential (SSVEP) spectral-prominence metrics. In the P300 validation, the full SPAR-EEG sequence increased repetition-curve area under the curve (AUC) by 0.048 (Holm-adjusted p = 0.0069) and improved final Letter@15 accuracy by 7.8 percentage points. These results suggest that artifact-specific selective attenuation can provide a practical self-contained alternative for single-channel EEG denoising in low-burden and movement-prone settings.",
+      "authors": [
+        "Usman Qamar Shaikh",
+        "Anubha Manju Kalra",
+        "Andrew Lowe",
+        "Imran Khan Niazi"
+      ],
+      "published_date": "2026-Sep-16",
+      "indexed_date": "",
+      "journal": "IEEE transactions on neural systems and rehabilitation engineering : a publication of the IEEE Engineering in Medicine and Biology Society",
+      "doi": "10.1109/tnsre.2026.3734253",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42747931/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 89,
+        "ai": {
+          "score": 88,
+          "topic": "Single-channel EEG artifact removal",
+          "reason": "Self-contained artifact reduction for wearable single-channel EEG using VMD/SSA with runtime diagnostics and ERP preservation; lightweight and transferable to animal neural recordings.",
+          "summary": "SPAR-EEG is a self-contained framework for single-channel EEG denoising that applies artifact-specific attenuation passes based on variational mode decomposition and singular spectrum analysis. It achieved the largest average artifact-region SNR improvements (9.05, 8.28, and 8.00 dB for EMG, EOG, and combined contamination, respectively) across 26 EEGdenoiseNet SNR levels compared to wavelet, EMD, and WQN baselines, and improved P300 speller accuracy by 7.8 percentage points.",
+          "keywords": [
+            "single-channel EEG",
+            "artifact reduction",
+            "variational mode decomposition",
+            "singular spectrum analysis",
+            "brain-computer interface"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
     {
       "source": "pubmed",
       "source_id": "42740182",
@@ -144,6 +184,54 @@
             "semantic metadata"
           ],
           "paper_type": "Systematic Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.09.11.750831",
+      "title": "Improved detection and spatiotemporal spectral analysis of neural traveling waves",
+      "abstract": "Traveling waves (TWs) are a fundamental mode of neural dynamics, yet existing detection methods are limited by sensor geometry, spatial-frequency resolution, signal amplitude, and ambiguity between propagating and standing-wave patterns. Here we introduce the Traveling Wave Index (TWINDEX), a framework for three-dimensional spatiotemporal spectral analysis of TWs across temporal frequency, spatial frequency, and propagation direction. TWINDEX generalizes to irregular sensor layouts, and quantifies wave strength as the reduction in circular phase variance produced by a candidate planar wave. This normalization yields robust behavior at both low and high spatial frequencies and suppresses coherent in-phase activity. Directional moments further separate planar from standing waves. We derive analytical links between TWINDEX, parametric planar-wave fit, and distance-phase correlation, and introduce projected distance-phase correlation (ProDPC) for sensitive single-trial planar-wave detection. Applying these methods to large-scale marmoset ECoG and human EEG, we identify alpha/low-beta TWs localized in spatial and temporal frequency, with physiologically plausible propagation speeds. Across trials and epochs, waves occur in oppositely directed propagation modes, demonstrating that alpha/beta activity is associated with both feedforward- and feedback-directed large-scale dynamics.",
+      "authors": [
+        "Vinck, M.",
+        "Gasco-Galvez, C.",
+        "Rodrigues, M.",
+        "Schwenk, J. C. B.",
+        "Komatsu, M.",
+        "Chavane, F.",
+        "Canales-Johnson, A.",
+        "Alamia, A."
+      ],
+      "published_date": "2026-09-16",
+      "indexed_date": "2026-09-16",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.11.750831",
+      "url": "https://doi.org/10.64898/2026.09.11.750831",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 68,
+        "ai": {
+          "score": 84,
+          "topic": "Traveling-wave spatiotemporal spectral analysis",
+          "reason": "Generalizable spectral framework for neural traveling waves that handles irregular sensor layouts and works on marmoset ECoG and human EEG, offering interpretable dynamical descriptors suited to sleep and vigilance analysis.",
+          "summary": "The paper introduces TWINDEX, a framework for three-dimensional spatiotemporal spectral analysis of neural traveling waves that generalizes to irregular sensor layouts and separates planar from standing waves. Applied to marmoset ECoG and human EEG, it identified alpha/low-beta traveling waves with physiologically plausible propagation speeds occurring in oppositely directed propagation modes across trials and epochs.",
+          "keywords": [
+            "traveling waves",
+            "spatiotemporal spectral analysis",
+            "ECoG",
+            "EEG",
+            "alpha oscillations"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1003,62 +1091,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42740056",
-      "title": "A Wearable Multimodal Assistive Interface for Virtual Cursor Control in Stroke Survivors with Upper-Limb Impairment.",
-      "abstract": "Stroke survivors with upper-limb impairments often have difficulty using conventional computer interfaces, which limits their ability to perform daily computer-related activities independently. This study developed a wearable multimodal assistive interface that enables computer interaction through a virtual cursor. A lightweight headband equipped with electrooculography (EOG), electroencephalography (EEG), and an inertial measurement unit (IMU) was used to acquire multimodal signals for interaction control. EOG signals were processed to detect voluntary blinks to generate clicks, head movements were mapped to cursor movements through IMU-based control, and frontal EEG signals were used to estimate attention as an auxiliary mechanism for command verification. A rapid user-specific calibration procedure was introduced to adapt blink-detection thresholds to individual EOG characteristics without requiring extensive training. Thirty stroke patients with upper-limb impairments participated in experiments involving common computer tasks, including news reading, video playback, and character spelling. The system achieved an average operation accuracy of 87.53 ± 4.92%, an average operation time of 3.49 ± 0.49 s, and an information transfer rate of 62.04 ± 15.93 bits/min in the spelling task. The mean NASA-TLX score was 32.1 ± 5.4, indicating a moderate subjective workload during system use. These results demonstrate the feasibility of the proposed wearable multimodal assistive interface for supporting computer interaction in stroke survivors with upper-limb impairments.",
-      "authors": [
-        "Yuankai Liang",
-        "Liying Zhang",
-        "Ya Jiang",
-        "Junbiao Zhu",
-        "Yawen Zhao",
-        "Pengmin Qin",
-        "Di Chen",
-        "Junze Peng",
-        "Yuanqing Li",
-        "Xiquan Hu"
-      ],
-      "published_date": "2026-Aug-28",
-      "indexed_date": "2026-09-15",
-      "journal": "Sensors (Basel, Switzerland)",
-      "doi": "10.3390/s26175436",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42740056/",
-      "categories": [],
-      "keywords": [
-        "assistive technology",
-        "electroencephalography",
-        "electrooculography",
-        "human–computer interaction",
-        "inertial measurement unit",
-        "multimodal interaction",
-        "stroke rehabilitation",
-        "virtual cursor",
-        "wearable assistive interface"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 35,
-        "ai": {
-          "score": 55,
-          "topic": "Wearable EEG/EOG cursor interface",
-          "reason": "Wearable multimodal EEG/EOG/IMU system with rapid user calibration; relevant calibration and lightweight signal-processing ideas but assistive-control rather than sleep analysis.",
-          "summary": "This study developed a wearable multimodal assistive interface using EOG, EEG, and IMU signals from a headband to enable virtual cursor control in stroke survivors with upper-limb impairment. In 30 patients, the system achieved 87.53% average accuracy, 3.49 s operation time, and 62.04 bits/min information transfer rate in a spelling task, with moderate NASA-TLX workload.",
-          "keywords": [
-            "multimodal interface",
-            "electrooculography",
-            "electroencephalography",
-            "stroke rehabilitation",
-            "virtual cursor"
-          ],
-          "paper_type": "Clinical Study",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "42743980",
       "title": "BRAINet: A brain-region-aware interaction network for EEG-based diagnosis of disorders of consciousness.",
       "abstract": "&#xD;Reliable assessment and stratification of disorders of consciousness (DOC) is essential for patient care and clinical treatment planning. &#xD;Electroencephalography (EEG) provides a non-invasive approach to measure neural activity and has shown promise in DOC assessment. &#xD;However, most existing EEG-based approaches focus on binary UWS/MCS classification and often process EEG channels as a whole, without explicitly modeling anatomical brain-region organization. In this study, our goal is to distinguish among unresponsive wakefulness syndrome (UWS), minimally conscious state minus (MCS-), and minimally conscious state plus (MCS+) using resting-state EEG signals.&#xD;&#xD;Approach.&#xD;We propose BRAINet, a brain-region-aware EEG framework for three-class DOC classification. BRAINet partitions EEG channels into five anatomical brain regions, extracts region-specific spatiotemporal and spectral features, models cross-region interactions using a Transformer-based attention module, and fuses the learned representations with approximate entropy features for final classification. We evaluated BRAINet on a clinical resting-state EEG dataset comprising 22 UWS, 24 MCS-, and 15 MCS+ patients using patient-wise five-fold cross-validation and comparisons with representative machine-learning and deep-learning baselines. Statistical comparisons were based on paired patient-level out-of-fold (OOF) predictions.&#xD;&#xD;Main results.&#xD;BRAINet achieved the highest numerical performance among the compared methods. Across the five folds, its mean balanced accuracy was 54.07% at the epoch level and 59.89% at the subject level. Based on pooled patient-level OOF predictions, BRAINet achieved significantly higher balanced accuracy than the best-performing baseline, Conformer (two-sided paired permutation test, Holm-adjusted p=0.00513).&#xD;&#xD;Significance.&#xD;These results suggest that brain-region-aware EEG modeling may provide useful information for fine-grained UWS/MCS-/MCS+ classification. BRAINet provides an interpretable framework for exploring region-specific EEG representations in DOC and may support future studies on patient stratification and prognostic assessment.",
@@ -1154,50 +1186,6 @@
             "hybrid BCI"
           ],
           "paper_type": "Clinical Trial",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42739229",
-      "title": "Artificial Intelligence and Digital Biomarkers for Early Detection and Monitoring of Neurological Disorders: A Narrative Review.",
-      "abstract": "Neurological disorders like Alzheimer's disease, Parkinson's disease, and epilepsy are becoming major causes of disability and mortality worldwide, and their prevalence is expected to rapidly increase with the aging of the population. These diseases develop silently, with irreversible neuronal damage often occurring decades before any clinical signs of illness are noticed, making early diagnosis and treatment difficult. The presymptomatic period greatly restricts the effectiveness of therapeutic interventions and reduces the possibility of disease-modifying interventions. Traditional diagnostic methods based on clinical assessment, neuroimaging, and invasive biomarkers are not sensitive enough to identify the disease at an early stage and are expensive to the healthcare system. The latest artificial intelligence (AI) technology and machine learning (ML) approaches, together with digital biomarkers obtained from eye tracking, facial expressions, speech analysis, motor dynamics, electrophysiology, wearable devices, and passive sensing, offer promising non-invasive alternatives for early detection of diseases. However, most reported performance metrics are derived from retrospective or pre-validated datasets, and prospective external validation remains limited. This narrative review synthesizes current evidence on AI-driven digital biomarkers for early detection of neurological diseases, examining disease-specific applications, methodological approaches, and challenges in clinical practices. We emphasize that clinical utility is task specific and dependent on disease stage, validation design, clinical endpoints, cost, workflow integration, and availability of disease-modifying therapies. We also note that much of the evidence summarized here derives from retrospective, case-control, or internally validated datasets and that prospective, patient-independent, and external validation with clinically meaningful endpoints remains limited. Reported performance figures should be read as proof-of-concept evidence rather than as evidence of demonstrated clinical readiness. We highlight promising future directions, including federated learning, explainable AI, and precision neurology approaches, while acknowledging that most applications remain investigational and require prospective validation before broad clinical deployment.",
-      "authors": [
-        "Arshad Husain Rahmani",
-        "Tarique Sarwar"
-      ],
-      "published_date": "2026-Aug-31",
-      "indexed_date": "2026-09-15",
-      "journal": "Diagnostics (Basel, Switzerland)",
-      "doi": "10.3390/diagnostics16172799",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42739229/",
-      "categories": [],
-      "keywords": [
-        "artificial intelligence",
-        "digital biomarkers",
-        "machine learning",
-        "neurological disorders"
-      ],
-      "publication_types": [
-        "Journal Article",
-        "Review"
-      ],
-      "extra": {
-        "prefilter_score": 35,
-        "ai": {
-          "score": 46,
-          "topic": "AI digital biomarkers for neurology",
-          "reason": "Narrative review of AI/digital biomarkers including electrophysiology and wearables; broad and clinically oriented rather than methodological or sleep-specific.",
-          "summary": "This narrative review synthesizes current evidence on artificial intelligence and digital biomarkers from eye tracking, speech, wearables, and passive sensing for early detection of neurological disorders. It emphasizes that most reported performance metrics derive from retrospective or internally validated datasets, so results should be considered proof-of-concept rather than clinically ready.",
-          "keywords": [
-            "digital biomarkers",
-            "machine learning",
-            "neurological disorders",
-            "early detection",
-            "wearable sensors"
-          ],
-          "paper_type": "Review",
           "digest_pick": true
         }
       }
@@ -1671,6 +1659,50 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42748393",
+      "title": "Longitudinal EEG, Seizure, and Developmental Patterns in Children With CDKL5 Deficiency Disorder in the First 2 Years of Life.",
+      "abstract": "Although there is near-universal early-onset epileptic encephalopathy in cyclin-dependent kinase-like 5 (CDKL5) deficiency disorder (CDD), it has been observed clinically that EEGs are initially only mildly abnormal and worsen in the first 2 years of life. This study aimed to identify specific EEG patterns, ictal and interictal, in individuals with CDD during the first 2 years of life and to explore their relationship with clinical and developmental outcomes. This multicenter study included 48 infants and young children with CDD (75% female) aged 0-24 months, recruited to a clinic-based research study from 2 CDKL5 Centers of Excellence, in whom 152 longitudinal clinical EEGs were rigorously analyzed. The retrospectively analyzed data consisted of EEG background, interictal, and ictal parameters, scoring according to the Burden of AmplitudeS and Epileptiform Discharges (BASED) scale, as well as clinical seizure-related features, demographic details, and scores of a CDD-specific developmental scale. Across the first 2 years of life, EEGs obtained at older ages showed greater background severity than those obtained earlier, including higher odds of discontinuity (p = 0.002) and generalized slowing (p ≤ 0.001) in mixed-effects models accounting for repeated measures. Paroxysmal fast activity was more common in parieto-occipital regions compared with frontal, central, and temporal areas. The 2 most observed seizure types were epileptic spasms (peaking between 7.5 and 11.5 months) and tonic seizures (peaking between 6.5 and 14 months). Sequential seizures, predominantly observed between 7 and 11 months, were most commonly 2 sequenced, consisting of tonic seizures followed by epileptic spasms. The cutoff age with the highest discriminatory value for high-severity BASED scores (indicating epileptic encephalopathy) was 9 months (Youden index 0.58, specificity of 95%, sensitivity of 62%). Lower developmental scale Z-scores (indicating worse severity) were significantly correlated with age (p = 0.03), with an EEG denoting hypsarrhythmia (p = 0.03), and with epileptic encephalopathy (p = 0.001), as well as with the presence of parieto-occipital epileptiform patterns (p = 0.04) and paroxysmal fast activity (p = 0.008). In CDD, EEG background severity, burden of interictal epileptiform activities, and parieto-occipital paroxysmal fast activity may be associated with developmental and clinical severity. Parieto-occipital paroxysmal fast activity and sequential seizures, while not specific to CDD, are highly suggestive of it.",
+      "authors": [
+        "Itay Tokatly Latzer",
+        "William Hong",
+        "Bo Zhang",
+        "Jenna Lucash",
+        "Xiaoming Xz Zhang",
+        "Heather E Olson",
+        "Elia M Pestana Knight"
+      ],
+      "published_date": "2026-Oct-13",
+      "indexed_date": "2026-09-16",
+      "journal": "Neurology",
+      "doi": "10.1212/wnl.0000000000218500",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42748393/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article",
+        "Multicenter Study"
+      ],
+      "extra": {
+        "prefilter_score": 52,
+        "ai": {
+          "score": 32,
+          "topic": "CDKL5 disorder longitudinal EEG",
+          "reason": "Clinical epilepsy cohort study of a rare genetic disorder; relevant only as EEG dataset context, with no methodological or computational transfer to animal sleep experiments.",
+          "summary": "This multicenter longitudinal study analyzed 152 EEGs from 48 children with CDKL5 deficiency disorder during the first 2 years of life, finding that EEG background severity and interictal epileptiform burden worsened with age. Paroxysmal fast activity was more common in parieto-occipital regions, and its presence, along with hypsarrhythmia and epileptic encephalopathy, correlated with lower developmental scores; the highest discriminatory age for high-severity EEG was 9 months.",
+          "keywords": [
+            "CDKL5 deficiency disorder",
+            "EEG",
+            "epileptic encephalopathy",
+            "paroxysmal fast activity",
+            "developmental outcome"
+          ],
+          "paper_type": "Clinical Study",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42743908",
       "title": "EEG changes associated with stress reduction in university students following exposure to essential oil odors.",
       "abstract": "Stress among university students has become a significant public health concern, prompting growing interest in non-pharmacological interventions. Essential oil inhalation has been suggested as a potential approach to stress reduction; however, quantitative comparisons of electroencephalographic (EEG) responses to commonly used essential oils remain limited. This study investigated EEG changes following inhalation of six essential oils (lemon, rosemary, tea tree, lavender, eucalyptus, and chamomile) in 33 university students between February and June 2025. EEG signals were recorded using an 8-channel system covering the prefrontal, frontal, temporal, and parietal regions. Relative EEG power values, derived indices (RAB, RAHB, and RST), regional alpha activity, and inter-electrode connectivity were analyzed. The study employed a within-subject pre-post design without a separate control group. Pre- and post-inhalation changes were evaluated using paired-sample t-tests, and differences among oils were further examined using repeated-measures MANOVA. Across all essential oils, relative alpha power increased, while beta power generally decreased. Significant increases in RAB were observed for lavender, tea tree, chamomile, and rosemary, whereas RAHB increased significantly for lavender, rosemary, eucalyptus, chamomile, and tea tree. RST showed slight increases across all oils, but none reached statistical significance. The overall multivariate effect of odor on changes in RAB, RAHB, and RST was not statistically significant, although RAHB showed a significant difference among oils in the exploratory follow-up analysis. Relative alpha activity was highest in the parietal region. Connectivity among the prefrontal, frontal, and temporal regions generally increased following essential oil inhalation, whereas connectivity between these regions and the parietal region tended to decrease. Connectivity within the left hemisphere decreased slightly, while connectivity within the right hemisphere and between hemispheres increased, suggesting a redistribution of connectivity patterns. Descriptive patterns also indicated a tendency toward increased connectivity for lemon, rosemary, and tea tree and decreased connectivity for lavender, eucalyptus, and chamomile. These findings provide preliminary quantitative neurophysiological evidence of EEG changes associated with essential oil inhalation and may inform the potential application of olfactory stimuli in restorative indoor and outdoor campus environments.",
@@ -1870,51 +1902,40 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42746664",
-      "title": "Transient Postoperative Myoclonus Following Hypothermic Circulatory Arrest.",
-      "abstract": "Neurologic complications are a risk of aortic arch surgery performed with hypothermic circulatory arrest. Stroke, encephalopathy, and seizures are well-recognized complications, whereas postoperative movement disorders are rarely reported. A 72-year-old male underwent elective ascending aorta and hemiarch replacement under hypothermic circulatory arrest (28 minutes, nadir 28.9 °C) with bilateral antegrade cerebral perfusion and stable cerebral oximetry readings. During postoperative weaning from sedation, the patient developed persistent bilateral myoclonus, diffuse rigidity, and suspected eyelid apraxia, present at rest and unaffected by voluntary movement. Although a stroke code was activated, computed tomographic angiography of the head and neck was normal. Laboratory evaluation showed mild hypocalcemia without other metabolic derangements. Electroencephalography and magnetic resonance imaging were not performed. The patient was treated with intravenous levetiracetam and calcium supplementation. The movements resolved by postoperative day 3, and the patient was discharged home neurologically intact on day 5. This case demonstrates a transient form of postoperative myoclonus distinct from Lance-Adams syndrome. Recognition of atypical movement disorders after hypothermic circulatory arrest may help clinicians avoid unnecessary escalation of therapy and provide reassurance regarding the potential for complete recovery.",
+      "source_id": "42748082",
+      "title": "Animate-Inanimate Object Categorization from Minimal Visual Information in the Human Brain, Human Behavior, and Deep Neural Networks.",
+      "abstract": "The distinction between animate and inanimate things is a main organizing principle of information in perception and cognition. Yet, animacy, as a visual property, has so far eluded operationalization. Which visual features are necessary and sufficient to discriminate between animate and inanimate objects? At which level of the visual hierarchy does the animate-inanimate distinction emerge? Here, we show that the categorical boundary between animate and inanimate objects is preserved even among images of objects that are made unrecognizable and only retain the low- and mid-level visual features of their natural version. In three experiments, healthy human adults viewed rapid sequences of images (6 Hz), in which an exemplar from another category (e.g., animate) was presented after every five exemplars from a given category (i.e., inanimate), at a rate of 1.2 Hz. Using frequency-tagging electroencephalography, we found significant neural responses at 1.2 Hz, indicating rapid and automatic detection of the periodic categorical change. Moreover, such effect was found-although increasingly weaker-for \"impoverished\" stimulus sets that retained only certain (high-, mid-, or low-level) features of the original colorful images (i.e., grayscale, texform, and phase-scramble images), and even if the images were unrecognizable, as tested with an object recognition task. Similar effects were found with deep neural networks presented with the same stimulus sets. Reliable categorization effects for dramatically impoverished and unrecognizable images, in humans' EEG and deep neural network data, demonstrate that the animate-inanimate distinction emerges early in the visual hierarchy and is remarkably resilient to the loss of visual information.",
       "authors": [
-        "Brock Lingle",
-        "Taylor Lambert",
-        "Sydney Claypoole",
-        "Harsahib Dev",
-        "Hunter Douglas",
-        "Bobby D Nossaman"
+        "Céline Spriet",
+        "Farzad Rostami",
+        "Jean-Rémy Hochmann",
+        "Liuba Papeo"
       ],
-      "published_date": "2026",
-      "indexed_date": "2026-09-16",
-      "journal": "Ochsner journal",
-      "doi": "10.31486/toj.25.0085",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42746664/",
+      "published_date": "2026-Sep-15",
+      "indexed_date": "",
+      "journal": "Journal of cognitive neuroscience",
+      "doi": "10.1162/jocn.a.2721",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42748082/",
       "categories": [],
-      "keywords": [
-        "Aorta",
-        "apraxias",
-        "circulatory arrest–deep hypothermia induced",
-        "complications",
-        "myoclonus",
-        "neurologic manifestations",
-        "surgery"
-      ],
+      "keywords": [],
       "publication_types": [
-        "Case Reports",
         "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 34,
+        "prefilter_score": 35,
         "ai": {
-          "score": 15,
-          "topic": "Postoperative Myoclonus Case Report",
-          "reason": "Single clinical case report of transient myoclonus after hypothermic circulatory arrest; EEG mentioned only diagnostically and no computational or sleep relevance.",
-          "summary": "A 72-year-old man developed transient bilateral myoclonus, diffuse rigidity, and suspected eyelid apraxia after ascending aorta and hemiarch replacement under hypothermic circulatory arrest; symptoms resolved by postoperative day 3 with levetiracetam and calcium supplementation, and he was discharged neurologically intact.",
+          "score": 18,
+          "topic": "Animacy categorization and frequency tagging",
+          "reason": "Cognitive neuroscience of visual object categorization using frequency-tagging EEG; not related to sleep, vigilance states, artifact removal, or analysis methods for animal neural time-series.",
+          "summary": "Using frequency-tagging EEG in healthy adults and deep neural networks, the study shows that the animate-inanimate distinction is preserved even for unrecognizable images retaining only low- or mid-level visual features. Significant neural responses at 1.2 Hz indicated rapid and automatic categorization, with similar effects in DNNs, demonstrating that animacy emerges early in the visual hierarchy and is resilient to visual information loss.",
           "keywords": [
-            "hypothermic circulatory arrest",
-            "postoperative myoclonus",
-            "aortic arch surgery",
-            "levetiracetam",
-            "neurologic complications"
+            "animacy",
+            "object categorization",
+            "frequency-tagging EEG",
+            "deep neural networks",
+            "visual hierarchy"
           ],
-          "paper_type": "Case Report",
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1958,55 +1979,6 @@
             "imaging views"
           ],
           "paper_type": "Review",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42746504",
-      "title": "Fahr syndrome in an 18-year-old male with pseudohypoparathyroidism: Clinical-radiological dissociation.",
-      "abstract": "Fahr syndrome, characterized by bilateral intracranial calcifications, is a rare but clinically significant complication of chronic calcium-phosphate dysregulation in pseudohypoparathyroidism (PHP). Clinical manifestations frequently do not correlate with the extent of radiological findings, posing diagnostic challenges. An 18-year-old male with longstanding PHP presented with occipital headaches, carpopedal spasms, and depressed mood following more than two weeks of medication non-compliance. Non-contrast computed tomography (CT) of the brain confirmed extensive bilateral calcifications involving the basal ganglia, thalami, dentate nuclei, and subcortical white matter, with supportive findings on magnetic resonance imaging (MRI), including T1 hypointensity, variable T2 signal, and marked blooming artifact on susceptibility-weighted imaging (SWI). Neurological examination was largely unremarkable. Laboratory evaluation revealed hypocalcemia (serum calcium 7.2 mg/dL) with elevated intact parathyroid hormone (137 pg/mL), consistent with end-organ PTH resistance; serum phosphate (4.2 mg/dL) and 25-hydroxyvitamin D (42.4 ng/mL) were within the normal range. Electroencephalography showed no epileptiform activity. Optimization of calcium and calcitriol supplementation, together with symptomatic treatment, resulted in resolution of carpopedal spasms and significant improvement in headaches and mood at 15-day follow-up. This case illustrates the marked clinical-radiological dissociation characteristic of Fahr syndrome. Neurological evaluation or neuroimaging should be considered in PHP patients who develop new neurological or neuropsychiatric symptoms, particularly in the setting of poor biochemical control.",
-      "authors": [
-        "Syed Musa Mufarrih",
-        "Abida Akbar",
-        "Bushra Rehman",
-        "Saad Zaman",
-        "Fozia Memon"
-      ],
-      "published_date": "2026-Oct",
-      "indexed_date": "2026-09-16",
-      "journal": "Radiology case reports",
-      "doi": "10.1016/j.radcr.2026.06.085",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42746504/",
-      "categories": [],
-      "keywords": [
-        "Basal ganglia calcification",
-        "Clinical–radiological dissociation",
-        "Fahr syndrome",
-        "Hypocalcemia",
-        "Intracranial calcifications",
-        "Pseudohypoparathyroidism"
-      ],
-      "publication_types": [
-        "Case Reports",
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 34,
-        "ai": {
-          "score": 12,
-          "topic": "Fahr Syndrome Case Report",
-          "reason": "Radiology case report of Fahr syndrome with incidental EEG findings; clinically focused and no methodological contribution to EEG analysis or sleep research.",
-          "summary": "An 18-year-old male with pseudohypoparathyroidism and medication non-compliance presented with headaches, carpopedal spasms, and depressed mood, with extensive bilateral intracranial calcifications on CT/MRI but largely unremarkable neurological examination; calcium and calcitriol optimization resolved spasms and improved symptoms at 15 days.",
-          "keywords": [
-            "Fahr syndrome",
-            "pseudohypoparathyroidism",
-            "basal ganglia calcification",
-            "hypocalcemia",
-            "clinical-radiological dissociation"
-          ],
-          "paper_type": "Case Report",
           "digest_pick": true
         }
       }
