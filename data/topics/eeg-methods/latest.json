@@ -1,6 +1,6 @@
 {
   "date": "2026-09-24",
-  "generated_at": "2026-09-23T17:28:06.241876+00:00",
+  "generated_at": "2026-09-23T23:51:29.356365+00:00",
   "window": {
     "start": "2026-09-22",
     "end": "2026-09-24"
@@ -10,15 +10,15 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 82,
+  "raw_count": 94,
   "retrieved_source_counts": {
-    "pubmed": 200,
+    "pubmed": 229,
     "biorxiv": 10,
     "medrxiv": 4,
     "arxiv": 2
   },
   "raw_source_counts": {
-    "pubmed": 72,
+    "pubmed": 84,
     "biorxiv": 7,
     "medrxiv": 1,
     "arxiv": 2
@@ -33,7 +33,10 @@
     "pubmed": 36,
     "arxiv": 1
   },
-  "errors": {},
+  "errors": {
+    "biorxiv": "RuntimeError: empty response body from bioRxiv API (HTTP 200; https://api.biorxiv.org/details/biorxiv/2026-09-22/2026-09-24/0) · reused 10 cached records",
+    "medrxiv": "RuntimeError: empty response body from bioRxiv API (HTTP 200; https://api.biorxiv.org/details/medrxiv/2026-09-22/2026-09-24/0) · reused 4 cached records"
+  },
   "ai": {
     "requested": true,
     "enabled": true,
@@ -41,8 +44,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 20,
-    "newly_summarized": 20,
+    "newly_ranked": 5,
+    "newly_summarized": 5,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -53,12 +56,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 5,
-      "prompt_tokens": 15918,
-      "prompt_cache_hit_tokens": 1280,
-      "prompt_cache_miss_tokens": 14638,
-      "completion_tokens": 4201,
-      "total_tokens": 20119
+      "requests": 2,
+      "prompt_tokens": 5440,
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 4928,
+      "completion_tokens": 1130,
+      "total_tokens": 6570
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -67,27 +70,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.023066,
+    "run_cost_cny": 0.007198,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 5,
-        "prompt_tokens": 15918,
-        "prompt_cache_hit_tokens": 1280,
-        "prompt_cache_miss_tokens": 14638,
-        "completion_tokens": 4201,
-        "total_tokens": 20119
+        "requests": 2,
+        "prompt_tokens": 5440,
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 4928,
+        "completion_tokens": 1130,
+        "total_tokens": 6570
       },
-      "run_cost_cny": 0.023066,
+      "run_cost_cny": 0.007198,
       "daily_usage": {
-        "requests": 5,
-        "prompt_tokens": 15918,
-        "prompt_cache_hit_tokens": 1280,
-        "prompt_cache_miss_tokens": 14638,
-        "completion_tokens": 4201,
-        "total_tokens": 20119
+        "requests": 7,
+        "prompt_tokens": 21358,
+        "prompt_cache_hit_tokens": 1792,
+        "prompt_cache_miss_tokens": 19566,
+        "completion_tokens": 5331,
+        "total_tokens": 26689
       },
-      "daily_cost_cny": 0.023066,
+      "daily_cost_cny": 0.030264,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -143,6 +146,54 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42776676",
+      "title": "Comparison of the Utility of Amplitude-Spectral and Coherence Features of Psychotropic Drugs' Action on ECoG Signal for Pharmaco-EEG Based Drug Screening in Rats.",
+      "abstract": "A naive Bayesian classifier (NBC) combined with principal component analysis (PCA) effectively differentiates the dose-dependent effects of certain groups of psychoactive drugs based on their impact on the amplitude-spectral characteristics of electrocorticograms (ECoG) in rats. This approach has been shown to be useful for pharmacological screening of agents with unknown or poorly understood activity. Despite previously obtained optimistic results, classification determination for some drugs was inaccurate, necessitating the search for possible ways to improve the predictive effectiveness of the proposed algorithm. One possible approach would be to use as input quantitative data not only the impact of the psychoactive drugs studied on the amplitude-spectral characteristics of ECoG but also connectivity changes, including the average coherence power of different pairs of leads. The aim of this study was to compare the accuracy of NBC in classifying the pharmacological mechanism of action of agents with well-known mechanisms (test set) using pharmaco-EEG data on changes in the amplitude-spectral characteristics of ECoG, coherence, and the combined use of two data sets. Materials and methods. Experiments were performed on Wistar rats with chronically implanted ECoG electrodes. The training set, relative to which the effects of the pharmacological agents from the test set were classified, were the matrices of effects of 12 pharmacological agents: the NMDA antagonist dizocilpine, the D2/D3 antagonists haloperidol and sulpiride, the M-anticholinergic tropicamide, the H1/5HT2A receptor blocker hydroxyzine, the acetylcholinesterase inhibitor galantamine, the alpha-2 adrenergic agonist dexmedetomidine, the alpha-2 adrenergic antagonist atipamezole, the adenosine receptor blocker caffeine and the GABA-mimetics aminophenylbutyric acid (phenibut), bromdihydrochlorophenylbenzodiazepine (phenazepam) and 5-ethyl-5-phenyl-2,4,6(1H,3H,5H)-pyrimidinetrione. The test set included various drugs with tropism for the targets of the training set drugs: dopamine receptor antagonists chlorpromazine, droperidol, tiapride and raclopride, H1-histamine blockers diphenhydramine and promethazine, 5-HT2-receptor blockers ritanserin and glemenserin, acetylcholinesterase inhibitor ipidacrine, alpha2-adrenergic receptor antagonist yohimbine, alpha2-adrenergic agonists medetomidine and xylazine, GABA-mimetics 5-ethyl-5-(1-methylbutyl)-2,4,6(1H,3H,5H)-pyrimidinetrione and chloral hydrate. The analysis of the ECoG signal included the calculation of 132 amplitude-spectral characteristics and 75 coherence indicators, which, using the PCA, led to new integrative indicators used for further classification of the NBC. Results and discussion. For each drug in the test set, the median similarity probability with a particular group from the training set was calculated, which was used to assess the classification quality. It was found that, when using the amplitude-spectral characteristics of ECoG, the proposed methodological approach allows for the identification of the ECoG effects of several groups of psychoactive drugs, including D2/D3-dopamine, M-cholinergic, H1-histamine, and 5-HT2-serotonin receptor blockers, AChE inhibitors, GABA-mimetics, and alpha-2-adrenergic receptor agonists and antagonists. This approach enabled the correct classification of 18 of 24 groups in the test set. When using changes in coherence indices as the initial data, the classification accuracy also amounted to 18 of 24 groups. When combining the two data sets, the number of correctly identified NBC groups was 20 of 24 groups. When comparing the classification during training (confusion matrix), it was found that coherence data or adding coherence data to the data based on changes in amplitude-spectral characteristics leads to a statistically significant (p < 0.01 in both cases) increase in accuracy. Conclusions. The obtained data demonstrated high accuracy in classifying the pharmacological activity of the test sample drugs using any of the three compared approaches. Despite the lack of statistically significant differences between them, classification based on the combined dataset demonstrated a higher number of \"correct\" similarities. This allows us to recommend the approach based on combined data of drug effects on amplitude-spectral characteristics and coherence as the most promising for further studies using pharmaco-EEG screening.",
+      "authors": [
+        "Yuriy I Sysoev",
+        "Nikita S Kurmazov",
+        "Darya D Shitc",
+        "Sergey V Okovityi"
+      ],
+      "published_date": "2026-Aug-23",
+      "indexed_date": "2026-09-23",
+      "journal": "Methods and protocols",
+      "doi": "10.3390/mps9050123",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42776676/",
+      "categories": [],
+      "keywords": [
+        "ECoG",
+        "amplitude–spectral analysis",
+        "coherence analysis",
+        "naive Bayesian classifier",
+        "pharmaco-EEG",
+        "principal component analysis",
+        "rats"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 77,
+        "ai": {
+          "score": 88,
+          "topic": "Pharmaco-EEG feature-based classification in rats",
+          "reason": "Directly relevant animal EEG/ECoG application using lightweight spectral and coherence features plus naive Bayes/PCA, highly transferable to sleep/vigilance-state classification.",
+          "summary": "Compared naive Bayesian classification of pharmaco-EEG data using amplitude-spectral features, coherence features, and their combination to identify psychoactive drug mechanisms in rats. Combined features correctly classified 20 of 24 test drug groups, while amplitude-spectral or coherence alone each classified 18 of 24; adding coherence significantly improved accuracy (p < 0.01).",
+          "keywords": [
+            "pharmaco-EEG",
+            "ECoG",
+            "coherence analysis",
+            "amplitude-spectral analysis",
+            "naive Bayesian classifier"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42772331",
       "title": "Diff-ADN: A diffusion-guided artifact denoising network with deterministic residual refinement for EEG.",
       "abstract": "Physiological artifacts degrade electroencephalographic (EEG) recordings and can affect downstream brain-computer interface (BCI) analysis. This study develops a compact single-channel framework for ocular, muscular, cardiac, and mixed-artifact removal.&#xD;Approach: The Diffusion-Guided Artifact Denoising Network (Diff-ADN) employs a two-stage framework comprising severity-conditioned Stage-I reconstruction followed by diffusion-guided Stage-II residual refinement. During training, forward noising and velocity prediction supervise the Stage-II encoder, whereas inference requires only a single deterministic residual correction, without iterative reverse-diffusion sampling. The framework was evaluated under contamination levels ranging from -7 to +2 dB, using independently recorded artifact sources and motor-imagery decoding across four public EEG datasets.&#xD;Main results: Diff-ADN achieved mean Pearson correlations of 0.936, 0.839, 0.886, and 0.844 for EOG, EMG, ECG, and mixed EOG+EMG artifacts, respectively. When tested with independently recorded artifact sources, performance varied by artifact type: larger reductions were observed for EOG and EMG, while PTB and INCART ECG differed from the MIT-BIH reference by 0.026 and 0.014, respectively. Across the four motor-imagery datasets, ECG denoising recovered 4.88-5.59 percentage points (pp) in decoding accuracy compared with artifact-corrupted EEG. The largest recovery was 21.90 pp for PTB ECG artifacts on BCI IV-2a at -6 dB.&#xD;Significance: The proposed framework combines artifact-aware EEG reconstruction with efficient deterministic inference, processing 2-s segments in 12.52-17.08 ms on the tested CPU. Results across independent artifact sources and multiple motor-imagery datasets further show that improvements in waveform reconstruction do not necessarily translate into uniform recovery of BCI decoding accuracy.",
@@ -185,6 +236,51 @@
             "brain-computer interface"
           ],
           "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42777118",
+      "title": "Mu or alpha? Source decomposition for social perception analysis.",
+      "abstract": "The sensorimotor mu rhythm is widely used as an electroencephalography (EEG) marker of mirror neuron system activity during action and emotion perception. However, its frequency overlap with occipital-parietal alpha raises concerns that sensor-level measurements over central electrodes may be contaminated by visual alpha activity. Here, we directly compared conventional sensor-level analyses with independent component analysis (ICA)-based source separation to examine how methodological choices affect interpretations of mu dynamics during emotional face perception. Thirty-three participants viewed static and dynamic facial expressions (smile, smirk) and nonsocial control stimuli while EEG was recorded. Time-frequency dynamics were analyzed using both conventional sensor-level measures at central and parietal electrodes and ICA mu and alpha sources. Cluster-based permutation statistics were applied to assess condition effects. Sensor-level analyses showed similar dynamics in central and parietal electrodes, with robust desynchronization patterns consistent with visual alpha modulation. In contrast, ICA revealed 2 functionally distinct components: an alpha source showing desynchronization and a sensorimotor mu component showing synchronization across most conditions. The mu component demonstrated minimal sensitivity to stimulus category. These results demonstrate that conventional sensor-level analyses do not provide a selective measure of mu activity and that prior reports of mu suppression to emotional faces may reflect alpha contamination. HighlightsConventional central-electrode electroencephalography analyses confound sensorimotor mu with visual alpha activity.Independent component analysis reveals distinct mu and alpha sources with opposite spectral dynamics during face perception.Mu rhythm shows synchronization and limited sensitivity to facial emotion stimuli during passive viewing.",
+      "authors": [
+        "Ekaterina Karimova",
+        "Diana Smolskaia"
+      ],
+      "published_date": "2026-Sep-01",
+      "indexed_date": "2026-09-23",
+      "journal": "Cerebral cortex (New York, N.Y. : 1991)",
+      "doi": "10.1093/cercor/bhag136",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42777118/",
+      "categories": [],
+      "keywords": [
+        "ICA",
+        "alpha rhythm",
+        "emotional facial expressions",
+        "mirror neurons",
+        "mu rhythm",
+        "social perception"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 54,
+        "ai": {
+          "score": 82,
+          "topic": "ICA source decomposition of mu/alpha rhythms",
+          "reason": "Strong methodological relevance for artifact/source separation and interpreting spectral dynamics in EEG, transferable to animal neural time-series despite a human social-perception context.",
+          "summary": "Compared sensor-level EEG with ICA-based source separation to assess whether central mu rhythm during emotional face perception is contaminated by visual alpha. ICA revealed distinct mu and alpha sources with opposite dynamics; mu showed synchronization and minimal sensitivity to facial expressions, suggesting prior mu suppression findings may reflect alpha contamination.",
+          "keywords": [
+            "mu rhythm",
+            "alpha rhythm",
+            "independent component analysis",
+            "social perception",
+            "emotional facial expressions"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -332,46 +428,64 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42771789",
-      "title": "Rhythmic stimulation elicits multiple, concurrent neural responses.",
-      "abstract": "Rhythmic light stimulation offers solutions to innumerable cognitive and neurological disorders. However, like any neuromodulatory technique, responses to rhythmic light stimulation are highly variable, producing challenges in replicating lab-based studies and translating findings to the clinic. Across 3 magnetoencephalography (MEG) and electroencephalography (EEG) experiments, we show that this variability can, in part, be attributed to rhythmic light stimulation eliciting multiple, coexisting neural responses which have separable influences on behavior. Specifically, we find that rhythmic light stimulation produces neural responses at both the fundamental (f) and second harmonic (2f) frequencies, and that these responses are differentially shaped by endogenous oscillatory dynamics that vary across participants. Importantly, these harmonic responses separably contribute to perception, with gamma-band responses supporting the representation of stimulus-specific information, and alpha-band responses causally contributing to near-threshold visual perception. We reproduce these effects across datasets, paradigms, and oscillatory bands, suggesting that the multiple, concurrent oscillatory responses elicited by rhythmic light stimulation are a robust and pervasive phenomenon. We propose that the complexity of neural responses to rhythmic stimulation can explain why there is substantial variability between studies using these techniques, and that understanding these complex responses may help advance neuromodulatory technologies for both fundamental and clinical neuroscience.",
+      "source_id": "42776495",
+      "title": "Inter-rater reliability on rhythmic and periodic EEG patterns using Standardized Computer-based Organized Reporting of EEG (SCORE): A multicenter study.",
+      "abstract": "This multicenter study aimed to evaluate inter-rater reliability (IRR) for rhythmic and periodic patterns (RPPs), background activity, and interictal findings using the Standardized Computer-based Organized Reporting of EEG (SCORE) across 10 European Reference Network (ERN) EpiCARE centers. Fifteen neurologists and neurophysiologists, divided into two panels, independently analyzed a total of 277 adult electroencephalography (EEG) recordings, including RPP cases and controls without RPPs, using 5-min EEG epochs. IRR was measured among pairs of raters and quantified using the maximum-likelihood kappa (κML), an unbiased reliability estimator. EEG studies evaluated by at least six raters were included in the analyses (n = 263). The overall identification of RPP's presence vs absence achieved substantial agreement (κML: .61-.66). Reliability for Main Terms 1 and 2 was substantial to almost perfect (κML: .73-.89), matching or exceeding previously published results. Notably, individual RPP types (κML up to .98) and complex modifiers, such as evolving dynamics (κML: .74-.87) and triphasic morphology (κML: .60-.88), achieved high reliability. Although background activity components showed almost perfect consensus (κML: .84-.98), agreement for posterior dominant rhythm was lower (κML: .06-.47). In contrast, the identification of sporadic interictal epileptiform discharges was high (κML: .89). The SCORE framework enabled a detailed and comprehensive classification of RPPs, while also capturing background activities and other non-RPP findings in a setting that closely resembles clinical practice. It highlighted complex characteristics for which IRR remains low.",
       "authors": [
-        "Benjamin J Griffiths",
-        "Katharina Duecker",
-        "Camille Fakche",
-        "Laura Dugué",
-        "Andrew Quinn",
-        "Ole Jensen"
+        "Elena Tartara",
+        "Harald Aurlien",
+        "Melita Čačić Hribljan",
+        "Francesca Bisulli",
+        "Laura Canafoglia",
+        "Nicolas Gaspard",
+        "Carla Bentes",
+        "Rūta Mameniškienė",
+        "Elena Ballante",
+        "Alessandro Amatu",
+        "Maria Vlachou",
+        "Lorenzo Ferri",
+        "Elena Pasini",
+        "Chiara Pastori",
+        "Andrea Stabile",
+        "Charlotte De Maeseneire",
+        "Lorenzo Ferlini",
+        "Ana Catarina Franco",
+        "Ana Rita Peralta",
+        "Hanna-Reetta Lajunen",
+        "Alessandro Principe",
+        "Alexis Arzimanoglou",
+        "Sándor Beniczky"
       ],
-      "published_date": "2026-Sep-01",
-      "indexed_date": "2026-09-22",
-      "journal": "Cerebral cortex (New York, N.Y. : 1991)",
-      "doi": "10.1093/cercor/bhag152",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42771789/",
+      "published_date": "2026-Sep-23",
+      "indexed_date": "",
+      "journal": "Epilepsia",
+      "doi": "10.1002/epi.70488",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42776495/",
       "categories": [],
       "keywords": [
         "EEG",
-        "MEG",
-        "neural oscillations",
-        "rhythmic light stimulation",
-        "visual perception"
+        "ERN EpiCARE",
+        "SCORE",
+        "ictal‐interictal continuum",
+        "inter‐rater reliability",
+        "rhythmic and periodic EEG patterns"
       ],
       "publication_types": [
         "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 27,
+        "prefilter_score": 86,
         "ai": {
           "score": 70,
-          "topic": "Multiple neural responses to rhythmic stimulation",
-          "reason": "MEG/EEG study on concurrent harmonic neural responses to rhythmic stimulation, relevant to spectral and time-frequency analysis of neural oscillations and potentially transferable to animal experiments.",
-          "summary": "Across three MEG and EEG experiments, the paper shows that rhythmic light stimulation elicits multiple concurrent neural responses at fundamental and second harmonic frequencies, which are differentially shaped by endogenous oscillatory dynamics. These harmonic responses separably contribute to perception, with gamma-band responses representing stimulus-specific information and alpha-band responses causally contributing to near-threshold visual perception.",
+          "topic": "EEG reporting and inter-rater reliability",
+          "reason": "Relevant to reproducibility and user calibration in EEG annotation, with potential transfer to vigilance-state labeling, though focused on clinical RPPs rather than animal sleep.",
+          "summary": "Multicenter study assessed inter-rater reliability of rhythmic and periodic EEG patterns, background activity, and interictal findings using the SCORE framework across 10 EpiCARE centers. Overall RPP identification reached substantial agreement (κML .61–.66), individual RPP types almost perfect (κML up to .98), while posterior dominant rhythm reliability was low (κML .06–.47).",
           "keywords": [
-            "rhythmic light stimulation",
-            "neural oscillations",
-            "MEG",
-            "EEG",
-            "visual perception"
+            "inter-rater reliability",
+            "rhythmic and periodic EEG patterns",
+            "SCORE",
+            "electroencephalography",
+            "ictal-interictal continuum"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -422,97 +536,6 @@
             "interpretable machine learning",
             "SHAP",
             "nonlinear complexity"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42770400",
-      "title": "Validation of Low-Frequency Oscillatory Activity as an Indicator of Post-Stroke Injury and Recovery.",
-      "abstract": "BackgroundThis study investigated the roles of delta (1-3 Hz) and beta (20-30 Hz) electroencephalography (EEG) oscillatory activity at rest in post-stroke recovery. Driven by previous work linking delta and beta activity with stroke-related injury and motor recovery, this study sought to validate these findings in an independent cohort, addressing the need for confirmatory studies in stroke biomarker development.MethodsIndividuals with stroke admitted to an inpatient rehabilitation facility along with a control group of unimpaired adults were recruited. Participants completed motor assessments and two EEG recordings near the time of facility admission and discharge. Coherence and power were computed, and structural imaging was obtained to assess stroke-related injury. Mixed-effects linear models and correlation analyses were employed to evaluate relationships between EEG measures and motor status, recovery, and injury.ResultsThis work replicated key EEG biomarker findings from previous work. Individuals post-stroke (n = 30) depicted elevated delta coherence between bilateral motor cortices at the time of IRF admission that decreased over time, paralleling motor recovery and resembling coherence observed in controls (n = 17) by IRF discharge. Greater corticospinal tract injury and lesion volume were associated with greater delta and beta coherence and delta power, respectively, in leads overlying bilateral sensorimotor regions.ConclusionsReplication of these findings in an independent cohort further substantiates resting-state low-frequency oscillatory activity as a marker of stroke-related injury and recovery. Collectively, these results support the validity of EEG-derived biomarkers in stroke and suggest that delta-band activity may represent a particularly relevant biomarker during early post-stroke motor recovery.",
-      "authors": [
-        "Jasper I Mark",
-        "Rachana Gangwani",
-        "Courtney Snyder",
-        "Jessica M Cassidy"
-      ],
-      "published_date": "2026-Sep-22",
-      "indexed_date": "",
-      "journal": "Clinical EEG and neuroscience",
-      "doi": "10.1177/15500594261488982",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42770400/",
-      "categories": [],
-      "keywords": [
-        "coherence",
-        "electroencephalography",
-        "rehabilitation",
-        "stroke",
-        "validation"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 27,
-        "ai": {
-          "score": 65,
-          "topic": "Delta/beta EEG oscillations in stroke recovery",
-          "reason": "Longitudinal EEG power and coherence analysis with rehabilitation context; relevant spectral/longitudinal methods but clinical stroke focus rather than sleep/vigilance or animal transfer.",
-          "summary": "This study validated delta (1-3 Hz) and beta (20-30 Hz) EEG oscillatory activity as markers of post-stroke injury and recovery in an independent cohort of 30 individuals with stroke and 17 controls. Elevated delta coherence between bilateral motor cortices at admission decreased over time, paralleling motor recovery, and greater corticospinal tract injury and lesion volume were associated with greater delta and beta coherence and delta power.",
-          "keywords": [
-            "stroke",
-            "EEG",
-            "delta coherence",
-            "motor recovery",
-            "biomarker validation"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42772248",
-      "title": "Analysis of the electroencephalographic features in infantile epileptic spasms syndrome of structural and unknown etiology based on graph theory.",
-      "abstract": "Infantile Epileptic Spasm Syndrome (IESS) follows established treatment protocols, yet prognostic factors remain unclear. This study analyzed brain network characteristics in children with IESS. Sixteen children with IESS were enrolled, including 11 with structural etiology (S group) and 5 with unknown etiology (U group), all receiving hormone therapy. Eleven age-matched healthy children served as controls (C group). Two-second frequency bands were extracted from at least 20 min of video electroencephalogram (VEEG) recordings. The IESS group completed paired pre- and post-treatment VEEG recordings. Graph-theoretical analysis was applied to compute characteristic path length (CPL), nodal degree (ND), clustering coefficient (CC), and betweenness centrality (BC) based on mutual information across channels. Compared with the C group, both S and U groups showed decreased beta-band CPL and increased ND and CC during wakefulness. The S group had significantly lower ND and CC in the beta band across all interictal states compared with the U group. After treatment, the S group exhibited further reductions in beta-band CPL and increases in ND and CC during the waking ictal period. Children with IESS of structural and unknown etiologies show distinct brain network characteristics. Subtype-specific beta-band network variations provide a basis for investigating prognostic electrophysiological indicators in IESS, and their predictive performance needs validation via long-term cohort observation.",
-      "authors": [
-        "Yan Dong",
-        "Gongao Wu",
-        "Liang Jin"
-      ],
-      "published_date": "2026-Sep-22",
-      "indexed_date": "",
-      "journal": "Acta psychologica",
-      "doi": "10.1016/j.actpsy.2026.107793",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42772248/",
-      "categories": [],
-      "keywords": [
-        "Brain functional network",
-        "Different etiologies",
-        "Hormone therapy",
-        "Infantile epileptic spasms syndrome",
-        "Scalp EEG"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 27,
-        "ai": {
-          "score": 65,
-          "topic": "Graph theory analysis of IESS EEG",
-          "reason": "Graph-theoretical analysis of EEG networks in infantile spasms, relevant to interpretable network features and developmental EEG but not directly to animal sleep or lightweight methods.",
-          "summary": "The paper analyzed graph-theoretical brain network features from scalp EEG in 16 children with infantile epileptic spasms syndrome (11 structural, 5 unknown etiology) and 11 healthy controls. It found that structural and unknown etiology groups show distinct beta-band network characteristics, with the structural group having lower nodal degree and clustering coefficient across interictal states and further post-treatment changes.",
-          "keywords": [
-            "infantile epileptic spasms syndrome",
-            "EEG",
-            "graph theory",
-            "brain functional network",
-            "beta-band"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1904,88 +1927,92 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42772554",
-      "title": "Multimodality Assessment for Sudden Cardiac Death Risk Stratification in Non-Ischemic Cardiomyopathy: A Case-Based Framework Integrating Cardiac Magnetic Resonance, Electrophysiologic Observations, and Genetics.",
-      "abstract": "Sudden cardiac death (SCD) remains a major cause of mortality in nonischemic cardiomyopathy (NICM) despite advances in heart failure therapy and implantable cardioverter-defibrillator (ICD) technology. Risk stratification remains challenging because left ventricular (LV) ejection fraction (LVEF) alone incompletely captures arrhythmic substrate, missing many patients at risk while leading others to receive ICDs without subsequent appropriate therapy. Cardiac magnetic resonance (CMR), particularly late gadolinium enhancement (LGE), has emerged as a central tool for identifying myocardial fibrosis and refining arrhythmic risk across NICM phenotypes. However, CMR imaging alone does not fully define arrhythmogenicity, especially in diseases with layered, septal, or intramural scar. We present a case-based framework illustrating how multimodality imaging integrates into SCD risk stratification across hypertrophic cardiomyopathy, cardiac sarcoidosis, genetic arrhythmogenic cardiomyopathy, and cardiac amyloidosis. These cases demonstrate several core principles. First, CMR can identify arrhythmogenic substrate and often refines risk beyond conventional clinical markers. Second, multimodality imaging can provide additive information, but findings must be interpreted within disease-specific context, as the prognostic implications differ across phenotypes. Third, invasive electrophysiologic evaluation, including programmed stimulation and electroanatomic mapping, can further stratify arrhythmic risk when imaging findings are incomplete or discordant with the clinical presentation. Finally, genetic testing complements imaging and invasive assessment by refining disease classification and, in selected cases, contributes to arrhythmic risk assessment by considering variant classification and wholistic clinical phenotype. Together, these observations support a substrate-based rather than function-based approach to SCD risk stratification in NICM. Multimodality imaging is foundational, but optimal assessment requires integration of imaging, electrophysiology, genetics, and clinical phenotype. Future progress will depend on longitudinal risk modeling, improved characterization of electrically active substrate, and incorporation of patient-specific tools into primary prevention ICD decision-making.",
+      "source_id": "42777207",
+      "title": "Hirschsprung's disease and a rare mutation of the PIGO gene: Mabry syndrome.",
+      "abstract": "Mabry syndrome is a very rare condition characterized by cognitive impairment, distinctive facial features, hypotonia, elevated alkaline phosphatase (ALP) levels in the blood (hyperphosphatasia), and recurrent generalized tonic-clonic seizures. It can be accompanied by gastrointestinal anomalies such as Hirschsprung's disease (HD). In this study, we aim to present a case of hyperphosphatasia with impaired intellectual development syndrome 2 (HPMRS2) from Türkiye, featuring a novel homozygous p.Arg445Pro variant in the PIGO gene, occurring in association with HD. A two-year-old male patient was referred to the pediatric neurology clinic with decreased responsiveness to the environment, lack of trunk control, and failure to respond to his name. ALP value was 613 IU/L. No pathology was detected in metabolic tests, vitamin D levels, or cranial magnetic resonance imaging, and electroencephalography (EEG). At 11 months of age, he had a generalized tonic-clonic seizure without fever. Since no abnormalities were detected in chromosome analysis and array analysis, whole exome sequencing (WES) was performed. A homozygous mutation was detected in the PIGO gene (NM_032634.4): c.1334G>C (p.Arg445Pro). Sanger analysis revealed heterozygous carrier status in both parents. The patient had constipation that was unresponsive to medical treatment since birth. Physical examination revealed abdominal distension. Rectal examination revealed an explosive discharge of gas and stool. A rectal biopsy was performed. The pathology result was ganglion-negative, and the patient was diagnosed with HD. After definitive surgery, spontaneous defecation has been achieved during follow-up, except for rare episodes of enterocolitis. It should be remembered that Mabry syndrome can be accompanied by gastrointestinal anomalies, primarily HD. This case highlights the increased phenotypic variability associated with PIGO mutations and demonstrates the importance of genetic assessment in atypical neurodevelopmental conditions.",
       "authors": [
-        "Michael J Litt",
-        "Alireza Oraii",
-        "Fermin C Garcia",
-        "Saman Nazarian",
-        "David S Frankel",
-        "Rajat Deo",
-        "Francis E Marchlinski"
+        "Tugay Tartar",
+        "Serkan Kırık",
+        "Muhammet Çalık"
       ],
-      "published_date": "2026-Sep-22",
+      "published_date": "2026-Sep-11",
       "indexed_date": "",
-      "journal": "Indian pacing and electrophysiology journal",
-      "doi": "10.1016/j.ipej.2026.09.010",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42772554/",
+      "journal": "The Turkish journal of pediatrics",
+      "doi": "10.24953/turkjpediatr.2026.7661",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42777207/",
       "categories": [],
       "keywords": [
-        "Sudden cardiac death",
-        "cardiac magnetic resonance",
-        "late gadolinium enhancement",
-        "multimodality imaging",
-        "nonischemic cardiomyopathy",
-        "risk stratification",
-        "ventricular arrhythmia"
+        "Hirschsprung’s disease",
+        "Mabry syndrome",
+        "child",
+        "constipation",
+        "seizures"
       ],
       "publication_types": [
-        "Journal Article",
-        "Review"
+        "Case Reports",
+        "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 29,
+        "prefilter_score": 35,
         "ai": {
           "score": 12,
-          "topic": "SCD risk stratification in cardiomyopathy",
-          "reason": "Cardiac electrophysiology and imaging framework, not relevant to EEG or sleep research.",
-          "summary": "This review presents a case-based framework integrating cardiac magnetic resonance, electrophysiologic observations, and genetics for sudden cardiac death risk stratification in non-ischemic cardiomyopathy, emphasizing that left ventricular ejection fraction alone incompletely captures arrhythmic substrate. It argues for a substrate-based rather than function-based approach, with multimodality imaging as foundational and additive information from invasive electrophysiology and genetic testing.",
+          "topic": "Rare pediatric genetic syndrome case report",
+          "reason": "Clinical case report on Mabry syndrome with only incidental EEG mentions; not relevant to neural time-series methods or animal sleep experiments.",
+          "summary": "Case report of a 2-year-old Turkish boy with Mabry syndrome (HPMRS2) due to a novel homozygous PIGO p.Arg445Pro variant, presenting with neurodevelopmental delay, seizures, hyperphosphatasia, and Hirschsprung's disease. Rectal biopsy confirmed aganglionosis; after definitive surgery, spontaneous defecation was achieved except for rare enterocolitis episodes.",
           "keywords": [
-            "sudden cardiac death",
-            "nonischemic cardiomyopathy",
-            "cardiac magnetic resonance",
-            "late gadolinium enhancement",
-            "risk stratification"
+            "Mabry syndrome",
+            "PIGO gene",
+            "Hirschsprung's disease",
+            "hyperphosphatasia",
+            "whole exome sequencing"
           ],
-          "paper_type": "Review",
+          "paper_type": "Case Report",
           "digest_pick": true
         }
       }
     },
     {
       "source": "pubmed",
-      "source_id": "42774403",
-      "title": "Top developments in clinical cardiac electrophysiology-2025.",
-      "abstract": "",
+      "source_id": "42776472",
+      "title": "Hemimegalencephaly with accelerated myelination in the affected hemisphere.",
+      "abstract": "Hemimegalencephaly is an uncommon malformation of cortical development characterized by congenital enlargement and dysplasia of part or all of one cerebral hemisphere. It usually presents in early life with developmental delay, hemiparesis, and drug-resistant seizures. We report the case of a 7-month-old boy with recurrent seizures beginning in the neonatal period. Electroencephalography demonstrated slow spike-and-wave discharges arising from the left frontotemporal region and propagating to the ipsilateral centroparietal region. Brain MRI showed enlargement of the left cerebral hemisphere, thickened and dysmorphic gyri predominantly in the frontal lobe, ventricular asymmetry, and an aberrant left midsagittal fiber tract located beneath the corpus callosum. The involved white matter showed visually advanced myelination for age, manifested by relatively increased T1-weighted signal and decreased T2-weighted signal compared with the expected myelination pattern at 7 months. These findings are consistent with left hemimegalencephaly with accelerated myelination. This case illustrates a recognizable MRI pattern that may support early diagnosis in infants with epilepsy, while emphasizing that the relationship between epileptic activity and accelerated myelination remains associative rather than causal in a single-patient report.",
       "authors": [
-        "Brian Olshansky"
+        "Laura Manuela Olarte Bermúdez",
+        "Juan Carlos Mora Vergara",
+        "Oscar Torres"
       ],
-      "published_date": "2026-Sep",
-      "indexed_date": "2026-09-23",
-      "journal": "Heart rhythm O2",
-      "doi": "10.1016/j.hroo.2026.03.039",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42774403/",
+      "published_date": "2026-Sep-23",
+      "indexed_date": "",
+      "journal": "Acta neurologica Belgica",
+      "doi": "10.1007/s13760-026-03151-4",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42776472/",
       "categories": [],
-      "keywords": [],
+      "keywords": [
+        "Aberrant fiber tract",
+        "Accelerated myelination",
+        "Epilepsy",
+        "Hemimegalencephaly",
+        "Infant",
+        "Magnetic resonance imaging"
+      ],
       "publication_types": [
-        "Journal Article",
-        "Review"
+        "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 27,
+        "prefilter_score": 34,
         "ai": {
           "score": 10,
-          "topic": "Clinical cardiac electrophysiology developments",
-          "reason": "Cardiac electrophysiology review, outside the researcher's scope.",
-          "summary": "No abstract is available for this review article titled 'Top developments in clinical cardiac electrophysiology-2025'.",
+          "topic": "Pediatric malformation of cortical development case report",
+          "reason": "Clinical neuroimaging/EEG case report on hemimegalencephaly; not methodologically useful for the researcher's computational EEG or animal sleep focus.",
+          "summary": "Case report of a 7-month-old boy with left hemimegalencephaly presenting with neonatal-onset seizures and developmental delay. Brain MRI showed hemispheric enlargement, dysmorphic gyri, an aberrant midsagittal fiber tract, and accelerated myelination in the affected hemisphere, illustrating a recognizable imaging pattern for early diagnosis.",
           "keywords": [
-            "clinical cardiac electrophysiology",
-            "2025 developments",
-            "review"
+            "hemimegalencephaly",
+            "accelerated myelination",
+            "aberrant fiber tract",
+            "epilepsy",
+            "magnetic resonance imaging"
           ],
-          "paper_type": "Review",
+          "paper_type": "Case Report",
           "digest_pick": true
         }
       }
