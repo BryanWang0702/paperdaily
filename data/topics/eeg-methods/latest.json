@@ -1,6 +1,6 @@
 {
   "date": "2026-09-25",
-  "generated_at": "2026-09-24T17:27:04.831314+00:00",
+  "generated_at": "2026-09-24T23:57:21.317785+00:00",
   "window": {
     "start": "2026-09-23",
     "end": "2026-09-25"
@@ -10,15 +10,15 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 80,
+  "raw_count": 91,
   "retrieved_source_counts": {
-    "pubmed": 187,
+    "pubmed": 224,
     "biorxiv": 10,
     "medrxiv": 4,
     "arxiv": 1
   },
   "raw_source_counts": {
-    "pubmed": 71,
+    "pubmed": 82,
     "arxiv": 1,
     "biorxiv": 7,
     "medrxiv": 1
@@ -43,8 +43,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 21,
-    "newly_summarized": 21,
+    "newly_ranked": 6,
+    "newly_summarized": 6,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -55,12 +55,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 7,
-      "prompt_tokens": 19481,
-      "prompt_cache_hit_tokens": 1792,
-      "prompt_cache_miss_tokens": 17689,
-      "completion_tokens": 4247,
-      "total_tokens": 23728
+      "requests": 3,
+      "prompt_tokens": 5657,
+      "prompt_cache_hit_tokens": 768,
+      "prompt_cache_miss_tokens": 4889,
+      "completion_tokens": 1172,
+      "total_tokens": 6829
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -69,27 +69,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.026219,
+    "run_cost_cny": 0.007248,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 7,
-        "prompt_tokens": 19481,
-        "prompt_cache_hit_tokens": 1792,
-        "prompt_cache_miss_tokens": 17689,
-        "completion_tokens": 4247,
-        "total_tokens": 23728
+        "requests": 3,
+        "prompt_tokens": 5657,
+        "prompt_cache_hit_tokens": 768,
+        "prompt_cache_miss_tokens": 4889,
+        "completion_tokens": 1172,
+        "total_tokens": 6829
       },
-      "run_cost_cny": 0.026219,
+      "run_cost_cny": 0.007248,
       "daily_usage": {
-        "requests": 7,
-        "prompt_tokens": 19481,
-        "prompt_cache_hit_tokens": 1792,
-        "prompt_cache_miss_tokens": 17689,
-        "completion_tokens": 4247,
-        "total_tokens": 23728
+        "requests": 10,
+        "prompt_tokens": 25138,
+        "prompt_cache_hit_tokens": 2560,
+        "prompt_cache_miss_tokens": 22578,
+        "completion_tokens": 5419,
+        "total_tokens": 30557
       },
-      "daily_cost_cny": 0.026219,
+      "daily_cost_cny": 0.033467,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -238,6 +238,54 @@
             "theta oscillations"
           ],
           "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42780514",
+      "title": "A dual-branch multidimensional attention fusion network for EEG-based fatigue classification.",
+      "abstract": "Electroencephalogram (EEG)-based fatigue classification is important for vigilance monitoring. Reliable recognition remains challenging due to fatigue-related neural changes that involve both spectral-temporal dynamics and altered inter-channel interactions. This study develops a lightweight Dual-Branch Multidimensional Attention Fusion Network (DB-MDAFNet) that integrates spectral-temporal features and PCC-derived inter-channel dependency representations for EEG-based fatigue classification. The framework uses differential entropy features extracted from five canonical EEG frequency bands as input. A parameter-free multidimensional enhancement (PF-ME) module is applied for feature recalibration. It then extracts complementary representations via a Channel Attention-Multi-scale Temporal (CA-MT) branch and a Functional Connectivity-Topological Encoding (FC-TE) branch derived from Pearson correlation coefficients (PCC). The fused representation is used to classify EEG samples into alert, tired, and drowsy states. Experiments were conducted on the public SEED-VIG dataset and the self-constructed video game-based fatigue dataset (DVG). Under identical subject-dependent settings, DB-MDAFNet achieved 85.58% accuracy on SEED-VIG and 97.12%-98.56% accuracy on DVG datasets. The model maintained a compact architecture, with 0.185 M parameters under the DVG input configuration. Ablation results indicated the complementary contribution of the two branches. Model interpretability analyses suggested that the learned representations contained spatially structured patterns across frontal, parietal, and occipital electrode regions. The proposed framework, integrating multi-scale temporal learning with connectivity-derived topological encoding, provides a lightweight and interpretable architecture for EEG-based fatigue monitoring.",
+      "authors": [
+        "Jingqing Lu",
+        "Shihong Liu",
+        "Wei Li",
+        "Chenyu Mu",
+        "Diankun Gong",
+        "Dezhong Yao"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-09-24",
+      "journal": "Frontiers in physiology",
+      "doi": "10.3389/fphys.2026.1923970",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42780514/",
+      "categories": [],
+      "keywords": [
+        "attention mechanism",
+        "deep learning",
+        "electroencephalography",
+        "fatigue classification",
+        "spatial-temporal features"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 74,
+        "ai": {
+          "score": 85,
+          "topic": "Lightweight EEG fatigue classification",
+          "reason": "Presents a lightweight attention network for EEG vigilance classification, highly relevant to computational EEG analysis and potential transfer to sleep staging.",
+          "summary": "Introduces DB-MDAFNet, a lightweight dual-branch network combining spectral-temporal and inter-channel dependency features for EEG fatigue classification. Achieves 85.58% accuracy on SEED-VIG and 97.12%-98.56% on a self-constructed dataset with only 0.185M parameters.",
+          "keywords": [
+            "EEG fatigue classification",
+            "attention mechanism",
+            "spectral-temporal features",
+            "functional connectivity",
+            "lightweight deep learning"
+          ],
+          "paper_type": "Methods/Resource",
           "digest_pick": true
         }
       }
@@ -586,6 +634,58 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42781019",
+      "title": "Multimodal sensor-based response mechanisms of drivers under adverse weather conditions using EEG spectral entropy and prediction entropy.",
+      "abstract": "Whether rain, snow, and fog elicit qualitatively different driver-state dynamics remains unclear. Thirty licensed drivers completed a simulator experiment under clear, rain, snow, and fog conditions, during which subjective scales, electrocardiograms, electroencephalograms, and vehicle data were acquired simultaneously. Six response pathways were constructed to characterize subjective load, operational fluctuation, conservative control, physiological arousal, electroencephalographic response, and system uncertainty. C4 spectral entropy gauge neural complexity, class-wise optimized reliability fusion prediction entropy measured system uncertainty in multimodal sensor responses, and within-subject centering, together with distance correlation, revealed how information is structured across modalities. Among out-of-fold predictions over 6,456 windows, the class-wise optimized reliability fusion model achieved 91.9% accuracy and Macro-F1 of 0.919. All three adverse weather types significantly increased the subjective load, yet the dominant pathways differed. Rainfall increased cognitive load, snow led to synchronized increases in neural complexity and system uncertainty, and fog induced conservative compensation under visual restriction. Snow produced the strongest system-level response [class-wise optimized reliability fusion prediction entropy: r = 0.79, 95% confidence interval (CI): (0.62, 0.87); C4 spectral entropy: r = 0.53, 95% CI (0.21, 0.79)]. The four modalities formed an information-complementary structure. This study elucidates the information dynamics of driving states under adverse weather conditions and demonstrates that rain, snow, and fog occupy distinct regions within the information space, thereby providing a sensor-informed foundation for driver-state monitoring and graded warning systems in intelligent vehicles.",
+      "authors": [
+        "Yi Tian",
+        "Jianping Hu",
+        "Hao Ding",
+        "Binhe Yang",
+        "Jialin Hu",
+        "Yuting Liu",
+        "Yu Ding"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-09-24",
+      "journal": "Frontiers in neuroscience",
+      "doi": "10.3389/fnins.2026.1919198",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42781019/",
+      "categories": [],
+      "keywords": [
+        "adverse weather",
+        "cognitive workload",
+        "complex system",
+        "driver state",
+        "information complementarity",
+        "multimodal sensors",
+        "neuroergonomics",
+        "prediction entropy"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 61,
+        "ai": {
+          "score": 70,
+          "topic": "Multimodal driver state analysis",
+          "reason": "Employs EEG spectral entropy and prediction entropy for driver state classification, relevant for vigilance monitoring but specific to driving domain.",
+          "summary": "Investigates driver-state dynamics under clear, rain, snow, and fog using multimodal sensors and entropy measures. Finds distinct response pathways: rain increases cognitive load, snow synchronizes neural complexity and system uncertainty, and fog induces conservative compensation, with a fusion model achieving 91.9% accuracy.",
+          "keywords": [
+            "adverse weather driving",
+            "EEG spectral entropy",
+            "prediction entropy",
+            "multimodal sensors",
+            "driver state"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42778807",
       "title": "Frequency-Specific EEG burst dynamics in Parkinson's Disease and freezing of gait.",
       "abstract": "Parkinson's disease (PD) disrupts motor networks, but conventional EEG spectral analyses may miss the transient, burst-like structure of pathological oscillations. Freezing of gait (FOG) is a disabling and poorly understood gait disturbance that may involve altered cognitive-motor control. This study aims to determine whether resting-state electroencephalography burst dynamics provide frequency-specific markers of PD and FOG. Resting-state EEG was analyzed from 237 participants across three study sites, including 88 healthy controls and 149 individuals with PD assessed in the clinically defined ON-medication state. Participants with PD were also classified as having FOG (PDFOG +) or not having FOG (PDFOG -). Analyses were harmonized across sites using 11 common EEG channels. Burst dynamics were quantified in theta, alpha, low-beta, and high-beta bands using amplitude-envelope thresholding. Primary analyses focused on low- and high-beta burst dynamics at mid-frontal lead for healthy controls vs PD comparisons, and theta, low-beta, and high-beta burst dynamics for healthy control, PDFOG-, and PDFOG+ comparisons. FOG severity associations were examined using a study site-standardized FOGQ z-scores. People with PD showed altered low-beta burst timing, characterized by more frequent, but shorter low-beta bursts compared with healthy controls. These effects were evident at the mid-frontal region and supported by exploratory topographic maps. In three-group analyses, low-beta burst rate and duration differed across groups, but adjusted PD-only models did not support robust PDFOG+ vs PDFOG- differences. In contrast, FOG severity was most consistently associated with theta amplitude-related burst metrics. Resting-state EEG burst dynamics reveal dissociable oscillatory signatures in PD. Low-beta burst timing abnormalities reflect general PD-related motor network dysfunction, whereas theta burst amplitude may relate to FOG severity and cognitive-motor network burden.",
@@ -680,6 +780,54 @@
             "sleep measurement"
           ],
           "paper_type": "Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42780510",
+      "title": "EEG correlates of sleep stages, sleep discrepancy, and insomnia: a comparative analysis of people with insomnia and healthy sleepers using spectral power and sample entropy.",
+      "abstract": "This study investigated neurophysiological differences between individuals with and without insomnia across sleep stages and sleep discrepancy conditions using electroencephalography (EEG). EEG band powers (Delta, Beta) and entropy metrics (Sample Entropy and Multiscale Sample Entropy) were analyzed from each epoch of overnight polysomnography in 64 participants. Linear mixed-effects modeling was used to examine the influence of insomnia status, sleep stage, and electrode location on these EEG metrics. Results indicated that the EEG metrics were strongly correlated with physiological sleep stages but did not effectively distinguish self-reported sleep perception within the same polysomnographic sleep stage. Additionally, these metrics did not consistently differentiate individuals with insomnia from good sleeper controls across all conditions. Rather, individuals with insomnia exhibited regional patterns of Delta power during wakefulness, increased sample entropy during REM sleep, and decreased Beta power during positive discrepancy. These findings highlight physiological features associated with sleep stages, insomnia, and sleep discrepancy while emphasizing their complexity and the limitations of standard EEG metrics alone. Future work integrating physiological measures with self-report data may provide enhanced characterization of insomnia-related neurophysiological changes.",
+      "authors": [
+        "Joseph T LeCheminant",
+        "Daniel B Kay",
+        "Brent Feland",
+        "Chongming Yang",
+        "Jonathan Blotter"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-09-24",
+      "journal": "Frontiers in sleep",
+      "doi": "10.3389/frsle.2026.1882890",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42780510/",
+      "categories": [],
+      "keywords": [
+        "band power",
+        "electroencephalography",
+        "insomnia",
+        "sample entropy",
+        "sleep discrepancy",
+        "sleep stages"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 86,
+        "ai": {
+          "score": 65,
+          "topic": "Sleep stage EEG correlates",
+          "reason": "Uses spectral power and sample entropy to analyze sleep stages and insomnia, partially relevant but lacks methodological innovation for transferable analysis.",
+          "summary": "Compares EEG band power and sample entropy across sleep stages, sleep discrepancy, and insomnia status in 64 participants. Finds EEG metrics strongly reflect sleep stages but poorly distinguish self-reported sleep perception and inconsistently differentiate insomnia from controls, with regional differences in delta, beta, and entropy.",
+          "keywords": [
+            "insomnia",
+            "EEG band power",
+            "sample entropy",
+            "sleep stages",
+            "sleep discrepancy"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -875,6 +1023,52 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42780885",
+      "title": "MIL-O-PD: a two-stage multiple instance learning and heuristic optimization framework for unpaired multimodal Parkinson's diagnosis.",
+      "abstract": "Parkinson's disease (PD) is a common neuro-degenerative disorder. Recent studies have used non-invasive biomarkers such as electroencephalography (EEG) and speech signals for PD diagnosis. However, majority of them optimize models at the instance level, whereas clinical diagnosis is a subject-level decision making process. In this work, we propose MIL-O-PD, a novel two-stage subject-level multimodal framework that formulates PD diagnosis. The stage-1 implements a Multiple Instance Learning approach with modality specific encoders and an attention-based aggregation mechanism. Stage-2 focuses incorporating a Gray Wolf Optimization-based post-hoc feature optimization module and final subject-level classifier. It supports representation-level multimodal fusion under strict subject-independent conditions. The proposed framework achieves up to 70.5% subject-level accuracy and 69.7% F1-score, while outperforming alternate pooling mechanisms. Further, the analysis of attention weights highlights modality-specific behavior, supporting the interpretability of the model. Overall, this study presents a principled framework for subject-level analysis of PD designed for unpaired multimodal data addressing the importance of aligning learning objectives with real-world diagnostic processes.",
+      "authors": [
+        "Sankhadip Bera",
+        "Muhammad Fazal Ijaz",
+        "Jaeyoung Choi",
+        "Pawan Kumar Singh"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-09-24",
+      "journal": "Frontiers in aging neuroscience",
+      "doi": "10.3389/fnagi.2026.1924167",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42780885/",
+      "categories": [],
+      "keywords": [
+        "Parkinson's disease",
+        "attention mechanism",
+        "electroencephalography signals (EEG)",
+        "gray wolf",
+        "multiple instance learning (MIL)"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 35,
+        "ai": {
+          "score": 50,
+          "topic": "Multimodal Parkinson's diagnosis",
+          "reason": "Presents a multiple instance learning framework for EEG-based Parkinson's diagnosis, methodologically adjacent but not focused on sleep or vigilance.",
+          "summary": "Proposes MIL-O-PD, a two-stage multiple instance learning and gray wolf optimization framework for unpaired multimodal Parkinson's disease diagnosis from EEG and speech. Achieves 70.5% subject-level accuracy and 69.7% F1-score, outperforming alternate pooling and providing interpretable attention weights.",
+          "keywords": [
+            "Parkinson's disease",
+            "multiple instance learning",
+            "EEG",
+            "speech",
+            "gray wolf optimization"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42774996",
       "title": "Acute administration of methylphenidate modulates functional connectivity during irrelevant stimuli processing in Parkinson's disease.",
       "abstract": "Methylphenidate (MPD) may have therapeutic benefits in Parkinson's disease (PD) patients. However, the effects of MPD on attentional functional connectivity (FC) networks, in PD, have not been investigated to date. Our objective was to examine the effects of a single dose of MPD, on event-related FC, in PD. The study was a randomized, double-blind, placebo-controlled, single-dose, cross-over clinical trial. We recorded electroencephalogram (EEG) in PD patients during the performance of an extended version of a visual oddball task. We evaluated FC during the processing of task-relevant (targets, predictive sequence) and task-irrelevant (randomized standards) stimuli, using the weighted phase-locking index and graph theory. Two recording sessions (20 mg MPD or placebo) were performed in each patient. MPD, in comparison with placebo, modulated FC during the processing of standards, within the theta band, in PD patients. MPD induced decreases in the FC and global efficiency within fronto-parietal networks, during the processing of task-irrelevant stimuli. In PD patients, the administration of a single dose of MPD, compared with placebo, attenuated FC within fronto-parietal networks, during the processing of non-informative standards. MPD may have cognitive therapeutic effects in PD, by modulating attention during the processing of task-irrelevant stimuli.",
@@ -925,56 +1119,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42779184",
-      "title": "EXPRESS: NEUROPROTECTIVE EFFICACY OF AN OMEGA-3 DIGLYCERIDE EMULSION IN A PIGLET MODEL OF NEWBORN HYPOXIC-ISCHEMIC BRAIN DAMAGE.",
-      "abstract": "Acute injection of omega-3 fatty acids (n-3) formulated in a novel diglyceride (DG) lipid emulsion is neuroprotective after hypoxic-ischemic encephalopathy (HIE) in neonatal rodents. the efficacy of acute n-3 DG emulsion treatment was tested in 2-3-day-old piglets subjected to bilateral carotid artery clamping and 8% O₂ exposure for 30 min. Animals were randomly assigned to normothermia or hypothermia (HT, 34 ± 0.5 °C), then to n-3 DG or vehicle administration 30 min post-HI. Brain activity was assessed by amplitude-integrated EEG over 6 h. Brain injury was analyzed by TUNEL, GFAP and IBA-1 staining, ¹H-NMR spectroscopy (Lactate/NAA, Glutamate/NAA), and Western blot (caspase-3, TNF-α, IL-1β, protein carbonylation). n-3 DG was well tolerated, with no hemodynamic or respiratory side effects. HT alone moderately improved brain activity and only reduced inflammation, whereas n-3 DG treatment partially restored early EEG recovery, attenuated cell death and neuroinflammatory markers, and limited protein carbonyl formation and GFAP+ cell loss. Notably, n-3 DG efficacy was preserved under HT conditions. These results support the neuroprotective potential of n-3 DG emulsion in a piglet model of HIE, with promising implications for clinical translation.",
-      "authors": [
-        "Luis Arruza",
-        "Angela Romero",
-        "Maria De Hoz",
-        "Laura Silva",
-        "María Martínez-Vega",
-        "Maria José Rodríguez",
-        "Niki Oikonomopoulou",
-        "Eva Vierge",
-        "Esther Aleo",
-        "Raquel Ramos-Corral",
-        "Purificación Jurado-Parras",
-        "Hylde Zirpoli",
-        "Richard Deckelbaum",
-        "Jose Antonio Martinez Orgado"
-      ],
-      "published_date": "2026-Sep-23",
-      "indexed_date": "",
-      "journal": "Journal of cerebral blood flow and metabolism : official journal of the International Society of Cerebral Blood Flow and Metabolism",
-      "doi": "10.1177/0271678x261494381",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42779184/",
-      "categories": [],
-      "keywords": [],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 25,
-        "ai": {
-          "score": 40,
-          "topic": "Omega-3 Neuroprotection in Piglet HIE",
-          "reason": "Animal study with aEEG monitoring for neuroprotection, but focuses on treatment efficacy rather than methodology; limited transferable methods.",
-          "summary": "In a piglet model of newborn hypoxic-ischemic brain damage, acute treatment with omega-3 diglyceride emulsion after hypoxia-ischemia partially restored early EEG recovery, attenuated cell death and neuroinflammatory markers, and limited protein carbonyl formation and GFAP+ cell loss, with efficacy preserved under hypothermia. The emulsion was well tolerated with no hemodynamic or respiratory side effects.",
-          "keywords": [
-            "omega-3 diglyceride emulsion",
-            "neonatal hypoxic-ischemic encephalopathy",
-            "piglet model",
-            "neuroprotection",
-            "hypothermia"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "42779782",
       "title": "Voice and linguistic features support early attentional filtering of irrelevant stimuli.",
       "abstract": "In cocktail party-type environments, listeners must segregate simultaneous acoustic sources and select one for processing. Behavioral studies have established that both low-level voice differences (e.g., pitch) and high-level linguistic differences (e.g., word content) aid these processes. Electroencephalography (EEG) studies have demonstrated that the brain filters voices based on low-level features early in sensory processing, but it is unclear whether linguistic differences also support early filtering. In this EEG study, listeners attended to a lateralized auditory stream of target syllables while ignoring distractor stimuli from the opposite hemifield. In contrast to previous auditory attention studies, target stimuli were always attended and statistically identical across conditions; instead, we manipulated the distractors. Specifically, we manipulated whether targets and distractors were spoken in the same voice or different voices, as well as whether they were composed of the same or different linguistic content. Critically, distractors were temporally offset from targets, enabling an investigation of whether acoustically matched, always attended target stimuli are differentially encoded as a function of surrounding context. Differences in either voice or linguistic features supported target recall: Recall was poor only when both streams were in the same voice and had similar linguistic content. However, voice and linguistic features had independent, additive effects on neural processing. Specifically, target dissimilarity in acoustics and linguistic content both contributed to more robust, larger-magnitude target-evoked EEG responses. Overall, results demonstrate that both linguistic dissimilarity and low-level acoustic dissimilarity improve early attentional filtering of distractors in multi-source acoustic scenes.",
@@ -1014,6 +1158,57 @@
             "linguistic content"
           ],
           "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42781452",
+      "title": "Multimodal single-cell dataset of juvenile rat neocortical interneurons-Morphology, whole-cell patch electrophysiology and histological slices.",
+      "abstract": "This dataset provides paired single-cell morphology, whole-cell patch-clamp electrophysiology, and source histological slide imagery for juvenile rat neocortical neurons from the EPFL Laboratory of Neural Microcircuitry (LNMC, gathered by MT). The curated explorer subset spans 396 slices, with 244 3D morphological reconstructions, 641 whole-cell patch-clamp recordings, and 244 histological slide images. Recordings were acquired with a standardized current-clamp stimulus battery of 36 distinct protocols. Morphologies are stored in SWC, recordings in NWB plus decimated JSON, and slide imagery in JPEG, linked through a normalized cell identifier so that structure, function, and underlying histology can be analyzed for the same cells. The dataset is released as a FAIR2 Data Package with structured metadata, QUDT units, PROV-O provenance, and MLCommons Croissant conformance, intended for neuroscientists, modelers, and machine-learning researchers studying the relationship between cortical neuron morphology and intrinsic electrophysiological behavior.",
+      "authors": [
+        "Maria Toledo-Rodriguez",
+        "Ying Shi",
+        "Julie Meystre",
+        "Deborah La Mendola",
+        "Rajnish Ranjan",
+        "Liviu Soltuzu",
+        "Maurizio Pezzoli",
+        "Rodrigo de Campos Perin",
+        "Henry Markram"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-09-24",
+      "journal": "Frontiers in neuroscience",
+      "doi": "10.3389/fnins.2026.1926661",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42781452/",
+      "categories": [],
+      "keywords": [
+        "Rattus norvegicus",
+        "brain slice",
+        "electrophysiology",
+        "neuronal morphology",
+        "somatosensory cortex"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 56,
+        "ai": {
+          "score": 40,
+          "topic": "Single-cell interneuron dataset",
+          "reason": "Provides a multimodal dataset of neuronal morphology and electrophysiology, not directly related to EEG time-series analysis or sleep methods.",
+          "summary": "Presents a multimodal single-cell dataset of juvenile rat neocortical interneurons, pairing 3D morphological reconstructions, whole-cell patch-clamp recordings, and histological slide images for 244 cells. The dataset is FAIR-compliant and intended for studying structure-function relationships.",
+          "keywords": [
+            "neocortical interneurons",
+            "whole-cell patch-clamp",
+            "neuronal morphology",
+            "histological slices",
+            "Rattus norvegicus"
+          ],
+          "paper_type": "Methods/Resource",
           "digest_pick": true
         }
       }
@@ -1252,6 +1447,59 @@
             "mild traumatic brain injury"
           ],
           "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42781434",
+      "title": "Neurofeedback as an emerging rehabilitation strategy for Parkinson's disease: a narrative review.",
+      "abstract": "Parkinson's disease (PD) is a progressive neurodegenerative disorder characterized by motor and non-motor symptoms associated with dysfunction of cortico-basal ganglia-thalamo-cortical networks. Because current treatments remain largely symptomatic, there is increasing interest in adjunctive rehabilitation strategies capable of targeting disease-relevant neural activity more directly. Neurofeedback (NF), delivered through electroencephalography (EEG), functional magnetic resonance imaging (fMRI), or deep brain stimulation (DBS)-guided platforms, has emerged as a potential self-regulation-based neuromodulatory approach in PD. This narrative review aimed to summarize the current empirical evidence on neurofeedback in Parkinson's disease, with particular attention to neurophysiological feasibility, reported clinical effects, and methodological and translational challenges. A narrative review of the literature was conducted using PubMed, Scopus, Web of Science, and Google Scholar. Empirical studies published in English between 2002 and 2026 investigating EEG-based, fMRI-based, or DBS-guided neurofeedback in patients with idiopathic PD were considered. The review qualitatively synthesized findings related to neural target modulation and motor and non-motor outcomes. Eighteen empirical studies were identified, across EEG-based, fMRI-based, and DBS-guided neurofeedback paradigms. EEG-based protocols represented the largest body of evidence and suggested that at least some patients with PD can achieve partial self-regulation of cortical targets such as sensorimotor rhythms, mu/beta activity, and movement-related cortical potentials. However, associated clinical effects were heterogeneous and generally preliminary. fMRI-based studies supported the feasibility of regulating disease-relevant motor regions and connectivity-based targets, including the supplementary motor area and basal ganglia-related networks, but consistent clinical superiority over active control conditions has not been established. DBS-guided neurofeedback provided the strongest pathophysiological specificity, showing that implanted patients can voluntarily modulate subthalamic beta activity, with preliminary evidence of benefit in selected movement-related outcomes. Across modalities, neurophysiological feasibility appeared more consistently supported than robust clinical efficacy. Neurofeedback represents a promising and mechanistically grounded adjunctive rehabilitation strategy for Parkinson's disease. Current evidence indicates that self-regulation of disease-relevant neural signals is feasible in at least a subset of patients, but clinical effectiveness remains uncertain because of small samples, methodological heterogeneity, and limited replication. Future research should prioritize standardized protocols, adequately powered randomized trials, longer follow-up, and better integration of neurofeedback with established pharmacological, rehabilitative, and device-based treatments.",
+      "authors": [
+        "Pierluigi Diotaiuti",
+        "Francesco Di Siena",
+        "Salvatore Vitiello",
+        "Guilherme Vilarino",
+        "Anderson D'Oliveira",
+        "Alexandro Andrade",
+        "Stefania Mancone"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-09-24",
+      "journal": "Frontiers in neurology",
+      "doi": "10.3389/fneur.2026.1866195",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42781434/",
+      "categories": [],
+      "keywords": [
+        "Parkinson’s disease",
+        "deep brain stimulation",
+        "electroencephalography",
+        "functional magnetic resonance imaging",
+        "motor symptoms",
+        "neurofeedback",
+        "neuromodulation",
+        "neurorehabilitation"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
+      "extra": {
+        "prefilter_score": 47,
+        "ai": {
+          "score": 30,
+          "topic": "Neurofeedback for Parkinson's",
+          "reason": "Narrative review on neurofeedback rehabilitation, weakly related to computational EEG methods or animal sleep experiments.",
+          "summary": "This narrative review synthesized 18 empirical studies on neurofeedback in Parkinson's disease across EEG-based, fMRI-based, and DBS-guided paradigms. It found that self-regulation of disease-relevant neural signals (sensorimotor rhythms, motor regions, subthalamic beta activity) is feasible in at least some patients, but clinical effects remain heterogeneous and preliminary due to small samples and methodological limits.",
+          "keywords": [
+            "neurofeedback",
+            "Parkinson's disease",
+            "EEG neurofeedback",
+            "fMRI neurofeedback",
+            "deep brain stimulation"
+          ],
+          "paper_type": "Review",
           "digest_pick": true
         }
       }
@@ -1539,59 +1787,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42775441",
-      "title": "PFKFB2 Gates a Relationship Between Cardiac Glycolytic Regulation and Electrophysiological Function.",
-      "abstract": "The cardiac isoform of PFKFB2 (phosphofructokinase-2/fructose 2,6-bisphosphatase) is the heart's strongest glycolytic regulator but is degraded in the absence of insulin signaling. This makes PFKFB2 loss critical to understand in metabolic heart disease, of which impaired insulin signaling is a hallmark. Prolongation of the QT interval, risk of arrhythmia, and sudden cardiac death are also augmented in metabolic heart disease, raising a question as to whether crosstalk between glycolytic dysregulation and electrophysiological dysfunction exists. We, therefore, assessed the impact of PFKFB2 loss on cardiac electrophysiology using a cardiomyocyte-specific PFKFB2 knockout mouse model (cKO) and litter-matched controls. To do so, we employed electrocardiography in the fed state and following 12 hours of fasting, examining physiology both at baseline and in the presence of an acute stimulant stress. To further investigate the arrhythmia mechanism, we used patch-clamp electrophysiology and IonOptix Ca2+ transient measurements in ventricular cardiomyocytes isolated from controls and cKO hearts. The hearts of cKO mice exhibited prolonged repolarization, marked by QT and action potential duration prolongations. This occurred with impaired Ca2+ reuptake and increased spontaneous Ca2+ release events in ventricular cardiomyocytes. The latter were upregulated via O-GlcNAcylation, a posttranslational modification enhanced in the fed state in cKO hearts. Ultimately, these changes culminated in ventricular tachyarrhythmia in cKO mice, which was enhanced in the fed relative to the fasted state. These data suggest that in the presence of sufficient glucose availability, cardiac glycolytic dysregulation at the phosphofructokinase nexus is sufficient to promote cardiac electrophysiological instability.",
-      "authors": [
-        "Kylene M Harold",
-        "Harris E Blankenship",
-        "Keaton Minor",
-        "Abigail Mulligan",
-        "Brooke Loveland",
-        "Chi Fung Lee",
-        "Michael Kinter",
-        "David Kass",
-        "Stavros Stavrakis",
-        "Michael J Beckstead",
-        "Kenneth M Humphries"
-      ],
-      "published_date": "2026-Sep-23",
-      "indexed_date": "",
-      "journal": "Circulation. Arrhythmia and electrophysiology",
-      "doi": "10.1161/circep.126.014860",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42775441/",
-      "categories": [],
-      "keywords": [
-        "cardiomyocytes",
-        "death",
-        "glycolysis",
-        "heart failure",
-        "phosphofructokinase"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 25,
-        "ai": {
-          "score": 15,
-          "topic": "Cardiac Glycolysis and Electrophysiology",
-          "reason": "Cardiac electrophysiology study, unrelated to EEG or sleep; low relevance.",
-          "summary": "Cardiomyocyte-specific PFKFB2 knockout mice exhibited prolonged QT and action potential duration, impaired Ca2+ reuptake, increased spontaneous Ca2+ release via O-GlcNAcylation, and ventricular tachyarrhythmia that was enhanced in the fed state, indicating that glycolytic dysregulation at the phosphofructokinase nexus promotes electrophysiological instability.",
-          "keywords": [
-            "PFKFB2",
-            "glycolysis",
-            "cardiac electrophysiology",
-            "arrhythmia",
-            "O-GlcNAcylation"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "42775367",
       "title": "A rare de novo contiguous 15q11.1-q13.3 duplication with tetrasomy (CN=4) and adjacent trisomy (CN=3) associated with severe global developmental delay, autism spectrum disorder, and subclinical epileptiform discharges: a case report and literature review.",
       "abstract": "15q11.2-q13 duplication syndrome (Dup15q; OMIM #608636) is a rare neurodevelopmental disorder. While interstitial duplications (copy number = 3) are relatively well characterized, contiguous rearrangements comprising both tetrasomic (copy number = 4) and adjacent trisomic (copy number = 3) segments are rare. We report a Chinese girl with a de novo contiguous 15q11.1-q13.3 duplication, whose underlying genetic diagnosis was initially delayed because her early neurodevelopmental abnormalities were partly attributed to prematurity. The patient was born at 35+2 weeks of gestation and presented with global developmental delay, severe autism spectrum disorder (CARS: 44), and profound cognitive and language impairment (GQ 30, GMQ 57 at 2 years 4 months). Brain MRI demonstrated delayed myelination, and magnetic resonance spectroscopy showed metabolic abnormalities in the left frontal lobe. Video-electroencephalography at 3 years of age revealed sleep-activated frontocentral epileptiform discharges without clinical seizures. Trio whole-genome sequencing with copy number variation analysis identified a de novo contiguous duplication consisting of a ∼10.34 Mb tetrasomic segment (15q11.1-q13.2; CN = 4) and an adjacent ∼2.40 Mb trisomic segment (15q13.2-q13.3; CN = 3). Despite long-term rehabilitation, the patient remained nonverbal and exhibited persistent severe neurodevelopmental impairment. This case expands the genomic spectrum of complex proximal 15q rearrangements and highlights the value of high-resolution genomic testing for resolving complex neurodevelopmental disorders. It also emphasizes that severe genetic etiologies may be overlooked when developmental abnormalities are initially attributed to prematurity. These findings support early comprehensive genomic evaluation in children with profound developmental delay, autism spectrum disorder, or persistent developmental impairment despite conventional rehabilitation.",
@@ -1735,50 +1930,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42778382",
-      "title": "Aphasic Status Epilepticus as a Stroke Mimic: A Literature Review.",
-      "abstract": "We reviewed the clinical features of previously reported cases of aphasic status epilepticus. In an analysis of medical information from 87 reported cases (92 attacks), the types of aphasia associated with aphasic status epilepticus were global aphasia in 44 (48%) of 92 attacks, motor aphasia in 29 (32%), and sensory aphasia in 11 (12%) attacks. The findings of diffusion and perfusion imaging, as well as electroencephalography, were often compatible with aphasia, although variations in the distribution and findings were observed in several cases. Furthermore, in 16 (32%) of 67 attacks, it took more than 1 week from the onset of the aphasic status epilepticus to treatment; therefore, the sequelae of aphasia were observed in 18 (20%) of 92 attacks. Aphasic status epilepticus should be considered a stroke mimic and it may cause sequelae due to delayed treatment. Patients suspected of having aphasic status epilepticus should be immediately treated with benzodiazepine without waiting for either electroencephalography or perfusion imaging.",
-      "authors": [
-        "Yuichiro Inatomi",
-        "Makoto Nakajima",
-        "Toshiro Yonehara"
-      ],
-      "published_date": "2026-Sep-22",
-      "indexed_date": "",
-      "journal": "Internal medicine (Tokyo, Japan)",
-      "doi": "10.2169/internalmedicine.7824-26",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42778382/",
-      "categories": [],
-      "keywords": [
-        "aphasia",
-        "epilepsy",
-        "nonconvulsive status epilepticus",
-        "stroke mimics"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 30,
-        "ai": {
-          "score": 10,
-          "topic": "Aphasic Status Epilepticus Review",
-          "reason": "Clinical review of aphasic status epilepticus; no methodological or computational content relevant to researcher.",
-          "summary": "A literature review of 87 reported cases of aphasic status epilepticus found that global aphasia was most common, treatment was delayed more than one week in 32% of attacks, and aphasia sequelae occurred in 20% of attacks, emphasizing that aphasic status epilepticus should be considered a stroke mimic requiring immediate benzodiazepine treatment.",
-          "keywords": [
-            "aphasic status epilepticus",
-            "stroke mimic",
-            "nonconvulsive status epilepticus",
-            "aphasia",
-            "electroencephalography"
-          ],
-          "paper_type": "Review",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "42780061",
       "title": "Synergistic effects of repetitive transcranial magnetic stimulation and a dance movement intervention on mild cognitive impairment: study protocol for a four-arm factorial randomized controlled trial.",
       "abstract": "Mild Cognitive Impairment (MCI) represents a critical transitional stage between normal cognitive aging and dementia, characterized by a high conversion rate to Alzheimer's disease (AD). Current pharmacological interventions provide limited symptomatic relief and do not alter disease trajectory. Consequently, there is an urgent need for effective, multimodal, non-pharmacological interventions. While repetitive Transcranial Magnetic Stimulation (rTMS) and Dance Movement Intervention (DMI) individually show promise in mitigating cognitive decline, their combined synergistic effects in older adults remain uninvestigated. This protocol outlines a randomized controlled trial to evaluate the clinical efficacy of combining rTMS with a culturally tailored DMI (Chinese square dancing) for older adults with MCI. This study is designed as a four-arm, single-blinded, parallel-group randomized controlled trial. We aim to recruit 160 community-dwelling older adults (aged 50-85 years) diagnosed with MCI. Participants will be randomly allocated (1:1:1:1) to one of four groups: Combined Intervention (active rTMS + DMI), rTMS Only (active rTMS + social control), DMI Only (sham rTMS + DMI), or a Control Group (sham rTMS + social control). The 12-week intervention phase utilizes intermittent theta burst stimulation (iTBS) targeted at the left dorsolateral prefrontal cortex (DLPFC) and a structured Chinese square dancing program. Assessments occur at baseline, 12 weeks (post-intervention), and 24 weeks (follow-up). The primary outcome is global cognitive function, measured by the Montreal Cognitive Assessment (MoCA). Secondary outcomes assess memory, executive function, electroencephalography (EEG) biomarkers of neuroplasticity (P300), physical performance, and quality of life. This factorial trial will comprehensively evaluate the individual and interactive effects of neuromodulation and physical-cognitive training. By hypothesizing that rTMS will effectively prime cortical excitability to maximize the benefits of the complex sensorimotor demands of DMI, this study aims to establish a scalable, evidence-based multimodal therapy to delay cognitive decline in aging populations.",
@@ -1827,42 +1978,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42774403",
-      "title": "Top developments in clinical cardiac electrophysiology-2025.",
-      "abstract": "",
-      "authors": [
-        "Brian Olshansky"
-      ],
-      "published_date": "2026-Sep",
-      "indexed_date": "2026-09-23",
-      "journal": "Heart rhythm O2",
-      "doi": "10.1016/j.hroo.2026.03.039",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42774403/",
-      "categories": [],
-      "keywords": [],
-      "publication_types": [
-        "Journal Article",
-        "Review"
-      ],
-      "extra": {
-        "prefilter_score": 27,
-        "ai": {
-          "score": 10,
-          "topic": "Clinical cardiac electrophysiology developments",
-          "reason": "Cardiac electrophysiology review, outside the researcher's scope.",
-          "summary": "No abstract is available for this review article titled 'Top developments in clinical cardiac electrophysiology-2025'.",
-          "keywords": [
-            "clinical cardiac electrophysiology",
-            "2025 developments",
-            "review"
-          ],
-          "paper_type": "Review",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "42775616",
       "title": "Electrophysiology procedures for preventing falls in older people living in the community.",
       "abstract": "This is a protocol for a Cochrane review (intervention). The objectives are as follows: To assess the efficacy and safety of electrophysiology procedures in preventing falls among older people living in the community.",
@@ -1900,103 +2015,6 @@
             "systematic review protocol"
           ],
           "paper_type": "Protocol",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42773864",
-      "title": "Foster care intervention protects cognitive control skills in young adults exposed to institutional rearing.",
-      "abstract": "Prior work from the Bucharest Early Intervention Project (BEIP) suggests that institutional care impairs cognitive control, whereas foster care may help preserve these skills. However, it remains unclear whether these effects persist into adulthood. We examined EEG data from a flanker task administered at BEIP's 22-year follow-up. Participants (N = 127; Age: M = 23.5 years, SD = 1.0, range = 21.4-25.6; 61% Romanian ethnicity) were initially enrolled during childhood while in institutional care in Bucharest, Romania and included individuals randomized to remain in institutional care (CAUG; n = 42; 50% female) or transition to foster care (FCG; n = 46; 54% female), along with never-institutionalized controls (NIG; n = 39; 67% female). At the 22-year follow-up, young adults in the FCG showed event-related potential (ERP) markers of performance monitoring comparable to the NIG but different from the CAUG (η2p = 0.06). In contrast, the CAUG showed convergent evidence of disrupted cognitive control, including poorer behavioral performance and altered neural responses across ERP and time-frequency measures relative to the NIG. These neural disruptions were associated with lower IQ and elevated mental health symptoms. Overall, results highlight enduring effects of early caregiving on cognitive control in adulthood.",
-      "authors": [
-        "Emilio A Valadez",
-        "Ellen Jopling",
-        "Elisa Macera",
-        "Mark Wade",
-        "Charles H Zeanah",
-        "Charles A Nelson",
-        "Nathan A Fox"
-      ],
-      "published_date": "2026-Sep-23",
-      "indexed_date": "",
-      "journal": "Development and psychopathology",
-      "doi": "10.1017/s0954579426101928",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42773864/",
-      "categories": [],
-      "keywords": [
-        "ERN",
-        "cognitive functioning",
-        "foster care",
-        "institutional rearing",
-        "randomized controlled trial",
-        "theta power",
-        "young adulthood"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 24,
-        "ai": {
-          "score": 8,
-          "topic": "Developmental ERP study of cognitive control",
-          "reason": "Clinical developmental psychology study using EEG ERPs; not a methodological or computational advance, and not transferable to animal sleep or signal-processing needs.",
-          "summary": "In the Bucharest Early Intervention Project 22-year follow-up, young adults randomized to foster care showed event-related potential markers of performance monitoring comparable to never-institutionalized controls, whereas those who remained in institutional care exhibited disrupted cognitive control associated with lower IQ and elevated mental health symptoms.",
-          "keywords": [
-            "foster care intervention",
-            "institutional rearing",
-            "cognitive control",
-            "event-related potentials",
-            "Bucharest Early Intervention Project"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42776639",
-      "title": "Eye-Tracking Research: A Bibliometric Analysis Based on Scopus.",
-      "abstract": "Eye tracking is an interdisciplinary research method used in many fields, including engineering, architecture, health sciences, psychology, marketing, and human-computer interaction. Although it is often perceived as a modern research method, its origins can be traced back to the nineteenth century. This study aims to identify the developmental trends and thematic structure of eye-tracking research from its early history to the present. Bibliometric analysis was used to evaluate studies in the field of eye-tracking. A total of 45,230 publications identified in the Scopus database using eye-tracking search terms were analyzed. The most productive authors, institutions, countries, publication sources, keywords, and thematic trends were examined using Bibliometrix in the RStudio environment. The findings show substantial growth in eye-tracking research during 2020-2025, with 22,130 publications recorded during this period. The analysis also shows that the share of eye-tracking publications in total Scopus output increased from 0.0134% in 2000 to 0.0963% in 2025, while the search sensitivity analysis demonstrates that terminology choices substantially affect the size and composition of the retrieved corpus. Computer Science accounted for the largest share of publications. The United States had the highest number of publications. Based on Scopus affiliation records, the University of California system had the highest publication count among the institutional structures identified in the dataset, although this figure may reflect the combined representation of different campuses and affiliated units and should therefore not be interpreted as a direct comparison of individual campuses. In addition to fundamental concepts such as eye movements and visual attention, themes such as EEG, virtual reality, augmented reality, computer vision, machine learning, and deep learning have become more prominent in recent years. Overall, the findings reveal academic orientations and temporal trends in eye-tracking research. They also provide a framework for potential future research directions.",
-      "authors": [
-        "Mehmet Fatih Özalp",
-        "Hicran Hanım Halaç",
-        "Nuray Özkaraca Özalp",
-        "Fikret Bademci"
-      ],
-      "published_date": "2026-Sep-16",
-      "indexed_date": "2026-09-23",
-      "journal": "Journal of eye movement research",
-      "doi": "10.3390/jemr19050103",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42776639/",
-      "categories": [],
-      "keywords": [
-        "bibliometric analysis",
-        "eye-tracking",
-        "gaze tracking",
-        "research trends"
-      ],
-      "publication_types": [
-        "Journal Article",
-        "Review"
-      ],
-      "extra": {
-        "prefilter_score": 27,
-        "ai": {
-          "score": 5,
-          "topic": "Eye-Tracking Bibliometrics",
-          "reason": "Bibliometric analysis of eye-tracking, no EEG or sleep relevance.",
-          "summary": "This bibliometric analysis of 45,230 Scopus-indexed eye-tracking publications found substantial growth during 2020-2025, with 22,130 publications in that period. The study maps productive authors, institutions, countries, and thematic trends, showing increased prominence of EEG, virtual reality, augmented reality, computer vision, machine learning, and deep learning.",
-          "keywords": [
-            "eye-tracking",
-            "bibliometric analysis",
-            "Scopus",
-            "research trends",
-            "gaze tracking"
-          ],
-          "paper_type": "Review",
           "digest_pick": true
         }
       }
