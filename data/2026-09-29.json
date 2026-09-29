@@ -1,6 +1,6 @@
 {
   "date": "2026-09-29",
-  "generated_at": "2026-09-28T19:47:44.801426+00:00",
+  "generated_at": "2026-09-29T01:09:24.962827+00:00",
   "window": {
     "start": "2026-09-27",
     "end": "2026-09-29"
@@ -10,27 +10,27 @@
     "label": "Sleep Homeostasis",
     "description": "Sleep pressure, recovery, circadian interactions, and longitudinal regulation of NREM/REM sleep."
   },
-  "raw_count": 54,
+  "raw_count": 81,
   "retrieved_source_counts": {
-    "pubmed": 47,
-    "biorxiv": 10,
-    "medrxiv": 4,
+    "pubmed": 66,
+    "biorxiv": 19,
+    "medrxiv": 6,
     "arxiv": 0
   },
   "raw_source_counts": {
-    "pubmed": 42,
-    "biorxiv": 8,
-    "medrxiv": 4
+    "pubmed": 59,
+    "biorxiv": 16,
+    "medrxiv": 6
   },
-  "prefiltered_count": 33,
-  "analyzed_count": 33,
+  "prefiltered_count": 40,
+  "analyzed_count": 40,
   "configured_max_analyzed": 40,
-  "count": 33,
+  "count": 40,
   "featured_count": 25,
   "source_counts": {
-    "biorxiv": 2,
+    "biorxiv": 7,
     "pubmed": 29,
-    "medrxiv": 2
+    "medrxiv": 4
   },
   "errors": {},
   "ai": {
@@ -39,12 +39,12 @@
     "provider": "deepseek",
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
-    "ranked_count": 33,
-    "newly_ranked": 25,
-    "newly_summarized": 25,
-    "digest_count": 33,
-    "digest_min": 33,
-    "digest_max": 33,
+    "ranked_count": 40,
+    "newly_ranked": 13,
+    "newly_summarized": 13,
+    "digest_count": 40,
+    "digest_min": 40,
+    "digest_max": 40,
     "digest_score_threshold": 0,
     "rank_prompt_version": "paperdaily-ranking-v1-2026-08",
     "summary_prompt_version": "paperdaily-summary-v3-2026-08",
@@ -52,12 +52,12 @@
     "status": "active",
     "profile_hash": "f39a738f6024ce84c617",
     "usage": {
-      "requests": 7,
-      "prompt_tokens": 22503,
-      "prompt_cache_hit_tokens": 2304,
-      "prompt_cache_miss_tokens": 20199,
-      "completion_tokens": 4704,
-      "total_tokens": 27207
+      "requests": 4,
+      "prompt_tokens": 11848,
+      "prompt_cache_hit_tokens": 1024,
+      "prompt_cache_miss_tokens": 10824,
+      "completion_tokens": 2919,
+      "total_tokens": 14767
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -66,27 +66,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.029653,
+    "run_cost_cny": 0.016682,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 7,
-        "prompt_tokens": 22503,
-        "prompt_cache_hit_tokens": 2304,
-        "prompt_cache_miss_tokens": 20199,
-        "completion_tokens": 4704,
-        "total_tokens": 27207
+        "requests": 4,
+        "prompt_tokens": 11848,
+        "prompt_cache_hit_tokens": 1024,
+        "prompt_cache_miss_tokens": 10824,
+        "completion_tokens": 2919,
+        "total_tokens": 14767
       },
-      "run_cost_cny": 0.029653,
+      "run_cost_cny": 0.016682,
       "daily_usage": {
-        "requests": 7,
-        "prompt_tokens": 22503,
-        "prompt_cache_hit_tokens": 2304,
-        "prompt_cache_miss_tokens": 20199,
-        "completion_tokens": 4704,
-        "total_tokens": 27207
+        "requests": 11,
+        "prompt_tokens": 34351,
+        "prompt_cache_hit_tokens": 3328,
+        "prompt_cache_miss_tokens": 31023,
+        "completion_tokens": 7623,
+        "total_tokens": 41974
       },
-      "daily_cost_cny": 0.029653,
+      "daily_cost_cny": 0.046335,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -96,7 +96,7 @@
       }
     },
     "configured_max_analyzed": 40,
-    "analyzed_count": 33
+    "analyzed_count": 40
   },
   "papers": [
     {
@@ -134,6 +134,51 @@
             "NREM accumulation",
             "refractory regime",
             "hazard model"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42804389",
+      "title": "EEGDM: Label-Efficient EEG Representation Learning with Generative Diffusion Model.",
+      "abstract": "Electroencephalography (EEG) is a critical tool for monitoring brain activity and diagnosing neurological disorders such as epilepsy. However, learning meaningful representations from raw EEG signals remains challenging due to limited annotations, substantial inter-subject variability, and complex temporal dynamics. Recent EEG foundation models (FMs) have demonstrated promising performance through transformer-based architectures and large-scale self-supervised pretraining, yet they often incur substantial computational costs and exhibit diminishing returns with increasing model and dataset scale, limiting their practicality in clinical settings. To address these challenges, we propose EEGDM, a diffusion-based EEG representation learning framework. Specifically, EEGDM introduces a Structured State-Space Model for Diffusion Pretraining (SSMDP) that effectively captures long-range temporal dependencies through generative diffusion training on unlabeled EEG data. The representations are subsequently leveraged for downstream tasks via our Latent Fusion Module (LFM), which integrates multi-layer latent features of SSMDP. We evaluate EEGDM on three EEG benchmarks spanning EEG event classification (TUEV), seizure detection (CHB-MIT), and seizure classification (IIIC). Compared with existing state-of-the-art methods, including EEG FMs, EEGDM achieves competitive performance across diverse tasks and datasets, exceeding existing methods in most cases while requiring substantially fewer samples for both pretraining and downstream adaptation. These results demonstrate that diffusion-based learning can unlock more discriminative EEG representations, with direct implications for epilepsy diagnosis and management.",
+      "authors": [
+        "Jia Hong Puah",
+        "Sim Kuan Goh",
+        "Ziwei Zhang",
+        "Zixuan Ye",
+        "Chow Khuen Chan",
+        "Kheng Seang Lim",
+        "Si Lei Fong",
+        "Kok Sin Woon",
+        "Cuntai Guan"
+      ],
+      "published_date": "2026-Sep-28",
+      "indexed_date": "",
+      "journal": "IEEE journal of biomedical and health informatics",
+      "doi": "10.1109/jbhi.2026.3737616",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804389/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 32,
+        "ai": {
+          "score": 78,
+          "topic": "Diffusion-based EEG representation learning",
+          "reason": "Provides a label-efficient deep learning framework for raw EEG that could transfer to animal EEG sleep staging and spectral analysis.",
+          "summary": "Proposed EEGDM, a diffusion-based EEG representation learning framework with a Structured State-Space Model for Diffusion Pretraining (SSMDP) and Latent Fusion Module (LFM). Across TUEV, CHB-MIT, and IIIC benchmarks, EEGDM achieved competitive or superior performance versus state-of-the-art methods, including EEG foundation models, while requiring substantially fewer pretraining and downstream samples.",
+          "keywords": [
+            "EEG representation learning",
+            "generative diffusion model",
+            "Structured State-Space Model",
+            "seizure detection",
+            "label-efficient learning"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -239,6 +284,48 @@
             "species-specific synchrony"
           ],
           "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.09.22.751113",
+      "title": "TEFAR: a lightweight, configurable framework for semi-automatic artefact component classification in EEG and TMS-EEG",
+      "abstract": "Independent component analysis (ICA) is widely used to remove artefacts from EEG and TMS-EEG recordings, but the components that correspond to artefacts are usually identified by manual inspection, which is subjective and difficult to reproduce. Existing automated classifiers are either designed for ordinary EEG and do not target the artefacts specific to concurrent transcranial magnetic stimulation, or are built on EEGLAB, so none is available for FieldTrip-based pipelines. We present TEFAR, a lightweight, configurable framework for semi-automatic artefact-component classification that applies the same detectors to ordinary EEG and TMS-EEG. TEFAR is built on FieldTrip and requires no additional MATLAB toolboxes. Each artefact class (line noise, blinks, lateral eye movements, cranial muscle, cardiac activity, and the TMS decay and recharge artefacts) is identified from the spectral, spatial, or temporal signature that its components are known to express. Detection thresholds use robust statistics (the median and the median absolute deviation rather than the mean and standard deviation), so that a single dominant artefact component cannot raise the threshold that is meant to detect it. In 30 ground-truth simulations, TEFAR reached a specificity of 1.000 and a sensitivity of 0.96-0.97 for both profiles. An application of TEFAR to real EEG and TMS-EEG recordings is the next step and will be reported separately.",
+      "authors": [
+        "Dimitriadou, C.",
+        "Furl, N."
+      ],
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.22.751113",
+      "url": "https://doi.org/10.64898/2026.09.22.751113",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 10,
+        "ai": {
+          "score": 72,
+          "topic": "TEFAR artefact classification for EEG and TMS-EEG",
+          "reason": "Lightweight, configurable artifact-component classifier for EEG/TMS-EEG that can transfer directly to cleaning animal EEG/EMG sleep recordings.",
+          "summary": "Introduces TEFAR, a lightweight, configurable FieldTrip-based framework for semi-automatic ICA component classification of artefacts in ordinary EEG and TMS-EEG, using spectral, spatial, and temporal signatures with robust median/MAD thresholds. In 30 ground-truth simulations, TEFAR achieved specificity 1.000 and sensitivity 0.96-0.97 for both profiles; application to real EEG/TMS-EEG recordings is pending.",
+          "keywords": [
+            "TMS-EEG",
+            "ICA artefact classification",
+            "FieldTrip",
+            "robust statistics",
+            "independent component analysis"
+          ],
+          "paper_type": "Methods/Resource",
           "digest_pick": true
         }
       }
@@ -524,6 +611,144 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42804105",
+      "title": "Deep Learning-Based Assessment of Sleepiness from Fingertip Pulse Wave Analysis During Objective Daytime Testing.",
+      "abstract": "Objective evaluation of daytime sleepiness is a key factor in the management of sleep disorders. However, objective testing is limited due to the labor-intensive nature of standard methods; the Multiple Sleep Latency Test (MSLT) and the Maintenance of Wakefulness Test (MWT). Deep learning analysis of a simple fingertip pulse wave (photoplethysmography, PPG) recording could be a viable option for the routine assessment of sleepiness in patients with suspected sleep disorders. A deep learning-based sleep staging model was tested in MSLT (n = 143) and MWT (n = 127) datasets. The primary aim was to analyze the classification of subjects as sleepy versus non-sleepy using PPG-based sleep analysis. As an intermediate technical evaluation, we assessed PPG-based sleep-wake classification and mean sleep latency (MSL). Classification of sleepiness status based on automatic MSL detection from PPG showed promising results in both MSLT (accuracy: 80%, sensitivity: 65%, specificity: 84%) and MWT (accuracy: 83%, sensitivity: 62%, specificity: 86%). Sleep probability curves estimated from the fingertip pulse wave differed significantly between sleepy and non-sleepy groups, both in MSLT (p = 0.0002) and in MWT (p = 0.0012) datasets. In MSLT, the model detected sleep with moderate agreement and balanced performance (accuracy 81%, precision 0.71, recall 0.80). In MWT, overall accuracy (88%) was strongly influenced by class imbalance (98% wakefulness), and direct second-by-second sleep detection showed limited precision (precision 0.10, recall 0.72). Automated MSL estimates showed correlation with manual scoring in both MSLT and MWT; however, larger errors and outliers were observed in MWT. Fingertip pulse wave analysis combined with deep learning shows feasibility for automated assessment of daytime sleepiness, particularly in MSLT. However, direct zero-shot application of a model trained on overnight PSG to MWT is limited by low sleep precision requiring methodological adaptation and daytime-specific optimization.",
+      "authors": [
+        "Matias Rusanen",
+        "Samu Kainulainen",
+        "Sami Myllymaa",
+        "Timo Leppänen",
+        "Renaud Tamisier",
+        "Sébastien Baillieul",
+        "Sébastien Bailly",
+        "Jean-Louis Pepin"
+      ],
+      "published_date": "2026-Sep-28",
+      "indexed_date": "",
+      "journal": "Annals of biomedical engineering",
+      "doi": "10.1007/s10439-026-04393-2",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804105/",
+      "categories": [],
+      "keywords": [
+        "Daytime sleepiness",
+        "Deep learning",
+        "Photoplethysmography"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 16,
+        "ai": {
+          "score": 40,
+          "topic": "PPG-based sleepiness assessment",
+          "reason": "Deep learning sleepiness classification from fingertip PPG during MSLT/MWT; useful as a peripheral sleep-assessment method but not central to sleep homeostasis or EEG mechanisms.",
+          "summary": "Tested a deep learning sleep-staging model on fingertip photoplethysmography (PPG) for assessing daytime sleepiness in MSLT (n=143) and MWT (n=127) datasets. PPG-based sleepiness classification reached 80% accuracy in MSLT and 83% in MWT; sleep probability curves differed significantly between sleepy and non-sleepy groups, but direct zero-shot MWT second-by-second sleep detection was limited (precision 0.10).",
+          "keywords": [
+            "daytime sleepiness",
+            "photoplethysmography",
+            "deep learning",
+            "Multiple Sleep Latency Test",
+            "Maintenance of Wakefulness Test"
+          ],
+          "paper_type": "Clinical Study",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.08.31.26361834",
+      "title": "Sleep and Overnight Cardiovascular Outcomes During the First Week on a Temperature-Controlled Sleep Surface: Stratified by Baseline Performance",
+      "abstract": "Objectives: Temperature-controlled sleep surfaces are used nightly by hundreds of thousands of people, yet cohort analyses show improved perceived sleep quality without matching objective change. Cohort means may mask benefits concentrated in those with the greatest baseline deficit. We asked whether objective changes in sleep and overnight cardiovascular function differ by baseline sleep performance. Methods: In this exploratory, retrospective, open-label study of 171 adults, wearable-derived sleep and overnight cardiovascular endpoints were compared between seven baseline nights and the first seven nights on a temperature-controlled sleep surface (Orion Sleep System). Participants were stratified by baseline performance separately for each endpoint. Results: At the cohort level, total sleep time rose 7.3 minutes (p = 0.01, not significant), average heart rate fell 1.79 bpm (95% CI -2.25 to -1.34) and minimum heart rate 1.75 bpm (95% CI -2.18 to -1.33; both p < 0.001), and HRV rose 3.25 ms (95% CI 1.33 to 5.17, p = 0.001). Effects were baseline-dependent. In the most-deficient quartile for each endpoint, total sleep time rose 33.5 minutes (9.6%; 95% CI 21.5 to 45.5), REM 13.6 minutes (19.4%; 95% CI 8.6 to 18.6), deep sleep 4.4 minutes (13.1%; 95% CI 2.0 to 6.9), and HRV 4.7 ms (15.6%; 95% CI 2.2 to 7.2); wake after sleep onset fell 16.3 minutes (26.0%; 95% CI -23.0 to -9.6) in the most fragmented quartile (all p < 0.001). Conclusion: Objective gains were largest where the baseline deficit was greatest.",
+      "authors": [
+        "Tucker, L.",
+        "Zwiebel, J.",
+        "Costantino, E.",
+        "Locascio, T."
+      ],
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.08.31.26361834",
+      "url": "https://doi.org/10.64898/2026.08.31.26361834",
+      "categories": [
+        "neurology"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "0",
+        "published": "NA",
+        "prefilter_score": 20,
+        "ai": {
+          "score": 35,
+          "topic": "Temperature-controlled sleep surface effects",
+          "reason": "Wearable-derived sleep and cardiovascular outcomes, stratification by baseline performance; adjacent to sleep regulation but in humans and product-focused, not animal neuroscience.",
+          "summary": "In an open-label study of 171 adults, a temperature-controlled sleep surface increased total sleep time and improved overnight cardiovascular measures, with the largest gains observed in those with the poorest baseline sleep. Stratification by baseline performance revealed significant improvements in sleep efficiency, REM, deep sleep, and HRV in the most deficient quartiles.",
+          "keywords": [
+            "sleep surface",
+            "temperature-controlled",
+            "wearable",
+            "heart rate",
+            "sleep architecture"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.02.10.705005",
+      "title": "Electrophysiological brain reconfiguration during meditation-induced extended cessation of consciousness: an EEG microstate study",
+      "abstract": "Extended cessation (EC) is a rare, non-ordinary meditative endpoint characterized by a temporary absence of reportable phenomenal experience, followed by an extraordinary perceptual vividness, openness, equanimity and affective balance. As such, EC provides a unique, non-pharmacological model for investigating the neural basis of the suspension and restoration of consciousness. Here, we examined whole-brain electrophysiological activity during EC using dense-sampling electroencephalographic microstate analysis in five highly trained meditators. Temporal parameters and transition probabilities of canonical microstates during EC were compared with two control conditions (counting and memory tasks) across six frequency bands (broadband, delta, theta, alpha, beta, gamma). EC was associated with a large-scale reconfiguration of brain dynamics, characterized by reduced patterns linked to self-related processing (microstate B) and increased temporal prominence of configurations associated with integrative brain activity (microstate C). Transition dynamics indicated a redistribution of information flow, with sensory-related activity (microstate A) preferentially routed toward integrative processes rather than toward self-related processing. Frequency-specific modulation further supported this reorganization, suggesting a decoupling of self-related dynamics alongside changes in local sensory-sensorimotor processing. Together, these findings identify a distinct neural signature of EC at scalp level and support the view that conscious experience can be transiently suspended through a coordinated reconfiguration of large-scale brain dynamics rather than a breakdown of integrative function. More broadly, this work provides a framework for understanding how advanced meditation can flexibly reshape the organization of brain activity, with implications for theories of consciousness as well as mental health, well-being, and flourishing.",
+      "authors": [
+        "Zarka, D.",
+        "Yang, W. F. Z.",
+        "Rassat, A.",
+        "Potash, R.",
+        "Sparby, T.",
+        "Sacchet, M. D."
+      ],
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.02.10.705005",
+      "url": "https://doi.org/10.64898/2026.02.10.705005",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "2",
+        "published": "NA",
+        "prefilter_score": 22,
+        "ai": {
+          "score": 35,
+          "topic": "Meditation-induced cessation of consciousness EEG microstates",
+          "reason": "Human EEG microstate study of altered consciousness, adjacent to sleep/EEG methods but not addressing sleep homeostasis or regulation.",
+          "summary": "Used dense-sampling EEG microstate analysis in five highly trained meditators to characterize brain dynamics during meditation-induced extended cessation (EC) versus counting and memory control tasks. EC was associated with reduced self-related microstate B, increased integrative microstate C, and rerouting of sensory-related microstate A toward integrative rather than self-related processing across multiple frequency bands.",
+          "keywords": [
+            "EEG microstates",
+            "meditation-induced extended cessation",
+            "consciousness",
+            "brain reconfiguration",
+            "transition probabilities"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42801300",
       "title": "Multidomain Electroencephalography Biomarker Fusion for Machine Learning-Based Dementia Classification.",
       "abstract": "Electroencephalography (EEG) has been investigated as a noninvasive approach for characterizing brain activity in neurodegenerative conditions. This study evaluated whether multidomain EEG biomarkers could distinguish Alzheimer's disease (AD), frontotemporal dementia (FTD), and healthy controls (HC). The publicly available dataset contained resting-state, eyes-closed EEG recordings from 88 participants, including 36 with AD, 23 with FTD, and 29 healthy controls. Multidomain EEG biomarkers and demographic features were extracted for machine learning classification. The EEG-derived features included root-mean-square (RMS), power spectral density (PSD), and entropy measures. A Random Forest classifier was trained using the combined feature set and interpreted using explainable artificial intelligence. Feature-stability and Cohen's d effect-size analyses were performed to evaluate feature contributions, followed by an ablation analysis. Entropy-based features showed the lowest contribution to classification. The complete multidomain model achieved 96% training accuracy and 92% test accuracy. After the removal of the entropy features, test accuracy increased to 94%. These results describe the classification performance of the selected multidomain EEG and demographic features within the Random Forest framework.",
@@ -715,48 +940,88 @@
       }
     },
     {
-      "source": "pubmed",
-      "source_id": "42802104",
-      "title": "Associations Between Wake-Time and Sleep-Time Masticatory Muscle Activity and Clinical Correlates in Free-Living Adults.",
-      "abstract": "To investigate associations between wake-time and sleep-time masticatory muscle activity (MMA) in free-living adults with high levels of oral behaviours, and to examine associations with tooth wear, masticatory muscle pain, stress, and anxiety. In this observational repeated-measures study, 30 adults (mean age 31.4 ± 11.2 years) reporting clenching or grinding behaviours were recruited following screening with the Oral Behaviours Checklist. MMA was recorded during 77 sessions (2-3 sessions per participant) under free-living conditions using a wearable electromyography device, capturing wake-time and sleep-time activity. Tooth wear was assessed from intraoral scans and photographs using a standardised index. Stress and anxiety were assessed using validated questionnaires, muscle tenderness by standardised palpation, and pain on awakening by self-report. Associations were analysed using correlation and multivariable models accounting for repeated measures and covariates. Moderate associations were observed between sleep time and wake time MMA for episode frequency, duty time, and rhythmic masticatory muscle activity (RMMA%), and remained significant after adjustment for confounders. Tooth wear showed limited association with MMA after accounting for age and sex, whereas higher sleep-time RMMA was associated with muscle pain on awakening. MMA measures were not associated with perceived stress, anxiety, or oral behaviours. Sleep-time and wake-time masticatory muscle activity showed partial within-individual coupling in free-living adults, suggesting that some quantitative features of MMA may be shared across behavioural states. Tooth wear and self-reported behaviours may not reflect current MMA, whereas pain on awakening may be more informative. Integrating objective MMA assessment across behavioural states may improve clinical evaluation of bruxism and related conditions.",
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.09.22.753640",
+      "title": "AAV-mediated TBR1 supplementation ameliorates behavioral and electrophysiological abnormalities in Tbr1-haploinsufficient mice",
+      "abstract": "TBR1 haploinsufficiency causes a neurodevelopmental disorder associated with intellectual disability and autistic features, but the therapeutic potential of postnatal gene supplementation remains incompletely defined. Here, we evaluated adeno associated virus (AAV) mediated human TBR1 supplementation in Tbr1 haploinsufficient mice. A single retroorbital injection of AAV expressing human TBR1 under the human synapsin promoter was administered at postnatal day 3 at a dose of 2E11 vector genomes. Compared with control vector treated mutants, treated mice exhibited increased TBR1 protein abundance and TBR1, CTIP2, and parvalbumin positive cell counts in selected brain regions. Treatment improved sociability, social transmission of food preference, and buried food seeking. Electroencephalographic (EEG) recordings showed attenuation of elevated relative theta power and improved theta suppression and gamma enhancement during social interaction. However, anterior commissure abnormalities persisted, correction of other EEG abnormalities was incomplete, and sleep wake proportions showed no significant treatment improvement. These findings demonstrate that neonatal TBR1 supplementation improves selected behavioral and electrophysiological outcomes despite persistent anatomical abnormalities. They support further development of gene supplementation for TBR1 haploinsufficiency and identify social interaction associated EEG modulation as a candidate measure of treatment response.",
       "authors": [
-        "D Waller",
-        "F Firth",
-        "H Bennani",
-        "M Farella"
+        "Li, T.",
+        "Jiao, Z.",
+        "Wang, X.",
+        "Yu, C.",
+        "Qiu, Z."
       ],
-      "published_date": "2026-Sep-27",
-      "indexed_date": "",
-      "journal": "Journal of oral rehabilitation",
-      "doi": "10.1111/joor.70325",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42802104/",
-      "categories": [],
-      "keywords": [
-        "anxiety",
-        "bruxism",
-        "electromyography",
-        "masseter muscle",
-        "masticatory muscles",
-        "myofascial pain syndromes",
-        "sleep motor activity",
-        "tooth attrition"
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.22.753640",
+      "url": "https://doi.org/10.64898/2026.09.22.753640",
+      "categories": [
+        "neuroscience"
       ],
+      "keywords": [],
       "publication_types": [
-        "Journal Article"
+        "Preprint"
       ],
       "extra": {
-        "prefilter_score": 8,
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 54,
         "ai": {
           "score": 25,
-          "topic": "Masticatory muscle EMG in free-living adults",
-          "reason": "Wearable EMG of jaw muscle activity, methodologically tangential to EMG but not sleep neuroscience.",
-          "summary": "In 30 free-living adults with self-reported clenching or grinding, wearable electromyography across 77 sessions showed moderate associations between sleep-time and wake-time masticatory muscle activity for episode frequency, duty time, and rhythmic masticatory muscle activity percentage. Tooth wear had limited association with MMA after age and sex adjustment, whereas higher sleep-time RMMA was associated with muscle pain on awakening.",
+          "topic": "TBR1 gene therapy and EEG abnormalities",
+          "reason": "Neurodevelopmental gene therapy study with incidental EEG/sleep-wake measures; not focused on sleep regulation and only weakly relevant to the researcher's core questions.",
+          "summary": "Evaluated AAV-mediated human TBR1 supplementation in Tbr1-haploinsufficient mice after a single postnatal day 3 retroorbital injection (2E11 vector genomes). Treatment increased TBR1 protein and TBR1/CTIP2/parvalbumin cell counts, improved sociability and food-seeking behaviors, and attenuated elevated relative theta power and social-interaction EEG abnormalities, though anterior commissure abnormalities and some EEG/sleep deficits persisted.",
           "keywords": [
-            "masticatory muscle activity",
-            "bruxism",
-            "electromyography",
-            "masseter muscle",
-            "pain on awakening"
+            "TBR1 haploinsufficiency",
+            "AAV gene supplementation",
+            "neurodevelopmental disorder",
+            "EEG theta power",
+            "social behavior"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.09.22.751523",
+      "title": "Predicting the immediate and subsequent effects of commercials on product valuation using EEG and deep learning",
+      "abstract": "Neuromarketing mainly seeks to enhance the prediction of marketing stimuli success, such as commercials and movie trailers, by integrating neurophysiological measures with traditional behavioral measures. In the current study, the authors tested whether neural activity could predict consumer valuation and how preferences change after watching commercials, both immediately and over time. Participants (n=161) watched images of products followed by commercials advertising those products while their neural activity was recorded using electroencephalograph (EEG). They watched the product images again a week later without EEG recordings. Immediately after each stimulus exposure, participants stated their willingness to pay (WTP) for the product and how much they liked the commercial. Standard EEG measures showed weak and inconsistent relationships with behavior and yielded near-chance predictions. In contrast, deep learning models applied to the raw neural data achieved substantially higher predictive accuracy, successfully predicting both immediate and delayed WTP and ad liking. Importantly, the authors were able to successfully predict preferences for new participants and/or new products the models were not trained on. However, accuracy declined as generalization demands increased. Moreover, prediction performance declined as value differences narrow. Together, these findings show that neural responses carry reliable and temporally persistent information about consumer valuation and its evolution over time.",
+      "authors": [
+        "Arie, I. G.",
+        "Atad, D. A.",
+        "Hakim, A.",
+        "Levy, D."
+      ],
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.22.751523",
+      "url": "https://doi.org/10.64898/2026.09.22.751523",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 10,
+        "ai": {
+          "score": 22,
+          "topic": "EEG and deep learning for commercial valuation",
+          "reason": "Neuromarketing EEG decoding study; methodologically adjacent but aimed at consumer preference prediction, not sleep regulation.",
+          "summary": "EEG data from 161 participants watching commercials were analyzed with deep learning to predict willingness to pay and ad liking. Deep learning on raw neural data achieved substantially higher predictive accuracy than standard EEG measures and generalized to new participants and products, though performance declined as generalization demands increased and value differences narrowed.",
+          "keywords": [
+            "neuromarketing",
+            "EEG",
+            "deep learning",
+            "consumer valuation",
+            "willingness to pay"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -808,6 +1073,57 @@
             "circadian rhythm"
           ],
           "paper_type": "Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42804660",
+      "title": "Timing of Device-Measured Physical Activity and Sleep in Relation to Meeting Physical Activity Guidelines in U.S. Adults.",
+      "abstract": "Whether the timing of moderate-to-vigorous physical activity (MVPA) and sleep is independently and jointly associated with meeting physical activity guidelines in adults remains unclear. We cross-sectionally analyzed 2003-2006 National Health and Nutrition Examination Survey (NHANES) data. Non-pregnant adults aged ≥20 years with valid accelerometer data, ≥5 min/day of MVPA, and no mobility limitation were included (n=3,153). Participants were classified as: morning (06:00-09:59), midday (10:00-13:59), afternoon (14:00-17:59), evening (18:00-21:59), or overnight (22:00-05:59) MVPA groups if ≥50% of average daily MVPA occurred in that window; or as mixed if otherwise. Subsamples with valid sleep timing proxy data (n=2,370) were classified as: irregular sleepers if participants had a standard deviation of the sleep midpoint >1 h; otherwise, regular sleepers were further categorized by mean sleep midpoint as early (22:00-01:59), mid (02:00-03:59), or late (04:00-07:59). Survey-weighted modified Poisson models were used to estimate adjusted prevalence ratios (PRs) and 95% confidence intervals (CIs) for meeting PA guidelines (i.e., ≥150 min/week of moderate-equivalent activity), controlling for sociodemographic, behavioral, and health-related covariates. Morning MVPA (PR = 1.48, 95% CI = 1.31-1.66) and early sleep (1.14, 1.01-1.28) were each associated with a higher prevalence of meeting PA guidelines compared to mixed MVPA and irregular sleep, respectively. Similar patterns were observed for joint groups of morning MVPA with early sleep (1.57, 1.14-2.16), morning MVPA with mid sleep (1.62, 1.34-1.96), and midday MVPA with mid sleep (1.44, 1.21-1.73) compared with mixed MVPA with irregular sleep. Accumulating MVPA predominantly in the morning and/or maintaining earlier sleep timing may inform timing-based strategies to support population-level adherence to PA guidelines.",
+      "authors": [
+        "Kai Zhang",
+        "Justin J Lang",
+        "Sitong Chen",
+        "Rachel C Colley",
+        "Pedro F Saint-Maurice",
+        "Alex Dumas",
+        "Grant R Tomkinson",
+        "Jean-Philippe Chaput"
+      ],
+      "published_date": "2026-Sep-28",
+      "indexed_date": "",
+      "journal": "Medicine and science in sports and exercise",
+      "doi": "10.1249/mss.0000000000004154",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804660/",
+      "categories": [],
+      "keywords": [
+        "ACCELEROMETRY",
+        "EXERCISE",
+        "PHYSICAL ACTIVITY",
+        "PHYSICAL ACTIVITY GUIDELINES",
+        "SLEEP",
+        "TIMING"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 8,
+        "ai": {
+          "score": 20,
+          "topic": "Timing of physical activity and sleep in adults",
+          "reason": "Cross-sectional NHANES study of activity/sleep timing and guideline adherence; broad human epidemiology with little mechanistic sleep relevance.",
+          "summary": "Cross-sectional analysis of NHANES 2003-2006 accelerometer data (n=3,153) examined whether timing of MVPA and sleep is associated with meeting physical activity guidelines. Morning MVPA and early sleep were independently and jointly associated with higher prevalence of meeting guidelines.",
+          "keywords": [
+            "accelerometry",
+            "moderate-to-vigorous physical activity",
+            "sleep timing",
+            "physical activity guidelines",
+            "NHANES"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -911,6 +1227,58 @@
             "circadian disruption",
             "mitochondrial dysfunction",
             "AMPK signaling"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.09.25.26363056",
+      "title": "Age-dependent associations of sleep duration and insomnia symptoms with cognitive decline across five decades of adult life: a multi-cohort longitudinal study",
+      "abstract": "Background: Associations of sleep duration and insomnia symptoms with cognitive decline are inconsistent, and whether they represent modifiable risk factors or early manifestations of neurodegeneration may depend on life stage. We examined how sleep-cognition associations vary with age (44 to >90 years). Methods: We studied 16,884 participants from three cohorts with harmonised measures. In the English Longitudinal Study of Ageing (ELSA: n=9,473, median age 64, range 50 to >=90), linear mixed-effects models examined age-specific differences in cognitive change (recall and fluency) associated with sleep duration, difficulty falling asleep, nocturnal awakenings, incorporating sleep-by-age-by-time interactions, with initial adjustment for sociodemographic factors and further adjustment for health and lifestyle factors. Sleep characteristics showing consistent age-dependent associations in ELSA were further evaluated in Whitehall II (n=5,580, median age 55, range 44 to 68) and the Rush Memory and Aging Project (MAP: n=1,831, median age 80, range 53 to 102). Findings: In ELSA, difficulty falling asleep >=1 time/week (vs <1 time/week) was associated with less favourable 5-year change in recall at age 50 (difference -0.12 SD, 95% CI -0.20 to -0.04), with the association attenuating and reversing towards more favourable change at older ages (p-interaction=0.009 [linear], 0.016 [quadratic]). These persisted after further adjustment for health and lifestyle factors. Short sleep (<=6 h) showed similar patterns that attenuated after further adjustment. Similar age gradients were observed for difficulty falling asleep in Whitehall II and MAP. There was no evidence of age modification on long sleep and nocturnal awakenings. Interpretation: The cognitive implications of sleep disturbances vary by life stage. In midlife, difficulty falling asleep was associated with faster cognitive decline, supporting its role as a modifiable risk factor. In advanced age, the reversal is consistent with diminished arousal capacity accompanying prodromal dementia. Funding: US National Institute on Aging",
+      "authors": [
+        "Fang, Y.",
+        "Quick, A.",
+        "Oryshkewych, N.",
+        "Fernandez, N.",
+        "Lim, A.",
+        "Barnes, L. L.",
+        "Bennett, D. A.",
+        "Steptoe, A.",
+        "Hardy, R.",
+        "Sabia, S.",
+        "Wallace, M.",
+        "Leng, Y."
+      ],
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.09.25.26363056",
+      "url": "https://doi.org/10.64898/2026.09.25.26363056",
+      "categories": [
+        "epidemiology"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "0",
+        "published": "NA",
+        "prefilter_score": 20,
+        "ai": {
+          "score": 18,
+          "topic": "Sleep duration, insomnia, and cognitive decline",
+          "reason": "Large multi-cohort human longitudinal study of sleep and cognition; clinical/epidemiological and outside the researcher's mechanistic animal focus.",
+          "summary": "Multi-cohort longitudinal study of 16,884 participants examined age-specific associations of sleep duration and insomnia symptoms with cognitive decline. Difficulty falling asleep was associated with faster cognitive decline at age 50 but the association attenuated and reversed at older ages, suggesting midlife insomnia may be a modifiable risk factor.",
+          "keywords": [
+            "sleep duration",
+            "insomnia symptoms",
+            "cognitive decline",
+            "aging",
+            "longitudinal cohort"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1051,6 +1419,56 @@
             "biomarkers"
           ],
           "paper_type": "Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42804271",
+      "title": "Rates and correlates of nightmares and insomnia in active duty military service members pre- and postdeployment.",
+      "abstract": "This study aimed to determine the rates, chronicity, and correlates of nightmares and insomnia, alone and in combination, in U.S. Army personnel at predeployment and postdeployment. Service members were assessed prior to (N = 3,952) and following (N = 1,762) a combat deployment between 2010 and 2016. Participants were categorized predeployment into nightmare and insomnia groups using the PTSD Checklist-Military Version distressing dreams item (Item 2 score ≥ 3) and the Insomnia Severity Index (total score ≥ 15). Postdeployment, participants were further classified into 16 groups reflecting the combination of nightmare and insomnia trajectories. Predeployment, 12% of participants were in the nightmares only group, 9% were in the insomnia only group, and 11% were in the both nightmares and insomnia group. Predeployment, the nightmares only group was older, had more deployments, and had greater mental health symptoms than the neither group. The insomnia only group had more deployments and greater mental health symptoms than the neither group. The both nightmares and insomnia group was more likely to identify as Native American, be older, have more prior deployments, and have greater anxiety symptoms than all other groups. Postdeployment, the new-onset trajectory, chronic nightmare trajectory, and chronic insomnia trajectory were generally related to higher posttraumatic stress disorder, anger, and anxiety symptoms compared with the remitted, no nightmares, and no insomnia trajectories. Nightmares and insomnia, singularly and comorbid, are associated with mental health problems. Transdiagnostic treatments that target both conditions may be an efficient means to ameliorate sleep problems and minimize effects on mental health. (PsycInfo Database Record (c) 2026 APA, all rights reserved).",
+      "authors": [
+        "Kristi E Pruiksma",
+        "Daniel J Taylor",
+        "Claire A Lavalley",
+        "Joanne L Davis",
+        "Douglas E Williamson",
+        "Kevin M Kelly",
+        "Douglas M Maurer",
+        "Elisa V Borah",
+        "Antoinette Brundige",
+        "Stacey Young-McCaughan",
+        "Brett T Litz",
+        "Rene L Olvera",
+        "Keith A Young",
+        "Alan L Peterson"
+      ],
+      "published_date": "2026-Sep-28",
+      "indexed_date": "",
+      "journal": "Psychological trauma : theory, research, practice and policy",
+      "doi": "10.1037/tra0002244",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804271/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 20,
+        "ai": {
+          "score": 12,
+          "topic": "Military nightmares and insomnia epidemiology",
+          "reason": "Broad clinical/epidemiological study of insomnia and nightmares in service members, not mechanistic or animal sleep regulation work.",
+          "summary": "U.S. Army personnel were assessed pre- and post-deployment to determine rates and correlates of nightmares and insomnia. Nightmares and insomnia, alone and comorbid, were associated with mental health problems, and chronic postdeployment trajectories were linked to higher PTSD, anger, and anxiety symptoms.",
+          "keywords": [
+            "nightmares",
+            "insomnia",
+            "military service members",
+            "deployment",
+            "mental health"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1201,55 +1619,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42801075",
-      "title": "Symptom network analysis in maintenance hemodialysis patients: a multicenter study.",
-      "abstract": "To identify symptom clusters and construct a symptom network in multicenter maintenance hemodialysis (MHD) patients, with the aim of elucidating core symptoms and informing evidence-based symptom management strategies. A cross-sectional study was conducted using convenience sampling to recruit 502 MHD patients from 10 hemodialysis centers in Quanzhou, Fujian Province, China. Symptom burden was assessed using the Dialysis Symptom Index. Exploratory factor analysis was employed to identify symptom clusters. Network analysis was performed using R software (version 4.3.1), with the qgraph, bootnet, and network tools packages utilized for network visualization, stability analysis, and centrality estimation. Network centrality indices were calculated, and strength centrality-which demonstrated adequate stability-was used as the primary index to identify core symptoms. Exploratory factor analysis revealed five distinct symptom clusters: emotional symptoms, fluid and electrolyte imbalance symptoms, gastrointestinal symptoms, uremic toxins symptoms, and sleep disturbance symptoms. Network analysis demonstrated that muscle cramps exhibited the highest strength centrality (1.758), followed by nervousness (1.332) and worrying (1.238), identifying muscle cramps as the most central symptom within the network structure. The correlation stability (CS) coefficient of strength centrality was 0.749, indicating adequate stability, whereas closeness and betweenness centralities were unstable (CS-coefficient = 0.00) and were therefore not interpreted. MHD patients experience multiple co-occurring symptom clusters, with muscle cramps identified as the most central symptom in the symptom network and fatigue representing the most severe and second most prevalent symptom. These findings highlight the importance of prioritizing interventions targeting muscle cramps, fatigue, and other high-strength symptoms. Healthcare professionals should develop tailored, symptom-specific management strategies to effectively alleviate symptom burden and enhance clinical outcomes in MHD patients.",
-      "authors": [
-        "Xiaorong Liu",
-        "Huifen Zhao",
-        "Ziqing Hong",
-        "Yumei Peng",
-        "Jianqing Zheng",
-        "Suzhen Xie",
-        "Shuifeng Chen"
-      ],
-      "published_date": "2026",
-      "indexed_date": "2026-09-27",
-      "journal": "PeerJ",
-      "doi": "10.7717/peerj.21741",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42801075/",
-      "categories": [],
-      "keywords": [
-        "Maintenance hemodialysis",
-        "Study",
-        "Symptom group",
-        "Symptom network"
-      ],
-      "publication_types": [
-        "Journal Article",
-        "Multicenter Study"
-      ],
-      "extra": {
-        "prefilter_score": 8,
-        "ai": {
-          "score": 12,
-          "topic": "Hemodialysis symptom network analysis",
-          "reason": "Clinical symptom-network study in dialysis patients; it includes a sleep disturbance symptom cluster but does not address sleep regulation mechanisms, EEG, or animal physiology.",
-          "summary": "In a multicenter cross-sectional study of 502 maintenance hemodialysis patients, symptom network analysis identified five symptom clusters and found muscle cramps as the most central symptom, followed by nervousness and worrying.",
-          "keywords": [
-            "maintenance hemodialysis",
-            "symptom network",
-            "symptom clusters",
-            "muscle cramps",
-            "centrality"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "42802990",
       "title": "Social-behavioral and psychological resource advantage and favorable cognitive-domain transitions among older Chinese adults: a longitudinal CHARLS study.",
       "abstract": "This study examined whether social-behavioral and psychological resource advantage, including lower depressive symptom burden, was associated with favorable observed cognitive-domain transitions among older Chinese adults. Using five waves of the China Health and Retirement Longitudinal Study from 2011 to 2020, we constructed four cognitive-domain states and adjacent-wave person-period intervals. The Social-Behavioral Resource Advantage Score-5 (SBRAS-5) was treated as an a priori formative resource-breadth count combining non-low educational attainment, non-agricultural hukou status, social participation, normal sleep duration, and absence of elevated depressive symptoms. Origin-state-restricted logistic models estimated apparent recovery from localized impairment and progression to multidomain impairment. The descriptive transition sample comprised 15,611 intervals from 5,997 respondents; covariate-adjusted models used 15,607 intervals from 5,994 respondents. Each additional SBRAS-5 point was associated with higher odds of S1-to-S0 apparent recovery (OR = 1.40, 95% CI: 1.26-1.56) and S2-to-S0 apparent recovery (OR = 1.32, 95% CI: 1.24-1.41), and lower odds of S1-to-S3 progression (OR = 0.65, 95% CI: 0.55-0.76) and S2-to-S3 progression (OR = 0.85, 95% CI: 0.79-0.91). Threshold/score-change, depression-separated, weighted-index, selective-observation, stable-recovery, and continuous-time sensitivity analyses supported the principal directional pattern. Resource advantage was associated with more favorable observed cognitive-domain transitions after localized impairment, but not clinically verified recovery.",
@@ -1295,37 +1664,24 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42802786",
-      "title": "Provox Life HMEs for Pulmonary Rehabilitation in HME-Naïve Laryngectomy Patients: A Randomized Controlled Trial.",
-      "abstract": "To evaluate whether Provox Life Heat and Moisture Exchangers (HMEs) and attachments enable HME-naïve laryngectomized patients to establish a 24-h HME routine, and whether the resulting effect on pulmonary symptoms is sustained over 9 months, compared with standard care. In this prospective, randomized controlled trial, 79 HME-naïve patients post-total laryngectomy at two Brazilian centers were randomized to the Provox Life group (n = 41) or a control group without HMEs (n = 38). Data were collected at baseline and at 3, 6, and 9 months. The primary endpoint was the Cough Symptoms (COUS) domain of the validated Cough and Sputum Assessment Questionnaire (CASA-Q). Secondary endpoints included other CASA-Q domains, forced expectorations, involuntary coughs, sleep quality (JSEQ), quality of life (EQ-5D-5L), shortness of breath, skin integrity, pulmonary complications, and patient satisfaction. HME adherence was near-continuous (mean 23.3-23.9 h/day). All four CASA-Q domains (COUS, COUI, SPUS, SPUI) improved significantly from baseline in the Provox Life group (all p ≤ 0.001 at 9 months), with changes exceeding published minimal clinically important differences; controls remained stable except for transient sputum-domain gains at T2. At 9 months, forced expectorations were significantly lower in the Provox Life group versus controls (3.3 ± 2.2 vs. 6.6 ± 6.1 per 24 h; p = 0.023). Sleep quality (JSEQ) improved significantly with Provox Life (p = 0.013), but not in controls. The EQ-5D-5L index improved at 3 and 6 months, pulmonary complications were descriptively fewer, and 89.7% rated their experience \"very good\". Skin irritation was low and comparable between groups. No device-related serious adverse events occurred. In HME-naïve patients after total laryngectomy, Provox Life enables near-continuous HME use and is associated with clinically meaningful improvements in pulmonary symptom burden, sputum management, and sleep quality. Skin tolerability is comparable to standard care. 1b Trial Registration: ClinicalTrials.gov identifier: NCT06084611.",
+      "source_id": "42804268",
+      "title": "Cannabis use and sleep outcomes among National Guard and Reserve soldiers.",
+      "abstract": "Sleep problems are prevalent among military service members. Research suggests that military service members report using cannabis for sleep, but this relationship remains understudied. We examined the effect of cannabis use on sleep outcomes among U.S. Army Reserve and National Guard soldiers. Data are drawn from Operation: Soldiers And Families Excelling Through the Years, an ongoing longitudinal study of the health of U.S. Army Reserve and National Guard soldiers (N = 485). Generalized estimating equations were used to examine relationships between current cannabis use and sleep outcomes, over six waves of data. Separate generalized estimating equation models examined the overall Pittsburgh Sleep Quality Index sleep score and component subscores, including duration, quality, latency, efficiency, sleep disturbances, sleep medication use, and daytime dysfunction. Final models controlled for biological sex, age, and current/former military service. The adjusted generalized estimating equation model demonstrated that cannabis use (adjusted incidence rate ratio [aIRR] = 1.01, 95% confidence interval, CI [1.01, 1.02]) was significantly associated with worse global sleep scores. When examining the Pittsburgh Sleep Quality Index subscales, current cannabis use was significantly associated with sleep latency (aIRR = 1.15, 95% CI [1.02, 1.29]), sleep disturbances (aIRR = 1.09, 1.01, 1.18), and use of sleeping medication (aIRR = 1.40, 95% CI [1.10, 1.77]). Over time, cannabis use was associated with global sleep scores and appears to have especially negative effects on sleep latency, disturbances, and use of medications for sleep. Understanding the effects of cannabis use on outcomes of importance to U.S. Army Reserve and National Guard members, such as sleep, is important, particularly in a time of evolving state-level cannabis legislation. (PsycInfo Database Record (c) 2026 APA, all rights reserved).",
       "authors": [
-        "Rafael De Cicco",
-        "Rafael Pereira de Souza",
-        "Carla Gonçalves Soares Moreira",
-        "Sandra Lopez Calcines",
-        "Victor Bandini Vieira",
-        "Daniela Maria Santos Serrano Marquezin",
-        "Marianne Yumi Nakai",
-        "Marcelo Benedito Menezes",
-        "Tabata Briaunys Milan",
-        "Francisco Araújo Dias"
+        "Jessica A Kulak",
+        "Bonnie M Vest",
+        "D Lynn Homish",
+        "Monique Nakamura",
+        "Morgan Harrington",
+        "Gregory G Homish"
       ],
-      "published_date": "2026-Oct",
-      "indexed_date": "2026-09-28",
-      "journal": "Laryngoscope investigative otolaryngology",
-      "doi": "10.1002/lio2.70576",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42802786/",
+      "published_date": "2026-Sep-28",
+      "indexed_date": "",
+      "journal": "Psychological services",
+      "doi": "10.1037/ser0001089",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804268/",
       "categories": [],
-      "keywords": [
-        "HME",
-        "Provox Life",
-        "cough",
-        "heat and moisture exchanger",
-        "laryngectomy",
-        "pulmonary rehabilitation",
-        "randomized controlled trial",
-        "tracheal humidification"
-      ],
+      "keywords": [],
       "publication_types": [
         "Journal Article"
       ],
@@ -1333,17 +1689,17 @@
         "prefilter_score": 8,
         "ai": {
           "score": 10,
-          "topic": "Laryngectomy HME pulmonary rehabilitation",
-          "reason": "Clinical trial on heat-moisture exchangers in laryngectomy patients; sleep quality is a secondary questionnaire outcome, not a mechanistic or computational sleep-regulation study.",
-          "summary": "Randomized controlled trial in 79 HME-naive laryngectomized patients showed that Provox Life HMEs enabled near-continuous use and produced clinically meaningful improvements in pulmonary symptoms, sputum management, and sleep quality compared with standard care.",
+          "topic": "Cannabis use and sleep outcomes in soldiers",
+          "reason": "Longitudinal survey study of cannabis and subjective sleep quality in military personnel; clinical/epidemiological and outside the core mechanistic scope.",
+          "summary": "Longitudinal study of 485 National Guard and Reserve soldiers examined associations between cannabis use and sleep outcomes over six waves. Current cannabis use was significantly associated with worse global sleep scores and specifically with sleep latency, sleep disturbances, and sleeping medication use.",
           "keywords": [
-            "heat and moisture exchanger",
-            "laryngectomy",
-            "pulmonary rehabilitation",
-            "Provox Life",
-            "randomized controlled trial"
+            "cannabis use",
+            "sleep quality",
+            "military personnel",
+            "Pittsburgh Sleep Quality Index",
+            "longitudinal study"
           ],
-          "paper_type": "Clinical Trial",
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1400,101 +1756,55 @@
       }
     },
     {
-      "source": "pubmed",
-      "source_id": "42801090",
-      "title": "Effects of Graded Exposure on Functional Improvement, Quality of Life, and Mental Health in Chronic Musculoskeletal Pain: A Systematic Review and Meta-Analysis.",
-      "abstract": "Chronic musculoskeletal pain (CMP) is a prevalent and disabling condition associated with impaired physical function and reduced quality of life. Graded exposure therapy (GEP), a cognitive-behavioral intervention targeting pain-related fear and avoidance, has been proposed as a non-pharmacological approach for CMP management. To evaluate the effects of GEP compared with non-GEP interventions in individuals with CMP. We searched electronic databases from inception to February 2025 for randomized controlled trials (RCTs) comparing GEP and non-GEP interventions in individuals with CMP. Primary outcomes included pain intensity and pain-related disability. Secondary outcomes included pain-related fear and cognition, health-related quality of life, psychological outcomes, sleep-related outcomes, behavioral adaptation, self-efficacy, and physical functioning. The certainty of evidence was assessed using the Grading of Recommendations Assessment, Development and Evaluation (GRADE) approach. Eight RCTs involving 554 participants were included. Compared with non-GEP interventions, GEP was associated with improvements in pain-related disability and pain-related fear and cognition, including pain catastrophizing (Pain Catastrophizing Scale [PCS]: mean difference [MD] = -4.45, 95% confidence interval [CI] -7.20 to -1.69) and kinesiophobia (Tampa Scale of Kinesiophobia [TSK]: MD = -4.57, 95% CI -7.11 to -2.03). Disability outcomes have showen beneficial effects across several instruments, although many estimates are based on individual studies. Effects on pain intensity were inconsistent, with significant reductions observed for Neuropathic Pain Scale (NPS) (MD = -2.66, 95% CI -4.09 to -1.23) and Fibromyalgia Impact Questionnaire Pain subscale (FIQ-Pain) (MD = -2.51, 95% CI -3.48 to -1.54). The certainty of evidence ranged from very low to moderate, with most outcomes being downgraded owing to the risk of bias and imprecision. GEP may improve pain-related disability and pain-related fear and cognition in individuals with CMP. However, the limited certainty of evidence and variability across populations, interventions, and outcome measures warrant cautious interpretation. Further high-quality trials with standardized outcomes and longer-term follow-up are needed.",
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.09.23.753964",
+      "title": "Generation of a transgenic cephalopod",
+      "abstract": "Coleoid cephalopods (cuttlefish, octopus, and squid) are marine mollusks with elaborate nervous systems that support a diverse repertoire of complex behaviors. These include the neural control of the color, pattern, and texture of the skin, facilitating both adaptive camouflage and innate patterning that may reflect internal state. The development of transgenic cephalopods expressing fluorescent proteins, optogenetic actuators, and reporters of neural activity would contribute a new and important technology to cephalopod biology. The generation of transgenic cephalopods, however, has remained a major challenge. Here, we report the development of stable transgenic dwarf cuttlefish (Ascarosepion bandense) expressing ubiquitous nuclear-localized mScarlet, a red fluorescent protein. We evaluated multiple strategies for transgenesis, and established cuttlefish lines using both CRISPR and the transposons Sleeping Beauty and Minos. The stable expression of transgenes enabled live imaging of cell dynamics during embryonic development. The Minos transposon emerged as the most efficient transgenesis strategy and is adaptable to promoters and transgenes of choice. These strategies now enable the generation of diverse genetic tools for mechanistic studies of cephalopod biology.",
       "authors": [
-        "Qiong Zhang",
-        "Yapeng Wu",
-        "Yanmei Zhao",
-        "Tingyu Meng",
-        "YiFan Zhao",
-        "Xueqin Qin",
-        "Haiyan Long",
-        "Chao Zhang"
+        "Montague, T. G.",
+        "Gibbons, C. J.",
+        "Barlow, G. T.",
+        "Bashkirova, E. V.",
+        "Xu, Y.",
+        "Castagna, E. C.",
+        "Mungioli, T. J.",
+        "Patrick, K. A.",
+        "Nemes, A.",
+        "Varma, A.",
+        "Looger, L. L.",
+        "Albertin, C. B.",
+        "Lomvardas, S.",
+        "Axel, R."
       ],
-      "published_date": "2026",
-      "indexed_date": "2026-09-27",
-      "journal": "Journal of pain research",
-      "doi": "10.2147/jpr.s631975",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42801090/",
-      "categories": [],
-      "keywords": [
-        "chronic musculoskeletal pain",
-        "cognitive-behavioral intervention",
-        "fear-avoidance",
-        "graded exposure therapy",
-        "meta-analysis",
-        "pain-related disability"
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.23.753964",
+      "url": "https://doi.org/10.64898/2026.09.23.753964",
+      "categories": [
+        "genetics"
       ],
+      "keywords": [],
       "publication_types": [
-        "Journal Article",
-        "Review"
+        "Preprint"
       ],
       "extra": {
-        "prefilter_score": 8,
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 20,
         "ai": {
           "score": 8,
-          "topic": "Graded exposure for chronic musculoskeletal pain",
-          "reason": "Rehabilitation meta-analysis with sleep-related outcomes only as secondary endpoints; not relevant to basic or computational sleep neuroscience.",
-          "summary": "A systematic review and meta-analysis of 8 RCTs (554 participants) evaluated graded exposure therapy (GEP) versus non-GEP in chronic musculoskeletal pain. GEP improved pain-related disability and fear/cognition (e.g., pain catastrophizing MD -4.45, kinesiophobia MD -4.57), but evidence certainty ranged from very low to moderate.",
+          "topic": "Transgenic cephalopod generation",
+          "reason": "Cephalopod transgenesis methods paper with no direct relevance to sleep neuroscience or EEG/EMG sleep analysis.",
+          "summary": "Generated stable transgenic dwarf cuttlefish (Ascarosepion bandense) expressing ubiquitous nuclear-localized mScarlet using CRISPR and the transposons Sleeping Beauty and Minos. Minos was the most efficient strategy, enabling live imaging of cell dynamics during embryonic development and adaptable for diverse genetic tools.",
           "keywords": [
-            "graded exposure therapy",
-            "chronic musculoskeletal pain",
-            "pain-related disability",
-            "kinesiophobia",
-            "pain catastrophizing"
+            "transgenesis",
+            "cephalopod",
+            "Ascarosepion bandense",
+            "Minos transposon",
+            "mScarlet"
           ],
-          "paper_type": "Systematic Review",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42801110",
-      "title": "Breaking the Taboo: Four Cases of Thoracic Segmental Spinal Anesthesia in Modern Surgical Practice.",
-      "abstract": "Thoracic segmental spinal anesthesia (TSSA) is an old neuraxial technique that has recently regained attention as a possible alternative to general anesthesia (GA) in selected surgical patients. Its segmental nature, low-dose local anesthetic requirement, and ability to preserve spontaneous ventilation may be particularly relevant in high-risk patients in whom airway manipulation, endotracheal intubation, positive-pressure ventilation, and systemic anesthetic exposure could represent an additional physiological burden. We report four selected high-risk patients undergoing procedures from different surgical specialties under TSSA: emergency videolaparoscopic adnexal detorsion in early pregnancy; retrograde intrarenal surgery (RIRS) in a patient with arthrogryposis multiplex congenita and restrictive ventilatory impairment; laparoscopic appendectomy in a patient with severe chronic obstructive pulmonary disease (COPD) and chronic cor pulmonale; and laparoscopic cholecystectomy in a morbidly obese patient with obstructive sleep apnea. In all cases, TSSA was tailored according to patient characteristics and surgical requirements through individualized selection of puncture level, local anesthetic baricity, adjuvants, sedation strategy, and respiratory support. All procedures were completed without conversion to GA, airway rescue, clinically relevant respiratory deterioration, or postoperative neurological complications. Quality of recovery was high in all patients. These cases suggest that TSSA may represent a versatile, physiology-preserving anesthetic strategy in carefully selected high-risk patients, provided that it is performed by experienced practitioners within a multidisciplinary plan and with a clear backup strategy.",
-      "authors": [
-        "Paolo Scimia",
-        "Massimiliano Luca D'Agostino",
-        "Antonio De Cato",
-        "Franco Marinangeli",
-        "Luca Gentili"
-      ],
-      "published_date": "2026-Aug",
-      "indexed_date": "2026-09-27",
-      "journal": "Cureus",
-      "doi": "10.7759/cureus.115280",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42801110/",
-      "categories": [],
-      "keywords": [
-        "high-risk patients",
-        "laparoscopic surgery",
-        "regional anesthesia",
-        "spontaneous ventilation",
-        "thoracic spinal anesthesia"
-      ],
-      "publication_types": [
-        "Case Reports",
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 8,
-        "ai": {
-          "score": 8,
-          "topic": "Thoracic segmental spinal anesthesia cases",
-          "reason": "Anesthesia case series with obstructive sleep apnea mentioned as a comorbidity; no relevance to sleep homeostasis, EEG dynamics, or sleep regulation models.",
-          "summary": "A case series of four high-risk patients who underwent thoracic segmental spinal anesthesia (TSSA) for various surgeries, with individualized technique. All procedures were completed without conversion to general anesthesia, airway rescue, respiratory deterioration, or neurological complications, suggesting TSSA as a physiology-preserving option.",
-          "keywords": [
-            "thoracic spinal anesthesia",
-            "high-risk patients",
-            "laparoscopic surgery",
-            "regional anesthesia",
-            "spontaneous ventilation"
-          ],
-          "paper_type": "Case Report",
+          "paper_type": "Methods/Resource",
           "digest_pick": true
         }
       }
@@ -1549,88 +1859,49 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42801419",
-      "title": "Eudynamic bioethics.",
-      "abstract": "A woman's chronic pain is controlled to a stable score, yet her sleep, her work, her singing, and her partnership have narrowed around her condition. Each clinical decision was defensible; what failed is the existential composition around them. This article proposes eudynamia as the concept bioethics lacks: the distributed activity through which possibilities are composed across the conditions of a life so that securing one does not foreclose the others. Ernst Daniel August Bartels coined Eudynamie in § 55 of his Lehrbuch der allgemeinen Pathologie (1819) for a physiological capacity working as it should, then observed that its value changes with the capacities beside it. His relational biology identified the configurational problem but lacked an account of what a life-capacity is a capacity for. Phenomenology and 4E cognition supply the missing content, understanding life and cognition as distributed: embodied, extended, enactive, and embedded. Eudynamia is accordingly reconstructed as the work of keeping possibilities compossible across Person, Earth, Work, and Society, while dysdynamia names configurations in which local effectivity forecloses the wider life. Canguilhem's biological normativity then distinguishes compossibility from coercive coherence, since eudynamic integration preserves the creative capacity to institute new norms. The framework is illustrated in integrative care, antimicrobial stewardship, and artificial intelligence. Bioethics has learned to ask whether each decision is right. It must also learn to ask what forms of life its right decisions, taken together, are making possible.",
+      "source_id": "42803831",
+      "title": "Cannabidiol (CBD) differentially shapes systemic cytokines and transcriptomic profiles in the liver and spleen: insights from a male mouse model.",
+      "abstract": "Cannabidiol (CBD) is widely studied for its anti-inflammatory and immunomodulatory properties, yet its relationship with systemic cytokine responses and organ-level transcriptional changes remains incompletely defined. Here, we investigated the dose- and time-dependent effects of CBD on circulating pro-inflammatory cytokines and the transcriptomic profiles of the liver and spleen in male C57BL/6J mice. Animals received CBD intraperitoneally at 0.2, 10, or 20 mg/kg body weight for either 2 days (short-term, ST) or 28 days (long-term, LT), with vehicle-treated controls. Serum IL-1β, IL-6, and TNF-α were measured by ELISA, and RNA-Seq was performed on liver and spleen to characterize differential gene expression and enriched biological processes. CBD significantly reduced IL-1β and TNF-α after ST treatment across doses, whereas IL-6 decreased primarily during LT exposure, with the strongest reduction at day 14 and partial persistence to day 28 at higher doses. Transcriptomic responses were markedly organ- and regimen-dependent. The liver transcriptome exhibited pronounced, dose- and time-dependent remodeling, with the largest number of differentially expressed genes at 20 mg/kg in ST and broad changes across doses in LT. The gene enrichment analyses indicated modulation of mitochondrial and translational pathways after ST high-dose exposure, lipid and fatty acid metabolism during LT, as well as circadian-associated regulation at higher-dose LT treatment, with innate immune-associated signaling terms enriched at the highest dose. In contrast, the spleen displayed comparatively modest transcriptional changes, with limited differential expression in LT and a clearer response only after ST exposure to 20 mg/kg, where altered genes showed trends related to lipid-associated processes. Together, these findings demonstrate that CBD attenuates circulating pro-inflammatory cytokines while inducing strong, dose- and time-dependent hepatic transcriptional reprogramming and relatively limited splenic transcriptomic shifts. The integration of systemic and organ-specific data supports a model in which CBD acts as a systemic immunometabolic modulator rather than a simple immunosuppressant.",
       "authors": [
-        "Luis de Miranda"
+        "Jakub Żurowski",
+        "E Ocłoń",
+        "I Jasielczuk",
+        "T Szmatoła",
+        "K Mizera-Szpilka",
+        "E Semik-Gurgul",
+        "S Sawicki",
+        "Artur Gurgul"
       ],
-      "published_date": "2026-Sep-27",
-      "indexed_date": "",
-      "journal": "Medicine, health care, and philosophy",
-      "doi": "10.1007/s11019-026-10404-9",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42801419/",
-      "categories": [],
-      "keywords": [
-        "4E cognition",
-        "Bioethics",
-        "Compossibility",
-        "Dysdynamia",
-        "Eudynamia",
-        "Philosophical health"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 8,
-        "ai": {
-          "score": 5,
-          "topic": "Eudynamic bioethics",
-          "reason": "Philosophical bioethics essay, irrelevant to sleep regulation research.",
-          "summary": "This conceptual paper proposes 'eudynamia' as a bioethical concept describing the distributed activity of composing possibilities across life conditions so that securing one does not foreclose others. It integrates relational biology, phenomenology, and 4E cognition, and illustrates the framework in integrative care, antimicrobial stewardship, and artificial intelligence.",
-          "keywords": [
-            "eudynamia",
-            "bioethics",
-            "4E cognition",
-            "compossibility",
-            "philosophical health"
-          ],
-          "paper_type": "Commentary/Perspective",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42802314",
-      "title": "Risk factors for colorectal carcinoma; a hospital-based study.",
-      "abstract": "Colorectal carcinoma (CRC) accounts for substantial cancer morbidity and mortality worldwide. Our study was designed to assess the contributions of dietary and lifestyle factors on the risk of developing CRC. A case-control study was conducted over a five-year period at the National Hospital of Sri Lanka. Data was collected via an interviewer administered, structured, pre-tested questionnaire on 200 histologically confirmed CRC cases and 200 age and gender-matched controls. Multivariate analyses were done to identify associations. The median age was 58 years in the CRC group and 54 years in the control group, while the male:female ratio was 1.50 and 1.49 respectively. On multivariate analysis the consumption of six or more cups of brown tea per day [Odds Ratio (OR) = 2.98 (95% CI 1.47-6.05), p=0.003] was independently associated with CRC. Beef consumption also showed significant association with risk of CRC [OR = 1.76 (95% CI 1.12-2.78), p=0.015]. Green tea was not found to be associated with CRC. There were no associations with body weight, work-sleep pattern, smoking or the consumption of alcohol, mutton, pork, fruits or coffee. The consumption of six or more cups of brown tea per day or beef was associated with an increased risk of developing CRC.",
-      "authors": [
-        "Ishan Malith De Zoysa",
-        "Narmada Vinyani Ekanayake",
-        "Upul Senarath",
-        "Suranjith Luke Seneviratne"
-      ],
-      "published_date": "2024-Aug-16",
+      "published_date": "2026-Sep-28",
       "indexed_date": "2026-09-28",
-      "journal": "The Ceylon medical journal",
-      "doi": "10.4038/cmj.v68i3.9721",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42802314/",
+      "journal": "Molecular genetics and genomics : MGG",
+      "doi": "10.1007/s00438-026-02525-w",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42803831/",
       "categories": [],
       "keywords": [
-        "Beef",
-        "Coffee",
-        "Colorectal cancer",
-        "Risk factors",
-        "Tea"
+        "Cannabidiol",
+        "Cytokines",
+        "Immunometabolism",
+        "Liver",
+        "Spleen",
+        "transcriptomics"
       ],
       "publication_types": [
         "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 8,
+        "prefilter_score": 15,
         "ai": {
           "score": 5,
-          "topic": "Colorectal cancer risk factors",
-          "reason": "A clinical case-control study on diet and colorectal cancer risk; only mentions work-sleep pattern as a null covariate and is unrelated to sleep neuroscience.",
-          "summary": "A hospital-based case-control study (200 CRC cases, 200 matched controls) in Sri Lanka assessed dietary and lifestyle risk factors for colorectal carcinoma. Multivariate analysis found that consuming six or more cups of brown tea per day (OR 2.98) and beef consumption (OR 1.76) were independently associated with increased CRC risk.",
+          "topic": "Cannabidiol effects on cytokines and transcriptome",
+          "reason": "Immune and transcriptomic study of CBD in mice; only a keyword collision via a sleep-related term and not relevant to sleep neuroscience.",
+          "summary": "Investigated dose- and time-dependent effects of cannabidiol (CBD) on systemic cytokines and liver/spleen transcriptomes in male C57BL/6J mice. CBD reduced IL-1β and TNF-α after short-term treatment and IL-6 primarily after long-term exposure, with pronounced hepatic transcriptional reprogramming and limited splenic changes, supporting CBD as a systemic immunometabolic modulator.",
           "keywords": [
-            "colorectal cancer",
-            "brown tea",
-            "beef consumption",
-            "case-control study",
-            "dietary risk factors"
+            "cannabidiol",
+            "cytokines",
+            "liver transcriptomics",
+            "spleen transcriptomics",
+            "immunometabolism"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1682,6 +1953,53 @@
             "evidence base"
           ],
           "paper_type": "Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42804675",
+      "title": "Motives and Sources for Prescription Opioid Misuse Among Adolescents and Young Adults With Criminal Justice System Contact.",
+      "abstract": "This study addresses a gap in literature by examining associations between criminal justice system contact (i.e., arrest, probation, parole) and prescription opioid misuse motives and sources among adolescents and young adults. Data from the National Survey on Drug Use and Health (2015-2019) were analyzed. Respondents reporting past-year prescription opioid misuse completed follow-up questions on motives (e.g., pain relief, relaxation/sleep, recreational) and sources (e.g., doctor, free from friend/relative, purchased, theft). Motives and sources were modeled as a function of criminal justice system contact and relevant covariates, separately by age group. Multinomial logistic regression revealed significant differences by criminal justice contact. Both adolescents and young adults with criminal justice system contact were more likely to report recreational or sleep/relaxation motives compared to pain relief. Among young adults, criminal justice system contact was associated with greater likelihood of obtaining opioids for free, through purchase, or by theft rather than from a doctor. The elevated likelihood of endorsing riskier motives and sources identifies adolescents and young adults with criminal justice system contact as a high-need population for targeted substance use programming. A multidimensional framework addressing the intersection of crime and health is essential to reducing disparities and criminal involvement.",
+      "authors": [
+        "Jason A Ford",
+        "Thomas Jones",
+        "Brady T West",
+        "Philip T Veliz",
+        "Sean Esteban McCabe",
+        "Ty S Schepis"
+      ],
+      "published_date": "2026-Sep-28",
+      "indexed_date": "",
+      "journal": "Substance use & misuse",
+      "doi": "10.1080/10826084.2026.2734263",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804675/",
+      "categories": [],
+      "keywords": [
+        "Prescription opioid misuse",
+        "criminal justice",
+        "motives",
+        "sources"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 8,
+        "ai": {
+          "score": 4,
+          "topic": "Prescription opioid misuse motives among justice-involved youth",
+          "reason": "Substance-use epidemiology with only incidental sleep/relaxation motives; not relevant to the researcher's sleep neuroscience focus.",
+          "summary": "Analyzed National Survey on Drug Use and Health (2015–2019) data to examine associations between criminal justice system contact and prescription opioid misuse motives and sources among adolescents and young adults. Those with criminal justice contact were more likely to report recreational or sleep/relaxation motives and, among young adults, non-medical sources such as free, purchase, or theft, identifying them as a high-need population.",
+          "keywords": [
+            "prescription opioid misuse",
+            "criminal justice system contact",
+            "adolescents",
+            "young adults",
+            "motives"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-29",
-  "generated_at": "2026-09-28T19:47:22.045083+00:00",
+  "generated_at": "2026-09-29T01:09:11.094325+00:00",
   "window": {
     "start": "2026-09-27",
     "end": "2026-09-29"
@@ -10,26 +10,26 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 32,
+  "raw_count": 45,
   "retrieved_source_counts": {
-    "pubmed": 47,
-    "biorxiv": 10,
-    "medrxiv": 4,
+    "pubmed": 66,
+    "biorxiv": 19,
+    "medrxiv": 6,
     "arxiv": 0
   },
   "raw_source_counts": {
-    "pubmed": 21,
-    "medrxiv": 3,
-    "biorxiv": 8
+    "pubmed": 28,
+    "biorxiv": 14,
+    "medrxiv": 3
   },
-  "prefiltered_count": 31,
-  "analyzed_count": 31,
+  "prefiltered_count": 40,
+  "analyzed_count": 40,
   "configured_max_analyzed": 40,
-  "count": 31,
+  "count": 40,
   "featured_count": 25,
   "source_counts": {
-    "pubmed": 20,
-    "biorxiv": 8,
+    "biorxiv": 12,
+    "pubmed": 25,
     "medrxiv": 3
   },
   "errors": {},
@@ -39,12 +39,12 @@
     "provider": "deepseek",
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
-    "ranked_count": 31,
-    "newly_ranked": 29,
-    "newly_summarized": 29,
-    "digest_count": 31,
-    "digest_min": 31,
-    "digest_max": 31,
+    "ranked_count": 40,
+    "newly_ranked": 11,
+    "newly_summarized": 11,
+    "digest_count": 40,
+    "digest_min": 40,
+    "digest_max": 40,
     "digest_score_threshold": 0,
     "rank_prompt_version": "paperdaily-ranking-v1-2026-08",
     "summary_prompt_version": "paperdaily-summary-v3-2026-08",
@@ -52,12 +52,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 8,
-      "prompt_tokens": 25418,
-      "prompt_cache_hit_tokens": 2176,
-      "prompt_cache_miss_tokens": 23242,
-      "completion_tokens": 5584,
-      "total_tokens": 31002
+      "requests": 4,
+      "prompt_tokens": 9684,
+      "prompt_cache_hit_tokens": 1024,
+      "prompt_cache_miss_tokens": 8660,
+      "completion_tokens": 2616,
+      "total_tokens": 12300
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -66,27 +66,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.034454,
+    "run_cost_cny": 0.013912,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 8,
-        "prompt_tokens": 25418,
-        "prompt_cache_hit_tokens": 2176,
-        "prompt_cache_miss_tokens": 23242,
-        "completion_tokens": 5584,
-        "total_tokens": 31002
+        "requests": 4,
+        "prompt_tokens": 9684,
+        "prompt_cache_hit_tokens": 1024,
+        "prompt_cache_miss_tokens": 8660,
+        "completion_tokens": 2616,
+        "total_tokens": 12300
       },
-      "run_cost_cny": 0.034454,
+      "run_cost_cny": 0.013912,
       "daily_usage": {
-        "requests": 8,
-        "prompt_tokens": 25418,
-        "prompt_cache_hit_tokens": 2176,
-        "prompt_cache_miss_tokens": 23242,
-        "completion_tokens": 5584,
-        "total_tokens": 31002
+        "requests": 12,
+        "prompt_tokens": 35102,
+        "prompt_cache_hit_tokens": 3200,
+        "prompt_cache_miss_tokens": 31902,
+        "completion_tokens": 8200,
+        "total_tokens": 43302
       },
-      "daily_cost_cny": 0.034454,
+      "daily_cost_cny": 0.048366,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -96,9 +96,51 @@
       }
     },
     "configured_max_analyzed": 40,
-    "analyzed_count": 31
+    "analyzed_count": 40
   },
   "papers": [
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.09.22.751113",
+      "title": "TEFAR: a lightweight, configurable framework for semi-automatic artefact component classification in EEG and TMS-EEG",
+      "abstract": "Independent component analysis (ICA) is widely used to remove artefacts from EEG and TMS-EEG recordings, but the components that correspond to artefacts are usually identified by manual inspection, which is subjective and difficult to reproduce. Existing automated classifiers are either designed for ordinary EEG and do not target the artefacts specific to concurrent transcranial magnetic stimulation, or are built on EEGLAB, so none is available for FieldTrip-based pipelines. We present TEFAR, a lightweight, configurable framework for semi-automatic artefact-component classification that applies the same detectors to ordinary EEG and TMS-EEG. TEFAR is built on FieldTrip and requires no additional MATLAB toolboxes. Each artefact class (line noise, blinks, lateral eye movements, cranial muscle, cardiac activity, and the TMS decay and recharge artefacts) is identified from the spectral, spatial, or temporal signature that its components are known to express. Detection thresholds use robust statistics (the median and the median absolute deviation rather than the mean and standard deviation), so that a single dominant artefact component cannot raise the threshold that is meant to detect it. In 30 ground-truth simulations, TEFAR reached a specificity of 1.000 and a sensitivity of 0.96-0.97 for both profiles. An application of TEFAR to real EEG and TMS-EEG recordings is the next step and will be reported separately.",
+      "authors": [
+        "Dimitriadou, C.",
+        "Furl, N."
+      ],
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.22.751113",
+      "url": "https://doi.org/10.64898/2026.09.22.751113",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 73,
+        "ai": {
+          "score": 95,
+          "topic": "Artefact Removal in EEG/TMS-EEG",
+          "reason": "Directly targets artifact component classification with a lightweight, configurable framework built on FieldTrip, matching the researcher's needs for artifact removal and open-source, practical EEG tools.",
+          "summary": "TEFAR is a lightweight, configurable FieldTrip-based framework for semi-automatic artefact component classification in EEG and TMS-EEG, using robust statistics and signature-based detectors for artefacts including TMS decay and recharge. In 30 ground-truth simulations, it achieved specificity of 1.000 and sensitivity of 0.96-0.97 for both profiles.",
+          "keywords": [
+            "EEG",
+            "TMS-EEG",
+            "artefact component classification",
+            "independent component analysis",
+            "FieldTrip"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
     {
       "source": "pubmed",
       "source_id": "42801300",
@@ -243,6 +285,99 @@
       }
     },
     {
+      "source": "pubmed",
+      "source_id": "42804389",
+      "title": "EEGDM: Label-Efficient EEG Representation Learning with Generative Diffusion Model.",
+      "abstract": "Electroencephalography (EEG) is a critical tool for monitoring brain activity and diagnosing neurological disorders such as epilepsy. However, learning meaningful representations from raw EEG signals remains challenging due to limited annotations, substantial inter-subject variability, and complex temporal dynamics. Recent EEG foundation models (FMs) have demonstrated promising performance through transformer-based architectures and large-scale self-supervised pretraining, yet they often incur substantial computational costs and exhibit diminishing returns with increasing model and dataset scale, limiting their practicality in clinical settings. To address these challenges, we propose EEGDM, a diffusion-based EEG representation learning framework. Specifically, EEGDM introduces a Structured State-Space Model for Diffusion Pretraining (SSMDP) that effectively captures long-range temporal dependencies through generative diffusion training on unlabeled EEG data. The representations are subsequently leveraged for downstream tasks via our Latent Fusion Module (LFM), which integrates multi-layer latent features of SSMDP. We evaluate EEGDM on three EEG benchmarks spanning EEG event classification (TUEV), seizure detection (CHB-MIT), and seizure classification (IIIC). Compared with existing state-of-the-art methods, including EEG FMs, EEGDM achieves competitive performance across diverse tasks and datasets, exceeding existing methods in most cases while requiring substantially fewer samples for both pretraining and downstream adaptation. These results demonstrate that diffusion-based learning can unlock more discriminative EEG representations, with direct implications for epilepsy diagnosis and management.",
+      "authors": [
+        "Jia Hong Puah",
+        "Sim Kuan Goh",
+        "Ziwei Zhang",
+        "Zixuan Ye",
+        "Chow Khuen Chan",
+        "Kheng Seang Lim",
+        "Si Lei Fong",
+        "Kok Sin Woon",
+        "Cuntai Guan"
+      ],
+      "published_date": "2026-Sep-28",
+      "indexed_date": "",
+      "journal": "IEEE journal of biomedical and health informatics",
+      "doi": "10.1109/jbhi.2026.3737616",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804389/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 94,
+        "ai": {
+          "score": 75,
+          "topic": "Label-Efficient EEG Representation Learning",
+          "reason": "Proposes a diffusion-based EEG representation learning framework with structured state-space models, addressing label efficiency and computational cost, relevant to the researcher's interest in lightweight, transferable EEG methods.",
+          "summary": "EEGDM is a diffusion-based EEG representation learning framework that uses a Structured State-Space Model for Diffusion Pretraining and a Latent Fusion Module for downstream tasks. It achieved competitive or superior performance to state-of-the-art methods on EEG event classification, seizure detection, and seizure classification benchmarks while requiring substantially fewer samples for pretraining and adaptation.",
+          "keywords": [
+            "EEG",
+            "diffusion model",
+            "representation learning",
+            "structured state-space model",
+            "epilepsy"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42804105",
+      "title": "Deep Learning-Based Assessment of Sleepiness from Fingertip Pulse Wave Analysis During Objective Daytime Testing.",
+      "abstract": "Objective evaluation of daytime sleepiness is a key factor in the management of sleep disorders. However, objective testing is limited due to the labor-intensive nature of standard methods; the Multiple Sleep Latency Test (MSLT) and the Maintenance of Wakefulness Test (MWT). Deep learning analysis of a simple fingertip pulse wave (photoplethysmography, PPG) recording could be a viable option for the routine assessment of sleepiness in patients with suspected sleep disorders. A deep learning-based sleep staging model was tested in MSLT (n = 143) and MWT (n = 127) datasets. The primary aim was to analyze the classification of subjects as sleepy versus non-sleepy using PPG-based sleep analysis. As an intermediate technical evaluation, we assessed PPG-based sleep-wake classification and mean sleep latency (MSL). Classification of sleepiness status based on automatic MSL detection from PPG showed promising results in both MSLT (accuracy: 80%, sensitivity: 65%, specificity: 84%) and MWT (accuracy: 83%, sensitivity: 62%, specificity: 86%). Sleep probability curves estimated from the fingertip pulse wave differed significantly between sleepy and non-sleepy groups, both in MSLT (p = 0.0002) and in MWT (p = 0.0012) datasets. In MSLT, the model detected sleep with moderate agreement and balanced performance (accuracy 81%, precision 0.71, recall 0.80). In MWT, overall accuracy (88%) was strongly influenced by class imbalance (98% wakefulness), and direct second-by-second sleep detection showed limited precision (precision 0.10, recall 0.72). Automated MSL estimates showed correlation with manual scoring in both MSLT and MWT; however, larger errors and outliers were observed in MWT. Fingertip pulse wave analysis combined with deep learning shows feasibility for automated assessment of daytime sleepiness, particularly in MSLT. However, direct zero-shot application of a model trained on overnight PSG to MWT is limited by low sleep precision requiring methodological adaptation and daytime-specific optimization.",
+      "authors": [
+        "Matias Rusanen",
+        "Samu Kainulainen",
+        "Sami Myllymaa",
+        "Timo Leppänen",
+        "Renaud Tamisier",
+        "Sébastien Baillieul",
+        "Sébastien Bailly",
+        "Jean-Louis Pepin"
+      ],
+      "published_date": "2026-Sep-28",
+      "indexed_date": "",
+      "journal": "Annals of biomedical engineering",
+      "doi": "10.1007/s10439-026-04393-2",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804105/",
+      "categories": [],
+      "keywords": [
+        "Daytime sleepiness",
+        "Deep learning",
+        "Photoplethysmography"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 31,
+        "ai": {
+          "score": 75,
+          "topic": "Sleepiness Assessment from PPG",
+          "reason": "Deep learning-based sleep staging from PPG for sleepiness assessment, relevant to sleep staging and lightweight, practical methods, though not directly EEG-based.",
+          "summary": "A deep learning sleep staging model was tested on fingertip photoplethysmography during MSLT and MWT to classify sleepy versus non-sleepy subjects. It reached 80% accuracy in MSLT and 83% in MWT, but direct zero-shot application to MWT showed limited sleep precision, indicating feasibility mainly in MSLT.",
+          "keywords": [
+            "daytime sleepiness",
+            "photoplethysmography",
+            "deep learning",
+            "Multiple Sleep Latency Test",
+            "Maintenance of Wakefulness Test"
+          ],
+          "paper_type": "Clinical Study",
+          "digest_pick": true
+        }
+      }
+    },
+    {
       "source": "medrxiv",
       "source_id": "10.64898/2026.09.25.26364055",
       "title": "A Patient-Specific Framework for Separating Temporal Localization from Intracranial Waveform Reconstruction of Interictal Epileptiform Discharges from Scalp EEG",
@@ -280,6 +415,50 @@
             "intracranial EEG",
             "temporal localization",
             "waveform reconstruction"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.09.22.753545",
+      "title": "Individual Differences in Neural Decoding Are Stable but Instrument Dependent",
+      "abstract": "Some participants are consistently easier to decode than others. We asked whether this difference belongs to the person or to the conditions under which the brain is measured. We compared visual decoding in EEG, MEG, intracranial EEG, and fMRI, testing classifiers on runs and stimulus identities excluded from training. Within-instrument decoding was reproducible. Attention, behavior, and peripheral signals affected recording quality but did not explain most of the stable differences between participants. Anatomy provided one explanation. Source-to-sensor distance strongly predicted modeled signal gain, and its effect was steepest in planar gradiometers. Intracranial recordings provided another: participants with sharper local category selectivity were easier to decode. This association chiefly reflected a smaller response to the nonpreferred category relative to overall visual responsivity. Cross-site prediction was uneven. EEG and MEG expressed the preferred and nonpreferred responses differently. MEG category separation and task-aligned variance described the information available to the decoder. Simultaneous EEG-MEG recordings contained a shared participant component, but external paired cohorts did not yield a common ordering across instruments. Correspondence depended on the measure, the instrument pair and, in one cohort, participant-linked stimulus sets. Repeated observations improved performance in participants with weak single-observation decoding. Stable decoding differences therefore reflect the relation between the individual, the represented distinction, and the instrument. They chiefly determine how much information a recording supplies per observation.",
+      "authors": [
+        "Miri, M. A.",
+        "Bonyadian, S.",
+        "Hedjam, R.",
+        "Butler, R."
+      ],
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.22.753545",
+      "url": "https://doi.org/10.64898/2026.09.22.753545",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 21,
+        "ai": {
+          "score": 70,
+          "topic": "Individual Differences in Neural Decoding",
+          "reason": "Examines stability and instrument dependence of neural decoding across EEG, MEG, iEEG, and fMRI, providing transferable insights on cross-dataset variability and decoding methods.",
+          "summary": "The study compared individual differences in neural decoding across EEG, MEG, intracranial EEG, and fMRI using excluded runs and stimulus identities for testing. Stable decoding differences were reproducible within instruments but instrument-dependent, explained partly by source-to-sensor distance and local category selectivity.",
+          "keywords": [
+            "neural decoding",
+            "individual differences",
+            "EEG",
+            "MEG",
+            "fMRI"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -519,6 +698,47 @@
       }
     },
     {
+      "source": "pubmed",
+      "source_id": "42803805",
+      "title": "Patterns of Alpha-band Power Reflect Prioritization of the Most Recently Encoded Location in a Working Memory Sequence.",
+      "abstract": "Space and time play a critical role in working memory formation and maintenance relative to other object features. Particularly, covert spatial attention spontaneously tracks object locations in working memory and is thought to enable feature binding at those location markers. However, whether object locations are attended concurrently as multiple objects are presented in a sequence remains a topic of debate. Here, we investigated whether spatial attention contributes to sustained active memory maintenance when items are separated in both space and time. We report two experiments that differed in whether color or location was the tested feature. In each experiment, we measured EEG alpha-band power while participants memorized the target feature of two sequentially presented colored dots. We then applied an inverted encoding model to the topography of oscillatory alpha-band power (8-12 Hz) on the scalp to measure how long the location of each item was attended. In Experiment 1, participants performed a delayed color estimation task, and we found that patterns of alpha-band power tracked the location of the most recently presented item. In Experiment 2, participants performed a delayed spatial estimation task, and we found that patterns of alpha-band power tracked the location of Item 1 for longer than observed in Experiment 1. However, only the most recently presented item (Item 2) sustained until the end of the delay. Taken together, our results show that, although both items need to be remembered, covert spatial attention prioritizes items one at a time when they are displayed in a sequence.",
+      "authors": [
+        "Sage L Bendickson",
+        "Nicholas R Schmitz",
+        "Alexis McCraw",
+        "Ilke Kavusturan",
+        "David W Sutterer"
+      ],
+      "published_date": "2026-Sep-22",
+      "indexed_date": "",
+      "journal": "Journal of cognitive neuroscience",
+      "doi": "10.1162/jocn.a.2724",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42803805/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 21,
+        "ai": {
+          "score": 60,
+          "topic": "Alpha-band Power in Working Memory",
+          "reason": "Investigates alpha-band power and spatial attention with EEG, which is adjacent to spectral analysis interests but not directly applicable to sleep or vigilance classification.",
+          "summary": "Two EEG experiments with inverted encoding models tested whether alpha-band power tracks locations of sequentially presented items during working memory maintenance. Alpha-band patterns tracked the most recently presented item in both experiments, while Item 1 was tracked longer in the spatial than color task, indicating covert spatial attention prioritizes one item at a time in a sequence.",
+          "keywords": [
+            "alpha-band power",
+            "working memory",
+            "spatial attention",
+            "inverted encoding model",
+            "EEG"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
       "source": "biorxiv",
       "source_id": "10.64898/2026.09.21.753264",
       "title": "Cortical Spectral Dynamics in Flow and Frustration",
@@ -605,6 +825,51 @@
             "temporal lobe subregions",
             "spectral power",
             "functional connectivity"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42804642",
+      "title": "Longitudinal adaptations in neural and behavioral systems following hearing restoration using cochlear implants.",
+      "abstract": "Cochlear implants (CIs) restore hearing in people with severe-to-profound hearing loss, but how behavioral and neural adaptations unfold after implantation remains unclear, particularly during continuous speech processing. Most longitudinal studies of postimplant plasticity have used simple auditory stimuli, limiting insight into continuous-speech processing in complex environments. We followed 19 newly implanted adult CI users at activation and at 3, 6, and 12 mo after activation. At each session, participants completed speech recognition testing in quiet and noise, a spatial triple-digit test, hearing-related quality-of-life measures, and electroencephalography during an ecologically valid continuous-speech selective-attention task with competing distractors. Neural analyses focused on temporal response functions to task-relevant and task-irrelevant speech envelopes and changes in scalp field topography. Speech recognition improved over time, and spatial-separation benefits emerged by 6 mo. Neural tracking of task-relevant speech was stronger and emerged earlier than tracking of task-irrelevant speech, and scalp topographies changed significantly across sessions. Stronger task-relevant neural tracking was associated with better speech recognition, better spatial listening, and higher quality of life. The largest behavioral and neural gains occurred early after activation and plateaued by approximately 6 mo. These findings provide a functionally relevant account of postimplant adaptation and establish longitudinal continuous-speech neural tracking as a useful framework for studying rehabilitation after sensory restoration.",
+      "authors": [
+        "Shimin Mo",
+        "Claude Alain",
+        "Andrew Dimitrijevic"
+      ],
+      "published_date": "2026-Oct-06",
+      "indexed_date": "2026-09-28",
+      "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+      "doi": "10.1073/pnas.2613077123",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804642/",
+      "categories": [],
+      "keywords": [
+        "cochlear implant",
+        "ecological validity",
+        "longitudinal study",
+        "selective attention",
+        "speech neural tracking"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 34,
+        "ai": {
+          "score": 50,
+          "topic": "Longitudinal Neural Adaptations to Cochlear Implants",
+          "reason": "Longitudinal EEG study of speech processing with cochlear implants, which is adjacent but not central to the researcher's interests in computational methods for sleep or generalizable EEG analysis.",
+          "summary": "This longitudinal study followed 19 newly implanted adult cochlear implant users over 12 months, measuring speech recognition, spatial hearing, quality of life, and EEG neural tracking during a continuous-speech selective-attention task. Speech recognition and spatial-separation benefits improved, task-relevant neural tracking was stronger and earlier than task-irrelevant tracking, and stronger task-relevant tracking correlated with better speech recognition, spatial listening, and quality of life, with gains plateauing by about 6 months.",
+          "keywords": [
+            "cochlear implant",
+            "neural tracking",
+            "selective attention",
+            "speech envelope",
+            "longitudinal plasticity"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -764,6 +1029,104 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42804154",
+      "title": "Aberrant Neural Outputs and Disrupted Neural Oscillations of the Cerebellar Nuclei in a Mouse Model of Fragile X Syndrome.",
+      "abstract": "The cerebellum is heavily connected to other brain regions, playing a role in both motor and non-motor functions. Genetic mutations leading to cerebellar dysfunction are associated with autism spectrum disorder (ASD); however, cerebellar output has not yet been systematically studied in this context. Here, using Fmr1-knockout mice, a model for Fragile X syndrome, we mapped the three-dimensional distributions of target neurons in the deep cerebellar nuclei (DCN). We found that projections from the DCN to various forebrain nuclei were differentially and specifically altered in Fmr1-knockout mice. Furthermore, in vivo electrophysiology revealed disrupted neuronal firing patterns, loss of specific neuronal subtypes, and aberrant local field potential oscillations within the DCN of Fmr1-knockout mice, all in the absence of any morphological changes. Notably, these oscillations exhibited weakened θ, α, and β powers, while the γ power remained unchanged. Our study further demonstrated the nucleus-specific dysregulation of cerebellar outputs and associated network dysfunction in an ASD model, highlighting the cerebellum as a key node in the pathophysiology of different neurodevelopmental disorders.",
+      "authors": [
+        "Jing-Wen Guo",
+        "En-Wei Shen",
+        "Wan-Qi Huang",
+        "Long-Yu Guo",
+        "Martijn Schonewille",
+        "Chris De Zeeuw",
+        "Wei Chen",
+        "Lin Zhou",
+        "Ying Shen",
+        "Luxi Wang"
+      ],
+      "published_date": "2026-Sep-28",
+      "indexed_date": "",
+      "journal": "Neuroscience bulletin",
+      "doi": "10.1007/s12264-026-01724-0",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804154/",
+      "categories": [],
+      "keywords": [
+        "Autism spectrum disorder",
+        "Cerebellum",
+        "Fragile X syndrome",
+        "Large-scale tracing",
+        "Neural oscillation"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 33,
+        "ai": {
+          "score": 45,
+          "topic": "Cerebellar Oscillations in Fragile X Mice",
+          "reason": "Electrophysiological study in a mouse model of autism, relevant to animal neural time-series but lacking methodological innovation in analysis techniques.",
+          "summary": "Using Fmr1-knockout mice, this study mapped deep cerebellar nuclei (DCN) projections and recorded in vivo electrophysiology to examine cerebellar output in Fragile X syndrome. It found target-specific alterations in DCN forebrain projections, disrupted neuronal firing patterns, loss of specific neuronal subtypes, and aberrant local field potential oscillations with weakened theta, alpha, and beta power despite unchanged gamma power, without morphological changes.",
+          "keywords": [
+            "Fragile X syndrome",
+            "deep cerebellar nuclei",
+            "neural oscillations",
+            "Fmr1 knockout",
+            "cerebellar output"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.02.10.705005",
+      "title": "Electrophysiological brain reconfiguration during meditation-induced extended cessation of consciousness: an EEG microstate study",
+      "abstract": "Extended cessation (EC) is a rare, non-ordinary meditative endpoint characterized by a temporary absence of reportable phenomenal experience, followed by an extraordinary perceptual vividness, openness, equanimity and affective balance. As such, EC provides a unique, non-pharmacological model for investigating the neural basis of the suspension and restoration of consciousness. Here, we examined whole-brain electrophysiological activity during EC using dense-sampling electroencephalographic microstate analysis in five highly trained meditators. Temporal parameters and transition probabilities of canonical microstates during EC were compared with two control conditions (counting and memory tasks) across six frequency bands (broadband, delta, theta, alpha, beta, gamma). EC was associated with a large-scale reconfiguration of brain dynamics, characterized by reduced patterns linked to self-related processing (microstate B) and increased temporal prominence of configurations associated with integrative brain activity (microstate C). Transition dynamics indicated a redistribution of information flow, with sensory-related activity (microstate A) preferentially routed toward integrative processes rather than toward self-related processing. Frequency-specific modulation further supported this reorganization, suggesting a decoupling of self-related dynamics alongside changes in local sensory-sensorimotor processing. Together, these findings identify a distinct neural signature of EC at scalp level and support the view that conscious experience can be transiently suspended through a coordinated reconfiguration of large-scale brain dynamics rather than a breakdown of integrative function. More broadly, this work provides a framework for understanding how advanced meditation can flexibly reshape the organization of brain activity, with implications for theories of consciousness as well as mental health, well-being, and flourishing.",
+      "authors": [
+        "Zarka, D.",
+        "Yang, W. F. Z.",
+        "Rassat, A.",
+        "Potash, R.",
+        "Sparby, T.",
+        "Sacchet, M. D."
+      ],
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.02.10.705005",
+      "url": "https://doi.org/10.64898/2026.02.10.705005",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "2",
+        "published": "NA",
+        "prefilter_score": 59,
+        "ai": {
+          "score": 45,
+          "topic": "EEG Microstates in Meditation",
+          "reason": "Uses EEG microstate analysis to study consciousness, which is adjacent but not directly aligned with the researcher's priorities in computational methods for sleep and vigilance classification.",
+          "summary": "This EEG microstate study examined five highly trained meditators during meditation-induced extended cessation (EC) of consciousness and compared it with counting and memory tasks. EC was associated with reduced microstate B (self-related processing), increased microstate C (integrative activity), and preferential routing of sensory-related microstate A toward integrative rather than self-related processing, indicating a distinct neural signature of transiently suspended consciousness.",
+          "keywords": [
+            "EEG microstates",
+            "meditation",
+            "extended cessation",
+            "consciousness",
+            "brain reconfiguration"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42803645",
       "title": "Mu suppression reveals auditory-motor predictions after short musical training.",
       "abstract": "Auditory-motor coupling is a bidirectional neural mechanism that supports speech and music, as evidenced by motor system activation during passive listening to both spoken language and learned melodies. Such activation is anticipatory, occurs in non-musicians, and can be elicited at the single-note level. These prior findings support the idea that motor activity guides auditory perception by relaying predictive timing information. However, the neural processes underlying this kind of motor activity are not fully understood. Electroencephalography studies in musicians have linked it to mu-band suppression, but the temporal scale and the generalizability to the broader population remain unclear. We recruited 25 non-musicians who learned to play a simple melody on a piano-like keyboard. Before and after training, participants passively listened to the trained melody and control melodies. Offline, electroencephalography data from the motor training were used to generate a time-frequency mask with which to identify mu suppression occurring during passive listening. Significant mu suppression emerged before each note only during post-training exposure to the practiced melody. These results suggest that mu suppression occurs at the single-note level following short motor training and is not dependent on prior musical experience. Our findings support the notion that motor activity aids perception by anticipating the unfolding of learned auditory-motor sequences.",
@@ -804,6 +1167,51 @@
             "predictive coding",
             "motor learning",
             "EEG"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.09.22.753640",
+      "title": "AAV-mediated TBR1 supplementation ameliorates behavioral and electrophysiological abnormalities in Tbr1-haploinsufficient mice",
+      "abstract": "TBR1 haploinsufficiency causes a neurodevelopmental disorder associated with intellectual disability and autistic features, but the therapeutic potential of postnatal gene supplementation remains incompletely defined. Here, we evaluated adeno associated virus (AAV) mediated human TBR1 supplementation in Tbr1 haploinsufficient mice. A single retroorbital injection of AAV expressing human TBR1 under the human synapsin promoter was administered at postnatal day 3 at a dose of 2E11 vector genomes. Compared with control vector treated mutants, treated mice exhibited increased TBR1 protein abundance and TBR1, CTIP2, and parvalbumin positive cell counts in selected brain regions. Treatment improved sociability, social transmission of food preference, and buried food seeking. Electroencephalographic (EEG) recordings showed attenuation of elevated relative theta power and improved theta suppression and gamma enhancement during social interaction. However, anterior commissure abnormalities persisted, correction of other EEG abnormalities was incomplete, and sleep wake proportions showed no significant treatment improvement. These findings demonstrate that neonatal TBR1 supplementation improves selected behavioral and electrophysiological outcomes despite persistent anatomical abnormalities. They support further development of gene supplementation for TBR1 haploinsufficiency and identify social interaction associated EEG modulation as a candidate measure of treatment response.",
+      "authors": [
+        "Li, T.",
+        "Jiao, Z.",
+        "Wang, X.",
+        "Yu, C.",
+        "Qiu, Z."
+      ],
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.22.753640",
+      "url": "https://doi.org/10.64898/2026.09.22.753640",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 49,
+        "ai": {
+          "score": 40,
+          "topic": "TBR1 Supplementation and EEG in Mice",
+          "reason": "Involves EEG recordings in a mouse model but focuses on gene therapy outcomes rather than methodological advances in signal analysis, limiting its practical utility for the researcher.",
+          "summary": "This study tested AAV-mediated human TBR1 supplementation in Tbr1-haploinsufficient mice via retroorbital injection at postnatal day 3, assessing protein levels, cell counts, behavior, and EEG. Treatment increased TBR1 protein and TBR1-, CTIP2-, and parvalbumin-positive cell counts, improved sociability and food-seeking behaviors, and attenuated elevated relative theta power and improved theta suppression and gamma enhancement during social interaction, although some anatomical and EEG abnormalities persisted.",
+          "keywords": [
+            "TBR1",
+            "AAV gene therapy",
+            "haploinsufficiency",
+            "EEG",
+            "social behavior"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -894,6 +1302,50 @@
             "diagnostic accuracy"
           ],
           "paper_type": "Clinical Study",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.09.22.751523",
+      "title": "Predicting the immediate and subsequent effects of commercials on product valuation using EEG and deep learning",
+      "abstract": "Neuromarketing mainly seeks to enhance the prediction of marketing stimuli success, such as commercials and movie trailers, by integrating neurophysiological measures with traditional behavioral measures. In the current study, the authors tested whether neural activity could predict consumer valuation and how preferences change after watching commercials, both immediately and over time. Participants (n=161) watched images of products followed by commercials advertising those products while their neural activity was recorded using electroencephalograph (EEG). They watched the product images again a week later without EEG recordings. Immediately after each stimulus exposure, participants stated their willingness to pay (WTP) for the product and how much they liked the commercial. Standard EEG measures showed weak and inconsistent relationships with behavior and yielded near-chance predictions. In contrast, deep learning models applied to the raw neural data achieved substantially higher predictive accuracy, successfully predicting both immediate and delayed WTP and ad liking. Importantly, the authors were able to successfully predict preferences for new participants and/or new products the models were not trained on. However, accuracy declined as generalization demands increased. Moreover, prediction performance declined as value differences narrow. Together, these findings show that neural responses carry reliable and temporally persistent information about consumer valuation and its evolution over time.",
+      "authors": [
+        "Arie, I. G.",
+        "Atad, D. A.",
+        "Hakim, A.",
+        "Levy, D."
+      ],
+      "published_date": "2026-09-28",
+      "indexed_date": "2026-09-28",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.22.751523",
+      "url": "https://doi.org/10.64898/2026.09.22.751523",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 60,
+        "ai": {
+          "score": 35,
+          "topic": "Neuromarketing EEG Prediction",
+          "reason": "Applies deep learning to EEG for commercial preference prediction, which is outside the researcher's core focus on sleep, vigilance, and generalizable neural signal analysis methods.",
+          "summary": "This neuromarketing study recorded EEG from 161 participants while they viewed commercials and measured willingness to pay (WTP) immediately and one week later. Deep learning models applied to raw EEG achieved substantially higher predictive accuracy than standard EEG measures, successfully predicting immediate and delayed WTP and ad liking, including for new participants and products, though accuracy declined with increasing generalization demands and narrower value differences.",
+          "keywords": [
+            "EEG",
+            "deep learning",
+            "neuromarketing",
+            "willingness to pay",
+            "commercials"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1045,54 +1497,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42802231",
-      "title": "Analysis of sodium self-inhibition of the epithelial sodium channel (ENaC) using classical and medium-throughput automated two-electrode voltage-clamp recordings.",
-      "abstract": "The epithelial sodium channel (ENaC) is a key regulator of electrolyte homeostasis and blood pressure. A characteristic ENaC feature is sodium self-inhibition (SSI), a rapid autoregulatory mechanism in which extracellular Na+ ions allosterically bind ENaC and facilitate transition into a low open probability state. Although SSI is an important functional parameter for assessing ENaC activity and gating, its quantification has traditionally relied on manual two-electrode voltage-clamp (TEVC) recordings with limited scalability and throughput. Here, we improved and evaluated experimental strategies and analytical methods for robust quantification of ENaC SSI in manual and automated TEVC systems: (1) The determination of SSI from extrapolation of transient current recordings in response to a jump in the extracellular Na+ concentration; (2) the estimation of SSI by comparison of steady-state currents before and after chemical modification of a βS520C-ENaC mutant with MTSET; and (3) quantification of SSI from the analysis of steady-state current-voltage relationships recorded at different extracellular Na+ concentrations. The latter procedure is the most reliable for SSI quantification in perfusion rate-limited automated TEVC systems. These methods can expand the capabilities of automated electrophysiology and support medium- to high-throughput investigation of autoregulatory mechanisms in ENaC variants and the discovery of novel ENaC modulators.",
-      "authors": [
-        "Karen Lizet Luján López",
-        "Nadja Furtwängler",
-        "Carol Merlin Frank",
-        "Mike Althaus",
-        "Oliver Rauh"
-      ],
-      "published_date": "2026-Sep-28",
-      "indexed_date": "2026-09-27",
-      "journal": "Pflugers Archiv : European journal of physiology",
-      "doi": "10.1007/s00424-026-03212-w",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42802231/",
-      "categories": [],
-      "keywords": [
-        "Automated electrophysiology",
-        "ENaC",
-        "Epithelial Sodium Channel",
-        "Sodium",
-        "Sodium self-inhibition",
-        "Two-electrode voltage-clamp"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 17,
-        "ai": {
-          "score": 30,
-          "topic": "Automated TEVC for ENaC self-inhibition",
-          "reason": "Automated electrophysiology and analytical methods, but for ion-channel biophysics rather than EEG/neural time-series or sleep applications.",
-          "summary": "The study improved and evaluated experimental and analytical methods for quantifying sodium self-inhibition (SSI) of the epithelial sodium channel (ENaC) using manual and automated two-electrode voltage-clamp (TEVC) recordings, finding that analysis of steady-state current-voltage relationships is the most reliable procedure for SSI quantification in perfusion rate-limited automated TEVC systems.",
-          "keywords": [
-            "ENaC",
-            "sodium self-inhibition",
-            "two-electrode voltage-clamp",
-            "automated electrophysiology",
-            "channel gating"
-          ],
-          "paper_type": "Methods/Resource",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "42801410",
       "title": "Nociception monitoring during cardiac surgery with cardiopulmonary bypass: limitations and future directions.",
       "abstract": "Adequate suppression of nociception remains a fundamental objective of modern cardiac anaesthesia. Interpretation of nociception monitoring during cardiac surgery involving cardiopulmonary bypass (CPB), however, is complicated by profound physiological alterations including non-pulsatile circulation, cardioplegic arrest, temperature modulation, vasoactive and inotropic support, pacing, haemodilution, and systemic inflammatory responses. Current monitoring technologies rely on surrogate autonomic, vascular, pupillary, and electroencephalography-derived signals, many of which become difficult to interpret during CPB. Although several modalities demonstrate responsiveness to surgical stimulation under relatively stable perioperative conditions, cardiac-specific validation remains limited and extrapolation of available evidence into CPB conditions remains uncertain. This article discusses the principal physiological limitations affecting intraoperative nociception monitoring during adult cardiac surgery and highlights priorities for future cardiac-specific validation and context-aware analytical approaches.",
@@ -1179,60 +1583,6 @@
             "suffix processing",
             "nonwords",
             "P600"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "biorxiv",
-      "source_id": "10.64898/2026.09.21.753144",
-      "title": "Bassoon is required for adult ocular dominance plasticity and experience-induced changes in synapsin phosphorylation in visual cortex",
-      "abstract": "Sensory stimulation enables experience-dependent fine tuning of brain circuits for optimal perception. In juvenile mice, brief closure of the contralateral eye reduces primary visual cortex (V1) activation through the deprived eye. In contrast, in adult animals, eye closure induces potentiated V1-responses to non-deprived eye visual stimulation. While considerable knowledge exists about postsynaptic mechanisms underlying this ocular dominance (OD) plasticity, little is known about contributing presynaptic molecules. Here we report that constitutive deletion of the presynaptic scaffolding protein bassoon (Bsn{Delta}Ex4/5) disrupted OD-plasticity in V1 of adult mice leaving juvenile OD-plasticity unaffected. Notably, in mice with a conditional deletion of Bsn only from cortical glutamatergic neurons (BsnEmx1), adult OD-plasticity was also impaired indicating that normal presynaptic plasticity of glutamatergic cortical synapses is selectively required in this process. While spatial vision was severely compromised in Bsn{Delta}Ex4/5 mice, it was preserved in BsnEmx1 mice, consistent with normal Bsn expression in subcortical circuit in these mice. Parallel experiments in cultured neurons revealed that deletion of Bsn left the inactivity-induced postsynaptic scaling of AMPA-responses mediated by increased AMPA receptor trafficking unchanged. However, presynaptic scaling was completely abolished as assessed by both electrophysiology and live-cell imaging of evoked synaptic vesicle fusion in cultured primary cortical neurons. Finally, monocular deprivation induced enhanced phosphorylation of synaptic vesicle-associated synapsin in contralateral V1 that was absent in BsnEmx1 mice. Overall, our data indicate that adult OD-plasticity requires Bsn-dependent presynaptic plasticity, involving experience-induced changes in synapsin phosphorylation. In contrast, juvenile OD-plasticity does not appear to be dependent on Bsn.",
-      "authors": [
-        "Schoene, C.",
-        "Montenegro-Venegas, C.",
-        "Guhathakurta, D.",
-        "Greifzu, F.",
-        "Barthel, B.",
-        "Boehner, J.",
-        "Pothula, S.",
-        "Pina-Fernandes, E.",
-        "Beth, A.",
-        "Annamneedi, A.",
-        "Heine, M. D.",
-        "Gundelfinger, E. D.",
-        "Loewel, S.",
-        "Fejtova, A."
-      ],
-      "published_date": "2026-09-27",
-      "indexed_date": "2026-09-27",
-      "journal": "biorxiv",
-      "doi": "10.64898/2026.09.21.753144",
-      "url": "https://doi.org/10.64898/2026.09.21.753144",
-      "categories": [
-        "neuroscience"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 17,
-        "ai": {
-          "score": 20,
-          "topic": "Bassoon and visual cortex plasticity",
-          "reason": "Molecular/cellular study of presynaptic plasticity; neural but no EEG, sleep, or computational signal-analysis methods.",
-          "summary": "Using genetic and pharmacological approaches in mice and cultured neurons, this study shows that the presynaptic protein bassoon is required for adult ocular dominance plasticity but not juvenile plasticity. The results link adult plasticity to presynaptic scaling and experience-induced changes in synapsin phosphorylation.",
-          "keywords": [
-            "bassoon",
-            "ocular dominance plasticity",
-            "visual cortex",
-            "synapsin phosphorylation",
-            "presynaptic plasticity"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1332,6 +1682,62 @@
             "diagnostic complexity"
           ],
           "paper_type": "Case Report",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42803929",
+      "title": "Development of a prospective clinical workflow for proton beam therapy of ventricular tachycardia.",
+      "abstract": "This study presents a prospective preclinical workflow for proton beam therapy of refractory ventricular tachycardia (VT), covering target transfer, treatment planning (TP), and beam gating. Photon-based stereotactic arrhythmia radioablation (STAR) protocols were adapted to proton beam therapy, encompassing (i) target transfer from electroanatomical mapping (EAM) onto planning computed tomography (CT), (ii) simulation of three TP cases from the Standardized Treatment and Outcome Platform for Stereotactic Therapy of Re-Entrant Tachycardia by a Multidisciplinary (STOPSTORM.eu) benchmark, and (iii) evaluation of trigger events and delays for synchrotron beam delivery control using gating. CARDIO-RT enabled electroanatomical mapping to computed tomography (EAM-to-CT) target transfer; two experienced cardiologists qualitatively judged the transferred targets as clinically acceptable by visual inspection. Treatment plans demonstrated effective organ at risk (OAR) sparing and clinical adequacy. The planning target volume (PTV) D95% ranged from 23.3 to 23.9 Gy relative biological effectiveness (RBE) and the clinical target volume electrophysiology (CTV [EP]) D95% from 30.9 to 31.6 Gy (RBE); underdosage was permitted where anatomical compromise was unavoidable. No CTV(EP) hotspot exceeded 33.5 Gy (RBE). Optical trigger signals are supported for beam gating; the total cardiac gating chain latency was below 30 ms. This technical feasibility study demonstrates a prospective preclinical workflow for proton beam STAR, covering EAM-to-CT target transfer, TP across three benchmark clinical cases, and accelerator-side optical gating integration at a synchrotron-based facility. The workflow demonstrates technical feasibility; however, full clinical translation still requires patient positioning and verification, motion characterization, and end-to-end validation. Future work will employ a dynamic anthropomorphic phantom to characterize motion-induced dosimetric changes and assess plan robustness for proton and carbon ion beam delivery.",
+      "authors": [
+        "Ariadna Cherit Hernández",
+        "Martina C Fuss",
+        "Melanie Grehn",
+        "Valeria Trojani",
+        "Claus Schmitzer",
+        "Günter Gruber-Hammer",
+        "Jingyang Xie",
+        "Dietmar Georg",
+        "Lukas Fiedler",
+        "Piero Fossati",
+        "Oliver Blanck",
+        "Markus Stock"
+      ],
+      "published_date": "2026-Sep-28",
+      "indexed_date": "",
+      "journal": "Strahlentherapie und Onkologie : Organ der Deutschen Rontgengesellschaft ... [et al]",
+      "doi": "10.1007/s00066-026-02599-w",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42803929/",
+      "categories": [],
+      "keywords": [
+        "Cardiac radioablation",
+        "Ion beam therapy",
+        "Motion management",
+        "Stereotactic Ablative Radiotherapy (SABR)",
+        "Stereotactic arrhythmia radioablation (START)",
+        "Technical feasibility study",
+        "Treatment planning"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 17,
+        "ai": {
+          "score": 10,
+          "topic": "Proton Beam Therapy for Ventricular Tachycardia",
+          "reason": "Clinical workflow for proton beam therapy, which is unrelated to the researcher's focus on EEG and neural time-series analysis.",
+          "summary": "This technical feasibility study developed a prospective preclinical workflow for proton beam therapy of refractory ventricular tachycardia, covering electroanatomical mapping (EAM)-to-CT target transfer, treatment planning using three STOPSTORM.eu benchmark cases, and synchrotron beam gating integration. Treatment plans achieved effective organ-at-risk sparing with PTV D95% of 23.3–23.9 Gy (RBE), CTV(EP) D95% of 30.9–31.6 Gy (RBE), no CTV(EP) hotspot above 33.5 Gy (RBE), and total cardiac gating chain latency below 30 ms, demonstrating technical feasibility while full clinical translation requires further validation.",
+          "keywords": [
+            "proton beam therapy",
+            "ventricular tachycardia",
+            "stereotactic arrhythmia radioablation",
+            "electroanatomical mapping",
+            "beam gating"
+          ],
+          "paper_type": "Methods/Resource",
           "digest_pick": true
         }
       }
