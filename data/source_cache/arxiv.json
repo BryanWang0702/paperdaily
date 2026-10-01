@@ -1,79 +1,32 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-09-30T00:40:17.120495+00:00",
+  "fetched_at": "2026-10-01T00:40:54.025975+00:00",
   "window": {
-    "start": "2026-09-28",
-    "end": "2026-09-30"
+    "start": "2026-09-29",
+    "end": "2026-10-01"
   },
-  "count": 6,
+  "count": 5,
   "papers": [
     {
       "source": "arxiv",
-      "source_id": "2609.35379v1",
-      "title": "Identifying Neural Source Dynamics from Unknown Local Interventions",
-      "abstract": "Electroencephalography (EEG) records mixtures of brain-source activity. Even with a known anatomical forward model, experiments that excite only part of the source-state space leave the dynamics unidentified, and repetition cannot resolve the ambiguity. We show that unknown local mechanism changes can supply the missing information. We consider linear dynamics among fixed anatomical sources with known source-state initialization patterns. Changing one source's update rule for one transition leaves a rank-one, source-specific signature in subsequent EEG: subtracting matched baseline responses isolates it, and the forward model identifies the source and calibrates its response history. Combining these histories with initialization responses recovers source interactions without baseline reachability and without first identifying the intervention coefficients. We establish sufficient recovery conditions, a direct estimator, and a noise-sensitivity bound conditional on correct source labels. Simulated EEG on anatomy derived from magnetic resonance imaging confirms the information gain: with baseline excitation confined to four of twelve source coordinates, eight unknown changes recover all dynamics in 32/32 systems, whereas baseline realization, baseline regression through an invertible forward model, and changes that leave the tested states unexposed all fail, and explicitly constructed alternative dynamics reproduce every baseline mean. Where baseline information suffices, direct reconstruction is also more reliable than a matched-information spectral estimator. Nonlocal changes and forward-model error limit accuracy even when source labels are correct.",
+      "source_id": "2609.37991v1",
+      "title": "Which Attention Heads are like the Human Head? Not the Ones that Compute",
+      "abstract": "Brain-AI alignment is often interpreted as a sign that model and brain perform similar computations. Whether the aligned units are causally involved in model computation is rarely checked. On an abstract pattern-completion task (AAABAAA $\\rightarrow$ B), we compare LLM attention-head representations with human EEG and test how ablating those heads affects task performance. Alignment and causation dissociate: brain-aligned heads contribute to performance, but their removal is substantially less disruptive than removal of heads selected via attribution patching. We compare two head sets that prior interpretability work defines without reference to the brain: concept vectors (CVs), which represent abstract patterns across formats, and function vectors (FVs), selected for their contribution to correct-answer prediction. Brain alignment shows little association with FV scores, while its association with CV scores varies across models. Among brain-aligned heads, we find recurring attention profiles: one emphasizes distinctive elements (novelty heads), the other repeating elements (repetition heads). The novelty family tracks salience and attends to the same elements that humans look at, yet its removal is less damaging than random ablation on average. Repetition heads contribute modestly to performance and are associated with abstract-pattern representation (CVs). Across 17 models spanning 3B-72B parameters, FV-ranked removal is substantially more disruptive than brain-ranked removal. Brain alignment thus captures how the model reads the stimulus, and only faintly captures how it represents the pattern and solves the task.",
       "authors": [
-        "Ayana Mussabayeva",
-        "Jiaqi Sun",
-        "Anuar Aimoldin",
-        "Olivier Oullier",
-        "Kun Zhang"
+        "Christopher Pinier",
+        "Gustaw Opiełka",
+        "Hannes Rosenbusch",
+        "Taylor Webb",
+        "Michael D. Nunez",
+        "Claire E. Stevenson"
       ],
-      "published_date": "2026-09-28",
-      "indexed_date": "2026-09-28",
+      "published_date": "2026-09-29",
+      "indexed_date": "2026-09-29",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2609.35379v1",
+      "url": "https://arxiv.org/abs/2609.37991v1",
       "categories": [
-        "cs.LG"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2609.35223v1",
-      "title": "EMA-Based Subspace Tracking for Adaptive Artifact Subspace Reconstruction",
-      "abstract": "Electroencephalogram (EEG) artifact removal remains a critical challenge for real-world brain-computer interface deployment due to non-stationary signal statistics and limited calibration availability. Artifact Subspace Reconstruction (ASR) provides an automated framework for variance-based artifact suppression but relies on a static calibration-derived covariance model, limiting stability under intra-subject drift and increasing sensitivity to parameter mis-specification. This work proposes an adaptive ASR framework based on exponential moving average (EMA) subspace tracking. By integrating short-horizon covariance estimation with slow recursive assimilation, the method establishes dual adaptation timescales that enable responsiveness to evolving EEG structure while preserving stability against transient artifacts. This formulation further promotes smoother operating characteristics across rejection thresholds, reducing sensitivity to hyperparameter selection in continuous deployment settings. Evaluated on 24-channel EEG recordings from 10 subjects with prominent blink artifacts across cognitive states, EMA-ASR achieved substantially stronger artifact attenuation than Original and memory-limited ASR variants (53.1% vs. 24.0% and 26.7% blink reduction), at the cost of increased reconstruction and spectral deviation, whereas the memory-limited variant performed comparably to Original ASR. These findings position EMA-based adaptive tracking as a lightweight, deployment-oriented approach to continuous EEG artifact removal under non-stationary conditions, with an explicit trade-off between suppression strength and signal preservation.",
-      "authors": [
-        "Vishnu KN",
-        "Cota Navin Gupta"
-      ],
-      "published_date": "2026-09-28",
-      "indexed_date": "2026-09-28",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2609.35223v1",
-      "categories": [
-        "eess.SP"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2609.35056v1",
-      "title": "Scaling Laws for EEG Decoding: How Much Data Is Enough?",
-      "abstract": "Deep learning has become a cornerstone of EEG-based brain decoding, with a growing number of architectures proposed every day. However, how the performance of these different models scales with data volume is not clear. Although this relationship has been characterized in other fields under the name of scaling laws, it remains poorly understood in the EEG domain. The present study addresses this gap by investigating how scan time and subject diversity affect the performance of different architectures. We evaluated five models across four EEG datasets. Training data volume was controlled by varying both subject count and trial volume under cross-subject validation. We then fitted power-law relationships to characterize the resulting behavior. Our findings reveal that as total data volume increases, the distinction between trial and subject scaling becomes largely irrelevant. Furthermore, we show that power-law relationships are both model and dataset-specific, yet they provide a robust descriptive framework for EEG decoding performance. Extrapolation to larger subject pools yields RMSE values below 0.1 in most cases. Our work contributes to the literature by providing a descriptive framework for data scaling in EEG and by demonstrating data-efficient experimental design in EEG research.",
-      "authors": [
-        "José Maurício Nunes de Oliveira",
-        "Bruna J. Lopes",
-        "Léo Burgund",
-        "Raphael Y. Camargo",
-        "Bruno Aristimunha"
-      ],
-      "published_date": "2026-09-28",
-      "indexed_date": "2026-09-28",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2609.35056v1",
-      "categories": [
+        "cs.AI",
         "q-bio.NC"
       ],
       "keywords": [],
@@ -84,22 +37,24 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2609.34801v1",
-      "title": "Separating personal from population gains when calibrating EEG foundation models for new users",
-      "abstract": "Foundation models are increasingly adapted to individual users, but an apparent personalization gain can simply reflect a stronger population model. This distinction matters for brain-computer interfaces, where every new user must be calibrated. We evaluated personal adaptation of three frozen EEG foundation models (CBraMod, REVE and LaBraM) in 235 held-out subjects from three motor-imagery datasets, comparing each subject's adapter with the population model and with adapters fitted to other subjects. Using all first-half session labels, personal adapters improved mean balanced accuracy over the population model by 1.5-5.4 percentage points and outperformed exchanged adapters by 2.3-7.3 points in all nine model-dataset combinations. The size of this benefit depended on population training: with four times the original budget, median gains remained positive (1.0-2.0 points) but were smaller for every model, and no population model reached a confirmed plateau. Acquiring the benefit cheaply was unreliable: few-label calibration was consistently non-negative on only one dataset, and in CBraMod neither unlabeled context nor meta-learned initialization outperformed matched controls. Personalization should therefore be evaluated against both a population reference and exchanged parameters, across population-training budgets.",
+      "source_id": "2609.37609v1",
+      "title": "PHASE: Multi-Regime Modeling of Incompressible Magnetohydrodynamics",
+      "abstract": "Magnetohydrodynamics (MHD) is central to plasma modeling in astrophysics, space science, fusion, and engineering, but resolving multiscale MHD dynamics is computationally expensive. Machine-learning surrogates enable fast inference by learning reusable solution operators, yet existing models require separate training for each physical regime, limiting generalization across varying parameter settings. We introduce PHASE, a PHysics-Adaptive Scalable operator with residual Error correction, designed to model incompressible MHD across varying physical parameters with a single model. PHASE combines transfer learning, regime-aware adaptation, physics-centered learning, and residual refinement to improve both physical fidelity and generalization across MHD regimes. Together, these improvements achieve state-of-the-art prediction accuracy on two-dimensional MHD turbulence by reducing relative $L_2$ errors on physical fields by more than an order of magnitude compared to prior MHD neural-operator baselines. Moreover, PHASE generalizes successfully to unseen parameter values without retraining, demonstrating the cross-regime adaptability expected from operator learning. We evaluate PHASE beyond point-wise prediction errors using derived physical fields, spectral analysis, and distribution statistics, consistently observing improved physical fidelity. We further show that our framework can accurately simulate MHD instabilities by testing it on the Kelvin--Helmholtz instability, demonstrating the robustness of our method.",
       "authors": [
-        "Xilin Tao",
-        "Kani Chen"
+        "Radhika Achikanath Chirakkara",
+        "Rajdeep Haldar",
+        "Zezheng Song",
+        "Jiequn Han"
       ],
-      "published_date": "2026-09-28",
-      "indexed_date": "2026-09-28",
+      "published_date": "2026-09-29",
+      "indexed_date": "2026-09-29",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2609.34801v1",
+      "url": "https://arxiv.org/abs/2609.37609v1",
       "categories": [
         "cs.LG",
-        "eess.SP",
-        "q-bio.NC"
+        "physics.comp-ph",
+        "physics.plasm-ph"
       ],
       "keywords": [],
       "publication_types": [
@@ -109,21 +64,19 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2609.34466v1",
-      "title": "PhysioTRACE: Provenance-Aware Stress Tests for Physiological Foundation Models",
-      "abstract": "Physiological foundation models encode how a signal was recorded alongside the physiology it reflects. When recording conditions are associated with diagnosis, this acquisition provenance can become a shortcut, yet the usual evidence, shifted transfer and provenance decodability, does not show whether a predictor uses it. We introduce PhysioTRACE, a four-axis behavioral audit for frozen encoders that separates what a probe can decode from what a fixed task head relies on. Recover scores how decodable provenance is; Stress reverses only the provenance-target association on the same held-out records; Intervene removes a train-localized provenance component; and Verify certifies that removal only if it beats matched random projections within a declared utility margin. Each audit thus ends in one of three verdicts: no reliance, or reliance with the remedy certified or refused. Across EEG and ECG, five training objectives, and five frozen foundation models, the relation between Recover's calibrated score and out-of-distribution utility changes sign between datasets, so neither can stand in for a reliance test. On paired EEG views where the shortcut is known by construction, the audit detects it (the exposed head loses about 0.2 AUROC when the association is reversed, while a control head is unaffected) and certifies removal of a rank-two component that restores control-level behavior without measurable utility loss, for both encoder objectives tested. On real ECG device metadata it returns all three verdicts: it certifies a remedy that removes 91% of one model's excess vulnerability, finds no reliance where device and diagnosis are barely associated, and refuses the remedy for a second model whose localized direction also carries task signal. Robustness to how inputs were recorded therefore needs a behavioral test, and PhysioTRACE provides one that can pass, fail, or refuse a remedy.",
+      "source_id": "2609.37037v1",
+      "title": "High-Resolution Dynamic Functional Connectivity Generation with Graph-Variate Flow Matching",
+      "abstract": "High-resolution dynamic functional connectivity (DFC) can reveal rapidly evolving brain-network interactions, but short temporal windows yield noisy, often low-rank covariance estimates. Graph-Variate Dynamic (GVD) connectivity addresses this by modulating fast instantaneous interactions with stable trial-level support. This suppresses spurious fluctuations and emphasizes persistent, informative connections. We show that the Hadamard construction lifts low-rank instantaneous connectivity from the positive-semidefinite to the positive-definite cone, keeping high-resolution trajectories on the SPD manifold without ridge regularisation or post-hoc projection. We introduce GVD-CFM, a class-conditional generative model for high-resolution dynamic connectivity. Each trial is represented as SPD GVD matrices on a product Riemannian manifold, then mapped through a global log-Euclidean diffeomorphism and an invertible temporal DCT basis. A Transformer-based conditional flow models all spectral modes jointly and generates the full trajectory non-autoregressively in Euclidean coordinates while preserving exact correspondence with valid SPD sequences. Retaining the full DCT basis also enables decoding on denser temporal grids without retraining. Across multiple EEG motor-imagery datasets, GVD-CFM delivers the strongest overall results for held-out distributional fidelity, temporal-dynamics preservation, and synthetic-to-real classification. It also remains computationally efficient relative to strong raw-signal and direct GVD-space generative baselines. GVD-CFM therefore provides a practical framework for realistic, temporally coherent, high-resolution brain-network generation with preserved manifold structure and resolution-flexible decoding from a single trained model.",
       "authors": [
-        "Ayana Mussabayeva",
-        "Anuar Aimoldin",
-        "Olivier Oullier",
-        "Xue Liu",
-        "Kun Zhang"
+        "Om Roy",
+        "Yashar Moshfeghi",
+        "Keith Malcolm Smith"
       ],
-      "published_date": "2026-09-28",
-      "indexed_date": "2026-09-28",
+      "published_date": "2026-09-29",
+      "indexed_date": "2026-09-29",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2609.34466v1",
+      "url": "https://arxiv.org/abs/2609.37037v1",
       "categories": [
         "cs.LG"
       ],
@@ -135,20 +88,53 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2609.34091v1",
-      "title": "When Is an SAE Feature Interpretable? A Validation Ladder for EEG Foundation Models",
-      "abstract": "Sparse autoencoders (SAEs) decompose dense model activations into discrete latents, making individual features easy to interpret--and easy to misinterpret. In EEG foundation models, this creates a tempting inference: if removing alpha-band activity strongly changes a latent's activation, one might conclude that the latent represents alpha activity. Across 27 settings spanning three backbones, three EEG datasets, and three network depths, this interpretation initially appears compelling: alpha removal changes latent firing 7.3 times more than an equal-width sham notch (95% CI [6.2, 8.7], bootstrapped over settings). However, the alpha filter also deletes far more signal than the sham. After normalizing by removed spectral energy, the ratio falls to 0.28 (95% CI [0.22, 0.36]) and exceeds one in none of the 27 settings. Latents selected for their response to alpha removal are, on clean EEG, slightly anti-correlated with relative alpha power (mean r = -0.073), giving no support for a simple alpha-detector reading. Motivated by this failure case, we propose a validation ladder for semantic interpretations of SAE latents: it asks in turn whether a latent responds, whether that response survives controlling for how much signal the intervention removes, whether it is specific rather than broadly fragile, and whether the proposed property is visible on unperturbed data--while separately testing the stronger claim that the latent matters to a task classifier. Perturbation sensitivity alone does not establish what an SAE latent represents.",
+      "source_id": "2609.36619v1",
+      "title": "SemPSG: A Semantic Channel-Aware Foundation Model for Polysomnography Analysis",
+      "abstract": "Polysomnography (PSG) integrates multiple physiological signals to provide a comprehensive characterization of human sleep, yet its heterogeneous channel configurations across centers pose substantial challenges for transferable representation learning. Existing foundation models mainly focus on physiological modeling or temporal learning, while channel identity is often treated as a fixed structural index, overlooking the physiological semantics encoded by signal modality and reference configuration. To this end, we propose SemPSG, a Semantic channel-aware foundation model for heterogeneous PSG analysis. SemPSG explicitly represents the physiological semantics of channel identity and incorporates them into both signal representation learning and channel aggregation, enabling flexible modeling across diverse data configurations. Specifically, a semantic-conditioned time-series encoder captures signal-specific temporal dynamics and cross-signal interactions, while a multi-view image encoder extracts complementary time-frequency and morphological patterns from the same physiological recordings. We evaluate SemPSG on sleep and health-related tasks, including sleep staging, sleep-disorder breathing analysis, disease prediction, cognition and emotion recognition, and demographic estimation. Extensive experiments demonstrate consistent improvements over both general-purpose time series foundation models and PSG-specific foundation models, together with generalization across heterogeneous datasets across diverse channel configurations.",
       "authors": [
-        "Yucong Cao",
-        "Chenqi Li",
-        "Tingting Zhu"
+        "Junyu Chen",
+        "Chenxi Liu",
+        "Shiqin Tang",
+        "Hao Miao",
+        "Wanyun Ling",
+        "Ziyue Li",
+        "Hongbin Liu",
+        "Gaofeng Meng"
       ],
-      "published_date": "2026-09-28",
-      "indexed_date": "2026-09-28",
+      "published_date": "2026-09-29",
+      "indexed_date": "2026-09-29",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2609.34091v1",
+      "url": "https://arxiv.org/abs/2609.36619v1",
       "categories": [
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2609.36609v1",
+      "title": "Best Practices in EEG Analysis: Preprocessing, Modeling, and Machine Learning",
+      "abstract": "Electroencephalography (EEG) analysis requires careful choices in preprocessing, statistical modeling, and machine learning because EEG signals are highly susceptible to artifacts, volume conduction, low signal-to-noise ratio, and substantial inter-subject variability. This chapter provides a practical and methodological guide to modern EEG analysis, spanning EEG preprocessing, artifact removal, filtering, bad-channel detection and interpolation, re-referencing, independent component analysis (ICA), and preprocessing of simultaneous EEG-fMRI recordings. We review major approaches for computational EEG analysis, including event-related potentials (ERPs), time-frequency analysis, functional and effective connectivity, source localization, multivariate decoding, permutation testing, and multiple-comparison correction. We then examine machine-learning methods for EEG, from feature-based classifiers to deep learning and emerging EEG foundation models, with emphasis on cross-subject generalization, limited-data regimes, data leakage, evaluation metrics, and fair benchmarking. Reproducibility is treated as a core requirement throughout, including transparent preprocessing, BIDS-EEG data organization, standardized derivatives, preservation of raw data, and FAIR data practices. The chapter is intended as a practical reference for researchers developing reliable, interpretable, and reproducible EEG analysis and machine-learning pipelines.",
+      "authors": [
+        "Parsa Razmara",
+        "Woojae Jeong",
+        "Aditya Kommineni",
+        "Raymundo Cassani",
+        "Richard Leahy",
+        "Takfarinas Medani"
+      ],
+      "published_date": "2026-09-29",
+      "indexed_date": "2026-09-29",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2609.36609v1",
+      "categories": [
+        "eess.SP",
         "cs.LG"
       ],
       "keywords": [],
