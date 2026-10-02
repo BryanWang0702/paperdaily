@@ -1,6 +1,6 @@
 {
   "date": "2026-10-02",
-  "generated_at": "2026-10-01T18:33:03.715612+00:00",
+  "generated_at": "2026-10-02T01:00:24.961384+00:00",
   "window": {
     "start": "2026-09-30",
     "end": "2026-10-02"
@@ -10,17 +10,18 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 86,
+  "raw_count": 91,
   "retrieved_source_counts": {
     "pubmed": 215,
-    "biorxiv": 18,
-    "medrxiv": 3,
-    "arxiv": 0
+    "biorxiv": 21,
+    "medrxiv": 4,
+    "arxiv": 2
   },
   "raw_source_counts": {
     "pubmed": 76,
-    "biorxiv": 9,
-    "medrxiv": 1
+    "biorxiv": 11,
+    "arxiv": 2,
+    "medrxiv": 2
   },
   "prefiltered_count": 40,
   "analyzed_count": 40,
@@ -28,11 +29,14 @@
   "count": 40,
   "featured_count": 25,
   "source_counts": {
-    "pubmed": 33,
+    "pubmed": 31,
     "biorxiv": 6,
+    "arxiv": 2,
     "medrxiv": 1
   },
-  "errors": {},
+  "errors": {
+    "pubmed": "ChunkedEncodingError: Response ended prematurely · reused 215 cached records"
+  },
   "ai": {
     "requested": true,
     "enabled": true,
@@ -40,8 +44,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 25,
-    "newly_summarized": 25,
+    "newly_ranked": 3,
+    "newly_summarized": 3,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -52,12 +56,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 8,
-      "prompt_tokens": 29264,
-      "prompt_cache_hit_tokens": 7808,
-      "prompt_cache_miss_tokens": 21456,
-      "completion_tokens": 7042,
-      "total_tokens": 36306
+      "requests": 2,
+      "prompt_tokens": 2910,
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 2398,
+      "completion_tokens": 699,
+      "total_tokens": 3609
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -66,27 +70,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.035696,
+    "run_cost_cny": 0.003806,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 8,
-        "prompt_tokens": 29264,
-        "prompt_cache_hit_tokens": 7808,
-        "prompt_cache_miss_tokens": 21456,
-        "completion_tokens": 7042,
-        "total_tokens": 36306
+        "requests": 2,
+        "prompt_tokens": 2910,
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 2398,
+        "completion_tokens": 699,
+        "total_tokens": 3609
       },
-      "run_cost_cny": 0.035696,
+      "run_cost_cny": 0.003806,
       "daily_usage": {
-        "requests": 8,
-        "prompt_tokens": 29264,
-        "prompt_cache_hit_tokens": 7808,
-        "prompt_cache_miss_tokens": 21456,
-        "completion_tokens": 7042,
-        "total_tokens": 36306
+        "requests": 10,
+        "prompt_tokens": 32174,
+        "prompt_cache_hit_tokens": 8320,
+        "prompt_cache_miss_tokens": 23854,
+        "completion_tokens": 7741,
+        "total_tokens": 39915
       },
-      "daily_cost_cny": 0.035696,
+      "daily_cost_cny": 0.039502,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -313,6 +317,48 @@
             "mice"
           ],
           "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.01284v1",
+      "title": "Model validation in machine learning: A scenario-based guide from hold-out splits to nested group cross-validation in biomedical and applied research",
+      "abstract": "Model validation estimates the performance of a complete learning procedure on new data. However, an invalid split can produce an optimistic and stable result. This tutorial reviews hold-out validation, train/validation/test designs, repeated random subsampling, k-fold and repeated stratified cross-validation, leave-one-out and leave-p-out schemes, group-aware validation, and nested group cross-validation. General machine-learning principles are linked to EEG epochs, paired-eye OCT images, repeated clinical measurements, and multicenter data. Eight controlled scenarios compare flawed and leakage-safe designs: seven use locked confusion matrices with auditable metrics, and one uses a reproducible repeated-study simulation. The scenarios cover global feature selection, normalization leakage, dependent records, center mixing, repeated test-set use, and estimator instability. Bias, variance, metric aggregation, uncertainty, and computational cost are also examined. A data-size matrix, a decision tree, and reporting checklists are provided. Reproducible MATLAB templates and scikit-learn counterparts are included. The results show that no validation method is universally best. The independent unit must match the intended deployment target. Every data-dependent operation must also exclude the observations used for performance estimation.",
+      "authors": [
+        "Mehmet Baygin",
+        "Sengul Dogan",
+        "Turker Tuncer"
+      ],
+      "published_date": "2026-10-01",
+      "indexed_date": "2026-10-01",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.01284v1",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "prefilter_score": 46,
+        "ai": {
+          "score": 85,
+          "topic": "Model Validation & Cross-Validation for Biomedical Data",
+          "reason": "Directly relevant to ensuring reproducibility and avoiding leakage in EEG and neural time-series analysis, with practical MATLAB/scikit-learn templates adaptable to animal sleep experiments.",
+          "summary": "This tutorial reviews model validation schemes for machine learning, from hold-out splits to nested group cross-validation, linking general principles to biomedical data such as EEG epochs, OCT images, repeated clinical measurements, and multicenter datasets. Using eight controlled scenarios and provided MATLAB/scikit-learn templates, it shows that no validation method is universally best and that the independent unit and all data-dependent operations must match the intended deployment target to avoid leakage and optimistic performance estimates.",
+          "keywords": [
+            "model validation",
+            "nested group cross-validation",
+            "data leakage",
+            "biomedical machine learning",
+            "group-aware validation"
+          ],
+          "paper_type": "Methods/Resource",
           "digest_pick": true
         }
       }
@@ -734,49 +780,47 @@
       }
     },
     {
-      "source": "biorxiv",
-      "source_id": "10.64898/2026.09.24.753962",
-      "title": "Hypoxia Disrupts Multiple Processes Supporting Spatial Navigation",
-      "abstract": "Hypoxia impairs cognitive function, yet its effects on navigation and intrinsic brain activity remain poorly understood. This study investigated whether a continuous exposure to hypoxia (CH) or an intermittent exposure to hypoxia (IH) differentially influence navigation performance and resting-state electroencephalography (EEG) in healthy young adults. Seventy-two participants completed sham (FiO2 = .209) and hypoxia (FiO2 = .13) sessions during either a one hour of CH or IH intervention. Navigation was assessed using the Spatial Performance Assessment for Cognitive Evaluation (SPACE), while resting-state EEG was recorded before and after the intervention in a subset of participants (n = 40). EEG spectra were parameterised into periodic (alpha and beta power and central frequency) and aperiodic (exponent and offset) components. Aligned rank transform (ART) analyses of variance examined effects of hypoxia and intervention group, while linear regression determined whether reductions in peripheral oxygen saturation (SpO2) predicted changes in navigation or EEG. Hypoxia impaired multiple components of navigation, increasing path integration distance error and egocentric pointing angle error irrespective of intervention group, while mapping accuracy was preferentially impaired following IH and perspective taking performance following CH. Hypoxia also reduced alpha and beta power, beta central frequency, and aperiodic exponent, while aperiodic offset and alpha central frequency remained stable. The reduction in aperiodic exponent was primarily evident following IH, suggesting that the temporal pattern of oxygen delivery may influence specific neurophysiological responses. Contrary to our hypothesis, SpO2 reduction did not predict individual differences in navigation performance or EEG activity. These findings demonstrate that brief, moderate hypoxic exposure can disrupt allocentric and egocentric components of spatial navigation while selectively altering periodic and aperiodic features of intrinsic brain activity.",
+      "source": "arxiv",
+      "source_id": "2610.01303v1",
+      "title": "A High-Density EEG Dataset for Stimulus-Driven Auditory Attention",
+      "abstract": "Stimulus-driven auditory attention determines which sound gains priority when multiple sources compete without an explicit listening goal, yet most computational studies focus either on acoustic salience or on decoding predefined attended targets. This study investigates instruction-free auditory competition using the Stimulus-driven Auditory Attention (SAAD) paradigm and develops a neurophysiologically informed framework that integrates stimulus-derived sound priority with trial-specific EEG evidence. Behavioral analysis using a Bradley--Terry model showed that sound priority estimated from previous competitions generalized to unseen sound pairings, improving held-out prediction from an AUC of 0.577 to 0.718. EEG analysis further revealed mid-to-late centro-temporal lateralization associated with the reported selection side, with neural information remaining predictive beyond acoustic asymmetry. Guided by these findings, the proposed model first estimates a latent priority for each competing sound and forms relative stimulus evidence from their difference. A multi-scale EEG pathway with complementary signed and power-based readouts then extracts trial-specific neural evidence, which is incorporated through gated decision-level integration. The framework is evaluated using mirror-constrained and pairing-held-out protocols, together with representative acoustic, EEG, multimodal baselines, and systematic ablations. The results support a computational account in which spontaneous auditory selection reflects the interaction between generalizable stimulus priority and trial-specific neural variability.",
       "authors": [
-        "McKeown, D. J.",
-        "Bahnson-Wright, H. M.",
-        "Caldwell, T.",
-        "Marks, M.",
-        "Marshall, G. R.",
-        "Newton, H.",
-        "Stenholm, D.",
-        "Young, M.",
-        "Angus, D. J.",
-        "Schinazi, V. R."
+        "Ruofan Yan",
+        "Na Lu",
+        "Shu Peng",
+        "Wenlong You",
+        "Zhige Chen",
+        "Yuxuan Yan",
+        "Yan Liu",
+        "Kay Chen Tan",
+        "Jibin Wu"
       ],
-      "published_date": "2026-09-30",
-      "indexed_date": "2026-09-30",
-      "journal": "biorxiv",
-      "doi": "10.64898/2026.09.24.753962",
-      "url": "https://doi.org/10.64898/2026.09.24.753962",
+      "published_date": "2026-10-01",
+      "indexed_date": "2026-10-01",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.01303v1",
       "categories": [
-        "neuroscience"
+        "q-bio.NC",
+        "cs.DB"
       ],
       "keywords": [],
       "publication_types": [
         "Preprint"
       ],
       "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 35,
+        "prefilter_score": 60,
         "ai": {
           "score": 60,
-          "topic": "Hypoxia effects on EEG & navigation",
-          "reason": "Analyzes resting-state EEG with spectral parameterization, which is methodologically relevant, but the topic of hypoxia and spatial navigation is not directly tied to sleep staging or animal models.",
-          "summary": "This study investigated whether continuous or intermittent hypoxia differentially affects spatial navigation and resting-state EEG in healthy young adults. Hypoxia impaired multiple navigation components, increasing path integration distance error and egocentric pointing angle error, while mapping accuracy was preferentially impaired after intermittent hypoxia and perspective taking after continuous hypoxia; hypoxia also reduced alpha and beta power, beta central frequency, and aperiodic exponent, with the aperiodic exponent reduction primarily after intermittent hypoxia, and SpO2 reduction did not predict individual differences.",
+          "topic": "EEG Dataset for Auditory Attention Decoding",
+          "reason": "Provides a high-density EEG dataset and decoding framework for attention, which may be transferable to vigilance-state classification, but the specific auditory-attention focus is only adjacent to sleep and animal research.",
+          "summary": "This paper introduces a high-density EEG dataset and computational framework for instruction-free stimulus-driven auditory attention, integrating stimulus-derived sound priority with trial-specific neural evidence. Behavioral modeling showed that sound priority estimated from previous competitions generalized to unseen pairings, raising held-out prediction AUC from 0.577 to 0.718, while EEG revealed mid-to-late centro-temporal lateralization predictive beyond acoustic asymmetry, supporting an interaction between generalizable stimulus priority and trial-specific neural variability.",
           "keywords": [
-            "hypoxia",
-            "spatial navigation",
-            "resting-state EEG",
-            "aperiodic activity",
-            "path integration"
+            "auditory attention",
+            "EEG",
+            "stimulus-driven competition",
+            "Bradley-Terry model",
+            "multimodal decoding"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -827,50 +871,6 @@
             "Transfer Entropy",
             "Transformer Networks",
             "effective connectivity"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "biorxiv",
-      "source_id": "10.1101/2021.02.15.431304",
-      "title": "Neural and behavioral correlates of sensorimotor synchronization to a subdivided beat: Evidence for a binary grouping advantage and musical training effects",
-      "abstract": "Motor synchronization is easiest when the metronome beats are subdivided into equal intervals. Here we combine electroencephalography (EEG) frequency-tagging and mismatch responses to examine how neural synchronization and predictive processing contribute to sensorimotor synchronization across four beat subdivisions: duplets (1:2), triplets (1:3), quadruplets (1:4), and quintuplets (1:5). We recorded EEG in musicians and non-musicians during a finger-tapping paradigm combining passive listening and synchronized tapping. Each trial had four sections: an isochronous beat, one of the four beat subdivisions, the beat again and the same beat subdivision. Only in the fourth section participants had to tap the beat while listening to the subdivision. We found that musicians outperformed non-musicians in the tapping task and showed stronger neural activity synchronized to the beat frequency and its harmonics for duplets, triplets and quadruplets. Importantly, non-musicians showed better tapping performance and stronger neural responses specifically for duplets only, indicating a sensorimotor synchronization advantage for the simplest binary subdivision. Mismatch responses to unexpected sound onsets likewise converged on the same pattern: listening to the first subdivision onset elicited smaller prediction errors for duplets in both groups, suggesting that binary subdivision better aligned with listeners' metrical expectations. Together, these findings show a correspondence between behavior and neural processes underlying the subdivision levels of the beat and highlight sensorimotor advantages for simple integer ratios that can be modulated by training in music. Both neural synchronization and predictive processes seem to jointly support this sensorimotor synchronization advantage for binary subdivisions.",
-      "authors": [
-        "Celma-Miralles, A.",
-        "Kleber, B.",
-        "Toro, J. M.",
-        "Vuust, P."
-      ],
-      "published_date": "2026-10-01",
-      "indexed_date": "2026-10-01",
-      "journal": "biorxiv",
-      "doi": "10.1101/2021.02.15.431304",
-      "url": "https://doi.org/10.1101/2021.02.15.431304",
-      "categories": [
-        "neuroscience"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {
-        "version": "2",
-        "published": "NA",
-        "prefilter_score": 35,
-        "ai": {
-          "score": 55,
-          "topic": "EEG frequency-tagging & sensorimotor synchronization",
-          "reason": "EEG methods and analysis of neural synchronization are relevant to time-frequency analysis, but the focus on musical beat processing is not directly applicable to sleep or animal experiments.",
-          "summary": "The study combined EEG frequency-tagging and mismatch responses to examine neural synchronization and predictive processing during sensorimotor synchronization to four beat subdivisions (duplets, triplets, quadruplets, quintuplets) in musicians and non-musicians. Musicians outperformed non-musicians in tapping and showed stronger neural responses for duplets, triplets, and quadruplets, while non-musicians showed better tapping and stronger neural responses specifically for duplets, indicating a binary grouping advantage modulated by musical training.",
-          "keywords": [
-            "sensorimotor synchronization",
-            "EEG frequency-tagging",
-            "mismatch responses",
-            "beat subdivision",
-            "musical training"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1323,6 +1323,48 @@
     },
     {
       "source": "biorxiv",
+      "source_id": "10.64898/2026.09.24.754154",
+      "title": "Reactive and predictive processes during unpredictable driving collisions in virtual reality: an exploratory immersive study with multimodal neurophysiological monitoring",
+      "abstract": "Anticipatory neurophysiological activity before unpredictable emotional events has been reported for decades, but the effects are small, difficult to replicate, and obtained almost exclusively in stripped-down laboratory paradigms: brief, repetitive screen stimuli in a single modality. Whether they reflect genuine predictive processes or methodological artefacts remains debated. One possibility rarely tested is that the settings themselves mute the effect: the brain prepares for events that unfold in time and engage multiple senses, not for static images. We examined anticipation in an immersive virtual reality (VR) driving simulation whose collision outcomes were assigned by a quantum random number generator, while electroencephalography (EEG), photoplethysmography (PPG), electromyography (EMG), electrooculography (EOG) and inertial measurement (IMU) signals were recorded simultaneously from a single wireless dry-electrode headset built into the VR display. Sixteen participants passively observed 120 driving sequences ending in a collision or no collision. A minimum-phase causal filter kept post-stimulus activity from leaking into the pre-stimulus window, and length-matched pre- and post-stimulus windows were analysed identically with mass-univariate hierarchical general linear models under permutation cluster correction, complemented by machine learning classification across held-out participants. Two post-stimulus clusters differentiated the conditions, the largest peaking at 451.6 ms (d = -1.35), with broadband power modulation robust to baseline modelling and decoded from held-out participants with up to 93.8% accuracy. No time-domain effect or decodable information preceded stimulus onset, but a broadband spectral difference did, surviving preregistered controls for gambler's-fallacy, expectation bias (run length), time-on-task build-up and ocular or facial-muscle artefact: directionally consistent in 13 of 15 participants, with pre- and post-stimulus power coupled in all 16. Heart rate differentiated the conditions neither alone nor when added to the classifier. The study was preregistered; the BIDS-format data, analysis code and a new open-source EEGLAB plugin are publicly available. Because data collection ended early, all findings are exploratory.",
+      "authors": [
+        "Cannard, C.",
+        "Yesilbas, D."
+      ],
+      "published_date": "2026-10-01",
+      "indexed_date": "2026-10-01",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.09.24.754154",
+      "url": "https://doi.org/10.64898/2026.09.24.754154",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "2",
+        "published": "NA",
+        "prefilter_score": 53,
+        "ai": {
+          "score": 45,
+          "topic": "Wearable EEG in Virtual Reality Driving",
+          "reason": "Explores pre-stimulus EEG in an ecologically valid setting with a dry-electrode headset, which is relevant for artifact handling and portable EEG, but less directly for sleep or animal experiments.",
+          "summary": "Used a wearable dry-electrode EEG and photoplethysmography headset in virtual reality to test whether neural activity differentiates unpredictable collision from no-collision events in 16 participants across 120 trials. Post-stimulus clusters differentiated conditions with up to 93.8% cross-validated decoding accuracy, whereas pre-stimulus time-domain discrimination was at chance; a pre-stimulus broadband spectral difference survived correction but is exploratory and requires replication.",
+          "keywords": [
+            "virtual reality",
+            "driving hazard",
+            "EEG",
+            "wearable dry electrodes",
+            "multimodal neurophysiology"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
       "source_id": "10.64898/2026.08.28.747793",
       "title": "Multimodal Ganzfeld-induced visual experiences are associated with accompanying mental experiences and distinct EEG microstate dynamics",
       "abstract": "During wakefulness, we are used to perceive the environment through our senses, act on it and take these inputs to update our experiences and build the perceptions. When the inputs are not longer accurate or structured, people would sometimes have hallucinatory experiences. Whether such experiences are associated with distinct patterns of thought, and how they relate to large scale brain dynamics, remains unclear. To address these questions, we combined experience sampling protocol with EEG recording during multimodal Ganzfeld, where participants were exposed to unstructured, uniform visual and auditory stimulation. Participants repeatedly reported the complexity of their visual experiences together with ongoing thoughts related to perceptual belief, prediction perception mismatch, active updating, and prior mentation. EEG microstates were extracted to characterize the temporal dynamics of large-scale brain networks. We found that visual complexity was related to some of the four dimensions, but partly distinct in simple and complex visual experiences. These phenomenological changes were accompanied by distinct, and often nonlinear, dynamics of large-scale brain networks involved in visual processing, salience detection, and internally directed cognition. It also indicates that this paradigm might be a valuable model for investigating the mechanisms underlying hallucinatory experiences in psychosis.",
@@ -1442,48 +1484,6 @@
             "temptation"
           ],
           "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42818191",
-      "title": "Improved Sleep and Clinical Outcomes Following a Single-Session Intervention among Adolescents with Borderline Personality Disorder Features.",
-      "abstract": "Borderline personality disorder (BPD) is a serious mental illness that often emerges in adolescence. Although efficacious treatments have been developed, they are often lengthy, expensive, inaccessible, and require specialized training to deliver. Optimizing BPD prevention and early treatment is an important public health priority. Disrupted sleep is closely linked to key BPD features, and prior research has documented a range of sleep problems among BPD samples that appear to worsen symptom course and duration. This intervention trial ( NCT04507308 ) assessed the effects of a single-session sleep-focused treatment on adolescent sleep and BPD-related symptoms. Fifty-seven adolescents (ages 13-18) with 3+ clinically impairing BPD features and at least some self-reported sleep-related difficulties participated with a caregiver. Participants completed baseline surveys, interviews, and 10-day ecological momentary assessment (EMA) protocol to examine BPD symptoms and sleep in daily life. Youth also collected at-home ambulatory electroencephalogram (EEG) recordings before undergoing the treatment informed by the Transdiagnostic Sleep and Circadian Intervention. Post-treatment, youth practiced their new sleep routine for approximately one month before undergoing reassessment (EMA, EEG, surveys). Many indices of sleep quantity and quality improved across both objective (EEG) and subjective assessments (EMA and self- and caregiver-report). Youth reported an earlier bedtime and waketime, more sleep, and fewer awakenings in daily life. Every sleep-related questionnaire score improved at post-intervention and was maintained at one-month follow-up. Multiple indices of BPD symptoms also improved significantly. Findings suggest sleep may be a promising intervention target for at-risk youth.",
-      "authors": [
-        "Erin A Kaufman",
-        "Sarah E Victor",
-        "Jin H Prunuske",
-        "Jenny L Nguyen",
-        "Geoffrey Laforge"
-      ],
-      "published_date": "2026-Sep-23",
-      "indexed_date": "2026-10-01",
-      "journal": "medRxiv : the preprint server for health sciences",
-      "doi": "10.64898/2026.09.22.26363695",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42818191/",
-      "categories": [],
-      "keywords": [],
-      "publication_types": [
-        "Journal Article",
-        "Preprint"
-      ],
-      "extra": {
-        "prefilter_score": 35,
-        "ai": {
-          "score": 40,
-          "topic": "Adolescent BPD sleep intervention",
-          "reason": "Involves sleep and at-home EEG, but is a clinical intervention study with no methodological innovation in signal processing or lightweight algorithms; weak relevance.",
-          "summary": "This intervention trial assessed a single-session sleep-focused treatment for adolescents with borderline personality disorder features. It found that sleep quantity and quality improved across objective and subjective measures, and multiple indices of BPD symptoms also improved significantly.",
-          "keywords": [
-            "borderline personality disorder",
-            "sleep intervention",
-            "adolescents",
-            "ecological momentary assessment",
-            "EEG"
-          ],
-          "paper_type": "Clinical Trial",
           "digest_pick": true
         }
       }
@@ -1619,6 +1619,49 @@
             "human functional atlas",
             "somatotopic organization",
             "neural decoding"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.06.21.732435",
+      "title": "Tetradic Dynamics of Dyadic Sensorimotor Coordination: A Multiscale EEG Hyperscanning Study",
+      "abstract": "How do leader and follower roles shape the brain mechanisms that support coordinated action between people? This question has direct therapeutic relevance for conditions such as schizophrenia and autism spectrum disorder, where the capacity for reciprocal social coordination is a defining vulnerability. Here, we propose a tetradic framework and examine sensorimotor coordination in 16 healthy adult pairs (15 included in EEG analyses) using dual-brain EEG hyperscanning and a 2x2 within-subject design crossing Role (Leader/Follower) and Condition (Mirroring/Matching). Mirroring required resonance with a partner's movement; Matching required its controlled transformation. This contrast was designed to dissociate automatic from controlled coordination. Behaviourally, Mirroring produced a robust Follower reaction-time advantage: pooling an independent behavioural-only cohort (combined N=64) revealed a smaller Leader advantage, consistent with role-dependent attention-inhibition gating. At the neural level, tonic power and significant phasic condition clusters were greater during Matching than Mirroring, while role-dependent phasic clusters revealed an anticipatory sequence around Leader responses and post-response gating and rebound around Follower responses. Information-theoretic decomposition identified Leader-weighted predictive information in frontal and posterior perceptual regions, Follower-specific adaptive information across frontoparietal and sensorimotor cortices, sparse Synergy in lateral occipital, fusiform, and paracentral cortices, and Redundancy linking pars opercularis and lateral occipital cortex. These findings characterize tetradic coordination within dyads as a multiscale, role-asymmetric architecture in which top-down predictive control and bottom-up adaptive regulation are functionally dissociable. The tetradic framework provides an organizing scaffold for this dissociation, and the role-specific signatures it reveals offer candidate biomarkers for clinical populations in whom interpersonal coordination is disrupted.",
+      "authors": [
+        "Olarewaju, E.",
+        "Palaniyappan, L.",
+        "Dumas, G."
+      ],
+      "published_date": "2026-10-01",
+      "indexed_date": "2026-10-01",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.06.21.732435",
+      "url": "https://doi.org/10.64898/2026.06.21.732435",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "3",
+        "published": "NA",
+        "prefilter_score": 52,
+        "ai": {
+          "score": 35,
+          "topic": "Dyadic EEG Hyperscanning for Sensorimotor Coordination",
+          "reason": "Social coordination hyperscanning is outside the researcher's focus on single-subject sleep and vigilance analysis; the methods are not directly transferable to animal sleep experiments.",
+          "summary": "This dual-brain EEG hyperscanning study examined leader-follower sensorimotor coordination in healthy adult pairs using a 2x2 design crossing Role with Mirroring versus Matching, proposing a tetradic framework for dyadic interaction. Neural analyses showed greater tonic power and phasic clusters during Matching, role-dependent anticipatory and post-response patterns, and information-theoretic signatures separating Leader-weighted predictive information from Follower-specific adaptive information, with sparse Synergy and Redundancy across specific cortical regions.",
+          "keywords": [
+            "EEG hyperscanning",
+            "sensorimotor coordination",
+            "leader-follower roles",
+            "information-theoretic decomposition",
+            "dyadic interaction"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1970,58 +2013,6 @@
             "memory and gait"
           ],
           "paper_type": "Clinical Study",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42811900",
-      "title": "Therapeutic Applications of rTMS in Migraine Prophylaxis.",
-      "abstract": "Migraine is one of the main causes of neurological disability, especially in young adults. Recent developments in preventive migraine therapies have improved outcomes for many patients, while highlighting the need for additional therapeutic options for those who remain refractory to pharmacological prophylaxis. Repetitive Transcranial Magnetic Stimulation (rTMS) has emerged as a promising neuromodulatory tool. We searched published literature for articles describing the efficacy of different rTMS protocols in the treatment of migraine. The literature search was conducted using PubMed and Scopus for articles published up to March 26, 2026. Twenty-four articles were categorized based on cortical targets (primary motor cortex [M1], dorsolateral prefrontal cortex (DLPFC), Vertex, Visual Cortex or Multifocal). High-frequency rTMS (HF-rTMS) targeting either the M1 or the left DLPFC demonstrated potential efficacy for specific goals such as reducing monthly migraine days, pain intensity, and medication intake. According to studies using neurophysiological data (obtained via transcranial magnetic stimulation-electroencephalography (TMS-EEG)), clinical improvement correlates with enhanced frontotemporal network connectivity and restored cortical plasticity. Guided rTMS stimulation through functional connectivity between the DLPFC and the pregenual cingulate cortex (PGC) may increase the precision of pain processing network modulation. Low-frequency rTMS (LF-rTMS) protocols also show potential benefits, including reductions in headache frequency, intensity, disability and medication use, although the supporting evidence is limited and derived primarily from small and uncontrolled studies. Multifocal rTMS paradigms showed promising efficacy in episodic migraine. Considerable heterogeneity in study design, stimulation protocols, and outcome measures limited the ability to draw reliable conclusions. Frequency and localization may be important determinants of clinical success. Future research should focus on network-based, personalized stimulation protocols to potentially increase long-term therapeutic benefit.",
-      "authors": [
-        "Vasileios Siokas",
-        "Chrysoula Marogianni",
-        "Ioannis Liampas",
-        "Maria Sokratous",
-        "Daniil Tsirelis",
-        "Stavroula Dardioti",
-        "Antonia Tsika",
-        "Polyxeni Stamati",
-        "Efthimios Dardiotis"
-      ],
-      "published_date": "2026-Sep-15",
-      "indexed_date": "2026-09-30",
-      "journal": "Journal of integrative neuroscience",
-      "doi": "10.31083/jin52992",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42811900/",
-      "categories": [],
-      "keywords": [
-        "migraine disorders",
-        "motor cortex",
-        "neuromodulation",
-        "prefrontal cortex",
-        "transcranial magnetic stimulation"
-      ],
-      "publication_types": [
-        "Journal Article",
-        "Review"
-      ],
-      "extra": {
-        "prefilter_score": 35,
-        "ai": {
-          "score": 15,
-          "topic": "rTMS for Migraine Prophylaxis",
-          "reason": "A clinical review of rTMS for migraine, with no relevance to EEG analysis methodology or sleep research.",
-          "summary": "This review of 24 articles on repetitive transcranial magnetic stimulation for migraine prophylaxis reports that high-frequency rTMS over M1 or left DLPFC and some low-frequency and multifocal protocols may reduce migraine days, pain intensity, and medication use, but evidence is limited by heterogeneous study designs.",
-          "keywords": [
-            "migraine prophylaxis",
-            "repetitive transcranial magnetic stimulation",
-            "dorsolateral prefrontal cortex",
-            "motor cortex",
-            "cortical plasticity"
-          ],
-          "paper_type": "Review",
           "digest_pick": true
         }
       }
