@@ -1,6 +1,6 @@
 {
   "date": "2026-10-03",
-  "generated_at": "2026-10-02T17:58:33.414394+00:00",
+  "generated_at": "2026-10-03T00:37:14.443801+00:00",
   "window": {
     "start": "2026-10-01",
     "end": "2026-10-03"
@@ -10,18 +10,18 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 115,
+  "raw_count": 124,
   "retrieved_source_counts": {
-    "pubmed": 234,
+    "pubmed": 250,
     "biorxiv": 21,
-    "medrxiv": 2,
+    "medrxiv": 6,
     "arxiv": 4
   },
   "raw_source_counts": {
-    "pubmed": 96,
+    "pubmed": 102,
+    "medrxiv": 5,
     "biorxiv": 13,
-    "arxiv": 4,
-    "medrxiv": 2
+    "arxiv": 4
   },
   "prefiltered_count": 40,
   "analyzed_count": 40,
@@ -29,10 +29,10 @@
   "count": 40,
   "featured_count": 25,
   "source_counts": {
-    "pubmed": 28,
+    "pubmed": 27,
     "biorxiv": 8,
-    "arxiv": 3,
-    "medrxiv": 1
+    "arxiv": 2,
+    "medrxiv": 3
   },
   "errors": {},
   "ai": {
@@ -42,8 +42,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 20,
-    "newly_summarized": 20,
+    "newly_ranked": 5,
+    "newly_summarized": 5,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -54,12 +54,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 5,
-      "prompt_tokens": 17141,
-      "prompt_cache_hit_tokens": 1280,
-      "prompt_cache_miss_tokens": 15861,
-      "completion_tokens": 4189,
-      "total_tokens": 21330
+      "requests": 2,
+      "prompt_tokens": 4362,
+      "prompt_cache_hit_tokens": 640,
+      "prompt_cache_miss_tokens": 3722,
+      "completion_tokens": 1150,
+      "total_tokens": 5512
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -68,27 +68,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.024265,
+    "run_cost_cny": 0.006035,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 5,
-        "prompt_tokens": 17141,
-        "prompt_cache_hit_tokens": 1280,
-        "prompt_cache_miss_tokens": 15861,
-        "completion_tokens": 4189,
-        "total_tokens": 21330
+        "requests": 2,
+        "prompt_tokens": 4362,
+        "prompt_cache_hit_tokens": 640,
+        "prompt_cache_miss_tokens": 3722,
+        "completion_tokens": 1150,
+        "total_tokens": 5512
       },
-      "run_cost_cny": 0.024265,
+      "run_cost_cny": 0.006035,
       "daily_usage": {
-        "requests": 5,
-        "prompt_tokens": 17141,
-        "prompt_cache_hit_tokens": 1280,
-        "prompt_cache_miss_tokens": 15861,
-        "completion_tokens": 4189,
-        "total_tokens": 21330
+        "requests": 7,
+        "prompt_tokens": 21503,
+        "prompt_cache_hit_tokens": 1920,
+        "prompt_cache_miss_tokens": 19583,
+        "completion_tokens": 5339,
+        "total_tokens": 26842
       },
-      "daily_cost_cny": 0.024265,
+      "daily_cost_cny": 0.0303,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -193,46 +193,44 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42817326",
-      "title": "Wearable Sleep-Stage Classification: A Systematic Analysis of Signal Modalities, Representations, and Multimodal Fusion.",
-      "abstract": "Accurate sleep staging is essential for characterizing sleep architecture, yet conventional polysomnography limits scalable and long-term sleep monitoring. Wearable sensors offer a practical alternative, but their performance depends on the physiological modalities used and how the signals are represented. This study investigates the effects of signal modality, feature representation, and sleep-stage granularity on subject-independent wearable sleep staging. Using DREAMT, we compare handcrafted features, short-time Fourier transform (STFT) representations, and their fusion across three-, four-, and five-class tasks. Handcrafted features were modeled using a CNN-BiGRU framework, while STFT representations of BVP and accelerometry were learned using a deep time-frequency model. All DREAMT experiments were evaluated using five-fold subject-independent cross-validation, with Macro-F1 and Cohen's κ emphasized to account for class imbalance. We further evaluated optical pulse signal-based classification using the larger MESA Sleep cohort. STFT improved class-balanced performance over handcrafted features, while BVP was the strongest individual STFT modality, particularly for REM. For the three-, four-, and five-class tasks, handcrafted BVP + ACC achieved Macro-F1 scores of 0.5057, 0.4005, and 0.3366, respectively, compared with 0.6404, 0.5083, and 0.4376 using STFT. Hybrid fusion achieved Macro-F1 scores of 0.6476, 0.5108, and 0.4464, respectively. More complex fusion strategies did not improve Macro-F1 over simple concatenation. In MESA, increasing the cohort from 100 participants to the full eligible cohort improved pulse-based sleep-stage classification, although N1 and N3 remained comparatively difficult. Overall, the results show that effective signal representation and complementary physiological information are more important than simply increasing the number of modalities or model complexity.",
+      "source_id": "42826115",
+      "title": "EEG-based mental workload recognition during multi-tasking scenarios: the role of resting-state normalization and brain region of EEG features.",
+      "abstract": "EEG-based mental workload (MWL) recognition is challenged by inter-individual variability and limited model interpretability. This study investigated MWL recognition in long-term multi-tasking scenarios using resting-state EEG normalisation and regional feature analysis. Participants performed multi-tasking operations at three difficulty levels, while resting-state and task-state EEG, behavioural performance, and NASA-TLX ratings were collected. The best whole-brain model achieved 93.78% ± 0.45% accuracy under standard normalisation, while the parietal configuration retained substantial recognition capability with fewer electrodes. Resting-state normalisation changed EEG feature-importance patterns, but its effects on classification were classifier-dependent rather than uniformly beneficial. SHAP analysis identified prominent frontal and parietal contributions. The findings support interpretable and lightweight EEG-based MWL monitoring in complex operational environments.",
       "authors": [
-        "Unaza Tallal",
-        "Rupesh Agrawal",
-        "Shruti Kshirsagar"
+        "Yuchen Ji",
+        "Zongqi Liang",
+        "Jiaqi Huang",
+        "Da Tao"
       ],
-      "published_date": "2026-Sep-10",
-      "indexed_date": "2026-10-01",
-      "journal": "Sensors (Basel, Switzerland)",
-      "doi": "10.3390/s26185746",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42817326/",
+      "published_date": "2026-Oct-02",
+      "indexed_date": "",
+      "journal": "Ergonomics",
+      "doi": "10.1080/00140139.2026.2741275",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42826115/",
       "categories": [],
       "keywords": [
-        "accelerometry",
-        "deep learning",
-        "handcrafted features",
-        "multimodal fusion",
-        "photoplethysmograms",
-        "short-time Fourier transform",
-        "sleep staging",
-        "wearable sensors"
+        "EEG",
+        "brain region",
+        "individual normalisation",
+        "machine learning",
+        "mental workload recognition"
       ],
       "publication_types": [
         "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 42,
+        "prefilter_score": 81,
         "ai": {
           "score": 88,
-          "topic": "Wearable sleep staging analysis",
-          "reason": "Systematic analysis of wearable sleep staging modalities; directly relevant to sleep staging, signal representation, and transferability.",
-          "summary": "Systematically analyzed signal modality, representation, and fusion effects on subject-independent wearable sleep staging using DREAMT and MESA cohorts. STFT representations outperformed handcrafted features (e.g., five-class Macro-F1 0.4376 vs 0.3366), BVP was the strongest individual modality, and simple concatenation fusion achieved the best performance without gains from more complex strategies.",
+          "topic": "Resting-state normalization for EEG workload classification",
+          "reason": "Directly addresses signal normalization, lightweight interpretable features, regional electrode reduction, and SHAP interpretability for EEG state classification, highly transferable to sleep/vigilance staging and cross-recording normalization.",
+          "summary": "This study evaluated EEG-based mental workload recognition during multi-tasking using resting-state normalization and regional feature analysis. It achieved up to 93.78% accuracy with a whole-brain model and showed that parietal configurations retained substantial recognition capability with fewer electrodes, with SHAP identifying frontal and parietal contributions.",
           "keywords": [
-            "wearable sleep staging",
-            "signal representation",
-            "multimodal fusion",
-            "photoplethysmography",
-            "accelerometry"
+            "EEG",
+            "mental workload",
+            "resting-state normalization",
+            "brain region",
+            "SHAP"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -325,43 +323,42 @@
       }
     },
     {
-      "source": "arxiv",
-      "source_id": "2610.01284v1",
-      "title": "Model validation in machine learning: A scenario-based guide from hold-out splits to nested group cross-validation in biomedical and applied research",
-      "abstract": "Model validation estimates the performance of a complete learning procedure on new data. However, an invalid split can produce an optimistic and stable result. This tutorial reviews hold-out validation, train/validation/test designs, repeated random subsampling, k-fold and repeated stratified cross-validation, leave-one-out and leave-p-out schemes, group-aware validation, and nested group cross-validation. General machine-learning principles are linked to EEG epochs, paired-eye OCT images, repeated clinical measurements, and multicenter data. Eight controlled scenarios compare flawed and leakage-safe designs: seven use locked confusion matrices with auditable metrics, and one uses a reproducible repeated-study simulation. The scenarios cover global feature selection, normalization leakage, dependent records, center mixing, repeated test-set use, and estimator instability. Bias, variance, metric aggregation, uncertainty, and computational cost are also examined. A data-size matrix, a decision tree, and reporting checklists are provided. Reproducible MATLAB templates and scikit-learn counterparts are included. The results show that no validation method is universally best. The independent unit must match the intended deployment target. Every data-dependent operation must also exclude the observations used for performance estimation.",
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.10.01.26364474",
+      "title": "Within-cohort discrimination and cross-cohort transfer of EEG-based ADHD classifiers: An exploratory two-cohort evaluation",
+      "abstract": "We evaluated whether participant-separated within-cohort discrimination was retained when electroencephalography (EEG) classifiers for attention-deficit/hyperactivity disorder (ADHD) were applied to a different population and recording task. This exploratory reanalysis included 121 children performing a visual task and 79 adults recorded during eyes-open rest after basic channel screening. Both cohorts used Cz/F4, 128 Hz, and the first fifteen non-overlapping 2-second epochs per participant. Fixed logistic regression and random forest classifiers used spectral, amplitude-derived, and combined features. Internal evaluation used five repetitions of five-fold participant-grouped cross-validation; bidirectional transfer fitted transformations and classifiers only on the source cohort. Adult spectral balanced accuracy (BA) was 0.9519-0.9546, compared with 0.5504-0.5664 in children. Adult spectral logistic regression exceeded all 999 internal label permutations (Monte Carlo p=0.001; within-family Holm-adjusted p=0.002). Paired spectral-minus-amplitude conditional intervals excluded zero in adults but spanned zero in children. Cross-cohort spectral BA was 0.3584-0.4675, with area under the receiver operating characteristic curve (AUC) of 0.0309-0.3857 in the unchanged score direction. Increasing pediatric source-epoch budgets moved random-forest AUC toward 0.5, whereas logistic-regression AUC remained below 0.1. Strong adult internal discrimination thus coexisted with reverse cross-cohort ranking. These findings characterize the evaluated pipelines, not clinical diagnostic utility or a unique mechanism: age, task, and acquisition differences were not separated, target results had previously been inspected, and conditional intervals excluded model-refitting uncertainty.",
       "authors": [
-        "Mehmet Baygin",
-        "Sengul Dogan",
-        "Turker Tuncer"
+        "Liang, B."
       ],
-      "published_date": "2026-10-01",
-      "indexed_date": "2026-10-01",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2610.01284v1",
+      "published_date": "2026-10-02",
+      "indexed_date": "2026-10-02",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.10.01.26364474",
+      "url": "https://doi.org/10.64898/2026.10.01.26364474",
       "categories": [
-        "cs.LG",
-        "cs.AI"
+        "psychiatry and clinical psychology"
       ],
       "keywords": [],
       "publication_types": [
         "Preprint"
       ],
       "extra": {
-        "prefilter_score": 46,
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 91,
         "ai": {
-          "score": 85,
-          "topic": "Model Validation & Cross-Validation for Biomedical Data",
-          "reason": "Directly relevant to ensuring reproducibility and avoiding leakage in EEG and neural time-series analysis, with practical MATLAB/scikit-learn templates adaptable to animal sleep experiments.",
-          "summary": "This tutorial reviews model validation schemes for machine learning, from hold-out splits to nested group cross-validation, linking general principles to biomedical data such as EEG epochs, OCT images, repeated clinical measurements, and multicenter datasets. Using eight controlled scenarios and provided MATLAB/scikit-learn templates, it shows that no validation method is universally best and that the independent unit and all data-dependent operations must match the intended deployment target to avoid leakage and optimistic performance estimates.",
+          "score": 82,
+          "topic": "Cross-cohort EEG classifier transfer",
+          "reason": "Explores within-cohort discrimination and cross-cohort transfer of EEG classifiers using lightweight spectral/amplitude features and logistic regression/random forest, directly relevant to generalizable, reproducible, and transferable neural time-series methods.",
+          "summary": "This exploratory two-cohort reanalysis tested within-cohort discrimination and cross-cohort transfer of EEG-based ADHD classifiers. Adult spectral classifiers achieved high balanced accuracy (0.95) but cross-cohort spectral balanced accuracy dropped to 0.36-0.47, with reverse cross-cohort ranking, indicating strong internal discrimination did not generalize across cohorts.",
           "keywords": [
-            "model validation",
-            "nested group cross-validation",
-            "data leakage",
-            "biomedical machine learning",
-            "group-aware validation"
+            "EEG",
+            "ADHD",
+            "cross-cohort transfer",
+            "classifier",
+            "balanced accuracy"
           ],
-          "paper_type": "Methods/Resource",
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -793,6 +790,104 @@
       }
     },
     {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.09.30.26363850",
+      "title": "REM sleep EEG slowing signals basal forebrain integrity in older adults with subjective and mild cognitive impairment",
+      "abstract": "Introduction The basal forebrain is an early site of pathology in Alzheimer's disease (AD). Within this region, the nucleus basalis of Meynert (NbM) provides the primary cholinergic input to the neocortex and supports cortical activation during rapid eye movement (REM) sleep. REM electroencephalography (EEG) slowing is observed in older adults with AD and amnestic mild cognitive impairment (MCI). This study examined the relationship between REM EEG slowing and NbM volume, and whether it differed by cognitive status, sex, or sleep apnea severity. Methods Participants aged [&le;] 60 years with cognitive concerns underwent neuropsychological and medical assessments, polysomnography, and magnetic resonance imaging (MRI). REM EEG slowing was quantified as the ratio of delta and theta (<8Hz) to alpha, sigma, and beta (8-32Hz) power. Bilateral NbM and Ch1-3 volume were derived from T1-weighted MRI images. Multiple linear regression and moderation analyses adjusted for age, sex, and sleep apnea severity. Exploratory analyses examined associations between NbM volume, sleep macroarchitecture, and memory. Results The sample comprised 116 participants (59.5% female; mean age = 70.5 years, 64.7% MCI). Greater REM EEG slowing was associated with smaller NbM volume (all p < 0.05). Although moderation effects were not significant after FDR correction, within-group analyses suggested a stronger relationship in MCI. Smaller NbM volume was associated with longer sleep latency and poorer episodic memory (all p < 0.05). Discussion REM EEG slowing may reflect early NbM degeneration and provide a non-invasive biomarker of basal forebrain integrity in older adults with cognitive concerns. Longitudinal studies are required to establish its prognostic value.",
+      "authors": [
+        "Lam, A.",
+        "Espinosa, N.",
+        "Matar, E.",
+        "Cross, N.",
+        "Fripp, J.",
+        "Xia, Y.",
+        "Andre, C.",
+        "Coulson, E.",
+        "Taranto, R.",
+        "Grunstein, R.",
+        "D'Rozario, A. L.",
+        "Naismith, S. L."
+      ],
+      "published_date": "2026-10-02",
+      "indexed_date": "2026-10-02",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.09.30.26363850",
+      "url": "https://doi.org/10.64898/2026.09.30.26363850",
+      "categories": [
+        "neurology"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 74,
+        "ai": {
+          "score": 64,
+          "topic": "REM sleep EEG slowing and basal forebrain integrity",
+          "reason": "Relevant animal/sleep-adjacent EEG spectral analysis and sleep-state-specific slowing, but primarily clinical biomarker research rather than computational method development.",
+          "summary": "This study examined the relationship between REM sleep EEG slowing and basal forebrain (nucleus basalis of Meynert) volume in older adults with subjective and mild cognitive impairment. Greater REM EEG slowing was associated with smaller NbM volume, and smaller NbM volume was linked to longer sleep latency and poorer episodic memory.",
+          "keywords": [
+            "REM sleep",
+            "EEG slowing",
+            "basal forebrain",
+            "nucleus basalis of Meynert",
+            "mild cognitive impairment"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.10.01.26364438",
+      "title": "Prefrontal EEG Delta-Beta Coupling Marks Depressed State in Adult Siblings",
+      "abstract": "Major depressive disorder (MDD) is marked by disorganization in electrophysiological brain networks, yet it remains unclear whether such disorganization reflects the state-dependent pathological effects or a trait-like vulnerability. We analyzed resting-state electroencephalographic (EEG) delta-beta phase-amplitude coupling (PAC) in two sibling cohorts. Current-MDD families included individuals with current MDD and their currently unaffected siblings (n=36), and remitted-MDD families comprised individuals with remitted MDD and their lifetime unaffected siblings (n=110). Delta-Betahigh PAC was significantly elevated (pcorr[&le;]0.05) over the left-medial frontal region in participants with current MDD relative to their unaffected siblings. In the remitted-MDD families, no significant differences were observed. Regrouping all individuals irrespective of family ties into current MDD, remitted MDD, and never-depressed controls confirmed significantly elevated frontal delta-Betahigh PAC at rest in the current-MDD subgroup compared to other subgroups. Overall, delta-Betahigh coupling reflects the depressive state rather than a trait-like or familial vulnerability.",
+      "authors": [
+        "Elhamiasl, M.",
+        "Li, L. Y.",
+        "Maldonado Osorio, F. A.",
+        "Rappaport, B. I.",
+        "Shankman, S. A.",
+        "Alekseichuk, I."
+      ],
+      "published_date": "2026-10-02",
+      "indexed_date": "2026-10-02",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.10.01.26364438",
+      "url": "https://doi.org/10.64898/2026.10.01.26364438",
+      "categories": [
+        "psychiatry and clinical psychology"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 60,
+        "ai": {
+          "score": 62,
+          "topic": "Prefrontal EEG delta-beta phase-amplitude coupling in depression",
+          "reason": "Uses resting-state EEG and phase-amplitude coupling, which are transferable time-frequency methods, but the application is clinical depression biomarker discovery rather than sleep/vigilance computational methods.",
+          "summary": "This study analyzed resting-state EEG delta-beta phase-amplitude coupling (PAC) in sibling cohorts to distinguish state versus trait markers of major depressive disorder. Delta-beta-high PAC was elevated over the left-medial frontal region in current MDD but not in remitted MDD or unaffected siblings, indicating it reflects depressive state rather than familial vulnerability.",
+          "keywords": [
+            "delta-beta coupling",
+            "phase-amplitude coupling",
+            "EEG",
+            "major depressive disorder",
+            "depressive state"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
       "source": "pubmed",
       "source_id": "42819592",
       "title": "Blarcamesine improves EEG biomarkers of cortical dysfunction in a mouse model of fragile X syndrome.",
@@ -1023,71 +1118,6 @@
             "burst firing",
             "Neuropixels",
             "ketanserin"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "medrxiv",
-      "source_id": "10.64898/2026.04.13.26350107",
-      "title": "Common Electrophysiology Biomarkers Collected at Home Robustly Track Depression Recovery With Deep Brain Stimulation",
-      "abstract": "Subcallosal cingulate cortex (SCC) deep brain stimulation (DBS) can provide relief for individuals with Treatment Resistant Depression (TRD), but ongoing clinical management remains challenging due to nonspecific symptom fluctuations that can obscure core depression recovery on standard rating scales. Objective, stable biomarkers that selectively track the therapeutic effects of SCC DBS are therefore essential for developing principled decision support systems to guide stimulation adjustments. Recent bidirectional DBS systems enable chronic recording of local field potentials (LFPs) and prior work using the Activa PC+S device identified an electrophysiological signature of stable clinical recovery. However, translation to practical clinical deployment requires demonstrating that this biomarker is robustly generalizable, specific to the impact of the DBS therapy, and deployable in real-world recording contexts. To address this need, we developed an at-home SCC LFP data collection platform (built on the Medtronic Summit RC+S system) enabling at home data collection for a new cohort of ten SCC DBS participants with TRD (ClinicalTrials.gov identifier NCT04106466). Using longitudinal LFP recordings collected from this system, we report findings demonstrating that the previously reported biomarker of stable recovery generalizes across subject cohorts and devices without any model retraining, is robust to common potential confounds (including time of day and stimulation status), and shows symptom specificity, sensitivity and stability necessary to support clinical decision making. Across both cohorts, biomarker changes show relationships to pre-DBS white matter structure and network function measured using diffusion MRI and resting-state functional MRI (rsfMRI). These findings replicating and extending previous results support the biomarker's utility as a foundation for scalable, electrophysiology-informed decision support in SCC DBS.",
-      "authors": [
-        "Fitoz, E. C.",
-        "Alagapan, S.",
-        "Cha, J.",
-        "Choi, K. S.",
-        "Figee, M.",
-        "Kopell, B.",
-        "Obatusin, M.",
-        "Heisig, S.",
-        "Nauvel, T.",
-        "Razavilar, A.",
-        "Sarikhani, P.",
-        "Trivedi, I.",
-        "Gowatsky, J.",
-        "Alexander, J.",
-        "Guignon, R.",
-        "Khalid, M.",
-        "Forestal, G. B.",
-        "Song, H. N.",
-        "Dennison, T.",
-        "O'Neill, S.",
-        "Karjagi, S.",
-        "Waters, A. C.",
-        "Riva-Posse, P.",
-        "Mayberg, H. S.",
-        "Rozell, C. J."
-      ],
-      "published_date": "2026-10-01",
-      "indexed_date": "2026-10-01",
-      "journal": "medrxiv",
-      "doi": "10.64898/2026.04.13.26350107",
-      "url": "https://doi.org/10.64898/2026.04.13.26350107",
-      "categories": [
-        "psychiatry and clinical psychology"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {
-        "version": "2",
-        "published": "NA",
-        "prefilter_score": 44,
-        "ai": {
-          "score": 50,
-          "topic": "Depression DBS biomarkers",
-          "reason": "Home electrophysiology biomarkers for depression; longitudinal LFP tracking, but clinical and not sleep/animal-focused.",
-          "summary": "The study developed an at-home subcallosal cingulate cortex (SCC) LFP data collection platform for ten participants with treatment-resistant depression receiving deep brain stimulation (DBS), testing whether a previously reported electrophysiological biomarker of stable recovery generalizes across cohorts and devices without retraining. The biomarker was found to be robust to confounds such as time of day and stimulation status, showed symptom specificity and stability, and its changes related to pre-DBS white matter structure and network function.",
-          "keywords": [
-            "deep brain stimulation",
-            "subcallosal cingulate cortex",
-            "treatment-resistant depression",
-            "local field potentials",
-            "electrophysiology biomarker"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1468,6 +1498,61 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42826206",
+      "title": "Highly stretchable, hair-compatible multichannel neural interface with time-stable hydrogel for high-fidelity long-term EEG sensing.",
+      "abstract": "Reliable brain-computer interfaces (BCIs) require electroencephalography (EEG) sensors that maintain conformal, low-impedance contact through hair, motion, and repeated use. Here, we present MindStretcH, a stretchable and hair-compatible EEG platform integrating a kirigami-patterned elastomeric mesh, deformable eutectic gallium-indium (EGaIn) interconnects, and detachable hydrogel-based conical electrodes. The system adapts to variations in head geometry, preserves electrical performance under substantial mechanical deformation, and maintains stable electrode-scalp contact over prolonged use. Longitudinal motor-imagery recordings and repeated online BCI experiments showed consistent task-related EEG activity without measurable deterioration in recording quality. These results establish MindStretcH as a reusable platform for long-term EEG monitoring and BCI applications in laboratory, clinical, and home settings.",
+      "authors": [
+        "Ju-Chun Hsieh",
+        "Mengmeng Yao",
+        "Hussein Alawieh",
+        "Victoria Koptelova",
+        "Satyam Kumar",
+        "Kai Wing Kevin Tang",
+        "Wenliang Wang",
+        "Jinmo Jeong",
+        "Hong Ding",
+        "Zoya Ahmad",
+        "Derek Wang",
+        "Tlali Engrav",
+        "Reyna Wang",
+        "Ashwin Gupta",
+        "Weilong He",
+        "William D Moscoso-Barrera",
+        "Ayden Grimes",
+        "José Del R Millán",
+        "Huiliang Wang"
+      ],
+      "published_date": "2026-Oct-02",
+      "indexed_date": "2026-10-02",
+      "journal": "Science advances",
+      "doi": "10.1126/sciadv.aee1540",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42826206/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 74,
+        "ai": {
+          "score": 35,
+          "topic": "Stretchable hydrogel EEG sensor hardware",
+          "reason": "Hardware/sensor engineering for long-term EEG contact; useful for recording quality but not a computational, algorithmic, or analysis method aligned with the researcher's core focus.",
+          "summary": "This paper presents MindStretcH, a stretchable and hair-compatible EEG platform integrating a kirigami-patterned elastomeric mesh, deformable EGaIn interconnects, and detachable hydrogel-based conical electrodes. The system maintained stable electrode-scalp contact and consistent task-related EEG activity in longitudinal motor-imagery and repeated online BCI experiments without measurable deterioration.",
+          "keywords": [
+            "EEG sensor",
+            "hydrogel electrode",
+            "stretchable neural interface",
+            "brain-computer interface",
+            "motor imagery"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42825325",
       "title": "Blunted Neural Error Monitoring Amplifies the Adverse Effect of Childhood Maltreatment on Depressive Symptoms: Time-Domain and Time-Frequency Analysis.",
       "abstract": "Performance monitoring (PM) has been suggested as a promising cognitive factor to explain individual differences in the association between early maltreatment and depression, yet evidence remains limited. From a monitoring vs. executive perspective, this study thus comprehensively examined whether and how the neurophysiological (ERN and its time-frequency decomposition components) and behavioral (posterror accuracy) indicators of PM interacted with childhood maltreatment on young adult depressive symptoms. A total of 192 Chinese university students (Mage = 21.08 ± 1.91 years; 59.4% girls) completed self-report questionnaires and an Eriksen Flanker task while EEG activity was recorded. The results showed that blunted vs. heightened ERN and error-related delta were more likely to amplify the adverse effect of childhood maltreatment, especially emotional neglect, on young adult depressive symptoms. However, error-related theta and posterror accuracy did not show such interaction effects. The findings showed strong robustness across a series of sensitivity analyses. The results provide preliminary evidence that blunted error monitoring but not executive ability, reflected by ERN and error-related delta, may be a neurobiological moderator that underlies maltreatment-related depression, which deepens the cognitive control underpinnings of depression. However, given the high-functioning sample, caution is warranted when generalizing these findings in high-risk clinical samples.",
@@ -1689,54 +1774,6 @@
             "external validation"
           ],
           "paper_type": "Systematic Review",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42817506",
-      "title": "I-GraphECG: Observability-Based Lead Selection and Interpretable Disease Prediction from the 12-Lead ECG Using a Gray-Box Graph Electrophysiology Surrogate.",
-      "abstract": "Wearable ECG increasingly records fewer than the standard 12 leads, so a model must be accurate, interpretable, and explicit about the information lost under lead reduction. I-GraphECG is a gray-box graph electrophysiology surrogate: an encoder maps a 12-lead median beat to a bounded vector of 47 equivalent electrophysiological descriptors, a constrained eight-node conduction-graph decoder reconstructs the signal, and disease prediction uses the descriptors rather than the waveform. On a clean PTB-XL four-class subset, median beats are reconstructed at median correlation 0.91, and macro-AUROC reaches ≈0.90, near the black-box references (0.920-0.924). Myocardial infarction is under-detected (recall ≈ 0.49), consistent with the ST-source's low observability, so the model must not be used as a stand-alone rule-out for infarction. Observability-based sensor selection makes explicit what each lead set can resolve: lead removal provably cannot lower any Cramér-Rao bound; under the data-derived noise models, every optimal three-lead set retains one of the precordial leads V2-V5, and the conventional reduced set is never observability-optimal across seven noise models, though the exact montage is noise-model-dependent. Reconstruction and the observability analysis of the fixed model transfer zero-shot to US and Chinese cohorts; parameter-only disease prediction degrades externally, and infarction, untestable in those cohorts, remains internally demonstrated.",
-      "authors": [
-        "Limin Zhao",
-        "Hongtao Xu",
-        "Pengjian Wang",
-        "Weicheng Fu",
-        "Ningning Zhang"
-      ],
-      "published_date": "2026-Sep-19",
-      "indexed_date": "2026-10-01",
-      "journal": "Sensors (Basel, Switzerland)",
-      "doi": "10.3390/s26185933",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42817506/",
-      "categories": [],
-      "keywords": [
-        "electrocardiogram",
-        "graph electrophysiology",
-        "interpretable machine learning",
-        "observability",
-        "optimal sensor selection",
-        "wearable ECG"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 44,
-        "ai": {
-          "score": 30,
-          "topic": "ECG lead selection",
-          "reason": "ECG graph electrophysiology surrogate; outside EEG/neural time-series focus.",
-          "summary": "I-GraphECG is a gray-box graph electrophysiology surrogate that encodes a 12-lead median beat into 47 equivalent electrophysiological descriptors, decodes via a constrained eight-node conduction graph, and predicts disease from descriptors rather than waveform. On a clean PTB-XL four-class subset, median beats were reconstructed at median correlation 0.91 and macro-AUROC reached approximately 0.90 versus black-box references of 0.920–0.924; myocardial infarction recall was approximately 0.49, and observability-based lead selection showed every optimal three-lead set retained one precordial lead (V2–V5) and the conventional reduced set was never observability-optimal across seven noise models, with reconstruction and observability analysis transferring zero-shot to US and Chinese cohorts.",
-          "keywords": [
-            "electrocardiogram",
-            "graph electrophysiology",
-            "observability-based lead selection",
-            "interpretable machine learning",
-            "wearable ECG"
-          ],
-          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -1970,55 +2007,6 @@
             "cortical visual processing"
           ],
           "paper_type": "Clinical Study",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42824381",
-      "title": "Anti-KLHL11 antibody encephalitis without detectable malignancy: a case report and literature review.",
-      "abstract": "Anti-Kelch-like protein 11 (KLHL11) antibody encephalitis, first reported in 2019, is a rare autoimmune disorder typically associated with seminoma. This disorder exhibits a striking male predominance, with cerebellar ataxia as the hallmark manifestation, whereas seizures and altered consciousness occur less frequently. Cases without detectable malignancy account for fewer than 20% of reports, and their clinical manifestations, treatment responses, and outcomes have not been systematically characterized. We report a case of a 62-year-old male with anti-KLHL11 encephalitis and no detectable malignancy, who initially presented with recurrent generalized tonic-clonic seizures (GTCS), followed by intermittent seizures and progressive neurological deterioration. A systematic search of published cases with narrative synthesis was conducted to analyze the clinical presentation, neuroimaging features, treatment responses, and outcomes of similar reported cases. We analyzed 13 cases of anti-KLHL11 encephalitis without detectable malignancy. The most common clinical manifestations were ataxia (9/13), dysarthria (8/13), and gaze palsy/nystagmus (6/13). Intracranial pressure (ICP) (median: 165 mmH2O, range: 60-200 mmH2O), cerebrospinal fluid (CSF) leukocyte count (median: 9 × 106/L, range: 1-46 × 106/L), and CSF protein level (median: 0.50 g/L, range: 0.27-1.32 g/L) were also measured. The median serum anti-KLHL11 antibody titer was 1:100 (range: 1:30-1:160,000), while CSF anti-KLHL11 antibody titer was 1:10 (range: 1:1-1:32). Electroencephalography (EEG) was normal in 2 cases, showed epileptiform discharges in 2, diffuse background slowing in 2, and sleep-related central hypoventilation in 1. Brain magnetic resonance imaging (MRI) was unremarkable in 3 cases. Seven cases (53.8%) presented with T2/fluid-attenuated inversion recovery (FLAIR) hyperintensities, 4 cases (30.8%) showed cerebellar/brainstem atrophy, 1 case (7.7%) presented with acute cerebral infarction. Following immunotherapy, 6 patients achieved clinical improvement, 3 patients remained clinically stable, 4 deteriorated clinically, of whom 2 died of central respiratory failure. Anti-KLHL11 encephalitis without detectable malignancy cannot be reliably distinguished from tumor-positive cases based solely on clinical symptoms and neuroimaging findings. The gold standard for differential diagnosis remains comprehensive tumor screening and long-term follow-up. Extensive white matter and deep gray matter involvement, together with prominent seizures, may be more prevalent in patients without detectable malignancy, although these observations require validation in larger comparative cohorts.",
-      "authors": [
-        "Chenxin Yao",
-        "Mengtan Cai",
-        "Zixuan Shen",
-        "Xiaoxu Zhang",
-        "Jie Cao"
-      ],
-      "published_date": "2026",
-      "indexed_date": "2026-10-02",
-      "journal": "Frontiers in immunology",
-      "doi": "10.3389/fimmu.2026.1913121",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42824381/",
-      "categories": [],
-      "keywords": [
-        "KLHL11 antibody",
-        "cerebellar ataxia",
-        "epileptic seizures",
-        "immunotherapy",
-        "occult malignancy"
-      ],
-      "publication_types": [
-        "Journal Article",
-        "Case Reports",
-        "Review"
-      ],
-      "extra": {
-        "prefilter_score": 47,
-        "ai": {
-          "score": 10,
-          "topic": "Anti-KLHL11 encephalitis case report",
-          "reason": "Rare autoimmune encephalitis case report and literature review; clinical neurology with no EEG methodology, sleep, or computational relevance.",
-          "summary": "The paper reports a 62-year-old male with anti-KLHL11 antibody encephalitis without detectable malignancy who presented with recurrent generalized tonic-clonic seizures, and it systematically reviews 13 published cases. Among reviewed cases, ataxia, dysarthria, and gaze palsy/nystagmus were common; after immunotherapy 6 improved, 3 remained stable, and 4 deteriorated, with 2 deaths from central respiratory failure.",
-          "keywords": [
-            "KLHL11 antibody",
-            "autoimmune encephalitis",
-            "cerebellar ataxia",
-            "epileptic seizures",
-            "immunotherapy"
-          ],
-          "paper_type": "Case Report",
           "digest_pick": true
         }
       }
