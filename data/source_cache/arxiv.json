@@ -1,10 +1,143 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-10-06T01:49:54.926355+00:00",
+  "fetched_at": "2026-10-06T18:32:31.618905+00:00",
   "window": {
-    "start": "2026-10-04",
-    "end": "2026-10-06"
+    "start": "2026-10-05",
+    "end": "2026-10-07"
   },
-  "count": 0,
-  "papers": []
+  "count": 5,
+  "papers": [
+    {
+      "source": "arxiv",
+      "source_id": "2610.06823v1",
+      "title": "Deep Learning for Sleep Heart Rate Estimation from Accelerometers: Toward Population-Scale Cardiac Insight Without Optical Sensors",
+      "abstract": "Large longitudinal cohorts often contain wrist accelerometry without optical heart-rate sensing, motivating recovery of cardiac information from motion signals already collected during sleep. We present SeqSmoother, a transformer-based temporal corrector for sleep heart rate (HR) estimation from wrist accelerometry. SeqSmoother combines spectral descriptors with an intermediate Nightbeat-derived frequency anchor and a physics-motivated sub-harmonic feature designed to identify harmonic frequency lock-on. All inference-time features are derived from wrist accelerometry, while ECG is used only to construct reference HR labels and training-label quality weights. We evaluate SeqSmoother using 13 participant-disjoint held-out folds and compare it with the official Nightbeat implementation under a matched 60-s window and 15-s step protocol. Across all out-of-fold predictions, SeqSmoother achieved a participant-macro MAE of 1.60 bpm. On Nightbeat-retained matched intervals, Nightbeat achieved lower absolute error than SeqSmoother (0.615 versus 1.091 bpm), while SeqSmoother provided estimates over a larger portion of the eligible recording; Nightbeat produced final estimates for 72.85% of the SeqSmoother-eligible out-of-fold grid. Separately, the proposed sub-harmonic ratio achieved an AUROC of 0.972 for identifying reference-defined harmonic lock-on candidates. These findings reveal an accuracy-availability trade-off between learned temporal modeling and quality-gated signal processing while providing empirical support for a physics-informed approach to identifying frequency-tracking failures in accelerometer-based sleep HR estimation.",
+      "authors": [
+        "Tanbin Islam Rohan",
+        "Pranjol Sen Gupta",
+        "Tanusree Debi",
+        "Nazmus Sakib"
+      ],
+      "published_date": "2026-10-05",
+      "indexed_date": "2026-10-05",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.06823v1",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.06726v1",
+      "title": "Decoupling Time and Space: A Temporally Conditioned Refinement for EEG Source Imaging",
+      "abstract": "Electroencephalography (EEG) offers millisecond temporal resolution, but inferring underlying neural sources is a severely ill-posed spatial inverse problem. While deep learning has advanced spatial reconstruction, current architectures face a critical dilemma: frame-by-frame models discard vital temporal context, whereas full 4D spatiotemporal networks introduce an architectural trade-off between reconstruction accuracy and inference cost. We propose a novel two-stream framework that explicitly decouples global temporal representation learning from per-time-point spatial refinement. A Transformer-based Temporal Condition Encoder processes the entire EEG sequence via factorized spatiotemporal attention, retaining sensor-resolved features. A fixed inverse then maps these features into source-indexed conditioning for a per-timestep Source-Space Transformer or volumetric convolutional refiner. Extensive evaluations on realistic synthetic data demonstrate that this temporal prior dramatically improves spatial localization, outperforming classical and spatiotemporal baselines, particularly in high-noise and multi-source regimes. Training across diverse leadfields and explicit operator mismatches improves transfer to unseen head geometries and brings template-based reconstruction closer to subject-specific inversion. Furthermore, we apply the model trained only on synthetic EEG data to real-world EEG. A logistic regressor fit on source power differences in eyes-open, eyes-closed conditions successfully decodes age groups.",
+      "authors": [
+        "Marco Morik",
+        "Jesse Palarus",
+        "Carmen Vidaurre",
+        "Klaus-Robert Müller",
+        "Shinichi Nakajima"
+      ],
+      "published_date": "2026-10-05",
+      "indexed_date": "2026-10-05",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.06726v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.06520v1",
+      "title": "Conditional Flow Matching for Single-Neuron Electrophysiology: Capturing Multimodal Responses Across Stimuli",
+      "abstract": "Neurons of the brain exhibit a rich repertoire of electrophysiology dynamics with the same repeated stimulus eliciting very different voltage responses from the same cell. One common approach in biophysically detailed models is to capture this variability through ensembles of deterministic parametrizations, at a cost of hundreds of thousands of CPU hours. Existing machine learning surrogates inherit the same limitation, where a stimulus is mapped to a single voltage response. We address this challenge by learning a conditional generative model for single-neuron electrophysiology, using flow matching with a velocity field conditioned on the input current. On biophysically detailed models of two human cortical interneuron types, the generated responses closely reproduce the electrophysiological feature distributions, spike-time structure, and excitability profiles, even matching the experimental recordings from the corresponding human cortical neurons. Near the firing threshold, firing and non-firing responses coexist at the same stimulus amplitude, and at high amplitudes, ensembles may split into low- and high-firing modes near depolarization block. We show that our model recovers both modes in each case, while a neural operator baseline suppresses spiking near threshold and blurs the gap between modes at depolarization block.",
+      "authors": [
+        "Cameron Schofield",
+        "Luca Ghafourpour",
+        "Philip H. Wong",
+        "Costas A. Anastassiou",
+        "Richard E. Turner"
+      ],
+      "published_date": "2026-10-05",
+      "indexed_date": "2026-10-05",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.06520v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.06315v1",
+      "title": "SPDAlign: Interpretable Riemannian Alignment for EEG Forward Modeling Shifts",
+      "abstract": "Electroencephalography (EEG) based brain-computer interfaces enable direct brain-to-device communication for applications such as rehabilitation and communication. However, their practical utility is often limited as the non-stationary nature of the EEG data introduces distribution shifts across domains (e.g., sessions and subjects). Adapting machine learning models to be invariant to these shifts in an unsupervised way, without using costly labeled calibration data, would drastically improve the utility of EEG data. In this work, we use a classic generative model of EEG to study distribution shifts introduced by the domain-specific forward process, which is associated with factors such as head geometry. We theoretically show that such distribution shifts can be recovered solely through linear transformations on the Symmetric Positive Definite manifold. Building on this insight, we propose SPDAlign, an interpretable framework for promoting domain-invariant EEG learning. SPDAlign first aligns the domain-specific means and corrects global rotations across domains using a recent optimal transport technique called Wasserstein Procrustes. We systematically study the proposed approach through simulations and demonstrate its competitive performance on extensive public EEG datasets. Additionally, SPDAlign is a globally linear framework and is intrinsically interpretable, so that the framework can identify frequency ranges of interest, determine the spatial patterns reflecting source-sensor relationships, and address cross-subject variability.",
+      "authors": [
+        "Shanglin Li",
+        "Shiwen Chu",
+        "Okan Koç",
+        "Chenyu Liu",
+        "Qibin Zhao",
+        "Motoaki Kawanabe",
+        "Mitsuo Kawato",
+        "Yi Ding"
+      ],
+      "published_date": "2026-10-05",
+      "indexed_date": "2026-10-05",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.06315v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.05919v1",
+      "title": "Non-invasive Seizure Detection Using Wearable Wrist-worn Accelerometry and Deep Learning",
+      "abstract": "Seizure monitoring and detection are crucial for reducing the morbidity and mortality associated with seizures. Current epilepsy care, often involving expensive video-electroencephalography (VEEG) monitoring, requires specialized expertise and is limited to in-hospital settings, and intrusive in nature. Seizure diaries, on the other hand, suffer from unreliability due to under-reporting, leading to incorrect therapeutic decisions. Wearable non-invasive seizure detection may offer a more tolerable and feasible solution for long-term ambulatory monitoring. This study explores a wearable remote monitoring system utilizing a single wrist-worn accelerometer device and capable of detecting multiple types of seizures, including shorter duration events. We enrolled 79 patients under video-electroencephalography monitoring to wear accelerometer devices and collect data. Concurrent VEEG recordings were reviewed by board-certified epileptologists to produce annotations, including seizure onset, offset, and seizure type. Using this data, we constructed a deep neural network based on the time-series ResNet architecture, which could discriminate among seizure and non-seizure events. Our proposed approach achieved a seizure detection sensitivity of 95.65% and an overall false alarm rate of 0.15/24 hours during the evaluation, which spanned 5576 hours of total recording. Additionally, it resulted in an area under the receiver operating characteristic curve (AUC-ROC) of 0.98 and an area under the precision-re call curve (AUC-PRC) of 0.67 when averaged over 20 patients who experienced 46 convulsive seizures. These promising results suggest that the proposed seizure detection system can be effectively used for long-term ambulatory seizure monitoring. Future steps include validating our findings in larger datasets and assessing the utility of detection for additional seizure types.",
+      "authors": [
+        "Nilushika Udayangani Hewa Dehigahawattage",
+        "Kishor Nandakishor",
+        "Marimuthu Palaniswami"
+      ],
+      "published_date": "2026-10-05",
+      "indexed_date": "2026-10-05",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.05919v1",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    }
+  ]
 }
