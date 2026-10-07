@@ -1,28 +1,81 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-10-07T00:54:47.674952+00:00",
+  "fetched_at": "2026-10-07T19:02:06.419216+00:00",
   "window": {
-    "start": "2026-10-05",
-    "end": "2026-10-07"
+    "start": "2026-10-06",
+    "end": "2026-10-08"
   },
   "count": 5,
   "papers": [
     {
       "source": "arxiv",
-      "source_id": "2610.06823v1",
-      "title": "Deep Learning for Sleep Heart Rate Estimation from Accelerometers: Toward Population-Scale Cardiac Insight Without Optical Sensors",
-      "abstract": "Large longitudinal cohorts often contain wrist accelerometry without optical heart-rate sensing, motivating recovery of cardiac information from motion signals already collected during sleep. We present SeqSmoother, a transformer-based temporal corrector for sleep heart rate (HR) estimation from wrist accelerometry. SeqSmoother combines spectral descriptors with an intermediate Nightbeat-derived frequency anchor and a physics-motivated sub-harmonic feature designed to identify harmonic frequency lock-on. All inference-time features are derived from wrist accelerometry, while ECG is used only to construct reference HR labels and training-label quality weights. We evaluate SeqSmoother using 13 participant-disjoint held-out folds and compare it with the official Nightbeat implementation under a matched 60-s window and 15-s step protocol. Across all out-of-fold predictions, SeqSmoother achieved a participant-macro MAE of 1.60 bpm. On Nightbeat-retained matched intervals, Nightbeat achieved lower absolute error than SeqSmoother (0.615 versus 1.091 bpm), while SeqSmoother provided estimates over a larger portion of the eligible recording; Nightbeat produced final estimates for 72.85% of the SeqSmoother-eligible out-of-fold grid. Separately, the proposed sub-harmonic ratio achieved an AUROC of 0.972 for identifying reference-defined harmonic lock-on candidates. These findings reveal an accuracy-availability trade-off between learned temporal modeling and quality-gated signal processing while providing empirical support for a physics-informed approach to identifying frequency-tracking failures in accelerometer-based sleep HR estimation.",
+      "source_id": "2610.08534v1",
+      "title": "How Bregman Divergences Shape Shampoo",
+      "abstract": "Understanding the principles behind Shampoo has recently guided the development of more effective neural network optimizers. These methods learn a preconditioner by optimizing the Frobenius or Kullback-Leibler (KL) divergence against the gradient second moment. In this work, we investigate how the choice of divergence shapes preconditioning, which remains unclear and blocks further improvements. To do so, we develop a unified Bregman divergence framework that connects all popular divergences, allowing us to study them jointly. Through empirical spectral analysis of gradient second moments, we examine how divergence choice shapes Kronecker approximation and interacts with finite-sample error in preconditioning. We find that some divergences can better compensate for finite-sample underestimation of the empirical second moment, helping explain the differing behavior of their corresponding Shampoo variants. We further validate this explanation through GPT-2 pretraining experiments. By connecting divergence choice to practical training behavior, we believe our framework provides principled guidance for understanding the foundations of, and further improving, Shampoo.",
       "authors": [
-        "Tanbin Islam Rohan",
-        "Pranjol Sen Gupta",
-        "Tanusree Debi",
-        "Nazmus Sakib"
+        "Bing Liu",
+        "Wenjie Zhou",
+        "Chengcheng Zhao",
+        "Hongtao Zhang",
+        "Boao Kong",
+        "Felix Dangel",
+        "Wu Lin"
       ],
-      "published_date": "2026-10-05",
-      "indexed_date": "2026-10-05",
+      "published_date": "2026-10-06",
+      "indexed_date": "2026-10-06",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.06823v1",
+      "url": "https://arxiv.org/abs/2610.08534v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.08392v1",
+      "title": "A Time-Resolved Framework for Quantifying Neuronal Network State Transitions",
+      "abstract": "Electrophysiological recordings provide powerful tools for characterizing the dynamics of neuronal networks. In vitro neuronal cultures offer a controlled setting for investigating network responses to diverse interventions, including pharmacological and optogenetic stimulation. However, conventional analyses often reduce electrophysiological activity to aggregate measures calculated over fixed temporal windows, providing only a static representation of the network state. Here, we introduce a comprehensive, multiparametric analytical framework designed to characterize both the temporal evolution of network activity and the transitional states induced by external interventions. The framework combines multiple network discriminators with a compositional analysis that resolves electrode-level responses into excited, inhibited, and unchanged states over successive temporal segments. We apply the framework to electrophysiological recordings obtained under pharmacological interventions with 4-aminopyridine (4-AP), optogenetic stimulation, and additional benchmark conditions. The results demonstrate that the proposed analysis can reveal subtle and transient responses that may be difficult to detect using conventional aggregate measures, including responses to low-dose pharmacological interventions. These findings highlight the value of temporally resolved and compositional analyses for characterizing heterogeneous neuronal network responses in vitro.",
+      "authors": [
+        "Ilya Auslender",
+        "Yasaman Heydari",
+        "Asiye Malkoç",
+        "Clara Zaccaria",
+        "Yuri Bozzi",
+        "Lorenzo Pavesi"
+      ],
+      "published_date": "2026-10-06",
+      "indexed_date": "2026-10-06",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.08392v1",
+      "categories": [
+        "q-bio.NC",
+        "q-bio.QM"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.08355v1",
+      "title": "Sensor Geometry as a Flow-Matching Prior for Multi-Channel Brain Signals",
+      "abstract": "Flow-matching models start from an isotropic Gaussian source, the standard choice when the correlation structure of the data is unknown in advance. For multi-channel brain recordings, however, part of this structure is known in advance. Electrodes sit at fixed positions on the head, and volume conduction through the skull and scalp makes nearby electrodes co-vary in a way that is shared across subjects. Existing EEG generative models nonetheless leave the network to learn this from scratch. We put this structure into the source instead. From the sensor coordinates alone, we build a k-nearest-neighbor graph and take a graph-Matérn function of its Laplacian as the source covariance, so the flow starts from spatially coherent patterns rather than channel-independent noise. The change adds no learned parameters, works with any coupling and any drift network, and uses the same three hyperparameters on every dataset. Across eight EEG datasets and four flow-matching methods, the graph-Matérn source lowers the spectral discrepancy between generated and real signals in the five clinical bands (PSD-KL) on most datasets. PSD-KL falls by 12% to 17% in geometric mean over datasets depending on the method and by up to 40% on PhysioNet-MI, the densest montage. We show that the improvement stems from the spatial eigenvectors of the local graph of sensor positions, since randomizing the eigenvectors while preserving the eigenvalue spectrum eliminates the gain. Furthermore, a prior fitted directly to the empirical data covariance performs worse than isotropic noise. The same construction applies unchanged to MEG, intracranial EEG with patient-specific grids, and a traffic-sensor network, lowering PSD-KL for every method on each. https://jd730.github.io/projects/GraphPrior",
+      "authors": [
+        "Jaedong Hwang"
+      ],
+      "published_date": "2026-10-06",
+      "indexed_date": "2026-10-06",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.08355v1",
       "categories": [
         "cs.LG",
         "cs.AI"
@@ -35,103 +88,50 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2610.06726v1",
-      "title": "Decoupling Time and Space: A Temporally Conditioned Refinement for EEG Source Imaging",
-      "abstract": "Electroencephalography (EEG) offers millisecond temporal resolution, but inferring underlying neural sources is a severely ill-posed spatial inverse problem. While deep learning has advanced spatial reconstruction, current architectures face a critical dilemma: frame-by-frame models discard vital temporal context, whereas full 4D spatiotemporal networks introduce an architectural trade-off between reconstruction accuracy and inference cost. We propose a novel two-stream framework that explicitly decouples global temporal representation learning from per-time-point spatial refinement. A Transformer-based Temporal Condition Encoder processes the entire EEG sequence via factorized spatiotemporal attention, retaining sensor-resolved features. A fixed inverse then maps these features into source-indexed conditioning for a per-timestep Source-Space Transformer or volumetric convolutional refiner. Extensive evaluations on realistic synthetic data demonstrate that this temporal prior dramatically improves spatial localization, outperforming classical and spatiotemporal baselines, particularly in high-noise and multi-source regimes. Training across diverse leadfields and explicit operator mismatches improves transfer to unseen head geometries and brings template-based reconstruction closer to subject-specific inversion. Furthermore, we apply the model trained only on synthetic EEG data to real-world EEG. A logistic regressor fit on source power differences in eyes-open, eyes-closed conditions successfully decodes age groups.",
+      "source_id": "2610.08069v1",
+      "title": "Detecting a Shift Is Not Enough: Exact Minimax Limits of Linear Representation Repair",
+      "abstract": "A mean shift between two data sources can be easy to detect but hard to remove without substantially changing their representations. We cast its removal as a statistical decision problem: from noisy differences between paired calibration measurements in $\\mathbb{R}^d$, learn one linear map, applied to both sources under a hard distortion budget, that leaves as little of the shift as possible on fresh data. We derive the exact finite-sample minimax risk over all such maps, $(d-k) \\mathbb{E}[1/(d+2J)]$ with $J\\sim\\mathrm{Pois}(κ/2)$, where the budget allows deleting $k$ directions and $κ$ is the calibration signal-to-noise ratio. Projecting out the mean calibration difference attains it without knowing $κ$ or the noise scale. This exposes a detection-repair gap: detecting the shift needs only $κ\\gg\\sqrt d$, whereas removing a fixed fraction of it at constant distortion needs $κ\\asymp d$, as for estimating its direction. Standard linear concept erasers (MP, SAL, LEACE) remove the same calibration difference, so the formula gives, before fitting, exactly how much shift they leave on fresh data and how much calibration a target requires. The limit is robust: pairing keeps it exact for non-Gaussian shared content, the projection keeps its guarantee under anisotropic noise, and selective abstention cannot close the gap. On paired clinical and wearable sleep EEG, where differences between participants act as calibration noise, the formula predicts the device shift left in new participants, and more recordings per person soon stop helping. Together, these results tell whether a correction that falls short needs a better method, more recordings, or more participants.",
       "authors": [
-        "Marco Morik",
-        "Jesse Palarus",
-        "Carmen Vidaurre",
-        "Klaus-Robert Müller",
-        "Shinichi Nakajima"
+        "Anuar Aimoldin",
+        "Yankai Chen",
+        "Ayana Mussabayeva",
+        "Xue Liu"
       ],
-      "published_date": "2026-10-05",
-      "indexed_date": "2026-10-05",
+      "published_date": "2026-10-06",
+      "indexed_date": "2026-10-06",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.06726v1",
-      "categories": [
-        "cs.LG"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2610.06520v1",
-      "title": "Conditional Flow Matching for Single-Neuron Electrophysiology: Capturing Multimodal Responses Across Stimuli",
-      "abstract": "Neurons of the brain exhibit a rich repertoire of electrophysiology dynamics with the same repeated stimulus eliciting very different voltage responses from the same cell. One common approach in biophysically detailed models is to capture this variability through ensembles of deterministic parametrizations, at a cost of hundreds of thousands of CPU hours. Existing machine learning surrogates inherit the same limitation, where a stimulus is mapped to a single voltage response. We address this challenge by learning a conditional generative model for single-neuron electrophysiology, using flow matching with a velocity field conditioned on the input current. On biophysically detailed models of two human cortical interneuron types, the generated responses closely reproduce the electrophysiological feature distributions, spike-time structure, and excitability profiles, even matching the experimental recordings from the corresponding human cortical neurons. Near the firing threshold, firing and non-firing responses coexist at the same stimulus amplitude, and at high amplitudes, ensembles may split into low- and high-firing modes near depolarization block. We show that our model recovers both modes in each case, while a neural operator baseline suppresses spiking near threshold and blurs the gap between modes at depolarization block.",
-      "authors": [
-        "Cameron Schofield",
-        "Luca Ghafourpour",
-        "Philip H. Wong",
-        "Costas A. Anastassiou",
-        "Richard E. Turner"
-      ],
-      "published_date": "2026-10-05",
-      "indexed_date": "2026-10-05",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2610.06520v1",
-      "categories": [
-        "cs.LG"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2610.06315v1",
-      "title": "SPDAlign: Interpretable Riemannian Alignment for EEG Forward Modeling Shifts",
-      "abstract": "Electroencephalography (EEG) based brain-computer interfaces enable direct brain-to-device communication for applications such as rehabilitation and communication. However, their practical utility is often limited as the non-stationary nature of the EEG data introduces distribution shifts across domains (e.g., sessions and subjects). Adapting machine learning models to be invariant to these shifts in an unsupervised way, without using costly labeled calibration data, would drastically improve the utility of EEG data. In this work, we use a classic generative model of EEG to study distribution shifts introduced by the domain-specific forward process, which is associated with factors such as head geometry. We theoretically show that such distribution shifts can be recovered solely through linear transformations on the Symmetric Positive Definite manifold. Building on this insight, we propose SPDAlign, an interpretable framework for promoting domain-invariant EEG learning. SPDAlign first aligns the domain-specific means and corrects global rotations across domains using a recent optimal transport technique called Wasserstein Procrustes. We systematically study the proposed approach through simulations and demonstrate its competitive performance on extensive public EEG datasets. Additionally, SPDAlign is a globally linear framework and is intrinsically interpretable, so that the framework can identify frequency ranges of interest, determine the spatial patterns reflecting source-sensor relationships, and address cross-subject variability.",
-      "authors": [
-        "Shanglin Li",
-        "Shiwen Chu",
-        "Okan Koç",
-        "Chenyu Liu",
-        "Qibin Zhao",
-        "Motoaki Kawanabe",
-        "Mitsuo Kawato",
-        "Yi Ding"
-      ],
-      "published_date": "2026-10-05",
-      "indexed_date": "2026-10-05",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2610.06315v1",
-      "categories": [
-        "cs.LG"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2610.05919v1",
-      "title": "Non-invasive Seizure Detection Using Wearable Wrist-worn Accelerometry and Deep Learning",
-      "abstract": "Seizure monitoring and detection are crucial for reducing the morbidity and mortality associated with seizures. Current epilepsy care, often involving expensive video-electroencephalography (VEEG) monitoring, requires specialized expertise and is limited to in-hospital settings, and intrusive in nature. Seizure diaries, on the other hand, suffer from unreliability due to under-reporting, leading to incorrect therapeutic decisions. Wearable non-invasive seizure detection may offer a more tolerable and feasible solution for long-term ambulatory monitoring. This study explores a wearable remote monitoring system utilizing a single wrist-worn accelerometer device and capable of detecting multiple types of seizures, including shorter duration events. We enrolled 79 patients under video-electroencephalography monitoring to wear accelerometer devices and collect data. Concurrent VEEG recordings were reviewed by board-certified epileptologists to produce annotations, including seizure onset, offset, and seizure type. Using this data, we constructed a deep neural network based on the time-series ResNet architecture, which could discriminate among seizure and non-seizure events. Our proposed approach achieved a seizure detection sensitivity of 95.65% and an overall false alarm rate of 0.15/24 hours during the evaluation, which spanned 5576 hours of total recording. Additionally, it resulted in an area under the receiver operating characteristic curve (AUC-ROC) of 0.98 and an area under the precision-re call curve (AUC-PRC) of 0.67 when averaged over 20 patients who experienced 46 convulsive seizures. These promising results suggest that the proposed seizure detection system can be effectively used for long-term ambulatory seizure monitoring. Future steps include validating our findings in larger datasets and assessing the utility of detection for additional seizure types.",
-      "authors": [
-        "Nilushika Udayangani Hewa Dehigahawattage",
-        "Kishor Nandakishor",
-        "Marimuthu Palaniswami"
-      ],
-      "published_date": "2026-10-05",
-      "indexed_date": "2026-10-05",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2610.05919v1",
+      "url": "https://arxiv.org/abs/2610.08069v1",
       "categories": [
         "cs.LG",
-        "cs.AI"
+        "math.ST",
+        "stat.ML"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.07824v1",
+      "title": "CANDLE: Cortical Null-Space Decomposition for Noninvasive Brain Source Imaging",
+      "abstract": "Electrophysiological source imaging (ESI) aims to estimate cortical source activity from noninvasive electrophysiological measurements such as electroencephalogram (EEG). However, ESI is fundamentally ill-posed because source activity is substantially higher-dimensional than sensor observations, resulting in non-unique solutions. Recent learning-based approaches address this ambiguity by learning data-driven source priors, yet they often struggle to generalize across subject-specific cortical geometries. To address this, we propose CANDLE, a learning-based ESI model that estimates source activity on subject-specific cortical geometries. CANDLE learns a prior over the null space induced by the source-to-sensor mapping derived from T1-weighted MRI, restricting learning to unobservable source components while preserving geometric constraints. To train CANDLE, we develop a whole-brain simulator spanning over 1,100 subject-specific cortical geometries with source configurations derived from over 26,000 statistical brain maps. Trained exclusively on simulated data, CANDLE outperformed prior ESI methods on simulated source activity estimation and generalized to two empirical tasks: (i) intracranial stimulation localization from simultaneously recorded scalp EEG and (ii) epileptogenic zone estimation from presurgical interictal EEG. Our project page is available at https://candle-esi.pages.dev}{https://candle-esi.pages.dev.",
+      "authors": [
+        "Shuntaro Suzuki",
+        "Yuiga Wada",
+        "Komei Sugiura"
+      ],
+      "published_date": "2026-10-06",
+      "indexed_date": "2026-10-06",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.07824v1",
+      "categories": [
+        "cs.LG",
+        "eess.SP",
+        "q-bio.NC"
       ],
       "keywords": [],
       "publication_types": [
