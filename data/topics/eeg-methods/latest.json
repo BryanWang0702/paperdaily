@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "generated_at": "2026-10-07T19:02:24.673260+00:00",
+  "generated_at": "2026-10-08T01:13:14.884640+00:00",
   "window": {
     "start": "2026-10-06",
     "end": "2026-10-08"
@@ -10,18 +10,18 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 77,
+  "raw_count": 86,
   "retrieved_source_counts": {
-    "pubmed": 178,
+    "pubmed": 206,
     "biorxiv": 21,
-    "medrxiv": 5,
+    "medrxiv": 9,
     "arxiv": 5
   },
   "raw_source_counts": {
-    "pubmed": 56,
+    "pubmed": 63,
+    "medrxiv": 5,
     "biorxiv": 14,
-    "arxiv": 4,
-    "medrxiv": 3
+    "arxiv": 4
   },
   "prefiltered_count": 40,
   "analyzed_count": 40,
@@ -30,11 +30,13 @@
   "featured_count": 25,
   "source_counts": {
     "pubmed": 31,
-    "biorxiv": 6,
+    "biorxiv": 5,
     "arxiv": 1,
-    "medrxiv": 2
+    "medrxiv": 3
   },
-  "errors": {},
+  "errors": {
+    "arxiv": "ReadTimeout: HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=45) · reused 5 cached records"
+  },
   "ai": {
     "requested": true,
     "enabled": true,
@@ -42,8 +44,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 17,
-    "newly_summarized": 17,
+    "newly_ranked": 5,
+    "newly_summarized": 5,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -54,12 +56,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 5,
-      "prompt_tokens": 14892,
-      "prompt_cache_hit_tokens": 1280,
-      "prompt_cache_miss_tokens": 13612,
-      "completion_tokens": 3517,
-      "total_tokens": 18409
+      "requests": 2,
+      "prompt_tokens": 5127,
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 4615,
+      "completion_tokens": 998,
+      "total_tokens": 6125
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -68,27 +70,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.020672,
+    "run_cost_cny": 0.006621,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 5,
-        "prompt_tokens": 14892,
-        "prompt_cache_hit_tokens": 1280,
-        "prompt_cache_miss_tokens": 13612,
-        "completion_tokens": 3517,
-        "total_tokens": 18409
+        "requests": 2,
+        "prompt_tokens": 5127,
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 4615,
+        "completion_tokens": 998,
+        "total_tokens": 6125
       },
-      "run_cost_cny": 0.020672,
+      "run_cost_cny": 0.006621,
       "daily_usage": {
-        "requests": 5,
-        "prompt_tokens": 14892,
-        "prompt_cache_hit_tokens": 1280,
-        "prompt_cache_miss_tokens": 13612,
-        "completion_tokens": 3517,
-        "total_tokens": 18409
+        "requests": 7,
+        "prompt_tokens": 20019,
+        "prompt_cache_hit_tokens": 1792,
+        "prompt_cache_miss_tokens": 18227,
+        "completion_tokens": 4515,
+        "total_tokens": 24534
       },
-      "daily_cost_cny": 0.020672,
+      "daily_cost_cny": 0.027293,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -145,6 +147,52 @@
             "reproducibility"
           ],
           "paper_type": "Systematic Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "42842085",
+      "title": "Unsupervised functional stage detection from EEG using topological data analysis.",
+      "abstract": "Electroencephalogram (EEG) segmentation is still largely performed manually by specialists. Recent studies have proposed the state-detecting algorithm (SDA) - an automated technique for detecting functional stages with minimal human intervention - which has proven effective using spectral features. This paper introduces an alternative feature engineering approach that explores the spatial structure of data using the emerging field of topological data analysis (TDA). We propose an algorithm to extract a comprehensive topological description of EEG with tens of thousands of features and introduce the quick state-detecting algorithm (QSDA), a feature selection framework based on SDA performance. Next, we apply the procedure to EEG recordings from two distinct domains - Guhyasamaja Tantra meditation and whole-night polysomnographic sleep - and observe well-separated stage boundaries across most recordings, suggesting that TDA may complement or outperform spectral features in some settings. We also observed encouraging performance on noisy data, whereas shuffled epochs produced substantially weaker boundaries, supporting the robustness of the technique within the settings examined. Overall, the algorithm appears to be a promising feature engineering approach for SDA and suggests that the spatial structure of EEG may contain informative patterns. These findings motivate further investigation of their possible physiological interpretation, as well as an assessment across broader EEG paradigms.",
+      "authors": [
+        "Aleksandr Abramov",
+        "Ekaterina Mikhaylets",
+        "Vsevolod Chernyshev",
+        "Alexander Kaplan",
+        "Fedor Ratnikov"
+      ],
+      "published_date": "2026-Oct-07",
+      "indexed_date": "",
+      "journal": "Medical & biological engineering & computing",
+      "doi": "10.1007/s11517-026-03683-0",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42842085/",
+      "categories": [],
+      "keywords": [
+        "Feature selection",
+        "Functional states",
+        "State-detecting algorithm",
+        "Topological data analysis"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 79,
+        "ai": {
+          "score": 91,
+          "topic": "Unsupervised topological EEG state detection",
+          "reason": "Highly relevant unsupervised functional-stage detection applied to whole-night sleep EEG, offering a lightweight, generalizable alternative to manual staging that aligns with core sleep-staging and state-detection interests.",
+          "summary": "Introduces a topological data analysis (TDA) feature engineering approach for unsupervised EEG functional stage detection, including a quick state-detecting algorithm (QSDA). Applied to meditation and sleep EEG, TDA-derived features produced well-separated stage boundaries and appeared to complement or outperform spectral features in some settings.",
+          "keywords": [
+            "topological data analysis",
+            "EEG segmentation",
+            "functional states",
+            "feature selection",
+            "state-detecting algorithm"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
@@ -388,6 +436,52 @@
       }
     },
     {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.10.06.26364825",
+      "title": "Feature-Engineering Strategies for EEG-Based ADHD Classification in Children: A Controlled Benchmark of Expert, LLM-Guided and Full-Space Comparators",
+      "abstract": "EEG-based machine-learning studies of attention-deficit/hyperactivity disorder (ADHD) are vulnerable to optimistic performance estimates when feature selection or model choice is informed by data outside the training fold. We compared expert-reconstructed, large language model (LLM)-guided and full-space feature strategies under leakage-controlled subject-level validation in a frozen cohort of 77 children (45 ADHD, 32 controls) represented by 1,185 gamma-free EEG features. Four classifiers (SVM, GMM, random forest [RF] and XGBoost) were evaluated with nested leave-one-subject-out cross-validation (LOOCV), with all data-dependent operations restricted to outer-training subjects. Across 100 repetitions of stratified 10-fold cross-validation, RF/expert achieved mean accuracy 62.8% (SD 3.5%; empirical 95% interval 55.8% -- 69.5%), mean balanced accuracy 62.3% and mean AUC-ROC 0.618. The corresponding LOOCV point estimate was 71.4% accuracy and 71.0% balanced accuracy (AUC-ROC 0.673). GMM/expert achieved the highest AUC-ROC (0.699), indicating metric-dependent model ranking. The expert-reconstructed strategy achieved the highest accuracy and balanced accuracy for every classifier, whereas the LLM-guided strategy showed no consistent advantage over the full feature space. Pairwise classifier differences were not significant after Holm correction. A pre-specified 200 V artifact gate reduced RF/expert accuracy to approximately 55.8%, below the 58.4% no-information rate; this drop may reflect removal of artifact-related signal and/or reduced epoch counts leading to noisier feature estimates. These findings support cautious benchmarking and external validation rather than claims of algorithmic or LLM superiority. Keywords: ADHD; electroencephalography; machine learning; benchmarking; feature engineering; subject-level validation; nested cross-validation; random forest; clinical prediction",
+      "authors": [
+        "Rohani, F.",
+        "Alhatab, H.",
+        "Jarrud, M.",
+        "Salous, N.",
+        "Kasimoglu, S.",
+        "Mueller, A."
+      ],
+      "published_date": "2026-10-07",
+      "indexed_date": "2026-10-07",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.10.06.26364825",
+      "url": "https://doi.org/10.64898/2026.10.06.26364825",
+      "categories": [
+        "psychiatry and clinical psychology"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 97,
+        "ai": {
+          "score": 72,
+          "topic": "Leakage-controlled EEG feature benchmarking",
+          "reason": "Directly relevant as a controlled benchmark of feature-engineering and cross-validation strategies for EEG classification, with transferable lessons for small-sample, reproducible vigilance-state models.",
+          "summary": "Benchmarks expert, LLM-guided, and full-space EEG feature strategies for pediatric ADHD classification under leakage-controlled subject-level validation. Expert-reconstructed features achieved the highest accuracy and balanced accuracy for every classifier, while LLM-guided selection showed no consistent advantage; a 200 V artifact gate reduced accuracy below the no-information rate.",
+          "keywords": [
+            "ADHD",
+            "EEG",
+            "feature engineering",
+            "subject-level validation",
+            "random forest"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
       "source": "pubmed",
       "source_id": "42837245",
       "title": "Improving RSVP EEG Decoding Performance under Auditory Perturbation: A Dual-View Model with Robust Distillation.",
@@ -619,44 +713,55 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42837174",
-      "title": "Direct cortical stimulation induces short-term modulation of neural oscillations in humans.",
-      "abstract": "Patterned brain stimulation is commonly employed to modulate brain circuits and treat neuropsychiatric disorders. Although widely used in clinical settings, there remains limited understanding of how stimulation alters neural oscillations and how these effects relate to baseline evoked network responses. To address this question, we applied 15 minutes of 10Hz focal electrical stimulation delivered as 5-s trains separated by 10-s rest intervals, a pattern resembling 'excitatory' transcranial magnetic stimulation, to 14 patients with epilepsy undergoing intracranial electroencephalography in premotor, parietal, and temporal cortical sites. We quantified spectral features of cortico-cortical evoked potentials (CCEPs) before and after stimulation. We hypothesized that the temporal and spectral components of the CCEP predicted the location and degree of stimulation-induced modulation. Across patients, low frequency power (alpha, beta) showed the broadest change, while the magnitude of change was stronger in high frequencies (beta, gamma). Next, we demonstrated that regions with stronger pre-stimulation evoked spectral responses were more likely to exhibit larger post-stimulation spectral changes. These findings were specific to frequency in a temporal window. Post-stimulation power changes were driven by interaction between direction of change in pre-stimulation power and temporal window. Finally, regions exhibiting early increases and late decreases in pre-stimulation power exhibited power changes after stimulation. These patterns were consistent across premotor, parietal, and temporal sites, but the magnitude and latency varied by stimulation location. Together, these findings demonstrate that time-frequency pre-stimulation features predict post-stimulation modulation of human neural oscillations and highlight temporally specific, state-dependent properties of stimulation responses in humans, thereby improving our understanding of stimulation-associated changes in human brain networks and helping inform more effective brain stimulation techniques.",
+      "source_id": "42842311",
+      "title": "Spectrally-resolved transfer entropy in resting-state SEEG reveals epileptogenic and non-epileptogenic communication in adults and children with refractory epilepsy.",
+      "abstract": "Objective. To characterise directed, frequency-resolved communication between seizure onset zone (SOZ) and non-involved zone (NIZ) regions in resting-state stereo-electroencephalography (SEEG) from adults and children with drug-resistant epilepsy (DRE).Approach. We analysed retrospective SEEG from 21 adults and 18 paediatric patients who underwent focal resective surgery. Channels were grouped into four link classes (SOZ → SOZ, NIZ → SOZ, SOZ → NIZ, NIZ → NIZ). Signals were decomposed into delta, theta, alpha, beta, gamma, and broadband bands, and transfer entropy (TE) was estimated with a Gaussian estimator. For each source-target channel pair, an optimal temporal delay was selected by scanning delays from 2-200 ms and choosing the delay that maximised broadband TE. Significance testing used 100 phase-randomised surrogates per source and per target; Benjamini-Hochberg false discovery rate correction (α= 0.05) was applied within each band-to-band TE grid (separately for source- and target-surrogatep-values).Main results. In NIZ → SOZ links median communication delays were longer in adults than children (median 87.9 ms vs 68.0 ms; Mann-Whitneyp< 1 × 10-10; Kolmogorov-Smirnovp< 1 × 10-10). Across most link classes, dominant source frequencies were broadband, delta, and theta. A distinct SOZ → SOZ pattern emerged: adults showed broadband, alpha, and beta source dominance with prominent broadband → gamma transfer, whereas children showed broadband, delta, and theta dominance while retaining broadband → gamma contribution. Cross-link-class source and target frequency distributions differed significantly in both cohorts (p< 0.05). While intra-regional SOZ-SOZ communication revealed unique multiplex signatures, inter-regional NIZ → SOZ interactions did not show a distinct spectral profile from non-involved connectivity.Significance. Resting-state SEEG communication in DRE exhibits multiplex, cross-frequency directed interactions. Spectrally resolved TE reveals conserved and cohort-specific shifts in SOZ-NIZ communication motifs. While these differences are confounded by pathology and site variations, they provide a frequency-specific characterization of the epileptogenic network that may support grounded interpretation of resting-state dynamics.",
       "authors": [
-        "Saachi Munot",
-        "Naryeong Kim",
-        "Yuhao Huang",
-        "Corey J Keller"
+        "Francois Okoroafor",
+        "Ghassan S Makhoul",
+        "Bruno Hidalgo Monroy Lerma",
+        "Anas Reda",
+        "Zekai Qiang",
+        "Addison C Cavender",
+        "Kate Wang",
+        "Emily Liao",
+        "Aswin Chari",
+        "Rory J Piper",
+        "Tim Denison",
+        "Rod C Scott",
+        "Victoria L Morgan",
+        "Torsten Baldeweg",
+        "Martin M Tisdall",
+        "Dario J Englot"
       ],
-      "published_date": "2026-Oct-06",
-      "indexed_date": "",
-      "journal": "Journal of neurophysiology",
-      "doi": "10.1152/jn.00011.2026",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42837174/",
+      "published_date": "2026-Oct-07",
+      "indexed_date": "2026-10-07",
+      "journal": "Journal of neural engineering",
+      "doi": "10.1088/1741-2552/aeabf3",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42842311/",
       "categories": [],
       "keywords": [
-        "TMS",
-        "cortico-cortical evoked potentials",
-        "electrical stimulation",
-        "electrocorticography",
-        "iEEG"
+        "cross-frequency information transfer",
+        "epilepsy",
+        "network dynamics",
+        "transfer entropy"
       ],
       "publication_types": [
         "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 33,
+        "prefilter_score": 74,
         "ai": {
           "score": 60,
-          "topic": "Cortical stimulation effects on oscillations",
-          "reason": "Quantifies stimulation-induced spectral changes and CCEP predictors; relevant neural-time-series methodology though human intracranial and not sleep-focused.",
-          "summary": "Applied 15 minutes of 10 Hz focal electrical stimulation in 5-s trains to premotor, parietal, and temporal cortical sites in 14 epilepsy patients undergoing intracranial EEG, quantifying spectral features of cortico-cortical evoked potentials before and after stimulation. Regions with stronger pre-stimulation evoked spectral responses showed larger post-stimulation changes, with low-frequency power showing the broadest change and high frequencies the stronger magnitude, indicating state-dependent, temporally specific modulation of human neural oscillations.",
+          "topic": "Spectrally-resolved transfer entropy in SEEG",
+          "reason": "Directional, frequency-resolved connectivity method with potential transfer to neural time-series analysis, but its clinical epilepsy focus and heavy surrogate testing make it more adjacent than core.",
+          "summary": "Characterizes directed, spectrally-resolved communication between seizure onset zones (SOZ) and non-involved zones using resting-state SEEG transfer entropy in adults and children with refractory epilepsy. Finds multiplex cross-frequency interactions, with longer NIZ-to-SOZ delays in adults and distinct SOZ-to-SOZ spectral patterns between cohorts.",
           "keywords": [
-            "direct cortical stimulation",
-            "cortico-cortical evoked potentials",
-            "neural oscillations",
-            "intracranial EEG",
-            "electrocorticography"
+            "transfer entropy",
+            "SEEG",
+            "epileptogenic network",
+            "cross-frequency coupling",
+            "resting-state connectivity"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1000,56 +1105,6 @@
       }
     },
     {
-      "source": "pubmed",
-      "source_id": "42840469",
-      "title": "Multimodal artificial intelligence in epilepsy: antiseizure medication response, epileptogenic zone localization, and surgical outcome prediction.",
-      "abstract": "Epilepsy remains difficult to manage because approximately 30% of patients develop drug-resistant epilepsy, epileptogenic zones may remain occult on conventional magnetic resonance imaging, and surgical outcomes vary substantially. Multimodal artificial intelligence (AI) can integrate structural and functional MRI, positron emission tomography, diffusion imaging, electroencephalography, intracranial electrophysiology, and clinical information to support quantitative decision-making. This targeted narrative review synthesizes published evidence on three clinical tasks: prediction of antiseizure medication response, localization of epileptogenic zones, and prediction of surgical outcomes. We summarize machine-learning, deep-learning, and brain-network approaches, together with representative validation strategies and performance metrics. Current studies demonstrate promising task-specific performance, but their results should not be compared directly because cohorts, endpoints, modalities, and validation designs differ markedly. Major barriers include small single-center datasets, inconsistent acquisition and annotation, incomplete multimodal data, limited external validation, and insufficient interpretability. Future priorities include standardized multicenter datasets, prospective evaluation, privacy-preserving collaboration, interpretable fusion models, and clinically integrated human-AI workflows. At present, multimodal AI should be regarded as supervised decision support rather than a replacement for specialist interpretation.",
-      "authors": [
-        "Lin Yang",
-        "Hanyue Wang",
-        "Zuhong Lu",
-        "Yu Sun"
-      ],
-      "published_date": "2026",
-      "indexed_date": "2026-10-07",
-      "journal": "Frontiers in neurology",
-      "doi": "10.3389/fneur.2026.1957037",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42840469/",
-      "categories": [],
-      "keywords": [
-        "antiseizure medication response",
-        "deep learning",
-        "electroencephalography",
-        "epilepsy",
-        "epileptogenic zone localization",
-        "multimodal artificial intelligence",
-        "neuroimaging",
-        "surgical outcome prediction"
-      ],
-      "publication_types": [
-        "Journal Article",
-        "Review"
-      ],
-      "extra": {
-        "prefilter_score": 31,
-        "ai": {
-          "score": 45,
-          "topic": "Multimodal AI in epilepsy",
-          "reason": "Narrative review of AI for epilepsy with EEG integration; general clinical AI content with limited direct methodological transfer.",
-          "summary": "This targeted narrative review synthesizes published evidence on multimodal artificial intelligence for three clinical tasks in epilepsy: predicting antiseizure medication response, localizing the epileptogenic zone, and predicting surgical outcomes. It summarizes machine-learning, deep-learning, and brain-network approaches, and concludes that while task-specific performance is promising, heterogeneous cohorts and validation designs preclude direct comparison and that multimodal AI should currently be regarded as supervised decision support.",
-          "keywords": [
-            "multimodal AI",
-            "epilepsy",
-            "antiseizure medication response",
-            "epileptogenic zone localization",
-            "surgical outcome prediction"
-          ],
-          "paper_type": "Review",
-          "digest_pick": true
-        }
-      }
-    },
-    {
       "source": "medrxiv",
       "source_id": "10.64898/2026.10.01.26364439",
       "title": "An adaptive technical and behavioral approach for biomarker acquisition in autism with intellectual disability",
@@ -1191,49 +1246,44 @@
     },
     {
       "source": "pubmed",
-      "source_id": "42840301",
-      "title": "Oscillatory dynamics within fronto-insular-parietal networks integrate thermosensory signals into body ownership.",
-      "abstract": "Cutaneous thermosensory signals are linked to survival and homeostatic regulation, yet their relationship with higher order cognitive functions remains poorly understood. Emerging evidence suggests that skin temperature is associated with body ownership-the sense that a body and its parts belong to oneself-but the oscillatory basis of this relationship in healthy individuals is unknown. We combined a multisensory illusion paradigm with thermal imaging and electroencephalography to investigate the oscillatory correlates of skin-temperature changes during experimentally induced changes in body ownership. Selective perturbations in theta/low-alpha oscillatory activity, localized to right premotor regions, tracked a decrease in hand temperature during altered hand ownership. Moreover, the strength of a functional connectivity network spanning bilateral frontoparietal areas, including the insula, was associated with temperature changes coupled with ownership modulation. These findings identify a previously uncharacterized oscillatory signature associated with thermosensory changes during body ownership alteration, linking physiological fluctuations to neural dynamics of self-representation.",
+      "source_id": "42841507",
+      "title": "Tri-Stream Disentangled Network with Adaptive Dual-Space Fusion for Electroencephalography-Based Image Reconstruction on THINGS-EEG2.",
+      "abstract": "Reconstructing visual stimuli from non-invasive electroencephalography (EEG) requires mapping short, noisy neural responses to meaningful visual representations despite limited spatial sampling. Existing EEG-to-image approaches employ diverse neural representations and generative strategies, necessitating reproducible workflows that disentangle structural and semantic contributions. This protocol presents the Tri-stream Disentangled Network (TDE-Net), a computational framework for EEG-based image reconstruction. The protocol uses preprocessed THINGS-EEG2 recordings and organizes EEG information into a raw EEG anchor, a sample-specific functional graph stream, and a multi-scale temporal semantic stream. The graph stream captures frequency-domain relationships among EEG channels via graph convolution and cross-trial contrastive learning, while the semantic stream extracts task-relevant features via adaptive spatial weighting and multi-scale temporal convolutions. Structural and semantic features are mapped separately to variational autoencoder (VAE) and Contrastive Language-Image Pre-training (CLIP) latent spaces, combined using development-set-selected fusion weights, and decoded using Stable UnCLIP. Across 10 participants, TDE-Net achieved a mean CLIP pairwise identification accuracy of 0.8135, with complementary metrics demonstrating structural and feature-space correspondence. Ablation and representation-level analyses further characterized the contributions of individual streams. This protocol provides a reproducible framework for investigating complementary EEG representations and diffusion-based visual reconstruction.",
       "authors": [
-        "Giulia Mattavelli",
-        "Francesco Crottini",
-        "Irene Gorrino",
-        "Eleonora Arrigoni",
-        "Carlotta Maiocchi",
-        "Alberto Pisoni",
-        "Gabriella Bottini",
-        "Gerardo Salvato"
+        "Yipeng Zhou",
+        "Jingyuan Li",
+        "Kaizhong Zhao",
+        "Hong Zhu",
+        "Lin Zhu",
+        "Huan Jiang",
+        "Qingchuan Zhang"
       ],
-      "published_date": "2026-Oct-16",
+      "published_date": "2026-Oct-06",
       "indexed_date": "2026-10-07",
-      "journal": "iScience",
-      "doi": "10.1016/j.isci.2026.117679",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42840301/",
+      "journal": "Journal of visualized experiments : JoVE",
+      "doi": "10.3791/73434",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42841507/",
       "categories": [],
-      "keywords": [
-        "bodily self-awareness",
-        "body ownership",
-        "temperature",
-        "thermosensory signals"
-      ],
+      "keywords": [],
       "publication_types": [
-        "Journal Article"
+        "Journal Article",
+        "Video-Audio Media"
       ],
       "extra": {
-        "prefilter_score": 34,
+        "prefilter_score": 116,
         "ai": {
           "score": 35,
-          "topic": "Thermosensory body-ownership oscillations",
-          "reason": "Human EEG oscillatory connectivity study on thermosensation; methodologically adjacent but topic outside core interests.",
-          "summary": "Combined multisensory illusion, thermal imaging, and EEG to study oscillatory correlates of skin-temperature changes during altered body ownership. Decreased hand temperature during ownership modulation was tracked by theta/low-alpha activity in right premotor regions, and frontoparietal connectivity including insula was associated with temperature changes coupled with ownership modulation.",
+          "topic": "EEG-to-image reconstruction deep learning",
+          "reason": "Large GPU-dependent multi-stream deep network for visual reconstruction; methodological ideas are interesting but it is far from sleep/animal time-series analysis and not lightweight or transferable.",
+          "summary": "Presents a reproducible protocol for EEG-based image reconstruction using a Tri-stream Disentangled Network (TDE-Net) with adaptive dual-space fusion on THINGS-EEG2. Across 10 participants, TDE-Net achieved a mean CLIP pairwise identification accuracy of 0.8135, with ablation analyses characterizing the contributions of graph and semantic streams.",
           "keywords": [
-            "body ownership",
-            "thermosensory signals",
-            "EEG oscillations",
-            "fronto-insular-parietal network",
-            "functional connectivity"
+            "EEG-to-image reconstruction",
+            "THINGS-EEG2",
+            "graph convolution",
+            "CLIP latent space",
+            "diffusion decoding"
           ],
-          "paper_type": "Research Article",
+          "paper_type": "Methods/Resource",
           "digest_pick": true
         }
       }
@@ -1765,51 +1815,6 @@
     },
     {
       "source": "biorxiv",
-      "source_id": "10.64898/2026.09.28.754866",
-      "title": "Electrical stimulation of the human pulvinar generates visual percepts",
-      "abstract": "Visual prostheses have targeted early structures in the visual pathway, including the retina, optic nerve, lateral geniculate nucleus, and visual cortex, to generate visual percepts. Stimulation of higher-order visual regions, which may better encode complex visual features, remains relatively unexplored. We tested whether electrical stimulation of the medial and inferior pulvinar elicits visual percepts in a patient with medically refractory epilepsy undergoing invasive seizure monitoring with intracranial electroencephalography. Bipolar stimulation (30 biphasic pulses, 0.5 ms per phase, 3 mA, 1 Hz) was delivered between adjacent pulvinar contacts while eye movements were tracked. Stimulation of different electrode pairs elicited visual percepts at distinct retinotopic locations (p = 0.010). Stimulation also altered cortical activity, producing an early power increase followed by gamma desynchronization in occipital and parietal regions (p < 0.001) and beta desynchronization in the lateral temporal region (p < 0.01). These findings suggest that pulvinar stimulation can generate visual percepts and modulate distributed cortical networks, supporting further investigation of the pulvinar as a target for vision restoration.",
-      "authors": [
-        "Kemball-Cook, W. S.",
-        "Bader, E. R.",
-        "Boro, A. D.",
-        "Eskandar, E. N.",
-        "Killian, N. J."
-      ],
-      "published_date": "2026-10-06",
-      "indexed_date": "2026-10-06",
-      "journal": "biorxiv",
-      "doi": "10.64898/2026.09.28.754866",
-      "url": "https://doi.org/10.64898/2026.09.28.754866",
-      "categories": [
-        "neuroscience"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 34,
-        "ai": {
-          "score": 20,
-          "topic": "Pulvinar stimulation visual percepts",
-          "reason": "Intracranial stimulation and perception study, not a computational or transferable time-series method.",
-          "summary": "Electrical stimulation of the medial and inferior pulvinar in a patient undergoing intracranial EEG monitoring elicited visual percepts at distinct retinotopic locations and modulated occipital, parietal, and lateral temporal cortical activity. The findings support the pulvinar as a potential target for vision restoration.",
-          "keywords": [
-            "pulvinar",
-            "electrical stimulation",
-            "visual percepts",
-            "intracranial electroencephalography",
-            "vision restoration"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "biorxiv",
       "source_id": "10.64898/2026.09.29.755486",
       "title": "Axonal dysfunction precedes axonal degeneration in a mouse model of progressive parkinsonism",
       "abstract": "Axons of substantia nigra dopaminergic neurons \"die back\" in Parkinson's disease (PD), exhibiting early degeneration relative to cell bodies, a key feature also observed in PD models. A critical step towards understanding the process of axonal neurodegeneration is to determine the physiological properties of dopaminergic axons that are altered during the early stages of cellular dysfunction. Here, we compared the electrophysiology and calcium dynamics of dopaminergic axons in the MitoPark model of PD with age-matched controls. Our experiments show a pronounced reduction in action potential (AP)-evoked calcium signals in MitoPark axons that emerges well before the onset of dopaminergic fiber loss and motor deficits. In addition, calcium imaging and direct axon recording revealed deficits in AP propagation accompanied by alterations in the axonal AP waveform. Therefore, our experimental findings identify the progression of axon-specific physiological deficits that occur long before neurodegeneration, more precisely defining the period that precedes axonal loss.",
@@ -1914,6 +1919,57 @@
     },
     {
       "source": "pubmed",
+      "source_id": "42842902",
+      "title": "Artificial Intelligence, Machine Learning, and Deep Learning Approaches for Attention-Deficit/Hyperactivity Disorder Diagnosis: Protocol for a Scoping Review.",
+      "abstract": "Attention-deficit/hyperactivity disorder (ADHD) affects over 366 million adults and 139 million children worldwide, yet diagnosis remains fundamentally subjective, relying on clinical interviews, behavioral observations, and rating scales that yield inconsistent results across practitioners and settings. Artificial intelligence (AI), machine learning (ML), and deep learning (DL) offer a paradigm shift toward objective, data-driven diagnosis by detecting complex patterns across neuroimaging, electrophysiology, and digital biomarkers that elude conventional assessment. Although AI-based ADHD research has grown exponentially, no comprehensive synthesis examines the full spectrum of data modalities, validation practices, and clinical translation readiness. This gap limits our understanding of which approaches are most promising for real-world implementation. This scoping review will visually map the current evidence on AI-based ADHD classification with respect to predictive accuracy, data forms, data features, generalizability, and interpretability of models. This scoping review will use the Joanna Briggs Institute approach to scoping reviews and follow the PRISMA-ScR (Preferred Reporting Items for Systematic Reviews and Meta-Analyses extension for Scoping Reviews) guidelines. Five electronic databases (IEEE Xplore, Scopus, PubMed, Web of Science, and ACM Digital Library) will be systematically searched for peer-reviewed studies published between January 2019 and April 2026. Empirical studies in English involving the use of AI, ML, DL, or explainable AI to diagnose ADHD with a total sample size greater than 100 participants (ADHD and control groups combined) and a non-ADHD control group (individuals with typical development or healthy individuals) will be included. Two independent reviewers will screen the titles, abstracts, and full texts, and any conflicts will be resolved through either discussion or arbitration. A standardized Microsoft Excel template will be used to extract data that will include the following: bibliographic data, data modalities, data models, data validation approaches, performance metrics, and explainability approaches. Thematic and narrative analysis will be used to synthesize findings on 4 research questions that will address model performance, data modality contributions, data characteristics, and interpretability methods. The scoping review began in December 2025. Analysis and screening are in progress, with the scoping review expected to be completed and submitted for publication in June 2026. This scoping review will provide the first comprehensive synthesis of AI-, ML-, and DL-based ADHD diagnostic classification studies, mapping the evidence across data modalities, validation practices, interpretability methods, and clinical translation readiness. Findings will inform future methodological standards and support the translation of AI-based diagnostic tools into clinical practice.",
+      "authors": [
+        "Benedict Onochie Ibe",
+        "Amir Aly",
+        "Shaymaa S Al-Juboori",
+        "Emmanuel Ifeachor",
+        "Rohit Shankar"
+      ],
+      "published_date": "2026-Oct-07",
+      "indexed_date": "2026-10-07",
+      "journal": "JMIR research protocols",
+      "doi": "10.2196/99551",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42842902/",
+      "categories": [],
+      "keywords": [
+        "ADHD",
+        "AI",
+        "artificial intelligence",
+        "attention-deficit/hyperactivity disorder",
+        "deep learning",
+        "diagnostic classification",
+        "explainable AI",
+        "machine learning",
+        "scoping review"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 41,
+        "ai": {
+          "score": 15,
+          "topic": "AI/ML ADHD scoping review protocol",
+          "reason": "Broad clinical review protocol on ADHD diagnosis with no methodological or sleep/animal relevance; only weakly related to the researcher's computational focus.",
+          "summary": "Describes a scoping review protocol to map AI, machine learning, and deep learning approaches for ADHD diagnosis, covering data modalities, validation practices, and interpretability. The review will follow PRISMA-ScR and JBI guidelines, searching five databases for studies from January 2019 to April 2026.",
+          "keywords": [
+            "ADHD",
+            "artificial intelligence",
+            "machine learning",
+            "diagnostic classification",
+            "scoping review"
+          ],
+          "paper_type": "Protocol",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "42837461",
       "title": "NA-CDQuant: Quantitative spectral analysis of nucleic acid structure by circular dichroism spectroscopy.",
       "abstract": "Understanding the structural conformation and dynamics of nucleic acids in solution is critical for the development of nucleic acid therapeutics involving antisense or mRNA therapies, where controlling stability, efficacy, and manufacturability are important. Circular dichroism (CD) spectroscopy allows rapid and nondestructive solution analysis of the spatial arrangements of nucleic acids. While widely used to analyze protein structure, the potential of CD for DNA- and RNA-based pharmaceutical applications has remained largely unrealized because nucleic acid spectra are complex and difficult to interpret quantitatively. We introduce herein a framework (NA-CDQuant) that transforms CD from a qualitative fingerprinting method into a quantitative tool for nucleic acid structure prediction by combining spectral deconvolution with a rigorously curated synchrotron radiation circular dichroism reference library comprising 18 structurally defined conformational families. This systematic classification overcomes long-standing challenges posed by spectral overlap and structural polymorphism, enabling estimation of the fractional composition of coexisting conformations during real-time monitoring of structural transitions in solution. NA-CDQuant provides mechanistic insight into subtle conformational redistributions that may affect molecular recognition and functional performance assisting pharmaceutical development and medical application by facilitating formulation optimization, stability assessment, quality control, and regulatory support of nucleic acid-based therapeutics.",
@@ -1957,65 +2013,6 @@
             "synchrotron radiation circular dichroism"
           ],
           "paper_type": "Methods/Resource",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42838058",
-      "title": "Disruption of the Nav1.8/Ankyrin-3 interaction in nociceptors reduces pathological pain-like behaviors in mice.",
-      "abstract": "Treating chronic neuropathic pain is challenging due to its complex pathophysiology. Persistent changes in the somatosensory system prolong heightened states of stimulus-evoked and spontaneous pain. Nociceptor dorsal root ganglion (DRG) neurons are key contributors to neuropathic pain due to pathological plasticity following injury, leading to spontaneous ectopic and stimulus-evoked firing. Preclinical strategies to inhibit Nav1.8, a nociceptor-specific voltage-gated sodium channel, are successful in reducing neuropathic pain but have yet to produce similar results in clinical settings. Here, we evaluate the pharmacotherapeutic potential of the Nav1.8/Ank3 interaction in neuropathic pain, utilizing electrophysiology, biochemistry, and proteomic approaches. We report that Nav1.8/Ank3 interactions are necessary for maintaining pathological nociceptor hyperexcitability in neuroma pain and that inhibition of this interaction with a short lipidated peptide (SLiP) is sufficient to alleviate neuropathic pain-like behaviors in mice. This work highlights the value of reevaluating targets for pharmacological intervention to produce analgesia specific to pathological states.",
-      "authors": [
-        "Rasheen Powell",
-        "Xiangsunze Zeng",
-        "Bruna Lenfers Turnes",
-        "Hyoung Woo Kim",
-        "Veselina Petrova",
-        "Selwyn S Jayakar",
-        "Emily Shea",
-        "Keunjung Heo",
-        "Emma Cropper",
-        "Maryam Arab",
-        "Georgios Kimourtzis",
-        "Juan A Oses-Prieto",
-        "Alma L Burlingame",
-        "Stephen G Waxman",
-        "Sulayman D Dib-Hajj",
-        "Clifford J Woolf"
-      ],
-      "published_date": "2026-Oct-06",
-      "indexed_date": "",
-      "journal": "Cell reports. Medicine",
-      "doi": "10.1016/j.xcrm.2026.103090",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42838058/",
-      "categories": [],
-      "keywords": [
-        "Nav1.8 sodium channel",
-        "ankyrin",
-        "lipidated peptide",
-        "neuropathic pain",
-        "nociceptor",
-        "pain"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 33,
-        "ai": {
-          "score": 10,
-          "topic": "Nav1.8/Ankyrin-3 nociceptor electrophysiology",
-          "reason": "Cellular/molecular pain electrophysiology unrelated to EEG analysis or sleep.",
-          "summary": "Using electrophysiology, biochemistry, and proteomics, this study shows that Nav1.8/Ankyrin-3 interactions are required for pathological nociceptor hyperexcitability in neuroma pain, and that disrupting this interaction with a short lipidated peptide reduces neuropathic pain-like behaviors in mice. The work identifies the Nav1.8/Ank3 interaction as a potential analgesic target specific to pathological states.",
-          "keywords": [
-            "Nav1.8",
-            "Ankyrin-3",
-            "nociceptor",
-            "neuropathic pain",
-            "lipidated peptide"
-          ],
-          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
