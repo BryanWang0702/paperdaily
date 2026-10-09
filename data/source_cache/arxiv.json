@@ -1,12 +1,93 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-10-08T19:00:54.267616+00:00",
+  "fetched_at": "2026-10-09T01:20:33.898336+00:00",
   "window": {
     "start": "2026-10-07",
     "end": "2026-10-09"
   },
-  "count": 5,
+  "count": 8,
   "papers": [
+    {
+      "source": "arxiv",
+      "source_id": "2610.11222v1",
+      "title": "Cross-species representation learning aligns mouse and human neural dynamics and tracks clinical drug efficacy",
+      "abstract": "Preclinical models poorly predict human drug efficacy, particularly in neurological disorders. Neural activity offers a uniquely rich source of translational information because it captures high-dimensional variation in nervous-system function that can be measured in both animals and humans. However, its high dimensionality makes it difficult to distinguish conserved disease-related features from variation arising from species, recording modality and experimental context. Here, we test whether shared neural dynamics can be identified directly from electrophysiology data by learning representations organized by biological state rather than species. We develop a dual-rule contrastive learning framework that aligns corresponding mouse and human states while preserving separation between distinct phenotypes. This framework recovered conserved sensory-response structure across species and, in epilepsy, resolved distinct relationships between three mouse models and heterogeneous human patient populations. When treated animals were projected into a frozen cross-species representation, drug-induced movement towards the human-aligned healthy state retrospectively tracked known clinical efficacy across ten model-drug combinations including a disease-specific detrimental effect. The framework also identified shared disease-associated neural dynamics between Fmr1-knockout mice and human 16p11.2 copy-number variant carriers despite differences in genetic aetiology and recording modality. Together, these findings show the potential of cross-species neural representation learning to map heterogeneous human disease onto experimentally tractable preclinical states and assess whether interventions restore human-relevant circuit function.",
+      "authors": [
+        "Marko Tvrdic",
+        "Justin Richmond Domingo",
+        "Jae Ann Buenaluz",
+        "Jydell Ashley Palomo Penollar",
+        "Edmayelle Villavicencio Alforja",
+        "Jobi Fallaeria Subosa",
+        "Gabriel Ocana-Santero"
+      ],
+      "published_date": "2026-10-08",
+      "indexed_date": "2026-10-08",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.11222v1",
+      "categories": [
+        "q-bio.QM",
+        "cs.LG",
+        "q-bio.NC"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.10952v1",
+      "title": "SPD-MetaFormer is what you need for small-data brain decoding",
+      "abstract": "Brain signal decoding is challenging because neural recordings are noisy and vary across individuals, while labeled data are often limited. Recent attention-based models on the symmetric positive definite (SPD) manifold have nevertheless achieved strong performance using covariance and connectivity representations, yet the contribution of learned token weighting remains unclear. We examine two representative architectures, MAtt (based on log-Euclidean geometry) and GBWAtt (based on generalized Bures--Wasserstein geometry), and find that their learned attention weights remain close to uniform after training. We relate this behavior to bounded similarity parameterizations that, under the original softmax scaling, limit attention-weight contrast. Moreover, replacing learned weights with uniform weights, throughout training and evaluation, has little effect on mean predictive performance while preserving each model's original aggregation geometry. Motivated by these findings, we introduce SPD-MetaFormer, an attention-free architecture built on uniformly weighted Fréchet aggregation under log-Euclidean geometry. Its backbone uses a geodesic residual to update a summary token and a shared spectral feedforward map to transform all tokens, followed by a learned weighted readout. Token states remain SPD-valued until tangent-space classification. Across three EEG benchmarks, SPD-MetaFormer achieves competitive results relative to published Euclidean and manifold baselines. Separate matched reproductions test learned versus uniform weighting within MAtt and GBWAtt. These results suggest that, in the short-sequence and limited-data regimes studied, carefully designed SPD architectures can provide a simpler and effective alternative to adaptive manifold attention.",
+      "authors": [
+        "Zhida Wang",
+        "Wei Lyu",
+        "Guo Yu",
+        "Sui Tang"
+      ],
+      "published_date": "2026-10-07",
+      "indexed_date": "2026-10-07",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.10952v1",
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.10850v1",
+      "title": "Similar Predictive Fit but Different Latent Dynamics: Characterizing Learned Dynamical Structure in Personalized Models of Brain Disorders",
+      "abstract": "As AI models move toward clinical decision-making and personalized treatment, understanding \\emph{what} a model learns is important beyond predictive accuracy alone. We investigate whether personalized latent dynamics reveal clinically associated differences even when predictive fit is similar. A lightweight CNN--Transformer EEG foundation model pretrained on the Temple University EEG Corpus (TUEG) extracts segment-level representations. Using the Temple University Epilepsy Corpus (TUEP), representations are mapped to a shared latent-state space, and sparse multinomial logistic transition distributions (mLTD) are fit independently to each subject to obtain personalized transition-dependency graphs $W_n$. Analyses include $n{=}198$ subjects (99 epilepsy / 99 non-epilepsy). At $k{=}4$, epilepsy subjects exhibit substantially denser learned dependency structure ($p{=}1.1\\times10^{-7}$), with the same pattern at $k{=}6$ (19.90 vs. 13.46; $p{=}5.2\\times10^{-5}$). Graph-derived features provide moderate group discrimination under 5-fold subject-wise cross-validation (AUROC 0.68 at $k{=}4$; 0.65 at $k{=}6$). In contrast, held-out log-likelihood is nearly identical between groups at $k{=}4$ ($-0.992$ vs. $-0.991$; $p{=}0.95$), with similarly matched next-state prediction (AUROC 0.855 vs. 0.861; $p{=}0.54$). Thus, similar predictive fit does not imply similar learned dynamics: groups can be comparably predictable while differing substantially in the internal dynamical structure learned by personalized models. This distinction motivates evaluating learned structure alongside predictive performance in personalized clinical models.",
+      "authors": [
+        "Rita Huan-Ting Peng",
+        "Nhat Bui"
+      ],
+      "published_date": "2026-10-07",
+      "indexed_date": "2026-10-07",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.10850v1",
+      "categories": [
+        "cs.LG",
+        "eess.SP",
+        "q-bio.NC"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
     {
       "source": "arxiv",
       "source_id": "2610.09792v1",
