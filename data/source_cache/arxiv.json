@@ -1,26 +1,26 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-10-20T17:25:29.815834+00:00",
+  "fetched_at": "2026-10-21T17:31:56.806877+00:00",
   "window": {
-    "start": "2026-10-19",
-    "end": "2026-10-21"
+    "start": "2026-10-20",
+    "end": "2026-10-22"
   },
-  "count": 7,
+  "count": 6,
   "papers": [
     {
       "source": "arxiv",
-      "source_id": "2610.26628v1",
-      "title": "SleepPairNet: Learning Multimodal Pediatric Sleep Representations with Random-Pair Cross-Attention",
-      "abstract": "Analyzing physiological sleep signals is important for assessing sleep quality and detecting sleep-related disorders. Learning inter-modal relationships across physiological signals can provide richer representations for downstream sleep analysis. We introduce \\textbf{SleepPairNet}, a multimodal self-supervised learning (SSL) framework that learns pairwise interactions between physiological signals through cross-attention. We propose a random modality-pair selection strategy that exposes the model to diverse signal pairs during pretraining, enabling flexibility across modality combinations at test time. Pretrained on the NCH dataset, SleepPairNet outperforms the evaluated SSL baselines on all respiratory tasks while remaining competitive on EEG-related tasks, and shows even stronger results when transferred to the external CHAT dataset.",
+      "source_id": "2610.28442v1",
+      "title": "CNN-based classifier for subject-independent MBTI Extraversion/Introversion preference classification from short-time EEG signals",
+      "abstract": "This study examines whether short, minimally preprocessed EEG segments contain sufficient information to distinguish between individuals classified as extraverted or introverted according to the Myers--Briggs Type Indicator (MBTI). EEG recordings from 50 participants were divided into 4-s segments and analyzed using a subject-independent nested 5-fold cross-validation procedure to compare EEGNet, EEGProgress, and a newly proposed compact convolutional architecture, SSCNet. SSCNet achieved the highest mean accuracy (0.6481), AUC (0.7063), and F1-score (0.6276). The proposed architecture also showed the lowest variability across folds. SSCNet demonstrated the best computational efficiency, with the shortest median training epoch time and the highest training throughput despite having a similar number of trainable parameters to EEGProgress. The results suggest that MBTI Extraversion--Introversion preferences may be moderately predictable from short time-domain EEG segments without manual spectral feature extraction, while highlighting the importance of subject-independent validation and computationally efficient model design.",
       "authors": [
-        "Saurav Raj Pandey",
-        "Harlin Lee"
+        "Filip Postepski",
+        "Grzegorz M. Wojcik"
       ],
-      "published_date": "2026-10-19",
-      "indexed_date": "2026-10-19",
+      "published_date": "2026-10-20",
+      "indexed_date": "2026-10-20",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.26628v1",
+      "url": "https://arxiv.org/abs/2610.28442v1",
       "categories": [
         "cs.LG"
       ],
@@ -32,18 +32,18 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2610.26618v1",
-      "title": "Global Time-Aware Conditioning (GTC): A Mechanism for Time-Aware Pediatric Sleep Representation Learning",
-      "abstract": "Sleep physiology evolves throughout the night, with changes in sleep cycles, respiratory stability, and cardiovascular dynamics. However, self-supervised learning (SSL) methods for sleep typically process short, fixed-duration windows without explicitly modeling where each window occurs within the full sleep session. We introduce Global Time-Aware Conditioning (GTC), a mechanism that complements local positional encodings by conditioning latent representations on the global time-of-sleep of each input window. We integrate GTC into three representative SSL frameworks and evaluate them on five clinically relevant tasks with extreme class imbalance across two independent pediatric cohorts. GTC generally improves F1 and AUPRC across architectures and tasks, with gains persisting under cross-cohort transfer, highlighting the value of global temporal context for sleep representation learning.",
+      "source_id": "2610.28427v1",
+      "title": "Region-Specific EEG Classification of Hypnotic Susceptibility Using a Sliding-Window 2D CNN: A Subject-Independent Evaluation",
+      "abstract": "We investigate whether a 2D Convolutional Neural Network (CNN) trained on minimally preprocessed EEG signals can classify hypnotic susceptibility across distinct brain regions. Sixty-two male participants (32 Control, 30 Guided Imagery / Hipno group) underwent a 20-minute EEG recording using a 256-channel EGI cap. A sliding-window approach evaluates all 10-second windows within the recording for each of seven predefined brain regions (prefrontal, frontal, temporal, central, parietal, occipital, and facial), yielding up to 868 independently trained models. Initial screening with a segment-level 90/10 random split showed that five regions exceeded the 0.67 accuracy threshold, with the occipital region achieving the highest mean accuracy (0.721) across 90.3% of windows. Subject-independent evaluation via Leave-One-Subject-Out (LOSO) cross-validation, however, substantially revised this picture: occipital performance collapsed to near-chance (mean ACC 0.453, AUC 0.429), revealing that high random-split accuracy was driven by subject-specific EEG fingerprints rather than genuine group differences. In contrast, the frontal and prefrontal regions maintained above-chance LOSO accuracy (0.646 and 0.624, respectively), demonstrating genuine generalisability. These results underscore the necessity of subject-independent validation in EEG-based classification studies and highlight anterior cortical regions as more reliable neural markers of hypnotic susceptibility.",
       "authors": [
-        "Saurav Raj Pandey",
-        "Harlin Lee"
+        "Krzysztof Wrobel",
+        "Grzegorz M. Wojcik"
       ],
-      "published_date": "2026-10-19",
-      "indexed_date": "2026-10-19",
+      "published_date": "2026-10-20",
+      "indexed_date": "2026-10-20",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.26618v1",
+      "url": "https://arxiv.org/abs/2610.28427v1",
       "categories": [
         "cs.LG"
       ],
@@ -55,25 +55,20 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2610.26597v1",
-      "title": "Bombadil: A Foundation Model for Plant Electrophysiology",
-      "abstract": "Living plants, like animals, use electrical signals to carry information about their physiological state across their body, from roots to branches. These signals can be recorded, as they are in animals, from a pair of differential extracellular electrodes inserted into signal-conducting tissue. While machine-learning models have been trained to predict specific plant stress states from these signals, each of these models has been trained for only a single task and none have been designed to transfer across tasks, species, or environments. These approaches do not allow easy scaling across the wide range of species and environments that are relevant to agriculture, forestry, and horticulture for both commercial and consumer plant care. Here we present Bombadil, a foundation model for plant electrophysiology, pretrained without labels on over 4 million hours of electrical signals recorded from 100 plant species in ten distinct environments, including laboratories, greenhouses, commercial orchards, and natural forests. In this way, Bombadil is able to learn the fundamental features of plant electrical signals across a wide array of species and environments. Then, from those same electrical signals, Bombadil tracks changes in seven physiological indicators of plant stress, even among species and stressors with no labels in training.",
+      "source_id": "2610.28422v1",
+      "title": "How Much of Cross-Subject EEG Emotion Recognition Is Stimulus Memorization?",
+      "abstract": "Cross-subject EEG emotion recognition now reports accuracies above 90% on stimulus-defined benchmarks such as SEED, and the field has examined several ways in which such numbers can be inflated, attributing inflation to subject identity, to data partitioning, and to repeated stimulus presentation. We observe that one variable has been left out. On these datasets the emotion label is assigned to the video at design time, so any encoder that recovers which video was shown obtains the label for free. We adapt three representation-level shortcut diagnostics to a cohort of published contrastive cross-subject encoders, and find that stimulus identity is linearly recoverable at six to fifteen times chance. We then measure its impact on the reported accuracy by holding out subjects and stimuli jointly, and find that each released classifier loses two to forty-four points once the test videos are unseen, so a headline obtained under subject hold-out alone is not a measure of cross-subject emotion decoding.",
       "authors": [
-        "James Kirk",
-        "Piotr Bednarski",
-        "Filip Twardy",
-        "Justin Mast",
-        "Lee von Kraus"
+        "Haiyan Xu",
+        "Konstantinos N. Plataniotis"
       ],
-      "published_date": "2026-10-19",
-      "indexed_date": "2026-10-19",
+      "published_date": "2026-10-20",
+      "indexed_date": "2026-10-20",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.26597v1",
+      "url": "https://arxiv.org/abs/2610.28422v1",
       "categories": [
-        "cs.LG",
-        "eess.SP",
-        "q-bio.QM"
+        "eess.SP"
       ],
       "keywords": [],
       "publication_types": [
@@ -83,22 +78,20 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2610.26304v1",
-      "title": "PyGPLA: A Python Package for Generalized Phase Locking Analysis",
-      "abstract": "Spike-field couplings measure the links between neuronal spiking and local field potential (LFP) and provide a tool to study how neural populations coordinate activity across spatial and temporal scales. While modern high-density electrophysiology enables the simultaneous recording of numerous LFP channels and neuronal units, this massive scale poses significant statistical and computational challenges for conventional pairwise coupling analyses. The number of channel-unit comparisons grows rapidly, and a coherent population-level structure can be obscured by high-dimensional coupling matrices. Generalized Phase Locking Analysis (GPLA) addresses this challenge by organizing spike-triggered LFP phase information into a complex coupling matrix and extracting dominant low-rank modes. These modes summarize whether a population is coupled to the field, which channels and units contribute to the coupling, and how their relative phases are organized. Here, we present PyGPLA, an open-source Python package implementing GPLA for high-density electrophysiological recordings. Designed for straightforward integration into existing neural data analysis pipelines, PyGPLA supports multivariate spike-LFP coupling analysis, from coupling estimation and interpretation to significance assessment using analytical and surrogate-based tests.",
+      "source_id": "2610.27789v1",
+      "title": "Foundations of the Scaling Law",
+      "abstract": "Empirical scaling laws relate validation loss to model size, training exposure and compute, providing a quantitative basis for allocating resources. This technical note explains these relationships through three linked analyses. Geometric approximation connects spatial resolution, intrinsic dimension and smoothness to function error; the loss function determines how that error transfers to task risk. Spectral analysis combines feature visibility, covariance eigenvalues and target alignment to describe how additional data reduce unresolved predictive mass. Constrained optimization then gives the parameter-data balance and the training-inference trade-off. We also examine emergence and grokking, separating scoring thresholds from learning dynamics, and test-time scaling, separating candidate coverage from selected-answer accuracy. Applications to vision and molecular prediction show how domain-specific coordinates change the resource comparison. An $\\mathrm{SE}(3)$ case study quantifies the dimension dependence of quotient-space approximation gains and compares optimized compute frontiers, alongside separate analyses of conformational coverage and correlated-sample precision.",
       "authors": [
-        "Amir Khani",
-        "Christian Beste",
-        "Shervin Safavi"
+        "Tianyu Zhao",
+        "Zhixiang Ren"
       ],
-      "published_date": "2026-10-19",
-      "indexed_date": "2026-10-19",
+      "published_date": "2026-10-20",
+      "indexed_date": "2026-10-20",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.26304v1",
+      "url": "https://arxiv.org/abs/2610.27789v1",
       "categories": [
-        "q-bio.NC",
-        "q-bio.QM"
+        "cs.LG"
       ],
       "keywords": [],
       "publication_types": [
@@ -108,22 +101,24 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2610.26198v1",
-      "title": "A general condition for fast rates in multi-group learning",
-      "abstract": "In multi-group learning, a single predictor must control its excess risk simultaneously over overlapping groups. Tosh and Hsu (2022) obtained $1/\\sqrt{n}$ slow rates via a reduction to online learning with sleeping experts, and $1/n$ rates only under realizability (and for a different strategy). We identify a group-wise Bernstein condition under which the same adaptive predictor attains the fast rate $1/n$ without knowing whether the condition holds, while retaining the slow rates on the groups where it fails. The condition is implied by some natural assumptions weaker than realizability. Lower bounds show that weakened versions leave every learner with slow rates. Intermediate rates under relaxed conditions and an extension to VC classes are also obtained.",
+      "source_id": "2610.27738v1",
+      "title": "EEG-Based Classification of Hypnotic Susceptibility Using Two-Dimensional Convolutional Neural Networks",
+      "abstract": "Guided Imagery (GI) is a mind-based relaxation technique widely used in clinical and therapeutic settings. Objectively assessing whether a patient has entered a relaxed state remains a challenge for clinicians. This study investigates electroencephalography (EEG)-based classification of hypnotic susceptibility using two-dimensional Convolutional Neural Networks (2D CNNs) applied to minimally preprocessed signals, without manual feature extraction. Data were collected from 62 male participants (32 Control, 30 Hypno) using a 256-channel dense array amplifier during Guided Imagery or cognitive task conditions. A sliding-window framework evaluated up to 868 independent models across seven anatomically defined brain regions and 124 ten-second time windows. Segment-level random-split screening was followed by Leave-One-Subject-Out (LOSO) cross-validation to obtain subject-independent performance estimates, and an ensemble approach combined predictions across K = 10 windows. The best single-window model achieved accuracy of 0.82 on the random split. Under LOSO, anterior regions generalised better across subjects: the frontal region achieved mean accuracy of 0.646 (AUC: 0.692). An ensemble of K = 10 windows further improved the prefrontal region to mean accuracy of 0.738. The occipital region, dominant in random-split screening, collapsed to near-chance under LOSO, revealing subject-specific EEG fingerprinting rather than genuine group differences. Bandpass filtering and z-score normalisation suffice for competitive EEG classification without manual feature extraction. Anterior cortical regions are identified as the most generalisable neural markers of hypnotic susceptibility.",
       "authors": [
-        "Hanqi Sun",
-        "Evgenii Chzhen",
-        "Luca Ganassali",
-        "Gilles Stoltz"
+        "Krzysztof Wrobel",
+        "Grzegorz M. Wojcik",
+        "Filip Postepski",
+        "Andrzej Kawiak",
+        "Katarzyna Zemla",
+        "Grzegorz Sedek"
       ],
-      "published_date": "2026-10-19",
-      "indexed_date": "2026-10-19",
+      "published_date": "2026-10-20",
+      "indexed_date": "2026-10-20",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.26198v1",
+      "url": "https://arxiv.org/abs/2610.27738v1",
       "categories": [
-        "stat.ML"
+        "cs.LG"
       ],
       "keywords": [],
       "publication_types": [
@@ -133,52 +128,23 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2610.25898v1",
-      "title": "HP-GSBS: Accelerating greedy state boundary search with reusable interval statistics",
-      "abstract": "Greedy State Boundary Search (GSBS) identifies transitions between relatively stable neural activity patterns, but repeated candidate evaluation makes large analyses expensive. HP-GSBS is an open-source Python package that reorganizes the search around reusable interval contributions and correlation statistics. Streaming candidate reduction and local refinement further reduce repeated work; CPU, PyTorch CUDA and Triton backends share sequential segmentation decisions. Across seven controlled workloads with two realizations each, median same-input speedups range from 154 to 1730 times. All 168 optimized executions reproduce original boundaries and selected state counts, with maximum absolute t-distance difference $1.88\\times10^{-11}$. Four frozen EEG recordings provide complementary validation, including a complete input-to-segmentation application example. Batch processing, versioned result persistence and optional low-memory execution support recording collections and longer inputs. By removing redundant computation, HP-GSBS makes established neural-state segmentation faster while preserving its scientific outputs.",
+      "source_id": "2610.27412v1",
+      "title": "Learning the Geometry of Materials Space with Trained Neural Tangent Kernels",
+      "abstract": "Neural networks trained to predict materials properties learn representations whose physical content can be difficult to extract. We use the neural tangent kernel (NTK), evaluated at trained parameters, to recover the geometry learned by a network that predicts superconducting transition temperatures from elemental composition alone. Kernel ridge regression with the trained NTK closely reproduces the network's predictive performance and substantially outperforms regression with the initial kernel. Spectral analysis and multidimensional scaling reveal a geometry dominated by a small number of directions. Clustering and local neighborhood analysis organize compounds into recognizable superconducting families and connect materials with related chemical and correlated-electron properties despite substantial differences in $T_c$. These results establish trained tangent kernels as practical probes of learned materials representations, connecting property prediction with the exploration of materials space.",
       "authors": [
-        "Yanzhe Zhao",
-        "Yongzhang Ji"
+        "Daniel Kaplan",
+        "Gabriel Kotliar",
+        "Anirvan M Sengupta"
       ],
-      "published_date": "2026-10-19",
-      "indexed_date": "2026-10-19",
+      "published_date": "2026-10-20",
+      "indexed_date": "2026-10-20",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.25898v1",
+      "url": "https://arxiv.org/abs/2610.27412v1",
       "categories": [
-        "cs.CE",
-        "q-bio.NC"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2610.25844v1",
-      "title": "SWIFT: Self-guided Weak-to-strong dIFfusion models via Target extrapolation",
-      "abstract": "Training high-quality diffusion models is computationally expensive, and inference-time guidance often adds further sampling cost. In this work, we introduce Swift, a simple yet effective self-guided training method that uses a frozen weak denoiser to improve a stronger model without adding inference overhead. For each noisy input, Swift extrapolates the clean regression target away from the weak denoiser's prediction, amplifying components that remain underfit. The weak guide can be an early training checkpoint, requires no backpropagation during main-model training, and is discarded afterward. The resulting model retains the original sampler and supports both conditional and unconditional generation without label dropout or an unconditional branch. We explain this mechanism through a spectral analysis of finite-time population gradient flow in an RKHS. With an early-stopped weak guide, we prove that a nonempty range of extrapolation strengths yields strictly lower posterior-mean error than matched standard training, despite shifting the regression target away from the posterior mean. Experiments on CIFAR-10 and ImageNet-256 demonstrate improvements across model scales and representations. In one ImageNet-256 configuration, Swift surpasses the baseline's best FID using roughly half the total training compute, including guide preparation and training overhead. On RAEv2, it achieves FID 1.15 without inference-time guidance and 0.99 with guidance. These results establish target extrapolation as an effective approach to weak-to-strong diffusion training with efficient single-model inference.",
-      "authors": [
-        "Yanjin He",
-        "Cuifeng Shen",
-        "Wanzhou Lei",
-        "Maohua Li",
-        "Tao Lan",
-        "Kan Liu",
-        "Hanlin Tang",
-        "Qing Qu"
-      ],
-      "published_date": "2026-10-19",
-      "indexed_date": "2026-10-19",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2610.25844v1",
-      "categories": [
-        "cs.LG",
-        "cs.AI",
-        "cs.CV"
+        "cond-mat.mtrl-sci",
+        "cond-mat.supr-con",
+        "cs.LG"
       ],
       "keywords": [],
       "publication_types": [
