@@ -1,6 +1,6 @@
 {
   "date": "2026-10-22",
-  "generated_at": "2026-10-21T17:32:16.282356+00:00",
+  "generated_at": "2026-10-22T00:11:01.670883+00:00",
   "window": {
     "start": "2026-10-20",
     "end": "2026-10-22"
@@ -10,17 +10,17 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 61,
+  "raw_count": 62,
   "retrieved_source_counts": {
     "pubmed": 130,
-    "biorxiv": 11,
-    "medrxiv": 11,
+    "biorxiv": 13,
+    "medrxiv": 12,
     "arxiv": 6
   },
   "raw_source_counts": {
     "pubmed": 45,
+    "biorxiv": 7,
     "medrxiv": 4,
-    "biorxiv": 6,
     "arxiv": 6
   },
   "prefiltered_count": 40,
@@ -29,12 +29,14 @@
   "count": 40,
   "featured_count": 25,
   "source_counts": {
-    "biorxiv": 5,
-    "pubmed": 29,
+    "biorxiv": 6,
+    "pubmed": 28,
     "arxiv": 4,
     "medrxiv": 2
   },
-  "errors": {},
+  "errors": {
+    "arxiv": "HTTPError: HTTP 429 from arXiv · reused 6 cached records"
+  },
   "ai": {
     "requested": true,
     "enabled": true,
@@ -42,8 +44,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 18,
-    "newly_summarized": 18,
+    "newly_ranked": 1,
+    "newly_summarized": 1,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -54,12 +56,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 5,
-      "prompt_tokens": 16007,
-      "prompt_cache_hit_tokens": 1280,
-      "prompt_cache_miss_tokens": 14727,
-      "completion_tokens": 3526,
-      "total_tokens": 19533
+      "requests": 2,
+      "prompt_tokens": 1587,
+      "prompt_cache_hit_tokens": 640,
+      "prompt_cache_miss_tokens": 947,
+      "completion_tokens": 227,
+      "total_tokens": 1814
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -68,27 +70,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.021805,
+    "run_cost_cny": 0.001414,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 5,
-        "prompt_tokens": 16007,
-        "prompt_cache_hit_tokens": 1280,
-        "prompt_cache_miss_tokens": 14727,
-        "completion_tokens": 3526,
-        "total_tokens": 19533
+        "requests": 2,
+        "prompt_tokens": 1587,
+        "prompt_cache_hit_tokens": 640,
+        "prompt_cache_miss_tokens": 947,
+        "completion_tokens": 227,
+        "total_tokens": 1814
       },
-      "run_cost_cny": 0.021805,
+      "run_cost_cny": 0.001414,
       "daily_usage": {
-        "requests": 5,
-        "prompt_tokens": 16007,
-        "prompt_cache_hit_tokens": 1280,
-        "prompt_cache_miss_tokens": 14727,
-        "completion_tokens": 3526,
-        "total_tokens": 19533
+        "requests": 7,
+        "prompt_tokens": 17594,
+        "prompt_cache_hit_tokens": 1920,
+        "prompt_cache_miss_tokens": 15674,
+        "completion_tokens": 3753,
+        "total_tokens": 21347
       },
-      "daily_cost_cny": 0.021805,
+      "daily_cost_cny": 0.023219,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -101,6 +103,48 @@
     "analyzed_count": 40
   },
   "papers": [
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.10.15.759362",
+      "title": "NED-Net: an annotation-training loop for rodent EEG event detection",
+      "abstract": "Long-term EEG monitoring is central to rodent epilepsy research, and manual review is laborious because recordings span hundreds to tens of thousands of animal-hours. Published automated detectors perform well on their development datasets but are typically fixed models that may not adapt to another laboratory's electrodes, animals, or noise conditions. We introduce NED-Net, open-source software for training and maintaining seizure detectors. It uses reviewed candidate events as training labels, runs detection live during recording, and retrains as annotations accumulate. A detector trained on one mouse cohort (867 annotated seizures) achieved 93.6% precision in human review of 171 detections. Applied unchanged to a second cohort on the same acquisition system, its detections were mostly seizures (12 of 13 reviewed), but per-animal recall varied substantially (median 10%), with no convulsive reference seizure detected in four of 11 animals. Retraining with annotations from the second cohort raised convulsive recall from 15% to 64%, with at least one reference seizure detected in every animal. On recordings withheld from training, 75% of detections were seizures and 14 of 22 reference seizures were detected, whereas the source model and a model trained without these animals detected none. NED-Net supports evaluating and adapting detectors to local recordings.",
+      "authors": [
+        "MIR, M. Y.",
+        "Ledri, M."
+      ],
+      "published_date": "2026-10-21",
+      "indexed_date": "2026-10-21",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.10.15.759362",
+      "url": "https://doi.org/10.64898/2026.10.15.759362",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 85,
+        "ai": {
+          "score": 92,
+          "topic": "Open-source annotation-training loop for rodent EEG event detection",
+          "reason": "Directly matches core interests: open-source, live rodent EEG detection with active retraining/calibration from small labeled sets, addressing cross-cohort generalization and annotation efficiency for animal neural time-series.",
+          "summary": "Introduces NED-Net, open-source software that trains and continuously retrains rodent seizure detectors using reviewed candidate events as labels. A detector across cohorts went from mostly-seizure detections with low per-animal recall to, after cohort-specific retraining, convulsive recall of 64% (up from 15%) with at least one reference seizure in every animal.",
+          "keywords": [
+            "rodent EEG",
+            "seizure detection",
+            "annotation-training loop",
+            "retraining",
+            "epilepsy monitoring"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
     {
       "source": "biorxiv",
       "source_id": "10.64898/2026.10.14.759205",
@@ -1269,57 +1313,6 @@
             "aging",
             "dual-task",
             "P3 event-related potential"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "42901118",
-      "title": "Generalized Spike-Wave discharges and myoclonic features in a subgroup of children with Self-Limited epilepsy with centrotemporal spikes.",
-      "abstract": "Generalized spike-wave discharges (GSWD) are occasionally observed in patients with self-limited epilepsy with centrotemporal spikes (SeLECTS), but their clinical significance remains unclear. This study aimed to characterize the electroclinical features of these patients and to explore their potential clinical implications. We retrospectively reviewed the clinical data of 148 children diagnosed with SeLECTS at Xuanwu Hospital from June 2015 to October 2025. Patients with GSWD on electroencephalography were identified and compared with those without GSWD regarding demographic characteristics, seizure semiology, auxiliary examination findings, treatment response, and outcomes. GSWD were identified in 9 of 148 patients (6.1 %) with SeLECTS. These 9 patients included 4 males and 5 females, with a median onset age of 8 (IQR: 5-10) years. Compared with those without GSWD, they more frequently showed wakefulness seizures (44.4 % vs 5.8 %, p < 0.05), generalized tonic-clonic seizures during sleep (44.4 %), and myoclonic manifestations (77.8 %). Other clinical variables were similar between groups. All 9 patients achieved freedom from focal and generalized tonic-clonic seizures, though one required prolonged combination therapy. Two patients with follow-up exceeding 10 years showed electroclinical evolution toward juvenile myoclonic epilepsy, characterized by the absence of centrotemporal spikes, with generalized spike-wave bursts recurring on later EEGs. We identified a subgroup of patients with SeLECTS characterized by the coexistence of GSWD and myoclonic features, showing partial electroclinical overlap with juvenile myoclonic epilepsy. These findings broaden the electroclinical spectrum of SeLECTS, though the relationship between focal and generalized network dysfunction in this subgroup requires confirmation in larger, prospectively followed cohorts.",
-      "authors": [
-        "Bingqi Guo",
-        "Yu Jia",
-        "Yiran Duan",
-        "Jiaqi Han",
-        "Xiating Zhang",
-        "Lehong Gao",
-        "Xuan Zhao",
-        "Liping Zhang",
-        "Yuping Wang"
-      ],
-      "published_date": "2026-Oct-20",
-      "indexed_date": "",
-      "journal": "Epilepsy & behavior : E&B",
-      "doi": "10.1016/j.yebeh.2026.111336",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/42901118/",
-      "categories": [],
-      "keywords": [
-        "Electroencephalogram",
-        "Generalized spike–wave discharges",
-        "Myoclonus seizures",
-        "Outcomes",
-        "Self-limited epilepsy with centrotemporal spikes"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 27,
-        "ai": {
-          "score": 30,
-          "topic": "GSWD in SeLECTS epilepsy",
-          "reason": "Clinical epilepsy EEG phenotyping without methodological or sleep-analysis contribution.",
-          "summary": "Retrospectively reviewed 148 children with self-limited epilepsy with centrotemporal spikes (SeLECTS) and identified 9 (6.1%) with generalized spike-wave discharges (GSWD), comparing them with patients without GSWD. The GSWD subgroup more often had wakefulness seizures, sleep-related generalized tonic-clonic seizures, and myoclonic manifestations, and two long-followed patients evolved toward juvenile myoclonic epilepsy electroclinically.",
-          "keywords": [
-            "self-limited epilepsy with centrotemporal spikes",
-            "generalized spike-wave discharges",
-            "myoclonic seizures",
-            "juvenile myoclonic epilepsy",
-            "electroclinical outcomes"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
