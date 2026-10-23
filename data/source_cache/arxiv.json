@@ -1,32 +1,31 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-10-23T00:10:15.120381+00:00",
+  "fetched_at": "2026-10-23T17:21:32.170012+00:00",
   "window": {
-    "start": "2026-10-21",
-    "end": "2026-10-23"
+    "start": "2026-10-22",
+    "end": "2026-10-24"
   },
-  "count": 3,
+  "count": 2,
   "papers": [
     {
       "source": "arxiv",
-      "source_id": "2610.29815v1",
-      "title": "NeuroCodec: EEG-Guided Latent-Domain Generative Model for High-Fidelity Target Speaker Extraction",
-      "abstract": "Driven by recent advancements in hearing assistive devices, target speaker extraction (TSE) in multi-talker environments has drawn significant attention. To address this, hearing technologies identify attention using neural signals recorded via electroencephalography (EEG) to guide TSE, enabling neuro-steered auditory attention decoding. However, most existing techniques rely on time-frequency masking, which suffers from low fidelity in spectro-temporally overlapping regions and is often restricted to narrowband audio. In contrast, we introduce NeuroCodec, which, to the best of our knowledge, is the first generative EEG-guided TSE framework operating in the latent space of a neural audio codec. Specifically, NeuroCodec models spatial EEG dependencies via graph convolutions and fuses cross-modal EEG and speech representations through attention mechanisms and Mamba-based temporal modeling. We further introduce a six-phase training curriculum that progressively incorporates latent reconstruction, multi-scale spectral, and adversarial objectives to ensure stable, high-fidelity speech generation. Experiments on the public Cocktail Party and KUL datasets show NeuroCodec outperforms baselines, across several perceptual metrics. A listening experiment with 20 participants validated that NeuroCodec offers greater perceptual accuracy, achieving a mean score of 82.24 compared with 49.63 for M3ANet. Additionally, the proposed method is seen to enable 44.1 kHz reconstruction with spectral content extending up to 20 kHz, further supporting the perceptual results. Finally, we extend NeuroCodec with a causal streaming formulation suited for real-time processing, providing a basis for hearing assistive devices.",
+      "source_id": "2610.30995v1",
+      "title": "EEG-Captioner: Grounding EEG-to-Language Generation in Fundamental Signal Properties",
+      "abstract": "Electroencephalography (EEG)-to-language models offer a promising approach for translating complex neural signals into human-readable descriptions. However, generating plausible language does not necessarily demonstrate that a model has learned to interpret the underlying EEG signal. A direct way to assess such interpretation is to probe objectively measurable properties of the signal itself. We therefore construct an EEG-language dataset of 160,781 segments annotated with signal-level question answering (QA) pairs, where each question targets one of five property families and requires a quantitative comparison involving spectral, spatial, temporal, or lateral signal properties. Each segment is also paired with a feature-grounded EEG caption. We further propose a Dual-Domain EEG Encoder that jointly models temporal waveforms and spectral-spatial representations, and introduce EEG-Captioner, a unified EEG-to-language framework trained with both signal-level QA and EEG caption supervision. Experiments show that the proposed encoder achieves the highest overall macro-averaged balanced accuracy (Macro-BA) among the compared EEG encoders, while EEG-Captioner achieves a Macro-BA of 88.81% on signal-level QA and improves caption factual consistency from 82.06% to 83.46% over caption-only language adaptation, demonstrating the complementary benefits of signal-level QA and caption supervision.",
       "authors": [
-        "Julian Silva",
-        "Jaliya Kodithuwakku",
-        "Navindu Sirimanna",
-        "Shaveen Herath",
-        "Wageesha N. Manamperi",
-        "Joshua P. Kulasingham"
+        "Leyuan Jin",
+        "Jiahao Mei",
+        "Yixuan Yuan",
+        "Shimeng Li",
+        "Mengyue Wu",
+        "Yue Ding"
       ],
-      "published_date": "2026-10-21",
-      "indexed_date": "2026-10-21",
+      "published_date": "2026-10-22",
+      "indexed_date": "2026-10-22",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.29815v1",
+      "url": "https://arxiv.org/abs/2610.30995v1",
       "categories": [
-        "eess.AS",
         "cs.LG"
       ],
       "keywords": [],
@@ -37,45 +36,30 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2610.29320v1",
-      "title": "BrainCodes: A Lightweight EEG Foundation Model over Discrete Neural Codes",
-      "abstract": "Recent electroencephalography (EEG) foundation models increasingly emphasize model scale, potentially limiting their deployment on resource-constrained devices and in everyday environments. We argue that transferable EEG features can instead be learned with a compact architecture and introduce BrainCodes, a lightweight foundation model pretrained through self-supervised learning on more than 800 hours of recordings from over 1,000 participants. Our architecture combines a quantization-based neural tokenizer with a spatiotemporal encoder that supports arbitrary electrode configurations. The pretraining objective explicitly encourages representations that capture spatial connectivity through channel positional encoding, and sensitivity to narrowband neural oscillations through an auxiliary training objective. Our model matches or surpasses the state of the art across diverse neurophysiological monitoring tasks, including sleep staging, attention assessment, and cognitive load estimation. BrainCodes transfers effectively to low-resource wearable devices while using up to 97% fewer trainable parameters than comparable architectures. Beyond predictive accuracy, our evaluation framework characterizes the geometry and invariances of learned EEG representations across measurable spatial, temporal, and spectral signal properties.",
+      "source_id": "2610.30746v1",
+      "title": "Wavenumber-Aware Deep Learning for Robust Analysis of Raman Spectra",
+      "abstract": "Machine-learning models for spectroscopy usually treat a spectrum as a fixed-grid intensity vector, leaving the physical coordinate implicit in the array index. Such models are tied to a single sampling grid, spectral range and resolution, which limits their use when measurement conditions change. Here we represent each spectral point as a pair of intensity and wavenumber and compute Transformer positional encodings from the wavenumber itself. On Raman spectra of three bacterial species and their synthetic mixtures, this representation remained robust to noise, sparser sampling and partial spectral coverage across convolutional, residual and Transformer networks. In controlled comparisons, wavenumber-based encoding outperformed index-based and learned encodings under partial observation and retained its performance on sampling grids never seen during training, where index-based encoding degraded. These findings were reproduced on a public 30-isolate bacterial benchmark. Explicit physical coordinates offer a simple route to robust spectral analysis under variable measurement conditions.",
       "authors": [
-        "Kleanthis Avramidis",
-        "Ivan Tashev",
-        "Dimitra Emmanouilidou"
+        "Jihwan Kim",
+        "Jaeseong Heo",
+        "Yujin Kim",
+        "Sang Bin Yoon",
+        "Chanjoong Kim",
+        "Kwang-Im Oh",
+        "Hyon Bin Na",
+        "Kyungwon Kwak",
+        "Myeongkee Park",
+        "Joonyoung F. Joung"
       ],
-      "published_date": "2026-10-21",
-      "indexed_date": "2026-10-21",
+      "published_date": "2026-10-22",
+      "indexed_date": "2026-10-22",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.29320v1",
+      "url": "https://arxiv.org/abs/2610.30746v1",
       "categories": [
         "cs.LG",
-        "cs.NE"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2610.29001v1",
-      "title": "The Metrology Atlas: describing recorded physiological data as a measurement system, with VitalDB as a first application",
-      "abstract": "Every value in a recorded physiological dataset is a pair: a recorded time and a recorded value. Neither is the truth. The time comes from a clock that drifts and is corrected in jumps, and often describes a window that ended earlier. The value was quantised, rounded, sometimes heaped by hand, and measured by an instrument with its own error. We present the Metrology Atlas, a dataset-independent way of describing a recorded dataset as a measurement system, and its first application, to VitalDB, an open dataset of 6,388 surgical patients, as a proof of principle. For every variable, the atlas states what was measured, the measurement model linking it to the recorded pair, and what is known about the true time and true value given a record. Each part of the model carries its evidence: 69 studies, 49 parameters and 54 observations, each marked as measured, derived, estimated or assumed. The atlas maps 11 clocks and 14 devices into one timing network, and closes loops in that network to test its own model. Synchronisation reduces the median timing error between the EEG and ECG from 794 ms to 42 ms, and between ventilator and monitor waveforms from 378 ms to 55 ms. The atlas also documents data-quality issues, several of which correct the dataset's own documentation. It is published as a website and a single machine-readable file, with open-source code and a scheme of time-aware labels. Everything is open under CC BY 4.0 and MIT licences. The engine, schema and timing tools carry over unchanged, and the aim is to describe many other datasets the same way.",
-      "authors": [
-        "Andrew J. Goodwin"
-      ],
-      "published_date": "2026-10-21",
-      "indexed_date": "2026-10-21",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2610.29001v1",
-      "categories": [
-        "eess.SP",
-        "physics.med-ph"
+        "physics.chem-ph",
+        "physics.optics"
       ],
       "keywords": [],
       "publication_types": [
