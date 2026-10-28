@@ -1,34 +1,60 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-10-28T00:39:11.838686+00:00",
+  "fetched_at": "2026-10-28T18:26:36.757832+00:00",
   "window": {
-    "start": "2026-10-26",
-    "end": "2026-10-28"
+    "start": "2026-10-27",
+    "end": "2026-10-29"
   },
-  "count": 4,
+  "count": 7,
   "papers": [
     {
       "source": "arxiv",
-      "source_id": "2610.35540v1",
-      "title": "Beyond Modeling Order: Dual-Path Spatiotemporal Representation Learning for Cross-Subject EEG Emotion Recognition",
-      "abstract": "Cross-subject generalization remains a major challenge for EEG-based emotion recognition due to pronounced inter-subject variability in neural activity and emotion-related spatiotemporal patterns. Existing methods mainly alleviate inter subject differences through distribution alignment or contrastive learning, while paying limited attention to representation bias associated with fixed spatiotemporal modeling orders. We hypothesize that high-level emotion representations of the same EEG signal should remain consistent across different spatiotemporal modeling paths. Based on this hypothesis, we propose a Dual-Path Spatiotemporal Contrastive Learning (DP-STCL) framework for cross-subject EEG emotion recognition. DP-STCL employs two complementary encoders with independent parameters, namely a Temporal-to-Spatial (TS) path and a Spatial to-Temporal (ST) path, to model EEG spatiotemporal information under different integration orders. During representation learning, the same emotional stimulus is used to establish cross subject associations, while three complementary relations jointly constrain representation variations across subjects and modeling paths. This promotes stable and discriminative stimulus-related emotion representations. To further handle limited labeled target subject data, we introduce a LoRA-based few-shot adaptation strategy with low parameter overhead. Extensive cross-subject experiments on SEED, SEED-IV, SEED-V, and FACED show that DP-STCL consistently outperforms the compared methods, demonstrating its effectiveness in improving cross-subject EEG emotion recognition.",
+      "source_id": "2610.37480v1",
+      "title": "Keeping Inference in the Radio: Design and Measurement of a Spiking Accelerator for mmWave ISAC Activity Recognition",
+      "abstract": "Integrated sensing and communication allows wireless networks to recognize human activity from the channel estimates that the receiver computes anyway. The inference, however, runs on the general-purpose processors of the base station, access point or handset, which are the first components a device switches off to save energy. Always-on sensing therefore requires a classifier that is small enough to remain powered while the rest of the system sleeps. We investigate whether Spiking Neural Networks (SNNs) can provide such a classifier. To this end, we generate SNN accelerators for micro-Doppler activity recognition on the public DISC dataset (IEEE 802.11ay at 60 GHz) with the open-source Spiker+ framework, and implement them together with a spike encoder on a ZCU208 RFSoC, so that the complete chain from micro-Doppler frame to activity label runs in programmable logic. A fully connected SNN with 132 neurons achieves 94.7 % accuracy (90.7 % macro-F1) on unseen subjects and performs an inference in 206 microseconds. Compared to conventional networks of the same topology on the same device, it requires an eighth of the logic and 3.4X less dynamic energy per decision than a network fed the same binary spikes, at comparable accuracy, and 7.6X less than a network fed the 16-bit spectrogram, at 1.2 points lower accuracy. Quantization-aware training reduces its weights to 3 bits within half a percentage point of the 6-bit network at the same encoder threshold",
       "authors": [
-        "Zehui Xiao",
-        "Yi Zheng",
-        "Guixing Fu",
-        "Wenkai Lu",
-        "Lingfei He",
-        "Tao Tan",
-        "Yue Liu",
-        "Silun Wang",
-        "Junhai Xu",
-        "Mengting Liu"
+        "Anthony Sánchez",
+        "Rafael Ruiz",
+        "José A. Belloch",
+        "Jesús O. Lacruz",
+        "Joerg Widmer"
       ],
-      "published_date": "2026-10-26",
-      "indexed_date": "2026-10-26",
+      "published_date": "2026-10-27",
+      "indexed_date": "2026-10-27",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.35540v1",
+      "url": "https://arxiv.org/abs/2610.37480v1",
+      "categories": [
+        "cs.NI",
+        "cs.AR",
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.37338v1",
+      "title": "Normative Deviation Modeling for EEG-based Depression Detection",
+      "abstract": "Web-enabled digital health services are expanding access to physiological monitoring and mental health screening. However, electroencephalography (EEG)-based major depressive disorder (MDD) detection remains challenging across heterogeneous data sources, where individual variability and acquisition differences may affect disease-related representations. In this work, we investigate the use of healthy normative references for EEG-based MDD detection. Specifically, structural and distributional reference models are independently trained using healthy control (HC) recordings to characterize departures from healthy EEG patterns. We develop two diagnostic approaches that incorporate normative deviations at different representation levels. Scalar-level Normative Deviation-guided Diagnosis (S-NDD) summarizes structural and distributional deviations into scalar scores and integrates them with deep EEG representations. Feature-level Normative Deviation-guided Diagnosis (F-NDD) retains dimension-wise residuals and combines them with deep EEG representations through attention-based aggregation and auxiliary supervision. We also employ target HC-assisted score calibration for cross-source evaluation without updating the trained models. Experiments on two public EEG datasets examine both approaches under subject-independent within-source and bidirectional cross-source settings. The results demonstrate the effectiveness of normative deviation-guided diagnosis across different evaluation settings.",
+      "authors": [
+        "Wan Jiang",
+        "Jingqi Cheng",
+        "Hui Zhang",
+        "Xu Zhao",
+        "Xiaojing Chen",
+        "Shengeng Tang",
+        "Jingjing Wu",
+        "Richang Hong"
+      ],
+      "published_date": "2026-10-27",
+      "indexed_date": "2026-10-27",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.37338v1",
       "categories": [
         "cs.LG"
       ],
@@ -40,22 +66,23 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2610.35484v1",
-      "title": "Evaluating Bayesian deep learning for robust biomedical time-series classification under distribution shift: A sleep scoring case study",
-      "abstract": "In biomedical time-series classification, machine learning models often suffer from deteriorating accuracy and calibration due to distribution shift. We investigate to what degree Bayesian-inspired deep learning improves robustness through Bayesian model averaging (BMA). Using rodent sleep scoring as a case study, we evaluate BMA under distribution shifts in genotype, laboratory, and species. We systematically compare nine approximate inference methods spanning single- and multi-basin approaches across two neural network backbones on in-distribution (ID) data and five out-of-distribution (OOD) datasets. In our results, multi-basin methods perform best, outperforming baselines and single-basin methods. Compared with point estimates, BMA generally improves OOD accuracy and calibration across both architectures, while yielding only modest ID gains. It also often improves selective prediction and OOD and artifact detection, but, interestingly, not inter-rater disagreement detection.",
+      "source_id": "2610.37148v1",
+      "title": "EEG-Based Decoding of Musical Mode and Melodic Direction Using Empirical Mode Decomposition",
+      "abstract": "Electroencephalography (EEG) has proven to be a powerful tool for decoding neural activity in real-life scenarios, including the perception and processing of emotions elicited by music. Among the various musical features that modulate these responses, musical mode and melodic direction (or contour) play a central role. This work proposes a novel EEG feature extraction framework based on Empirical Mode Decomposition (EMD) to decompose EEG signals recorded during active piano performance for the detection of these two musical features. Energy-based descriptors were computed from the first four Intrinsic Mode Functions (IMFs) obtained through EMD and used to train a Wide Neural Network classifier. The model performance was benchmarked against several standard classifiers commonly employed in EEG classification tasks. Two experimental scenarios were explored: intra-subject and intersubject. In the former case, the proposed framework achieved average accuracies of 84%, whereas in the inter-subject case, accuracies reached 81% on average using the first IMF, with AUC-ROC values of 0.9 on average in both cases. A frequency-domain analysis revealed a strong correspondence between the IMFs and conventional EEG sub-bands, except for certain specific frequency components that were not fully represented. Predominant activations were observed over the frontal, temporal, and parietooccipital regions, areas consistently associated with music processing. Furthermore, the proposed method demonstrated robustness to handedness, successfully classifying EEG data across participants regardless of their dominant hand. These findings highlight the potential of EMD-based feature extraction for identifying music-related neural patterns and contribute to advancing research in Music Information Retrieval (MIR), affective neuroscience, and the broader understanding of the neural encoding of musical structure.",
       "authors": [
-        "Mads Birch Sørensen",
-        "Ulrike Richter",
-        "Francois Gastambide",
-        "Michael Riis Andersen"
+        "Sergio Guillén",
+        "Lorenzo J. Tardón",
+        "Ana M. Barbancho",
+        "Isabel Barbancho"
       ],
-      "published_date": "2026-10-26",
-      "indexed_date": "2026-10-26",
+      "published_date": "2026-10-27",
+      "indexed_date": "2026-10-27",
       "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2610.35484v1",
+      "doi": "10.1109/access.2026.3717404",
+      "url": "https://arxiv.org/abs/2610.37148v1",
       "categories": [
-        "cs.LG"
+        "cs.SD",
+        "eess.SP"
       ],
       "keywords": [],
       "publication_types": [
@@ -65,47 +92,108 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2610.35355v1",
-      "title": "OneEEG: A Unified Signal-Visual Multimodal Language Model with Task-Aware Mixture of Projectors for Multi-Task EEG Understanding",
-      "abstract": "Electroencephalography (EEG) is widely used in clinical assessment, brain-computer interfaces, and cognitive-state analysis, yet EEG modeling remains fragmented across task paradigms. Recent multimodal large language models (MLLMs) provide a promising interface for flexible multimodal reasoning, but their ability to understand EEG inputs remains limited. In this work, we propose OneEEG, a unified EEG-MLLM framework for multi-task EEG understanding. By training on our curated OneEEG-Instruct, a multi-task EEG instruction-tuning dataset, OneEEG jointly models numerical EEG representations and visual EEG representations, and introduces a task-aware Mixture of Projectors (MoP) to align heterogeneous EEG features across different task families with the LLM embedding space. We further establish OneEEG-Bench, a benchmark for evaluating current MLLMs and our method on multi-task EEG understanding. Experiments show that existing MLLMs have limited ability to interpret EEG inputs, while OneEEG achieves stronger performance by integrating numerical and visual EEG representations with task-aware EEG-to-LLM projection. Extensive ablations and analyses further reveal the effects of visual EEG renderings, MoP variants, router behavior, and feature dispersion across EEG tasks.",
+      "source_id": "2610.37139v1",
+      "title": "Generative Replay for Equilibrium Propagation: Toward Edge-Friendly Continual Learning in Hopfield Networks",
+      "abstract": "Equilibrium Propagation (EqProp) offers a biologically grounded and hardware-aligned alternative to backpropagation for training Hopfield Networks. However, its behavior in continual learning settings remains largely unexplored. This work confronts catastrophic forgetting in EqProp-trained Hopfield Networks from the inside out, eliminating the need for external data buffers or architectural overhead that standard Experience Replay \\textbf{(ER)} and Generative Replay \\textbf{(Gen-Replay)} inevitably require. We introduce an Energy-Based Generative Replay strategy \\textbf{(EB-Gen)} which exploits the intrinsic generative dynamics of Hopfield Networks, allowing a single model to act as both classifier and replay samples generator. Samples capturing past task knowledge are generated by relaxing a frozen copy of the network, enabling rehearsal solely through internally generated pseudo-data. We evaluate the proposed method in the Class-Incremental setting, using the split versions of the MNIST and CIFAR10 benchmarks and compare it with FineTune, Experience Replay, Generative Replay, Sleep-Like Replay Consolidation (SRC) and Joint training. Our results show that EB-Gen significantly improves stability while preserving plasticity, achieving a 75\\% and 64\\% average accuracy on Split MNIST and Split CIFAR10 respectively. These findings show that Equilibrium Propagation can be adapted to alleviate catastrophic forgetting without forgoing the traits which made it compelling in the first place.",
       "authors": [
-        "Jiacheng Zhang",
-        "Xueyi Zhang",
-        "Xin Lu",
-        "Siqi Cai",
-        "Haizhou Li"
+        "Victor Cook",
+        "Gilles Sassatelli",
+        "Thierry Gil",
+        "Mohamed Watfa",
+        "Marina Reyboz"
       ],
-      "published_date": "2026-10-26",
-      "indexed_date": "2026-10-26",
+      "published_date": "2026-10-27",
+      "indexed_date": "2026-10-27",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2610.35355v1",
-      "categories": [
-        "cs.LG"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2610.35246v1",
-      "title": "NOMAD-EEG: Native Omni-Montage Adaptive Diffusion",
-      "abstract": "Purpose. Electroencephalography (EEG) montages, channel counts and recording lengths vary widely, but most EEG foundation models are bound to the channel set and input length they were trained on. We aimed to build a generative EEG foundation model independent of the number, identity and order of electrodes and of the input length. Methods. NOMAD-EEG is a 12.0 M-parameter diffusion model that alternates state-space layers along time, without patches, with attention across electrodes identified only by their 3D scalp position. It was pre-trained on 147 h of unlabelled EEG from a single corpus and evaluated with frozen linear probes on ten datasets with 1 to 64 electrodes against seven foundation models run under one protocol, and on two unseen populations. Results. Despite its small size (12.0 M parameters against 69 M for REVE) and single pre- training corpus, NOMAD-EEG outperformed all seven foundation models on EEGMMIDB mo- tor imagery (balanced accuracy 0.442), Siena seizure detection (macro F1 0.622) and Bonn seizure detection (AUROC 0.999), had the highest accuracy of the seven compared models on TUEP epilepsy diagnosis (0.640) and, after fine-tuning, the highest \\k{appa} (0.635) and weighted F1 (0.814) on TUEV event classification. It was the best of five models on P300 detection in autism with an unseen eight-electrode montage (AUROC 0.718). With only 5 of 19 electrodes, its mean AUROC fell only from 0.942 to 0.891. Conclusion. Identifying electrodes by position and modelling time without patches let one small model, pre-trained on one corpus, outperform much larger EEG foundation models on seizure detection, epileptiform event classification, epilepsy diagnosis and motor imagery.",
-      "authors": [
-        "Abdulkader Helwan",
-        "Khadidja Henni",
-        "Lina Abou-Abbas"
-      ],
-      "published_date": "2026-10-26",
-      "indexed_date": "2026-10-26",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2610.35246v1",
+      "url": "https://arxiv.org/abs/2610.37139v1",
       "categories": [
         "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.36857v1",
+      "title": "Evaluating AlphaEarth Embeddings for Crop Classification: Separability, Temporal Dynamics, and Cross-Regional Transferability",
+      "abstract": "Earth Observation (EO)-based agricultural monitoring is shifting from pixel-level spectral analysis toward representation-driven modeling, yet systematic evaluation of learned representations across spatial, temporal, and domain-generalization dimensions remains limited. Geospatial foundation models generate high-dimensional embeddings encoding spatio-temporal land-surface properties, but their utility for agricultural applications remains insufficiently understood. This study presents a representation-agnostic evaluation framework integrating geometric separability, temporal dynamics, spatial robustness, and cross-regional generalisation. A 64-dimensional AlphaEarth embedding space is benchmarked against Sentinel-2 reflectance, NDVI-derived phenology, and harmonic features using field-scale data from the Conterminous United States (CONUS; 2017-2023) and Northern India (2021). Traditional features achieve strong linear separability (Fisher ratio), while embeddings provide superior distribution-aware separation -- Bhattacharyya and Mahalanobis distances up to an order of magnitude higher for spectrally similar pairs (e.g. Corn/Soybeans: 3.9 vs. 0.10). Embeddings uniquely capture multi-year crop rotation dynamics, reaching a separability ratio of 1.784 versus a maximum of 1.003 across all engineered features, and exhibit lower residual spatial autocorrelation of errors (mean Moran's $I \\approx 0.17$). However, harmonic and NDVI features show stronger cross-continental transferability (US $\\to$ India Macro F1: 0.493 vs. 0.326 for embeddings), reflecting better distributional alignment. The combined feature space yields balanced performance, supporting hybrid modeling. These findings reveal a fundamental trade-off between representational richness and cross-region transferability, providing a structured framework for feature selection in large-scale crop classification.",
+      "authors": [
+        "Priyanka Goyal",
+        "Maitreyee Sar",
+        "Adway Mitra",
+        "Manjira Sinha"
+      ],
+      "published_date": "2026-10-27",
+      "indexed_date": "2026-10-27",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.36857v1",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.36745v1",
+      "title": "Neuronal Identity as an Organizational Basis for Analyzing Neural Population Dynamics",
+      "abstract": "Individual neurons exhibit diverse molecular, morphological, and electrophysiological properties that shape their distinct roles in neural circuits. While these multimodal features are largely shared across individuals, they remain an underutilized source of information in analyzing neural population dynamics. We posit that these shared biological profiles provide a common reference for relating neural dynamics across subjects and recording sessions. Our framework leverages this structure by routing neurons into latent groups based on their biological profiles and analyzing population dynamics through group-level representations. Because these assignments are anchored in biological properties that are consistent across subjects, the learned organization supports transfer to unseen animals without retraining or neuron-wise correspondence. We evaluate our framework on whole-brain calcium imaging in larval zebrafish and large-scale electrophysiology in the mouse visual cortex. Across both species and recording modalities, the framework delivers state-of-the-art performance in both neural decoding and manifold analysis: it achieves superior decoding of behavior and stimulus labels while better preserving the temporal consistency and local geometric structure of latent trajectories on unseen data. Our experiments demonstrate that not only does providing biological features improve baseline performance, but our proposed framework achieves even stronger results by using these properties to explicitly structure the population rather than treating them as auxiliary inputs. Together, these results suggest that organizing neural populations by their multimodal biological features offers a promising framework for generalizing population dynamics across subjects and recording sessions.",
+      "authors": [
+        "Seungjae Han",
+        "Joshua Yedam You",
+        "Soi Kim",
+        "Minho Eom",
+        "Jinho Park",
+        "Seunghee Park",
+        "Byeongwook Lee",
+        "Young-Gyu Yoon"
+      ],
+      "published_date": "2026-10-27",
+      "indexed_date": "2026-10-27",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.36745v1",
+      "categories": [
+        "q-bio.NC",
+        "cs.LG",
+        "eess.SP"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2610.36583v1",
+      "title": "MM-Net: A Multimodal Multi-Task Network for Sleep Staging and Sleep Apnea Assessment After Ischemic Stroke",
+      "abstract": "Automated polysomnography after ischemic stroke is challenging because of altered sleep-related neural activity and concurrent respiratory disturbances. Existing stroke-specific approaches mainly address sleep-stage classification, leaving joint analysis of sleep architecture and respiratory events underexplored. Moreover, adapting pretrained EEG encoders introduces a representation inconsistency when downstream models are trained on embeddings from previously seen patients but evaluated on unseen individuals. We propose MM-Net, a multimodal multi-task framework that resolves this inconsistency through cross-fitting and ridge-based embedding alignment. Sleep-adapted EEG-EOG representations and engineered neural descriptors are fused with learned cardiorespiratory features through cross-attention and shared temporal modeling for simultaneous sleep staging and respiratory-event detection. On iSLEEPS (99 patients with subacute ischemic stroke), ten-fold patient-independent evaluation achieved 76.3% staging accuracy (Cohen's $κ$ = 0.656) and 0.825 respiratory-event AUC, outperforming the evaluated baselines under matched protocols. The sleep-adapted encoder improved the downstream model when its embeddings were aligned, raising staging accuracy by 1.4 percentage points over the frozen encoder ($p$ = 0.020) versus 0.2 points without alignment. MM-Net also achieved 86.4% staging accuracy on Sleep-EDF, above every single-EEG architecture reimplemented on the same recordings, and 80.3% staging accuracy with 0.889 respiratory AUC on ISRUC-I, exceeding its retrained staging baselines. Without retraining, the iSLEEPS-trained model retained respiratory AUCs of 0.833 on ISRUC-I and 0.841 on UCD. These findings support representation-consistent neural adaptation and joint physiological modeling across stroke, healthy-sleep, and sleep-disorder cohorts.",
+      "authors": [
+        "Md Wahiduzzaman Suva",
+        "Esm E Moula Chowdhury Abha",
+        "Md Imtiaj Alam Sajin",
+        "Md Iftekharul Mobin",
+        "Jia Uddin"
+      ],
+      "published_date": "2026-10-27",
+      "indexed_date": "2026-10-27",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2610.36583v1",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
         "eess.SP"
       ],
       "keywords": [],
