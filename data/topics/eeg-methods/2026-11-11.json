@@ -1,0 +1,2001 @@
+{
+  "date": "2026-11-11",
+  "generated_at": "2026-11-10T19:55:48.077768+00:00",
+  "window": {
+    "start": "2026-11-09",
+    "end": "2026-11-11"
+  },
+  "topic": {
+    "id": "eeg-methods",
+    "label": "EEG & Signal Methods",
+    "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
+  },
+  "raw_count": 55,
+  "retrieved_source_counts": {
+    "pubmed": 123,
+    "biorxiv": 17,
+    "medrxiv": 10,
+    "arxiv": 3
+  },
+  "raw_source_counts": {
+    "pubmed": 37,
+    "biorxiv": 11,
+    "medrxiv": 4,
+    "arxiv": 3
+  },
+  "prefiltered_count": 40,
+  "analyzed_count": 40,
+  "configured_max_analyzed": 40,
+  "count": 40,
+  "featured_count": 25,
+  "source_counts": {
+    "arxiv": 3,
+    "medrxiv": 4,
+    "biorxiv": 5,
+    "pubmed": 28
+  },
+  "errors": {},
+  "ai": {
+    "requested": true,
+    "enabled": true,
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "ranked_count": 40,
+    "newly_ranked": 32,
+    "newly_summarized": 32,
+    "digest_count": 40,
+    "digest_min": 40,
+    "digest_max": 40,
+    "digest_score_threshold": 0,
+    "rank_prompt_version": "paperdaily-ranking-v1-2026-08",
+    "summary_prompt_version": "paperdaily-summary-v3-2026-08",
+    "errors": [],
+    "status": "active",
+    "profile_hash": "499752acfd365ca78e2d",
+    "usage": {
+      "requests": 9,
+      "prompt_tokens": 28405,
+      "prompt_cache_hit_tokens": 2304,
+      "prompt_cache_miss_tokens": 26101,
+      "completion_tokens": 6374,
+      "total_tokens": 34779
+    },
+    "pricing_cny_per_million": {
+      "currency": "CNY",
+      "unit_tokens": 1000000,
+      "input_cache_hit": 0.02,
+      "input_cache_miss": 1.0,
+      "output": 2.0
+    },
+    "run_cost_cny": 0.038895,
+    "billing": {
+      "currency": "CNY",
+      "run_usage": {
+        "requests": 9,
+        "prompt_tokens": 28405,
+        "prompt_cache_hit_tokens": 2304,
+        "prompt_cache_miss_tokens": 26101,
+        "completion_tokens": 6374,
+        "total_tokens": 34779
+      },
+      "run_cost_cny": 0.038895,
+      "daily_usage": {
+        "requests": 9,
+        "prompt_tokens": 28405,
+        "prompt_cache_hit_tokens": 2304,
+        "prompt_cache_miss_tokens": 26101,
+        "completion_tokens": 6374,
+        "total_tokens": 34779
+      },
+      "daily_cost_cny": 0.038895,
+      "pricing_cny_per_million": {
+        "currency": "CNY",
+        "unit_tokens": 1000000,
+        "input_cache_hit": 0.02,
+        "input_cache_miss": 1.0,
+        "output": 2.0
+      }
+    },
+    "configured_max_analyzed": 40,
+    "analyzed_count": 40
+  },
+  "papers": [
+    {
+      "source": "arxiv",
+      "source_id": "2611.11916v1",
+      "title": "LBSNet: Lightweight Brain State Modeling via Learnable Spectral Prototypes for EEG-Based Fatigue Detection",
+      "abstract": "EEG-based fatigue detection requires modeling spectral information across bands and its temporal variation. Recent methods combine multi-band modeling with adaptive temporal processing, yet how spectral structure across bands should influence the contribution of each temporal interval remains insufficiently explored. We propose LBSNet, a lightweight network that uses prototype-based brain-state modeling to link local spectral structure with temporal aggregation. LBSNet extracts compact multi-band features through band-specific temporal convolution, shared spatial projections, and cross-band recalibration. Within each window, relative spectral activity is encoded as a normalized descriptor and softly matched to learnable spectral prototypes. Prototype assignments and learned prototype importance jointly determine temporal weights for power aggregation, allowing the spectral pattern of each window to guide its contribution to the prediction. Subject-independent experiments on SEED-VIG and SADT show that LBSNet outperforms seven baselines while maintaining low computational cost. Ablation and visualization analyses support prototype-guided temporal weighting, while the learned prototypes reveal a gradual redistribution of relative cross-band spectral states with increasing fatigue. The code is publicly available at https://github.com/zy0929/LBSNet.",
+      "authors": [
+        "Kun Jia",
+        "Zhenyu Cao",
+        "Hanlin Yu",
+        "Zeyuan Li",
+        "Yixuan Liu",
+        "Zhongye Xia",
+        "Sen Song",
+        "Zhiyuan Ma"
+      ],
+      "published_date": "2026-11-09",
+      "indexed_date": "2026-11-09",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.11916v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "prefilter_score": 60,
+        "ai": {
+          "score": 88,
+          "topic": "Lightweight spectral-prototype EEG fatigue detection",
+          "reason": "CPU-friendly lightweight network with band-specific spectral features and prototype-guided temporal weighting for subject-independent state detection; highly aligned with efficient vigilance-state classification and interpretable spectral modeling.",
+          "summary": "Proposes LBSNet, a lightweight EEG fatigue-detection network that matches normalized window-level spectral descriptors to learnable spectral prototypes, whose assignments and importance weight temporal power aggregation. In subject-independent tests on SEED-VIG and SADT it outperformed seven baselines at low computational cost, and learned prototypes showed gradual redistribution of relative cross-band spectral states with increasing fatigue.",
+          "keywords": [
+            "EEG fatigue detection",
+            "learnable spectral prototypes",
+            "brain state modeling",
+            "temporal aggregation",
+            "cross-band spectral recalibration"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.11.06.26367429",
+      "title": "BioLT: Streaming Biosignal Modeling",
+      "abstract": "Clinical biosignals such as ECG, PPG, and EEG are increasingly acquired as hours-long streams from bedside monitors and wearables, yet existing analysis pipelines almost universally operate on isolated short windows of around 10 seconds and cannot process the long, irregular, frequently interrupted signals. We introduce BioLT, a streaming decoder-only framework for long-context biosignal modeling that turns any window-level feature extractor or pretrained biosignal foundation model into a streaming model. BioLT combines (i) a discontinuity-aware encoding that exposes the inter-window elapsed time as an explicit input channel, so that the decoder can learn to model these gaps as clinically meaningful information, and (ii) a fixed-size compressed memory bank supervised with cumulative summary statistics, which keeps both training and inference linear in the recording length while preserving long-range context. We evaluate on CPSC-2021, VitalDB, MC-MED, and CHB-MIT for arrhythmia, sepsis, and seizure detection and for forecasting up to 20 minutes ahead, using domain features and embeddings from six biosignal foundation models. Across 21 dataset-feature settings, BioLT achieves the highest detection AUROC in 15 and the highest 20-minute forecasting AUROC in 13 settings, and shows consistent performance gains over state-of-the-art snapshot foundation-model embeddings. These highlight the importance of modeling how streaming biosignal representations evolve over time, beyond improving window-level representations alone.",
+      "authors": [
+        "Han, J.",
+        "Liu, Y.",
+        "Tang, W.",
+        "Thwaites, L.",
+        "Clifton, D. A.",
+        "Gu, X."
+      ],
+      "published_date": "2026-11-09",
+      "indexed_date": "2026-11-09",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.11.06.26367429",
+      "url": "https://doi.org/10.64898/2026.11.06.26367429",
+      "categories": [
+        "health informatics"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 26,
+        "ai": {
+          "score": 88,
+          "topic": "Streaming long-context biosignal modeling",
+          "reason": "Directly addresses long, irregular, multi-channel biosignal streams including EEG with discontinuity-aware encoding and linear-time memory, highly transferable to longitudinal sleep recordings.",
+          "summary": "Introduces BioLT, a streaming decoder-only framework that converts window-level biosignal feature extractors or foundation models into long-context streaming models via discontinuity-aware encoding of inter-window elapsed time and a compressed memory bank. Across 21 dataset-feature settings on four datasets, BioLT achieved the highest detection AUROC in 15 and highest 20-minute forecasting AUROC in 13 settings.",
+          "keywords": [
+            "streaming biosignal modeling",
+            "long-context EEG/ECG/PPG",
+            "discontinuity-aware encoding",
+            "compressed memory bank",
+            "arrhythmia and sepsis detection"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.1101/2025.10.10.681690",
+      "title": "Using wearable EEG to examine age trends in sleep macro- and micro-architecture across adolescence",
+      "abstract": "Adolescence is a period of distinct maturational changes in sleep physiology. Age-related trends in sleep physiology have been captured using laboratory-based polysomnography, a method limited by logistical burden and high cost. We tested the ability of the Dreem3 sleep EEG headband to replicate established age effects in sleep physiology from late childhood through early adulthood. Typically developing youth (N=100, 9-26 years) completed 3-4 consecutive nights of at-home sleep recording. We estimated age-related trends across eight macro-architecture and 15 micro-architecture variables with known age effects and conducted exploratory analyses of 24 additional variables. The Dreem3 replicated some established age trends, including increases in non-rapid eye movement (NREM) stage 2%, and decreases in N3%, time in bed, NREM delta and theta power with increasing age. Although not all expected age-related associations reached statistical significance, like total sleep time and sleep efficiency, effect estimates were largely in the expected direction. These findings highlight the promise of wearable EEG devices for characterizing developmental sleep physiology while underscoring the need for further validation across sleep measures and age groups.",
+      "authors": [
+        "Lokhandwala, S.",
+        "Cooper, R. E.",
+        "Hayes, R.",
+        "Sathe, S.",
+        "Elder, I.",
+        "Corcoran, M.",
+        "Horta, B.",
+        "Fray-Witzer, M.",
+        "Keller, L.",
+        "Chan, S.",
+        "Franzen, P.",
+        "Buysse, D.",
+        "Hasler, B. P.",
+        "Levenson, J. C.",
+        "Wallace, M. L.",
+        "Clark, D. B.",
+        "Blake, R. G.",
+        "Soehner, A.",
+        "Jalbrzikowski, M."
+      ],
+      "published_date": "2026-11-10",
+      "indexed_date": "2026-11-10",
+      "journal": "biorxiv",
+      "doi": "10.1101/2025.10.10.681690",
+      "url": "https://doi.org/10.1101/2025.10.10.681690",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "3",
+        "published": "NA",
+        "prefilter_score": 60,
+        "ai": {
+          "score": 85,
+          "topic": "Wearable EEG sleep macro/micro-architecture across adolescence",
+          "reason": "Wearable sleep EEG replicating age trends in sleep macro- and micro-architecture; directly relevant to sleep staging and portable sleep analysis, with spectral/architectural measures transferable to animal sleep workflows.",
+          "summary": "Tested whether the Dreem3 wearable EEG headband can replicate established age-related trends in sleep physiology in 100 typically developing youth aged 9-26 across 3-4 nights of at-home recording. The device reproduced some expected trends, including rising NREM stage 2% and declining N3%, time in bed, and NREM delta and theta power with age, while several other associations did not reach significance.",
+          "keywords": [
+            "wearable EEG",
+            "adolescent sleep",
+            "sleep macroarchitecture",
+            "sleep microarchitecture",
+            "NREM delta power"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43002879",
+      "title": "Automated intracranial spike analysis across sleep-wake states localizes the seizure onset zone in drug-resistant epilepsy.",
+      "abstract": "Interictal epileptiform discharges (IEDs) are an established biomarker of epilepsy, but their utility for seizure-onset zone (SOZ) localization has been limited by reliance on short recording samples, research-grade detectors, and a primary focus on spike frequency. We assessed multi-day intracranial IED activity across sleep-wake states and its ability to localize the SOZ in adults and children. We analyzed simultaneous scalp and intracranial EEG data from 17 patients in the EPILEPSIAE database (predominantly adult) and 10 pediatric patients at the Alberta Children's Hospital (ACH), with 48 to 72 h of data per patient. FDA-cleared clinical software (Persyst P15a) performed automated sleep staging and IED detection. We introduced a novel IED activity metric reflecting IED amplitude and the relative consistency of channel participation across detected events and used logistic regression with leave-one-patient-out cross-validation to predict SOZ channels for each sleep-wake state. IED activity was significantly higher in SOZ than in non-SOZ channels across every sleep-wake state in both cohorts. N2 sleep yielded the highest AUROC for SOZ localization (0.69 EPILEPSIAE; 0.77 ACH), but differences across states were not statistically significant. The presence of clinical seizures during the recording did not significantly affect localization performance. Automated intracranial IED analysis localizes the SOZ in adults and children, with only modest variation across sleep-wake states. Amplitude-aware IED analysis using clinically deployed software is a practical adjunct to presurgical SOZ localization. The modest effect of sleep-wake states suggests that clinical value can be obtained without state-specific analysis. This approach may strengthen presurgical evaluation in adult and pediatric drug-resistant epilepsy.",
+      "authors": [
+        "Lorenzo Ricci",
+        "Daniel Lachner-Piza",
+        "David Groppe",
+        "Mark Scheuer",
+        "Margarita Maltseva",
+        "Arash Naderi",
+        "Julia Jacobs"
+      ],
+      "published_date": "2026-Oct-26",
+      "indexed_date": "",
+      "journal": "Clinical neurophysiology : official journal of the International Federation of Clinical Neurophysiology",
+      "doi": "10.1016/j.clinph.2026.2112439",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43002879/",
+      "categories": [],
+      "keywords": [
+        "Automated detection",
+        "Drug-resistant epilepsy",
+        "Interictal epileptiform discharges",
+        "Seizure onset zone",
+        "Sleep staging",
+        "intracranial EEG"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 41,
+        "ai": {
+          "score": 80,
+          "topic": "Automated spike analysis across sleep-wake states",
+          "reason": "Automated sleep staging plus IED detection across sleep-wake states using clinical software and cross-cohort validation; strongly relevant to sleep-state-aware analysis, automated event detection, and cross-dataset generalization.",
+          "summary": "Used FDA-cleared automated sleep staging and IED detection on 48-72 h of intracranial EEG from 17 EPILEPSIAE and 10 pediatric patients to test a novel amplitude- and channel-consistency-aware IED activity metric for seizure-onset zone localization across sleep-wake states. IED activity was higher in SOZ channels in every state, with N2 sleep giving the highest AUROC (0.69 EPILEPSIAE; 0.77 ACH) and only modest, non-significant state differences.",
+          "keywords": [
+            "intracranial EEG",
+            "interictal epileptiform discharges",
+            "seizure onset zone",
+            "sleep staging",
+            "drug-resistant epilepsy"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43003998",
+      "title": "A human-like EEG signature of cognitive control in the domestic dog.",
+      "abstract": "In humans, theta (θ) band activity (defined as 4-8 or 5-7 Hz), measured over the frontal midline of the scalp, is an important EEG correlate of voluntary and conscious self-control. Theta waves recorded over the frontal lobes can therefore implicate neocortical control mechanisms. Other likely physiological markers include alpha and beta power, and more recently, a flattened 1/f slope. In the domestic dog, inhibitory self-control is extensively studied, but mostly through behavioural tests. Here, we present a first inquiry into possible EEG correlates of cognitive control in family dogs by comparing short (~ 30-second-long) EEG recordings from two conditions: passive wakefulness (baseline) versus a delayed gratification challenge (test). These conditions were recorded in a random sequence within the same session, under overall identical settings. In total, we collected 226 short recordings from fourteen dogs. We observed an increase in neural activity (test > baseline) that resembles human cognitive theta in frequency range (4-8 Hz) and which is similarly more pronounced over the frontal midline. Another important finding is a reduction in broadband power and the flattening of the spectrum, which implicates the work of fronto-parietal connections. While these markers do not differentiate between different facets of cognitive control, our capacity to measure them in awake dogs sets the stage for further EEG-based inquiries into canine cognition.",
+      "authors": [
+        "Ivaylo Borislavov Iotchev",
+        "Anna Kis",
+        "Márta Gácsi"
+      ],
+      "published_date": "2026-Aug-11",
+      "indexed_date": "2026-11-09",
+      "journal": "Animal cognition",
+      "doi": "10.1007/s10071-026-02096-8",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43003998/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 60,
+        "ai": {
+          "score": 78,
+          "topic": "Dog EEG cognitive control and 1/f slope",
+          "reason": "Animal EEG study with frontal theta, alpha/beta power, and flattened 1/f slope; relevant to cross-species spectral/aperiodic analysis and animal experiments, though human-analogue cognitive-control framing.",
+          "summary": "Compared short (~30 s) EEG recordings during passive wakefulness versus a delayed gratification challenge in fourteen family dogs (226 recordings) to probe neural correlates of cognitive control. The test condition showed increased 4-8 Hz activity that was more pronounced over the frontal midline, resembling human cognitive theta, together with reduced broadband power and a flattened spectrum.",
+          "keywords": [
+            "canine EEG",
+            "cognitive control",
+            "frontal midline theta",
+            "delayed gratification",
+            "1/f slope"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.07.28.741333",
+      "title": "Macroscale dynamics of EEG microstates constitute the periodic and aperiodic features of the neural power spectrum",
+      "abstract": "The global signal characteristics of scalp-recorded electroencephalography (EEG) are composed of periodic oscillatory rhythms and aperiodic broadband fluctuations that together comprise the neural power spectrum. Spectral decomposition of these features has long served as the primary window into the macroscale characteristics of human brain activity. Here, we propose that the primary periodic rhythms and majority share of broadband spectral power within the brain's dominant frequencies are the frequency-domain representations of the dynamics of EEG microstates. Microstates are characterized by a small repertoire of topographic voltage configurations that each reflect the momentary functional state of the cortex, and it is their time-domain dynamics that mathematically constitute periodic and aperiodic spectral features. We isolated and removed the spatial projections of distinct microstate configurations from high-density EEG using orthogonal subspace projection applied to both the surface scalp recordings and their modeled cortical generators to computationally test this dependency. Spectral parameterization of the residual power spectral density revealed that removing these spatial projections strongly attenuated alpha and theta rhythms and features of the aperiodic 1/f background. Selectively removing specific microstate configurations also demonstrated that each configuration aligned with spatially specific oscillatory and aperiodic 1/f components. Furthermore, correlational analyses of microstate temporal dynamics demonstrated that the average duration and temporal persistence of microstates strongly correlate with periodic alpha power, theta power, and the aperiodic 1/f background. Our findings suggest that dominant periodic and aperiodic spectral features are more accurately understood as the frequency-domain expressions of the dynamics of EEG microstates.",
+      "authors": [
+        "Zanesco, A. P.",
+        "Perez, R. A."
+      ],
+      "published_date": "2026-11-10",
+      "indexed_date": "2026-11-10",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.07.28.741333",
+      "url": "https://doi.org/10.64898/2026.07.28.741333",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "2",
+        "published": "NA",
+        "prefilter_score": 84,
+        "ai": {
+          "score": 72,
+          "topic": "EEG microstates and spectral parameterization",
+          "reason": "Links microstate dynamics to periodic/aperiodic spectral features using subspace projection and spectral parameterization, an interpretable time-frequency/aperiodic analytic framework potentially transferable to sleep spectral analysis.",
+          "summary": "Used orthogonal subspace projection to remove spatial projections of distinct EEG microstate configurations from high-density scalp recordings and modeled cortical generators, then spectrally parameterized the residual power. Removing these projections attenuated alpha and theta rhythms and the aperiodic 1/f background in configuration-specific ways, and microstate duration and temporal persistence correlated strongly with periodic alpha, theta, and 1/f features, supporting microstate dynamics as the time-domain source of periodic and aperiodic spectra.",
+          "keywords": [
+            "EEG microstates",
+            "neural power spectrum",
+            "aperiodic 1/f",
+            "orthogonal subspace projection",
+            "spectral parameterization"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43003870",
+      "title": "Using error-related brain activity to identify mismatches during virtually simulated and electrically stimulated upper-limb movements.",
+      "abstract": "Patients recovering from motor impairments can benefit from rehabilitation therapy provided using functional electrical stimulation (FES). Yet, its clinical adoption has been limited, due to poor repeatability and inconsistencies in performance. To overcome these challenges, several closed-loop techniques have been proposed that rely on position or force sensors. The use of additional sensors not only increases the device's weight and cost, but it is also difficult to deploy in a clinical environment. Studies involving EEG report error-related potentials (ErrPs) that occur when a person perceives a mismatch or error in their own actions or that of others. This study investigates whether we can detect movement errors when using FES. Two experimental paradigms are presented: one generates errors during discrete stepwise movements, while other generates errors during continuous or sweeping motion of the upper arm. Within the continuous movement experiment, ErrPs arise when observing movement of a virtual Avatar's arm or when using electrical stimulation. Using an ensemble classifier based on decision trees, ErrPs could be successfully detected with an accuracy of 96 ± 3% for discrete and 91 ± 13% for continuous movement errors, respectively. This study demonstrates that ErrPs arise even for errors generated by a rehabilitation device like FES, paving the way for a feedback controller FES using ErrPs.",
+      "authors": [
+        "Nikunj Arunkumar Bhagat"
+      ],
+      "published_date": "2026-Nov-09",
+      "indexed_date": "2026-11-09",
+      "journal": "npj biomedical innovations",
+      "doi": "10.1038/s44385-026-00123-4",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43003870/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 21,
+        "ai": {
+          "score": 72,
+          "topic": "ErrP detection for FES movement mismatch",
+          "reason": "Single-trial EEG error-related potential detection with a lightweight ensemble decision-tree classifier; efficient, calibration-relevant decoding method transferable to state/error classification in neural time series.",
+          "summary": "Investigated whether error-related potentials (ErrPs) can be detected when mismatches occur during virtually simulated and functional electrical stimulation (FES) upper-limb movements. ErrPs were detected with 96 ± 3% accuracy for discrete and 91 ± 13% for continuous movement errors using ensemble decision-tree classifiers, supporting ErrP-based closed-loop FES control.",
+          "keywords": [
+            "error-related potentials",
+            "functional electrical stimulation",
+            "EEG",
+            "upper-limb rehabilitation",
+            "brain-computer interface"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43002555",
+      "title": "Advanced Two-Stage Authentication with EEG: Inter-Subject P300 ERP Classification Using EEGNet for User Recognition.",
+      "abstract": "A reliable biometric system is crucial in modern security challenges. EEG signals offer a promising alternative to conventional biometrics due to their uniqueness, forgery resistance, and long-term stability. Among EEG-based approaches, P300 event-related potentials (ERPs) are widely studied for their robustness in distinguishing individuals. This study proposes a two-stage authentication framework integrating user identification (multi-class classification) and authentication (binary classification) for enhanced security. A comprehensive EEG preprocessing pipeline including bandpass filtering, epoch rejection, temporal cropping, and downsampling was implemented to improve signal quality and extract cleaner P300 responses. EEGNet, a lightweight convolutional neural network designed for EEG analysis, was used for feature extraction and classification. 16 participants across three sessions evaluated the system robustness under cross-session conditions. The framework demonstrated strong generalization, achieving up to 95% precision and a mean accuracy of 96.10% for both identification and authentication. These results highlight the potential of EEGNet user authentication using P300 ERPs, offering insights into optimal preprocessing and deep learning methods for EEG-based security. This study underscores brainwave-driven authentication as a secure and viable alternative to traditional biometrics, paving the way for real-time applications in cybersecurity and identity verification.",
+      "authors": [
+        "Adnan Elahi Khan Khalil",
+        "Javier M Antelis",
+        "Jose Antonio Cantoral-Ceballos",
+        "Jesus Arturo Perez Diaz"
+      ],
+      "published_date": "2026-Nov-09",
+      "indexed_date": "",
+      "journal": "IEEE journal of biomedical and health informatics",
+      "doi": "10.1109/jbhi.2026.3747896",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43002555/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 77,
+        "ai": {
+          "score": 68,
+          "topic": "Lightweight EEGNet ERP classification",
+          "reason": "EEGNet is a lightweight, CPU-friendly CNN and the preprocessing pipeline is transferable to neural time-series classification tasks despite the authentication application.",
+          "summary": "Proposes a two-stage EEG authentication framework combining multi-class user identification and binary authentication using P300 ERP features and EEGNet, with a preprocessing pipeline of filtering, epoch rejection, cropping, and downsampling. Across 16 participants and three sessions, the system reached up to 95% precision and a mean accuracy of 96.10% for identification and authentication.",
+          "keywords": [
+            "EEG biometrics",
+            "P300 ERP",
+            "EEGNet",
+            "cross-session authentication",
+            "user recognition"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.11.07.764864",
+      "title": "Widespread oscillatory suppression in autism persists in the absence of psychotropic medication.",
+      "abstract": "Purpose: Investigate the neural oscillatory activity associated with autism spectrum disorder (ASD) using electroencephalographic (EEG) recordings in children and adolescents. Compare the corresponding oscillatory power between ASD patients taking psychotropic medication with a drug-naive group. Methods: ASD diagnosis was done using DSM-IV and CARS (Childhood Autism Rating Scale). EEG recordings employed 22 scalp electrodes (10/20 system). ASD vs. neurotypical groups were matched for sex and age (5 females; average age: ~10 years old). We analyzed the resting state (eyes open) EEG power spectrum during ~2-minute recordings. The multitaper FFT method was used to estimate spectral power for the delta, theta, alpha, beta and gamma frequency bands. We pooled together data from several electrodes to compute comprehensive power spectra and assess the oscillatory behavior of macro brain regions. Results: We observed widespread (~4Hz - 20Hz) oscillatory suppression comprising the theta, alpha and beta frequency bands. The most widespread and robust ASD-associated power suppression was in the high theta and alpha bands. Delta and gamma bands showed no significant power change for any of the brain regions studied. Results from a subgroup of patients (N = 9) who never used psychotropics confirmed these findings, indicating that they are not an artifact of medication. Conclusion: Suppression in theta, alpha and beta oscillations may offer insights into the neurophysiological underpinnings of autism and could be used as an accessible and comprehensive tool in ASD diagnosis, regardless of the patients being or not on medication.",
+      "authors": [
+        "Amorim, A. K. J.",
+        "Alves, G. M.",
+        "Pontes, G. C. L.",
+        "Dias, L.",
+        "Hondermann, B. M. F.",
+        "Silva, M. C. C.",
+        "Costa, L.",
+        "Ceriatte, C.",
+        "Pereira, A.",
+        "Brasil, L. M. B. F.",
+        "Souza, I. C. N.",
+        "Machado, C. L. M. V.",
+        "Lima, B."
+      ],
+      "published_date": "2026-11-10",
+      "indexed_date": "2026-11-10",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.11.07.764864",
+      "url": "https://doi.org/10.64898/2026.11.07.764864",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 21,
+        "ai": {
+          "score": 68,
+          "topic": "Resting-state EEG oscillatory suppression in autism",
+          "reason": "Multitaper FFT spectral power analysis across frequency bands in resting EEG; spectral methods and band-power comparisons are directly transferable, though application is clinical autism rather than sleep.",
+          "summary": "Compared resting-state EEG oscillatory power in children and adolescents with autism spectrum disorder versus neurotypical controls, including a drug-naive subgroup. Widespread suppression of theta, alpha and beta oscillations (~4–20 Hz) was found in ASD, most robust in high theta and alpha bands, and persisted in the medication-naive subgroup.",
+          "keywords": [
+            "autism spectrum disorder",
+            "EEG oscillatory power",
+            "theta-alpha-beta suppression",
+            "drug-naive subgroup",
+            "resting-state EEG"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.11782v1",
+      "title": "CABrain: A Correlation-Aware Brain Foundation Model for EEG Decoding",
+      "abstract": "Electroencephalography (EEG) foundation models have emerged as promising paradigms for decoding brain activity through large-scale self-supervised pretraining. Notably, most existing approaches employ masked patch reconstruction, in which randomly selected EEG patches are masked and recovered by the network. However, purely random masking may limit representation learning as informative patches from highly correlated channels often remain unmasked, causing the network to underutilize weakly correlated channels or serial dependencies. Furthermore, because these models are typically based on transformer architectures, their performance is influenced by the choice of positional encoding. Although positional encoding has been extensively explored in natural language processing and computer vision, few studies have adapted it to the unique characteristics of EEG signals. To address these limitations, this study introduces a conditional positional encoding method based on graph convolutional networks (GCNs) to explicitly model inter-channel correlations, along with an adaptive masking strategy that enhances representation learning by modulating the difficulty of masked patch reconstruction. To the best of our knowledge, this is the first study to integrate graph-based representations into conditional positional encoding and introduce adaptive masking within EEG foundation model pretraining. Experimental results on ten benchmark datasets demonstrate that the proposed GCN-based positional encoding and adaptive masking strategies, both individually and in combination, achieve state-of-the-art or competitive performance, highlighting their effectiveness in EEG foundation modeling.",
+      "authors": [
+        "SuGil Choi",
+        "Mooseop Kim",
+        "Chi Yoon Jeong"
+      ],
+      "published_date": "2026-11-09",
+      "indexed_date": "2026-11-09",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.11782v1",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "prefilter_score": 74,
+        "ai": {
+          "score": 68,
+          "topic": "EEG foundation model with graph positional encoding",
+          "reason": "Correlation-aware foundation model with GCN positional encoding and adaptive masking; interesting generalizable EEG representation idea but transformer-scale, likely GPU-heavy and not lightweight.",
+          "summary": "Introduced CABrain, an EEG foundation model pretraining approach using GCN-based conditional positional encoding to model inter-channel correlations and an adaptive masking strategy to modulate reconstruction difficulty. Both strategies, individually and combined, achieved state-of-the-art or competitive performance across ten benchmark EEG decoding datasets.",
+          "keywords": [
+            "EEG foundation model",
+            "graph convolutional network",
+            "conditional positional encoding",
+            "adaptive masking",
+            "self-supervised pretraining"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.12026v1",
+      "title": "MambaPD: Bidirectional Selective State Space Model for Parkinson's Disease Detection from Resting-State EEG",
+      "abstract": "Typical diagnosis of Parkinson's disease (PD) occurs only after significant dopaminergic loss, while resting-state EEG abnormalities like alpha slowing and reduced coherence occur earlier. While many published EEG-based PD detectors claim accuracy greater than 95%, many use epoch-level splits which leak subject identity. I introduce MambaPD, a bidirectional selective state space model for resting-state EEG-based PD detection, blending the channel mixing, patch tokenization and bidirectional Mamba encoder. It is compared with four baselines (TCN, BiLSTM with attention, EEGNet and a patch Transformer) in two public datasets (UNM, SanDiego) using subject-independent 5-fold cross-validation (checkpoints were selected on the held-out fold, so absolute estimates are optimistic). On UNM the accuracy is between 0.67 and 0.71, and MambaPD (0.714) is not statistically distinguishable from the Transformer (0.715), and TCN (0.708), with the highest sensitivity (0.82), while the lowest specificity (0.52). For the smaller SanDiego cohort, accuracy is in the range of 0.60 to 0.70, with the highest scores (0.703) from TCN and the lowest (0.601) from EEGNet, while MambaPD scores 0.631, with the lowest specificity (0.46) among the five models. The differences among the models on UNM are minor compared to the differences among folds. I report the whole pipeline, per-fold results, and the shortcomings of the protocol.",
+      "authors": [
+        "Ayesha Zulfiqar"
+      ],
+      "published_date": "2026-11-09",
+      "indexed_date": "2026-11-09",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.12026v1",
+      "categories": [
+        "cs.LG",
+        "eess.SP"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "prefilter_score": 57,
+        "ai": {
+          "score": 66,
+          "topic": "Bidirectional state-space model for PD EEG",
+          "reason": "Bidirectional selective state-space (Mamba) EEG classifier with subject-independent evaluation and honest caveats; state-space modeling is relevant, but application is disease detection and model likely GPU-dependent.",
+          "summary": "Proposed MambaPD, a bidirectional selective state space model for resting-state EEG detection of Parkinson's disease, benchmarked against TCN, BiLSTM-attention, EEGNet and patch Transformer baselines with subject-independent cross-validation. MambaPD reached 0.714 accuracy on UNM (comparable to Transformer 0.715 and TCN 0.708) and 0.631 on SanDiego, with performance differences minor relative to fold variability.",
+          "keywords": [
+            "Parkinson's disease",
+            "resting-state EEG",
+            "bidirectional Mamba",
+            "subject-independent cross-validation",
+            "state space model"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.11.10.26367449",
+      "title": "Scalp EEG seizure warning in children under a pre-specified, locked evaluation: confound audit, structured chance levels and a negative result",
+      "abstract": "Reported performance of scalp electroencephalographic (EEG) seizure prediction is often inflated by lenient evaluation and by the vigilance-state, clock-time and admission-trend structure of monitoring data. We asked how much short-horizon warning survives a pre-specified, locked evaluation. Continuous video-EEG from 21 monitored children (1315 h) formed the development cohort. A statistical-process-control warning method, evaluated under a written protocol, detected 44% of evaluable seizures at 0.48 false alarms per hour, no better than a random predictor (51%, p = 0.86); its statistic moved three times more with vigilance state than with seizure approach. We re-designed it as a state-conditioned, directional scheme on seven global EEG features, froze it with a hash-recorded configuration and time-stamped pre-specification, and estimated its performance by nested leave-one-patient-out cross-validation: 15 of 45 seizures (33%) at 0.47 false alarms per hour, above analytic (21%, p = 0.034) and permutation chance, but a predictor using only clock time, vigilance state and days since admission reproduced most of this, and the signal was confined to the last 30 min. Applied once to two validation cohorts (a second batch from the same unit and the public CHB-MIT database; 101 evaluable seizures), the frozen scheme detected 19 seizures (19%) at 0.60 false alarms per hour against 26% chance (p = 0.96); no secondary endpoint was met, and with the child as the unit of analysis no cohort was above chance. Scalp-EEG warning should be evaluated under pre-specified rules against structured chance levels; the frozen scheme and framework are offered as a reference.",
+      "authors": [
+        "Chen, M.",
+        "Yu, G.",
+        "Lai, X.",
+        "Gong, P.",
+        "Wang, S.",
+        "Liu, X.",
+        "Wu, Q.",
+        "Zhang, Y.",
+        "Sun, B.",
+        "Xu, S.",
+        "Yao, J.",
+        "Zhang, H.",
+        "Zhang, H.",
+        "Wu, Z.",
+        "Li, J.",
+        "Ren, Q.",
+        "Ji, T."
+      ],
+      "published_date": "2026-11-10",
+      "indexed_date": "2026-11-10",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.11.10.26367449",
+      "url": "https://doi.org/10.64898/2026.11.10.26367449",
+      "categories": [
+        "neurology"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 77,
+        "ai": {
+          "score": 62,
+          "topic": "Seizure warning with locked evaluation and vigilance confounds",
+          "reason": "Demonstrates that vigilance state, clock time, and admission trends confound EEG prediction; useful cautionary methodology for state-aware evaluation, though focused on clinical seizure prediction rather than sleep staging.",
+          "summary": "Evaluated scalp EEG seizure warning in 21 monitored children under a pre-specified, locked protocol, finding the initial method (44% of seizures, 0.48 false alarms/hour) no better than chance. A redesigned state-conditioned scheme achieved 33% detection during cross-validation but failed to exceed structured chance in two external validation cohorts (19% detection at 0.60 false alarms/hour versus 26% chance), a negative result.",
+          "keywords": [
+            "seizure prediction",
+            "scalp EEG",
+            "pre-specified evaluation",
+            "chance-level benchmarking",
+            "pediatric epilepsy"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.11.06.26367020",
+      "title": "Feasibility of Vibrotactile P50 Sensory-Gating Assessment Using Portable EEG",
+      "abstract": "Sensory gating (SG), most commonly quantified using the auditory P50 event-related potential elicited by a paired \"double-click\" paradigm, is a well-established biomarker of early sensory inhibition that reflects the brain's ability to suppress responses to repetitive sensory input. Although auditory SG paradigms have been widely used in both research and clinical settings, they impose an unavoidable auditory load and are generally limited to controlled laboratory environments, reducing their suitability for ecological monitoring and applications in which auditory resources must remain available. This study evaluated the feasibility of a portable vibrotactile sensory-gating system designed to assess inhibitory processing without engaging the auditory or visual modalities. Fifteen healthy adult participants completed both auditory and vibrotactile paired-stimulus conditions using a within-subject experimental design. Vibrotactile stimuli were delivered through transducers positioned on the volar surface of the forearm while electroencephalographic (EEG) activity was recorded using a 32-channel Emotiv EPOC Flex system. Event-related responses were extracted and analyzed using conventional sensory-gating metrics to enable direct comparison between modalities. Vibrotactile stimulation elicited time-locked P50 responses with attenuation of S2 relative to S1. Mean S2/S1 ratios were 0.521 +- 0.041 for the auditory condition and 0.524 +- 0.064 for the vibrotactile condition. The paired difference was 0.0029 (95% CI, -0.0221 to 0.0279), t(14) = 0.249, p = 0.807, dz = 0.064. No statistically significant difference was detected between modalities in this sample. These group-level findings support further evaluation of portable vibrotactile P50 measurement.",
+      "authors": [
+        "Badjo, J.-P.",
+        "Choa, F.-S."
+      ],
+      "published_date": "2026-11-09",
+      "indexed_date": "2026-11-09",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.11.06.26367020",
+      "url": "https://doi.org/10.64898/2026.11.06.26367020",
+      "categories": [
+        "neurology"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 60,
+        "ai": {
+          "score": 62,
+          "topic": "Portable EEG ERP sensory gating",
+          "reason": "Portable low-channel EEG ERP acquisition and analysis is relevant background for lightweight, deployable neural-signal methods, though not a core methodological contribution.",
+          "summary": "Evaluated feasibility of a portable vibrotactile P50 sensory-gating paradigm against auditory gating in 15 healthy adults using 32-channel portable EEG. Vibrotactile stimulation elicited time-locked P50 responses with S2 attenuation, and mean S2/S1 ratios did not differ significantly between auditory (0.521) and vibrotactile (0.524) conditions.",
+          "keywords": [
+            "sensory gating",
+            "P50 event-related potential",
+            "vibrotactile stimulation",
+            "portable EEG",
+            "paired-stimulus paradigm"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43002782",
+      "title": "Patient-level EEG seizure classification with AHCNet: Hybrid CNN and handcrafted feature fusion.",
+      "abstract": "Automated seizure classification from electroencephalography (EEG) necessitates rigorous validation, particularly concerning patient independence and potential dataset biases. This study evaluated hybrid feature fusion and confidence-based deferral for patient-level EEG classification. We assembled a class-balanced cohort of 198 patients from the Temple University Hospital seizure and epilepsy corpora, including individuals with focal non-specific seizures, generalized non-specific seizures, or no epilepsy. Our approach combined a multiscale one-dimensional convolutional neural network with handcrafted spectro-temporal and inter-channel spatial features. We assessed its performance using nested patient-level cross-validation and metadata-only baselines. Stacking and feature-fusion models achieved accuracies of 78.8% (bootstrap 95% confidence interval, 73.2-84.3%) and 78.3% (72.2-83.8%), respectively, showing no statistically significant difference. Notably, segment-level validation inflated accuracy by 20-23 percentage points. Metadata alone yielded 72.2% accuracy, and complete confounding between corpus origin and control-versus-seizure status precluded attributing this distinction solely to EEG content. Among 132 seizure patients from the same corpus, a two-class focal-versus-generalized classification achieved 81.1% accuracy, significantly outperforming metadata alone (at most 59.8%). Spatial features enhanced accuracy by 2.0-8.1 percentage points across models. While confidence weighting did not improve accuracy, deferring the 20% least-confident patients increased accuracy among the retained patients from 78.8% to 84.8%. These findings underscore the critical importance of patient-level validation and thorough confounding assessment when evaluating hybrid EEG classifiers. This framework is still investigational. For clinical application, it requires controls drawn from the same corpus as seizure cases and external validation.",
+      "authors": [
+        "Saloua Ben Younes",
+        "Souhir Chabchoub",
+        "Mazin Abed Mohammed",
+        "Ridha Ben Salah"
+      ],
+      "published_date": "2026-Nov-09",
+      "indexed_date": "",
+      "journal": "Biomolecules & biomedicine",
+      "doi": "10.17305/bb.2026.14684",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43002782/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 66,
+        "ai": {
+          "score": 60,
+          "topic": "Hybrid CNN + handcrafted feature seizure classification",
+          "reason": "Combines CNN with spectro-temporal/inter-channel features and stresses patient-level validation and metadata confounds; the leakage-aware evaluation and hybrid features are transferable, though the model itself is moderately heavy.",
+          "summary": "Developed AHCNet, a hybrid model fusing a multiscale 1D CNN with handcrafted spectro-temporal and inter-channel spatial features for patient-level EEG seizure classification in 198 patients. Feature fusion and stacking reached accuracies of 78.3% and 78.8%, segment-level validation inflated accuracy by 20-23 points, metadata alone reached 72.2%, and deferring the 20% least-confident patients raised accuracy to 84.8%.",
+          "keywords": [
+            "EEG seizure classification",
+            "hybrid CNN feature fusion",
+            "handcrafted spectro-temporal features",
+            "patient-level cross-validation",
+            "confidence-based deferral"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43002837",
+      "title": "Serial Amplitude-Integrated Electroencephalography and the Burdjalov Score in Preterm Infants: A Prospective Longitudinal Bedside Study in the Neonatal Care Unit.",
+      "abstract": "Preterm birth interrupts occurs during a critical period of cortical organization, and objective bedside tools for tracking functional maturation remain limited. The aim of this study was to assess the interobserver reproducibility of the Burdjalov score and to characterize longitudinal electrocortical maturation in preterm infants up to term-equivalent age. Prospective longitudinal observational study in a neonatal intensive care unit and an intermediate care unit, data collected from September 2021 to August 2023. Infants born before 35 weeks of gestation, stratified by gestational age (GA) at birth (<28, 28-30, 31-34 weeks), who underwent serial two-channel amplitude-integrated electroencephalography until term-equivalent age or discharge. Term newborns with a single recording served as physiological reference. Outcomes measures were the Burdjalov scores, rated independently by three blinded observers was. Agreement was assessed by the intraclass correlation coefficient and kappa, maturation by linear regression on corrected GA, and time to a maximal score of 13 by Kaplan-Meier analysis. Forty-eight preterm infants (125 recordings) and 29 term newborns were included. Total-score agreement was excellent (intraclass correlation coefficient 0.98, 95% confidence interval 0.98-0.99), with kappa ≥0.60 for all components. Scores rose continuously with corrected GA in all strata, approaching maximal values around 37 weeks and matching the term reference. Time to maturity did not differ between strata (log-rank P = 0.823). Serial amplitude-integrated electroencephalography scored with the Burdjalov scale is an objective, highly reproducible method for monitoring electrocortical maturation in preterm infants. Functional maturation follows corrected age rather than GA at birth, providing a bedside reference for detecting atypical maturational trajectories.",
+      "authors": [
+        "Silvana Piazza Furlan",
+        "Thiago Wendt Viola",
+        "Janise Dal Pai",
+        "Bruna Schafer Rojas",
+        "Gisella Chiara Carpi",
+        "Magda Lahorgue Nunes"
+      ],
+      "published_date": "2026-Oct-20",
+      "indexed_date": "",
+      "journal": "Pediatric neurology",
+      "doi": "10.1016/j.pediatrneurol.2026.10.009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43002837/",
+      "categories": [],
+      "keywords": [
+        "Amplitude-integrated electroencephalography",
+        "Brain maturation",
+        "Burdjalov score",
+        "Interobserver reliability",
+        "Neuromonitoring",
+        "Preterm infant"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 76,
+        "ai": {
+          "score": 58,
+          "topic": "aEEG maturation in preterm infants",
+          "reason": "Longitudinal amplitude-integrated EEG maturation scoring with interobserver reliability; relevant to longitudinal/interpretable feature ideas but a specific neonatal clinical application, not an algorithmic method.",
+          "summary": "Prospectively assessed interobserver reproducibility of the Burdjalov score and longitudinal electrocortical maturation via serial two-channel amplitude-integrated EEG in 48 preterm infants (125 recordings) plus 29 term references. Total-score agreement was excellent (ICC 0.98) and scores rose continuously with corrected gestational age, approaching maximal values around 37 weeks and matching term infants, with no difference in time to maturity across gestational-age strata.",
+          "keywords": [
+            "amplitude-integrated EEG",
+            "Burdjalov score",
+            "preterm infant brain maturation",
+            "interobserver reliability",
+            "corrected gestational age"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43003689",
+      "title": "During natural vision, semantic novelty modulates fixation-related processing in primate cortex.",
+      "abstract": "We sample visual scenes with short gaze fixations separated by saccades. While low-level integration is known, semantic integration of foveal vision across fixations remains unclear. We hypothesized that the brain responds to changes in semantic information from one fixation to the next, and therefore postulated a neural signal associated with semantic novelty for each saccade. Novelty was measured from different layers of a deep network on foveal vision. Only semantic, and not low- or mid-level, novelty modulated frontal and occipital fixation-related potentials in male and female human scalp EEG during natural viewing of full-length movies (3.4x106 saccades). Intracranial recordings in male and female humans (9.0x104 saccades) and female non-human primates (Macaca mulatta; 3.3x104 saccades) revealed broadband high-frequency activity modulations in scene-specific ventral visual and frontal brain areas only for semantic novelty. This modulation was stronger for movies than static images, and frontal modulation occurred early alongside occipital modulation, suggesting top-down effects. This modulation of fixation-related activity with novelty suggests that foveal representations are compared between consecutive fixations to construct scene representations during natural viewing in primates.Significance statement Primate vision relies on eye movements to sample the world, yet how the brain integrates high-level meaning across these \"snapshots\" remains a mystery. By combining deep-learning models with massive electrophysiological datasets from humans and macaques, we show that the brain responds to changes in semantic content between fixations, but not low- or mid-level changes. We identified a \"semantic novelty\" signal that modulates neural activity across the primate cortex. These findings suggest visual processing is not a series of independent glimpses, but a continuous process comparing consecutive foveal information at the semantic level. This work bridges biological vision and artificial intelligence, providing a new framework for understanding how the brain maintains a coherent understanding of a dynamic world.",
+      "authors": [
+        "Vinay S Raghavan",
+        "Jens Madsen",
+        "Maximilian Nentwich",
+        "Marcin Leszczynski",
+        "Arnaud Falchier",
+        "Stephan Bickel",
+        "Brian E Russ",
+        "Lucas C Parra"
+      ],
+      "published_date": "2026-Nov-09",
+      "indexed_date": "",
+      "journal": "The Journal of neuroscience : the official journal of the Society for Neuroscience",
+      "doi": "10.1523/jneurosci.0826-26.2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43003689/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 21,
+        "ai": {
+          "score": 58,
+          "topic": "Fixation-related potentials and semantic novelty",
+          "reason": "Scalp EEG and intracranial fixation-related potential analysis with event-driven features; transferable neural time-series/event-locked analysis ideas but vision-specific and not sleep-related.",
+          "summary": "Tested whether semantic novelty between fixations modulates fixation-related potentials during natural movie viewing, using deep-network layers to quantify novelty across scalp EEG (3.4x106 saccades), intracranial recordings, and macaque data. Only semantic, not low- or mid-level, novelty modulated frontal and occipital fixation-related potentials and broadband high-frequency activity in ventral visual and frontal areas, with early frontal effects suggesting top-down comparison of foveal representations across fixations.",
+          "keywords": [
+            "semantic novelty",
+            "fixation-related potentials",
+            "saccades",
+            "natural vision",
+            "intracranial EEG"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43004665",
+      "title": "A Breathable Nanomesh-Textile Electrode Interface for Integrated Multimodal Monitoring.",
+      "abstract": "Long-term wearable electrophysiology requires electrodes that are skin-conformal, breathable, mechanically stable, and reliably connected to electronics. Existing dry electrodes address parts of this challenge, but the interface between soft electrodes and wearable electronics remains a major source of motion artifacts, open-circuit failure, and poor long-term usability. Here, we introduce a duo-electrode interface that separates the functions of skin contact and electronic interconnection. An electrospun nanomesh serves as a tattoo electrode that conforms intimately to the skin, while a compressible conductive taffeta-foam fabric electrode embedded in a garment provides stable electrical coupling to textile-routed electronics. This architecture preserves the advantages of skin-conformal electrodes while avoiding fragile connections to electronics. We integrate the interface into a bodysuit and eyemask platform for multimodal monitoring of ECG, EMG, EOG, and body position using a centralized electronics module. The system maintains reliable signal acquisition under body motion and muscle activation, with performance comparable to or better than that of commercial hydrogel electrodes. By bridging breathable electrodes with textile-based routing, the proposed duo-electrode strategy establishes a practical method for scalable, comfortable, and long-duration wearable bioelectronic monitoring. This approach may be broadly useful for remote healthcare, rehabilitation, sleep studies, human-machine interfaces, and personalized physiological sensing.",
+      "authors": [
+        "Wenxin Zeng",
+        "Ruben Del-Rio-Ruiz",
+        "Riddha Das",
+        "Nafize Ishtiaque Hossain",
+        "Sameer Sonkusale"
+      ],
+      "published_date": "2026-Nov-09",
+      "indexed_date": "",
+      "journal": "Small methods",
+      "doi": "10.1002/smtd.71172",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43004665/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 29,
+        "ai": {
+          "score": 55,
+          "topic": "Wearable nanomesh multimodal biopotential electrodes",
+          "reason": "Breathable dry electrode interface for ECG/EMG/EOG with motion-artifact considerations; relevant to signal acquisition and artifact robustness for wearable animal/human recordings.",
+          "summary": "Introduced a duo-electrode interface for wearable electrophysiology that separates skin contact (electrospun nanomesh tattoo electrode) from electronic interconnection (compressible conductive taffeta-foam textile electrode in a garment). Integrated into a bodysuit and eyemask for multimodal ECG, EMG, EOG, and body-position monitoring, the system maintained reliable signals under motion and muscle activation, comparable to or better than commercial hydrogel electrodes.",
+          "keywords": [
+            "nanomesh textile electrode",
+            "wearable electrophysiology",
+            "dry electrode interface",
+            "multimodal physiological monitoring",
+            "motion artifact"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43000882",
+      "title": "BiXCA-DualFormer: A time-frequency fusion model for epileptic seizure prediction.",
+      "abstract": "Epileptic seizure prediction based on electroencephalography (EEG) is important for developing early-warning technologies and improving patient safety. However, reliable prediction remains challenging because preictal EEG changes are subtle and non-stationary, with discriminative information distributed across both temporal and spectral domains. The purpose of this study is to develop a seizure prediction framework that can jointly model complementary temporal and spectral EEG information and capture their interactions. To this end, we propose BiXCA-DualFormer, a dual-branch time-frequency fusion model. Raw EEG signals and short-time Fourier transform representations are processed through separate temporal and spectral branches to extract complementary waveform and frequency-domain features. The main methodological contribution of the proposed model is the introduction of bidirectional cross-attention to explicitly exchange information between the two branches, followed by a Transformer encoder and learnable query pooling for global dependency modeling and feature aggregation. Experiments on the CHB-MIT dataset showed that the proposed model achieved 95.29% accuracy, 96.40% sensitivity, 95.05% specificity, and a false positive rate of 0.0495. Ablation analysis indicated that time-frequency interaction and global contextual modeling improved sensitivity and discriminative performance. These results suggest that BiXCA-DualFormer provides an effective end-to-end biomedical signal processing framework for EEG-based seizure prediction.",
+      "authors": [
+        "Shunyun Wang",
+        "Jincan Zhang",
+        "Wenna Chen",
+        "Fei Xiang",
+        "Hongwei Jiang",
+        "Ganqin Du"
+      ],
+      "published_date": "2026-Nov-08",
+      "indexed_date": "",
+      "journal": "Proceedings of the Institution of Mechanical Engineers. Part H, Journal of engineering in medicine",
+      "doi": "10.1177/09544119261504121",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43000882/",
+      "categories": [],
+      "keywords": [
+        "cross-attention mechanism",
+        "dual-branch architecture",
+        "electroencephalogram",
+        "epileptic seizure prediction",
+        "time-frequency fusion",
+        "transformer network"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 90,
+        "ai": {
+          "score": 55,
+          "topic": "Time-frequency EEG fusion deep learning",
+          "reason": "Uses STFT time-frequency fusion for EEG, which is methodologically adjacent, but the Transformer/dual-branch GPU-heavy design is not lightweight or transfer-focused.",
+          "summary": "Proposes BiXCA-DualFormer, a dual-branch time-frequency fusion model that processes raw EEG and short-time Fourier representations through separate temporal and spectral branches with bidirectional cross-attention, a Transformer encoder, and learnable query pooling for seizure prediction. On CHB-MIT it achieved 95.29% accuracy, 96.40% sensitivity, 95.05% specificity, and a 0.0495 false positive rate.",
+          "keywords": [
+            "epileptic seizure prediction",
+            "time-frequency fusion",
+            "bidirectional cross-attention",
+            "Transformer",
+            "CHB-MIT EEG"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43006670",
+      "title": "Evaluation of Brain Activity in Premenstrual Dysphoric Disorder Using Standardized Low Resolution Electromagnetic Tomographic Analyses (sLORETA).",
+      "abstract": "This study evaluated Default Mode Network (DMN) brain activity in females with Premenstrual Dysphoric Disorder (PMDD)/Dysphoric PMS and asymptomatic controls using archival quantitative electroencephalography (qEEG) and standardized low-resolution brain electromagnetic tomography (sLORETA) data. Eyes-closed resting-state EEG analyses were examined across follicular and luteal menstrual cycle phases. The analytic sample included 157 participants: PMDD/Dysphoric PMS (n = 87) and asymptomatic controls (n = 70). Nonparametric Wilcoxon Signed Rank Tests were used for follicular-to-luteal within-group comparisons, and Mood's Median Test was used for luteal-phase between-group analyses. Asymptomatic controls showed significant follicular-to-luteal mean-Z changes in cingulate gyrus delta, cingulate gyrus theta, and insula theta. PMDD/Dysphoric PMS participants showed a significant percentage-of-aberrant-voxels change in angular gyrus beta2. During the luteal phase, PMDD/Dysphoric PMS participants showed significantly higher subcallosal-gyrus beta2 mean-Z activity than asymptomatic controls. Luteal subcallosal-gyrus beta2 abnormal-voxel values were descriptively higher in PMDD/Dysphoric PMS participants (19.43%) than in asymptomatic controls (4.13%); however, this voxel-percentage comparison is reported descriptively because luteal-phase between-group percentage-of-voxels analyses did not reach the study threshold for statistical significance. These findings support further investigation of DMN-linked neural activity, subcallosal-gyrus beta2 activity, and phase-related network adaptability in PMDD.",
+      "authors": [
+        "Tira Harney Clay",
+        "David S Cantor",
+        "Cynthia Kerson",
+        "Richard Sherman",
+        "Ora L Strickland",
+        "Sybil Brown"
+      ],
+      "published_date": "2026-Nov-10",
+      "indexed_date": "",
+      "journal": "Clinical EEG and neuroscience",
+      "doi": "10.1177/15500594261489309",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43006670/",
+      "categories": [],
+      "keywords": [
+        "default mode network",
+        "electroencephalography",
+        "follicular phase",
+        "luteal phase",
+        "neuroendocrine regulation",
+        "premenstrual dysphoric disorder",
+        "standardized low-resolution brain electromagnetic tomography",
+        "voxel"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 27,
+        "ai": {
+          "score": 52,
+          "topic": "sLORETA qEEG in PMDD",
+          "reason": "Resting-state qEEG source analysis with sLORETA in a clinical sample; spectral/source methodology is adjacent but application is clinical, not sleep or animal.",
+          "summary": "Evaluated Default Mode Network activity using archival qEEG and sLORETA in 87 women with PMDD/dysphoric PMS and 70 asymptomatic controls across follicular and luteal phases. PMDD participants showed a significant follicular-to-luteal change in angular gyrus beta2 aberrant-voxel percentage and significantly higher luteal subcallosal-gyrus beta2 mean-Z activity than controls.",
+          "keywords": [
+            "premenstrual dysphoric disorder",
+            "sLORETA",
+            "default mode network",
+            "subcallosal gyrus beta2",
+            "luteal phase"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.10.29.760356",
+      "title": "Distinguishing evidence accumulation from choice confidence in neural signatures of perceptual decision making",
+      "abstract": "Human electrophysiology research has identified the centro-parietal positivity (CPP) as an apparent neural correlate of sensory evidence accumulation during perceptual decision-making. The CPP has also been shown to closely scale with subjective confidence. Coupled with the fact of its domain-generality and lack of choice selectivity, this observation raises the possibility that the CPP might in fact trace subjective confidence rather than cumulative evidence, two quantities that are closely correlated in most experiments. To disentangle confidence from cumulative evidence, we used predictive cues with 80% validity to manipulate prior expectations of participants during a contrast discrimination task while recording electroencephalography (EEG). At the time of decision termination, confidence is expected to reach a higher level for validly cued versus invalidly cued choices, whereas the opposite would be expected of a cumulative evidence signal due to biased decision starting points. As expected, valid cues led to faster, more accurate and more confident responses compared to invalid and neutral cues. At the neural level, cues produced systematic increases in preparation of the expected action prior to evidence onset as indexed by premotor mu/beta activity, consistent with cue-biased criterion adjustments. The pre-response CPP amplitude was significantly reduced for validly cued choices and the effect remained even when matching for confidence. Together these findings suggest that the CPP is not a direct read-out of subjective confidence, but an evidence accumulation signal that contributes to both decision formation and confidence estimation.",
+      "authors": [
+        "Monakhovych, D.",
+        "Grogan, J. P.",
+        "Kelly, S. P.",
+        "O'Connell, R. G."
+      ],
+      "published_date": "2026-11-09",
+      "indexed_date": "2026-11-09",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.10.29.760356",
+      "url": "https://doi.org/10.64898/2026.10.29.760356",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 44,
+        "ai": {
+          "score": 50,
+          "topic": "CPP evidence vs confidence EEG",
+          "reason": "Cognitive EEG signature study using standard event-related analysis; adjacent background on neural correlates but not a computational/transferable method for sleep or vigilance.",
+          "summary": "Using EEG with 80%-valid predictive cues in a contrast discrimination task, this study dissociated the centro-parietal positivity (CPP) from subjective confidence. Valid cues reduced pre-response CPP amplitude even when confidence was matched, supporting the CPP as an evidence accumulation signal contributing to both decision formation and confidence estimation rather than a direct read-out of confidence.",
+          "keywords": [
+            "centro-parietal positivity",
+            "evidence accumulation",
+            "choice confidence",
+            "perceptual decision making",
+            "EEG"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43005151",
+      "title": "Multimodal EEG-fNIRS complexity analysis can reveal the neurovascular coupling change with aging.",
+      "abstract": "This study aimed to investigate age-related changes in neurovascular coupling (NVC) function of the brain using a multimodal electroencephalography (EEG) and functional near-infrared spectroscopy (fNIRS) approach combined with nonlinear entropy analysis. The study included 20 young adults and 20 older adults. We simultaneously recorded EEG and fNIRS data during four cognitive tasks (auditory attention task, verbal fluency task, upper limb motor task, and recognition memory task). We calculated sample entropy (SampEn) and conditional entropy (CondEn) for five EEG frequency sub-bands (Delta: 1-4 Hz, Theta: 4-8 Hz, Alpha: 8-12 Hz, Beta: 12-30 Hz, Gamma: 30-40 Hz) as well as for fNIRS signals (oxygenated hemoglobin and deoxygenated hemoglobin, HbO and HbR) to quantify neural and hemodynamic complexity of brain activity. Additionally, cross-sample entropy (Cross-SampEn) and cross-conditional entropy (Cross-CondEn) between EEG and fNIRS signals were computed to evaluate NVC function. Group differences were assessed using analysis of covariance (ANCOVA), with age group as the fixed factor and sex and years of education as covariates. Older adults showed higher EEG SampEn or CondEn in selected frequency bands during the auditory attention task and the encoding and recognition phases of the recognition memory task. For fNIRS, older adults showed lower HbO SampEn during memory recognition. Cross-modal analysis showed lower beta-HbR Cross-SampEn during the left upper limb motor task and higher theta-HbR Cross-SampEn during memory encoding in older adults. Aging is associated with task-specific alterations in neural complexity, hemodynamic complexity, and the cross-modal temporal relationship between EEG and fNIRS signals. These findings suggest that age-related changes in NVC-related dynamics are better characterized as dynamic reorganization rather than a uniform enhancement or impairment, and support the potential of multimodal entropy analysis for characterizing age-related neurovascular coupling change.",
+      "authors": [
+        "Lingxuan Lv",
+        "Ziyue Liu",
+        "Wenxin Li",
+        "Feifei Zhai",
+        "Rui Chen",
+        "Yicheng Zhu"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-11-10",
+      "journal": "Frontiers in aging neuroscience",
+      "doi": "10.3389/fnagi.2026.1912923",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43005151/",
+      "categories": [],
+      "keywords": [
+        "EEG",
+        "aging",
+        "complexity analysis",
+        "entropy",
+        "fNIRS",
+        "neurovascular coupling"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 74,
+        "ai": {
+          "score": 45,
+          "topic": "EEG-fNIRS entropy and neurovascular coupling",
+          "reason": "Entropy-based complexity analysis of EEG-fNIRS during aging; some transferable nonlinear features but multimodal hemodynamic focus and clinical aging context limit direct relevance.",
+          "summary": "The study used simultaneous EEG-fNIRS with nonlinear entropy analysis in 20 young and 20 older adults across four cognitive tasks, finding age-related task-specific alterations in neural and hemodynamic complexity and their cross-modal relationship, suggesting dynamic reorganization of neurovascular coupling rather than uniform impairment.",
+          "keywords": [
+            "EEG-fNIRS",
+            "neurovascular coupling",
+            "sample entropy",
+            "aging",
+            "cross-sample entropy"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43005588",
+      "title": "Multiscale EEG network alterations in adolescents with depressive symptoms: static-dynamic connectivity, topological features, and exploratory scalp-level network hubs.",
+      "abstract": "Adolescence is a critical period for brain network development and a vulnerable stage for the emergence of depressive symptoms Although altered brain connectivity has been reported in depression, the multiscale organization of resting-state EEG networks in adolescents with depressive symptoms (ADS) remains insufficiently understood. In particular, conventional network analyses are often constrained by fixed thresholding strategies and single-level observations, which may obscure scale-specific and topology-related abnormalities. Eyes-closed resting-state EEG data were collected from 96 adolescents with depressive symptoms and 154 healthy controls. A data-driven adaptive thresholding strategy was used to construct subject-specific brain functional networks. Static functional connectivity, dynamic functional connectivity, and higher-order topological features were analyzed across macro-, meso-, and micro-scale levels. A multidimensional abnormality convergence matrix was further constructed to explore the spatial correspondence between network abnormalities and exploratory scalp-level neuromodulation hubs. ADS showed scale-dependent abnormalities in brain network organization. At the macro- and meso-scale levels, abnormalities were mainly characterized by theta-band static hyperconnectivity, particularly involving central-region networks, together with reduced dynamic transition flexibility involving prefrontal systems. Micro-scale analysis further localized these alterations to specific connections and nodes. Static connectivity abnormalities were mainly observed along the midline prefrontal-central axis, including Fp1/Fz-FCz connections, whereas dynamic instability was mainly found in right prefrontal-occipital pathways, including Fp2/F4-Oz connections. Higher-order topological analysis indicated vulnerability of right prefrontal nodes, particularly Fp2 and F4. The convergence matrix showed spatial overlap between abnormal network features and the approximate scalp projections of prefrontal neuromodulation sites, while also identifying FCz and Oz as additional nodes that may warrant further investigation. This study provides a multiscale EEG network characterization of adolescents with depressive symptoms. The findings suggest that ADS-related network alterations may involve coexisting compensatory connectivity changes, reduced dynamic flexibility, and focal topological vulnerability. These results may help refine network-level features and provide hypothesis-generating computational references for future studies exploring individualized neuromodulation strategies in adolescents with depressive symptoms.",
+      "authors": [
+        "Linfeng Hou",
+        "Mengqi Chen",
+        "Jinghui Yang",
+        "Yizhong Ren",
+        "Ting Peng",
+        "Yanru Li"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-11-10",
+      "journal": "Frontiers in psychiatry",
+      "doi": "10.3389/fpsyt.2026.1943613",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43005588/",
+      "categories": [],
+      "keywords": [
+        "adaptive threshold; multiscale brain networks",
+        "adolescents with depressive symptoms",
+        "exploratory neuromodulation hubs",
+        "static-dynamic connectivity",
+        "topological data analysis"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 72,
+        "ai": {
+          "score": 42,
+          "topic": "Multiscale EEG network analysis in adolescent depression",
+          "reason": "Static/dynamic functional connectivity and topological network analysis; adjacent methodological content but focused on adolescent depression clinical group differences.",
+          "summary": "Using resting-state EEG from 96 adolescents with depressive symptoms and 154 controls, the study identified multiscale network abnormalities: theta-band static hyperconnectivity, reduced dynamic flexibility, and focal topological vulnerability in prefrontal regions, with spatial overlap to neuromodulation hubs.",
+          "keywords": [
+            "EEG networks",
+            "adolescent depression",
+            "dynamic functional connectivity",
+            "topological data analysis",
+            "neuromodulation hubs"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43005773",
+      "title": "Cortical depth EEG-fMRI at 7T: Experimental setup and analysis pipeline to elucidate generating mechanisms of alpha oscillations.",
+      "abstract": "Alpha band (8-13 Hz) electroencephalography (EEG) oscillations are central to cognition, but their generating mechanisms are poorly understood. Most laminar studies investigating origins of alpha oscillations rely on invasive animal intracranial recordings. To relate these findings to human alpha generation, non-invasive techniques need to be developed. Ultra-high-field (UHF, 7T) laminar functional magnetic resonance imaging (fMRI) enables cortical depth resolved brain responses, and, combined with simultaneous EEG, offers new insight into human alpha generation mechanisms. This work presents a framework for studying the generating mechanisms of electrophysiological signals non-invasively in humans using simultaneous EEG laminar fMRI. Data were acquired on 10 participants during an eyes-closed/eyes-open paradigm. In 9 of 10 participants, the quality of EEG and Blood Oxygenation Level Dependent (BOLD) fMRI data were sufficient to observe a significant negative correlation between EEG alpha power and the BOLD signal in visual cortex grey matter. To improve depth specificity and mitigate pial-surface BOLD signal increases due to draining veins, we applied \"deveining\". The effects of each of the deveining analysis steps on the cortical depth profiles of the negative alpha-BOLD correlations were studied. The largest effect arose from excluding voxels in the tissue immediately surrounding veins. After deveining, the negative alpha-BOLD correlations were significantly weaker in the middle cortical depths than in superficial and deep depths. This depth dependence was absent when modelling the task with a boxcar regressor rather than EEG alpha power, suggesting specificity to spontaneous electrophysiological (alpha) fluctuations. In conclusion, we have established a method to non-invasively interrogate the origins of electrophysiological signals. Our alpha-BOLD depth profiles during the eyes-open/eyes-closed task (strongest correlations in superficial and deep layers) are consistent with activity in cortical depths typically associated with feedback/top-down processing, but we cannot definitively demonstrate causality from these data.",
+      "authors": [
+        "Daniel C Marsh",
+        "Rodika Sokoliuk",
+        "Kevin M Aquino",
+        "Daisie O Pakenham",
+        "Ross Wilson",
+        "Rosa Sanchez Panchuelo",
+        "Matthew J Brookes",
+        "Simon Hanslmayr",
+        "Stephen D Mayhew",
+        "Susan T Francis",
+        "Karen J Mullinger"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-11-10",
+      "journal": "Imaging neuroscience (Cambridge, Mass.)",
+      "doi": "10.1162/imag.a.1442",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43005773/",
+      "categories": [],
+      "keywords": [
+        "BOLD draining vein correction",
+        "alpha oscillation",
+        "depth profiles",
+        "deveining",
+        "spatial deconvolution",
+        "top–down alpha generation"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 91,
+        "ai": {
+          "score": 35,
+          "topic": "Laminar EEG-fMRI alpha mechanisms",
+          "reason": "Ultra-high-field laminar fMRI with EEG for alpha generation mechanisms; sophisticated but heavy imaging pipeline not transferable to animal sleep EEG analysis.",
+          "summary": "The authors developed a 7T laminar EEG-fMRI pipeline with deveining to study alpha oscillations, observing negative alpha-BOLD correlations in visual cortex that were weakest in middle cortical depths after vein exclusion, consistent with superficial and deep sources of top-down alpha generation.",
+          "keywords": [
+            "alpha oscillations",
+            "laminar fMRI",
+            "EEG-fMRI",
+            "cortical depth",
+            "BOLD draining vein correction"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43003562",
+      "title": "Simultaneous dynamic spectrophotometric determination of coexisting rare earth elements in acidic chloride media using response-specific multivariate calibration.",
+      "abstract": "Reliable spectrophotometric determination of coexisting rare-earth elements in strongly acidic chloride media remains analytically challenging because of weak 4f-4f absorption responses, severe spectral overlap, and baseline instability under dynamic measurement conditions. This study presents a dynamic absorption spectroscopic method coupled with a response-specific multi-scale peak-basis linear regression model (RS-MPBLR) for continuous in situ quantification of Nd3+ and Pr3+ in strongly acidic coexisting systems relevant to NdFeB magnet recycling. Characteristic absorption peaks, multi-scale spectral descriptors, and derivative-related features were integrated to enhance response specificity and robustness against spectral overlap, acidity-dependent background variation, and flow-induced baseline drift. Spectral analysis confirmed an approximately linear absorbance-concentration relationship within the investigated range, supporting peak-oriented linear modeling. RS-MPBLR was evaluated using leave-one-concentration-out cross-validation and benchmarked against partial least squares, principal component regression, and ridge regression, achieving lower prediction errors and more stable error distributions. Dynamic online experiments demonstrated continuous tracking of stepwise concentration changes, with R2 values above 0.97 and limits of detection of 0.07 and 0.03 g/L for Nd3+ and Pr3+, respectively. Cross-day segment-wise analysis further confirmed stable online predictions, with coefficients of variation mostly below 1-2% and σpred values within 0.015-0.040 g/L for Nd3+ and 0.006-0.021 g/L for Pr3+. This study provides a robust and sensitive spectrophotometric soft-sensing strategy for continuous rare-earth ion quantification in hydrochloric acid media. By combining response-specific modeling with reference-sample-based calibration correction, it overcomes the difficulty of long-term dynamic detection under online flowing conditions and enables reliable quantification for NdFeB magnet hydrometallurgical recycling.",
+      "authors": [
+        "Lei Li",
+        "Bin Wang",
+        "Guobiao Li",
+        "Guoping Hu",
+        "Huizhong Liu",
+        "Jinfa Liao",
+        "Hongdeng Qiu",
+        "Haifeng Wang"
+      ],
+      "published_date": "2026-Dec-15",
+      "indexed_date": "",
+      "journal": "Analytica chimica acta",
+      "doi": "10.1016/j.aca.2026.346403",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43003562/",
+      "categories": [],
+      "keywords": [
+        "Dynamic absorption spectroscopy",
+        "NdFeB magnet recycling",
+        "Rare earths elements",
+        "Response-specific modeling",
+        "UV–Vis"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 30,
+        "ai": {
+          "score": 32,
+          "topic": "Multivariate spectral calibration for rare-earth sensing",
+          "reason": "Peak-basis linear regression and multivariate calibration for overlapping spectra; conceptually adjacent to spectral feature modeling but in analytical chemistry, not neural signals.",
+          "summary": "The study introduced a dynamic spectrophotometric method with a response-specific multivariate calibration model (RS-MPBLR) for continuous quantification of Nd3+ and Pr3+ in acidic chloride media, achieving R² > 0.97 and detection limits of 0.07 and 0.03 g/L, with stable online predictions.",
+          "keywords": [
+            "rare earth elements",
+            "dynamic absorption spectroscopy",
+            "multivariate calibration",
+            "NdFeB recycling",
+            "soft sensing"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43003371",
+      "title": "Broadband gamma-band EEG changes during magnetophosphene-inducing 20 Hz magnetic field stimulation.",
+      "abstract": "Magnetophosphenes are visual percepts induced by extremely low-frequency magnetic fields (ELF-MF; <300 Hz), yet the EEG expression of suprathreshold magnetophosphene-inducing stimulation remains poorly characterized and is not reliably captured by classical low-frequency markers. We tested whether suprathreshold 20 Hz tAMS is accompanied by broadband high-frequency EEG changes rather than focal oscillatory effects. EEG was recorded in N=13 healthy volunteers during 20 Hz sinusoidal magnetic-field exposure delivered using transcranial alternating magnetic stimulation (tAMS) in a global-head configuration. Three conditions were analyzed: no exposure (0 mT), subthreshold (5 mT), and suprathreshold (50 mT). Gamma-band EEG power (30-80 Hz) was quantified using complementary spectral approaches, including aperiodic-adjusted gamma power. Perception reports sharply dissociated the three conditions, with frequent perception at 50 mT only. Suprathreshold stimulation was associated with spatially distributed increases in gamma-band EEG power over frontal and occipito-parietal electrodes. The differences remained partly detectable in complementary analyses using two local aperiodic-adjustment methods and did not exhibit a consistent narrowband peak, a pattern consistent with broadband high-frequency changes. No focal power change over primary occipital electrodes remained significant after Bonferroni correction. These findings identify a spatially distributed broadband high-frequency scalp EEG effect associated with the suprathreshold 50 mT condition, with the main spatial pattern strongly preserved after ICA-based removal of components classified as ocular or muscular. The effect therefore characterizes the coupled suprathreshold stimulation-perception condition; its perception specificity and physiological source remain unresolved.",
+      "authors": [
+        "Maëlys Moulin",
+        "Eléonore Fresnel",
+        "Julien Modolo",
+        "Nicolas Bouisset",
+        "Sofiane Ramdani"
+      ],
+      "published_date": "2026-Nov-09",
+      "indexed_date": "",
+      "journal": "NeuroImage",
+      "doi": "10.1016/j.neuroimage.2026.122323",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43003371/",
+      "categories": [],
+      "keywords": [
+        "Electroencephalography",
+        "Extremely low-frequency magnetic fields",
+        "Gamma-band",
+        "Magnetophosphene perception",
+        "Transcranial alternating magnetic stimulation"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 60,
+        "ai": {
+          "score": 30,
+          "topic": "Gamma EEG during magnetic phosphene stimulation",
+          "reason": "Specialized magnetostimulation and gamma-band analysis with aperiodic adjustment; aperiodic-adjustment handling is mildly relevant but overall outside sleep/state methodology.",
+          "summary": "In 13 healthy volunteers, suprathreshold 20 Hz transcranial alternating magnetic stimulation (50 mT) that induced magnetophosphenes was associated with spatially distributed broadband gamma-band EEG power increases, without a consistent narrowband peak, characterizing the stimulation-perception condition.",
+          "keywords": [
+            "magnetophosphenes",
+            "gamma-band EEG",
+            "transcranial alternating magnetic stimulation",
+            "extremely low-frequency magnetic fields",
+            "broadband high-frequency changes"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43002844",
+      "title": "Sex-related clinical profiles in obstructive sleep apnea: An integrated clinical, sleep study, and drug-induced sleep endoscopy analysis.",
+      "abstract": "Sex-related differences in obstructive sleep apnea (OSA) are well recognized, but their association with dynamic upper airway collapse remains poorly characterized. To characterize sex-related clinical profiles in OSA through the integrated assessment of clinical characteristics, sleep study parameters, and drug-induced sleep endoscopy (DISE) findings. This retrospective study compared clinical profiles, sleep parameters, collapse patterns, airway reversibility, and treatment recommendations in 767 patients undergoing DISE. Women were older and more frequently reported insomnia and mood disorders, whereas men had higher body mass index, larger tonsils, and higher Mallampati scores. Sleep study differences were also observed: men exhibited longer apneas, higher apnea-to-hypopnea ratios, and more positional OSA. Respiratory event clustering suggestive of REM-related OSA was more frequent in women, although REM sleep was not EEG-confirmed. DISE demonstrated that obstruction was more frequent in men at all assessed levels, including palatal concentric collapse (62.5% vs 40.7%). Complete resolution with jaw thrust was more frequent in women (30.2% vs 18.4%). Mandibular advancement therapy was more commonly recommended for women, whereas surgery was more frequently recommended for men. Findings in this DISE-selected cohort suggest a predominantly anatomy-driven pattern in men and a potentially more functionally modulated profile in women, supporting the integration of sex-related characteristics into personalized treatment selection.",
+      "authors": [
+        "Federico Leone",
+        "Francesco Mozzanica",
+        "Alessandro Bianchi",
+        "Elisa Perger",
+        "Martino Pengo",
+        "Paola Mattaliano",
+        "Federica Vultaggio",
+        "Paula La Rubia",
+        "Yuliya Germini Moysey",
+        "Gianfranco Parati",
+        "Carolina Lombardi",
+        "Fabrizio Salamanca"
+      ],
+      "published_date": "2026-Nov-06",
+      "indexed_date": "",
+      "journal": "Sleep medicine",
+      "doi": "10.1016/j.sleep.2026.109335",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43002844/",
+      "categories": [],
+      "keywords": [
+        "Drug-induced sleep endoscopy",
+        "Obstructive sleep apnea",
+        "Precision medicine",
+        "Sex differences",
+        "Sleep surgery",
+        "Upper airway collapse"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 33,
+        "ai": {
+          "score": 30,
+          "topic": "OSA clinical profiles and sleep endoscopy",
+          "reason": "Clinical sleep-apnea phenotyping using DISE and sleep study parameters; sleep-adjacent but no computational EEG methods or transferable algorithms.",
+          "summary": "In a retrospective DISE-selected cohort of 767 obstructive sleep apnea patients, women were older with more insomnia and mood disorders and more frequent complete collapse resolution with jaw thrust (30.2% vs 18.4%), while men had higher BMI, obstruction at all airway levels, and more frequent surgical recommendations, suggesting an anatomy-driven pattern in men and a functionally modulated profile in women.",
+          "keywords": [
+            "obstructive sleep apnea",
+            "drug-induced sleep endoscopy",
+            "sex differences",
+            "upper airway collapse",
+            "mandibular advancement"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43005213",
+      "title": "Serotonergic control of valence processing in amygdalo- striaterminalis circuits.",
+      "abstract": "Valence, a hedonic value assigned to sensory stimuli that determines subsequent behaviors, is a fundamental organizing principle of affective states and emotional behaviors. Valence influences physiological processes across multiple organ systems - effects that may be mediated in part by the serotonergic (5-HT) system, which itself has widespread distribution throughout the body. The brain serotonergic system projects to the amygdala and its extended structure, the bed nucleus of the stria terminalis (BNST), regions heavily implicated in valence encoding. Despite their anatomical and functional connectivity, the amygdala and BNST express distinct 5-HT receptor subtypes, receive heterogeneous 5-HT projections, and process valence differently. The current study examines the significance of 5-HT projections in the computation of valence in the CeA and BNST. Here, multi-site in vivo electrophysiology was combined with anterograde chemogenetic modulation of 5-HT terminals in either the BNST or the CeA, while recording from both regions during valence presentation tasks where mice were exposed to the odorants of saline (neutral), opposite-sex urine (positive), and trimethylthiazoline (TMT, negative valence) in a counterbalanced manner. Neural responses were then compared across the neutral, appetitive, and aversive stimuli. Our results showed dorsal raphe 5-HT activation in the BNST supported valence coding in the CeA and BNST during stimulus presentation. During the post-stimulus phase, this modulation engaged only CeA-supported valence coding. Conversely, the inhibition of 5-HT terminals in the BNST supported local valence coding. Dorsal raphe 5-HT activation in the CeA enhanced valence coding in both the CeA and BNST only after stimulus offset. However, its suppression in the CeA enhanced valence coding in both the CeA and BNST during and after stimulus presentation. Taken together, our results showed that dorsal raphe serotonergic modulation creates a phasic response pattern in the CeA/BNST circuit by moderating response timing relative to stimulus valence.",
+      "authors": [
+        "Ignitius Ezekiel Lim",
+        "Olalekan Michael Ogundele"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-11-10",
+      "journal": "Frontiers in neural circuits",
+      "doi": "10.3389/fncir.2026.1906095",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43005213/",
+      "categories": [],
+      "keywords": [
+        "affective processing",
+        "amygdala",
+        "bed nucleus of the stria terminalis (BNST)",
+        "coding",
+        "dorsal raphe nucleus (DRN)",
+        "serotonin",
+        "valence"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 21,
+        "ai": {
+          "score": 30,
+          "topic": "Serotonergic valence circuits in amygdala/BNST",
+          "reason": "In vivo multi-site electrophysiology in mice with chemogenetic manipulation; animal neural recording relevance but no computational, sleep, or signal-processing methodology.",
+          "summary": "Combining multi-site in vivo electrophysiology with chemogenetic modulation of dorsal raphe serotonergic terminals in the BNST or CeA of mice during odorant valence tasks, the study showed that 5-HT terminal activation/inhibition in these regions altered CeA and BNST valence coding in a phase- and timing-dependent manner.",
+          "keywords": [
+            "serotonin",
+            "bed nucleus of the stria terminalis",
+            "central amygdala",
+            "valence coding",
+            "dorsal raphe nucleus"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.11.09.26367183",
+      "title": "Optimisation of and mechanisms behind neural distortion responses obtained with cochlear-implant stimulation by interleaved pulse trains",
+      "abstract": "Purpose: We investigated the mechanisms behind the generation of Neural Distortion Responses (NDRs) measured with electroencephalography when interleaving amplitude-modulated (AM) pulse trains in cochlear implant (CI) users. Methods: Previous experiments measured NDRs using interleaved pulse trains in which odd- and even-numbered pulses were respectively modulated at F1 and F2 Hz, where F1=2*F2/3 and F1{approx}80Hz. Experiment 1 separated quadratic and cubic distortion products using a relationship of F1 and F2 such that F1 = (2*F2/3)+2. Experiment 2 retained the original F1=2*F2/3 relationship but shifted the starting AM phase of F2 relative to that of F1. Experiment 3 simultaneously separated the quadratic and cubic distortion products and varied the relative phase of F1 and F2. Experiment 4 flipped the leading polarity of the second pulse in each pulse-pair such that the central phase of the resulting pseudo-triphasic pulses was anodic. All experiments were conducted with Cochlear CI users and interpreted using two computational models of the electrically stimulated auditory nerve. Results: Both quadratic (QDR) and cubic distortion products (CDR) were observed. Varying relative AM phase had an effect on NDR amplitudes, with the largest amplitude when maxima of the 2 AM patterns were aligned. Stimulating with an anodic central phase within the AM pulse pairs resulted in stronger responses for 4 of 9 CI users. Computational modelling suggested a stronger role for refractoriness than for facilitation in generating the NDR, but failed to fully account for the effect of flipping the polarity. Conclusion: NDRs consist of both quadratic and cubic components, and are greatest when maxima of the F1 and F2 pulse trains align. Refractoriness is likely more important than facilitation for generating the NDR.",
+      "authors": [
+        "Garcia, C.",
+        "Guerit, F.",
+        "Arzounian, D.",
+        "Carlyon, R. P."
+      ],
+      "published_date": "2026-11-09",
+      "indexed_date": "2026-11-09",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.11.09.26367183",
+      "url": "https://doi.org/10.64898/2026.11.09.26367183",
+      "categories": [
+        "otolaryngology"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 22,
+        "ai": {
+          "score": 30,
+          "topic": "Cochlear-implant neural distortion responses",
+          "reason": "Auditory-nerve EEG distortion response study; specialized clinical application with limited transfer to sleep/vigilance methods.",
+          "summary": "Four EEG experiments in cochlear-implant users manipulated interleaved amplitude-modulated pulse trains to characterize neural distortion responses (NDRs), separating quadratic and cubic distortion products and varying phase and pulse polarity. NDRs contained both quadratic and cubic components and were largest when AM maxima aligned; computational modeling suggested refractoriness plays a stronger role than facilitation, though it did not fully explain polarity effects.",
+          "keywords": [
+            "neural distortion response",
+            "cochlear implant",
+            "interleaved pulse trains",
+            "quadratic and cubic distortion products",
+            "refractoriness"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43004695",
+      "title": "Effects of Pore Mutations on 1/f Flicker Noise Reveal Differences in CFTR Substates.",
+      "abstract": "Many disease-causing mutations in the Cystic Fibrosis Transmembrane Conductance Regulator (CFTR), a key chloride channel, lead to cystic fibrosis by disrupting the regulation and stability of its different open and closed substates. These transitions generate rapid current fluctuations observed in patch-clamp measurements, known as flicker noise, which can reveal information about chloride flow and state dynamics in the wild type and different mutants. Using time-frequency analysis with spectrograms applied to single-channel recordings, we found that the power of higher-frequency components (10-1000 Hz) was greater during the open state than during the closed state. Frequency analysis showed 1fα noise in the fully open state (α = 0.5) and a flat power spectral density (PSD) in the closed state (α = 0). Using several pore mutants as representations of the three open states (S1, S2, and F), we found that the S2 frequency signature was similar to the fully open state (α = 0.5), whereas S1 behaved more similarly to the closed state (α = 0) in terms of flicker noise. A mutant affecting the nucleotide-binding domain (NBD) did not show changes in α. These frequency signatures were not altered by changes in electrochemical forces in the WT and may be linked to conformational changes and differences in the energy landscape and trapping of Chloride ions in energy wells during the permeation process. Using the Hurst exponent, derived from spectral analysis, we showed that S1 exhibited memoryless dynamics (H ≈ 0.5), while S2 and F showed persistent behavior (H > 0.5), indicating that memory structure depends on the substate. These experimental findings were reproduced using a transistor-based model that incorporates flicker noise and maps electrophysiological variables (τo, τc, Po, α) to circuit parameters. This allows linking functional CFTR states (C0, C1, C2, S1, S2, F) to electronic components, enabling fast, variant-specific simulations.",
+      "authors": [
+        "Eduardo Martinez Marin",
+        "Guiying Cui",
+        "Andrew W Eckford",
+        "Nael A McCarty",
+        "William D Hunt"
+      ],
+      "published_date": "2026-Nov-10",
+      "indexed_date": "",
+      "journal": "Biophysical journal",
+      "doi": "10.1016/j.bpj.2026.11.008",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43004695/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 39,
+        "ai": {
+          "score": 25,
+          "topic": "1/f flicker noise in CFTR channel substates",
+          "reason": "Patch-clamp noise/state analysis in an ion channel; shares spectral 1/f and substate concepts but is unrelated physiology and not transferable to EEG/sleep analysis.",
+          "summary": "Using time-frequency spectrograms and spectral analysis of single-channel CFTR recordings, the authors found 1/fα flicker noise with α=0.5 in the fully open state versus flat PSD in the closed state, distinct frequency and Hurst-exponent signatures for substates S1, S2 and F, and reproduced these findings with a transistor-based circuit model.",
+          "keywords": [
+            "CFTR",
+            "flicker noise",
+            "single-channel patch clamp",
+            "substates",
+            "Hurst exponent"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43002912",
+      "title": "Clinical features and outcomes in children with late-onset febrile seizures.",
+      "abstract": "Late-onset febrile seizures (LFS), occurring at or after five years of age, are uncommon and may represent a heterogeneous clinical group. We aimed to characterize their clinical, EEG, neuroimaging, and short-term outcome features and to compare de novo and persistent LFS subgroups. This retrospective, single-center study included 119 children with fever-associated seizures at or after 60 months of age. De novo LFS was defined by no febrile seizure history before five years, whereas persistent LFS was defined by one or more earlier febrile seizures. Clinical characteristics, EEG and brain MRI findings, antiseizure medication (ASM) use, and incident epilepsy after the index event were evaluated. Seventy children (58.9%) presented at 60-83 months, and 93 (78.2%) had seizures lasting <5 min. Forty-four children had de novo LFS and 75 had persistent LFS. EEG was performed in 104 children: 82 (78.8%) were normal, 20 showed background slowing, and 2 showed focal epileptiform discharges. Brain MRI was performed in 66 children; 63 were normal and 3 showed incidental findings, with no potentially epileptogenic lesion identified. During 12-36 months of follow-up, 10 children (8.4%) were diagnosed with incident epilepsy, all in the persistent LFS subgroup (10/75 vs. 0/44); eight of these cases fulfilled the ILAE practical definition of epilepsy. Most LFS were brief and had generally favorable short-term outcomes. All incident epilepsy cases occurred in children with febrile seizures before five years of age; however, given the small number of outcomes and overlapping confidence intervals, this observation is hypothesis-generating and does not permit reliable subgroup-specific risk estimation. Larger prospective studies with standardized assessments and longer follow-up are needed.",
+      "authors": [
+        "Deniz Menderes",
+        "Pınar Özbudak"
+      ],
+      "published_date": "2026-Nov-09",
+      "indexed_date": "",
+      "journal": "Brain & development",
+      "doi": "10.1016/j.braindev.2026.104618",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43002912/",
+      "categories": [],
+      "keywords": [
+        "EEG",
+        "Epilepsy",
+        "Fever-associated seizures",
+        "Late-onset febrile seizures",
+        "Outcomes"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 21,
+        "ai": {
+          "score": 25,
+          "topic": "Late-onset febrile seizures clinical outcomes",
+          "reason": "Retrospective pediatric clinical study with routine EEG interpretation; no computational or methodological contribution.",
+          "summary": "In a retrospective study of 119 children with febrile seizures at or after 60 months, most seizures were brief with largely normal EEG and MRI and favorable short-term outcomes; all 10 incident epilepsy cases (8.4%) occurred in the persistent late-onset subgroup, a hypothesis-generating observation.",
+          "keywords": [
+            "late-onset febrile seizures",
+            "incident epilepsy",
+            "EEG",
+            "children",
+            "fever-associated seizures"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.11.08.765140",
+      "title": "Maternal separation remodels Purkinje cell circuits and impairs cerebellar synaptic plasticity",
+      "abstract": "Introduction: Early-life adversity has been associated with cerebellar abnormalities, but the cellular and circuit-level changes involved and their persistence across development remain poorly understood. We examined whether maternal separation (MS) disrupts cerebellar circuit maturation and whether these changes are accompanied by alterations in synaptic function and behavior. Methods: CD1 mice underwent daily maternal separation from postnatal day 2 to 18, whereas control litters remained undisturbed. Cerebellar alterations were assessed using transcriptomic and DNA methylation profiling, RT-qPCR, immunoblotting, Purkinje-cell morphometric analysis, and VGLUT1/VGLUT2 immunofluorescence. Patch-clamp electrophysiology was used to examine synaptic transmission and plasticity. Motor coordination, spontaneous locomotion, social approach, and stress-coping behavior were also evaluated. Results: RNA sequencing of whole cerebellar tissue revealed early transcriptional remodeling, involving synaptic transmission, neuronal architecture, and plasticity-related pathways. Consistent with this profile, we found that MS altered Purkinje cell dendritic arborization and excitatory input remodeling, together with deficits in cerebellar long-term synaptic plasticity and reduced BDNF-related signaling. In parallel, methylation analysis revealed hypermethylation of the glucocorticoid receptor promoter and reduced cerebellar receptor expression, indicating that early-life stress also engages stress-related epigenetic mechanisms in this region. Importantly, these neurobiological changes were associated with motor coordination deficits, altered stress-coping behavior, and impaired social interaction. Discussion: These findings identify the developing cerebellum as a target of early-life adversity and suggest that disrupted cerebellar maturation may contribute to lasting functional consequences. This study extends our understanding of the effects of maternal separation beyond the brain regions traditionally associated with stress responses.",
+      "authors": [
+        "Lippiello, P.",
+        "Hoxha, E.",
+        "Cristiano, C.",
+        "Pascarella, S.",
+        "Volpicelli, F.",
+        "Speranza, L.",
+        "Cuomo, M.",
+        "Ferraro, M. G.",
+        "Stanley, A.",
+        "Rominto, A. M.",
+        "Filiz, K. D.",
+        "Liguori, F.",
+        "Tropea, D.",
+        "Di Angelantonio, S.",
+        "Chiariotti, L.",
+        "Sulzer, D.",
+        "Miniaci, M. C."
+      ],
+      "published_date": "2026-11-10",
+      "indexed_date": "2026-11-10",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.11.08.765140",
+      "url": "https://doi.org/10.64898/2026.11.08.765140",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "1",
+        "published": "NA",
+        "prefilter_score": 33,
+        "ai": {
+          "score": 22,
+          "topic": "Maternal separation and cerebellar plasticity",
+          "reason": "Rodent developmental circuit and synaptic plasticity study; animal relevance but no neural time-series analysis, sleep staging, or computational method.",
+          "summary": "In CD1 mice subjected to daily maternal separation from postnatal day 2 to 18, early-life stress produced cerebellar transcriptional remodeling, altered Purkinje cell dendritic arborization and excitatory inputs, impaired cerebellar long-term synaptic plasticity, glucocorticoid receptor promoter hypermethylation, and motor coordination, stress-coping, and social interaction deficits.",
+          "keywords": [
+            "maternal separation",
+            "Purkinje cells",
+            "cerebellar synaptic plasticity",
+            "early-life stress",
+            "glucocorticoid receptor methylation"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43003475",
+      "title": "Symptomatic plateau waves in a patient with leptomeningeal metastases captured with quantitative electroencephalography and intracranial pressure monitoring.",
+      "abstract": "",
+      "authors": [
+        "Krithi Gopinath",
+        "Isabelle Renteria",
+        "Samantha Probelsky",
+        "Maryam Mahmood",
+        "Mustafa Basree",
+        "Jerdan Ruff",
+        "Brett Morris",
+        "Bradley Nix",
+        "Ankush Bhatia"
+      ],
+      "published_date": "2026-Nov-09",
+      "indexed_date": "",
+      "journal": "BMJ case reports",
+      "doi": "10.1136/bcr-2025-270251",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43003475/",
+      "categories": [],
+      "keywords": [
+        "Breast cancer",
+        "Neurooncology"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 42,
+        "ai": {
+          "score": 20,
+          "topic": "Case report: plateau waves qEEG-ICP",
+          "reason": "Single-case clinical report combining quantitative EEG with intracranial pressure; no reusable method or generalizable analysis.",
+          "summary": "A case report describing symptomatic plateau waves in a patient with leptomeningeal metastases, captured using quantitative electroencephalography and intracranial pressure monitoring. It documents the simultaneous EEG and ICP correlates of these pressure waves in a neuro-oncology setting.",
+          "keywords": [
+            "plateau waves",
+            "leptomeningeal metastases",
+            "intracranial pressure monitoring",
+            "quantitative electroencephalography",
+            "neuro-oncology"
+          ],
+          "paper_type": "Case Report",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43005432",
+      "title": "Effect of neurofeedback-assisted mindfulness training on migraine severity, associated disability, sleep quality, and emotional distress: protocol for a randomized controlled trial.",
+      "abstract": "Migraine is a highly prevalent neurological disorder and a leading cause of worldwide disability, exerting significant clinical, social, and economic burdens. While pharmacological options exist, their efficacy is often limited by tolerability issues and risk of medication-overuse headache. Neurofeedback (NF) combined with mindfulness training has emerged as a promising non-pharmacological neuromodulation technique. However, clinical evidence in migraine management remains limited by methodological heterogeneity and small sample sizes. This study protocol aims to evaluate the efficacy of a Neurofeedback-Assisted Mindfulness Training Program (NAMTP) in adults with medium-to-high-frequency episodic migraine. This is a randomized, parallel-group, controlled clinical trial protocol. Sixty-six (N = 66) adults diagnosed with medium-to-high-frequency episodic migraine (5-14 monthly migraine days) will be recruited and randomized (1:1 ratio) into either the Intervention Group (IG: standard care plus NAMTP) or the Control Group (CG: standard routine care alone). The IG will undergo a 12-week home-based program consisting of 60 sessions (15-20 min each, 5 times per week) of mindfulness training assisted by the Muse® electroencephalography (EEG) headband. Assessments will be conducted at baseline, 12 weeks (post-intervention), and 24 weeks post-randomization. The powered primary outcome is the change in Monthly Migraine Days (MMDs). Secondary outcomes include migraine-associated disability (MIDAS), headache impact (HIT-6), sleep parameters (actigraphy and PSQI), quality of life (MSQ v.2), and mood symptoms (BDI-II and STAI-Y). This protocol addresses the urgent need for scalable, non-pharmacological therapies in migraine management. By combining objective neurophysiological monitoring with behavioral training within a rigorous randomized controlled framework, this trial will clarify whether NAMTP can reduce headache burden, optimize sleep patterns, and diminish affective distress. The findings are expected to provide standardized, actionable evidence regarding the integration of digital neurofeedback tools into routine clinical care for episodic migraine.Clinical Trial Registration: ClinicalTrials.gov NCT07661888.",
+      "authors": [
+        "Chaimae Zahri-Haidar",
+        "Irene A Garcia-Yu",
+        "Nerea Sanchez-Sanchez",
+        "Jesús Gonzalez-Sanchez",
+        "Hsin-Chien Lee",
+        "Victoria Alejos-Herrera",
+        "Virginia Iglesias-Sierra",
+        "Hsueh-Chen Lu",
+        "Jose I Recio-Rodriguez"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-11-10",
+      "journal": "Frontiers in digital health",
+      "doi": "10.3389/fdgth.2026.1962535",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43005432/",
+      "categories": [],
+      "keywords": [
+        "migraine",
+        "migraine disorders",
+        "mindfulness",
+        "neurofeedback",
+        "randomized controlled trial"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 35,
+        "ai": {
+          "score": 18,
+          "topic": "Neurofeedback clinical trial protocol",
+          "reason": "Clinical trial protocol on neurofeedback-assisted mindfulness for migraine; no EEG analysis methodology, algorithm, or transferable signal-processing contribution.",
+          "summary": "A randomized controlled trial protocol testing a 12-week home-based neurofeedback-assisted mindfulness training program (Muse EEG headband) versus standard care in 66 adults with medium-to-high-frequency episodic migraine, with monthly migraine days as the primary outcome and secondary outcomes including disability, sleep, quality of life, and mood.",
+          "keywords": [
+            "episodic migraine",
+            "neurofeedback",
+            "mindfulness training",
+            "randomized controlled trial",
+            "EEG headband"
+          ],
+          "paper_type": "Protocol",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43002702",
+      "title": "Technology and Intelligence: Staying on Target for the Next Decade of Electrophysiology.",
+      "abstract": "",
+      "authors": [
+        "Roderick Tung"
+      ],
+      "published_date": "2026-Nov-10",
+      "indexed_date": "",
+      "journal": "Circulation",
+      "doi": "10.1161/circulationaha.126.080523",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43002702/",
+      "categories": [],
+      "keywords": [
+        "arrhythmias",
+        "atrial fibrillation",
+        "cardiac pacing",
+        "catheter ablation",
+        "electrophysiology",
+        "mechanisms",
+        "technology mapping",
+        "ventricular tachycardia"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 27,
+        "ai": {
+          "score": 15,
+          "topic": "Cardiac electrophysiology editorial",
+          "reason": "Cardiac EP commentary with no neural time-series methodology despite the 'electrophysiology' keyword.",
+          "summary": "This perspective discusses technological and intelligence-related developments anticipated in cardiac electrophysiology over the next decade, with emphasis on arrhythmia mechanisms, mapping, ablation, and cardiac pacing.",
+          "keywords": [
+            "cardiac electrophysiology",
+            "catheter ablation",
+            "arrhythmias",
+            "technology mapping",
+            "cardiac pacing"
+          ],
+          "paper_type": "Commentary/Perspective",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43007049",
+      "title": "Side-to-side and other complex head movements as ictal signs in epilepsy: A video-EEG case series and review of literature.",
+      "abstract": "Side-to-side head shaking is often considered a distinctive clinical sign that differentiates functional seizures from epileptic seizures; however, it may also occur as an ictal phenomenon in focal epilepsy. We retrospectively reviewed all video-telemetry reports of patients with drug-resistant focal epilepsy undergoing presurgical evaluation between 2015 and 2025. All reports were electronically screened for mentioning side-to-side or other complex head movements and the video-EEG of these patients was reviewed and included if associated with ictal EEG changes. Seventeen patients were identified who experienced 631 seizures in total, 201 of which included such movements (median: 2 per patient, range: 1-160). One patient (No. 5) accounted for 79% of these events and represented an outlier. Head movements were predominantly horizontal (93.5%), followed by mixed (5%) and rotatory (1.5%). While small-amplitude movements predominated overall, larger amplitudes were more frequent after excluding the outlier case. In six patients, head movements were the initial observed feature of seizure semiology and typically represented a brief component of the seizure, although prolonged in the outlier case. Interrater agreement ranged from fair to good across semiological variables. Presumed epileptogenic zones were heterogenous, including frontal, temporal, anterior quadrant, and hemispheric regions. Ictal side-to-side and other complex head movements can occur in focal epilepsies but lack localizing or lateralizing value. They likely reflect seizure propagation and involvement of broader neuronal circuits. Further studies are needed to clarify their mechanisms and clinical significance.",
+      "authors": [
+        "Christina Pourlou",
+        "Paola Vassallo",
+        "Emma Torzillo",
+        "Joana F A Oliveira",
+        "Charlotte McLaughlin",
+        "Umair Javaid Chaudhary",
+        "Matthew C Walker",
+        "Fahmida Chowdhury",
+        "Beate Diehl"
+      ],
+      "published_date": "2026-Nov-10",
+      "indexed_date": "",
+      "journal": "Epileptic disorders : international epilepsy journal with videotape",
+      "doi": "10.1002/epd2.70462",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43007049/",
+      "categories": [],
+      "keywords": [
+        "focal epilepsy",
+        "head shaking",
+        "seizure semiology",
+        "video‐EEG"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 72,
+        "ai": {
+          "score": 15,
+          "topic": "Ictal head movements in focal epilepsy",
+          "reason": "Clinical video-EEG case series on seizure semiology; purely clinical phenotyping with no methodological or computational transfer.",
+          "summary": "A video-EEG case series and literature review of 17 patients with drug-resistant focal epilepsy showing that ictal side-to-side and complex head movements occurred in focal seizures but had no localizing or lateralizing value, with heterogeneous presumed epileptogenic zones and likely reflecting seizure propagation.",
+          "keywords": [
+            "seizure semiology",
+            "side-to-side head movements",
+            "focal epilepsy",
+            "video-EEG",
+            "epileptogenic zone"
+          ],
+          "paper_type": "Case Report",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43002823",
+      "title": "Imagery-based fear conditioning and extinction learning in individuals with psychotic liability: an EEG study.",
+      "abstract": "Pavlovian fear conditioning using aversive imagery rather than physical stimuli as the unconditioned stimulus (US) provides a powerful paradigm to study fear learning in psychosis, in which threat expectations often develop in the absence of proximal external threats. This preregistered study aimed to identify behavioral, psychophysiological, and neural aberrancies in imagery-based fear acquisition and extinction learning associated with psychotic liability. Participants at-risk for psychosis (n = 70 with elevated psychosis proneness, n = 28 with verified clinical high-risk status) and non-clinical controls (n = 55) underwent an imagery-based fear conditioning paradigm. Participants learnt to produce aversive, neutral (US), or no imagery in response to cues (shapes) that were systematically paired with a different neutral face (conditioned stimulus; CS). Behavioral ratings, EEG (late positive potential; LPP), and psychophysiological responses (skin conductance responses; SCRs) were assessed. The at-risk group showed more pronounced acquisition learning in fear and arousal ratings and LPPs than controls. This pattern was driven by elevated affect ratings to the CS+ that had been paired with aversive imagery. In contrast, explicit expectancy ratings indicated less CS discrimination in at-risk individuals. The at-risk group also showed reduced extinction learning in expectancy but faster extinction learning in fear and arousal ratings than controls. Psychotic liability is associated with an increased susceptibility to acquire fear through negative mental imagery, even in the absence of actual threat. These findings provide novel insights into the pathogenesis of psychosis, suggesting that imagined threat beliefs could contribute to delusion formation.",
+      "authors": [
+        "Nilay E Ahrens-Demirdal",
+        "Metin Özyagcilar",
+        "Erik M Mueller",
+        "Anja Riesel",
+        "Tina B Lonsdorf",
+        "Tania M Lincoln"
+      ],
+      "published_date": "2026-Nov-04",
+      "indexed_date": "",
+      "journal": "Behaviour research and therapy",
+      "doi": "10.1016/j.brat.2026.105188",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43002823/",
+      "categories": [],
+      "keywords": [
+        "Clinical high-risk",
+        "EEG",
+        "Fear conditioning",
+        "Late positive potential",
+        "Mental imagery",
+        "Psychotic liability"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 60,
+        "ai": {
+          "score": 15,
+          "topic": "Imagery-based fear conditioning EEG in psychosis",
+          "reason": "Clinical/psychological fear-conditioning paradigm using LPP; no transferable signal-processing or state-classification method.",
+          "summary": "A preregistered EEG study using imagery-based fear conditioning in individuals with psychotic liability (n=70 elevated psychosis proneness, n=28 clinical high-risk) versus controls (n=55), finding more pronounced acquisition in fear and arousal ratings and late positive potentials in the at-risk group and altered extinction learning.",
+          "keywords": [
+            "imagery-based fear conditioning",
+            "extinction learning",
+            "psychotic liability",
+            "late positive potential",
+            "skin conductance response"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43005114",
+      "title": "Potential Applications of Brain-Computer Interface Technology in the Rehabilitation of Patients with Anxiety Disorders: A Narrative Review.",
+      "abstract": "Anxiety disorders are among the most prevalent mental disorders worldwide and can cause persistent impairment in emotional regulation, cognition, and social functioning. Pharmacotherapy, psychotherapy, exercise, and non-invasive brain stimulation are widely used, yet their effectiveness may be constrained by dependence liability, interindividual variability, treatment engagement, incomplete response, and limited objective measures of treatment processes. Brain-computer interfaces (BCIs) acquire, decode, and feed back neural signals-most commonly electroencephalography (EEG), functional near-infrared spectroscopy (fNIRS), or real-time functional magnetic resonance imaging (rt-fMRI)-thereby converting anxiety-related brain activity into targets that can be monitored, trained, or used to trigger intervention. This narrative review examines the mechanistic rationale for BCI-assisted anxiety rehabilitation, technological approaches across levels of invasiveness, and integration with pharmacological, psychological, and exercise-based care. Current evidence indicates that EEG has been used for both anxiety-state recognition and neurofeedback; rt-fMRI enables targeted modulation of deep emotion-related networks and functional connectivity; and fNIRS offers promise for portable prefrontal monitoring and as an input signal for closed-loop systems. Invasive closed-loop systems can directly record from and stimulate local or deep circuits, but anxiety-related evidence is derived mainly from animal studies, patients undergoing intracranial monitoring, and neurological populations with comorbid anxiety, and therefore demonstrates technical feasibility rather than efficacy in primary anxiety disorders. Overall, BCIs are better positioned as potential adjuncts to established care than as replacements. The field remains limited by small, single-center studies, inadequate follow-up, heterogeneous acquisition and training protocols, and unresolved governance of neural data. Because this is a narrative review without a formal risk-of-bias assessment or meta-analysis, its conclusions should be regarded as exploratory. Multicenter randomized controlled trials, harmonized technical and reporting standards, cross-device external validation, and risk-proportionate ethical and regulatory frameworks are needed to determine whether BCIs can be translated from proof of concept into safe, effective, and implementable tools for anxiety rehabilitation.",
+      "authors": [
+        "Qiji Liu",
+        "Junting Liu",
+        "Hu Lou"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-11-10",
+      "journal": "Neuropsychiatric disease and treatment",
+      "doi": "10.2147/ndt.s647508",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43005114/",
+      "categories": [],
+      "keywords": [
+        "anxiety disorders",
+        "brain–computer interface",
+        "closed-loop neuromodulation",
+        "narrative review",
+        "neurofeedback",
+        "neurorehabilitation"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
+      "extra": {
+        "prefilter_score": 52,
+        "ai": {
+          "score": 12,
+          "topic": "BCI anxiety rehabilitation review",
+          "reason": "Narrative review of BCI for anxiety; broad clinical content with no transferable computational or signal-processing method.",
+          "summary": "A narrative review examining the mechanistic rationale, technologies (EEG, fNIRS, rt-fMRI, invasive closed-loop), and integration of brain-computer interfaces in anxiety disorder rehabilitation, concluding that BCIs remain exploratory adjuncts limited by small single-center studies, heterogeneous protocols, and unresolved neural data governance.",
+          "keywords": [
+            "brain-computer interface",
+            "anxiety disorders",
+            "neurofeedback",
+            "closed-loop neuromodulation",
+            "rt-fMRI"
+          ],
+          "paper_type": "Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43001206",
+      "title": "Avermectin poisoning with panic-like symptoms: a case series.",
+      "abstract": "High doses of avermectin, a macrolide derived from Streptomyces avermitilis, can cause coma, delirium, respiratory failure, hypotension, and acidosis. However, certain adverse toxicological effects and psychological implications remain unrecognized in patients undergoing parasuicide. Case 1: A 54-year-old man ingested approximately 500 mL avermectin benzylate. He was found to be somnolent 45 min later. Subsequently, the patient became unconscious with respiratory failure, hypotension, and acidosis (lactate, 16.2 mmol/L). Gastric lavage, mechanical ventilation, hemoperfusion, hemofiltration, and symptomatic treatments were administered. Three days after ingestion, the patient's primary symptoms were delirium and myoclonus, with a blood avermectin level of 110.06 μg/L. Thereafter, intermittent shaking, limb flexion, and muscle rigidity persisted. Thirteen days after ingestion, brain magnetic resonance imaging was unremarkable. Electroencephalography revealed no epileptiform discharges. After psychiatric evaluation, the patient was assessed as having panic-like symptoms, and his symptoms improved significantly with specialized treatment. Case 2: A 33-year-old man was injected with approximately 5 mL of 1% avermectin in his left forearm. Two days later, he reported significant pain and swelling along with intermittent palpitations, dizziness, and limb tremors consistent with panic-like symptoms. His blood avermectin level was 0.02 μg/mL. After 7 days of treatment, the swelling subsided, and the panic-like symptoms resolved. Avermectin poisoning causes significant toxic effects, including respiratory failure, hypotension, acidosis, coma, and delirium. Intramuscular injections may result in localized swelling. Parasuicide patients may also present with panic-like symptoms requiring careful differential diagnosis.",
+      "authors": [
+        "Shizhen Lv",
+        "Zhongchen Zhang",
+        "Guangcai Yu",
+        "Baotian Kan",
+        "Xiangdong Jian"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-11-09",
+      "journal": "Frontiers in toxicology",
+      "doi": "10.3389/ftox.2026.1888317",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43001206/",
+      "categories": [],
+      "keywords": [
+        "acidosis",
+        "avermectin poisoning",
+        "hypotension",
+        "intramuscular injection",
+        "panic-like symptoms",
+        "psychological care",
+        "respiratory failure"
+      ],
+      "publication_types": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 22,
+        "ai": {
+          "score": 10,
+          "topic": "Avermectin poisoning case series",
+          "reason": "Toxicology case report with incidental EEG; not relevant to computational neural-signal methods.",
+          "summary": "Two case reports describe avermectin poisoning after oral ingestion and intramuscular injection, with toxic effects including respiratory failure, hypotension, acidosis, coma, delirium, and subsequent panic-like symptoms that improved with psychiatric care and supportive treatment.",
+          "keywords": [
+            "avermectin poisoning",
+            "panic-like symptoms",
+            "respiratory failure",
+            "acidosis",
+            "intramuscular injection"
+          ],
+          "paper_type": "Case Report",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43005065",
+      "title": "Visualization of super-selective Wada with computed tomography perfusion: toward a novel option in preoperative functional mapping.",
+      "abstract": "The Wada test has long been a well-established method for evaluating hemispheric dominance and functional localization; however, it has not been established as a visualizable functional imaging modality. Recently, the super-selective Wada test (ssWada) has emerged as a technique enabling more localized functional evaluation. By selectively catheterizing distal cerebral arterial branches, ssWada enables territory-based functional evaluation with higher spatial resolution than conventional approaches. In this study, we combined ssWada with computed tomography perfusion (CTP) to visualize pharmacologically inactivated brain regions preoperatively. These data were further fused with magnetic resonance imaging (MRI) and CT to propose a novel functional mapping approach delineating the relationship between perfusion-defined functional territories, lesions, and seizure onset zone (SOZ)-related stereoelectroencephalography (SEEG) contacts. Patients who underwent ssWada for preoperative evaluation of brain tumors or drug-resistant epilepsy at our institution were included. During ssWada, propofol was selectively injected via a microcatheter into the ICA and distal branches of the middle cerebral artery (MCA), as well as the anterior or posterior cerebral artery when necessary. Perfusion territories were simultaneously visualized using CTP. These datasets were subsequently fused with MRI and post-SEEG CT to evaluate the spatial relationship between perfusion-defined functional territories, lesions, and SOZ-related SEEG contacts. Among the 23 patients, hemispheric dominance was left in 18 patients (78.3%), bilateral in 3 (13.0%), and right in 2 (8.7%). No complications were observed. In the MCA superior trunk territory, repetition, naming, and reading tasks showed positive rates of approximately 70%. In contrast, in the inferior trunk territory, repetition and reading demonstrated high positive rates (93.8%), whereas naming positivity was lower (56.3%). Fusion with MRI and post-SEEG CT enabled spatial visualization of lesions and SOZ-related SEEG contacts within perfusion-defined functional territories, facilitating individualized functional-anatomical assessment for surgical planning. ssWada combined with CTP enables territory-based visualization of pharmacologically inactivated brain regions and provides a novel preoperative functional mapping approach with high spatial resolution. Fusion with MRI and post-SEEG CT further facilitates individualized functional-anatomical assessment of lesions and SOZ-related networks. These findings support the clinical utility of ssWada-CTP fusion imaging as a novel strategy for individualized preoperative functional brain mapping.",
+      "authors": [
+        "Shunsuke Nakae",
+        "Motoharu Hayakawa",
+        "Masanobu Kumon",
+        "Noeru Kawase",
+        "Kenichiro Suyama",
+        "Eiji Fujiwara",
+        "Daijiro Kojima",
+        "Shigeo Ohba",
+        "Shogo Imamura",
+        "Yuriko Sato",
+        "Yoko Inamoto",
+        "Masaki Fukunaga",
+        "Yuichi Hirose"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-11-10",
+      "journal": "Frontiers in neuroimaging",
+      "doi": "10.3389/fnimg.2026.1876584",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43005065/",
+      "categories": [],
+      "keywords": [
+        "brain tumor",
+        "computed tomography perfusion",
+        "epilepsy surgery",
+        "functional mapping",
+        "seizure-onset zone",
+        "stereo-electroencephalography",
+        "super-selective Wada"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 47,
+        "ai": {
+          "score": 8,
+          "topic": "Super-selective Wada with CT perfusion",
+          "reason": "Preoperative functional mapping imaging technique; unrelated to neural time-series computation or portable analysis methods.",
+          "summary": "Combined super-selective Wada test (ssWada) with CT perfusion (CTP) to visualize pharmacologically inactivated brain regions in 23 patients undergoing preoperative evaluation for brain tumors or drug-resistant epilepsy, and fused these data with MRI and post-SEEG CT. The approach enabled territory-based functional mapping with high spatial resolution; in the MCA superior trunk territory, repetition, naming, and reading tasks showed positive rates of approximately 70%, whereas in the inferior trunk territory, repetition and reading had high positive rates (93.8%) and naming positivity was lower (56.3%).",
+          "keywords": [
+            "super-selective Wada test",
+            "CT perfusion",
+            "functional mapping",
+            "stereoelectroencephalography",
+            "seizure-onset zone"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43004291",
+      "title": "A novel homozygous missense variant in the GAMT gene causing cerebral creatine deficiency syndrome 2 in an Iranian patient: molecular dynamics insights and literature review.",
+      "abstract": "Cerebral creatine deficiency syndrome 2 (CCDS2; OMIM #612,736) is a rare autosomal recessive neurometabolic disorder caused by variants in the GAMT gene, leading to deficient creatine synthesis in the brain. Here, we report a 17-year-old Iranian Fars female patient from a consanguineous marriage presenting with severe intellectual disability, inability to walk, muscle atrophy, and epileptiform EEG activity. Whole-exome sequencing identified a previously unreported homozygous missense variant in GAMT (NM_000156.6: c.326A > G, p.Lys109Arg), classified as likely pathogenic according to ACMG guidelines. The affected lysine residue at position 109 is highly conserved across species. Molecular dynamics (MD) simulations over 100 ns revealed that the p.Lys109Arg substitution induces a more compact global conformation (lower RMSD and Rg) but drastically alters the dynamic coupling network. Compared to wild-type, the mutant exhibited a substantially higher standard deviation in the cross-correlation matrix (0.323 vs. 0.236) and a markedly increased number of both strongly positive (4,006 vs. 1,574) and strongly negative (3,326 vs. 576) correlated residue pairs, indicating the emergence of extensive long-range allosteric perturbations that may disrupt functional dynamics and stability. Our report highlights the value of MD simulations as a tool to evaluate the structural consequences of genetic variants.",
+      "authors": [
+        "Ahmed Al-Karim",
+        "Teymoor Khosravi",
+        "Mohaddese Hajmohammadi",
+        "Mohaddese Mohsenipour",
+        "Ali Kowsari",
+        "Masoud Golalipour",
+        "Nader Mansour Samaei",
+        "Morteza Oladnabi"
+      ],
+      "published_date": "2026-Aug-10",
+      "indexed_date": "2026-11-10",
+      "journal": "BMC medical genomics",
+      "doi": "10.1186/s12920-026-02451-1",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43004291/",
+      "categories": [],
+      "keywords": [
+        "GAMT gene",
+        "Cerebral creatine deficiency syndrome 2",
+        "Missense variant",
+        "Molecular dynamics simulation",
+        "Whole exome sequencing"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Case Reports",
+        "Review"
+      ],
+      "extra": {
+        "prefilter_score": 29,
+        "ai": {
+          "score": 8,
+          "topic": "GAMT variant case report with MD simulation",
+          "reason": "Clinical genetics case report with molecular dynamics; EEG mentioned only as a symptom feature, no methodological relevance.",
+          "summary": "Reported a 17-year-old Iranian female with cerebral creatine deficiency syndrome 2 (CCDS2) carrying a novel homozygous GAMT missense variant (c.326A>G, p.Lys109Arg), classified as likely pathogenic. Molecular dynamics simulations over 100 ns showed that the substitution induced a more compact global conformation but drastically altered the dynamic coupling network, with a higher standard deviation in the cross-correlation matrix (0.323 vs. 0.236) and markedly increased numbers of strongly positive (4,006 vs. 1,574) and strongly negative (3,326 vs. 576) correlated residue pairs compared to wild-type.",
+          "keywords": [
+            "GAMT",
+            "cerebral creatine deficiency syndrome",
+            "missense variant",
+            "molecular dynamics simulation",
+            "whole-exome sequencing"
+          ],
+          "paper_type": "Case Report",
+          "digest_pick": true
+        }
+      }
+    }
+  ]
+}
