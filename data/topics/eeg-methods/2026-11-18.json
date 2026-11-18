@@ -1,6 +1,6 @@
 {
   "date": "2026-11-18",
-  "generated_at": "2026-11-17T21:14:37.075475+00:00",
+  "generated_at": "2026-11-18T03:02:49.992437+00:00",
   "window": {
     "start": "2026-11-16",
     "end": "2026-11-18"
@@ -10,18 +10,18 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 60,
+  "raw_count": 71,
   "retrieved_source_counts": {
-    "pubmed": 150,
-    "biorxiv": 12,
-    "medrxiv": 3,
-    "arxiv": 3
+    "pubmed": 160,
+    "biorxiv": 15,
+    "medrxiv": 4,
+    "arxiv": 5
   },
   "raw_source_counts": {
-    "pubmed": 48,
-    "biorxiv": 7,
-    "medrxiv": 2,
-    "arxiv": 3
+    "pubmed": 55,
+    "medrxiv": 3,
+    "biorxiv": 9,
+    "arxiv": 4
   },
   "prefiltered_count": 40,
   "analyzed_count": 40,
@@ -29,10 +29,10 @@
   "count": 40,
   "featured_count": 25,
   "source_counts": {
+    "arxiv": 3,
     "pubmed": 32,
     "medrxiv": 2,
-    "arxiv": 2,
-    "biorxiv": 4
+    "biorxiv": 3
   },
   "errors": {},
   "ai": {
@@ -42,8 +42,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 32,
-    "newly_summarized": 32,
+    "newly_ranked": 6,
+    "newly_summarized": 6,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -54,12 +54,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 9,
-      "prompt_tokens": 29661,
-      "prompt_cache_hit_tokens": 2304,
-      "prompt_cache_miss_tokens": 27357,
-      "completion_tokens": 7144,
-      "total_tokens": 36805
+      "requests": 3,
+      "prompt_tokens": 6106,
+      "prompt_cache_hit_tokens": 768,
+      "prompt_cache_miss_tokens": 5338,
+      "completion_tokens": 1241,
+      "total_tokens": 7347
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -68,27 +68,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.041691,
+    "run_cost_cny": 0.007835,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 9,
-        "prompt_tokens": 29661,
-        "prompt_cache_hit_tokens": 2304,
-        "prompt_cache_miss_tokens": 27357,
-        "completion_tokens": 7144,
-        "total_tokens": 36805
+        "requests": 3,
+        "prompt_tokens": 6106,
+        "prompt_cache_hit_tokens": 768,
+        "prompt_cache_miss_tokens": 5338,
+        "completion_tokens": 1241,
+        "total_tokens": 7347
       },
-      "run_cost_cny": 0.041691,
+      "run_cost_cny": 0.007835,
       "daily_usage": {
-        "requests": 9,
-        "prompt_tokens": 29661,
-        "prompt_cache_hit_tokens": 2304,
-        "prompt_cache_miss_tokens": 27357,
-        "completion_tokens": 7144,
-        "total_tokens": 36805
+        "requests": 12,
+        "prompt_tokens": 35767,
+        "prompt_cache_hit_tokens": 3072,
+        "prompt_cache_miss_tokens": 32695,
+        "completion_tokens": 8385,
+        "total_tokens": 44152
       },
-      "daily_cost_cny": 0.041691,
+      "daily_cost_cny": 0.049526,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -101,6 +101,53 @@
     "analyzed_count": 40
   },
   "papers": [
+    {
+      "source": "arxiv",
+      "source_id": "2611.21781v1",
+      "title": "Beyond Reconstruction: A Unified Framework for Trustworthy and Explainable EEG Artifact Removal Evaluation",
+      "abstract": "Deep-learning methods have achieved strong performance in EEG artifact removal, but evaluation remains dominated by reconstruction metrics such as error, correlation, and signal-to-noise ratio. Although these metrics assess similarity to clean EEG, they do not establish whether models effectively suppress artifacts, preserve neural activity, or provide reliable explanations. To address these limitations, we propose TriX-EEG, a three-level framework for trustworthy and explainable EEG artifact removal. Level 1, Signal Validity (SV), evaluates reconstruction quality and neural band-power preservation. Level 2, Removal Faithfulness (RF), assesses the removed component through artifact error and residual artifact/neural leakage. Level 3, Explanation Reliability (ER), examines model behavior through temporal alignment, causal relevance, and stability. We evaluate TriX-EEG using nine published neural denoisers across three public benchmarks derived from EEGDenoiseNet and the PhysioNet Motion Artifact Contaminated EEG Dataset, covering EOG, EMG, and motion artifacts. Results show that reconstruction metrics alone are insufficient for trustworthy denoiser assessment: RF complements it by revealing whether errors stem from residual artifact or suppressed neural activity, while ER captures distinct aspects of explanation behavior, supporting joint evaluation of three aspects within a unified framework rather than reliance on any single factor. External validation on an independent EEG/EOG dataset and the BCI Competition IV-2a motor-imagery dataset further demonstrates broadly consistent rankings under dataset shift. Higher-ranked denoisers generally preserve more task-relevant information or cause less downstream performance degradation. Overall, TriX-EEG provides a comprehensive basis for EEG denoiser assessment, encouraging models that are not only accurate but also faithful and explainable.",
+      "authors": [
+        "Phat Lam",
+        "Hung Nguyen",
+        "Lam Pham",
+        "Huy Phan",
+        "Dat Tran",
+        "Ian McLoughlin",
+        "Roozbeh Razavi-Far",
+        "Hung Cao"
+      ],
+      "published_date": "2026-11-16",
+      "indexed_date": "2026-11-16",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.21781v1",
+      "categories": [
+        "eess.SP",
+        "cs.AI"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "prefilter_score": 96,
+        "ai": {
+          "score": 88,
+          "topic": "EEG artifact removal evaluation",
+          "reason": "Proposes a trustworthy, explainable evaluation framework for EEG artifact removal with band-power preservation and leakage metrics, directly useful for validating preprocessing pipelines.",
+          "summary": "Proposes TriX-EEG, a three-level framework (signal validity, removal faithfulness, explanation reliability) for evaluating EEG artifact-removal denoisers beyond reconstruction metrics, tested on nine denoisers across three benchmarks covering EOG, EMG, and motion artifacts. Shows reconstruction metrics alone are insufficient and that the added levels reveal residual artifact, neural leakage, and explanation behavior, with rankings broadly consistent under dataset shift.",
+          "keywords": [
+            "EEG artifact removal",
+            "evaluation framework",
+            "removal faithfulness",
+            "explanation reliability",
+            "neural signal preservation"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
     {
       "source": "pubmed",
       "source_id": "43036451",
@@ -288,6 +335,50 @@
       }
     },
     {
+      "source": "medrxiv",
+      "source_id": "10.64898/2026.01.23.26344529",
+      "title": "Small or large patches? History, biophysics, and an empirical test of a core assumption in EEG independent component analysis",
+      "abstract": "This is a methods paper on the physiological interpretation of independent component analysis (ICA) applied to scalp EEG, but its scope extends to historical review and hypothesis-driven research. First, we trace how the small-patch model, which equates each brain independent component (IC) with a cortical patch smaller than 1 cm square, became the central assumption of this interpretation. Second, we review a clinically and biophysically grounded alternative, the large-patch model (>= 6 cm square). The two models make opposing predictions: the small-patch model predicts that about two-thirds of ICs lie on sulcal walls with tangential dipoles, whereas the large-patch model predicts radial dipoles displaced deeper than the cortex because fitting a single dipole to an extended source produces depth bias. Third, we test them: in simulation, depth bias grew with patch radius and was modulated, but not eliminated, by skull-conductivity mismatch. In resting-state EEG from two open datasets (820 recordings; 14,578 qualified brain ICs), 77.6% of fitted dipoles lay more than 5 mm inward from the template boundary and 57.9% lay more than 14 mm inward. The pooled signed-distance distribution showed two prominent peaks, near -1 mm and -19 mm, separated by a pronounced minimum near -5 mm (2-mm bins). Fitted dipole orientations showed no tangential dominance among deep ICs, which also exhibited higher activation power and lower residual variance than superficial ICs. These results favor the large-patch model. ICA remains valid for separating EEG sources, but the depths of fitted dipoles may reflect the spatial extent of the underlying current sources.",
+      "authors": [
+        "Kukkar, K. K.",
+        "Kim, H.",
+        "Parikh, P. J.",
+        "Miyakoshi, M."
+      ],
+      "published_date": "2026-11-17",
+      "indexed_date": "2026-11-17",
+      "journal": "medrxiv",
+      "doi": "10.64898/2026.01.23.26344529",
+      "url": "https://doi.org/10.64898/2026.01.23.26344529",
+      "categories": [
+        "neurology"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "3",
+        "published": "NA",
+        "prefilter_score": 92,
+        "ai": {
+          "score": 72,
+          "topic": "ICA component physiology (patch models)",
+          "reason": "Clarifies physiological interpretation of ICA components and dipole depth bias, relevant to artifact/component selection decisions in EEG preprocessing.",
+          "summary": "Contrasts the small-patch and large-patch models of EEG independent component dipole interpretation using simulations and resting-state EEG from 820 recordings (14,578 brain ICs). Found 77.6% of fitted dipoles lay >5 mm inward from the template boundary, dipole orientations showed no tangential dominance among deep ICs, and results favored the large-patch model, attributing fitted dipole depths to source spatial extent.",
+          "keywords": [
+            "independent component analysis",
+            "EEG dipole modeling",
+            "large-patch model",
+            "depth bias",
+            "source spatial extent"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
       "source": "pubmed",
       "source_id": "43038493",
       "title": "Frequency-Specific Thalamocortical Network Dynamics During Focal Seizures in Humans.",
@@ -331,55 +422,6 @@
             "focal seizures",
             "Granger causality",
             "anterior nucleus"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "43040518",
-      "title": "Best1 shapes the depth and stability of NREM sleep.",
-      "abstract": "Sleep architecture is orchestrated by neuronal circuits, yet the contribution of astrocytes-particularly to the depth and continuity of sleep-remains incompletely understood. Mammalian sleep is composed of rapid eye movement (REM) and non-REM (NREM) stages, with NREM further subdivided into light and deep phases. While neuronal and neurotransmitter-based mechanisms of sleep regulation have been extensively characterized, the role of astrocytic signaling in deep NREM sleep has received relatively little attention. Bestrophin-1 (Best1) is a calcium-activated anion channel highly enriched in astrocytes, known to mediate non-vesicular release of gliotransmitters such as glutamate, D-serine, and GABA, and to influence neuronal excitability. Here, we identify Best1 as a critical regulator of deep NREM sleep. Immunohistochemistry revealed robust Best1 expression in astrocytes across sleep-regulating brain regions. EEG/EMG polysomnography in Best1 knockout (Best1-KO) mice demonstrated a selective disruption of deep NREM sleep, despite preserved total sleep time and overall NREM duration. Best1-KO mice exhibited shorter deep NREM bouts, attenuated delta-band (0.5-4 Hz) EEG power, and altered vigilance-state transitions, with reduced entry into and maintenance of deep NREM. Sleep trajectories were biased toward Wake → light NREM → REM transitions, frequently bypassing deep sleep stages. Spectral decomposition further confirmed diminished delta oscillations during NREM episodes. These findings establish Best1 as a substage-specific molecular gatekeeper of deep NREM sleep. By uncovering a glial mechanism that shapes sleep sub-architecture, this work highlights astrocytic ion signaling as a promising therapeutic target for disorders marked by fragmented or insufficient deep sleep, including those associated with aging and neurodegenerative disease.",
-      "authors": [
-        "Joohyeon Hong",
-        "Jea Kwon",
-        "Beomsoo Kim",
-        "Heeyoung An",
-        "Jiwoon Lim",
-        "C Justin Lee",
-        "Eunji Cheong"
-      ],
-      "published_date": "2026-Aug-21",
-      "indexed_date": "2026-11-17",
-      "journal": "Molecular brain",
-      "doi": "10.1186/s13041-026-01340-z",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43040518/",
-      "categories": [],
-      "keywords": [
-        "Astrocyte",
-        "Bestrophin-1",
-        "Delta oscillations",
-        "Gliotransmission",
-        "Sleep architecture"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 25,
-        "ai": {
-          "score": 68,
-          "topic": "astrocyte Best1 regulation of NREM sleep (EEG/EMG)",
-          "reason": "Animal sleep study using EEG/EMG polysomnography and delta-power staging readouts; relevant sleep application context though not a computational method itself.",
-          "summary": "Used immunohistochemistry and EEG/EMG polysomnography in Best1 knockout mice to test whether the astrocytic calcium-activated anion channel Best1 regulates sleep architecture. Best1-KO mice showed selective disruption of deep NREM sleep with shorter deep NREM bouts, attenuated delta-band (0.5-4 Hz) power, and reduced entry into and maintenance of deep NREM despite preserved total sleep time.",
-          "keywords": [
-            "Bestrophin-1",
-            "astrocyte",
-            "deep NREM sleep",
-            "delta oscillations",
-            "gliotransmission"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -656,52 +698,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "43039078",
-      "title": "Signatures of Performance Monitoring in Obsessive-Compulsive Disorder and At-risk Groups: Midfrontal Theta Predicts Divergent Behavioral Adaptation.",
-      "abstract": "Obsessive-compulsive disorder (OCD) has been robustly linked to increased performance monitoring, most consistently indexed by an increased error-related negativity (ERN). However, the role of response-related midfrontal theta oscillations, a key neural mechanism supporting cognitive control and behavioral adaptation, remains incompletely understood in OCD and at-risk populations. EEG was recorded from 180 adults (46 OCD, 39 unaffected first-degree relatives, 39 with adverse childhood experiences, and 56 controls) during an arrowhead flanker task. Response-related midfrontal theta power (4-7 Hz) was investigated alongside behavioral indices, including error rates and post-error slowing. Group differences in neural and behavioral data, trial-wise theta-behavior relationship, and associations with clinical symptoms were investigated. Error-related increases in midfrontal theta were robust across participants. Relative to the combined non-OCD sample, individuals with OCD exhibited enhanced error-related theta power, while unaffected first-degree relatives and individuals with adverse childhood experiences did not differ from controls. Single-trial analyses revealed altered neural-behavioral coupling: greater theta predicted slower and less accurate performance on subsequent trials in OCD, and, contrarily, improved subsequent performance in controls. Consistent with these findings, individuals with OCD showed prolonged post-error slowing. Across participants, error rate and PES were associated with worry and depressive symptoms, whereas theta power was associated with age and depressive symptoms. OCD is characterized by enhanced error-related midfrontal theta together with an altered association between neural error signals and adaptive behavioral adjustment. These findings suggest that abnormal performance monitoring in OCD reflects not only exaggerated error processing but also disrupted implementation of cognitive control.",
-      "authors": [
-        "Alexander Dolge",
-        "Kim Marie Sobania",
-        "Anja Riesel"
-      ],
-      "published_date": "2026-Nov-16",
-      "indexed_date": "",
-      "journal": "Biological psychiatry. Cognitive neuroscience and neuroimaging",
-      "doi": "10.1016/j.bpsc.2026.11.003",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43039078/",
-      "categories": [],
-      "keywords": [
-        "OCD",
-        "adverse childhood experiences",
-        "cognitive control",
-        "first-degree relatives",
-        "midfrontal theta",
-        "post-error slowing"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 21,
-        "ai": {
-          "score": 50,
-          "topic": "midfrontal theta performance monitoring in OCD",
-          "reason": "Trial-wise theta power and neural-behavior analyses are relevant time-frequency methods, but the clinical OCD framing limits direct transfer.",
-          "summary": "In 180 adults (OCD, unaffected first-degree relatives, adverse childhood experiences, controls) performing a flanker task, error-related midfrontal theta was enhanced in OCD but not in at-risk groups. Trial-wise coupling was altered: greater theta predicted slower, less accurate subsequent trials in OCD versus improved performance in controls, paralleling prolonged post-error slowing in OCD and linking theta to worry and depressive symptoms.",
-          "keywords": [
-            "midfrontal theta",
-            "error-related theta",
-            "obsessive-compulsive disorder",
-            "cognitive control",
-            "adverse childhood experiences"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "43039950",
       "title": "MyoGen: unified biophysical modeling of human neuromotor activity and resulting signals.",
       "abstract": "Understanding human motor control requires integrating cortical and spinal activity, muscle mechanics, and electrophysiology, which are typically studied in isolation. We present MyoGen, an open-source framework that unifies spinal circuitry, proprioceptive feedback, musculotendon dynamics, and multimodal electromyography generation. Using data-driven optimization benchmarked against human motor unit recordings, MyoGen produces motor unit population activity matching experimental discharge-rate distributions and variability across muscles. The framework generates decomposable surface and intramuscular electromyography, reproduces beta-band modulation of descending drive and its transformation into force, and implements key sensorimotor loop components. Dimensionality reduction of simulated agonist-antagonist electromyography reveals low-dimensional control manifolds consistent with recordings from able-bodied individuals and those with spinal cord injury. Here, we show that MyoGen provides a physiologically grounded simulation substrate, enabling systematic investigation of motor control principles, benchmarking of signal-processing algorithms, and exploration of experimentally inaccessible sensorimotor interactions.",
@@ -896,45 +892,6 @@
             "EEG",
             "alpha/beta ratio",
             "theta/beta ratio"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "43040564",
-      "title": "Neural Tracking of Continuous Speech Is Sensitive to Socially \"Engaging\" Prosodic Features of Conversational Anecdotes.",
-      "abstract": "While there is growing research on how the brain \"entrains\" to speech, it is unclear whether neural speech tracking is sensitive to interpersonally relevant changes in a speaker's tone of voice (prosody), such as when people try to sound \"engaging\" while telling conversational anecdotes. Here, we employed neural speech tracking to test whether listeners' speech encoding is enhanced by what a conversation is about and how speakers express themselves. Thirty-one participants listened to \"gossip-like\" anecdotes varying in topic (interesting vs. boring) and vocal delivery (engaging vs. neutral prosody) while recording their EEG. Participants estimated how long they would be willing to continue the interaction based on what they heard in each trial (\"time bidding\"). Neural speech tracking was quantified using Gaussian Copula Mutual Information between speech envelopes and EEG, and alpha power was analyzed as a complementary index of attentional engagement. Behaviorally, listeners preferred interesting (vs. boring) anecdotes and engaging (vs. neutral) sounding speakers; the effect of using an engaging prosody on time bids was stronger for interesting topics. At the neurophysiological level, engaging prosody enhanced neural speech tracking at frontal sites only when anecdotes were interesting, suggesting that neural encoding of social prosody depended on listeners' motivation to attend to the contents of speech. Alpha power displayed a distinct interaction over left-anterior sites, with opposite prosodic patterns for interesting and boring anecdotes; exploratory analyses suggested that lower left-anterior alpha power was associated with stronger neural speech tracking. Our study suggests that prosodic cues designed to engage a listener's attention enhance neural tracking of continuous speech, although these effects are constrained by broader contextual factors such as topic interest. These findings suggest that socially motivated vocal expression influences listeners' online neural encoding and highlight the importance of studying speech processing within its interpersonal communicative context.",
-      "authors": [
-        "Marcos E Domínguez-Arriola",
-        "Alejandro Pérez",
-        "Marc D Pell"
-      ],
-      "published_date": "2026-Nov",
-      "indexed_date": "2026-11-17",
-      "journal": "Psychophysiology",
-      "doi": "10.1111/psyp.70460",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43040564/",
-      "categories": [],
-      "keywords": [],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 21,
-        "ai": {
-          "score": 45,
-          "topic": "EEG neural speech tracking and prosody",
-          "reason": "Uses Gaussian copula mutual information and alpha power for continuous-signal tracking; an interesting transferable technique but applied to speech, not sleep or neural state classification.",
-          "summary": "Used EEG-based neural speech tracking in 31 listeners hearing gossip-like anecdotes varying in topic interest and engaging versus neutral prosody, with time-bidding as a behavioral engagement measure. Engaging prosody enhanced frontal neural speech tracking only for interesting topics, and alpha power showed a distinct interaction at left-anterior sites, indicating prosodic effects on speech encoding depend on contextual motivation.",
-          "keywords": [
-            "neural speech tracking",
-            "prosody",
-            "EEG",
-            "alpha power",
-            "social communication"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1137,73 +1094,6 @@
       }
     },
     {
-      "source": "medrxiv",
-      "source_id": "10.64898/2026.11.11.26367707",
-      "title": "Impaired cortical gap-mediated inhibition in chronic tinnitus but with limited individual diagnostic accuracy",
-      "abstract": "Tinnitus lacks an objective marker, limiting diagnosis and treatment evaluation. We tested whether gap-mediated inhibition of cortical sound-evoked responses provides one. In a prospective, multicentre case-control study at seven sites in the United States and Europe, adults with and without chronic tinnitus heard brief pulses preceded or not by a silent gap, embedded in broadband or narrowband carriers, during electroencephalography. The primary outcome was inhibition of the N100 response. Of 584 eligible participants, 455 yielded high-quality recordings with complete covariate data (232 cases, 223 controls; mean age 45.4 years, 52% women) that entered the adjusted analyses. Inhibition was strongest for broadband noise whereas narrowband carriers gave limited dynamic range. Participants with tinnitus showed reduced broadband gap-mediated inhibition ({beta} = -19.27%, d = -0.413, cluster-corrected p = 0.002), scaling with tinnitus severity (covariate-adjusted {surd}THI model: partial R2 = 0.049, p = 0.0015). In contrast, discrimination of individuals was limited (AUC 0.612, 95% CI 0.560-0.663). Cortical gap inhibition is a reproducible group-level effect rather than an individual diagnostic test.",
-      "authors": [
-        "Lu, H.",
-        "Shabestari, P. S.",
-        "Engelke, M.",
-        "Ajmera, S.",
-        "Arulchelvan, E.",
-        "Braun, C.",
-        "Fernandez del Campo, I. S.",
-        "Jain, N.",
-        "Kaniewska, E.",
-        "Kleinjung, T.",
-        "Korn, J.",
-        "Ost, J.",
-        "Ralston Ruesch, L.",
-        "Rambour, S.",
-        "Shields, N.",
-        "Staudinger, S.",
-        "Tödtli, B.",
-        "Wolpert, S. M.",
-        "Yasoda-Mohan, A.",
-        "Husain, F. T.",
-        "Campbell, J.",
-        "De Ridder, D.",
-        "Langguth, B.",
-        "Schlee, W.",
-        "Vanneste, S.",
-        "Neff, P. K. A.",
-        "Cederroth, C. R."
-      ],
-      "published_date": "2026-11-17",
-      "indexed_date": "2026-11-17",
-      "journal": "medrxiv",
-      "doi": "10.64898/2026.11.11.26367707",
-      "url": "https://doi.org/10.64898/2026.11.11.26367707",
-      "categories": [
-        "otolaryngology"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 22,
-        "ai": {
-          "score": 40,
-          "topic": "cortical gap inhibition EEG marker for tinnitus",
-          "reason": "Group-level ERP/EEG biomarker study with limited individual discrimination; methodologically standard and not transferable to sleep analysis.",
-          "summary": "In a prospective multicentre case-control EEG study (232 chronic tinnitus cases, 223 controls), tinnitus was associated with reduced broadband gap-mediated inhibition of the N100 response (beta=-19.27%, d=-0.413, p=0.002) scaling with severity, but individual discrimination was limited (AUC 0.612), indicating a group-level rather than diagnostic marker.",
-          "keywords": [
-            "tinnitus",
-            "gap-mediated inhibition",
-            "N100",
-            "cortical inhibition",
-            "EEG biomarker"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
       "source": "pubmed",
       "source_id": "43041289",
       "title": "Differential associations of contralesional and ipsilesional brain functional connectivity with lower-limb impairment after stroke.",
@@ -1288,6 +1178,61 @@
             "dynamic functional connectivity",
             "resting-state EEG",
             "neural marker"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43044067",
+      "title": "An Integrated Approach for Early In Vitro Sedation Prediction Utilizing hiPSC Neurons and Human Ion Channel Assays.",
+      "abstract": "Central nervous system (CNS) liabilities remain a significant cause of failure in drug development. Two complementary in vitro safety assays were previously developed, combining automated patch-clamp electrophysiology and multielectrode array techniques, to detect and avoid seizurogenic compounds. Further to seizure risk, sedation and fatigue are commonly encountered CNS side effects during drug safety testing. Here, the aim was to extend the capability of the in vitro safety assay to enable earlier detection of sedative potential. Fourteen compounds with reported sedative activity and five non-sedative controls were screened in human-induced pluripotent stem cell-derived neurons using multielectrode array. These compounds were further screened with automated patch-clamp electrophysiology using cells expressing CNS ion channels implicated in sedation: KV1.1, KV2.1, KV3.1, KV7.2/7.3, NaV1.2, K2P2.1, or the α1β2γ2 GABAA, and α4β2 nicotinic receptors. Known sedative compounds reduced neural firing and network burst activity in human-induced pluripotent stem cell-neurons, indicating sedative effects, whilst negative control compounds did not significantly change multielectrode array parameters. Of the 19 compounds screened, 94% were accurately classified. Automated patch-clamp electrophysiology confirmed that several sedative compounds interacted with CNS ion channels within a 30-fold margin to their total therapeutic blood plasma concentration. These results support the use of the combined in vitro safety models for detecting sedative as well as seizurogenic effects, offering valuable human-based tools for early hazard identification and prioritization of drug candidates. These platforms are also useful for interpretation of CNS-related findings in vivo supporting the principles of 3Rs to minimize and replace the use of animals in scientific testing.",
+      "authors": [
+        "Louisa A K Zolkiewski",
+        "Kimberly L Rockley",
+        "Karen Jones",
+        "Hannah G Jennings",
+        "Katie Newman",
+        "Magali-Anne Maizières",
+        "Bethan Kelly",
+        "Ruth A Roberts",
+        "Michael J Morton"
+      ],
+      "published_date": "2026-Nov-17",
+      "indexed_date": "",
+      "journal": "International journal of toxicology",
+      "doi": "10.1177/10915818261494181",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43044067/",
+      "categories": [],
+      "keywords": [
+        "CNS toxicity",
+        "MEA",
+        "NAMs",
+        "drug development",
+        "drug discovery",
+        "hiPSC neurons",
+        "in vitro",
+        "ion channels",
+        "sedation"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 29,
+        "ai": {
+          "score": 35,
+          "topic": "In vitro sedation prediction assays",
+          "reason": "MEA/patch-clamp drug screening for sedation; conceptually adjacent to vigilance states but not EEG analysis methods or transferable algorithms.",
+          "summary": "Screened 14 sedative and 5 non-sedative compounds in hiPSC-derived neurons via multielectrode array and automated patch-clamp across CNS ion channels (KV1.1, KV2.1, KV3.1, KV7.2/7.3, NaV1.2, K2P2.1, GABAA, α4β2 nAChR). Achieved 94% classification accuracy, with sedatives reducing neural firing and network bursting and several interacting with channels within a 30-fold margin of therapeutic plasma concentrations.",
+          "keywords": [
+            "hiPSC neurons",
+            "multielectrode array",
+            "automated patch-clamp",
+            "sedation liability",
+            "CNS ion channels"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1448,50 +1393,6 @@
       }
     },
     {
-      "source": "biorxiv",
-      "source_id": "10.64898/2026.11.12.765918",
-      "title": "Electrophysiological dynamics of empathy for self- and other-related pain",
-      "abstract": "Empathy requires the ability to generate shared representations of the self and others while maintaining a distinction between them. However, it remains unclear whether, and to what extent, the neural processes involved in sharing and understanding others' pain overlap with those involved in processing one's own pain, particularly with respect to their temporal dynamics. Therefore, the present study aimed to investigate the neural mechanisms underlying empathic processing of self- and other-related painful facial expressions. To this end, EEG signals were recorded from 42 female participants while they viewed self- and other-related painful and neutral expressions. During the early stage of processing, the difference in N2 amplitude between self-related and other-related stimuli was smaller in the painful than in the neutral condition. Nevertheless, self-related painful stimuli continued to elicit more negative N2 amplitudes and greater Alpha/Mu suppression than other-related painful stimuli. In contrast, during the late stage of empathic processing, no distinction was observed between self- and other-related painful stimuli. Instead, painful expressions, regardless of whether they were self- or other-related, elicited larger late positive potential (LPP) amplitudes. These findings suggest that empathic processing is characterized by an early self-other distinction followed by a later convergence in the neural representation of self- and other-related pain.",
-      "authors": [
-        "Rahnama Lashkami, P.",
-        "Golbabaei, S.",
-        "Gharibzadeh, S.",
-        "Borhani, K."
-      ],
-      "published_date": "2026-11-17",
-      "indexed_date": "2026-11-17",
-      "journal": "biorxiv",
-      "doi": "10.64898/2026.11.12.765918",
-      "url": "https://doi.org/10.64898/2026.11.12.765918",
-      "categories": [
-        "neuroscience"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 21,
-        "ai": {
-          "score": 35,
-          "topic": "ERP/alpha dynamics of empathy for pain",
-          "reason": "Standard ERP and alpha/mu analyses in a social-neuroscience paradigm; low relevance to sleep staging or computational tooling.",
-          "summary": "In 42 female participants viewing self- and other-related painful versus neutral facial expressions, this EEG study found an early self-other distinction, with self-related painful stimuli eliciting more negative N2 amplitudes and greater alpha/mu suppression than other-related painful stimuli. In the late stage this distinction disappeared, with painful expressions regardless of self/other producing larger late positive potentials, suggesting early self-other separation followed by later convergence in empathic processing.",
-          "keywords": [
-            "empathy",
-            "pain processing",
-            "EEG",
-            "N2 component",
-            "late positive potential"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
       "source": "pubmed",
       "source_id": "43040257",
       "title": "Longitudinal exploration of auditory sensory-perceptual processing in CLN3 disease (Juvenile Neuronal Ceroid Lipofuscinosis (Batten disease)): A high-density auditory evoked potential (AEP) study.",
@@ -1590,6 +1491,49 @@
             "Sobol sensitivity analysis",
             "monodomain whole-heart model",
             "fractal-tree network"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43043672",
+      "title": "Females with Epilepsy Show Menstrual Cycle-linked Alterations in Sensory Induced Plasticity.",
+      "abstract": "Catamenial epilepsy describes menstrual cycle-linked exacerbation of seizure frequency and/or intensity. To investigate its neurophysiological mechanisms, we assessed visual long-term potentiation (LTP) across the menstrual cycle using EEG and photic stimulation. Oestradiol can enhance NMDA receptor-mediated excitation and facilitate LTP, whereas allopregnanolone, a progesterone metabolite, promotes GABAergic inhibition and suppresses LTP. We recruited 28 females with epilepsy and 25 controls (mean age: 27 ± 8.52; 30 ± 7.06 years, respectively). Twenty participants with epilepsy and all controls successfully completed the visual LTP task across three menstrual phases: mid-follicular, mid-luteal, and perimenstrual. Cycle phase was verified via blood samples, and session order was counterbalanced. Standard evoked-related potential (ERP) analysis was paired with generative modelling of thalamocortical circuits. In controls, P2 potentiation, a positive-going component of the ERP, was enhanced by LTP induction during the mid-follicular phase compared to the perimenstrual phase (F(2, 144) =11.54, p = 0.004 FWE-c). In contrast, females with epilepsy exhibited greater P2 potentiation during the perimenstrual and mid-luteal phases than the mid-follicular phase (F(2,228) = 11.76, p = .003 FWE-c), with only two participants showing control-like pattern of peak mid-follicular potentiation. Computational modelling indicated loss of inhibitory control and breakthrough excitability during the perimenstrual and mid-luteal phases in epilepsy. Our findings reveal aberrant menstrual cycle modulation of sensory-induced plasticity in epilepsy, suggesting altered inhibitory gating as well as thalamocortical excitatory drive in the mid-luteal and perimenstrual phases. While GABAergic mechanisms are often emphasised in catamenial epilepsy, our results warrant considering altered excitatory mechanisms.",
+      "authors": [
+        "Malak Alshakhouri",
+        "Cynthia Sharpe",
+        "Peter Bergin",
+        "Alexander D Shaw",
+        "Suresh Muthukumaraswamy",
+        "Khalid Hamandi",
+        "Rachael L Sumner"
+      ],
+      "published_date": "2026-Nov-17",
+      "indexed_date": "",
+      "journal": "Neuroendocrinology",
+      "doi": "10.1159/nen/advag017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43043672/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 33,
+        "ai": {
+          "score": 30,
+          "topic": "Menstrual cycle LTP in epilepsy",
+          "reason": "Clinical ERP/plasticity study in epilepsy; minimal methodological transfer to animal sleep or general neural time-series analysis.",
+          "summary": "Tested visual long-term potentiation across menstrual phases (mid-follicular, mid-luteal, perimenstrual) using EEG and thalamocortical generative modeling in 28 females with epilepsy and 25 controls. Controls showed enhanced P2 potentiation in mid-follicular versus perimenstrual phase, whereas epilepsy patients showed greater potentiation in perimenstrual and mid-luteal phases, with modeling indicating loss of inhibitory control and breakthrough excitability.",
+          "keywords": [
+            "catamenial epilepsy",
+            "visual long-term potentiation",
+            "menstrual cycle",
+            "thalamocortical modeling",
+            "P2 potentiation"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1753,51 +1697,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "43041957",
-      "title": "Drug-resistant epilepsy: A retrospective observational study at a tertiary care hospital.",
-      "abstract": "To determine the prevalence and predictors of drug-resistant epilepsy among patients with epilepsy. A retrospective observational study was conducted at the Neurology Department of Liaquat National Hospital, Karachi, for the period from November, 2024 to October, 2025. Patients with epilepsy were enrolled, excluding neonates and those with psychiatric comorbidities or active substance abuse. Participants were recruited consecutively. Descriptive statistics summarized patient characteristics, while chi-square tests evaluated associations between variables such as drug adherence, epilepsy type, and antiepileptic drug (ASM) selection. Odds ratios (ORs) with 95% confidence intervals were calculated to quantify the strength of these associations. A total of 382 participants were included (49.5% male, 50.5% female), with a mean age of 31.73 +/- 16.82 years and a mean seizure onset age of 25.3 years. The majority were urban residents with higher educational levels and 19.4% had refractory epilepsy. On multivariate logistic regression analysis, normal MRI brain findings (a OR = 0.29, 95% CI: 0.142-0.570; p < 0.001), normal EEG findings (a OR = 0.50, 95% CI: 0.256-0.974; p = 0.042) and adherence to the given treatment (a OR= 0.516, 95% CI: 0.234-1.138; p=0.101) have lower odds of having drug resistance. Lower level of education (a OR = 3.496, 95% CI: 1.687-7.245; p < 0.001), and a history of status epilepticus (a OR = 8.029, 95% CI: 4.186-15.400: p <0.001) have higher odds of refractory epilepsy. By identifying key predictors of drug-resistant epilepsy, our study contributes to a better understanding of factors associated with treatment resistance and may inform future interventions.",
-      "authors": [
-        "Saba Zaidi",
-        "Umer Barry",
-        "Malaika Ali"
-      ],
-      "published_date": "2026-Oct",
-      "indexed_date": "2026-11-17",
-      "journal": "Pakistan journal of medical sciences",
-      "doi": "10.12669/pjms.42.10.15465",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43041957/",
-      "categories": [],
-      "keywords": [
-        "Drug-Resistant Epilepsy",
-        "Tertiary Care Centers",
-        "Treatment Adherence and Compliance",
-        "Unemployment",
-        "Urban Population"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 21,
-        "ai": {
-          "score": 20,
-          "topic": "drug-resistant epilepsy retrospective cohort",
-          "reason": "Clinical epidemiology with only incidental EEG predictor mention; no methodological or computational content relevant to the researcher.",
-          "summary": "Retrospective observational study of 382 patients with epilepsy at a tertiary hospital in Karachi found a 19.4% prevalence of drug-resistant epilepsy. Normal MRI (aOR 0.29) and normal EEG (aOR 0.50) were associated with lower odds of resistance, while lower education (aOR 3.50) and history of status epilepticus (aOR 8.03) were associated with higher odds.",
-          "keywords": [
-            "drug-resistant epilepsy",
-            "status epilepticus",
-            "treatment adherence",
-            "MRI",
-            "EEG"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "43040177",
       "title": "Mismatched findings on ancillary examinations in virus-associated acute encephalopathy and encephalitis: pathological mechanisms and clinical significance.",
       "abstract": "In this review, we group three mechanistically distinct categories of acute brain dysfunction after viral infection under the term \"virus-associated acute encephalopathy and encephalitis\": (1) viral encephalitis, caused by direct invasion and replication of neurotropic viruses in the central nervous system; (2) post-infectious autoimmune encephalitis, triggered by infection-induced central nervous system autoimmune responses; and (3) acute encephalopathy syndromes without direct central nervous system infection, resulting from systemic inflammatory storms or hypoxia. The three entities are grouped as a conceptual framework rather than an established classification because they all present as acute brain dysfunction occurring in association with viral infection and differ only in mechanism. The diagnosis of virus-associated acute encephalopathy and encephalitis relies mainly on ancillary examinations, including neuroimaging, cerebrospinal fluid analysis, and electroencephalography. In clinical practice, ancillary findings are frequently mismatched: some tests may be negative while others are positive, and results can evolve with the pathological mechanism and disease stage. Recognizing these mismatches can help clinicians identify the possible mechanism of central nervous system injury and avoid diagnostic and treatment delays, and guide further testing. In particular, empirical intravenous acyclovir should be started promptly when herpes simplex virus (HSV) or varicella-zoster virus (VZV) encephalitis is clinically suspected. This article reviews the mechanisms of virus-associated acute encephalopathy and encephalitis, and discusses the common causes of such mismatches and strategies to manage them; the proposed framework is hypothesis-generating and is not intended as a validated diagnostic algorithm.",
@@ -1849,6 +1748,54 @@
     },
     {
       "source": "pubmed",
+      "source_id": "43043627",
+      "title": "Integrative Cross‑Scale Label‑Free Optical Imaging of Bioelectrical Phenomena.",
+      "abstract": "Bioelectricity is increasingly recognized as a fundamental principle in biology, influencing processes from wound healing and morphogenesis to cancer metastasis. Compelling research extends its scope beyond neurons and cardiac cells to include cells that are traditionally classified as non‑excitable. Bioelectric phenomena operate across multiple scales, from the molecular level to entire organisms, and across timescales spanning microseconds to a full lifespan. However, current measurement approaches only sparsely sample this broad spatial and temporal continuum, and they are not built for cross-scale integration. This Perspective proposes a conceptual framework for investigating bioelectrical functions across scales. It presents a spatial and temporal measurement workspace that hosts several trajectories, each tied to specific hypotheses and cross‑scale measurement strategies. Key examples of its advantages include exploring emergent spatiotemporal patterns, for instance, by imaging ion channel gating and clustering over extended durations. Another benefit is elucidating cross‑scale causal mechanisms, such as tracking the subcellular and cellular bioelectrical correlates of cancer metastasis. The transformative power of label‑free optical technologies is highlighted, enabling high‑resolution bioelectrical imaging across space and time. When combined with fluorescence imaging, electrophysiology, and multimodal chemical and structural techniques, they offer a potent approach to advancing bioelectricity research and its clinical applications.",
+      "authors": [
+        "Sidahmed Abayzeed"
+      ],
+      "published_date": "2026-Nov",
+      "indexed_date": "2026-11-17",
+      "journal": "Advanced biology",
+      "doi": "10.1002/adbi.70165",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43043627/",
+      "categories": [],
+      "keywords": [
+        "bioelectrical networks",
+        "bioelectricity",
+        "electrochromic sensors",
+        "integrative bioelectrical imaging",
+        "ion channels",
+        "label‐free imaging",
+        "membrane potential",
+        "plasmonics",
+        "quantum sensors"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
+      "extra": {
+        "prefilter_score": 29,
+        "ai": {
+          "score": 18,
+          "topic": "Cross-scale bioelectric imaging perspective",
+          "reason": "Broad conceptual perspective on bioelectric imaging; not an EEG/EMG time-series method and weakly related to the researcher's needs.",
+          "summary": "A perspective proposing a conceptual cross-scale spatial and temporal measurement framework for label-free optical imaging of bioelectrical phenomena, spanning molecular to organismal levels and microseconds to lifespan. Argues that current approaches sparsely sample this continuum and highlights combining label-free optical technologies with fluorescence imaging, electrophysiology, and multimodal techniques for integrative bioelectrical imaging.",
+          "keywords": [
+            "bioelectricity",
+            "label-free optical imaging",
+            "cross-scale measurement",
+            "ion channel gating",
+            "membrane potential"
+          ],
+          "paper_type": "Commentary/Perspective",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "43036569",
       "title": "Neurophysiological changes following intensive Naikan therapy in a patient with recurrent depressive episodes later diagnosed with bipolar II disorder: A case report.",
       "abstract": "Intensive Naikan therapy is a structured Japanese psychotherapy involving systematic reflection on interpersonal relationships; however, its neurophysiological correlates remain unclear. We herein report changes in resting-state electroencephalography (EEG), the P300 event-related potential, and standardized low-resolution brain electromagnetic tomography (sLORETA)-estimated source activity after intensive Naikan therapy. A 29-year-old man with recurrent depressive episodes and anxiety about family relationships and future employment underwent 7 days of inpatient intensive Naikan therapy. He was later diagnosed with bipolar II disorder after a hypomanic episode during the follow-up. Assessments were performed before and after the intervention. Anxiety decreased on State-Trait Anxiety Inventory state and trait scores (42 to 20 and 30 to 20, respectively), and depressive symptoms remained minimal on the Hamilton Depression Rating Scale and Beck Depression Inventory (4 to 3 and 0 to 0, respectively). Psychological measures suggested reduced self- and other-blame and greater acceptance of family members. Resting-state EEG showed a negligible change in peak alpha-band global field power, whereas peak beta-band global field power decreased from 5.13 × 103 to 2.84 × 103 µV2/Hz. During the auditory oddball task, P300 amplitude at Pz increased from 5.5 to 7.3 µV. sLORETA images were evaluated descriptively, without statistical comparisons or uncertainty estimations. Intensive Naikan therapy was temporally associated with reduced resting-state beta activity and an increased P300 amplitude. These observations from a single uncontrolled case with multiple assessments are hypothesis-generating and do not establish treatment efficacy, causality, or a treatment mechanism.",
@@ -1889,6 +1836,61 @@
             "sLORETA"
           ],
           "paper_type": "Case Report",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43043707",
+      "title": "Unconventional modulation of Nav1.4 by a scorpion toxin through cooperative binding to voltage sensor and the pore domain.",
+      "abstract": "Voltage-gated sodium (Nav) channels are targeted by animal peptide toxins, which serve as powerful molecular probes for dissecting channel structure-function relationships and lead molecules for drug discovery. β-scorpion toxins trap voltage sensor domains to remodel Nav channel gating, yet high-resolution structural evidence defining this process remains elusive. Here, we characterize LmNaTx1, a β-scorpion toxin from Lychas mucronatus. LmNaTx1 exerts state-dependent bimodal modulation on Nav1.4: it facilitates channel activation while suppressing sodium conductance, accelerates slow-inactivation onset, and delays recovery from slow inactivation. We solved the 2.68 Å cryo-EM structure of the LmNaTx1-hNav1.4 complex, revealing that LmNaTx1 inserts into the extracellular cleft jointly formed by domain II voltage sensor (VSDII) and the extracellular loop III (ECLIII) of the pore domain. Toxin binding remodels the S3-S4II loop and displaces S0/S3II helices to trap VSDII within a pre-activated intermediate state. MD simulations recapitulate step-wise VSDII conformational transitions and demonstrate that toxin-driven rearrangements tighten the intracellular pore gate. Mutagenesis combined with electrophysiology confirm that VSDII trapping remodels the activation and inactivation gating, whereas ECLIII engagement contributes both to inhibition and activation. Subtype-specific sequence variations in the ECLIII region underlie the prominent species- and isoform-dependent activities of the toxin toward insect and mammalian Nav channels. Our study provides a structural basis for the dual-action mechanisms of β-scorpion toxins on Nav channels and presents a structural framework for understanding toxin binding, channel gating modulation, ecological adaptation, and rational drug design.",
+      "authors": [
+        "Xi Zhou",
+        "Huan Wang",
+        "Minjuan Lu",
+        "Ye Cong",
+        "Jiangtao Zhang",
+        "Minzhi Chen",
+        "Jialing Cai",
+        "Jichen Zhang",
+        "Qihang Liu",
+        "Junhao Huang",
+        "Nieng Yan",
+        "Xueqin Jin",
+        "Zhonghua Liu"
+      ],
+      "published_date": "2026-Nov-24",
+      "indexed_date": "2026-11-17",
+      "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+      "doi": "10.1073/pnas.2614685123",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43043707/",
+      "categories": [],
+      "keywords": [
+        "Nav1.4",
+        "cryo-EM",
+        "electrophysiology",
+        "scorpion venom",
+        "sodium channel"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 29,
+        "ai": {
+          "score": 15,
+          "topic": "Scorpion toxin Nav channel modulation",
+          "reason": "Molecular structural biology of ion channels; outside the researcher's computational EEG/neural time-series scope.",
+          "summary": "The authors characterized the β-scorpion toxin LmNaTx1, showing state-dependent bimodal modulation of Nav1.4 (enhanced activation, suppressed conductance, accelerated slow-inactivation onset) and solved a 2.68 Å cryo-EM structure of the toxin–hNav1.4 complex. The structure and complementary MD and mutagenesis data reveal cooperative binding to VSDII and the pore-domain ECLIII that traps VSDII in a pre-activated intermediate and tightens the intracellular gate.",
+          "keywords": [
+            "Nav1.4",
+            "β-scorpion toxin",
+            "cryo-EM",
+            "voltage sensor domain",
+            "channel gating"
+          ],
+          "paper_type": "Research Article",
           "digest_pick": true
         }
       }
