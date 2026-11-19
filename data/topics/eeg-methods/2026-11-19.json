@@ -1,6 +1,6 @@
 {
   "date": "2026-11-19",
-  "generated_at": "2026-11-18T20:48:50.900201+00:00",
+  "generated_at": "2026-11-19T02:44:06.681145+00:00",
   "window": {
     "start": "2026-11-17",
     "end": "2026-11-19"
@@ -10,18 +10,18 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 76,
+  "raw_count": 86,
   "retrieved_source_counts": {
-    "pubmed": 199,
+    "pubmed": 219,
     "biorxiv": 17,
-    "medrxiv": 3,
-    "arxiv": 3
+    "medrxiv": 5,
+    "arxiv": 4
   },
   "raw_source_counts": {
-    "pubmed": 60,
+    "pubmed": 68,
+    "medrxiv": 3,
     "biorxiv": 13,
-    "medrxiv": 2,
-    "arxiv": 1
+    "arxiv": 2
   },
   "prefiltered_count": 40,
   "analyzed_count": 40,
@@ -29,8 +29,8 @@
   "count": 40,
   "featured_count": 25,
   "source_counts": {
-    "pubmed": 32,
-    "arxiv": 1,
+    "arxiv": 2,
+    "pubmed": 31,
     "medrxiv": 1,
     "biorxiv": 6
   },
@@ -42,8 +42,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 28,
-    "newly_summarized": 28,
+    "newly_ranked": 4,
+    "newly_summarized": 4,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -54,12 +54,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 8,
-      "prompt_tokens": 24563,
-      "prompt_cache_hit_tokens": 2048,
-      "prompt_cache_miss_tokens": 22515,
-      "completion_tokens": 5440,
-      "total_tokens": 30003
+      "requests": 2,
+      "prompt_tokens": 4033,
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 3521,
+      "completion_tokens": 887,
+      "total_tokens": 4920
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -68,27 +68,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.033436,
+    "run_cost_cny": 0.005305,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 8,
-        "prompt_tokens": 24563,
-        "prompt_cache_hit_tokens": 2048,
-        "prompt_cache_miss_tokens": 22515,
-        "completion_tokens": 5440,
-        "total_tokens": 30003
+        "requests": 2,
+        "prompt_tokens": 4033,
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 3521,
+        "completion_tokens": 887,
+        "total_tokens": 4920
       },
-      "run_cost_cny": 0.033436,
+      "run_cost_cny": 0.005305,
       "daily_usage": {
-        "requests": 8,
-        "prompt_tokens": 24563,
-        "prompt_cache_hit_tokens": 2048,
-        "prompt_cache_miss_tokens": 22515,
-        "completion_tokens": 5440,
-        "total_tokens": 30003
+        "requests": 10,
+        "prompt_tokens": 28596,
+        "prompt_cache_hit_tokens": 2560,
+        "prompt_cache_miss_tokens": 26036,
+        "completion_tokens": 6327,
+        "total_tokens": 34923
       },
-      "daily_cost_cny": 0.033436,
+      "daily_cost_cny": 0.038741,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -101,6 +101,53 @@
     "analyzed_count": 40
   },
   "papers": [
+    {
+      "source": "arxiv",
+      "source_id": "2611.23619v1",
+      "title": "EEG2MCU: Sensing-to-Execution Co-Design for Wearable EEG Inference",
+      "abstract": "Wearable EEG inference is constrained not only by model size, but also by the channel-dependent sensing front end that must process high-dimensional inputs before compact downstream computation. We present EEG2MCU, a sensing-to-execution co-design framework that treats electrode count as a hardware design variable through task-aware montage selection. EEG2MCU retains a compact time-frequency representation and generates only the INT8 regions required by each first-layer tile, avoiding full input materialization. Halo reuse and access-aware placement across Flash, SRAM, and tightly coupled memory further reduce redundant generation and data movement. On a Cortex-M7 MCU, EEG2MCU reduces peak SRAM by 11.38x relative to the baseline, including a 1.71x reduction from the 62-to-19 electrode montage, while reducing latency by 2.57x and energy by 2.48x. It retains 94-96% of full-montage accuracy, demonstrating practical high-dimensional EEG inference under tight embedded-resource constraints.",
+      "authors": [
+        "Shoma Yukawa",
+        "Meghna Roychowdhury",
+        "Arnab Sanyal",
+        "Chengwei Zhou",
+        "Shreyas Sen",
+        "Gourav Datta"
+      ],
+      "published_date": "2026-11-17",
+      "indexed_date": "2026-11-17",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.23619v1",
+      "categories": [
+        "cs.LG",
+        "cs.AR",
+        "cs.HC",
+        "eess.SP"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "prefilter_score": 71,
+        "ai": {
+          "score": 88,
+          "topic": "Embedded lightweight EEG inference, montage selection",
+          "reason": "CPU/MCU-friendly EEG inference with task-aware montage selection, time-frequency representation, and artifact-free INT8 deployment directly aligns with the researcher's interest in lightweight, transferable neural-signal algorithms.",
+          "summary": "Presents EEG2MCU, a sensing-to-execution co-design framework for wearable EEG inference that treats electrode count as a hardware design variable via task-aware montage selection and generates only the INT8 regions needed per first-layer tile. On a Cortex-M7 MCU it reduces peak SRAM by 11.38x (including 1.71x from a 62-to-19 electrode montage), latency by 2.57x, and energy by 2.48x while retaining 94-96% of full-montage accuracy.",
+          "keywords": [
+            "wearable EEG inference",
+            "sensing-to-execution co-design",
+            "task-aware montage selection",
+            "INT8 quantization",
+            "embedded microcontroller"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
     {
       "source": "pubmed",
       "source_id": "43047464",
@@ -605,6 +652,58 @@
       }
     },
     {
+      "source": "pubmed",
+      "source_id": "43050378",
+      "title": "Cross-modality Knowledge Transfer Between fMRI and EEG for Improved Single-modality Alzheimer's Disease Diagnosis.",
+      "abstract": "Alzheimer's disease (AD) disrupts brain function in both spatial organization and temporal dynamics, which can be characterized by complementary fMRI and EEG measurements. In particular, fMRI provides higher spatial resolution to characterize multi-scale functional organization of brain networks, whereas EEG offers higher temporal resolution to capture dynamic neural activities across frequency bands. Thus, integrating the two modalities can characterize AD-related spatiotemporal disruptions more comprehensively than either modality alone. However, it is impractical to acquire paired fMRI and EEG data in real-world applications. To address this problem, we propose the fMRI-EEG Knowledge Transfer Network (FE-KTNet) to learn spatiotemporal representations from paired data and then transfer them back to modality-specific models through three stages. Specifically, in Stage 1, it learns modality-specific representations from fMRI and EEG FCNs, emphasizing multi-scale network organization for fMRI and frequency-specific electrophysiological coupling for EEG. Building on these representations, in Stage 2, it performs scale-wise bidirectional cross-modality fusion to integrate complementary information into fused multi-scale spatiotemporal representations. Finally, in Stage 3, it transfers the fused representations back to each modality-specific encoder through scale-wise feature alignment and logit-level knowledge distillation. We evaluate FE-KTNet on 14 multicenter datasets comprising 2,766 fMRI subjects and 1,842 EEG subjects, covering AD-NC, MCI-NC, and AD-MCI classifications. Compared with the corresponding baseline models, FE-KTNet increases fMRI-only and EEG-only accuracy by 3.4% and 6.1% for AD-NC classification, 5.2% and 8.0% for MCI-NC classification, and 3.5% and 7.1% for AD-MCI classification, respectively, and achieves the best overall performance among all evaluated methods. Our code is available at GitHub Repository.",
+      "authors": [
+        "Xin Lin",
+        "Yuxiao Liu",
+        "Wenfei Yu",
+        "Jiaxing Xu",
+        "Yulong Dou",
+        "Weiqi Li",
+        "Zhao Wu",
+        "Jiafan Qin",
+        "Xinyan Du",
+        "Jingjing Lin",
+        "Minhui Tan",
+        "Yuanzhe He",
+        "Feng Shi",
+        "Yansu Guo",
+        "Zhiming Cui",
+        "Dinggang Shen"
+      ],
+      "published_date": "2026-Nov-18",
+      "indexed_date": "",
+      "journal": "IEEE transactions on medical imaging",
+      "doi": "10.1109/tmi.2026.3754829",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43050378/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 60,
+        "ai": {
+          "score": 58,
+          "topic": "Cross-modality fMRI-EEG knowledge transfer for AD",
+          "reason": "Involves EEG classification and transfer learning but targets clinical AD diagnosis with fMRI rather than sleep/vigilance or generic time-series methods; moderately transferable background.",
+          "summary": "Proposes FE-KTNet, an fMRI-EEG knowledge transfer network that learns fused multi-scale spatiotemporal representations from paired data and distills them back to modality-specific models through cross-modality fusion and feature/logit alignment. Across 14 multicenter datasets (2,766 fMRI, 1,842 EEG subjects), it improved fMRI-only and EEG-only accuracy by 3.4%/6.1% for AD-NC, 5.2%/8.0% for MCI-NC, and 3.5%/7.1% for AD-MCI versus baselines.",
+          "keywords": [
+            "Alzheimer's disease diagnosis",
+            "fMRI-EEG integration",
+            "cross-modality knowledge transfer",
+            "knowledge distillation",
+            "multi-scale spatiotemporal representation"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
       "source": "biorxiv",
       "source_id": "10.64898/2026.11.17.767217",
       "title": "Shared-Encoder Residual Task-Bridging Network for Motor Execution to Motor Imagery EEG Transfer in Brain-Computer Interfaces",
@@ -855,7 +954,7 @@
         "Tatsuya Mima"
       ],
       "published_date": "2026",
-      "indexed_date": "",
+      "indexed_date": "2026-11-18",
       "journal": "Handbook of clinical neurology",
       "doi": "10.1016/b978-0-443-27442-8.00012-3",
       "url": "https://pubmed.ncbi.nlm.nih.gov/43045271/",
@@ -869,7 +968,8 @@
         "motor control"
       ],
       "publication_types": [
-        "Journal Article"
+        "Journal Article",
+        "Review"
       ],
       "extra": {
         "prefilter_score": 64,
@@ -939,6 +1039,52 @@
     },
     {
       "source": "pubmed",
+      "source_id": "43050372",
+      "title": "Neural Profiles of Pistol Shooting Performance Across Skill Levels in Hearing and Deaf Shooters: Insights into Cognitive-Motor Processes.",
+      "abstract": "Precision sport performance requires optimal motor preparation supported by efficient neural processing. While the psychomotor efficiency framework has been used to explain expertise-related neural patterns, it remains unclear whether such neural signatures generalize across individuals with different sensory experiences. The present study aimed to examine expertise-related neural oscillations during motor preparation in 10-m air-pistol shooting by comparing skilled and novice performers in hearing and deaf populations. Study 1 included 37 hearing participants (skilled: n = 19; novice: n = 18), whereas Study 2 included 43 deaf participants (skilled: n = 19; novice: n = 24). Electroencephalography (EEG) was used to assess temporal alpha asymmetry (T4 minus T3), parietal alpha, occipital alpha, frontocentral alpha, sensorimotor rhythm (SMR), and frontal midline theta during the 4 s preceding trigger pull. In Study 1, skilled hearing shooters showed lower temporal alpha asymmetry, reflecting relatively greater left temporal alpha power. They also exhibited higher posterior and frontocentral alpha power, a time-specific increase in SMR, and higher frontal midline theta power relative to novice shooters. In contrast, Study 2 revealed a distinct neural profile in deaf shooters. Deaf novices showed a time-dependent decrease in temporal alpha asymmetry as the trigger pull approached, whereas skilled deaf shooters remained relatively stable. In addition, skilled deaf performers showed reduced frontocentral alpha and SMR power relative to novices, indicating greater sensorimotor cortical engagement during motor preparation. These findings highlight population specificity in expertise-related neural profiles, indicating that neural markers of expertise may not generalize across sensory contexts. Rather than reflecting a universal pattern of psychomotor efficiency, the observed neural profiles may vary across populations with different sensory experiences. Overall, the present study highlights the importance of considering sensory experience when examining neural optimization and provides insights into the cognitive-motor processes underlying skilled performance across diverse athletic populations in precision sports.",
+      "authors": [
+        "Ting-Yu Chueh",
+        "Jia-Hao Wu",
+        "Tsung-Min Hung",
+        "Bradley D Hatfield"
+      ],
+      "published_date": "2026-Nov-17",
+      "indexed_date": "",
+      "journal": "Medicine and science in sports and exercise",
+      "doi": "10.1249/mss.0000000000004214",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43050372/",
+      "categories": [],
+      "keywords": [
+        "ATHLETES",
+        "DEAFNESS",
+        "EEG",
+        "EFFICIENCY",
+        "SPORT PERFORMANCE"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 35,
+        "ai": {
+          "score": 45,
+          "topic": "EEG spectral markers of shooting expertise",
+          "reason": "Uses band-power features (alpha, SMR, theta) and within-subject designs but focuses on sport expertise in humans; spectral-analysis ideas are only occasionally transferable to sleep-state work.",
+          "summary": "Examined EEG oscillations during the 4 s preceding trigger pull in skilled versus novice hearing (Study 1) and deaf (Study 2) air-pistol shooters. Skilled hearing shooters showed lower temporal alpha asymmetry and higher posterior, frontocentral, and frontal midline theta power, whereas skilled deaf shooters showed reduced frontocentral alpha and sensorimotor rhythm power, indicating expertise-related neural profiles differ with sensory experience.",
+          "keywords": [
+            "precision shooting",
+            "EEG alpha asymmetry",
+            "sensorimotor rhythm",
+            "frontal midline theta",
+            "deafness"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "43049581",
       "title": "Data-Driven EEG-fMRI Fusion: From Multimodal Integration to Latent Neural Inference.",
       "abstract": "Simultaneous electroencephalography (EEG) and functional magnetic resonance imaging (fMRI) capture neural dynamics across complementary temporal and spatial scales, but analyzing them jointly is difficult: the two modalities differ in measurement mechanisms, temporal resolution, and neurovascular coupling. EEG-fMRI fusion can be framed as an inverse problem, where the goal is to recover latent neural processes only partially observed through electrophysiological and hemodynamic signals. Here, we review data-driven fusion methods published between 2000 and 2025, focusing on techniques that identify shared neural representations across modalities. We organize methods by fusion strategies (symmetric vs. asymmetric), methodological objectives (factorization vs. translation), and modeling assumptions (linear vs. nonlinear), and discuss evaluation metrics and visualization strategies in current use. A recurring finding is the absence of a universal validation standard and the difficulty of interpreting latent multimodal components. Across neurological, psychiatric, and cognitive applications, EEG-fMRI fusion has revealed distributed network dynamics not accessible through unimodal analyses, though temporal misalignment, noise-induced coupling, and model-dependent interpretation remain persistent challenges. We close by discussing directions including nonlinear modeling, flexible coupling frameworks, and large-scale group-level fusion, and situate the field within a broader view of EEG-fMRI fusion as a problem of latent neural inference.",
@@ -953,7 +1099,7 @@
         "Vince D Calhoun"
       ],
       "published_date": "2026-Dec-01",
-      "indexed_date": "",
+      "indexed_date": "2026-11-18",
       "journal": "Human brain mapping",
       "doi": "10.1002/hbm.70696",
       "url": "https://pubmed.ncbi.nlm.nih.gov/43049581/",
@@ -976,6 +1122,59 @@
             "latent neural inference",
             "neurovascular coupling",
             "inverse problem"
+          ],
+          "paper_type": "Review",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43045274",
+      "title": "Brain-computer interfaces in the motor system: The technologies.",
+      "abstract": "Brain-computer interfaces (BCIs) translate neural activity into control signals for external devices and neuromodulatory/actuator systems, offering new avenues to restore, rehabilitate, or augment motor function after neurologic injury and disease. The field's foundations lie in early demonstrations that volitional modulation of cortical neurons is possible (operant conditioning), resulting in direct brain-computer interfacing, which catalyzed decades of translational research. Clinical advances now span noninvasive scalp electroencephalography systems that pair sensorimotor rhythms or movement‑related cortical potentials with proprioceptive or functional electrical stimulation (FES) feedback for post‑stroke rehabilitation, to invasive electrocorticography and intracortical arrays enabling multi‑degree‑of‑freedom robotic control and, more recently, limb reanimation through intracortical‑to‑FES neuroprostheses. This chapter critically reviews (i) signal acquisition technologies (noninvasive and invasive), (ii) design considerations for motor BCIs (spatiotemporal resolution, latency, stability, artifacts, and clinical workflow), (iii) signal processing and artificial intelligence approaches for decoding intent, (iv) hybrid systems that integrate neural with peripheral signals such as EMG and inertial sensing, and (v) feedback modalities-from visual and auditory to proprioceptive and state‑dependent stimulation. We conclude with an outlook on minimally invasive implants, wearable sensors, and calibration‑lite artificial intelligence models, and discuss translational milestones and barriers toward routine clinical adoption in neurology and neurosurgery.",
+      "authors": [
+        "Ander Ramos-Murguialday"
+      ],
+      "published_date": "2026",
+      "indexed_date": "2026-11-18",
+      "journal": "Handbook of clinical neurology",
+      "doi": "10.1016/b978-0-443-27442-8.00013-5",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43045274/",
+      "categories": [],
+      "keywords": [
+        "artificial intelligence",
+        "brain-machine interface",
+        "brain–computer interface",
+        "clinical neurotechnology",
+        "decoding",
+        "electrocorticography",
+        "electroencephalography",
+        "intracortical array",
+        "machine learning",
+        "motor control",
+        "neural interfaces",
+        "neuromodulation",
+        "neuroprosthetics",
+        "signal processing"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
+      "extra": {
+        "prefilter_score": 33,
+        "ai": {
+          "score": 45,
+          "topic": "Motor brain-computer interfaces review",
+          "reason": "Broad BCI review covers signal acquisition and processing but is a general clinical overview far from lightweight sleep-staging or tooling needs.",
+          "summary": "Critically reviews brain-computer interface technologies for the motor system, covering noninvasive EEG systems paired with FES feedback for post-stroke rehabilitation and invasive electrocorticography/intracortical arrays enabling robotic control and intracortical-to-FES limb reanimation. Outlines design considerations, decoding and AI approaches, hybrid neural-peripheral systems, and barriers to routine clinical adoption.",
+          "keywords": [
+            "brain-computer interface",
+            "electrocorticography",
+            "intracortical array",
+            "sensorimotor rhythms",
+            "functional electrical stimulation"
           ],
           "paper_type": "Review",
           "digest_pick": true
@@ -1028,58 +1227,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "43045274",
-      "title": "Brain-computer interfaces in the motor system: The technologies.",
-      "abstract": "Brain-computer interfaces (BCIs) translate neural activity into control signals for external devices and neuromodulatory/actuator systems, offering new avenues to restore, rehabilitate, or augment motor function after neurologic injury and disease. The field's foundations lie in early demonstrations that volitional modulation of cortical neurons is possible (operant conditioning), resulting in direct brain-computer interfacing, which catalyzed decades of translational research. Clinical advances now span noninvasive scalp electroencephalography systems that pair sensorimotor rhythms or movement‑related cortical potentials with proprioceptive or functional electrical stimulation (FES) feedback for post‑stroke rehabilitation, to invasive electrocorticography and intracortical arrays enabling multi‑degree‑of‑freedom robotic control and, more recently, limb reanimation through intracortical‑to‑FES neuroprostheses. This chapter critically reviews (i) signal acquisition technologies (noninvasive and invasive), (ii) design considerations for motor BCIs (spatiotemporal resolution, latency, stability, artifacts, and clinical workflow), (iii) signal processing and artificial intelligence approaches for decoding intent, (iv) hybrid systems that integrate neural with peripheral signals such as EMG and inertial sensing, and (v) feedback modalities-from visual and auditory to proprioceptive and state‑dependent stimulation. We conclude with an outlook on minimally invasive implants, wearable sensors, and calibration‑lite artificial intelligence models, and discuss translational milestones and barriers toward routine clinical adoption in neurology and neurosurgery.",
-      "authors": [
-        "Ander Ramos-Murguialday"
-      ],
-      "published_date": "2026",
-      "indexed_date": "",
-      "journal": "Handbook of clinical neurology",
-      "doi": "10.1016/b978-0-443-27442-8.00013-5",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43045274/",
-      "categories": [],
-      "keywords": [
-        "artificial intelligence",
-        "brain-machine interface",
-        "brain–computer interface",
-        "clinical neurotechnology",
-        "decoding",
-        "electrocorticography",
-        "electroencephalography",
-        "intracortical array",
-        "machine learning",
-        "motor control",
-        "neural interfaces",
-        "neuromodulation",
-        "neuroprosthetics",
-        "signal processing"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 33,
-        "ai": {
-          "score": 45,
-          "topic": "Motor brain-computer interfaces review",
-          "reason": "Broad BCI review covers signal acquisition and processing but is a general clinical overview far from lightweight sleep-staging or tooling needs.",
-          "summary": "Critically reviews brain-computer interface technologies for the motor system, covering noninvasive EEG systems paired with FES feedback for post-stroke rehabilitation and invasive electrocorticography/intracortical arrays enabling robotic control and intracortical-to-FES limb reanimation. Outlines design considerations, decoding and AI approaches, hybrid neural-peripheral systems, and barriers to routine clinical adoption.",
-          "keywords": [
-            "brain-computer interface",
-            "electrocorticography",
-            "intracortical array",
-            "sensorimotor rhythms",
-            "functional electrical stimulation"
-          ],
-          "paper_type": "Review",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "43042686",
       "title": "Adoption of Routine Intraoperative Raw EEG at a Quaternary Pediatric Centre.",
       "abstract": "Intraoperative electroencephalography (EEG) allows real-time assessment of the anesthetic state of the brain and offers a means of titrating anesthetic delivery in children. Randomized trials have shown that EEG-guided titration reduces anesthetic exposure, shortens emergence and recovery, and lowers the incidence of emergence delirium, yet routine use outside research settings has remained largely confined to enthusiastic clinicians and clinical trials. To describe the adoption of routine intraoperative raw EEG monitoring over time at a quaternary pediatric hospital, to characterize practice variation among anesthesia providers, and to identify patient and procedural factors associated with EEG use. We conducted a retrospective single-center study of anesthetic records in the electronic health record from 17 October 2024, when automated EEG capture began, to 30 June 2026, following departmental implementation of routine raw EEG monitoring. Providers were categorized by EEG use as high (> 40% of cases), moderate (20%-40%) or low (< 20%). Trend, provider-level, and procedural associations with EEG use were examined using segmented regression, mixed-effects logistic regression, and clustered logistic regression. Of 26 168 analyzed cases, 21.7% (5674) involved intraoperative EEG monitoring, provided by 59 staff anesthesiologists, 9 senior fellows, 24 fellows, and 102 residents. EEG use rose from 17.8% of cases in October 2024 to 28.4% in June 2026. Use varied widely among staff anesthesiologists (median 18.1%, IQR 12.3%-31.3%; range 0.9%-79.5%); 59.3% (35/59) were low users, and 18.6% (11/59) were high users, with the five highest users accounting for 27.0% of all EEG-monitored cases managed by staff. Case mix explained only a small proportion of this variation (pseudo R2 = 0.064). EEG-monitored cases were more often longer, involved neuromuscular blockade, TIVA maintenance, cardiac surgery, and trainee presence. Adoption of routine raw EEG monitoring increased steadily but nonlinearly following implementation. Variation in use among providers was only weakly explained by case mix, indicating that individual practice patterns, more than patient or procedural characteristics, drove uptake. Efforts to broaden EEG monitoring may benefit from targeting low-use providers and during fellowship training.",
@@ -1125,49 +1272,6 @@
             "depth of anesthesia monitoring",
             "practice variation",
             "technology adoption"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "43041289",
-      "title": "Differential associations of contralesional and ipsilesional brain functional connectivity with lower-limb impairment after stroke.",
-      "abstract": "Stroke may induce distinct plastic structural changes within the ipsilesional and contralesional hemispheres of the brain, leading to interhemispheric imbalances in cortical connectivity. Maximum joint range of motion (ROMmax) impairments may also occur in the paretic limb, contributing to increased interlimb asymmetry and impaired gait. This study examined the influence of ipsilesional and contralesional brain functional connectivity on hip flexion ROMmax interlimb asymmetry and walking performance in stroke survivors. Eighteen individuals with chronic stroke (57.5 ± 14.8 years; 26.7 ± 22.2 months post-stroke) were assessed for functional connectivity of the ipsilesional and contralesional general hemispheres and specific primary motor cortex (M1) areas of the brain with resting-state electroencephalography (EEG). Participants were also assessed for hip flexion active ROMmax of the paretic and non-paretic limbs and 10-m walk test, and ROMmax interlimb asymmetry was further calculated. Relationships between changes in these variables were examined by Pearson product-moment (r) and regression analyses. Hip flexion ROMmax interlimb asymmetry was significantly associated with contralesional functional connectivity in both general (r = 0.53) and M1-specific (r = 0.48) regions of the brain (P < 0.05). Walking performance was only associated with contralesional M1 connectivity (r = 0.51; P < 0.05). Contralesional hemisphere connectivity explained 28% of the variance in ROMmax asymmetry, while contralesional M1 connectivity explained 26% of the variance in walking time. No significant relationships were found for brain connectivity within the ipsilesional hemisphere. Greater brain functional connectivity in contralesional cortical regions is associated with increased hip ROMmax asymmetry and impaired walking performance in stroke survivors, highlighting the role of contralesional networks in post-stroke motor impairment.",
-      "authors": [
-        "Cassio V Ruas",
-        "Bruna M Carlos",
-        "Camila D Lima",
-        "Pedro Vazquez",
-        "Daniel B Nogueira",
-        "Alexandre F Brandão",
-        "Gabriela Castellano"
-      ],
-      "published_date": "2026-Dec",
-      "indexed_date": "2026-11-17",
-      "journal": "Neuroimage. Reports",
-      "doi": "10.1016/j.ynirp.2026.100433",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43041289/",
-      "categories": [],
-      "keywords": [],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 27,
-        "ai": {
-          "score": 40,
-          "topic": "resting-state EEG connectivity and post-stroke gait",
-          "reason": "Resting-state connectivity analysis applied to a clinical stroke cohort; limited methodological novelty or transfer to sleep/vigilance work.",
-          "summary": "In 18 chronic stroke survivors, resting-state EEG showed that contralesional hemisphere functional connectivity was associated with greater hip flexion ROM interlimb asymmetry (r=0.53; 28% of variance) and contralesional M1 connectivity with slower 10-m walk time (r=0.51; 26% of variance), while ipsilesional connectivity showed no significant relationships.",
-          "keywords": [
-            "stroke",
-            "functional connectivity",
-            "resting-state EEG",
-            "contralesional hemisphere",
-            "lower-limb impairment"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -1677,7 +1781,7 @@
         "Holger Joswig"
       ],
       "published_date": "2026-Aug-06",
-      "indexed_date": "",
+      "indexed_date": "2026-11-18",
       "journal": "BMC neurology",
       "doi": "10.1186/s12883-026-05231-7",
       "url": "https://pubmed.ncbi.nlm.nih.gov/43045982/",
@@ -1691,7 +1795,9 @@
       ],
       "publication_types": [
         "Journal Article",
-        "Systematic Review"
+        "Systematic Review",
+        "Meta-Analysis",
+        "Comparative Study"
       ],
       "extra": {
         "prefilter_score": 77,
@@ -1708,54 +1814,6 @@
             "invasive monitoring"
           ],
           "paper_type": "Meta-analysis",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "43043627",
-      "title": "Integrative Cross‑Scale Label‑Free Optical Imaging of Bioelectrical Phenomena.",
-      "abstract": "Bioelectricity is increasingly recognized as a fundamental principle in biology, influencing processes from wound healing and morphogenesis to cancer metastasis. Compelling research extends its scope beyond neurons and cardiac cells to include cells that are traditionally classified as non‑excitable. Bioelectric phenomena operate across multiple scales, from the molecular level to entire organisms, and across timescales spanning microseconds to a full lifespan. However, current measurement approaches only sparsely sample this broad spatial and temporal continuum, and they are not built for cross-scale integration. This Perspective proposes a conceptual framework for investigating bioelectrical functions across scales. It presents a spatial and temporal measurement workspace that hosts several trajectories, each tied to specific hypotheses and cross‑scale measurement strategies. Key examples of its advantages include exploring emergent spatiotemporal patterns, for instance, by imaging ion channel gating and clustering over extended durations. Another benefit is elucidating cross‑scale causal mechanisms, such as tracking the subcellular and cellular bioelectrical correlates of cancer metastasis. The transformative power of label‑free optical technologies is highlighted, enabling high‑resolution bioelectrical imaging across space and time. When combined with fluorescence imaging, electrophysiology, and multimodal chemical and structural techniques, they offer a potent approach to advancing bioelectricity research and its clinical applications.",
-      "authors": [
-        "Sidahmed Abayzeed"
-      ],
-      "published_date": "2026-Nov",
-      "indexed_date": "2026-11-17",
-      "journal": "Advanced biology",
-      "doi": "10.1002/adbi.70165",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43043627/",
-      "categories": [],
-      "keywords": [
-        "bioelectrical networks",
-        "bioelectricity",
-        "electrochromic sensors",
-        "integrative bioelectrical imaging",
-        "ion channels",
-        "label‐free imaging",
-        "membrane potential",
-        "plasmonics",
-        "quantum sensors"
-      ],
-      "publication_types": [
-        "Journal Article",
-        "Review"
-      ],
-      "extra": {
-        "prefilter_score": 29,
-        "ai": {
-          "score": 18,
-          "topic": "Cross-scale bioelectric imaging perspective",
-          "reason": "Broad conceptual perspective on bioelectric imaging; not an EEG/EMG time-series method and weakly related to the researcher's needs.",
-          "summary": "A perspective proposing a conceptual cross-scale spatial and temporal measurement framework for label-free optical imaging of bioelectrical phenomena, spanning molecular to organismal levels and microseconds to lifespan. Argues that current approaches sparsely sample this continuum and highlights combining label-free optical technologies with fluorescence imaging, electrophysiology, and multimodal techniques for integrative bioelectrical imaging.",
-          "keywords": [
-            "bioelectricity",
-            "label-free optical imaging",
-            "cross-scale measurement",
-            "ion channel gating",
-            "membrane potential"
-          ],
-          "paper_type": "Commentary/Perspective",
           "digest_pick": true
         }
       }
@@ -1845,55 +1903,53 @@
     },
     {
       "source": "pubmed",
-      "source_id": "43043707",
-      "title": "Unconventional modulation of Nav1.4 by a scorpion toxin through cooperative binding to voltage sensor and the pore domain.",
-      "abstract": "Voltage-gated sodium (Nav) channels are targeted by animal peptide toxins, which serve as powerful molecular probes for dissecting channel structure-function relationships and lead molecules for drug discovery. β-scorpion toxins trap voltage sensor domains to remodel Nav channel gating, yet high-resolution structural evidence defining this process remains elusive. Here, we characterize LmNaTx1, a β-scorpion toxin from Lychas mucronatus. LmNaTx1 exerts state-dependent bimodal modulation on Nav1.4: it facilitates channel activation while suppressing sodium conductance, accelerates slow-inactivation onset, and delays recovery from slow inactivation. We solved the 2.68 Å cryo-EM structure of the LmNaTx1-hNav1.4 complex, revealing that LmNaTx1 inserts into the extracellular cleft jointly formed by domain II voltage sensor (VSDII) and the extracellular loop III (ECLIII) of the pore domain. Toxin binding remodels the S3-S4II loop and displaces S0/S3II helices to trap VSDII within a pre-activated intermediate state. MD simulations recapitulate step-wise VSDII conformational transitions and demonstrate that toxin-driven rearrangements tighten the intracellular pore gate. Mutagenesis combined with electrophysiology confirm that VSDII trapping remodels the activation and inactivation gating, whereas ECLIII engagement contributes both to inhibition and activation. Subtype-specific sequence variations in the ECLIII region underlie the prominent species- and isoform-dependent activities of the toxin toward insect and mammalian Nav channels. Our study provides a structural basis for the dual-action mechanisms of β-scorpion toxins on Nav channels and presents a structural framework for understanding toxin binding, channel gating modulation, ecological adaptation, and rational drug design.",
+      "source_id": "43049832",
+      "title": "Influenza A-Associated Encephalitis and Encephalopathy in Adults: An Exploratory Criteria-Based Analysis.",
+      "abstract": "Influenza A can cause encephalopathy or encephalitis, yet adult data are scarce and the two entities are seldom distinguished systematically. This small retrospective study of five adults explored the feasibility and limitations of classifying these complications with the International Encephalitis Consortium (IEC) 2013 criteria and describes their clinical, radiological, cerebrospinal fluid (CSF), and treatment characteristics. We retrospectively reviewed five consecutive adults admitted to a tertiary center with polymerase chain reaction (PCR)-confirmed influenza A and acute neurological symptoms, all evaluated with brain magnetic resonance imaging (MRI), lumbar puncture, and electroencephalography (EEG). Encephalitis was defined by the IEC 2013 criteria (altered mental status > 24 h plus ≥ 2 minor criteria of central nervous system (CNS) inflammation). Data were analyzed descriptively. Three patients met criteria for encephalitis and two for encephalopathy (four women; age 44-68 years). Respiratory influenza A PCR was positive and CSF PCR negative in all. CSF pleocytosis occurred in two patients, bilateral thalamic and subcortical white matter MRI hyperintensities in two, generalized EEG slowing in four, and focal status epilepticus in one. All received oseltamivir; three received high-dose methylprednisolone, two of whom also required intravenous immunoglobulin and plasma exchange. The categories overlapped substantially: EEG slowing and negative CSF PCR occurred in both, and treatment escalation followed clinical course rather than category, with the most intensive regimen required by one patient in each. At 3 months, three patients were asymptomatic and two, both with encephalitis and structural MRI lesions, had persistent deficits. In this small, hypothesis-generating study, IEC-based classification was feasible, but encephalitis and encephalopathy overlapped substantially and the distinction did not determine treatment. The main contribution lies in illustrating both the feasibility and limitations of criteria-based classification in adults with influenza A, rather than in establishing its clinical utility.",
       "authors": [
-        "Xi Zhou",
-        "Huan Wang",
-        "Minjuan Lu",
-        "Ye Cong",
-        "Jiangtao Zhang",
-        "Minzhi Chen",
-        "Jialing Cai",
-        "Jichen Zhang",
-        "Qihang Liu",
-        "Junhao Huang",
-        "Nieng Yan",
-        "Xueqin Jin",
-        "Zhonghua Liu"
+        "Pablo Gómez-Porro Sánchez",
+        "Jorge Trebolle Banet",
+        "Beatriz de la Puente Garrido",
+        "Ángel Ruiz Molina",
+        "Raquel González Santiago",
+        "Beatriz Brea Álvarez",
+        "Joaquín Carneado-Ruiz"
       ],
-      "published_date": "2026-Nov-24",
-      "indexed_date": "2026-11-17",
-      "journal": "Proceedings of the National Academy of Sciences of the United States of America",
-      "doi": "10.1073/pnas.2614685123",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43043707/",
+      "published_date": "2026-Nov-18",
+      "indexed_date": "",
+      "journal": "Neurology and therapy",
+      "doi": "10.1007/s40120-026-01087-8",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43049832/",
       "categories": [],
       "keywords": [
-        "Nav1.4",
-        "cryo-EM",
-        "electrophysiology",
-        "scorpion venom",
-        "sodium channel"
+        "Adults",
+        "Cerebrospinal fluid",
+        "Encephalitis",
+        "Encephalopathy",
+        "Immunomodulatory therapy",
+        "Influenza A",
+        "International Encephalitis Consortium",
+        "Oseltamivir",
+        "Thalamic lesions"
       ],
       "publication_types": [
         "Journal Article"
       ],
       "extra": {
-        "prefilter_score": 29,
+        "prefilter_score": 47,
         "ai": {
-          "score": 15,
-          "topic": "Scorpion toxin Nav channel modulation",
-          "reason": "Molecular structural biology of ion channels; outside the researcher's computational EEG/neural time-series scope.",
-          "summary": "The authors characterized the β-scorpion toxin LmNaTx1, showing state-dependent bimodal modulation of Nav1.4 (enhanced activation, suppressed conductance, accelerated slow-inactivation onset) and solved a 2.68 Å cryo-EM structure of the toxin–hNav1.4 complex. The structure and complementary MD and mutagenesis data reveal cooperative binding to VSDII and the pore-domain ECLIII that traps VSDII in a pre-activated intermediate and tightens the intracellular gate.",
+          "score": 12,
+          "topic": "Influenza A encephalitis clinical case series",
+          "reason": "Clinical neurology case study where EEG is only a diagnostic adjunct; no methodological relevance to EEG time-series analysis or sleep/vigilance modeling.",
+          "summary": "Retrospective exploratory analysis of five adults with PCR-confirmed influenza A and acute neurological symptoms, applying International Encephalitis Consortium 2013 criteria to classify three as encephalitis and two as encephalopathy. The study found the categories overlapped substantially and did not determine treatment, with three patients asymptomatic at 3 months and two with persistent deficits.",
           "keywords": [
-            "Nav1.4",
-            "β-scorpion toxin",
-            "cryo-EM",
-            "voltage sensor domain",
-            "channel gating"
+            "influenza A",
+            "encephalitis",
+            "encephalopathy",
+            "International Encephalitis Consortium criteria",
+            "oseltamivir"
           ],
-          "paper_type": "Research Article",
+          "paper_type": "Case Report",
           "digest_pick": true
         }
       }
@@ -1995,56 +2051,6 @@
             "mutational signatures"
           ],
           "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "43048394",
-      "title": "Atrial Fibrillation and Subclinical Thyroid Dysfunction: Revisiting an Underrecognized Association - A Narrative Review.",
-      "abstract": "Subclinical thyroid disease, defined by abnormal thyroid-stimulating hormone (TSH) with normal thyroid hormone levels, is common and may be an underrecognized contributor to atrial fibrillation (AF). This narrative review summarizes current evidence on how mild thyroid dysfunction influences AF risk and highlights practical implications for clinical management, drawing on mechanistic studies, observational epidemiology, and major guideline recommendations addressing subclinical hyperthyroidism, subclinical hypothyroidism, and cardiac rhythm outcomes. Subclinical hyperthyroidism shows a consistent association with increased AF risk. Proposed mechanisms include thyroid hormone-mediated changes in cardiac electrophysiology, increased adrenergic sensitivity, and atrial structural and electrical remodeling. Current American Thyroid Association and European Thyroid Association guidance supports treating higher-risk patients, particularly those older than 65 years or with cardiovascular comorbidities, when TSH is below 0.1 mIU/L. In contrast, evidence linking subclinical hypothyroidism to AF is weak. Although it has traditionally been associated with bradyarrhythmias, newer studies suggest a possible modest increase in AF risk. Treatment decisions for subclinical hypothyroidism are more nuanced, with the strongest consensus favoring therapy when TSH exceeds 10.0 mIU/L, while lower-level elevations generally require individualized assessment. Overall, subclinical thyroid dysfunction, especially subclinical hyperthyroidism, appears meaningfully related to AF risk, but important evidence gaps remain, including limited large-scale trial data showing that treatment prevents AF. Because subclinical thyroid disease and AF both increase with age, management should be individualized according to age, TSH severity, cardiovascular risk, and comorbidities.",
-      "authors": [
-        "Sachin Sapkota",
-        "Suchita Acharya",
-        "Kritick Bhandari",
-        "Aakriti Parajuli",
-        "Abinash Baniya",
-        "Jyothsna Goranti",
-        "Mehran Abolbashari",
-        "Barney Soskin"
-      ],
-      "published_date": "2026",
-      "indexed_date": "2026-11-18",
-      "journal": "Clinical Medicine Insights. Cardiology",
-      "doi": "10.1177/11795468261500860",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43048394/",
-      "categories": [],
-      "keywords": [
-        "Atrial fibrillation",
-        "Subclinical Hyperthyroidism",
-        "Subclinical hypothyroidism",
-        "review"
-      ],
-      "publication_types": [
-        "Journal Article",
-        "Review"
-      ],
-      "extra": {
-        "prefilter_score": 29,
-        "ai": {
-          "score": 5,
-          "topic": "Clinical cardiology review (AF/thyroid)",
-          "reason": "Keyword collision on 'electrophysiology'; a clinical cardiology narrative review entirely outside the researcher's neural-signal domain.",
-          "summary": "This narrative review synthesizes mechanistic, epidemiological, and guideline evidence on subclinical thyroid dysfunction and atrial fibrillation, reporting a consistent association between subclinical hyperthyroidism and increased AF risk via electrophysiologic, adrenergic, and atrial remodeling mechanisms, whereas evidence for subclinical hypothyroidism is weak. It outlines TSH-based treatment thresholds and calls for individualized management given limited trial data on AF prevention.",
-          "keywords": [
-            "atrial fibrillation",
-            "subclinical hyperthyroidism",
-            "subclinical hypothyroidism",
-            "thyroid-stimulating hormone",
-            "atrial remodeling"
-          ],
-          "paper_type": "Review",
           "digest_pick": true
         }
       }
