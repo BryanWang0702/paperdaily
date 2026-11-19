@@ -1,89 +1,62 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-11-19T02:43:59.369134+00:00",
+  "fetched_at": "2026-11-19T20:53:13.954899+00:00",
   "window": {
-    "start": "2026-11-17",
-    "end": "2026-11-19"
+    "start": "2026-11-18",
+    "end": "2026-11-20"
   },
-  "count": 4,
+  "count": 3,
   "papers": [
     {
       "source": "arxiv",
-      "source_id": "2611.23619v1",
-      "title": "EEG2MCU: Sensing-to-Execution Co-Design for Wearable EEG Inference",
-      "abstract": "Wearable EEG inference is constrained not only by model size, but also by the channel-dependent sensing front end that must process high-dimensional inputs before compact downstream computation. We present EEG2MCU, a sensing-to-execution co-design framework that treats electrode count as a hardware design variable through task-aware montage selection. EEG2MCU retains a compact time-frequency representation and generates only the INT8 regions required by each first-layer tile, avoiding full input materialization. Halo reuse and access-aware placement across Flash, SRAM, and tightly coupled memory further reduce redundant generation and data movement. On a Cortex-M7 MCU, EEG2MCU reduces peak SRAM by 11.38x relative to the baseline, including a 1.71x reduction from the 62-to-19 electrode montage, while reducing latency by 2.57x and energy by 2.48x. It retains 94-96% of full-montage accuracy, demonstrating practical high-dimensional EEG inference under tight embedded-resource constraints.",
+      "source_id": "2611.24436v1",
+      "title": "From real to synthetic: PSG-GAN learns sleep apnea signal dynamics for AI training",
+      "abstract": "Synthetic polysomnography (PSG) data has great potential in healthcare applications, for example in substituting real data that is sensitive and challenging to collect. Previous research on synthetic PSG data has been largely focused on short segments of individual signals, overlooking the inter-signal dynamics related to sleep disorders. In this study, we developed a generative adversarial network (PSG-GAN) for co-synthesizing longer segments of multiple PSG signals with diverse and complex characteristics typical of obstructive sleep apnea (OSA). The synthetic signals appeared realistic, and the electroencephalography and electrooculography band powers were similarly distributed across sleep stages. Moreover, the PSG-GAN learned to mirror signal interactions such as changes in photoplethysmography-based heart rate during and after breathing obstructions. An automatic scoring model trained solely with automatically scored synthetic signals reached good performance on sleep staging (\\k{appa}=0.71 and 0.63) and respiratory event segmentation (\\k{appa}=0.57 and 0.60), on two test sets consisting of healthy volunteers and OSA patients, respectively. This demonstrates the potential of synthetic data in supporting algorithm development for sleep diagnostics. The source code is available at https://github.com/rikuhuttunen/psg-gan.",
       "authors": [
-        "Shoma Yukawa",
-        "Meghna Roychowdhury",
-        "Arnab Sanyal",
-        "Chengwei Zhou",
-        "Shreyas Sen",
-        "Gourav Datta"
+        "Riku Huttunen",
+        "Samu Kainulainen",
+        "Matias Rusanen",
+        "Sami Myllymaa",
+        "Juha Töyräs",
+        "Timo Leppänen",
+        "Henri Korkalainen"
       ],
-      "published_date": "2026-11-17",
-      "indexed_date": "2026-11-17",
+      "published_date": "2026-11-18",
+      "indexed_date": "2026-11-18",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2611.23619v1",
+      "url": "https://arxiv.org/abs/2611.24436v1",
       "categories": [
-        "cs.LG",
-        "cs.AR",
-        "cs.HC",
-        "eess.SP"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.22752v1",
-      "title": "Reference Coordinates, Output Perturbations, and Information Loss in EEG Decoding",
-      "abstract": "Electroencephalography (EEG) decoders can respond to reference changes that preserve all relative-potential information. We use established measurement-operator theory to distinguish coordinate sensitivity, additional output-channel perturbations, and electrode loss. Exact pseudoinverse alignment supplies a consistency control; measurement-operator canonicalization (MOC) denotes a graph-Tikhonov estimator. The broader evaluation covers three public motor-imagery datasets and four decoders. The primary EEGNet comparison on Cho2017 and PhysioNet uses three paired training seeds, three shared noise realizations, and six front ends, with identical CAR training inputs sharing checkpoints. At 10 dB output perturbation, MOC-minus-raw disagreement was -0.144 and -0.107, while balanced-accuracy differences were 0.044 and 0.050, respectively; these four contrasts passed the retained Holm correction. MOC also reduced disagreement relative to pseudoinversion across all three seeds in both cohorts. However, comparison with fixed graph smoothing after pseudoinversion did not establish an additional MOC benefit. Preserving zero reference rows changed raw disagreement by less than 0.001 in magnitude; inverse-method predictions were unchanged. For canonical front ends, cross-reference disagreement was close to the reference obtained from independent noise within the same operator. Controlled weak-mode reconstruction and equal-rank electrode masks exposed separate stability and information-loss effects. The results locate the complete-reference gains within spatial processing under the specified stress model, while requiring decoding accuracy alongside consistency to assess practical utility.",
-      "authors": [
-        "Runni Zhou",
-        "Rongrong Fu",
-        "Xinghao Yan",
-        "Xiaoyang Li"
-      ],
-      "published_date": "2026-11-17",
-      "indexed_date": "2026-11-17",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.22752v1",
-      "categories": [
-        "eess.SP"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.22248v1",
-      "title": "OAK-Mind: Zero-Training Mental Health Change Inference from Passive Sensing via Knowledge-Grounded Multi-Agent LLMs",
-      "abstract": "Wearable and smartphone sensors capture behavioral signals associated with mental health, yet inferring mental health outcomes from these signals has traditionally relied on supervised models requiring labeled data and offering limited insight into their predictions. Large language models (LLMs) offer new opportunities to reason over behavioral evidence, but existing LLM-based approaches to passive sensing have largely continued to rely on task-specific fine-tuning or sensor-specific pretraining. In this paper, we introduce OAK-Mind, a zerO-training, multi-Agent, Knowledge-grounded LLM pipeline for inferring mental health changes from passive sensing data. The pipeline organizes sensing data into behavioral dimensions including sleep, physical activity, location mobility, and smartphone use, and orchestrates specialized agents grounded in mental health literature to interpret longitudinal behavioral changes. It synthesizes their assessments and applies questionnaire-based symptom rating to infer changes relative to an individual's baseline assessment with human-readable rationale grounded in observed behavioral patterns and domain knowledge. Across datasets and prediction tasks, while without task-specific training, OAK-Mind achieves comparable or better performance than the most predictive supervised baselines trained on additional labeled samples. It also demonstrate consistent improvement upon direct prompting across four tested LLM backbones. Ablation analyses support the benefits of combining behavioral interpretation with symptom rating, distributing analysis across domain-specific agents, and incorporating domain knowledge. Our findings highlight the potential of knowledge-grounded, multi-agent LLMs for training-free inference of mental health changes from passive sensing data.",
-      "authors": [
-        "Yishu Ji",
-        "Zhihan Jiang",
-        "Will Ke Wang",
-        "Yuang Fan",
-        "Anind K. Dey",
-        "Xuhai \"Orson\" Xu"
-      ],
-      "published_date": "2026-11-17",
-      "indexed_date": "2026-11-17",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.22248v1",
-      "categories": [
-        "cs.MA",
         "cs.AI",
-        "cs.HC",
+        "cs.LG",
+        "physics.med-ph"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.24206v1",
+      "title": "GALA: Gallery-Level Alignment for Real-Life Vision Decoding from EEG",
+      "abstract": "Neural decoding of visual experience from electroencephalography (EEG) has achieved strong performance in intra-subject settings, but current methods fail to generalize across individuals: on the standard 200-way benchmark THINGS-EEG-2, top-1 accuracy drops from above 80% within subjects to about 32% for an unseen subject. Adapting a pre-trained encoder to new subjects and sessions typically requires labeled data, a bottleneck whose collection time severely limits practical device deployment. In a practical Brain-Computer Interface (BCI), however, the possible outcomes are known in advance and form a gallery of candidates, and the unlabeled EEG of the user accumulates as soon as the device is used. We propose a new setting, incremental transductive calibration, in which the decoder is calibrated regularly on all the unlabeled EEG received so far and on the known gallery, without any labels. This setting is closer to the conditions of a deployed BCI than the zero-shot and batch evaluations in current use. We evaluate it with a protocol in which queries arrive one at a time, with unknown and possibly unequal frequencies, and each query is decoded before it is used for calibration. In this setting, we introduce GALA : GAllery-Level Alignment, a label-free calibration method which registers the unlabeled EEG embeddings onto the gallery through shrinkage whitening, hubness correction and a Sinkhorn--Procrustes alignment with query frequencies estimated from the buffer, updated after every query. On THINGS-EEG-2, with a gallery of 200 images, it raises the top-1 accuracy on a new subject from 28% to 67% over 53 minutes of use. Across 60 evaluation settings that vary the gallery size, the query frequencies and the number of repetitions averaged per query, GALA is the most accurate label-free method in every setting, 6.6 points above the best competing method on average at the end of the stream.",
+      "authors": [
+        "Philippe Forest",
+        "Giulia Lioi",
+        "Mai Pham Quyen",
+        "Alix Lamouroux",
+        "Javen Shi",
+        "Adrien Merlini"
+      ],
+      "published_date": "2026-11-18",
+      "indexed_date": "2026-11-18",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.24206v1",
+      "categories": [
+        "cs.AI",
         "cs.LG"
       ],
       "keywords": [],
@@ -94,25 +67,21 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2611.22070v1",
-      "title": "Why do continual physical learners need sleep?",
-      "abstract": "Sleep is widespread across the animal kingdom, including in organisms without a centralized nervous system. Does learning create a need for sleep, even without biology? To explore this question, we study a disordered spring network trained to perform a sequence of mechanical allosteric tasks through local changes in bond stiffness. We find that continual learning progressively reduces the network's ability to acquire new tasks as individual bonds become increasingly specialized. We identify an exact algebraic relationship between the polarization of bond dominance and the network's remaining learning capacity, providing a quantitative measure of this loss of adaptability. We then demonstrate that random internal perturbations allow individual bonds to estimate their mechanical dominance and locally adjust their stiffnesses to restore learning capacity. However, the forces associated with active learning bias these local measurements and interfere with restoration. Separating learning and repair into wake-like and sleep-like phases removes this interference and improves continual-learning performance. Our results suggest that the need for offline restorative phases can emerge from the mechanics of physical learning, even in systems without biological components.",
+      "source_id": "2611.24017v1",
+      "title": "EEGSync: Unitary Temporal Alignment Method for Naturalistic and Resting-State EEG",
+      "abstract": "Electroencephalography (EEG) studies increasingly use naturalistic and resting-state paradigms that lack discrete event timing. These recordings contain structured oscillatory activity but often lack repeated stimulus onsets to define a shared time clock across trials or participants. We introduce EEGSync, a complex-valued unitary Procrustes temporal alignment method for band-limited analytic EEG signals. EEGSync represents each subject as a matrix of complex oscillatory trajectories and solves a unitary Procrustes problem, mapping a target subject into the temporal coordinate system of a reference or group template. The method is computationally tractable through an economy-SVD factorization that avoids constructing the full temporal operator. This alignment strictly preserves original pairwise relationships and power across EEG channels. The unitary transformation aligns latent temporal structure rather than estimating a physical clock offset. Consequently, nonlinear instantaneous measures like phase-locking value, amplitude-envelope correlation, and phase-amplitude coupling are not guaranteed to be invariant. This framing makes EEGSync highly suitable for naturalistic shared-stimulus data, and potentially useful for resting-state data as a covariance-preserving latent manifold alignment. Evaluated via subject-independent cross-validation across physiological and clinical settings, EEGSync-based features achieved an AUROC of 0.9600 and 89.45% maximum classification accuracy in eyes-open versus eyes-closed state discrimination. For Alzheimer's disease versus healthy control classification, the highest AUROC reached 0.9272 in eyes-closed recordings, with further discrimination under eyes-open photostimulation. These findings suggest temporal alignment captures discriminative information complementing conventional spectral and statistical EEG features.",
       "authors": [
-        "Nada Elmeligy",
-        "Nidhi Pashine",
-        "J. M. Schwarz"
+        "Anand A. Joshi",
+        "Satwik Bathula",
+        "Richard M. Leahy"
       ],
-      "published_date": "2026-11-17",
-      "indexed_date": "2026-11-17",
+      "published_date": "2026-11-18",
+      "indexed_date": "2026-11-18",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2611.22070v1",
+      "url": "https://arxiv.org/abs/2611.24017v1",
       "categories": [
-        "physics.bio-ph",
-        "cond-mat.dis-nn",
-        "cond-mat.soft",
-        "nlin.AO",
-        "q-bio.NC"
+        "eess.SP"
       ],
       "keywords": [],
       "publication_types": [
