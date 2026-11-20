@@ -1,12 +1,148 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-11-20T02:30:16.618381+00:00",
+  "fetched_at": "2026-11-20T20:38:52.373317+00:00",
   "window": {
-    "start": "2026-11-18",
-    "end": "2026-11-20"
+    "start": "2026-11-19",
+    "end": "2026-11-21"
   },
-  "count": 5,
+  "count": 6,
   "papers": [
+    {
+      "source": "arxiv",
+      "source_id": "2611.26258v1",
+      "title": "Temporal Contrastive Alignment of EEG and Naturalistic Video Only Beats Linear Decoding On In-Sample Stimuli",
+      "abstract": "Neural tracking, the temporal alignment between a continuous stimulus and the elicited brain response, enables decoding of attention from electroencephalography (EEG), yet its application to naturalistic video remains largely unexplored and mainly relies on linear canonical correlation analysis (CCA). We investigate whether a temporal contrastive model, pairing pretrained VideoMAE features with a lightweight EEG encoder trained on a correlation-based InfoNCE objective, can strengthen EEG-video alignment. Benchmarked against CCA under three generalization regimes, the model outperforms CCA across subjects (leave-one-subject-out), matches it within the stimulus manifold (leave-video-segment-out), and falls behind CCA when extrapolating to entirely novel videos (leave-one-video-out). Because this advantage appears only for seen stimuli, we probe its basis: a sham control shows that a high accuracy does not certify genuine alignment, as a synthesized correspondence fit to the seen stimuli can reproduce it without genuine temporal alignment in the training pairs. This does not preclude practical use: on a downstream attention-decoding task with seen stimuli, the model remains better than CCA since the decoding only requires a strong statistical coupling, regardless of whether that coupling is physiologically meaningful. Using a group-averaged EEG reference, we further show that genuine, generalizable coupling is nonetheless learned, only buried in the noise of single-subject EEG. These results indicate that progress hinges on data scale, diversity, and single-subject denoising.",
+      "authors": [
+        "Yuanyuan Yao",
+        "Simon Geirnaert",
+        "Alexander Bertrand"
+      ],
+      "published_date": "2026-11-19",
+      "indexed_date": "2026-11-19",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.26258v1",
+      "categories": [
+        "eess.SP",
+        "q-bio.NC"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.26142v1",
+      "title": "Transition Dynamics Matter: Hidden Markov Scoring of Epileptogenic Channels in SEEG",
+      "abstract": "Stereo-electroencephalography (SEEG) represents the most effective technique for the detection of the Epileptogenic Zone (EZ) in drug-resistant epilepsy. This procedure produces a multi-dimensional signal with hundreds of components, named channels, each associated with a different brain location. In this work, we propose a joint Hidden Markov Model (HMM), in which each SEEG channel is described by a latent Markov chain, with states shared across the network and channel-specific transition probabilities. Accordingly, we develop a detection algorithm that identifies the channels belonging to the EZ by quantifying, through the Kullback-Leibler divergence, the difference between their transition probabilities in the inter-ictal period and at seizure onset. We evaluate our framework in SEEG recordings from 30 patients with drug-resistant epilepsy and compare it with a benchmark that operates in the same observation space but does not consider a latent-state structure. Compared against medically validated EZ definitions, our study shows that modeling channel-specific temporal transitions can improve EZ localization and offer a data-driven framework to investigate the latent dynamics underlying seizures.",
+      "authors": [
+        "Giulia Tacconi",
+        "Federico Mason",
+        "Lorenzo Ferri",
+        "Elena Pasini",
+        "Lidia Di Vito",
+        "Matteo Martinoni",
+        "Lara Alvisi",
+        "Anna Scarabello",
+        "Luca Zanuttini",
+        "Francesca Bisulli",
+        "Andrea Zanella"
+      ],
+      "published_date": "2026-11-19",
+      "indexed_date": "2026-11-19",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.26142v1",
+      "categories": [
+        "eess.SP",
+        "physics.med-ph"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.26137v1",
+      "title": "Reading Across Space, Time and Frequencies: Tensor Decomposition of SEEG Signals to Support Epileptogenic Zone Definition",
+      "abstract": "Stereo-electroencephalography (SEEG) is an invasive technique used in the presurgical evaluation of drug-resistant epilepsy to support the localization of the Epileptogenic Zone (EZ). SEEG data are particularly complex to analyze, as they include hundreds of components, named channels, each associated with a different brain site, with interactions varying in both time and frequency. In this study, we propose a new framework for SEEG analysis, based on the Canonical Polyadic (CP) decomposition, to extract the latent modes underlying seizure generation. We model SEEG signals as a third-order tensor (channel x time x frequency), and factorize the tensor into rank-1 factors. We then exploit the channel-specific factor as an unsupervised feature set for identifying the EZ. The framework is validated on SEEG-recorded seizures from 35 patients with drug-resistant epilepsy. The results show that the joint combination of multiple frequency bands significantly enhances classification performance.",
+      "authors": [
+        "Federico Mason",
+        "Matteo Neri",
+        "Maria Fratello",
+        "Julia Makhalova",
+        "Fabrice Bartolomei",
+        "Giovanni Petri",
+        "Christian G. Benar"
+      ],
+      "published_date": "2026-11-19",
+      "indexed_date": "2026-11-19",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.26137v1",
+      "categories": [
+        "eess.SP"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.26104v1",
+      "title": "How Network Topology and Data Heterogeneity Shape Decentralized Learning: A Spectral Analysis",
+      "abstract": "Network topology influences decentralized federated learning through information mixing and the relative contribution of individual nodes. While existing analyses primarily focus on spectral mixing properties, they often assume doubly stochastic aggregation, overlooking topology-dependent influence under irregular communication networks. We develop a spectral framework that separates two complementary mechanisms: the dominant eigenmode determines the consensus trajectory and node influence, while non-dominant eigenmodes govern the propagation and attenuation of disagreement. Under uniform neighborhood averaging, we show that the stationary influence is proportional to node degree plus one and derive a bound relating model disagreement to spectral mixing and gradient heterogeneity. We then investigate how these mechanisms interact with the data distribution across nodes. Experiments across regular and heterogeneous network topologies reveal nearly identical learning dynamics under IID data, while network size and connectivity affect how unevenly distributed information is learned under non-IID data. For non-IID settings, we characterize how the distribution of data across nodes shapes the relative contribution of local information to consensus dynamics.",
+      "authors": [
+        "Luigi Palmieri",
+        "Lorenzo Valerio",
+        "Chiara Boldrini",
+        "Andrea Passarella",
+        "Marco Conti",
+        "János Kertész"
+      ],
+      "published_date": "2026-11-19",
+      "indexed_date": "2026-11-19",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.26104v1",
+      "categories": [
+        "cs.LG",
+        "cs.SI"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.25765v1",
+      "title": "Disentangling Monitor Hardware Artifacts and Smoothing Lag for Shift-Robust Intraoperative EEG and Hemodynamic Risk Calibration",
+      "abstract": "Commercial intraoperative electroencephalography (EEG) and blood pressure monitors introduce cyclic impedance pulses, smoothing delays, direct-current (DC) drift, and cuff holds that confound risk forecasting and uncertainty calibration. We developed a causal signal-conditioning and shift-robust conformal calibration framework across 5,439 public anesthesia procedures. Streaming filters blank 10.13-min 64-Hz impedance checks, apply unclipped post-notch conditioning, separate 63-s suppression-ratio lag, and distinguish three-channel cuff inflations from dropouts across propofol-remifentanil total intravenous anesthesia (TIVA; N = 3,214), volatile anesthesia (N = 2,046), European endoscopy sedation (N = 171), and DC-coupled surgery (N = 8). De-impedanced cortical tree ensembles were compared against deep sequence models, paired with patient-cluster Subgroup-Covariate-Weighted Conformal Risk Control (CRC) and lag-buffered online Conformal Proportional-Integral-Derivative (PID) tracking. Pre-filter blanking removed 97.90% and 97.60% of false flatline conflicts while preserving 99.23% and 98.96% of deep suppression. On unseen TIVA surgeries (N = 525), cortical features achieved area under the precision-recall curve (AUPRC) 0.3135 (1.94% prevalence) and 0.1627 (0.82% lag-free prevalence), with no detectable difference from deep encoders (p >= 0.36) and no cortical gain for hypotension (0.3432 vs. 0.3437, p = 0.784). Zero-retraining volatile transfer (N = 1,048) showed no detectable difference from an end-tidal gas oracle on lag-free suppression (0.0820 vs. 0.0736, p = 0.472). Subgroup-Covariate-Weighted CRC bounded all 70 TIVA shift cells at <= 4.38% (alpha = 5.0%) in 66.32 ms per 30-s epoch. Causal artifact disentangling and shift-aware conformal calibration support reliable real-time intraoperative risk bounds within explicit physiological observability limits.",
+      "authors": [
+        "Zeyu Jia"
+      ],
+      "published_date": "2026-11-19",
+      "indexed_date": "2026-11-19",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.25765v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
     {
       "source": "arxiv",
       "source_id": "2611.25315v1",
@@ -24,112 +160,6 @@
         "cs.HC",
         "cs.LG",
         "q-bio.NC"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.25139v1",
-      "title": "Persistence of Multifractal Dynamics at the Mammalian Neuromuscular Junction Across Extracellular Calcium Conditions",
-      "abstract": "The neuromuscular junction represents a relevant experimental model for revealing important biophysical mechanisms underlying synaptic transmission. In this work, we revisited the time-series analysis of electrophysiological recordings obtained from mammalian diaphragm neuromuscular junctions. We applied multifractal detrended fluctuation analysis (MFDFA) to assess whether intervals between spontaneous potentials exhibit multifractal behavior at physiological extracellular calcium concentrations and at hypocalcemic and hypercalcemic levels. Surprisingly, we observed a robust, stable multifractal profile across all electrophysiological recordings, regardless of calcium concentration. Therefore, our results provide support for a rich and complex scenario governing neurotransmitter release. Based on these findings, we discuss their biophysical significance and physiological implications.",
-      "authors": [
-        "Adriano J. da Silva",
-        "Sergio Floquet",
-        "Ricardo F. Lima"
-      ],
-      "published_date": "2026-11-18",
-      "indexed_date": "2026-11-18",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.25139v1",
-      "categories": [
-        "q-bio.NC"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.24436v1",
-      "title": "From real to synthetic: PSG-GAN learns sleep apnea signal dynamics for AI training",
-      "abstract": "Synthetic polysomnography (PSG) data has great potential in healthcare applications, for example in substituting real data that is sensitive and challenging to collect. Previous research on synthetic PSG data has been largely focused on short segments of individual signals, overlooking the inter-signal dynamics related to sleep disorders. In this study, we developed a generative adversarial network (PSG-GAN) for co-synthesizing longer segments of multiple PSG signals with diverse and complex characteristics typical of obstructive sleep apnea (OSA). The synthetic signals appeared realistic, and the electroencephalography and electrooculography band powers were similarly distributed across sleep stages. Moreover, the PSG-GAN learned to mirror signal interactions such as changes in photoplethysmography-based heart rate during and after breathing obstructions. An automatic scoring model trained solely with automatically scored synthetic signals reached good performance on sleep staging (\\k{appa}=0.71 and 0.63) and respiratory event segmentation (\\k{appa}=0.57 and 0.60), on two test sets consisting of healthy volunteers and OSA patients, respectively. This demonstrates the potential of synthetic data in supporting algorithm development for sleep diagnostics. The source code is available at https://github.com/rikuhuttunen/psg-gan.",
-      "authors": [
-        "Riku Huttunen",
-        "Samu Kainulainen",
-        "Matias Rusanen",
-        "Sami Myllymaa",
-        "Juha Töyräs",
-        "Timo Leppänen",
-        "Henri Korkalainen"
-      ],
-      "published_date": "2026-11-18",
-      "indexed_date": "2026-11-18",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.24436v1",
-      "categories": [
-        "cs.AI",
-        "cs.LG",
-        "physics.med-ph"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.24206v1",
-      "title": "GALA: Gallery-Level Alignment for Real-Life Vision Decoding from EEG",
-      "abstract": "Neural decoding of visual experience from electroencephalography (EEG) has achieved strong performance in intra-subject settings, but current methods fail to generalize across individuals: on the standard 200-way benchmark THINGS-EEG-2, top-1 accuracy drops from above 80% within subjects to about 32% for an unseen subject. Adapting a pre-trained encoder to new subjects and sessions typically requires labeled data, a bottleneck whose collection time severely limits practical device deployment. In a practical Brain-Computer Interface (BCI), however, the possible outcomes are known in advance and form a gallery of candidates, and the unlabeled EEG of the user accumulates as soon as the device is used. We propose a new setting, incremental transductive calibration, in which the decoder is calibrated regularly on all the unlabeled EEG received so far and on the known gallery, without any labels. This setting is closer to the conditions of a deployed BCI than the zero-shot and batch evaluations in current use. We evaluate it with a protocol in which queries arrive one at a time, with unknown and possibly unequal frequencies, and each query is decoded before it is used for calibration. In this setting, we introduce GALA : GAllery-Level Alignment, a label-free calibration method which registers the unlabeled EEG embeddings onto the gallery through shrinkage whitening, hubness correction and a Sinkhorn--Procrustes alignment with query frequencies estimated from the buffer, updated after every query. On THINGS-EEG-2, with a gallery of 200 images, it raises the top-1 accuracy on a new subject from 28% to 67% over 53 minutes of use. Across 60 evaluation settings that vary the gallery size, the query frequencies and the number of repetitions averaged per query, GALA is the most accurate label-free method in every setting, 6.6 points above the best competing method on average at the end of the stream.",
-      "authors": [
-        "Philippe Forest",
-        "Giulia Lioi",
-        "Mai Pham Quyen",
-        "Alix Lamouroux",
-        "Javen Shi",
-        "Adrien Merlini"
-      ],
-      "published_date": "2026-11-18",
-      "indexed_date": "2026-11-18",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.24206v1",
-      "categories": [
-        "cs.AI",
-        "cs.LG"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.24017v1",
-      "title": "EEGSync: Unitary Temporal Alignment Method for Naturalistic and Resting-State EEG",
-      "abstract": "Electroencephalography (EEG) studies increasingly use naturalistic and resting-state paradigms that lack discrete event timing. These recordings contain structured oscillatory activity but often lack repeated stimulus onsets to define a shared time clock across trials or participants. We introduce EEGSync, a complex-valued unitary Procrustes temporal alignment method for band-limited analytic EEG signals. EEGSync represents each subject as a matrix of complex oscillatory trajectories and solves a unitary Procrustes problem, mapping a target subject into the temporal coordinate system of a reference or group template. The method is computationally tractable through an economy-SVD factorization that avoids constructing the full temporal operator. This alignment strictly preserves original pairwise relationships and power across EEG channels. The unitary transformation aligns latent temporal structure rather than estimating a physical clock offset. Consequently, nonlinear instantaneous measures like phase-locking value, amplitude-envelope correlation, and phase-amplitude coupling are not guaranteed to be invariant. This framing makes EEGSync highly suitable for naturalistic shared-stimulus data, and potentially useful for resting-state data as a covariance-preserving latent manifold alignment. Evaluated via subject-independent cross-validation across physiological and clinical settings, EEGSync-based features achieved an AUROC of 0.9600 and 89.45% maximum classification accuracy in eyes-open versus eyes-closed state discrimination. For Alzheimer's disease versus healthy control classification, the highest AUROC reached 0.9272 in eyes-closed recordings, with further discrimination under eyes-open photostimulation. These findings suggest temporal alignment captures discriminative information complementing conventional spectral and statistical EEG features.",
-      "authors": [
-        "Anand A. Joshi",
-        "Satwik Bathula",
-        "Richard M. Leahy"
-      ],
-      "published_date": "2026-11-18",
-      "indexed_date": "2026-11-18",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.24017v1",
-      "categories": [
-        "eess.SP"
       ],
       "keywords": [],
       "publication_types": [
