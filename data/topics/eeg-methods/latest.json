@@ -1,6 +1,6 @@
 {
   "date": "2026-11-20",
-  "generated_at": "2026-11-19T20:53:39.185146+00:00",
+  "generated_at": "2026-11-20T02:30:22.847342+00:00",
   "window": {
     "start": "2026-11-18",
     "end": "2026-11-20"
@@ -10,18 +10,18 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 89,
+  "raw_count": 98,
   "retrieved_source_counts": {
-    "pubmed": 221,
-    "biorxiv": 15,
+    "pubmed": 242,
+    "biorxiv": 18,
     "medrxiv": 4,
-    "arxiv": 3
+    "arxiv": 5
   },
   "raw_source_counts": {
-    "pubmed": 72,
-    "biorxiv": 13,
-    "medrxiv": 1,
-    "arxiv": 3
+    "pubmed": 78,
+    "arxiv": 4,
+    "biorxiv": 15,
+    "medrxiv": 1
   },
   "prefiltered_count": 40,
   "analyzed_count": 40,
@@ -30,8 +30,8 @@
   "featured_count": 25,
   "source_counts": {
     "biorxiv": 8,
-    "pubmed": 29,
-    "arxiv": 3
+    "arxiv": 4,
+    "pubmed": 28
   },
   "errors": {},
   "ai": {
@@ -41,8 +41,8 @@
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
     "ranked_count": 40,
-    "newly_ranked": 21,
-    "newly_summarized": 21,
+    "newly_ranked": 4,
+    "newly_summarized": 4,
     "digest_count": 40,
     "digest_min": 40,
     "digest_max": 40,
@@ -53,12 +53,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 7,
-      "prompt_tokens": 20194,
-      "prompt_cache_hit_tokens": 1920,
-      "prompt_cache_miss_tokens": 18274,
-      "completion_tokens": 4595,
-      "total_tokens": 24789
+      "requests": 2,
+      "prompt_tokens": 3293,
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 2781,
+      "completion_tokens": 786,
+      "total_tokens": 4079
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -67,27 +67,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.027502,
+    "run_cost_cny": 0.004363,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 7,
-        "prompt_tokens": 20194,
-        "prompt_cache_hit_tokens": 1920,
-        "prompt_cache_miss_tokens": 18274,
-        "completion_tokens": 4595,
-        "total_tokens": 24789
+        "requests": 2,
+        "prompt_tokens": 3293,
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 2781,
+        "completion_tokens": 786,
+        "total_tokens": 4079
       },
-      "run_cost_cny": 0.027502,
+      "run_cost_cny": 0.004363,
       "daily_usage": {
-        "requests": 7,
-        "prompt_tokens": 20194,
-        "prompt_cache_hit_tokens": 1920,
-        "prompt_cache_miss_tokens": 18274,
-        "completion_tokens": 4595,
-        "total_tokens": 24789
+        "requests": 9,
+        "prompt_tokens": 23487,
+        "prompt_cache_hit_tokens": 2432,
+        "prompt_cache_miss_tokens": 21055,
+        "completion_tokens": 5381,
+        "total_tokens": 28868
       },
-      "daily_cost_cny": 0.027502,
+      "daily_cost_cny": 0.031865,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -188,6 +188,47 @@
       }
     },
     {
+      "source": "arxiv",
+      "source_id": "2611.25315v1",
+      "title": "When Should Deployed BCI Decoders Adapt? A Resource-Priced Ladder for Frozen EEG Trunks",
+      "abstract": "When should a deployed MI decoder spend adaptation resources-not only how to adapt under shift? We study a thin control layer outside a frozen encoder: a resource ladder (factory -> Bayesian head -> affine map, with full fine-tune as an escape hatch) governed by regime-aware gating under a utility that prices accuracy, fit time, and label cost. The head is Bayesian in the conjugate sense: a Normal-Inverse-Wishart prior over the class conditional Gaussians in embedding space, updated in closed form (no gradients) as labelled trials arrive. Full estimators, constants, and the reanalysis code are in the companion paper and the ancillary bundle of this submission. Thesis: adaptation should be gated and capped, not always-on and not blindly fine-tuned. Evidence: (i) utility-max gating over-adapts on clean data that already carries session drift; a clean-referenced gate restores low false-entry rates (e.g. dropping the adaptation rate from 0.56 to 0.11 on field-like sessions, with the cascade staying on the factory decoder for ~87% of clean cells). (ii) Under severe synthetic stress, a lightweight LDA head matches or exceeds the frozen trunk's accuracy across five encoder architectures (n=155 subject x trunk cells, pooled across shared subjects), at ~23x lower fit time than full warm-start fine-tuning. Always-on baselines favor capping the default below full fine-tune. (iii) In two no-perturbation BNCI session checks the factory model transferred without intervention (no reliable head gain), so the control layer's value under natural drift is cost-efficiency and clean-safety rather than demonstrated accuracy gains. (iv) Adaptation severity does not follow a universal ordinal ladder across datasets, highlighting the need for dynamic gating over fixed adaptation policies.",
+      "authors": [
+        "Sergey Musienko"
+      ],
+      "published_date": "2026-11-19",
+      "indexed_date": "2026-11-19",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.25315v1",
+      "categories": [
+        "cs.HC",
+        "cs.LG",
+        "q-bio.NC"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "prefilter_score": 47,
+        "ai": {
+          "score": 88,
+          "topic": "Gated decoders for EEG transfer learning",
+          "reason": "Resource-aware adaptation with closed-form Bayesian heads and gating directly supports lightweight, calibrated compute-efficient classifiers transferable to sleep/vigilance state decoding.",
+          "summary": "Proposes a resource-priced adaptation ladder (factory -> conjugate Bayesian head -> affine map, with fine-tuning as escape hatch) outside a frozen EEG encoder, gated by a utility pricing accuracy, fit time, and label cost. A clean-referenced gate cut adaptation rate from 0.56 to 0.11 on field-like sessions, and a lightweight LDA head matched or exceeded frozen-trunk accuracy across five encoders at ~23x lower fit time, though no reliable head gain appeared under natural drift in two BNCI checks.",
+          "keywords": [
+            "brain-computer interface",
+            "EEG decoder adaptation",
+            "frozen encoder",
+            "Bayesian head",
+            "regime-aware gating"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
       "source": "pubmed",
       "source_id": "43047464",
       "title": "LogicSleep: a neurosymbolic-guided framework for explainable and personalized sleep staging.",
@@ -228,6 +269,44 @@
             "differentiable logic rules",
             "polysomnography",
             "test-time adaptation"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43056265",
+      "title": "Adapting Tensor Kernel Machines to Enable Efficient Transfer Learning for Seizure Detection.",
+      "abstract": "Transfer learning aims to optimize performance in a target task by learning from a related source problem. In this work, we propose an efficient transfer learning method using a tensor kernel machine. Our method takes inspiration from the adaptive SVM and hence transfers 'knowledge' from the source to the 'adapted' model via regularization. The main advantage of using tensor kernel machines is that they leverage low-rank tensor networks to learn a compact non-linear model in the primal domain. This allows for a more efficient adaptation without adding more parameters to the model. To demonstrate the effectiveness of our approach, we apply the adaptive tensor kernel machine (Adapt-TKM) to seizure detection on behind-the-ear EEG. By personalizing patient-independent models with a small amount of patient-specific data, the patient-adapted model (which utilizes the Adapt-TKM), improves the detection performance for the majority of the patients and significantly outperforms the fully patient-specific model. Notably, it is able to do so while requiring around 100 times fewer parameters than the adaptive SVM model, leading to a correspondingly faster inference speed. This makes the Adapt-TKM especially useful for resource-constrained wearable devices.",
+      "authors": [
+        "S J S De Rooij",
+        "B Hunyadi"
+      ],
+      "published_date": "2026-Nov-19",
+      "indexed_date": "",
+      "journal": "IEEE transactions on neural systems and rehabilitation engineering : a publication of the IEEE Engineering in Medicine and Biology Society",
+      "doi": "10.1109/tnsre.2026.3755330",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43056265/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 45,
+        "ai": {
+          "score": 85,
+          "topic": "Tensor kernel transfer learning for EEG",
+          "reason": "Efficient few-shot personalization with low-rank tensor kernels and fast inference aligns strongly with small-label user calibration and CPU-friendly EEG classification needs.",
+          "summary": "Introduces Adapt-TKM, an adaptive tensor kernel machine that transfers knowledge from a source model via regularization while using low-rank tensor networks to avoid adding parameters. Applied to behind-the-ear EEG seizure detection, patient adaptation improved detection for most patients and significantly outperformed a fully patient-specific model with ~100x fewer parameters than adaptive SVM and faster inference.",
+          "keywords": [
+            "transfer learning",
+            "tensor kernel machine",
+            "seizure detection",
+            "behind-the-ear EEG",
+            "low-rank tensor networks"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
@@ -712,57 +791,6 @@
     },
     {
       "source": "pubmed",
-      "source_id": "43048114",
-      "title": "Aberrant Interregional Brain Connectivity During Different Memory Processes in a Mouse Model of Alzheimer's Disease.",
-      "abstract": "Reduced working memory is a hallmark of Alzheimer's disease (AD). Analyzing local field potentials (LFPs) across neural networks provides crucial insights into the mechanisms underlying these cognitive deficits. Standard LFP studies often rely on spontaneous exploration, while we designed a novel Y-maze paradigm with aversive voltage feedback. This paradigm enable precise time-locked temporal subdivision of trials (first choice vs. second choice, correct vs. incorrect decisionst) to compare memory-related electrophysiology between AD and normal mice. Our analysis reveals four key findings: (1) LFP exhibit task-specific lateralization, suggesting the right hemisphere is prominently engaged during this specific spatial navigation context; (2) correct behavioral outcomes correlate with pre-decision neural states, highlighting distinct network encoding mechanisms compared to error processing; (3) causal connectivity suggests a disrupted functional balance between the cingulate gyrus and hippocampus in AD mice, it may reflect early network compensation; (4) AD mice display widespread oscillatory and directional connectivity disruptions during memory process, which strongly correlate with spatial memory failures. These findings characterize AD memory impairment as a dynamic network disconnectivity syndrome and highlight cingulate gyrus-hippocampal interactions as potential biomarkers to improve memory dysfunction in AD.",
-      "authors": [
-        "Linyan Wu",
-        "Sinan Li",
-        "Liuming Liang",
-        "Shuai Yin",
-        "Ping Zhou",
-        "Zhiyuan Lu",
-        "Baoqiang Li",
-        "Peipei Wang",
-        "Shaoping Lv"
-      ],
-      "published_date": "2026",
-      "indexed_date": "2026-11-18",
-      "journal": "Neuroscience insights",
-      "doi": "10.1177/26331055261496260",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43048114/",
-      "categories": [],
-      "keywords": [
-        "alzheimer",
-        "cingulate gyrus",
-        "granger causal connection",
-        "hippocampus",
-        "memory"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 33,
-        "ai": {
-          "score": 66,
-          "topic": "Mouse LFP connectivity in Alzheimer's model",
-          "reason": "Animal LFP oscillatory and directed-connectivity analysis is relevant as animal neural time-series methodology, though disease-focused rather than a general transferable tool.",
-          "summary": "Using a novel Y-maze paradigm with aversive feedback and local field potential recordings, the study compared memory-related electrophysiology between Alzheimer's model and normal mice, finding widespread oscillatory and directional connectivity disruptions during memory processes that correlated with spatial memory failures. Causal connectivity analyses indicated a disrupted functional balance between cingulate gyrus and hippocampus in AD mice, proposed as early network compensation.",
-          "keywords": [
-            "Alzheimer's disease",
-            "local field potentials",
-            "cingulate gyrus-hippocampus connectivity",
-            "Granger causality",
-            "Y-maze spatial memory"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
       "source_id": "43051069",
       "title": "Hybrid framework utilizing interval Type-2 fuzzy entropy and ScaleDual-CNN for differential diagnosis of dementia using rest-state EEG signals.",
       "abstract": "Differential diagnosis of Alzheimer's disease (AD) and frontotemporal dementia (FTD) is challenging because of their similarity in early stages. Electroencephalogram (EEG) signals offer a non-invasive, inexpensive tool for automated screening. However, traditional approaches cannot handle environmental noise and high inter-individual variance. In this study, interval type-2 fuzzy entropy (IT2-FE) was evaluated as a biomarker for diagnosing dementia under uncertainty. We utilized the public OpenNeuro ds004504 database (88 resting-state subjects). Signals were segmented into 4-s windows. Then we extracted IT2-FE in the alpha and theta bands, Hjorth and connectivity features. A dual evaluation framework was developed. First, we evaluated a subject-independent pipeline by combining fuzzy features, deep network, and SVM classifier. Second, we implemented an epoch-based model by combining the customized ScaleDual-CNN with fuzzy/spectral features and the XGBoost classifier. Compared to spectral entropy, the IT2-FE method identified approximately 11.7 times more statistically significant features (35 versus 3; pFDR < 0.05). These findings indicate statistically significant differences between the groups. For entropy-based classification, IT2-FE achieved 67.64% accuracy and 61.72% macro-F1, compared with 62.50% and 60.55% for spectral entropy, and 62.50% and 60.01% for Type-1 fuzzy entropy, respectively. These results suggest that IT2-FE captures discriminative EEG characteristics, although its classification performance advantage over other entropy measures remains limited. Subject-independent AUC for control, AD, and FTD were 0.96, 0.93, and 0.89, respectively. Epoch-level accuracy and F1 scores reached 95.29% and 94.85%. Ablation analysis demonstrated that combining deep embeddings with IT2-FE features improved classification performance. The proposed framework holds promise for computer-aided dementia diagnosis.",
@@ -1101,6 +1129,53 @@
     },
     {
       "source": "pubmed",
+      "source_id": "43056261",
+      "title": "Cross-Attention Estimation of Asynchronous EEG Functional Networks for Affective Disorder Characterization.",
+      "abstract": "Existing EEG functional network methods have provided important insights into affective disorders, but the direction, timing, and modulation of inter-regional influences are not fully characterized within a unified representation. To address this limitation, we propose an attention-based framework for interpretable modeling of asynchronous functional brain networks (aFBNs) from a causal-discovery perspective. Its Cross-Attention Causal Discovery (CACD) module jointly estimates directed influence strength, transmission delay, and modulation sign from multivariate EEG. CACD integrates a dual-branch decoder for separating intra- and inter-channel dynamics, a learnable cross-attention mask for connection selection, and an Attention-Gradient Consistency (AGC) mechanism for improving attribution consistency and delay localization. Experiments on nine causal discovery benchmark datasets demonstrate the effectiveness of CACD in recovering causal structures and estimating transmission delays. On three clinical EEG datasets, the framework achieves competitive subject-independent classification performance and reveals neurophysiologically plausible asynchronous connectivity patterns. Delay and modulation information provide additional discriminative value beyond directed influence strength. Together, these findings support aFBNs as an interpretable representation for characterizing affective-disorder-related neural dynamics.",
+      "authors": [
+        "Dixin Wang",
+        "Shanshan Qu",
+        "Na Chu",
+        "Cancheng Li",
+        "Jingyu Liu",
+        "Gang Luo",
+        "Haoyun Zhao",
+        "Xiaohua Wan",
+        "Lixian Zhu",
+        "Jingxin Liu",
+        "Bin Hu"
+      ],
+      "published_date": "2026-Nov-19",
+      "indexed_date": "",
+      "journal": "IEEE transactions on bio-medical engineering",
+      "doi": "10.1109/tbme.2026.3755301",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43056261/",
+      "categories": [],
+      "keywords": [],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 60,
+        "ai": {
+          "score": 50,
+          "topic": "EEG functional network modeling",
+          "reason": "Causal functional network discovery for affective disorders; methodologically interesting but less directly transferable to sleep staging or lightweight analysis.",
+          "summary": "Proposes an attention-based causal-discovery framework (CACD) for interpretable asynchronous EEG functional networks that jointly estimates directed influence strength, transmission delay, and modulation sign using a dual-branch decoder, learnable cross-attention mask, and attention-gradient consistency. CACD recovered causal structures and delays on nine benchmarks and achieved competitive subject-independent affective-disorder classification on three clinical EEG datasets, with delay and modulation adding discriminative value beyond directed influence.",
+          "keywords": [
+            "asynchronous functional brain networks",
+            "cross-attention causal discovery",
+            "EEG connectivity",
+            "affective disorders",
+            "transmission delay"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
       "source_id": "43050754",
       "title": "Preferential responses to spectrally degraded sentences in the human cortex revealed by intracranial electrophysiology.",
       "abstract": "Despite progress in cochlear implant (CI) technology, there is considerable variability in outcomes, in part attributed to the function of central auditory pathways. Spectrally degraded sounds presented to normal-hearing listeners can be used to approximate cortical sound processing by CI users. Prior intracranial electroencephalography (iEEG) work identified \"clear-preferred\" and less common \"vocoded-preferred\" differential responses to clear and noise-vocoded non-word speech tokens. Better identification of vocoded consonants was associated with activation of the cortical dorsal auditory stream. The present study further characterized these differential responses using sentence stimuli that are expected to engage the ventral processing stream. Participants were neurosurgical epilepsy patients undergoing iEEG monitoring. Sentences were degraded using a 3-band noise vocoder. Analysis of iEEG data focused on event-related band power (ERBP) between 4-150 Hz. Differential responses (ERBP augmentation or suppression) to clear and vocoded sentences were observed both in early and late portions of the sentence, suggesting a sustained, rather than transient, nature of the preferential responses. Clear-preferred responses are likely driven by spectral complexity and intelligibility. Vocoded-preferred responses may reflect increased processing demands associated with challenging listening conditions. These responses occurred primarily in core auditory cortex and regions along the dorsal auditory stream but were virtually absent in prefrontal cortex. Identifying regions involved in the processing of degraded speech has potential clinical utility and may present candidate targets for neuromodulation-based CI rehabilitation strategies.",
@@ -1193,53 +1268,6 @@
             "adolescents"
           ],
           "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
-      "source": "pubmed",
-      "source_id": "43047327",
-      "title": "Prolong Life with Nine Turn-Method versus CBT-I for Sleep-Onset Chronic Insomnia: A Randomized Controlled Trial Protocol Integrating fMRI and PSG.",
-      "abstract": "Sleep-onset chronic insomnia is one of the most common sleep disorders in clinical practice and carries a substantial multidimensional burden, including somatic symptoms, emotional distress, and impaired quality of life. Although Prolong Life with Nine Turn-Method has long been used to promote sleep, its specific efficacy for this subtype lacks adequate empirical support. To assess the long-term efficacy and safety of PLWNT in sleep-onset chronic insomnia and to investigate, via multimodal techniques, its modulatory effects on cerebral cortical networks. This prospective, single-center, parallel-group randomized controlled trial will enroll 128 patients with ICSD-3-diagnosed sleep-onset chronic insomnia, randomized 1:1 to a 12-week PLWNT or CBT-I intervention in a superiority design. The primary endpoint is the baseline-to-week-12 change in PSQI total score. Secondary measures include validated scales (ISI, PSAS, HADS, PSS, HAS, MEQ, MFI-20, GSRS, SF-36), sleep diary, actigraphy, blood biomarkers, gut microbiota, PSG, and resting-state fMRI. Exploratory mechanistic endpoints include (1) EEG-derived spectral power and wPLI within the DMN, SN, and CEN during wakefulness, sleep-onset latency, and sleep stages (N1-N3, REM), and (2) resting-state fMRI connectivity of the same networks. Clinical assessments occur at baseline (week 0), week 6, week 12 (end of intervention), and weeks 16, 20, 24, and 36 after randomization (7 time points); laboratory and imaging measures are obtained at baseline and week 12 only. Primary analysis will use generalized estimating equations on LOCF-imputed data, with multiple imputation as a sensitivity analysis. This randomized controlled trial directly compares PLWNT with CBT-I for sleep-onset chronic insomnia, integrating clinical outcome measures with neuroimaging-based mechanistic insights. The findings could position PLWNT as a non-drug therapeutic option backed by objective imaging data.",
-      "authors": [
-        "Juntao Chen",
-        "Jiahe Cui",
-        "Haotian Han",
-        "Fangfang Xie",
-        "Fei Yao"
-      ],
-      "published_date": "2026",
-      "indexed_date": "2026-11-18",
-      "journal": "Neuropsychiatric disease and treatment",
-      "doi": "10.2147/ndt.s658196",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43047327/",
-      "categories": [],
-      "keywords": [
-        "cognitive behavioral therapy for insomnia",
-        "cortical networks",
-        "prolong life with nine turn-method",
-        "randomized controlled trial",
-        "sleep-onset chronic insomnia"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "extra": {
-        "prefilter_score": 33,
-        "ai": {
-          "score": 48,
-          "topic": "Insomnia RCT protocol (PSG/fMRI/EEG)",
-          "reason": "Sleep-related clinical trial protocol with PSG and EEG spectral/wPLI endpoints touches sleep research but offers no computational or methodological contribution.",
-          "summary": "Describes a randomized controlled trial protocol comparing 12-week Prolong Life with Nine Turn-Method versus CBT-I in 128 patients with sleep-onset chronic insomnia, with PSQI change as the primary endpoint. Integrates PSG, resting-state fMRI, EEG network measures, actigraphy, and biomarkers to assess long-term efficacy and cortical network modulation.",
-          "keywords": [
-            "sleep-onset chronic insomnia",
-            "Prolong Life with Nine Turn-Method",
-            "CBT-I",
-            "resting-state fMRI",
-            "randomized controlled trial protocol"
-          ],
-          "paper_type": "Protocol",
           "digest_pick": true
         }
       }
@@ -1687,55 +1715,6 @@
       }
     },
     {
-      "source": "biorxiv",
-      "source_id": "10.64898/2026.11.17.767357",
-      "title": "Dissociable patterns of neurophysiological alterations during guided search in schizophrenia and autism: Evidence from fixation-related potentials, alpha modulation, and functional MRI.",
-      "abstract": "Schizophrenia (SZ) and autism spectrum disorder (ASD) are associated with convergent differences in social perception relative to non-autistic, non-schizophrenia controls (NC), but divergent patterns of alterations in early visual activity. Here, we used multimodal imaging during the Guided Visual Search task to investigate the differential patterns of early visual alteration across SZ and ASD including superior colliculus (SC) and pulvinar nucleus. In Experiment 1, simultaneous eye tracking and EEG were obtained from 91 individuals (35 NC, 20 ASD, 36 SZ). Fixation-related potential (FRP) was time-locked to fixation onset. In Experiment 2, fMRI during Guided Search was obtained from a partly overlapping sample of 71 individuals (27 NC, 25 ASD, 19 SZ). In behavioral analyses, SZ was associated with significantly prolonged search time (d=.74, p=.003), which was attributable primarily to reduced mean saccade amplitude, whereas ASD was associated with a small advantage (d=.35), which was not statistically significant. In EEG analyses, SZ was associated with reduced amplitude of the FRP P1 (lambda) response (d=1.15, p<.0001) relative to NC that remained significant following control for saccade size (p<.0001), but with normal task-related modulation of background alpha activity. In contrast, ASD was associated with normal FRP amplitude and larger alpha suppression (d=.83, p=.007) that was attributable to increased alpha levels during pre-task fixation (at matched pre-onset alpha levels, d=.14, p=.66). Within SZ, P1 correlated with the MCCB composite (r=.56, p=.001). Within ASD, ADOS-2 Communication correlated with P1 (r=.51, p=.024) and with the broadband change from pre-onset to search (r=-.51, p=.030). In fMRI, SZ was associated with correlated activation reductions in the Visual1 (Sidak p<.001) and Visual2 (Sidak p=.022) networks and SC (Sidak p=.019), whereas activation was unaffected in the Dorsal Attention and Frontoparietal networks, Frontal Eye Fields and pulvinar. In ASD, activation was increased in pulvinar (Sidak p[&le;].038), but unaffected elsewhere. Cortical activation patterns associated with SC activation resembled those associated with P1 generation across groups. Overall, the findings support bottom-up disturbances of visual processing in schizophrenia. In autism, pre-onset alpha was higher and task-related suppression was larger.",
-      "authors": [
-        "Gonzalez-Moreira, E.",
-        "Martinez, A.",
-        "Aburto-Ponce, M. B.",
-        "Greisberg, M.",
-        "Beggel, O.",
-        "Tobe, R. H.",
-        "Franco, A. R.",
-        "Dias, E.",
-        "Javitt, D. C."
-      ],
-      "published_date": "2026-11-19",
-      "indexed_date": "2026-11-19",
-      "journal": "biorxiv",
-      "doi": "10.64898/2026.11.17.767357",
-      "url": "https://doi.org/10.64898/2026.11.17.767357",
-      "categories": [
-        "neuroscience"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {
-        "version": "1",
-        "published": "NA",
-        "prefilter_score": 33,
-        "ai": {
-          "score": 22,
-          "topic": "Clinical fixation-related potentials in schizophrenia/autism",
-          "reason": "Multimodal clinical study of fixation-related potentials and fMRI in psychiatric populations; not about sleep/vigilance staging, lightweight algorithms, normalization, or translational neural time-series methods useful for animal sleep experiments.",
-          "summary": "Using eye tracking with EEG (n=91) and fMRI (n=71) during a Guided Visual Search task, this study found dissociable visual alterations: schizophrenia showed prolonged search time, reduced fixation-related P1 amplitude, and reduced Visual1/Visual2 and superior colliculus activation, whereas autism showed larger alpha suppression attributable to higher pre-onset alpha and increased pulvinar activation.",
-          "keywords": [
-            "fixation-related potentials",
-            "alpha suppression",
-            "superior colliculus",
-            "pulvinar",
-            "guided visual search"
-          ],
-          "paper_type": "Research Article",
-          "digest_pick": true
-        }
-      }
-    },
-    {
       "source": "pubmed",
       "source_id": "43054751",
       "title": "Predictors of Anesthetic Augmentation in Electroconvulsive Therapy: A Retrospective Cohort Study.",
@@ -2025,51 +2004,54 @@
       }
     },
     {
-      "source": "pubmed",
-      "source_id": "43048394",
-      "title": "Atrial Fibrillation and Subclinical Thyroid Dysfunction: Revisiting an Underrecognized Association - A Narrative Review.",
-      "abstract": "Subclinical thyroid disease, defined by abnormal thyroid-stimulating hormone (TSH) with normal thyroid hormone levels, is common and may be an underrecognized contributor to atrial fibrillation (AF). This narrative review summarizes current evidence on how mild thyroid dysfunction influences AF risk and highlights practical implications for clinical management, drawing on mechanistic studies, observational epidemiology, and major guideline recommendations addressing subclinical hyperthyroidism, subclinical hypothyroidism, and cardiac rhythm outcomes. Subclinical hyperthyroidism shows a consistent association with increased AF risk. Proposed mechanisms include thyroid hormone-mediated changes in cardiac electrophysiology, increased adrenergic sensitivity, and atrial structural and electrical remodeling. Current American Thyroid Association and European Thyroid Association guidance supports treating higher-risk patients, particularly those older than 65 years or with cardiovascular comorbidities, when TSH is below 0.1 mIU/L. In contrast, evidence linking subclinical hypothyroidism to AF is weak. Although it has traditionally been associated with bradyarrhythmias, newer studies suggest a possible modest increase in AF risk. Treatment decisions for subclinical hypothyroidism are more nuanced, with the strongest consensus favoring therapy when TSH exceeds 10.0 mIU/L, while lower-level elevations generally require individualized assessment. Overall, subclinical thyroid dysfunction, especially subclinical hyperthyroidism, appears meaningfully related to AF risk, but important evidence gaps remain, including limited large-scale trial data showing that treatment prevents AF. Because subclinical thyroid disease and AF both increase with age, management should be individualized according to age, TSH severity, cardiovascular risk, and comorbidities.",
+      "source": "biorxiv",
+      "source_id": "10.64898/2026.04.10.715308",
+      "title": "WITHDRAWN: Identifying Phelan-McDermid-Like Electrophysiological Subtypes in Autism Using EEG and Machine Learning",
+      "abstract": "The authors have withdrawn this manuscript until a re-evaluation of the clinical data is completed. Therefore, the authors do not wish this work to be cited as reference for the project. If you have any questions, please contact the corresponding author.",
       "authors": [
-        "Sachin Sapkota",
-        "Suchita Acharya",
-        "Kritick Bhandari",
-        "Aakriti Parajuli",
-        "Abinash Baniya",
-        "Jyothsna Goranti",
-        "Mehran Abolbashari",
-        "Barney Soskin"
+        "Kohli, S.",
+        "Schaffer, E. S.",
+        "Savino, J.",
+        "Thinakaran, A.",
+        "Cai, S.",
+        "Halpern, D.",
+        "Zweifach, J.",
+        "Sancimino, C.",
+        "Siper, P. M.",
+        "Buxbaum, J. D.",
+        "Foss-Feig, J.",
+        "Kolevzon, A.",
+        "Beker, S."
       ],
-      "published_date": "2026",
-      "indexed_date": "2026-11-18",
-      "journal": "Clinical Medicine Insights. Cardiology",
-      "doi": "10.1177/11795468261500860",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/43048394/",
-      "categories": [],
-      "keywords": [
-        "Atrial fibrillation",
-        "Subclinical Hyperthyroidism",
-        "Subclinical hypothyroidism",
-        "review"
+      "published_date": "2026-11-19",
+      "indexed_date": "2026-11-19",
+      "journal": "biorxiv",
+      "doi": "10.64898/2026.04.10.715308",
+      "url": "https://doi.org/10.64898/2026.04.10.715308",
+      "categories": [
+        "neuroscience"
       ],
+      "keywords": [],
       "publication_types": [
-        "Journal Article",
-        "Review"
+        "Preprint"
       ],
       "extra": {
-        "prefilter_score": 29,
+        "version": "2",
+        "published": "NA",
+        "prefilter_score": 57,
         "ai": {
           "score": 5,
-          "topic": "Clinical cardiology review (AF/thyroid)",
-          "reason": "Keyword collision on 'electrophysiology'; a clinical cardiology narrative review entirely outside the researcher's neural-signal domain.",
-          "summary": "This narrative review synthesizes mechanistic, epidemiological, and guideline evidence on subclinical thyroid dysfunction and atrial fibrillation, reporting a consistent association between subclinical hyperthyroidism and increased AF risk via electrophysiologic, adrenergic, and atrial remodeling mechanisms, whereas evidence for subclinical hypothyroidism is weak. It outlines TSH-based treatment thresholds and calls for individualized management given limited trial data on AF prevention.",
+          "topic": "Withdrawn autism EEG study",
+          "reason": "Paper is withdrawn and cannot be used; no methodological content available.",
+          "summary": "This manuscript was withdrawn by the authors pending re-evaluation of the clinical data, and they request it not be cited; no findings are reported in the available abstract.",
           "keywords": [
-            "atrial fibrillation",
-            "subclinical hyperthyroidism",
-            "subclinical hypothyroidism",
-            "thyroid-stimulating hormone",
-            "atrial remodeling"
+            "withdrawn manuscript",
+            "Phelan-McDermid syndrome",
+            "autism",
+            "EEG",
+            "machine learning"
           ],
-          "paper_type": "Review",
+          "paper_type": "Other",
           "digest_pick": true
         }
       }
