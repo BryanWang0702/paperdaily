@@ -1,6 +1,6 @@
 {
   "date": "2026-11-23",
-  "generated_at": "2026-11-22T19:54:31.818504+00:00",
+  "generated_at": "2026-11-23T01:54:02.416503+00:00",
   "window": {
     "start": "2026-11-21",
     "end": "2026-11-23"
@@ -10,23 +10,25 @@
     "label": "EEG & Signal Methods",
     "description": "EEG signal processing, sleep staging, neural time series, modeling, and practical analysis methods."
   },
-  "raw_count": 22,
+  "raw_count": 24,
   "retrieved_source_counts": {
-    "pubmed": 83,
-    "biorxiv": 0,
-    "medrxiv": 0,
+    "pubmed": 85,
+    "biorxiv": 1,
+    "medrxiv": 1,
     "arxiv": 0
   },
   "raw_source_counts": {
-    "pubmed": 22
+    "pubmed": 23,
+    "biorxiv": 1
   },
-  "prefiltered_count": 22,
-  "analyzed_count": 22,
+  "prefiltered_count": 24,
+  "analyzed_count": 24,
   "configured_max_analyzed": 40,
-  "count": 22,
-  "featured_count": 22,
+  "count": 24,
+  "featured_count": 24,
   "source_counts": {
-    "pubmed": 22
+    "pubmed": 23,
+    "biorxiv": 1
   },
   "errors": {},
   "ai": {
@@ -35,12 +37,12 @@
     "provider": "deepseek",
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
-    "ranked_count": 22,
-    "newly_ranked": 18,
-    "newly_summarized": 18,
-    "digest_count": 22,
-    "digest_min": 22,
-    "digest_max": 22,
+    "ranked_count": 24,
+    "newly_ranked": 2,
+    "newly_summarized": 2,
+    "digest_count": 24,
+    "digest_min": 24,
+    "digest_max": 24,
     "digest_score_threshold": 0,
     "rank_prompt_version": "paperdaily-ranking-v1-2026-08",
     "summary_prompt_version": "paperdaily-summary-v3-2026-08",
@@ -48,12 +50,12 @@
     "status": "active",
     "profile_hash": "499752acfd365ca78e2d",
     "usage": {
-      "requests": 5,
-      "prompt_tokens": 16383,
-      "prompt_cache_hit_tokens": 1280,
-      "prompt_cache_miss_tokens": 15103,
-      "completion_tokens": 3128,
-      "total_tokens": 19511
+      "requests": 2,
+      "prompt_tokens": 2497,
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 1985,
+      "completion_tokens": 494,
+      "total_tokens": 2991
     },
     "pricing_cny_per_million": {
       "currency": "CNY",
@@ -62,27 +64,27 @@
       "input_cache_miss": 1.0,
       "output": 2.0
     },
-    "run_cost_cny": 0.021385,
+    "run_cost_cny": 0.002983,
     "billing": {
       "currency": "CNY",
       "run_usage": {
-        "requests": 5,
-        "prompt_tokens": 16383,
-        "prompt_cache_hit_tokens": 1280,
-        "prompt_cache_miss_tokens": 15103,
-        "completion_tokens": 3128,
-        "total_tokens": 19511
+        "requests": 2,
+        "prompt_tokens": 2497,
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 1985,
+        "completion_tokens": 494,
+        "total_tokens": 2991
       },
-      "run_cost_cny": 0.021385,
+      "run_cost_cny": 0.002983,
       "daily_usage": {
-        "requests": 5,
-        "prompt_tokens": 16383,
-        "prompt_cache_hit_tokens": 1280,
-        "prompt_cache_miss_tokens": 15103,
-        "completion_tokens": 3128,
-        "total_tokens": 19511
+        "requests": 7,
+        "prompt_tokens": 18880,
+        "prompt_cache_hit_tokens": 1792,
+        "prompt_cache_miss_tokens": 17088,
+        "completion_tokens": 3622,
+        "total_tokens": 22502
       },
-      "daily_cost_cny": 0.021385,
+      "daily_cost_cny": 0.024368,
       "pricing_cny_per_million": {
         "currency": "CNY",
         "unit_tokens": 1000000,
@@ -92,7 +94,7 @@
       }
     },
     "configured_max_analyzed": 40,
-    "analyzed_count": 22
+    "analyzed_count": 24
   },
   "papers": [
     {
@@ -174,6 +176,50 @@
             "cerebral palsy",
             "Bi-LSTM",
             "transfer learning"
+          ],
+          "paper_type": "Methods/Resource",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "biorxiv",
+      "source_id": "10.64898/2025.12.20.695571",
+      "title": "Bayesian nonparametric identification of spectrally distinct neural states",
+      "abstract": "Identifying neural oscillations is essential for linking fast brain dynamics to underlying cognitive processes. However, this is challenging because oscillatory events can be brief, embedded in 1/f-like background activity, and may comprise an unknown number of spectrally distinct states. Conventional approaches often apply narrowband band-pass filters to one or a few predefined frequency bands and then use amplitude thresholding to identify oscillatory events, but detection outcomes can be highly sensitive to these choices. Although recent unsupervised alternatives based on hidden Markov models (HMMs) address these limitations, they still require the number of states to be specified in advance and can underfit or overfit when this number is misspecified. We propose a Bayesian nonparametric method that identifies distinct oscillatory states while inferring an appropriate number of states directly from the data. This method combines time-delay embedding (TDE) with the Dirichlet-process Gaussian mixture model (DP-GMM). TDE augments the signal with time-shifted copies, enabling the DP-GMM to capture frequency-specific local autocovariance structures, while the Dirichlet-process prior adapts model complexity by pruning inactive components. We benchmarked the approach against a filter-based thresholding method and the time-delay embedded HMM using single-channel synthetic data designed to mimic neural time series (e.g., EEG, MEG, and local field potentials), with multiple frequency components masked by 1/f-like noise. In this setting, the proposed model reliably recovered multiple distinct frequency components under noisy conditions while also inferring the number of oscillatory states. Applied to a resting-state motor-cortex MEG dataset, the model identified multiple frequency-selective, short-lived oscillatory states alongside distinct aperiodic states with different spectral profiles. These states exhibited substantial inter-individual heterogeneity in peak frequency, occurrence rate, and power. Overall, this provides an unsupervised framework for discovering frequency-selective oscillatory states without predefining frequency bands or fixing the number of states.",
+      "authors": [
+        "Yamada, S.",
+        "Nagel, S. E.",
+        "Kobeleva, X.",
+        "Schmidt, R."
+      ],
+      "published_date": "2026-11-22",
+      "indexed_date": "2026-11-22",
+      "journal": "biorxiv",
+      "doi": "10.64898/2025.12.20.695571",
+      "url": "https://doi.org/10.64898/2025.12.20.695571",
+      "categories": [
+        "neuroscience"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {
+        "version": "4",
+        "published": "NA",
+        "prefilter_score": 38,
+        "ai": {
+          "score": 88,
+          "topic": "Bayesian nonparametric spectral state identification",
+          "reason": "Directly relevant unsupervised method for identifying spectrally distinct neural states with automatic model-order selection, transferable to EEG/sleep state analysis and interpretable feature extraction.",
+          "summary": "Proposes a Bayesian nonparametric method combining time-delay embedding with a Dirichlet-process Gaussian mixture model to identify spectrally distinct neural oscillatory states while inferring the number of states from data. Benchmarked on synthetic data and applied to resting-state MEG, the method reliably recovered multiple frequency components under 1/f-like noise and revealed multiple short-lived frequency-selective and aperiodic states with substantial inter-individual heterogeneity.",
+          "keywords": [
+            "Bayesian nonparametric",
+            "Dirichlet process Gaussian mixture model",
+            "time-delay embedding",
+            "neural oscillations",
+            "MEG"
           ],
           "paper_type": "Methods/Resource",
           "digest_pick": true
@@ -753,6 +799,59 @@
             "inhibitory control",
             "Flanker task",
             "N200"
+          ],
+          "paper_type": "Research Article",
+          "digest_pick": true
+        }
+      }
+    },
+    {
+      "source": "pubmed",
+      "source_id": "43068478",
+      "title": "An investigation into the cognitive influences on caloric-induced cortical alpha suppression and vestibular responsiveness.",
+      "abstract": "This study examined the relative contributions of cognitive tasking on cortical alpha suppression during the caloric test and assessed its relationship to peak slow‑phase velocity (pSPV). Electroencephalography (EEG) and electronystagmography (ENG) were performed across three experimental conditions: active (real) and sham caloric testing with and without tasking. Suppression of the alpha rhythm (8-13 Hz) was defined as a global reduction in amplitude relative to baseline. The degree of nystagmus was derived from the pSPV measured during the caloric response. EEG and ENG recordings were obtained from 20 healthy adults with no otologic or neurologic history (mean age = 25.1 ± 3.1 years). Tasking (mental arithmetic) resulted in the largest global reduction in cortical alpha suppression, reflecting changes in both periodic and aperiodic components, when compared to no-tasking conditions (p < 0.001), and a group-level increase in pSPV (p = 0.033). Individual changes in periodic alpha features and the aperiodic exponent were not associated with changes in pSPV (p > 0.05). Caloric-induced cortical alpha suppression was mainly influenced by cognitive state rather than peripheral vestibular drive alone. While the effect of tasking on pSPV is well known, the absence of an association between task-related EEG changes in periodic/aperiodic activity and pSPV suggests that cortical activity and vestibulo-ocular reflex output may be influenced by independent mechanisms.",
+      "authors": [
+        "Daniel J Romero",
+        "Catie Chang",
+        "Claire Mitchell",
+        "Katherine Grapowski",
+        "Elle Soderquist",
+        "Danielle Clay",
+        "Tricia Stanley",
+        "Jana Al Jurdi",
+        "Yayun Du",
+        "Jim Bodfish",
+        "Richard A Roberts"
+      ],
+      "published_date": "2026-Nov-22",
+      "indexed_date": "",
+      "journal": "International journal of audiology",
+      "doi": "10.1080/14992027.2026.2746949",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43068478/",
+      "categories": [],
+      "keywords": [
+        "Alpha suppression",
+        "caloric stimulation",
+        "electroencephalography (EEG)",
+        "event-related change (ERC)",
+        "vestibular system"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "extra": {
+        "prefilter_score": 35,
+        "ai": {
+          "score": 35,
+          "topic": "Vestibular caloric alpha suppression study",
+          "reason": "Clinical vestibular/EEG application with limited methodological novelty; not aligned with computational, transferable, or animal sleep analysis needs.",
+          "summary": "Examined how cognitive tasking (mental arithmetic) influences caloric-induced cortical alpha suppression and its relationship to peak slow-phase velocity (pSPV) using EEG and electronystagmography in 20 healthy adults. Tasking produced the largest global reduction in cortical alpha suppression (p < 0.001) and increased pSPV (p = 0.033), but individual changes in periodic alpha features and the aperiodic exponent were not associated with pSPV changes (p > 0.05), suggesting independent mechanisms for cortical activity and vestibulo-ocular reflex output.",
+          "keywords": [
+            "caloric stimulation",
+            "cortical alpha suppression",
+            "EEG",
+            "peak slow-phase velocity",
+            "vestibulo-ocular reflex"
           ],
           "paper_type": "Research Article",
           "digest_pick": true
