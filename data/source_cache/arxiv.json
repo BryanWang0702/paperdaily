@@ -1,10 +1,149 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-11-24T00:12:16.676479+00:00",
+  "fetched_at": "2026-11-24T22:40:36.690535+00:00",
   "window": {
-    "start": "2026-11-22",
-    "end": "2026-11-24"
+    "start": "2026-11-23",
+    "end": "2026-11-25"
   },
-  "count": 0,
-  "papers": []
+  "count": 5,
+  "papers": [
+    {
+      "source": "arxiv",
+      "source_id": "2611.31194v1",
+      "title": "Learning Neurovascular Codes for EEG-to-fMRI Synthesis",
+      "abstract": "In this paper, we introduce Neurovascular Codes as shared EEG representations for fMRI generation. We first train a separate EEG encoder to predict each fMRI signal, learning target-specific temporal and spectral features from the same EEG window. After training, we freeze the encoders and project their concatenated hidden features into a shared neurovascular code. Conditioned on this code, stochastic interpolant transforms Gaussian noise into a vector of fMRI signals, allowing different responses to be sampled for the same EEG window. We evaluate our approach on eight public simultaneous EEG-fMRI datasets, including four resting-state and four task-based datasets with 61,646 volume-level pairs. Under within-subject and held-out-subject evaluation, our model improves average Pearson correlation over the strongest encoder baselines by 19.1% and 19.8%, respectively. The corresponding improvements over the strongest generator baselines are 18.8% and 47.9%. Beyond reconstruction accuracy, we also evaluate the generated signals using subject-identification classifiers trained on real fMRI. Our method achieves the highest mean accuracy among the evaluated generators. We hope that our work opens up new opportunities for cross-modal brain modeling.",
+      "authors": [
+        "Yiming Sun",
+        "Yifan Wang",
+        "Aosong Feng",
+        "Yijia Ma",
+        "Ben Cheng",
+        "Xurui Wang",
+        "Yufan He",
+        "Yucheng Tang",
+        "Qing Lyu",
+        "Daguang Xu",
+        "Pei-Fen Kuan",
+        "Mingzhou Ding",
+        "Wen Li",
+        "Chenyu You"
+      ],
+      "published_date": "2026-11-23",
+      "indexed_date": "2026-11-23",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.31194v1",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.31171v1",
+      "title": "EEG Decoding in Context: A Framework for Tuning-Free EEG Foundation Models",
+      "abstract": "Electroencephalography (EEG) decoding is a central route toward brain-computer interfaces for communication, rehabilitation, cognitive assessment, and neurological monitoring. Recent EEG foundation models have substantially advanced reusable signal representations, but their downstream use still typically requires a task-specific decoder, gradient-based adaptation, and validation-driven model selection. We investigate a complementary foundation-model paradigm based on in-context learning: labeled EEG recordings define the decoding task as context, and new recordings are predicted without updating model parameters. We first pair raw EEG features with a pretrained general-purpose in-context predictor. This direct formulation provides a promising starting point, but its performance remains limited and unstable and does not generalize reliably across EEG paradigms. We find that suitable context construction can address these limitations by improving the effective signal-to-noise ratio and exposing temporal and spatial structure. Building on this insight, we introduce a general framework that combines EEG-specific context construction with a frozen in-context predictor and a metric-based context adaptation mechanism, which matches each downstream task to an appropriate context representation without relying on validation data. Across ten datasets spanning seven EEG decoding paradigms, our method achieves the highest mean BAcc among eleven specialized and fine-tuned EEG baselines, without task-specific parameter updates or validation-based model selection. This framework provides a practical path toward tuning-free EEG foundation models in which adaptation is expressed through context rather than parameter updates.",
+      "authors": [
+        "Hao-Run Cai",
+        "Si-Yang Liu",
+        "Han-Jia Ye",
+        "Hairong Zheng"
+      ],
+      "published_date": "2026-11-23",
+      "indexed_date": "2026-11-23",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.31171v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.30939v1",
+      "title": "Beyond Patching: Consistent Circuit Discovery via Gradient Spectral Analysis",
+      "abstract": "Mechanistic interpretability seeks to reverse-engineer neural networks by identifying small, faithful subgraphs--circuits--that implement specific behaviors. The dominant paradigm scores each unit by replacing its clean activation with a corrupted counterpart as causal intervention. While effective, this approach rests on a brittle prerequisite: the structure prompt pairs are task-specific, expensive to engineer, and silently couple the discovered circuit to prompt-design choices. In this work, we propose Spectral Circuit Analysis (SCA), a gradient-spectral pipeline that achieves consistent circuit discovery along both axes: stable across input formulations of the same task, and natively exposing structure shared across tasks. Our contributions are threefold. First, we provide a counterfactual-free reframing of circuit discovery: causally relevant directions are recoverable from the spectral structure of forward gradients across paraphrases, with leading directions concentrating task signal and trailing ones absorbing paraphrase noise, yielding circuits tied to the task rather than the prompt. Second, we introduce SCA, a block-wise SVD pipeline that extracts a task subspace per architectural block and redistributes spectral energy onto constituent units via a consistency-weighted share, producing per-unit rankings competitive with attribution-patching baselines under strictly less supervision. Finally, on twelve circuit-discovery tasks in GPT-2 Small and Pythia-160M, SCA performs comparably or exceeds EAP-family methods under the standard recovery-score protocol and recovers IOI canonical heads with Precision@K = 1.0 in top-10 slices on GPT-2 Small; the same machinery extends to a unified cross-task analysis classifying units as universal, family-shared, or task-specific and exposing compositional structure invisible to per-task analyses.",
+      "authors": [
+        "Yujie Zhang",
+        "Tianyi Zhao",
+        "Guanghui Min",
+        "Chen Chen"
+      ],
+      "published_date": "2026-11-23",
+      "indexed_date": "2026-11-23",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.30939v1",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.30817v1",
+      "title": "NeuroMotion: Aligning EEG to Discrete Motion Primitives for Continuous Motion Decoding",
+      "abstract": "EEG-to-motion decoding remains challenging because noisy scalp EEG is difficult to map directly to continuous kinematics. We present NeuroMotion, a framework that aligns EEG representations to discrete motion primitives for continuous motion decoding across heterogeneous paradigms, including full-body free movement, lower-limb treadmill locomotion, and upper-limb freewill reaching and grasping. A VQ-based motion prior discretizes continuous motion into reusable primitives that serve as both alignment prototypes and intermediate prediction targets. Prototypical and supervised contrastive objectives align EEG embeddings to motion-derived prototypes and organize them according to primitive assignments. An E2M Transformer predicts motion-code sequences from the learned EEG representations, while a final geometric refinement stage improves continuous trajectory reconstruction through motion-level training. Under a last-session test protocol, NeuroMotion achieves the best mean reconstruction performance among the compared EEG decoding baselines across all three datasets, with the clearest gains on full-body motion in both reconstruction accuracy and distribution-level quality. Multi-subject ablations further support the contributions of EEG-to-primitive alignment, token prediction, and refinement. Code is available at https://github.com/Liuyi2351433/NeuroAction.",
+      "authors": [
+        "Yi Liu",
+        "Qi Zhang",
+        "HaoLin Li",
+        "Lai Zhong Yuan",
+        "Lei Zhu",
+        "Heng Tao Shen"
+      ],
+      "published_date": "2026-11-23",
+      "indexed_date": "2026-11-23",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.30817v1",
+      "categories": [
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.30081v1",
+      "title": "The Growth Path Is the Missing Half of Neural Networks",
+      "abstract": "An artificial neuron computes and learns, but it does not live: the units of a network are fixed when it is designed, and every one of them is kept and paid for whether it is used or not. We give each neuron a second pathway. Beside its Task Path, the usual computation and gradient learning, a dual-pathway neuron has a Growth Path: a nutrient flows from the outputs back through the network, every layer receives the same fixed budget, and each unit is fed in proportion to how much the units above it use it. A well-fed unit divides and a starving unit dies. This allocation is not a separate analysis or pruning step: it runs throughout training and reads only activations and weights. The task is still learned from labels with the ordinary loss, and the training procedure gains no phase, no schedule and no target size. Because the budget is conserved, the competition is zero-sum and a single number sets the size of the network. Switched on in a pretrained network that is deployed on a narrower domain, the Growth Path shrinks the network while it keeps learning. With Adam the network ends 1.0 to 1.2 points more accurate on the domain than the same network trained ordinarily, at 24% to 60% of its compute, and at 12% of the compute it is still ahead; a random choice of the same number of units gives no gain. Letting starving pretrained units sleep instead of die keeps 1.2 to 4.6 points more of the rarely used content. Over 800 changing tasks a network with the Growth Path holds its accuracy while ordinary networks decline. With plain SGD the gains are smaller: at deployment the method trades compute against rarely used content, and on one of the two continual-learning streams it only ties networks of equal size. The experiments are small (three-layer perceptrons on MNIST-like data); what they show is that a conserved, loss-free second pathway can decide by itself which units a network needs.",
+      "authors": [
+        "Tingan Jin",
+        "Haosong Li"
+      ],
+      "published_date": "2026-11-23",
+      "indexed_date": "2026-11-23",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.30081v1",
+      "categories": [
+        "cs.LG",
+        "cs.NE"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    }
+  ]
 }
