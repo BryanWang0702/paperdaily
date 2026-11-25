@@ -1,41 +1,34 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-11-24T22:40:36.690535+00:00",
+  "fetched_at": "2026-11-25T21:54:57.656090+00:00",
   "window": {
-    "start": "2026-11-23",
-    "end": "2026-11-25"
+    "start": "2026-11-24",
+    "end": "2026-11-26"
   },
-  "count": 5,
+  "count": 6,
   "papers": [
     {
       "source": "arxiv",
-      "source_id": "2611.31194v1",
-      "title": "Learning Neurovascular Codes for EEG-to-fMRI Synthesis",
-      "abstract": "In this paper, we introduce Neurovascular Codes as shared EEG representations for fMRI generation. We first train a separate EEG encoder to predict each fMRI signal, learning target-specific temporal and spectral features from the same EEG window. After training, we freeze the encoders and project their concatenated hidden features into a shared neurovascular code. Conditioned on this code, stochastic interpolant transforms Gaussian noise into a vector of fMRI signals, allowing different responses to be sampled for the same EEG window. We evaluate our approach on eight public simultaneous EEG-fMRI datasets, including four resting-state and four task-based datasets with 61,646 volume-level pairs. Under within-subject and held-out-subject evaluation, our model improves average Pearson correlation over the strongest encoder baselines by 19.1% and 19.8%, respectively. The corresponding improvements over the strongest generator baselines are 18.8% and 47.9%. Beyond reconstruction accuracy, we also evaluate the generated signals using subject-identification classifiers trained on real fMRI. Our method achieves the highest mean accuracy among the evaluated generators. We hope that our work opens up new opportunities for cross-modal brain modeling.",
+      "source_id": "2611.32825v1",
+      "title": "EEG-World: Context-Conditioned Dynamics of the Watching Brain",
+      "abstract": "Brain encoding models predict neural responses from audiovisual input, but typically overlook how ongoing brain activity shapes an individual's response. We introduce EEG-World, a recurrent world model that forecasts 10 seconds of EEG band-power dynamics from 6 seconds of preceding EEG and the subsequent audiovisual stimulus. Pretrained on continuous EEG, EEG-World learns shared neural dynamics and adapts to unseen individuals through lightweight subject-specific readouts. Using 2,584 hours of EEG from 78 participants, we show that nonlinear recurrent forecasting surpasses strong history-aware linear baselines at scale. EEG-World achieves a forecasting correlation of 0.261 versus 0.233 for the strongest history-and-video linear model, with a 3.3-second forecasting-horizon advantage. Its learned dynamics transfer to unseen participants, outperforming the linear baseline in 23 of 24 individuals after calibration. While ongoing EEG history accounts for most predictive performance, controlled stimulus analyses reveal an additional video-dependent component. This component also enables evaluation of visual representations, with V-JEPA 2 improving clip-locked prediction by 35% over combined CLIP and DINOv2 features. Our results demonstrate the value of transferable neural dynamics for individual EEG forecasting and highlight the importance of separating state-driven from stimulus-driven predictability.",
       "authors": [
-        "Yiming Sun",
-        "Yifan Wang",
-        "Aosong Feng",
-        "Yijia Ma",
-        "Ben Cheng",
-        "Xurui Wang",
-        "Yufan He",
-        "Yucheng Tang",
-        "Qing Lyu",
-        "Daguang Xu",
-        "Pei-Fen Kuan",
-        "Mingzhou Ding",
-        "Wen Li",
-        "Chenyu You"
+        "Junxiang Zhang",
+        "Jiayu Zuo",
+        "Wenhao Ye",
+        "Junfeng Xia",
+        "Xiang Chen",
+        "Mo Wang",
+        "Quanying Liu"
       ],
-      "published_date": "2026-11-23",
-      "indexed_date": "2026-11-23",
+      "published_date": "2026-11-24",
+      "indexed_date": "2026-11-24",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2611.31194v1",
+      "url": "https://arxiv.org/abs/2611.32825v1",
       "categories": [
-        "cs.LG",
-        "cs.AI"
+        "cs.CV",
+        "q-bio.NC"
       ],
       "keywords": [],
       "publication_types": [
@@ -45,20 +38,107 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2611.31171v1",
-      "title": "EEG Decoding in Context: A Framework for Tuning-Free EEG Foundation Models",
-      "abstract": "Electroencephalography (EEG) decoding is a central route toward brain-computer interfaces for communication, rehabilitation, cognitive assessment, and neurological monitoring. Recent EEG foundation models have substantially advanced reusable signal representations, but their downstream use still typically requires a task-specific decoder, gradient-based adaptation, and validation-driven model selection. We investigate a complementary foundation-model paradigm based on in-context learning: labeled EEG recordings define the decoding task as context, and new recordings are predicted without updating model parameters. We first pair raw EEG features with a pretrained general-purpose in-context predictor. This direct formulation provides a promising starting point, but its performance remains limited and unstable and does not generalize reliably across EEG paradigms. We find that suitable context construction can address these limitations by improving the effective signal-to-noise ratio and exposing temporal and spatial structure. Building on this insight, we introduce a general framework that combines EEG-specific context construction with a frozen in-context predictor and a metric-based context adaptation mechanism, which matches each downstream task to an appropriate context representation without relying on validation data. Across ten datasets spanning seven EEG decoding paradigms, our method achieves the highest mean BAcc among eleven specialized and fine-tuned EEG baselines, without task-specific parameter updates or validation-based model selection. This framework provides a practical path toward tuning-free EEG foundation models in which adaptation is expressed through context rather than parameter updates.",
+      "source_id": "2611.32802v1",
+      "title": "Sample-Efficient In-Context Adaptation via Sleep",
+      "abstract": "The ability to learn and generalize from limited experience, or sample efficiency, is a cornerstone of intelligence. How can we build language models that turn a few user interactions, a few snippets of unfamiliar code, or a handful of experimental results provided in context into knowledge that generalizes? Prior work has found that sleep, a process where the model performs $N$ recurrent forward passes to refine its representations of a chunk of context, can improve long-context reasoning (specifically, within SSM-attention hybrid models). We study whether this method also improves in-context adaptation on general, non-synthetic tasks for transformer language models. To this end, we pre-train language models up to 1.2B-parameters on up to 100B tokens with sleep mechanisms. Notably, longer sleep (i.e., using a larger number of recurrent forward passes $N$) enables the model to learn faster in-context on multiple few-shot algorithmic, question-answering tasks, while also achieving lower next-token prediction loss on out-of-distribution evaluations. On held-out code, models with $N=2$ and $N=4$ match the no-sleep baseline's loss using $2.10\\times$ and $2.39\\times$ fewer tokens in-context, respectively. More broadly, we view our work as a step toward building models that have better tradeoffs between in-context adaptation and decoding latency.",
       "authors": [
-        "Hao-Run Cai",
-        "Si-Yang Liu",
-        "Han-Jia Ye",
-        "Hairong Zheng"
+        "Sangyun Lee",
+        "Zhang Enyan",
+        "Michael Xu",
+        "Hao Tang",
+        "Zinan Lin",
+        "Weijia Xu",
+        "Chris Quirk",
+        "Jianfeng Gao",
+        "Giulia Fanti",
+        "Xiaodong Liu"
       ],
-      "published_date": "2026-11-23",
-      "indexed_date": "2026-11-23",
+      "published_date": "2026-11-24",
+      "indexed_date": "2026-11-24",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2611.31171v1",
+      "url": "https://arxiv.org/abs/2611.32802v1",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.32792v1",
+      "title": "Accuracy of Noise Ceiling Estimators for Brain Scores",
+      "abstract": "The internal activations of modern machine learning models align surprisingly well with the activities recorded in real brains. In the last five years, the alignment between encoding models and brain activities, often called brain scores, has steadily increased. Because brain recordings are noisy, there exists an upper bound to the brain scores that any model can achieve. This bound, called the noise ceiling, is crucial for two reasons: it determines whether further improvements in model performance are possible, and it enables meaningful comparisons of brain scores across benchmarks. The field has developed multiple approaches to estimate noise ceilings, but the statistical properties of existing estimators remain poorly understood, leaving it unclear in which experimental settings they provide reliable estimates. Here, we introduce a unified mathematical framework for brain recordings, use it to derive closed-form expressions for four commonly used noise ceiling estimators, and provide theoretical predictions for the behavior of each estimator. We validate the theoretical predictions with simulations that we compare to noise ceiling estimates in existing fMRI and EEG datasets. We find that the existing methods underestimate the true noise ceiling in different settings. We conclude with recommendations for best practice in different situations.",
+      "authors": [
+        "Aude Maier",
+        "Lucas Gruaz",
+        "Martin Schrimpf",
+        "Johanni Brea"
+      ],
+      "published_date": "2026-11-24",
+      "indexed_date": "2026-11-24",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.32792v1",
+      "categories": [
+        "cs.AI",
+        "q-bio.NC",
+        "stat.ME"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.32100v1",
+      "title": "EEGJev: A System One Decision Model and Benchmark for Multi-Task EEG Question Answering",
+      "abstract": "A single electroencephalographic (EEG) recording can support multiple decoding tasks. Fixed-label tests cannot show how EEG foundation models handle changing questions or options. We introduce EEGJev, a fast decision model that scores candidate answers in one pass. Our benchmark, EEGJev-Bench, covers six question types across 19 public EEG sources. We held the recording and options fixed while switching between questions about attributes paired during training, such as facial expression and the hand participants were asked to use. Across 13 test sources, EEGJev selected a label for the requested attribute with 99.70% accuracy (49.20% under uniform choice). Balanced accuracy for the specific answer was 62.04%. Its 95th-percentile response time was shorter than NeuroLM's on matched validation questions answered individually. EEGJev lets users switch decoding targets by changing the question. With EEGJev-Bench, researchers can test whether new decoders follow the question more reliably, identify the correct answer more often, or both.",
+      "authors": [
+        "Dengzhe Hou",
+        "Kazunori D. Yamada"
+      ],
+      "published_date": "2026-11-24",
+      "indexed_date": "2026-11-24",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.32100v1",
+      "categories": [
+        "eess.SP",
+        "cs.LG"
+      ],
+      "keywords": [],
+      "publication_types": [
+        "Preprint"
+      ],
+      "extra": {}
+    },
+    {
+      "source": "arxiv",
+      "source_id": "2611.32019v1",
+      "title": "PFedHASNet: A Personalized Federated Hybrid Analog-Spike Network for Multi-Subject Motor Imagery EEG Decoding",
+      "abstract": "Motor imagery electroencephalography (MI-EEG) data are often collected and stored separately across subjects or institutions, and EEG acquisition and annotation remain costly. Training models solely on individual subject data limits the use of information from other subjects, whereas centralizing raw EEG recordings raises privacy and data governance concerns. Federated learning (FL) enables collaborative model training across distributed clients without sharing raw EEG data, providing a practical approach to leveraging information from multiple subjects. Accordingly, we propose PFedHASNet, a personalized federated hybrid analog-spike network for MI-EEG decoding. The shared encoder integrates continuous-valued temporal features, leaky integrate-and-fire (LIF) spike responses, and channel-wise log-variance statistics through learnable fusion weights. Client-private residual adapters and classifiers perform subject-specific feature refinement and personalized prediction, respectively. Experiments on held-out trials from participating subjects across four public MI-EEG datasets show that PFedHASNet achieves the highest mean client macro-F1 among 18 model configurations in cross-model comparisons, while maintaining competitive decoding performance with a compact client-side model in comparisons using the same backbone. Ablation studies further examine the contributions of hybrid representations and personalization components to decoding performance.",
+      "authors": [
+        "Peijia Li",
+        "Ruidong Ma",
+        "Xianghong Lin",
+        "Xiangwen Wang",
+        "Guoyong Shi",
+        "Shuai Huang",
+        "Hongqi Li"
+      ],
+      "published_date": "2026-11-24",
+      "indexed_date": "2026-11-24",
+      "journal": "arXiv",
+      "doi": "",
+      "url": "https://arxiv.org/abs/2611.32019v1",
       "categories": [
         "cs.LG"
       ],
@@ -70,74 +150,26 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2611.30939v1",
-      "title": "Beyond Patching: Consistent Circuit Discovery via Gradient Spectral Analysis",
-      "abstract": "Mechanistic interpretability seeks to reverse-engineer neural networks by identifying small, faithful subgraphs--circuits--that implement specific behaviors. The dominant paradigm scores each unit by replacing its clean activation with a corrupted counterpart as causal intervention. While effective, this approach rests on a brittle prerequisite: the structure prompt pairs are task-specific, expensive to engineer, and silently couple the discovered circuit to prompt-design choices. In this work, we propose Spectral Circuit Analysis (SCA), a gradient-spectral pipeline that achieves consistent circuit discovery along both axes: stable across input formulations of the same task, and natively exposing structure shared across tasks. Our contributions are threefold. First, we provide a counterfactual-free reframing of circuit discovery: causally relevant directions are recoverable from the spectral structure of forward gradients across paraphrases, with leading directions concentrating task signal and trailing ones absorbing paraphrase noise, yielding circuits tied to the task rather than the prompt. Second, we introduce SCA, a block-wise SVD pipeline that extracts a task subspace per architectural block and redistributes spectral energy onto constituent units via a consistency-weighted share, producing per-unit rankings competitive with attribution-patching baselines under strictly less supervision. Finally, on twelve circuit-discovery tasks in GPT-2 Small and Pythia-160M, SCA performs comparably or exceeds EAP-family methods under the standard recovery-score protocol and recovers IOI canonical heads with Precision@K = 1.0 in top-10 slices on GPT-2 Small; the same machinery extends to a unified cross-task analysis classifying units as universal, family-shared, or task-specific and exposing compositional structure invisible to per-task analyses.",
+      "source_id": "2611.31875v1",
+      "title": "EEG-Jev: A Unified Single-Pass Decision Model for EEG",
+      "abstract": "EEG analysis spans choosing alternatives, judging statements, and rating ordered attributes, requiring calibratable probabilities with explicit meaning. We present EEG-Jev, a unified single-pass decision model for EEG. Given an EEG window, a question and an answer specification, one forward pass returns a typed readout: CHOICE gives a candidate distribution, NOUL a proposition probability, and SCORE an ordered-level distribution and expectation. One checkpoint is trained jointly and evaluated once on held-out splits of 35 public sources. Core raw outputs reach 54.08% balanced accuracy on Stieger2021 motor imagery, 70.45% on Sleep-EDF-SC sleep staging, 72.11% per window at threshold 0.5 on CHB-MIT seizure detection with 0.825 AUROC, and 1.700 MAE on 0-10 ds005292 pain ratings. Prior correction and temperature scaling lower negative log-likelihood from 0.766 to 0.606 on Sleep-EDF-SC and 0.166 to 0.019 on CHB-MIT, while direct readout cuts batch-1 latency from 122.43 to 63.11 ms (1.94-fold) against a matched-backbone generative comparator. Interactive demonstration and aggregate results: https://neuroimglab.github.io/EEG-Jev/.",
       "authors": [
-        "Yujie Zhang",
-        "Tianyi Zhao",
-        "Guanghui Min",
-        "Chen Chen"
+        "Zhifei Zhu",
+        "Hongtao Zhang",
+        "Yu Ren",
+        "Wei Zhou",
+        "Zeping Xie",
+        "Yi He"
       ],
-      "published_date": "2026-11-23",
-      "indexed_date": "2026-11-23",
+      "published_date": "2026-11-24",
+      "indexed_date": "2026-11-24",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2611.30939v1",
+      "url": "https://arxiv.org/abs/2611.31875v1",
       "categories": [
         "cs.LG",
-        "cs.AI"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.30817v1",
-      "title": "NeuroMotion: Aligning EEG to Discrete Motion Primitives for Continuous Motion Decoding",
-      "abstract": "EEG-to-motion decoding remains challenging because noisy scalp EEG is difficult to map directly to continuous kinematics. We present NeuroMotion, a framework that aligns EEG representations to discrete motion primitives for continuous motion decoding across heterogeneous paradigms, including full-body free movement, lower-limb treadmill locomotion, and upper-limb freewill reaching and grasping. A VQ-based motion prior discretizes continuous motion into reusable primitives that serve as both alignment prototypes and intermediate prediction targets. Prototypical and supervised contrastive objectives align EEG embeddings to motion-derived prototypes and organize them according to primitive assignments. An E2M Transformer predicts motion-code sequences from the learned EEG representations, while a final geometric refinement stage improves continuous trajectory reconstruction through motion-level training. Under a last-session test protocol, NeuroMotion achieves the best mean reconstruction performance among the compared EEG decoding baselines across all three datasets, with the clearest gains on full-body motion in both reconstruction accuracy and distribution-level quality. Multi-subject ablations further support the contributions of EEG-to-primitive alignment, token prediction, and refinement. Code is available at https://github.com/Liuyi2351433/NeuroAction.",
-      "authors": [
-        "Yi Liu",
-        "Qi Zhang",
-        "HaoLin Li",
-        "Lai Zhong Yuan",
-        "Lei Zhu",
-        "Heng Tao Shen"
-      ],
-      "published_date": "2026-11-23",
-      "indexed_date": "2026-11-23",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.30817v1",
-      "categories": [
-        "cs.LG"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.30081v1",
-      "title": "The Growth Path Is the Missing Half of Neural Networks",
-      "abstract": "An artificial neuron computes and learns, but it does not live: the units of a network are fixed when it is designed, and every one of them is kept and paid for whether it is used or not. We give each neuron a second pathway. Beside its Task Path, the usual computation and gradient learning, a dual-pathway neuron has a Growth Path: a nutrient flows from the outputs back through the network, every layer receives the same fixed budget, and each unit is fed in proportion to how much the units above it use it. A well-fed unit divides and a starving unit dies. This allocation is not a separate analysis or pruning step: it runs throughout training and reads only activations and weights. The task is still learned from labels with the ordinary loss, and the training procedure gains no phase, no schedule and no target size. Because the budget is conserved, the competition is zero-sum and a single number sets the size of the network. Switched on in a pretrained network that is deployed on a narrower domain, the Growth Path shrinks the network while it keeps learning. With Adam the network ends 1.0 to 1.2 points more accurate on the domain than the same network trained ordinarily, at 24% to 60% of its compute, and at 12% of the compute it is still ahead; a random choice of the same number of units gives no gain. Letting starving pretrained units sleep instead of die keeps 1.2 to 4.6 points more of the rarely used content. Over 800 changing tasks a network with the Growth Path holds its accuracy while ordinary networks decline. With plain SGD the gains are smaller: at deployment the method trades compute against rarely used content, and on one of the two continual-learning streams it only ties networks of equal size. The experiments are small (three-layer perceptrons on MNIST-like data); what they show is that a conserved, loss-free second pathway can decide by itself which units a network needs.",
-      "authors": [
-        "Tingan Jin",
-        "Haosong Li"
-      ],
-      "published_date": "2026-11-23",
-      "indexed_date": "2026-11-23",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.30081v1",
-      "categories": [
-        "cs.LG",
-        "cs.NE"
+        "cs.AI",
+        "physics.bio-ph"
       ],
       "keywords": [],
       "publication_types": [
