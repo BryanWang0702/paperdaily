@@ -1,117 +1,28 @@
 {
   "source": "arxiv",
-  "fetched_at": "2026-11-25T21:54:57.656090+00:00",
+  "fetched_at": "2026-11-26T21:49:08.319658+00:00",
   "window": {
-    "start": "2026-11-24",
-    "end": "2026-11-26"
+    "start": "2026-11-25",
+    "end": "2026-11-27"
   },
-  "count": 6,
+  "count": 2,
   "papers": [
     {
       "source": "arxiv",
-      "source_id": "2611.32825v1",
-      "title": "EEG-World: Context-Conditioned Dynamics of the Watching Brain",
-      "abstract": "Brain encoding models predict neural responses from audiovisual input, but typically overlook how ongoing brain activity shapes an individual's response. We introduce EEG-World, a recurrent world model that forecasts 10 seconds of EEG band-power dynamics from 6 seconds of preceding EEG and the subsequent audiovisual stimulus. Pretrained on continuous EEG, EEG-World learns shared neural dynamics and adapts to unseen individuals through lightweight subject-specific readouts. Using 2,584 hours of EEG from 78 participants, we show that nonlinear recurrent forecasting surpasses strong history-aware linear baselines at scale. EEG-World achieves a forecasting correlation of 0.261 versus 0.233 for the strongest history-and-video linear model, with a 3.3-second forecasting-horizon advantage. Its learned dynamics transfer to unseen participants, outperforming the linear baseline in 23 of 24 individuals after calibration. While ongoing EEG history accounts for most predictive performance, controlled stimulus analyses reveal an additional video-dependent component. This component also enables evaluation of visual representations, with V-JEPA 2 improving clip-locked prediction by 35% over combined CLIP and DINOv2 features. Our results demonstrate the value of transferable neural dynamics for individual EEG forecasting and highlight the importance of separating state-driven from stimulus-driven predictability.",
+      "source_id": "2611.34724v1",
+      "title": "LiDAR Intensity Reconstruction with Limited Real Data: An Architecture Benchmark under Fixed-Epoch Training",
+      "abstract": "Physics-derived simulation can supplement scarce real-world LiDAR intensity measurements, but its effectiveness depends on the learning architecture and the amount of real training data available. We benchmark nine neural architectures for LiDAR intensity reconstruction from depth, semantic labels, incidence angle, and material reflectance, using real SemanticKITTI and synthetic VoxelScape range-image data. All models follow a fixed 20-epoch protocol; this controls the number of training passes, not the computational cost across architectures. We report mean absolute error (MAE), mean squared error (MSE), peak signal-to-noise ratio (PSNR), structural similarity (SSIM), inference timing, and spectral-energy agreement. We also evaluate four selected architectures with fixed-size training mixtures containing 0\\%, 1\\%, 5\\%, 10\\%, 20\\%, 50\\%, or 100\\% real frames. With real-only training, UNet-V2 achieves the best reported reconstruction metrics (MAE 0.234, MSE 0.140, PSNR 8.64 dB, and SSIM 0.647), followed by a denoising diffusion model (DDPM). In several mixtures containing 1--10\\% real data, DDPM achieves lower error and higher image-quality metrics than the evaluated deterministic alternatives, whereas UNet-V2 leads with 100\\% real data. Spectral analysis additionally reveals architecture-dependent discrepancies across frequency bands. These findings characterize reconstruction trade-offs under the stated data mixtures and fixed-epoch protocol, without establishing compute-matched superiority or isolating the diffusion objective from backbone differences.",
       "authors": [
-        "Junxiang Zhang",
-        "Jiayu Zuo",
-        "Wenhao Ye",
-        "Junfeng Xia",
-        "Xiang Chen",
-        "Mo Wang",
-        "Quanying Liu"
+        "Christopher M. Coovrey",
+        "Aniruddha Bora"
       ],
-      "published_date": "2026-11-24",
-      "indexed_date": "2026-11-24",
+      "published_date": "2026-11-25",
+      "indexed_date": "2026-11-25",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2611.32825v1",
+      "url": "https://arxiv.org/abs/2611.34724v1",
       "categories": [
         "cs.CV",
-        "q-bio.NC"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.32802v1",
-      "title": "Sample-Efficient In-Context Adaptation via Sleep",
-      "abstract": "The ability to learn and generalize from limited experience, or sample efficiency, is a cornerstone of intelligence. How can we build language models that turn a few user interactions, a few snippets of unfamiliar code, or a handful of experimental results provided in context into knowledge that generalizes? Prior work has found that sleep, a process where the model performs $N$ recurrent forward passes to refine its representations of a chunk of context, can improve long-context reasoning (specifically, within SSM-attention hybrid models). We study whether this method also improves in-context adaptation on general, non-synthetic tasks for transformer language models. To this end, we pre-train language models up to 1.2B-parameters on up to 100B tokens with sleep mechanisms. Notably, longer sleep (i.e., using a larger number of recurrent forward passes $N$) enables the model to learn faster in-context on multiple few-shot algorithmic, question-answering tasks, while also achieving lower next-token prediction loss on out-of-distribution evaluations. On held-out code, models with $N=2$ and $N=4$ match the no-sleep baseline's loss using $2.10\\times$ and $2.39\\times$ fewer tokens in-context, respectively. More broadly, we view our work as a step toward building models that have better tradeoffs between in-context adaptation and decoding latency.",
-      "authors": [
-        "Sangyun Lee",
-        "Zhang Enyan",
-        "Michael Xu",
-        "Hao Tang",
-        "Zinan Lin",
-        "Weijia Xu",
-        "Chris Quirk",
-        "Jianfeng Gao",
-        "Giulia Fanti",
-        "Xiaodong Liu"
-      ],
-      "published_date": "2026-11-24",
-      "indexed_date": "2026-11-24",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.32802v1",
-      "categories": [
-        "cs.LG",
-        "cs.AI",
-        "cs.CL"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.32792v1",
-      "title": "Accuracy of Noise Ceiling Estimators for Brain Scores",
-      "abstract": "The internal activations of modern machine learning models align surprisingly well with the activities recorded in real brains. In the last five years, the alignment between encoding models and brain activities, often called brain scores, has steadily increased. Because brain recordings are noisy, there exists an upper bound to the brain scores that any model can achieve. This bound, called the noise ceiling, is crucial for two reasons: it determines whether further improvements in model performance are possible, and it enables meaningful comparisons of brain scores across benchmarks. The field has developed multiple approaches to estimate noise ceilings, but the statistical properties of existing estimators remain poorly understood, leaving it unclear in which experimental settings they provide reliable estimates. Here, we introduce a unified mathematical framework for brain recordings, use it to derive closed-form expressions for four commonly used noise ceiling estimators, and provide theoretical predictions for the behavior of each estimator. We validate the theoretical predictions with simulations that we compare to noise ceiling estimates in existing fMRI and EEG datasets. We find that the existing methods underestimate the true noise ceiling in different settings. We conclude with recommendations for best practice in different situations.",
-      "authors": [
-        "Aude Maier",
-        "Lucas Gruaz",
-        "Martin Schrimpf",
-        "Johanni Brea"
-      ],
-      "published_date": "2026-11-24",
-      "indexed_date": "2026-11-24",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.32792v1",
-      "categories": [
-        "cs.AI",
-        "q-bio.NC",
-        "stat.ME"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.32100v1",
-      "title": "EEGJev: A System One Decision Model and Benchmark for Multi-Task EEG Question Answering",
-      "abstract": "A single electroencephalographic (EEG) recording can support multiple decoding tasks. Fixed-label tests cannot show how EEG foundation models handle changing questions or options. We introduce EEGJev, a fast decision model that scores candidate answers in one pass. Our benchmark, EEGJev-Bench, covers six question types across 19 public EEG sources. We held the recording and options fixed while switching between questions about attributes paired during training, such as facial expression and the hand participants were asked to use. Across 13 test sources, EEGJev selected a label for the requested attribute with 99.70% accuracy (49.20% under uniform choice). Balanced accuracy for the specific answer was 62.04%. Its 95th-percentile response time was shorter than NeuroLM's on matched validation questions answered individually. EEGJev lets users switch decoding targets by changing the question. With EEGJev-Bench, researchers can test whether new decoders follow the question more reliably, identify the correct answer more often, or both.",
-      "authors": [
-        "Dengzhe Hou",
-        "Kazunori D. Yamada"
-      ],
-      "published_date": "2026-11-24",
-      "indexed_date": "2026-11-24",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.32100v1",
-      "categories": [
-        "eess.SP",
         "cs.LG"
       ],
       "keywords": [],
@@ -122,54 +33,24 @@
     },
     {
       "source": "arxiv",
-      "source_id": "2611.32019v1",
-      "title": "PFedHASNet: A Personalized Federated Hybrid Analog-Spike Network for Multi-Subject Motor Imagery EEG Decoding",
-      "abstract": "Motor imagery electroencephalography (MI-EEG) data are often collected and stored separately across subjects or institutions, and EEG acquisition and annotation remain costly. Training models solely on individual subject data limits the use of information from other subjects, whereas centralizing raw EEG recordings raises privacy and data governance concerns. Federated learning (FL) enables collaborative model training across distributed clients without sharing raw EEG data, providing a practical approach to leveraging information from multiple subjects. Accordingly, we propose PFedHASNet, a personalized federated hybrid analog-spike network for MI-EEG decoding. The shared encoder integrates continuous-valued temporal features, leaky integrate-and-fire (LIF) spike responses, and channel-wise log-variance statistics through learnable fusion weights. Client-private residual adapters and classifiers perform subject-specific feature refinement and personalized prediction, respectively. Experiments on held-out trials from participating subjects across four public MI-EEG datasets show that PFedHASNet achieves the highest mean client macro-F1 among 18 model configurations in cross-model comparisons, while maintaining competitive decoding performance with a compact client-side model in comparisons using the same backbone. Ablation studies further examine the contributions of hybrid representations and personalization components to decoding performance.",
+      "source_id": "2611.34451v1",
+      "title": "Decision-Aligned Value Learning for Selective Adoption of EEG Fusion in Human-Robot Collaboration",
+      "abstract": "Electroencephalography (EEG) captures neural activity associated with human perception and decision-making. It provides human-robot collaboration (HRC) systems with measurable evidence for event recognition, situation assessment, and action preparation. External sensing cannot easily provide such evidence. However, the quality and complementarity of this evidence vary across samples, and existing EEG fusion methods do not explicitly determine when EEG improves a prediction. We therefore framed selective EEG use as a sample-wise incremental-value estimation problem and proposed Value Estimation and Constraint-Aware Triage for Adoption (VECTA). VECTA separates the generation of an EEG-informed Fusion prediction from the decision about whether it should replace the existing Base prediction. The framework uses system gain to quantify the loss reduction from Base to Fusion and matching gain to assess whether benefits arise from sample-matched EEG. A signed-value learner estimates system gain from decision-time evidence and prioritizes high-value Fusion outputs under budget constraints. Cross-subject evaluations on three HRC datasets showed that matched Fusion outperformed shuffled controls. Estimated gains tracked realized gains, with Spearman correlations of 0.347-0.612 and positive-gain areas under the receiver operating characteristic curve (AUROCs) of 0.708-0.842. Under budget constraints, VECTA reduced Brier loss and harmful Fusion adoption and achieved the highest mean normalized AUBC across three datasets among the selective-decision methods evaluated. Validation on three external multi-modal datasets showed that VECTA could be applied directly as a post-hoc decision layer to task-specific predictors without retraining. These results show that selective Fusion adoption can translate the uneven utility of EEG into system-level gains.",
       "authors": [
-        "Peijia Li",
-        "Ruidong Ma",
-        "Xianghong Lin",
-        "Xiangwen Wang",
-        "Guoyong Shi",
-        "Shuai Huang",
-        "Hongqi Li"
+        "Xinjia Yu",
+        "Jing Yang",
+        "Yang Zhou",
+        "Tielin Shi",
+        "Tao Cheng"
       ],
-      "published_date": "2026-11-24",
-      "indexed_date": "2026-11-24",
+      "published_date": "2026-11-25",
+      "indexed_date": "2026-11-25",
       "journal": "arXiv",
       "doi": "",
-      "url": "https://arxiv.org/abs/2611.32019v1",
+      "url": "https://arxiv.org/abs/2611.34451v1",
       "categories": [
+        "cs.HC",
         "cs.LG"
-      ],
-      "keywords": [],
-      "publication_types": [
-        "Preprint"
-      ],
-      "extra": {}
-    },
-    {
-      "source": "arxiv",
-      "source_id": "2611.31875v1",
-      "title": "EEG-Jev: A Unified Single-Pass Decision Model for EEG",
-      "abstract": "EEG analysis spans choosing alternatives, judging statements, and rating ordered attributes, requiring calibratable probabilities with explicit meaning. We present EEG-Jev, a unified single-pass decision model for EEG. Given an EEG window, a question and an answer specification, one forward pass returns a typed readout: CHOICE gives a candidate distribution, NOUL a proposition probability, and SCORE an ordered-level distribution and expectation. One checkpoint is trained jointly and evaluated once on held-out splits of 35 public sources. Core raw outputs reach 54.08% balanced accuracy on Stieger2021 motor imagery, 70.45% on Sleep-EDF-SC sleep staging, 72.11% per window at threshold 0.5 on CHB-MIT seizure detection with 0.825 AUROC, and 1.700 MAE on 0-10 ds005292 pain ratings. Prior correction and temperature scaling lower negative log-likelihood from 0.766 to 0.606 on Sleep-EDF-SC and 0.166 to 0.019 on CHB-MIT, while direct readout cuts batch-1 latency from 122.43 to 63.11 ms (1.94-fold) against a matched-backbone generative comparator. Interactive demonstration and aggregate results: https://neuroimglab.github.io/EEG-Jev/.",
-      "authors": [
-        "Zhifei Zhu",
-        "Hongtao Zhang",
-        "Yu Ren",
-        "Wei Zhou",
-        "Zeping Xie",
-        "Yi He"
-      ],
-      "published_date": "2026-11-24",
-      "indexed_date": "2026-11-24",
-      "journal": "arXiv",
-      "doi": "",
-      "url": "https://arxiv.org/abs/2611.31875v1",
-      "categories": [
-        "cs.LG",
-        "cs.AI",
-        "physics.bio-ph"
       ],
       "keywords": [],
       "publication_types": [
